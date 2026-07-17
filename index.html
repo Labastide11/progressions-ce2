@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Progressions annuelles CE2 en français et mathématiques, organisées par périodes.">
+  <title>Progressions CE2 — Français & Mathématiques</title>
+  <link rel="stylesheet" href="styles.css?v=1">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__inner">
+      <p class="eyebrow">Ressource pédagogique partageable</p>
+      <h1>Progressions CE2</h1>
+      <p class="subtitle">Français & Mathématiques — repères annuels par période</p>
+      <div class="hero__actions">
+        <a class="btn btn--light" href="assets/Progressions_CE2_Francais_Maths_2026_2027.pdf" download>📄 Télécharger le PDF</a>
+        <a class="btn btn--outline" href="assets/Progressions_CE2_Francais_Maths_2026_2027.xlsx" download>📊 Télécharger le fichier Excel</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="intro card">
+      <div>
+        <h2>Un outil de pilotage souple</h2>
+        <p>Cette progression donne des repères par période, sans imposer une programmation jour après jour. Elle peut être adaptée selon le calendrier de la classe, les projets et les besoins des élèves.</p>
+      </div>
+      <div class="legend" aria-label="Légende des périodes">
+        <span class="period p1">P1</span><span class="period p2">P2</span><span class="period p3">P3</span><span class="period p4">P4</span><span class="period p5">P5</span>
+      </div>
+    </section>
+
+    <nav class="toolbar card" aria-label="Navigation des progressions">
+      <div class="tabs" role="tablist" aria-label="Matières">
+        <button class="tab is-active" data-subject="francais" role="tab">📘 Français</button>
+        <button class="tab" data-subject="maths" role="tab">📐 Mathématiques</button>
+      </div>
+      <div class="filters" aria-label="Filtrer par période">
+        <button class="filter is-active" data-period="all">Vue annuelle</button>
+        <button class="filter p1" data-period="p1">Période 1</button>
+        <button class="filter p2" data-period="p2">Période 2</button>
+        <button class="filter p3" data-period="p3">Période 3</button>
+        <button class="filter p4" data-period="p4">Période 4</button>
+        <button class="filter p5" data-period="p5">Période 5</button>
+      </div>
+    </nav>
+
+    <section class="statusbar">
+      <div>
+        <span class="subject-icon" id="subjectIcon">📘</span>
+        <div>
+          <h2 id="subjectTitle">Français</h2>
+          <p id="subjectSubtitle">Lecture, écriture, oral, vocabulaire, grammaire et orthographe</p>
+        </div>
+      </div>
+      <button class="print-btn" id="printBtn">🖨️ Imprimer la vue</button>
+    </section>
+
+    <section id="progressionGrid" class="progression-grid" aria-live="polite"></section>
+
+    <section class="routines card">
+      <h2>Repères permanents</h2>
+      <ul id="routinesList"></ul>
+    </section>
+
+    <section class="sources card">
+      <h2>Sources</h2>
+      <p>Progressions construites à partir des programmes officiels du cycle 2 applicables depuis la rentrée 2025, des ressources Éduscol et des documents pédagogiques joints.</p>
+      <div class="source-links">
+        <a href="https://www.education.gouv.fr/bo/2024/Hebdo41/MENE2415135A" target="_blank" rel="noopener">Bulletin officiel — programmes du cycle 2</a>
+        <a href="https://eduscol.education.gouv.fr/4740/ressources-d-accompagnement-du-programme-de-francais-au-cycle-2" target="_blank" rel="noopener">Éduscol — Français cycle 2</a>
+        <a href="https://eduscol.education.gouv.fr/4746/ressources-d-accompagnement-du-programme-de-mathematiques-au-cycle-2" target="_blank" rel="noopener">Éduscol — Mathématiques cycle 2</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Progressions CE2 — document partageable et adaptable par les enseignants.</p>
+  </footer>
+  <script src="data.js?v=1"></script>
+  <script src="app.js?v=1"></script>
+</body>
+</html>
