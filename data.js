@@ -1443,6 +1443,1685 @@ window.PROGRESSIONS = {
             "lsu": "Mémoriser l’orthographe des mots et utiliser des régularités."
       }
 ],
+    p3Competencies: [
+      {
+            "code": "OR-P3-01",
+            "domain": "Langage oral",
+            "title": "Raconter avec précision",
+            "jeSais": "Je sais raconter un événement en donnant les informations importantes.",
+            "checklist": [
+                  "Identifier clairement raconter dans l’ordre.",
+                  "Utiliser une démarche adaptée pour raconter dans l’ordre.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Employer des connecteurs temporels."
+            ],
+            "proofs": [
+                  "Récit oral préparé.",
+                  "Compte rendu d’une activité."
+            ],
+            "lsu": "Prendre la parole pour raconter et expliquer."
+      },
+      {
+            "code": "OR-P3-02",
+            "domain": "Langage oral",
+            "title": "Expliquer un choix",
+            "jeSais": "Je sais expliquer pourquoi j’ai fait un choix.",
+            "checklist": [
+                  "Identifier clairement justifier un choix.",
+                  "Utiliser une démarche adaptée pour justifier un choix.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "S’appuyer sur un exemple."
+            ],
+            "proofs": [
+                  "Justification lors d’un échange.",
+                  "Présentation d’une démarche."
+            ],
+            "lsu": "Prendre la parole pour justifier."
+      },
+      {
+            "code": "OR-P3-03",
+            "domain": "Langage oral",
+            "title": "Reformuler l’idée d’un camarade",
+            "jeSais": "Je sais redire l’idée d’un camarade avec mes mots.",
+            "checklist": [
+                  "Identifier clairement reformuler fidèlement.",
+                  "Utiliser une démarche adaptée pour reformuler fidèlement.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Ne pas déformer le propos."
+            ],
+            "proofs": [
+                  "Débat de compréhension.",
+                  "Travail de groupe."
+            ],
+            "lsu": "Écouter et participer à des échanges."
+      },
+      {
+            "code": "LEC-P3-01",
+            "domain": "Lecture et fluence",
+            "title": "Lire avec fluidité et liaisons",
+            "jeSais": "Je sais lire de façon fluide en réalisant les liaisons utiles.",
+            "checklist": [
+                  "Identifier clairement lire sans hésitations.",
+                  "Utiliser une démarche adaptée pour lire sans hésitations.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Respecter les liaisons courantes."
+            ],
+            "proofs": [
+                  "Mesure de fluence.",
+                  "Lecture préparée."
+            ],
+            "lsu": "Lire avec fluidité."
+      },
+      {
+            "code": "LEC-P3-02",
+            "domain": "Lecture et fluence",
+            "title": "Lire un dialogue à plusieurs voix",
+            "jeSais": "Je sais lire les paroles d’un personnage avec un ton adapté.",
+            "checklist": [
+                  "Identifier clairement distinguer narration et paroles.",
+                  "Utiliser une démarche adaptée pour distinguer narration et paroles.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Changer de voix selon le personnage."
+            ],
+            "proofs": [
+                  "Lecture dialoguée.",
+                  "Mise en voix d’un extrait."
+            ],
+            "lsu": "Lire à voix haute avec expressivité."
+      },
+      {
+            "code": "LEC-P3-03",
+            "domain": "Lecture et fluence",
+            "title": "Améliorer sa lecture après préparation",
+            "jeSais": "Je sais repérer mes difficultés puis améliorer ma lecture.",
+            "checklist": [
+                  "Identifier clairement préparer une lecture.",
+                  "Utiliser une démarche adaptée pour préparer une lecture.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Comparer deux lectures du même passage."
+            ],
+            "proofs": [
+                  "Première et seconde lecture.",
+                  "Enregistrement court."
+            ],
+            "lsu": "Lire à voix haute avec fluidité."
+      },
+      {
+            "code": "COM-P3-01",
+            "domain": "Compréhension de l’écrit",
+            "title": "Hiérarchiser les informations",
+            "jeSais": "Je sais distinguer les informations importantes des détails.",
+            "checklist": [
+                  "Identifier clairement sélectionner l’essentiel.",
+                  "Utiliser une démarche adaptée pour sélectionner l’essentiel.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Donner un titre au passage."
+            ],
+            "proofs": [
+                  "Résumé d’un paragraphe.",
+                  "Choix des informations essentielles."
+            ],
+            "lsu": "Comprendre un texte."
+      },
+      {
+            "code": "COM-P3-02",
+            "domain": "Compréhension de l’écrit",
+            "title": "Produire une inférence simple",
+            "jeSais": "Je sais comprendre une information qui n’est pas écrite directement.",
+            "checklist": [
+                  "Identifier clairement relier plusieurs indices.",
+                  "Utiliser une démarche adaptée pour relier plusieurs indices.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Expliquer le raisonnement."
+            ],
+            "proofs": [
+                  "Question d’inférence.",
+                  "Justification orale."
+            ],
+            "lsu": "Comprendre un texte et faire des inférences."
+      },
+      {
+            "code": "COM-P3-03",
+            "domain": "Compréhension de l’écrit",
+            "title": "Justifier avec plusieurs indices",
+            "jeSais": "Je sais utiliser plusieurs indices du texte pour justifier ma réponse.",
+            "checklist": [
+                  "Identifier clairement prélever des indices.",
+                  "Utiliser une démarche adaptée pour prélever des indices.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Citer ou reformuler les passages utiles."
+            ],
+            "proofs": [
+                  "Question écrite justifiée.",
+                  "Débat de lecture."
+            ],
+            "lsu": "Comprendre un texte et justifier ses réponses."
+      },
+      {
+            "code": "COM-P3-04",
+            "domain": "Compréhension de l’écrit",
+            "title": "Comprendre l’organisation d’un texte documentaire",
+            "jeSais": "Je sais utiliser le titre, les sous-titres et les illustrations pour comprendre un document.",
+            "checklist": [
+                  "Identifier clairement repérer les éléments du document.",
+                  "Utiliser une démarche adaptée pour repérer les éléments du document.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Relier texte, légende et image."
+            ],
+            "proofs": [
+                  "Questionnaire documentaire.",
+                  "Présentation d’une information."
+            ],
+            "lsu": "Comprendre des textes et des documents."
+      },
+      {
+            "code": "LIT-P3-01",
+            "domain": "Culture littéraire",
+            "title": "Reconnaître un mythe ou une légende",
+            "jeSais": "Je sais reconnaître quelques caractéristiques d’un mythe ou d’une légende.",
+            "checklist": [
+                  "Identifier clairement identifier le genre.",
+                  "Utiliser une démarche adaptée pour identifier le genre.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Repérer les éléments merveilleux."
+            ],
+            "proofs": [
+                  "Classement de textes.",
+                  "Présentation d’une lecture."
+            ],
+            "lsu": "Construire une culture littéraire."
+      },
+      {
+            "code": "LIT-P3-02",
+            "domain": "Culture littéraire",
+            "title": "Mettre des œuvres en réseau",
+            "jeSais": "Je sais faire un lien entre plusieurs textes sur un même thème.",
+            "checklist": [
+                  "Identifier clairement comparer les œuvres.",
+                  "Utiliser une démarche adaptée pour comparer les œuvres.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Nommer une ressemblance et une différence."
+            ],
+            "proofs": [
+                  "Tableau comparatif.",
+                  "Trace dans le carnet de lecteur."
+            ],
+            "lsu": "Construire des liens entre les œuvres."
+      },
+      {
+            "code": "ECR-P3-01",
+            "domain": "Écriture et copie",
+            "title": "Copier un texte plus long avec stratégie",
+            "jeSais": "Je sais choisir une stratégie pour copier un texte plus long sans erreur.",
+            "checklist": [
+                  "Identifier clairement copier par groupes de mots.",
+                  "Utiliser une démarche adaptée pour copier par groupes de mots.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Contrôler régulièrement la copie."
+            ],
+            "proofs": [
+                  "Copie d’un paragraphe.",
+                  "Copie différée."
+            ],
+            "lsu": "Copier avec efficacité."
+      },
+      {
+            "code": "ECR-P3-02",
+            "domain": "Écriture et copie",
+            "title": "Décrire un personnage",
+            "jeSais": "Je sais décrire un personnage avec des détails organisés.",
+            "checklist": [
+                  "Identifier clairement choisir des caractéristiques.",
+                  "Utiliser une démarche adaptée pour choisir des caractéristiques.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Employer des adjectifs précis."
+            ],
+            "proofs": [
+                  "Portrait écrit.",
+                  "Description à partir d’une illustration."
+            ],
+            "lsu": "Produire des écrits."
+      },
+      {
+            "code": "ECR-P3-03",
+            "domain": "Écriture et copie",
+            "title": "Décrire un lieu",
+            "jeSais": "Je sais décrire un lieu en organisant les informations.",
+            "checklist": [
+                  "Identifier clairement observer et organiser.",
+                  "Utiliser une démarche adaptée pour observer et organiser.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Utiliser des repères spatiaux."
+            ],
+            "proofs": [
+                  "Description d’une image.",
+                  "Lieu d’un récit."
+            ],
+            "lsu": "Produire des écrits."
+      },
+      {
+            "code": "ECR-P3-04",
+            "domain": "Écriture et copie",
+            "title": "Employer des connecteurs temporels",
+            "jeSais": "Je sais utiliser des mots pour organiser les étapes d’un récit.",
+            "checklist": [
+                  "Identifier clairement choisir un connecteur.",
+                  "Utiliser une démarche adaptée pour choisir un connecteur.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Éviter les répétitions."
+            ],
+            "proofs": [
+                  "Récit court.",
+                  "Phrases à remettre en cohérence."
+            ],
+            "lsu": "Organiser un écrit."
+      },
+      {
+            "code": "ECR-P3-05",
+            "domain": "Écriture et copie",
+            "title": "Éviter les répétitions avec des substituts",
+            "jeSais": "Je sais remplacer certains mots pour éviter les répétitions.",
+            "checklist": [
+                  "Identifier clairement choisir un pronom ou un groupe nominal.",
+                  "Utiliser une démarche adaptée pour choisir un pronom ou un groupe nominal.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Vérifier que le lecteur comprend."
+            ],
+            "proofs": [
+                  "Réécriture d’un paragraphe.",
+                  "Amélioration d’un premier jet."
+            ],
+            "lsu": "Réviser et améliorer son écrit."
+      },
+      {
+            "code": "VOC-P3-01",
+            "domain": "Vocabulaire",
+            "title": "Comprendre les différents sens d’un mot",
+            "jeSais": "Je sais choisir le sens d’un mot qui convient dans la phrase.",
+            "checklist": [
+                  "Identifier clairement utiliser le contexte.",
+                  "Utiliser une démarche adaptée pour utiliser le contexte.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Comparer plusieurs sens du dictionnaire."
+            ],
+            "proofs": [
+                  "Choix du bon sens.",
+                  "Phrases avec un mot polysémique."
+            ],
+            "lsu": "Enrichir son vocabulaire."
+      },
+      {
+            "code": "VOC-P3-02",
+            "domain": "Vocabulaire",
+            "title": "Reconnaître le niveau de langue",
+            "jeSais": "Je sais distinguer un mot familier, courant ou soutenu.",
+            "checklist": [
+                  "Identifier clairement observer la situation de communication.",
+                  "Utiliser une démarche adaptée pour observer la situation de communication.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Remplacer par un mot adapté."
+            ],
+            "proofs": [
+                  "Classement de mots.",
+                  "Réécriture d’une phrase."
+            ],
+            "lsu": "Adapter son vocabulaire."
+      },
+      {
+            "code": "VOC-P3-03",
+            "domain": "Vocabulaire",
+            "title": "Construire un réseau lexical",
+            "jeSais": "Je sais regrouper et organiser des mots autour d’un thème.",
+            "checklist": [
+                  "Identifier clairement classer les mots.",
+                  "Utiliser une démarche adaptée pour classer les mots.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Réutiliser le réseau dans un écrit."
+            ],
+            "proofs": [
+                  "Carte de mots.",
+                  "Production écrite ciblée."
+            ],
+            "lsu": "Enrichir et structurer son vocabulaire."
+      },
+      {
+            "code": "VOC-P3-04",
+            "domain": "Vocabulaire",
+            "title": "Utiliser une échelle d’intensité",
+            "jeSais": "Je sais classer des mots du moins fort au plus fort.",
+            "checklist": [
+                  "Identifier clairement comparer l’intensité.",
+                  "Utiliser une démarche adaptée pour comparer l’intensité.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Choisir le mot le plus précis."
+            ],
+            "proofs": [
+                  "Classement d’adjectifs ou de verbes.",
+                  "Réécriture précise."
+            ],
+            "lsu": "Préciser le sens des mots."
+      },
+      {
+            "code": "GRA-P3-01",
+            "domain": "Grammaire",
+            "title": "Identifier le déterminant",
+            "jeSais": "Je sais reconnaître le déterminant placé devant un nom.",
+            "checklist": [
+                  "Identifier clairement repérer le nom puis son déterminant.",
+                  "Utiliser une démarche adaptée pour repérer le nom puis son déterminant.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Distinguer déterminant et pronom."
+            ],
+            "proofs": [
+                  "Repérage dans des groupes nominaux.",
+                  "Classement de déterminants."
+            ],
+            "lsu": "Reconnaître les principales classes de mots."
+      },
+      {
+            "code": "GRA-P3-02",
+            "domain": "Grammaire",
+            "title": "Identifier l’adjectif",
+            "jeSais": "Je sais reconnaître le mot qui apporte une précision sur le nom.",
+            "checklist": [
+                  "Identifier clairement repérer le nom.",
+                  "Utiliser une démarche adaptée pour repérer le nom.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Tester la suppression ou le déplacement."
+            ],
+            "proofs": [
+                  "Repérage dans des phrases.",
+                  "Enrichissement de groupes nominaux."
+            ],
+            "lsu": "Reconnaître les principales classes de mots."
+      },
+      {
+            "code": "GRA-P3-03",
+            "domain": "Grammaire",
+            "title": "Identifier le groupe nominal",
+            "jeSais": "Je sais repérer un groupe construit autour d’un nom.",
+            "checklist": [
+                  "Identifier clairement repérer le nom noyau.",
+                  "Utiliser une démarche adaptée pour repérer le nom noyau.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Délimiter tout le groupe."
+            ],
+            "proofs": [
+                  "Surlignage de groupes nominaux.",
+                  "Construction de groupes nominaux."
+            ],
+            "lsu": "Identifier les constituants du groupe nominal."
+      },
+      {
+            "code": "CONJ-P3-01",
+            "domain": "Conjugaison",
+            "title": "Identifier le futur",
+            "jeSais": "Je sais reconnaître une phrase qui indique ce qui se passera plus tard.",
+            "checklist": [
+                  "Identifier clairement repérer les marques du futur.",
+                  "Utiliser une démarche adaptée pour repérer les marques du futur.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Utiliser des indicateurs de temps."
+            ],
+            "proofs": [
+                  "Classement de phrases.",
+                  "Transformation au futur."
+            ],
+            "lsu": "Se repérer dans le temps."
+      },
+      {
+            "code": "CONJ-P3-02",
+            "domain": "Conjugaison",
+            "title": "Conjuguer les verbes en -er au futur",
+            "jeSais": "Je sais conjuguer un verbe régulier en -er au futur.",
+            "checklist": [
+                  "Identifier clairement identifier le radical et la terminaison.",
+                  "Utiliser une démarche adaptée pour identifier le radical et la terminaison.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Vérifier avec le sujet."
+            ],
+            "proofs": [
+                  "Tableau de conjugaison.",
+                  "Phrases à compléter."
+            ],
+            "lsu": "Conjuguer les verbes étudiés."
+      },
+      {
+            "code": "CONJ-P3-03",
+            "domain": "Conjugaison",
+            "title": "Conjuguer être et avoir au futur",
+            "jeSais": "Je sais conjuguer être et avoir au futur.",
+            "checklist": [
+                  "Identifier clairement mémoriser les formes.",
+                  "Utiliser une démarche adaptée pour mémoriser les formes.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Réutiliser dans une phrase."
+            ],
+            "proofs": [
+                  "Tableau de conjugaison.",
+                  "Dictée de phrases."
+            ],
+            "lsu": "Conjuguer les verbes étudiés."
+      },
+      {
+            "code": "ORT-P3-01",
+            "domain": "Orthographe",
+            "title": "Accorder l’adjectif dans le groupe nominal",
+            "jeSais": "Je sais accorder un adjectif avec le nom qu’il précise.",
+            "checklist": [
+                  "Identifier clairement repérer genre et nombre.",
+                  "Utiliser une démarche adaptée pour repérer genre et nombre.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Justifier les marques ajoutées."
+            ],
+            "proofs": [
+                  "Groupes nominaux à transformer.",
+                  "Dictée ciblée."
+            ],
+            "lsu": "Maîtriser les accords dans le groupe nominal."
+      },
+      {
+            "code": "ORT-P3-02",
+            "domain": "Orthographe",
+            "title": "Former le féminin des noms et adjectifs",
+            "jeSais": "Je sais former le féminin régulier des noms et des adjectifs.",
+            "checklist": [
+                  "Identifier clairement observer la forme masculine.",
+                  "Utiliser une démarche adaptée pour observer la forme masculine.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Mémoriser quelques formes fréquentes."
+            ],
+            "proofs": [
+                  "Transformations masculin/féminin.",
+                  "Phrases à compléter."
+            ],
+            "lsu": "Maîtriser les variations en genre."
+      },
+      {
+            "code": "ORT-P3-03",
+            "domain": "Orthographe",
+            "title": "Former le pluriel des adjectifs",
+            "jeSais": "Je sais former le pluriel régulier des adjectifs.",
+            "checklist": [
+                  "Identifier clairement repérer le nom au pluriel.",
+                  "Utiliser une démarche adaptée pour repérer le nom au pluriel.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Accorder le déterminant, le nom et l’adjectif."
+            ],
+            "proofs": [
+                  "Transformations singulier/pluriel.",
+                  "Dictée de groupes nominaux."
+            ],
+            "lsu": "Maîtriser les variations en nombre."
+      },
+      {
+            "code": "ORT-P3-04",
+            "domain": "Orthographe",
+            "title": "Appliquer la règle de m devant m, b, p",
+            "jeSais": "Je sais écrire m devant m, b ou p dans les mots étudiés.",
+            "checklist": [
+                  "Identifier clairement repérer le son nasal.",
+                  "Utiliser une démarche adaptée pour repérer le son nasal.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Mémoriser les exceptions étudiées."
+            ],
+            "proofs": [
+                  "Dictée de mots.",
+                  "Mots à compléter."
+            ],
+            "lsu": "Utiliser des régularités orthographiques."
+      },
+      {
+            "code": "ORT-P3-05",
+            "domain": "Orthographe",
+            "title": "Utiliser les accents",
+            "jeSais": "Je sais choisir un accent pour écrire correctement les mots étudiés.",
+            "checklist": [
+                  "Identifier clairement observer la syllabe et la prononciation.",
+                  "Utiliser une démarche adaptée pour observer la syllabe et la prononciation.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Vérifier dans un outil."
+            ],
+            "proofs": [
+                  "Dictée de mots.",
+                  "Correction d’un texte."
+            ],
+            "lsu": "Mémoriser l’orthographe des mots."
+      }
+],
+    p4Competencies: [
+      {
+            "code": "OR-P4-01",
+            "domain": "Langage oral",
+            "title": "Participer à un débat court",
+            "jeSais": "Je sais donner mon avis et répondre aux idées des autres.",
+            "checklist": [
+                  "Identifier clairement formuler un avis.",
+                  "Utiliser une démarche adaptée pour formuler un avis.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Respecter les règles du débat."
+            ],
+            "proofs": [
+                  "Débat réglé.",
+                  "Conseil ou échange argumenté."
+            ],
+            "lsu": "Participer à des échanges."
+      },
+      {
+            "code": "OR-P4-02",
+            "domain": "Langage oral",
+            "title": "Présenter un exposé court",
+            "jeSais": "Je sais présenter des informations préparées dans un ordre clair.",
+            "checklist": [
+                  "Identifier clairement organiser une présentation.",
+                  "Utiliser une démarche adaptée pour organiser une présentation.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Utiliser un support simple."
+            ],
+            "proofs": [
+                  "Exposé court.",
+                  "Présentation documentaire."
+            ],
+            "lsu": "Prendre la parole de façon organisée."
+      },
+      {
+            "code": "OR-P4-03",
+            "domain": "Langage oral",
+            "title": "Mettre un texte en voix",
+            "jeSais": "Je sais utiliser ma voix pour faire comprendre un poème ou une scène.",
+            "checklist": [
+                  "Identifier clairement adapter ton, rythme et volume.",
+                  "Utiliser une démarche adaptée pour adapter ton, rythme et volume.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Mémoriser les passages utiles."
+            ],
+            "proofs": [
+                  "Récitation expressive.",
+                  "Jeu théâtral."
+            ],
+            "lsu": "Dire pour être entendu et compris."
+      },
+      {
+            "code": "LEC-P4-01",
+            "domain": "Lecture et fluence",
+            "title": "Lire un texte documentaire avec expressivité",
+            "jeSais": "Je sais adapter ma lecture à un texte documentaire.",
+            "checklist": [
+                  "Identifier clairement respecter la structure du document.",
+                  "Utiliser une démarche adaptée pour respecter la structure du document.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Mettre en valeur les informations importantes."
+            ],
+            "proofs": [
+                  "Lecture préparée.",
+                  "Présentation d’un document."
+            ],
+            "lsu": "Lire à voix haute."
+      },
+      {
+            "code": "LEC-P4-02",
+            "domain": "Lecture et fluence",
+            "title": "Lire une scène de théâtre",
+            "jeSais": "Je sais lire une scène en distinguant personnages et indications.",
+            "checklist": [
+                  "Identifier clairement repérer les répliques.",
+                  "Utiliser une démarche adaptée pour repérer les répliques.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Tenir compte des didascalies simples."
+            ],
+            "proofs": [
+                  "Lecture théâtralisée.",
+                  "Mise en scène courte."
+            ],
+            "lsu": "Lire à voix haute avec expressivité."
+      },
+      {
+            "code": "COM-P4-01",
+            "domain": "Compréhension de l’écrit",
+            "title": "Comprendre une information implicite",
+            "jeSais": "Je sais comprendre une information suggérée par le texte.",
+            "checklist": [
+                  "Identifier clairement relier les indices.",
+                  "Utiliser une démarche adaptée pour relier les indices.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Formuler l’implicite avec ses mots."
+            ],
+            "proofs": [
+                  "Question d’inférence.",
+                  "Débat de lecture."
+            ],
+            "lsu": "Comprendre l’implicite."
+      },
+      {
+            "code": "COM-P4-02",
+            "domain": "Compréhension de l’écrit",
+            "title": "Identifier l’intention d’un personnage",
+            "jeSais": "Je sais expliquer ce qu’un personnage veut faire ou obtenir.",
+            "checklist": [
+                  "Identifier clairement observer actions et paroles.",
+                  "Utiliser une démarche adaptée pour observer actions et paroles.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Justifier avec le texte."
+            ],
+            "proofs": [
+                  "Portrait d’un personnage.",
+                  "Question justifiée."
+            ],
+            "lsu": "Comprendre les personnages."
+      },
+      {
+            "code": "COM-P4-03",
+            "domain": "Compréhension de l’écrit",
+            "title": "Repérer une relation de cause à conséquence",
+            "jeSais": "Je sais expliquer pourquoi un événement arrive et ce qu’il provoque.",
+            "checklist": [
+                  "Identifier clairement repérer cause et conséquence.",
+                  "Utiliser une démarche adaptée pour repérer cause et conséquence.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Utiliser parce que, donc, car."
+            ],
+            "proofs": [
+                  "Schéma causal.",
+                  "Réponse rédigée."
+            ],
+            "lsu": "Comprendre l’enchaînement des événements."
+      },
+      {
+            "code": "COM-P4-04",
+            "domain": "Compréhension de l’écrit",
+            "title": "Résumer un texte",
+            "jeSais": "Je sais rédiger un résumé court en gardant l’essentiel.",
+            "checklist": [
+                  "Identifier clairement sélectionner les idées principales.",
+                  "Utiliser une démarche adaptée pour sélectionner les idées principales.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Respecter l’ordre du texte."
+            ],
+            "proofs": [
+                  "Résumé d’un récit.",
+                  "Résumé d’un documentaire."
+            ],
+            "lsu": "Comprendre et reformuler un texte."
+      },
+      {
+            "code": "LIT-P4-01",
+            "domain": "Culture littéraire",
+            "title": "Reconnaître un poème",
+            "jeSais": "Je sais repérer quelques caractéristiques d’un poème.",
+            "checklist": [
+                  "Identifier clairement observer la mise en page et les sons.",
+                  "Utiliser une démarche adaptée pour observer la mise en page et les sons.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Exprimer une impression de lecture."
+            ],
+            "proofs": [
+                  "Lecture comparée de poèmes.",
+                  "Présentation orale."
+            ],
+            "lsu": "Construire une culture littéraire."
+      },
+      {
+            "code": "LIT-P4-02",
+            "domain": "Culture littéraire",
+            "title": "Reconnaître une scène de théâtre",
+            "jeSais": "Je sais reconnaître les répliques, les personnages et les indications de jeu.",
+            "checklist": [
+                  "Identifier clairement identifier la forme théâtrale.",
+                  "Utiliser une démarche adaptée pour identifier la forme théâtrale.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Comparer avec un récit."
+            ],
+            "proofs": [
+                  "Repérage dans une scène.",
+                  "Mise en voix."
+            ],
+            "lsu": "Construire une culture littéraire."
+      },
+      {
+            "code": "ECR-P4-01",
+            "domain": "Écriture et copie",
+            "title": "Réaliser une copie différée longue",
+            "jeSais": "Je sais mémoriser et copier plusieurs groupes de mots sans modèle permanent.",
+            "checklist": [
+                  "Identifier clairement segmenter le texte.",
+                  "Utiliser une démarche adaptée pour segmenter le texte.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Contrôler la mise en page."
+            ],
+            "proofs": [
+                  "Copie différée.",
+                  "Copie chronométrée contrôlée."
+            ],
+            "lsu": "Copier avec efficacité."
+      },
+      {
+            "code": "ECR-P4-02",
+            "domain": "Écriture et copie",
+            "title": "Résumer une expérience ou une sortie",
+            "jeSais": "Je sais écrire un compte rendu court et organisé.",
+            "checklist": [
+                  "Identifier clairement sélectionner les informations utiles.",
+                  "Utiliser une démarche adaptée pour sélectionner les informations utiles.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Employer un vocabulaire précis."
+            ],
+            "proofs": [
+                  "Compte rendu de sortie.",
+                  "Trace scientifique."
+            ],
+            "lsu": "Produire des écrits."
+      },
+      {
+            "code": "ECR-P4-03",
+            "domain": "Écriture et copie",
+            "title": "Écrire un texte documentaire",
+            "jeSais": "Je sais organiser des informations pour expliquer un sujet.",
+            "checklist": [
+                  "Identifier clairement classer les informations.",
+                  "Utiliser une démarche adaptée pour classer les informations.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Utiliser titre et sous-titres."
+            ],
+            "proofs": [
+                  "Documentaire court.",
+                  "Affiche explicative."
+            ],
+            "lsu": "Produire des écrits informatifs."
+      },
+      {
+            "code": "ECR-P4-04",
+            "domain": "Écriture et copie",
+            "title": "Écrire un poème court",
+            "jeSais": "Je sais jouer avec les mots, les sons ou les images pour écrire un poème.",
+            "checklist": [
+                  "Identifier clairement choisir une contrainte simple.",
+                  "Utiliser une démarche adaptée pour choisir une contrainte simple.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Relire pour l’effet produit."
+            ],
+            "proofs": [
+                  "Poème à contrainte.",
+                  "Production à partir d’un modèle."
+            ],
+            "lsu": "Produire des écrits créatifs."
+      },
+      {
+            "code": "ECR-P4-05",
+            "domain": "Écriture et copie",
+            "title": "Réviser un texte avec une grille",
+            "jeSais": "Je sais utiliser une grille pour améliorer mon texte.",
+            "checklist": [
+                  "Identifier clairement relire selon un critère.",
+                  "Utiliser une démarche adaptée pour relire selon un critère.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Corriger puis réécrire proprement."
+            ],
+            "proofs": [
+                  "Premier jet et version révisée.",
+                  "Correction guidée."
+            ],
+            "lsu": "Réviser et améliorer son écrit."
+      },
+      {
+            "code": "VOC-P4-01",
+            "domain": "Vocabulaire",
+            "title": "Distinguer sens propre et sens figuré",
+            "jeSais": "Je sais dire si une expression est utilisée au sens propre ou au sens figuré.",
+            "checklist": [
+                  "Identifier clairement observer le contexte.",
+                  "Utiliser une démarche adaptée pour observer le contexte.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Expliquer l’image créée."
+            ],
+            "proofs": [
+                  "Classement d’expressions.",
+                  "Phrases à expliquer."
+            ],
+            "lsu": "Comprendre les relations de sens."
+      },
+      {
+            "code": "VOC-P4-02",
+            "domain": "Vocabulaire",
+            "title": "Comprendre une expression fréquente",
+            "jeSais": "Je sais expliquer une expression grâce au contexte.",
+            "checklist": [
+                  "Identifier clairement repérer les mots de l’expression.",
+                  "Utiliser une démarche adaptée pour repérer les mots de l’expression.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Réutiliser l’expression à bon escient."
+            ],
+            "proofs": [
+                  "Explication d’expressions.",
+                  "Production de phrases."
+            ],
+            "lsu": "Enrichir son vocabulaire."
+      },
+      {
+            "code": "VOC-P4-03",
+            "domain": "Vocabulaire",
+            "title": "Choisir une association de mots fréquente",
+            "jeSais": "Je sais choisir les mots qui s’emploient habituellement ensemble.",
+            "checklist": [
+                  "Identifier clairement observer les associations usuelles.",
+                  "Utiliser une démarche adaptée pour observer les associations usuelles.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Vérifier dans le contexte."
+            ],
+            "proofs": [
+                  "Phrases à compléter.",
+                  "Réécriture lexicale."
+            ],
+            "lsu": "Employer un vocabulaire précis."
+      },
+      {
+            "code": "GRA-P4-01",
+            "domain": "Grammaire",
+            "title": "Repérer un complément déplaçable",
+            "jeSais": "Je sais repérer un groupe qui apporte une précision sur le lieu, le temps ou la manière.",
+            "checklist": [
+                  "Identifier clairement tester le déplacement.",
+                  "Utiliser une démarche adaptée pour tester le déplacement.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Tester la suppression."
+            ],
+            "proofs": [
+                  "Manipulations de phrases.",
+                  "Repérage dans un texte."
+            ],
+            "lsu": "Identifier les constituants de la phrase."
+      },
+      {
+            "code": "GRA-P4-02",
+            "domain": "Grammaire",
+            "title": "Manipuler les groupes dans la phrase",
+            "jeSais": "Je sais déplacer, supprimer ou ajouter un groupe pour transformer une phrase.",
+            "checklist": [
+                  "Identifier clairement effectuer une manipulation syntaxique.",
+                  "Utiliser une démarche adaptée pour effectuer une manipulation syntaxique.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Vérifier que la phrase reste correcte."
+            ],
+            "proofs": [
+                  "Atelier de manipulation.",
+                  "Transformations écrites."
+            ],
+            "lsu": "Comprendre le fonctionnement de la phrase."
+      },
+      {
+            "code": "GRA-P4-03",
+            "domain": "Grammaire",
+            "title": "Reconnaître un adverbe fréquent",
+            "jeSais": "Je sais reconnaître un mot qui précise le sens d’un verbe ou d’un adjectif.",
+            "checklist": [
+                  "Identifier clairement observer le mot précisé.",
+                  "Utiliser une démarche adaptée pour observer le mot précisé.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Tester la suppression."
+            ],
+            "proofs": [
+                  "Repérage dans des phrases.",
+                  "Enrichissement de phrases."
+            ],
+            "lsu": "Reconnaître les principales classes de mots."
+      },
+      {
+            "code": "CONJ-P4-01",
+            "domain": "Conjugaison",
+            "title": "Identifier l’imparfait",
+            "jeSais": "Je sais reconnaître une phrase à l’imparfait.",
+            "checklist": [
+                  "Identifier clairement repérer les terminaisons.",
+                  "Utiliser une démarche adaptée pour repérer les terminaisons.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Comparer avec le présent."
+            ],
+            "proofs": [
+                  "Classement de phrases.",
+                  "Transformation temporelle."
+            ],
+            "lsu": "Se repérer dans le temps."
+      },
+      {
+            "code": "CONJ-P4-02",
+            "domain": "Conjugaison",
+            "title": "Conjuguer les verbes en -er à l’imparfait",
+            "jeSais": "Je sais conjuguer un verbe régulier en -er à l’imparfait.",
+            "checklist": [
+                  "Identifier clairement identifier radical et terminaison.",
+                  "Utiliser une démarche adaptée pour identifier radical et terminaison.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Vérifier avec le sujet."
+            ],
+            "proofs": [
+                  "Tableau de conjugaison.",
+                  "Phrases à compléter."
+            ],
+            "lsu": "Conjuguer les verbes étudiés."
+      },
+      {
+            "code": "CONJ-P4-03",
+            "domain": "Conjugaison",
+            "title": "Conjuguer être et avoir à l’imparfait",
+            "jeSais": "Je sais conjuguer être et avoir à l’imparfait.",
+            "checklist": [
+                  "Identifier clairement mémoriser les formes.",
+                  "Utiliser une démarche adaptée pour mémoriser les formes.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Réutiliser dans un récit."
+            ],
+            "proofs": [
+                  "Tableau de conjugaison.",
+                  "Dictée de phrases."
+            ],
+            "lsu": "Conjuguer les verbes étudiés."
+      },
+      {
+            "code": "ORT-P4-01",
+            "domain": "Orthographe",
+            "title": "Consolider les accords dans le groupe nominal",
+            "jeSais": "Je sais accorder le déterminant, le nom et l’adjectif.",
+            "checklist": [
+                  "Identifier clairement identifier genre et nombre.",
+                  "Utiliser une démarche adaptée pour identifier genre et nombre.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Justifier chaque marque."
+            ],
+            "proofs": [
+                  "Dictée de groupes nominaux.",
+                  "Transformations."
+            ],
+            "lsu": "Maîtriser les accords dans le groupe nominal."
+      },
+      {
+            "code": "ORT-P4-02",
+            "domain": "Orthographe",
+            "title": "Utiliser une lettre finale muette",
+            "jeSais": "Je sais utiliser un mot de la même famille pour retrouver une lettre finale muette.",
+            "checklist": [
+                  "Identifier clairement chercher un mot de la famille.",
+                  "Utiliser une démarche adaptée pour chercher un mot de la famille.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Vérifier dans le dictionnaire."
+            ],
+            "proofs": [
+                  "Dictée de mots.",
+                  "Justification par la famille."
+            ],
+            "lsu": "Utiliser la morphologie pour orthographier."
+      },
+      {
+            "code": "ORT-P4-03",
+            "domain": "Orthographe",
+            "title": "Choisir entre infinitif en -er et participe en -é",
+            "jeSais": "Je sais choisir entre -er et -é grâce à une manipulation.",
+            "checklist": [
+                  "Identifier clairement remplacer par vendre ou vendu.",
+                  "Utiliser une démarche adaptée pour remplacer par vendre ou vendu.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Justifier le choix."
+            ],
+            "proofs": [
+                  "Phrases à compléter.",
+                  "Dictée raisonnée."
+            ],
+            "lsu": "Raisonner pour choisir une orthographe grammaticale."
+      },
+      {
+            "code": "ORT-P4-04",
+            "domain": "Orthographe",
+            "title": "Former des pluriels particuliers fréquents",
+            "jeSais": "Je sais écrire le pluriel de quelques noms fréquents en -al, -au ou -eu.",
+            "checklist": [
+                  "Identifier clairement observer la terminaison.",
+                  "Utiliser une démarche adaptée pour observer la terminaison.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Mémoriser les exceptions étudiées."
+            ],
+            "proofs": [
+                  "Transformations.",
+                  "Dictée de mots."
+            ],
+            "lsu": "Maîtriser les variations en nombre."
+      }
+],
+    p5Competencies: [
+      {
+            "code": "OR-P5-01",
+            "domain": "Langage oral",
+            "title": "Présenter un propos structuré",
+            "jeSais": "Je sais présenter un sujet avec une introduction, des informations organisées et une conclusion.",
+            "checklist": [
+                  "Identifier clairement préparer le plan.",
+                  "Utiliser une démarche adaptée pour préparer le plan.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Répondre aux questions."
+            ],
+            "proofs": [
+                  "Présentation orale.",
+                  "Bilan d’un projet."
+            ],
+            "lsu": "Prendre la parole de façon organisée."
+      },
+      {
+            "code": "OR-P5-02",
+            "domain": "Langage oral",
+            "title": "Réinvestir un vocabulaire précis à l’oral",
+            "jeSais": "Je sais employer les mots appris pour expliquer clairement.",
+            "checklist": [
+                  "Identifier clairement choisir les mots adaptés.",
+                  "Utiliser une démarche adaptée pour choisir les mots adaptés.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Reformuler si nécessaire."
+            ],
+            "proofs": [
+                  "Exposé.",
+                  "Explication d’une démarche."
+            ],
+            "lsu": "Prendre la parole pour être compris."
+      },
+      {
+            "code": "LEC-P5-01",
+            "domain": "Lecture et fluence",
+            "title": "Lire de façon autonome et fluide",
+            "jeSais": "Je sais lire seul un texte adapté avec exactitude et fluidité.",
+            "checklist": [
+                  "Identifier clairement maintenir une lecture régulière.",
+                  "Utiliser une démarche adaptée pour maintenir une lecture régulière.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "S’autocorriger."
+            ],
+            "proofs": [
+                  "Bilan de fluence.",
+                  "Lecture d’un texte inédit."
+            ],
+            "lsu": "Lire avec fluidité."
+      },
+      {
+            "code": "LEC-P5-02",
+            "domain": "Lecture et fluence",
+            "title": "Lire de manière expressive",
+            "jeSais": "Je sais adapter le ton, le rythme et le volume au texte.",
+            "checklist": [
+                  "Identifier clairement comprendre avant de mettre en voix.",
+                  "Utiliser une démarche adaptée pour comprendre avant de mettre en voix.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Faire entendre les émotions."
+            ],
+            "proofs": [
+                  "Lecture finale préparée.",
+                  "Mise en voix d’une œuvre."
+            ],
+            "lsu": "Lire à voix haute avec expressivité."
+      },
+      {
+            "code": "COM-P5-01",
+            "domain": "Compréhension de l’écrit",
+            "title": "Mobiliser plusieurs stratégies de compréhension",
+            "jeSais": "Je sais choisir une stratégie pour comprendre un passage difficile.",
+            "checklist": [
+                  "Identifier clairement relire, reformuler ou chercher un indice.",
+                  "Utiliser une démarche adaptée pour relire, reformuler ou chercher un indice.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Expliquer la stratégie choisie."
+            ],
+            "proofs": [
+                  "Questionnaire varié.",
+                  "Entretien de compréhension."
+            ],
+            "lsu": "Contrôler sa compréhension."
+      },
+      {
+            "code": "COM-P5-02",
+            "domain": "Compréhension de l’écrit",
+            "title": "Synthétiser plusieurs informations",
+            "jeSais": "Je sais regrouper des informations venant de plusieurs passages ou documents.",
+            "checklist": [
+                  "Identifier clairement mettre les informations en relation.",
+                  "Utiliser une démarche adaptée pour mettre les informations en relation.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Rédiger une réponse synthétique."
+            ],
+            "proofs": [
+                  "Synthèse documentaire.",
+                  "Tableau puis paragraphe."
+            ],
+            "lsu": "Comprendre et synthétiser."
+      },
+      {
+            "code": "COM-P5-03",
+            "domain": "Compréhension de l’écrit",
+            "title": "Comprendre différents genres de textes",
+            "jeSais": "Je sais adapter ma manière de lire à un récit, un document, un poème ou une scène.",
+            "checklist": [
+                  "Identifier clairement identifier le genre.",
+                  "Utiliser une démarche adaptée pour identifier le genre.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Choisir les bons indices."
+            ],
+            "proofs": [
+                  "Parcours de textes variés.",
+                  "Bilan de compréhension."
+            ],
+            "lsu": "Comprendre des textes variés."
+      },
+      {
+            "code": "LIT-P5-01",
+            "domain": "Culture littéraire",
+            "title": "Présenter son parcours de lecteur",
+            "jeSais": "Je sais parler des œuvres lues et expliquer mes préférences.",
+            "checklist": [
+                  "Identifier clairement choisir des œuvres marquantes.",
+                  "Utiliser une démarche adaptée pour choisir des œuvres marquantes.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Faire des liens entre elles."
+            ],
+            "proofs": [
+                  "Carnet de lecteur.",
+                  "Présentation orale."
+            ],
+            "lsu": "Construire son parcours de lecteur."
+      },
+      {
+            "code": "LIT-P5-02",
+            "domain": "Culture littéraire",
+            "title": "Comparer plusieurs œuvres",
+            "jeSais": "Je sais comparer des personnages, des thèmes ou des choix d’écriture.",
+            "checklist": [
+                  "Identifier clairement définir un critère de comparaison.",
+                  "Utiliser une démarche adaptée pour définir un critère de comparaison.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Justifier avec des exemples."
+            ],
+            "proofs": [
+                  "Tableau comparatif.",
+                  "Texte de comparaison."
+            ],
+            "lsu": "Construire une culture littéraire."
+      },
+      {
+            "code": "ECR-P5-01",
+            "domain": "Écriture et copie",
+            "title": "Planifier un texte long",
+            "jeSais": "Je sais préparer les étapes et les idées d’un texte en plusieurs paragraphes.",
+            "checklist": [
+                  "Identifier clairement construire un plan simple.",
+                  "Utiliser une démarche adaptée pour construire un plan simple.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Prévoir les connecteurs."
+            ],
+            "proofs": [
+                  "Plan ou carte d’idées.",
+                  "Brouillon organisé."
+            ],
+            "lsu": "Planifier un écrit."
+      },
+      {
+            "code": "ECR-P5-02",
+            "domain": "Écriture et copie",
+            "title": "Écrire la suite d’un récit",
+            "jeSais": "Je sais écrire une suite cohérente en respectant les personnages et l’univers.",
+            "checklist": [
+                  "Identifier clairement reprendre les informations du début.",
+                  "Utiliser une démarche adaptée pour reprendre les informations du début.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Construire une fin."
+            ],
+            "proofs": [
+                  "Suite de récit.",
+                  "Épisode supplémentaire."
+            ],
+            "lsu": "Produire des écrits narratifs."
+      },
+      {
+            "code": "ECR-P5-03",
+            "domain": "Écriture et copie",
+            "title": "Organiser un texte en paragraphes",
+            "jeSais": "Je sais regrouper les idées et marquer les changements de partie.",
+            "checklist": [
+                  "Identifier clairement identifier les différentes étapes.",
+                  "Utiliser une démarche adaptée pour identifier les différentes étapes.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Utiliser les alinéas."
+            ],
+            "proofs": [
+                  "Texte long rédigé.",
+                  "Réorganisation d’un texte."
+            ],
+            "lsu": "Organiser un écrit."
+      },
+      {
+            "code": "ECR-P5-04",
+            "domain": "Écriture et copie",
+            "title": "Réviser puis publier un texte",
+            "jeSais": "Je sais améliorer le contenu et la forme avant de présenter une version finale.",
+            "checklist": [
+                  "Identifier clairement corriger selon plusieurs critères.",
+                  "Utiliser une démarche adaptée pour corriger selon plusieurs critères.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Soigner la présentation finale."
+            ],
+            "proofs": [
+                  "Premier jet et publication.",
+                  "Texte tapé ou recopié."
+            ],
+            "lsu": "Réviser et améliorer son écrit."
+      },
+      {
+            "code": "VOC-P5-01",
+            "domain": "Vocabulaire",
+            "title": "Réinvestir un réseau lexical",
+            "jeSais": "Je sais utiliser plusieurs mots précis d’un même thème dans un écrit ou un oral.",
+            "checklist": [
+                  "Identifier clairement sélectionner les mots adaptés.",
+                  "Utiliser une démarche adaptée pour sélectionner les mots adaptés.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Éviter les répétitions."
+            ],
+            "proofs": [
+                  "Production écrite.",
+                  "Présentation orale."
+            ],
+            "lsu": "Enrichir son vocabulaire."
+      },
+      {
+            "code": "VOC-P5-02",
+            "domain": "Vocabulaire",
+            "title": "Utiliser la morphologie pour comprendre un mot",
+            "jeSais": "Je sais utiliser le radical, le préfixe ou le suffixe pour proposer le sens d’un mot.",
+            "checklist": [
+                  "Identifier clairement décomposer le mot.",
+                  "Utiliser une démarche adaptée pour décomposer le mot.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Vérifier avec le contexte."
+            ],
+            "proofs": [
+                  "Analyse de mots nouveaux.",
+                  "Justification du sens."
+            ],
+            "lsu": "Comprendre la construction des mots."
+      },
+      {
+            "code": "VOC-P5-03",
+            "domain": "Vocabulaire",
+            "title": "Catégoriser des mots",
+            "jeSais": "Je sais organiser des mots selon plusieurs critères et expliquer mon classement.",
+            "checklist": [
+                  "Identifier clairement choisir un critère.",
+                  "Utiliser une démarche adaptée pour choisir un critère.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Modifier le classement si nécessaire."
+            ],
+            "proofs": [
+                  "Classement lexical.",
+                  "Carte conceptuelle."
+            ],
+            "lsu": "Structurer son vocabulaire."
+      },
+      {
+            "code": "GRA-P5-01",
+            "domain": "Grammaire",
+            "title": "Analyser une phrase simple",
+            "jeSais": "Je sais repérer le sujet, le verbe et les groupes qui complètent la phrase.",
+            "checklist": [
+                  "Identifier clairement effectuer des manipulations.",
+                  "Utiliser une démarche adaptée pour effectuer des manipulations.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Nommer les classes étudiées."
+            ],
+            "proofs": [
+                  "Analyse de phrases.",
+                  "Justification orale."
+            ],
+            "lsu": "Identifier les constituants de la phrase simple."
+      },
+      {
+            "code": "GRA-P5-02",
+            "domain": "Grammaire",
+            "title": "Reconnaître les classes de mots étudiées",
+            "jeSais": "Je sais distinguer nom, déterminant, adjectif, pronom, verbe et adverbe.",
+            "checklist": [
+                  "Identifier clairement observer le rôle et les propriétés.",
+                  "Utiliser une démarche adaptée pour observer le rôle et les propriétés.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Justifier le classement."
+            ],
+            "proofs": [
+                  "Tri de mots en contexte.",
+                  "Analyse d’une phrase."
+            ],
+            "lsu": "Reconnaître les principales classes de mots."
+      },
+      {
+            "code": "GRA-P5-03",
+            "domain": "Grammaire",
+            "title": "Enrichir ou réduire une phrase",
+            "jeSais": "Je sais ajouter ou supprimer des groupes pour modifier une phrase.",
+            "checklist": [
+                  "Identifier clairement manipuler sans rendre la phrase incorrecte.",
+                  "Utiliser une démarche adaptée pour manipuler sans rendre la phrase incorrecte.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Observer le changement de sens."
+            ],
+            "proofs": [
+                  "Atelier de réécriture.",
+                  "Transformations écrites."
+            ],
+            "lsu": "Comprendre le fonctionnement de la phrase."
+      },
+      {
+            "code": "CONJ-P5-01",
+            "domain": "Conjugaison",
+            "title": "Identifier le passé composé",
+            "jeSais": "Je sais reconnaître une forme verbale au passé composé.",
+            "checklist": [
+                  "Identifier clairement repérer auxiliaire et participe passé.",
+                  "Utiliser une démarche adaptée pour repérer auxiliaire et participe passé.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Comparer avec l’imparfait."
+            ],
+            "proofs": [
+                  "Classement de verbes.",
+                  "Repérage dans un récit."
+            ],
+            "lsu": "Se repérer dans le temps."
+      },
+      {
+            "code": "CONJ-P5-02",
+            "domain": "Conjugaison",
+            "title": "Conjuguer les verbes en -er au passé composé",
+            "jeSais": "Je sais conjuguer un verbe en -er au passé composé avec avoir.",
+            "checklist": [
+                  "Identifier clairement choisir l’auxiliaire.",
+                  "Utiliser une démarche adaptée pour choisir l’auxiliaire.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Former le participe passé en -é."
+            ],
+            "proofs": [
+                  "Tableau de conjugaison.",
+                  "Phrases à compléter."
+            ],
+            "lsu": "Conjuguer les verbes étudiés."
+      },
+      {
+            "code": "CONJ-P5-03",
+            "domain": "Conjugaison",
+            "title": "Choisir entre imparfait et passé composé",
+            "jeSais": "Je sais choisir un temps du passé selon ce que je veux raconter.",
+            "checklist": [
+                  "Identifier clairement distinguer action et description.",
+                  "Utiliser une démarche adaptée pour distinguer action et description.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Justifier le temps choisi."
+            ],
+            "proofs": [
+                  "Texte à compléter.",
+                  "Réécriture d’un récit."
+            ],
+            "lsu": "Utiliser les temps du passé."
+      },
+      {
+            "code": "ORT-P5-01",
+            "domain": "Orthographe",
+            "title": "Accorder le sujet et le verbe",
+            "jeSais": "Je sais accorder le verbe avec son sujet dans les phrases étudiées.",
+            "checklist": [
+                  "Identifier clairement identifier sujet et verbe.",
+                  "Utiliser une démarche adaptée pour identifier sujet et verbe.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Vérifier la personne et le nombre."
+            ],
+            "proofs": [
+                  "Dictée de phrases.",
+                  "Correction justifiée."
+            ],
+            "lsu": "Maîtriser l’accord sujet-verbe."
+      },
+      {
+            "code": "ORT-P5-02",
+            "domain": "Orthographe",
+            "title": "Réaliser les accords dans la phrase",
+            "jeSais": "Je sais contrôler les accords dans le groupe nominal et entre le sujet et le verbe.",
+            "checklist": [
+                  "Identifier clairement utiliser une chaîne d’accords.",
+                  "Utiliser une démarche adaptée pour utiliser une chaîne d’accords.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Justifier les marques."
+            ],
+            "proofs": [
+                  "Dictée bilan.",
+                  "Révision d’un texte."
+            ],
+            "lsu": "Maîtriser les accords étudiés."
+      },
+      {
+            "code": "ORT-P5-03",
+            "domain": "Orthographe",
+            "title": "Raisonner sur les homophones étudiés",
+            "jeSais": "Je sais choisir l’homophone correct grâce au sens et à une manipulation.",
+            "checklist": [
+                  "Identifier clairement identifier la nature du mot.",
+                  "Utiliser une démarche adaptée pour identifier la nature du mot.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Justifier le remplacement."
+            ],
+            "proofs": [
+                  "Dictée raisonnée.",
+                  "Phrases à compléter."
+            ],
+            "lsu": "Raisonner pour choisir une orthographe grammaticale."
+      },
+      {
+            "code": "ORT-P5-04",
+            "domain": "Orthographe",
+            "title": "Mémoriser les mots irréguliers fréquents",
+            "jeSais": "Je sais écrire les mots irréguliers travaillés et les réutiliser.",
+            "checklist": [
+                  "Identifier clairement observer les difficultés du mot.",
+                  "Utiliser une démarche adaptée pour observer les difficultés du mot.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Utiliser un outil de vérification."
+            ],
+            "proofs": [
+                  "Dictée de synthèse.",
+                  "Réemploi dans un écrit."
+            ],
+            "lsu": "Mémoriser l’orthographe des mots."
+      },
+      {
+            "code": "ORT-P5-05",
+            "domain": "Orthographe",
+            "title": "Relire une dictée de manière méthodique",
+            "jeSais": "Je sais relire une dictée en vérifiant successivement plusieurs points.",
+            "checklist": [
+                  "Identifier clairement contrôler ponctuation, mots et accords.",
+                  "Utiliser une démarche adaptée pour contrôler ponctuation, mots et accords.",
+                  "Verbaliser la stratégie utilisée.",
+                  "Vérifier le résultat obtenu.",
+                  "Réinvestir ce savoir-faire dans une nouvelle situation.",
+                  "Corriger proprement."
+            ],
+            "proofs": [
+                  "Dictée avec grille de relecture.",
+                  "Bilan orthographique."
+            ],
+            "lsu": "Réviser et corriger son écrit."
+      }
+],
+
     rows: [
       ["Lecture — fluence","Évaluation diagnostique. Lecture orale quotidienne. Respect de la ponctuation. Groupes de sens. Automatismes sur mots fréquents.","Gagner en exactitude et en vitesse. Lire des textes variés. Préparer puis relire à voix haute.","Fluidité, liaisons, intonation. Lecture dialoguée. Suivi régulier de la fluence.","Lecture expressive. Mise en voix de poèmes, dialogues et courts textes documentaires.","Consolider une lecture autonome, fluide et expressive. Bilan et objectifs individuels."],
       ["Lecture — compréhension","Repérer personnages, lieux, chronologie et informations explicites. Reformuler l’essentiel.","Comprendre un mot en contexte. Identifier les reprises nominales et pronominales.","Hiérarchiser les informations. Produire des inférences simples. Justifier avec le texte.","Comprendre l’implicite, les intentions et les relations de cause à conséquence.","Mobiliser les stratégies apprises sur récits, documents, poèmes et théâtre. Synthétiser."],

@@ -27,3 +27,8 @@ La rubrique visible « Sources » a été retirée du site afin de garder une in
 ## Données
 
 Le suivi est enregistré dans `localStorage` sur l’appareil utilisé. Il ne contient aucune donnée d’élève et n’est pas envoyé sur GitHub.
+
+
+## Français — suivi détaillé
+
+Les périodes 1 à 5 disposent de cartes par microcompétence : checklist pédagogique, une ou deux évaluations retenues, bilan de maîtrise et regroupement LSU.
