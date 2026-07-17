@@ -1,26 +1,26 @@
-# Progressions CE2 — Français & Mathématiques
+# Progressions CE2 — Référentiel & suivi interactif
 
 Mini-site statique prêt pour GitHub Pages.
 
-## Mise en ligne
+## Fonctions
 
-1. Créer un dépôt GitHub, par exemple `progressions-ce2`.
-2. Copier tous les fichiers de ce dossier à la racine du dépôt.
-3. Faire `Commit` puis `Push`.
-4. Dans **Settings → Pages**, choisir **Deploy from a branch**.
-5. Sélectionner la branche `main` et le dossier `/ (root)`.
+- référentiel annuel en français et mathématiques ;
+- vues par période ;
+- suivi interactif avec états : À faire, En cours, Travaillé, À reprendre, Stabilisé ;
+- checklist pédagogique par notion ;
+- zone éditable « Je sais / J’ai retenu » ;
+- notes personnelles ;
+- sauvegarde automatique dans le navigateur ;
+- export/import JSON ;
+- impression de la vue ;
+- PDF et Excel de référence conservés dans `assets/`.
 
-Le site proposera :
-- une vue annuelle ;
-- un filtre par matière ;
-- un filtre par période ;
-- une impression propre ;
-- le téléchargement du PDF et du fichier Excel.
+## Mise à jour sur GitHub
 
-## Fichiers
+1. Copier tous les fichiers à la racine du dépôt `progressions-ce2`.
+2. Dans GitHub Desktop : **Commit to main**, puis **Push origin**.
+3. GitHub Pages se met à jour automatiquement.
 
-- `index.html` : page principale
-- `styles.css` : mise en forme
-- `data.js` : contenu des progressions
-- `app.js` : navigation et filtres
-- `assets/` : PDF et Excel téléchargeables
+## Données
+
+Le suivi est enregistré dans `localStorage` sur l’appareil utilisé. Il ne contient aucune donnée d’élève et n’est pas envoyé sur GitHub.
