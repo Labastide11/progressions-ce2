@@ -6995,5 +6995,594 @@ window.PROGRESSIONS = {
         "lsu": "Décrire et expliquer l’organisation du territoire français."
       }
     ]
+  },
+  anglais: {
+    "title": "Anglais",
+    "icon": "🇬🇧",
+    "subtitle": "Comprendre, parler, interagir et découvrir le monde anglophone",
+    "routines": [
+      "Privilégier des séances courtes, fréquentes et essentiellement orales",
+      "Réactiver régulièrement les formulations déjà apprises",
+      "Installer les rituels de salutation, date et météo",
+      "Faire écouter plusieurs voix et supports authentiques adaptés",
+      "Favoriser les jeux, chants, répétitions et mini-dialogues",
+      "Limiter l’écrit à quelques traces très courtes servant d’appui"
+    ],
+    "rows": [
+      [
+        "Comprendre l’oral",
+        "Salutations, présentation, météo et consignes simples.",
+        "Date, jours, mois et demandes liées au petit-déjeuner.",
+        "Âge, émotions, corps et consignes.",
+        "Objets, nombres, quantités et localisation.",
+        "Goûts, animaux, description et compréhension d’une histoire."
+      ],
+      [
+        "Parler et interagir",
+        "Saluer, se présenter et répondre à une question familière.",
+        "Dire la date et participer à un échange simple.",
+        "Parler de soi et donner une consigne mémorisée.",
+        "Désigner, compter et situer un objet.",
+        "Exprimer ses goûts, décrire et raconter à partir d’un modèle."
+      ],
+      [
+        "Culture anglophone",
+        "Angleterre et Halloween.",
+        "Thanksgiving et Christmas.",
+        "Pancake Day et traditions du quotidien.",
+        "London et pays anglophones.",
+        "Sports, monarchie britannique et littérature enfantine."
+      ]
+    ],
+    "p1Competencies": [
+      {
+        "code": "ANG-P1-01",
+        "domain": "Comprendre l’oral",
+        "title": "Comprendre une salutation familière",
+        "jeSais": "Je sais reconnaître une salutation simple en anglais.",
+        "checklist": [
+          "Reconnaître hello, hi, good morning et goodbye.",
+          "Associer la formule au moment de la journée.",
+          "Réagir par un geste ou une réponse adaptée.",
+          "Comprendre une salutation prononcée par différentes voix.",
+          "Ne pas avoir besoin d’un support écrit."
+        ],
+        "proofs": [
+          "Rituel d’accueil.",
+          "Jeu d’écoute et de réaction."
+        ],
+        "lsu": "Comprendre des mots familiers et des expressions courantes."
+      },
+      {
+        "code": "ANG-P1-02",
+        "domain": "Interaction orale",
+        "title": "Saluer et prendre congé",
+        "jeSais": "Je sais saluer quelqu’un et lui dire au revoir.",
+        "checklist": [
+          "Choisir une formule adaptée.",
+          "Prononcer de façon intelligible.",
+          "Regarder son interlocuteur.",
+          "Répondre à une salutation.",
+          "Enchaîner salutation et prise de congé dans un mini-dialogue."
+        ],
+        "proofs": [
+          "Dialogue en binôme.",
+          "Rituel quotidien."
+        ],
+        "lsu": "Participer à un échange simple."
+      },
+      {
+        "code": "ANG-P1-03",
+        "domain": "Interaction orale",
+        "title": "Demander et dire son prénom",
+        "jeSais": "Je sais demander le prénom de quelqu’un et dire le mien.",
+        "checklist": [
+          "Comprendre What’s your name?",
+          "Poser la question avec un modèle mémorisé.",
+          "Répondre My name is… ou I’m…",
+          "Prononcer distinctement.",
+          "Écouter et comprendre la réponse d’un camarade."
+        ],
+        "proofs": [
+          "Mini-dialogue en binôme.",
+          "Échange individuel avec le professeur."
+        ],
+        "lsu": "Poser et répondre à une question simple."
+      },
+      {
+        "code": "ANG-P1-04",
+        "domain": "Comprendre l’oral",
+        "title": "Comprendre une météo simple",
+        "jeSais": "Je sais comprendre une phrase simple sur le temps qu’il fait.",
+        "checklist": [
+          "Reconnaître sunny, rainy, cloudy, windy et cold.",
+          "Associer l’expression à une image.",
+          "Comprendre What’s the weather like?",
+          "Réagir sans traduction systématique.",
+          "Identifier l’information essentielle dans une phrase courte."
+        ],
+        "proofs": [
+          "Rituel météo.",
+          "Jeu d’association oral-image."
+        ],
+        "lsu": "Comprendre des expressions liées à l’environnement proche."
+      },
+      {
+        "code": "ANG-P1-05",
+        "domain": "Parler en continu",
+        "title": "Dire le temps qu’il fait",
+        "jeSais": "Je sais dire simplement le temps qu’il fait.",
+        "checklist": [
+          "Utiliser It’s… avec un mot connu.",
+          "Choisir le vocabulaire adapté.",
+          "Prononcer de façon compréhensible.",
+          "S’appuyer sur l’observation réelle.",
+          "Réutiliser la formule dans le rituel."
+        ],
+        "proofs": [
+          "Responsabilité météo.",
+          "Présentation orale très courte."
+        ],
+        "lsu": "Utiliser une phrase simple pour décrire l’environnement."
+      },
+      {
+        "code": "ANG-P1-06",
+        "domain": "Culture",
+        "title": "Identifier quelques repères sur l’Angleterre et Halloween",
+        "jeSais": "Je sais reconnaître quelques éléments culturels liés à l’Angleterre et à Halloween.",
+        "checklist": [
+          "Localiser approximativement l’Angleterre.",
+          "Reconnaître le drapeau anglais ou britannique.",
+          "Identifier quelques éléments d’Halloween.",
+          "Éviter de réduire toute la culture anglophone à une fête.",
+          "Réutiliser quelques mots culturels à l’oral."
+        ],
+        "proofs": [
+          "Classement d’images.",
+          "Présentation orale guidée."
+        ],
+        "lsu": "Découvrir quelques repères culturels du monde anglophone."
+      }
+    ],
+    "p2Competencies": [
+      {
+        "code": "ANG-P2-01",
+        "domain": "Comprendre l’oral",
+        "title": "Comprendre les jours de la semaine",
+        "jeSais": "Je sais reconnaître les jours de la semaine quand je les entends.",
+        "checklist": [
+          "Reconnaître les sept jours.",
+          "Repérer le jour annoncé dans une comptine.",
+          "Distinguer des mots proches.",
+          "Suivre l’ordre de la semaine.",
+          "Réagir au bon jour dans un jeu d’écoute."
+        ],
+        "proofs": [
+          "Rituel de la date.",
+          "Jeu d’écoute."
+        ],
+        "lsu": "Comprendre des mots familiers."
+      },
+      {
+        "code": "ANG-P2-02",
+        "domain": "Interaction orale",
+        "title": "Demander et dire le jour",
+        "jeSais": "Je sais demander et dire quel jour nous sommes.",
+        "checklist": [
+          "Comprendre What day is it today?",
+          "Poser la question à partir d’un modèle mémorisé.",
+          "Répondre Today is…",
+          "Choisir le bon jour.",
+          "Participer au rituel sans support écrit constant."
+        ],
+        "proofs": [
+          "Rituel de la date.",
+          "Dialogue en binôme."
+        ],
+        "lsu": "Participer à un échange simple."
+      },
+      {
+        "code": "ANG-P2-03",
+        "domain": "Comprendre l’oral",
+        "title": "Comprendre les mois de l’année",
+        "jeSais": "Je sais reconnaître les mois de l’année quand je les entends.",
+        "checklist": [
+          "Reconnaître plusieurs mois fréquents.",
+          "Repérer le mois annoncé.",
+          "Suivre une comptine des mois.",
+          "Associer mois et saison.",
+          "Distinguer la prononciation anglaise de la forme française."
+        ],
+        "proofs": [
+          "Comptine et jeu de réaction.",
+          "Rituel mensuel."
+        ],
+        "lsu": "Comprendre des mots familiers."
+      },
+      {
+        "code": "ANG-P2-04",
+        "domain": "Interaction orale",
+        "title": "Demander et dire la date avec un modèle",
+        "jeSais": "Je sais participer à un court échange pour donner la date.",
+        "checklist": [
+          "Comprendre la question sur la date.",
+          "Dire le jour et le mois avec aide.",
+          "Utiliser une formule mémorisée.",
+          "Prononcer de façon intelligible.",
+          "Écouter et corriger avec bienveillance."
+        ],
+        "proofs": [
+          "Rituel de la date.",
+          "Dialogue guidé."
+        ],
+        "lsu": "Répondre à une question simple sur une situation familière."
+      },
+      {
+        "code": "ANG-P2-05",
+        "domain": "Interaction orale",
+        "title": "Dire ce que l’on souhaite manger au petit-déjeuner",
+        "jeSais": "Je sais demander ou dire ce que je veux pour le petit-déjeuner.",
+        "checklist": [
+          "Comprendre What do you want for breakfast?",
+          "Reconnaître quelques aliments.",
+          "Répondre I want… ou I’d like… avec un modèle.",
+          "Poser la question à un camarade.",
+          "Respecter le tour de parole."
+        ],
+        "proofs": [
+          "Jeu de rôle du petit-déjeuner.",
+          "Dialogue en binôme."
+        ],
+        "lsu": "Participer à une conversation sur un besoin immédiat."
+      },
+      {
+        "code": "ANG-P2-06",
+        "domain": "Culture",
+        "title": "Reconnaître quelques traditions de Thanksgiving et Christmas",
+        "jeSais": "Je sais reconnaître quelques traditions de fin d’année dans des pays anglophones.",
+        "checklist": [
+          "Identifier quelques images culturelles.",
+          "Comprendre que les pratiques varient selon les pays et les familles.",
+          "Associer quelques mots à une fête.",
+          "Comparer avec une tradition connue.",
+          "Présenter oralement un élément simple."
+        ],
+        "proofs": [
+          "Classement d’images.",
+          "Présentation culturelle guidée."
+        ],
+        "lsu": "Découvrir quelques aspects culturels du monde anglophone."
+      }
+    ],
+    "p3Competencies": [
+      {
+        "code": "ANG-P3-01",
+        "domain": "Interaction orale",
+        "title": "Demander et dire son âge",
+        "jeSais": "Je sais demander l’âge de quelqu’un et dire le mien.",
+        "checklist": [
+          "Comprendre How old are you?",
+          "Poser la question correctement.",
+          "Répondre I’m … years old.",
+          "Mobiliser les nombres nécessaires.",
+          "Enchaîner question et réponse sans lecture."
+        ],
+        "proofs": [
+          "Dialogue en binôme.",
+          "Jeu de rencontres."
+        ],
+        "lsu": "Poser et répondre à une question simple."
+      },
+      {
+        "code": "ANG-P3-02",
+        "domain": "Comprendre l’oral",
+        "title": "Comprendre une question sur l’état ou l’émotion",
+        "jeSais": "Je sais comprendre quand quelqu’un me demande comment je vais.",
+        "checklist": [
+          "Reconnaître How are you?",
+          "Identifier quelques réponses possibles.",
+          "Associer une émotion à une intonation ou une image.",
+          "Comprendre fine, happy, sad, tired ou angry.",
+          "Réagir de façon adaptée."
+        ],
+        "proofs": [
+          "Rituel oral.",
+          "Jeu d’écoute avec émotions."
+        ],
+        "lsu": "Comprendre des expressions familières sur soi."
+      },
+      {
+        "code": "ANG-P3-03",
+        "domain": "Interaction orale",
+        "title": "Dire comment on se sent",
+        "jeSais": "Je sais dire simplement comment je me sens.",
+        "checklist": [
+          "Répondre I’m fine/happy/sad/tired…",
+          "Choisir un mot adapté.",
+          "Prononcer de façon intelligible.",
+          "Poser How are you? à un camarade.",
+          "Respecter la réponse de l’autre."
+        ],
+        "proofs": [
+          "Rituel des émotions.",
+          "Dialogue en binôme."
+        ],
+        "lsu": "Participer à un échange simple sur soi."
+      },
+      {
+        "code": "ANG-P3-04",
+        "domain": "Comprendre l’oral",
+        "title": "Exécuter une consigne liée au corps",
+        "jeSais": "Je sais exécuter une consigne simple concernant les parties du corps.",
+        "checklist": [
+          "Reconnaître touch, show, point to et raise.",
+          "Identifier plusieurs parties du corps.",
+          "Réagir rapidement à une consigne.",
+          "Comprendre une consigne sans traduction.",
+          "Suivre deux consignes simples enchaînées."
+        ],
+        "proofs": [
+          "Simon says.",
+          "Jeu d’écoute et d’action."
+        ],
+        "lsu": "Comprendre et exécuter une consigne simple."
+      },
+      {
+        "code": "ANG-P3-05",
+        "domain": "Parler en continu",
+        "title": "Donner une consigne simple",
+        "jeSais": "Je sais donner une consigne courte apprise en classe.",
+        "checklist": [
+          "Choisir un verbe d’action connu.",
+          "Nommer une partie du corps.",
+          "Prononcer assez clairement pour être compris.",
+          "Donner une seule consigne à la fois.",
+          "Observer si le groupe comprend."
+        ],
+        "proofs": [
+          "Élève meneur dans Simon says.",
+          "Consigne donnée à un pair."
+        ],
+        "lsu": "Utiliser une expression mémorisée pour agir sur autrui."
+      },
+      {
+        "code": "ANG-P3-06",
+        "domain": "Culture",
+        "title": "Identifier quelques repères de Pancake Day",
+        "jeSais": "Je sais reconnaître quelques éléments liés à Pancake Day.",
+        "checklist": [
+          "Comprendre le lien avec une tradition britannique.",
+          "Reconnaître pancake et quelques ingrédients.",
+          "Suivre une courte vidéo ou chanson adaptée.",
+          "Comparer avec une tradition alimentaire connue.",
+          "Dire un mot ou une phrase simple sur cette fête."
+        ],
+        "proofs": [
+          "Écoute culturelle.",
+          "Présentation guidée."
+        ],
+        "lsu": "Découvrir quelques traditions du monde anglophone."
+      }
+    ],
+    "p4Competencies": [
+      {
+        "code": "ANG-P4-01",
+        "domain": "Comprendre l’oral",
+        "title": "Comprendre le nom d’objets familiers",
+        "jeSais": "Je sais reconnaître à l’oral plusieurs objets de la classe.",
+        "checklist": [
+          "Reconnaître pencil, pen, book, ruler, bag et chair.",
+          "Associer le mot entendu à l’objet.",
+          "Comprendre What is it?",
+          "Distinguer plusieurs mots proches.",
+          "Réagir sans passer par l’écrit."
+        ],
+        "proofs": [
+          "Jeu de désignation.",
+          "Sac mystère."
+        ],
+        "lsu": "Comprendre des mots familiers liés à l’environnement proche."
+      },
+      {
+        "code": "ANG-P4-02",
+        "domain": "Interaction orale",
+        "title": "Demander et nommer un objet",
+        "jeSais": "Je sais demander ce qu’est un objet et le nommer.",
+        "checklist": [
+          "Poser What is it?",
+          "Répondre It’s a…",
+          "Choisir le nom correct.",
+          "Utiliser l’article dans une formule mémorisée.",
+          "Enchaîner deux échanges."
+        ],
+        "proofs": [
+          "Sac mystère.",
+          "Dialogue en binôme."
+        ],
+        "lsu": "Poser et répondre à une question simple."
+      },
+      {
+        "code": "ANG-P4-03",
+        "domain": "Comprendre l’oral",
+        "title": "Comprendre une quantité simple",
+        "jeSais": "Je sais comprendre combien il y a d’objets ou de personnes.",
+        "checklist": [
+          "Reconnaître les nombres étudiés.",
+          "Comprendre How many…?",
+          "Associer nombre entendu et quantité.",
+          "Compter des éléments visibles.",
+          "Repérer la réponse dans une phrase courte."
+        ],
+        "proofs": [
+          "Jeu de comptage.",
+          "Écoute avec images."
+        ],
+        "lsu": "Comprendre des informations chiffrées simples."
+      },
+      {
+        "code": "ANG-P4-04",
+        "domain": "Interaction orale",
+        "title": "Demander et dire une quantité",
+        "jeSais": "Je sais demander et dire combien il y a d’objets ou de personnes.",
+        "checklist": [
+          "Poser How many… are there?",
+          "Répondre There are…",
+          "Mobiliser le nombre correct.",
+          "Choisir le nom adapté.",
+          "Participer à un échange court."
+        ],
+        "proofs": [
+          "Jeu d’observation.",
+          "Dialogue en binôme."
+        ],
+        "lsu": "Participer à un échange simple."
+      },
+      {
+        "code": "ANG-P4-05",
+        "domain": "Comprendre et parler",
+        "title": "Localiser un objet",
+        "jeSais": "Je sais comprendre et dire où se trouve un objet.",
+        "checklist": [
+          "Reconnaître in, on, under et next to.",
+          "Comprendre Where is…?",
+          "Répondre It’s… avec une préposition.",
+          "Observer précisément la position.",
+          "Faire comprendre la localisation à un camarade."
+        ],
+        "proofs": [
+          "Jeu de cache-cache avec objets.",
+          "Dialogue oral."
+        ],
+        "lsu": "Comprendre et produire une phrase simple de localisation."
+      },
+      {
+        "code": "ANG-P4-06",
+        "domain": "Écrit d’appui",
+        "title": "Associer une expression écrite connue à une image",
+        "jeSais": "Je sais reconnaître quelques mots ou expressions déjà appris à l’oral.",
+        "checklist": [
+          "Retrouver une formule familière.",
+          "Associer mot et image.",
+          "S’appuyer sur la mémoire orale.",
+          "Ne pas exiger une lecture autonome de mots inconnus.",
+          "Vérifier avec l’écoute."
+        ],
+        "proofs": [
+          "Étiquettes à associer.",
+          "Mini-loto mot-image."
+        ],
+        "lsu": "Reconnaître à l’écrit quelques éléments mémorisés à l’oral."
+      }
+    ],
+    "p5Competencies": [
+      {
+        "code": "ANG-P5-01",
+        "domain": "Interaction orale",
+        "title": "Demander et dire ce que l’on aime",
+        "jeSais": "Je sais demander à quelqu’un ce qu’il aime et dire mes goûts.",
+        "checklist": [
+          "Comprendre Do you like…?",
+          "Poser la question.",
+          "Répondre Yes, I do / No, I don’t.",
+          "Dire I like… ou I don’t like…",
+          "Écouter une réponse différente de la sienne."
+        ],
+        "proofs": [
+          "Sondage oral.",
+          "Dialogue en binôme."
+        ],
+        "lsu": "Exprimer ses goûts et répondre à une question familière."
+      },
+      {
+        "code": "ANG-P5-02",
+        "domain": "Comprendre l’oral",
+        "title": "Comprendre une description très simple d’animal",
+        "jeSais": "Je sais reconnaître un animal grâce à quelques indices entendus.",
+        "checklist": [
+          "Reconnaître quelques noms d’animaux.",
+          "Comprendre small, big, fast, slow et couleurs connues.",
+          "Repérer deux informations essentielles.",
+          "Associer description et image.",
+          "Écouter jusqu’au bout avant de répondre."
+        ],
+        "proofs": [
+          "Jeu de devinettes.",
+          "Écoute et choix d’image."
+        ],
+        "lsu": "Comprendre une description simple."
+      },
+      {
+        "code": "ANG-P5-03",
+        "domain": "Parler en continu",
+        "title": "Décrire brièvement un animal",
+        "jeSais": "Je sais décrire un animal avec deux ou trois phrases simples.",
+        "checklist": [
+          "Nommer l’animal.",
+          "Dire sa taille ou sa couleur.",
+          "Ajouter une capacité ou une caractéristique connue.",
+          "S’appuyer sur un modèle mémorisé.",
+          "Parler sans lire un texte complet."
+        ],
+        "proofs": [
+          "Devinette orale.",
+          "Présentation d’une image."
+        ],
+        "lsu": "S’exprimer oralement en continu à partir d’un modèle."
+      },
+      {
+        "code": "ANG-P5-04",
+        "domain": "Comprendre l’oral",
+        "title": "Suivre le fil d’une histoire courte",
+        "jeSais": "Je sais comprendre l’essentiel d’une histoire courte en anglais.",
+        "checklist": [
+          "Identifier les personnages.",
+          "Repérer quelques mots répétés.",
+          "Comprendre l’ordre général des actions.",
+          "S’appuyer sur les images et l’intonation.",
+          "Choisir un résumé ou remettre des images en ordre."
+        ],
+        "proofs": [
+          "Écoute d’un album.",
+          "Images séquentielles à ordonner."
+        ],
+        "lsu": "Comprendre un texte oral simple lu par le professeur."
+      },
+      {
+        "code": "ANG-P5-05",
+        "domain": "Parler en continu",
+        "title": "Raconter un passage avec un modèle",
+        "jeSais": "Je sais restituer une courte partie d’une histoire avec des expressions mémorisées.",
+        "checklist": [
+          "Mémoriser une ou deux phrases.",
+          "Respecter l’ordre.",
+          "Utiliser l’intonation.",
+          "S’appuyer sur une image.",
+          "Participer à une restitution collective."
+        ],
+        "proofs": [
+          "Mise en voix d’un album.",
+          "Récit collectif avec images."
+        ],
+        "lsu": "Raconter ou réciter en s’appuyant sur un modèle."
+      },
+      {
+        "code": "ANG-P5-06",
+        "domain": "Écrit d’appui et culture",
+        "title": "Copier une très courte formule et reconnaître quelques repères culturels",
+        "jeSais": "Je sais copier une courte formule connue et présenter un repère culturel anglophone.",
+        "checklist": [
+          "Copier une formule déjà mémorisée à l’oral.",
+          "Respecter le modèle.",
+          "Associer formule et situation.",
+          "Reconnaître quelques sports ou symboles britanniques.",
+          "Dire une phrase simple sur un repère culturel."
+        ],
+        "proofs": [
+          "Carte ou légende très courte.",
+          "Présentation culturelle guidée."
+        ],
+        "lsu": "Mobiliser quelques repères culturels et utiliser l’écrit comme appui."
+      }
+    ]
   }
 };

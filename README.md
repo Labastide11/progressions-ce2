@@ -4,7 +4,7 @@ Mini-site statique prêt pour GitHub Pages.
 
 ## Fonctions
 
-- référentiel annuel en français, mathématiques, EMC, histoire et géographie ;
+- référentiel annuel en français, mathématiques, EMC, histoire, géographie et anglais ;
 - vues par période ;
 - suivi interactif avec états : À faire, En cours, Travaillé, À reprendre, Stabilisé ;
 - checklist pédagogique par notion ;
@@ -57,3 +57,10 @@ Le site intègre désormais les cinq périodes d’histoire et de géographie du
 
 Chaque période propose des compétences précises, une checklist, des preuves possibles,
 une ou deux observations retenues et un regroupement compatible LSU.
+
+
+## Anglais — priorité à l’oral
+
+Les cinq périodes d’anglais comportent 30 compétences, essentiellement orales :
+compréhension, interaction, parole en continu et culture anglophone.
+L’écrit est volontairement limité à deux cartes d’appui sur l’ensemble de l’année.
