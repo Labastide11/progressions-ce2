@@ -32,3 +32,8 @@ Le suivi est enregistré dans `localStorage` sur l’appareil utilisé. Il ne co
 ## Français — suivi détaillé
 
 Les périodes 1 à 5 disposent de cartes par microcompétence : checklist pédagogique, une ou deux évaluations retenues, bilan de maîtrise et regroupement LSU.
+
+
+## Suivi détaillé compatible LSU
+
+Les cinq périodes de français et de mathématiques comportent des compétences précises, une checklist pédagogique, une ou deux évaluations retenues, un bilan de maîtrise et un regroupement LSU.

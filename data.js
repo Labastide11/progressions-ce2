@@ -3139,6 +3139,1978 @@ window.PROGRESSIONS = {
   maths: {
     title: "Mathématiques", icon: "📐", subtitle: "Nombres, calcul, problèmes, grandeurs, mesures, géométrie et données",
     routines: ["Calcul mental quotidien","Résolution de problèmes fréquente et explicite","Manipulation, verbalisation et représentations","Réactivation des acquis à chaque période","Données et grandeurs intégrées aux problèmes","Évaluation courte et régulation en fin de période"],
+    p1Competencies: [
+          {
+                "code": "NUM-P1-01",
+                "domain": "Nombres entiers",
+                "title": "Lire des nombres jusqu’à 10 000",
+                "jeSais": "Je sais lire correctement un nombre écrit en chiffres jusqu’à 10 000.",
+                "checklist": [
+                      "Repérer les classes et positions",
+                      "Lire les milliers, centaines, dizaines et unités",
+                      "Traiter les zéros intercalés",
+                      "Associer écriture chiffrée et nom du nombre",
+                      "Relire pour vérifier"
+                ],
+                "proofs": [
+                      "Lecture de dix nombres",
+                      "Lecture orale dans une activité de numération"
+                ],
+                "lsu": "Utiliser et représenter les nombres entiers"
+          },
+          {
+                "code": "NUM-P1-02",
+                "domain": "Nombres entiers",
+                "title": "Écrire des nombres jusqu’à 10 000",
+                "jeSais": "Je sais écrire en chiffres un nombre dicté jusqu’à 10 000.",
+                "checklist": [
+                      "Écouter le nombre en entier",
+                      "Repérer milliers, centaines, dizaines et unités",
+                      "Placer les zéros nécessaires",
+                      "Vérifier la valeur de chaque chiffre",
+                      "Comparer avec une autre représentation"
+                ],
+                "proofs": [
+                      "Dictée de nombres",
+                      "Écriture à partir de matériel multibase"
+                ],
+                "lsu": "Utiliser et représenter les nombres entiers"
+          },
+          {
+                "code": "NUM-P1-03",
+                "domain": "Nombres entiers",
+                "title": "Décomposer un nombre",
+                "jeSais": "Je sais décomposer un nombre selon la valeur de ses chiffres.",
+                "checklist": [
+                      "Identifier chaque position",
+                      "Écrire une décomposition additive",
+                      "Utiliser les unités de numération",
+                      "Passer de la décomposition au nombre",
+                      "Proposer plusieurs décompositions"
+                ],
+                "proofs": [
+                      "Décomposer cinq nombres",
+                      "Recomposer des nombres donnés"
+                ],
+                "lsu": "Utiliser et représenter les nombres entiers"
+          },
+          {
+                "code": "NUM-P1-04",
+                "domain": "Nombres entiers",
+                "title": "Comparer deux nombres",
+                "jeSais": "Je sais comparer deux nombres et utiliser <, > ou =.",
+                "checklist": [
+                      "Comparer d’abord le nombre de chiffres",
+                      "Comparer les milliers puis les autres positions",
+                      "Employer le vocabulaire plus grand/plus petit",
+                      "Choisir le symbole correct",
+                      "Justifier la comparaison"
+                ],
+                "proofs": [
+                      "Comparer dix paires",
+                      "Justification orale de trois comparaisons"
+                ],
+                "lsu": "Comparer, ranger et encadrer des nombres entiers"
+          },
+          {
+                "code": "NUM-P1-05",
+                "domain": "Nombres entiers",
+                "title": "Encadrer un nombre",
+                "jeSais": "Je sais encadrer un nombre entre deux dizaines, centaines ou milliers.",
+                "checklist": [
+                      "Identifier les bornes demandées",
+                      "Trouver la borne inférieure",
+                      "Trouver la borne supérieure",
+                      "Utiliser les signes <",
+                      "Vérifier sur une droite graduée"
+                ],
+                "proofs": [
+                      "Encadrer cinq nombres",
+                      "Placement puis encadrement sur droite graduée"
+                ],
+                "lsu": "Comparer, ranger et encadrer des nombres entiers"
+          },
+          {
+                "code": "FRA-P1-01",
+                "domain": "Fractions",
+                "title": "Représenter une fraction simple",
+                "jeSais": "Je sais colorier ou construire une fraction d’un tout partagé en parts égales.",
+                "checklist": [
+                      "Vérifier que les parts sont égales",
+                      "Identifier le nombre total de parts",
+                      "Identifier le nombre de parts prises",
+                      "Colorier sans modifier le partage",
+                      "Associer dessin et écriture fractionnaire"
+                ],
+                "proofs": [
+                      "Représenter demi, tiers et quart",
+                      "Associer fractions et figures"
+                ],
+                "lsu": "Utiliser les fractions simples"
+          },
+          {
+                "code": "FRA-P1-02",
+                "domain": "Fractions",
+                "title": "Nommer une fraction simple",
+                "jeSais": "Je sais lire et écrire une fraction simple comme un demi, un tiers, un quart ou un dixième.",
+                "checklist": [
+                      "Identifier le numérateur",
+                      "Identifier le dénominateur",
+                      "Lire la fraction",
+                      "Écrire la fraction dictée",
+                      "Relier le nom à une représentation"
+                ],
+                "proofs": [
+                      "Lecture et écriture de fractions",
+                      "Dictée de fractions avec figures"
+                ],
+                "lsu": "Utiliser les fractions simples"
+          },
+          {
+                "code": "CAL-P1-01",
+                "domain": "Calcul mental",
+                "title": "Restituer les tables d’addition",
+                "jeSais": "Je sais donner rapidement les résultats des tables d’addition dans les deux sens.",
+                "checklist": [
+                      "Mémoriser les sommes usuelles",
+                      "Trouver un terme manquant",
+                      "Utiliser la commutativité",
+                      "Répondre avec exactitude",
+                      "Améliorer sa fluence"
+                ],
+                "proofs": [
+                      "Test court de faits numériques",
+                      "Égalités à trou en une minute"
+                ],
+                "lsu": "Calculer mentalement"
+          },
+          {
+                "code": "CAL-P1-02",
+                "domain": "Calcul mental",
+                "title": "Trouver un complément à 10 ou 100",
+                "jeSais": "Je sais trouver rapidement ce qu’il faut ajouter pour atteindre 10 ou 100.",
+                "checklist": [
+                      "Mobiliser les compléments à 10",
+                      "Relier unités et dizaines",
+                      "Décomposer le nombre",
+                      "Utiliser une droite numérique si besoin",
+                      "Vérifier par addition"
+                ],
+                "proofs": [
+                      "Compléments à 10 et à 100",
+                      "Problèmes courts de complément"
+                ],
+                "lsu": "Calculer mentalement"
+          },
+          {
+                "code": "CAL-P1-03",
+                "domain": "Calcul mental",
+                "title": "Ajouter ou retrancher 9, 19 ou 29",
+                "jeSais": "Je sais ajouter ou retrancher 9, 19 ou 29 en utilisant un nombre rond.",
+                "checklist": [
+                      "Ajouter ou retirer la dizaine proche",
+                      "Corriger de 1",
+                      "Choisir la procédure adaptée",
+                      "Garder une trace intermédiaire si besoin",
+                      "Expliquer la stratégie"
+                ],
+                "proofs": [
+                      "Série de dix calculs",
+                      "Explication orale de deux procédures"
+                ],
+                "lsu": "Calculer mentalement"
+          },
+          {
+                "code": "OPE-P1-01",
+                "domain": "Calcul posé",
+                "title": "Poser une addition",
+                "jeSais": "Je sais poser une addition en alignant les chiffres de même valeur.",
+                "checklist": [
+                      "Aligner unités sous unités",
+                      "Aligner dizaines, centaines et milliers",
+                      "Écrire le signe et le trait",
+                      "Gérer les retenues",
+                      "Vérifier par estimation"
+                ],
+                "proofs": [
+                      "Deux additions posées",
+                      "Correction d’une addition mal posée"
+                ],
+                "lsu": "Calculer avec des nombres entiers"
+          },
+          {
+                "code": "OPE-P1-02",
+                "domain": "Calcul posé",
+                "title": "Poser une soustraction",
+                "jeSais": "Je sais poser une soustraction en alignant les chiffres de même valeur.",
+                "checklist": [
+                      "Identifier le nombre de départ",
+                      "Aligner les positions",
+                      "Effectuer les échanges nécessaires",
+                      "Calculer de droite à gauche",
+                      "Contrôler par addition ou estimation"
+                ],
+                "proofs": [
+                      "Deux soustractions posées",
+                      "Recherche d’erreur dans un calcul"
+                ],
+                "lsu": "Calculer avec des nombres entiers"
+          },
+          {
+                "code": "PRO-P1-01",
+                "domain": "Résolution de problèmes",
+                "title": "Comprendre la question d’un problème",
+                "jeSais": "Je sais expliquer ce que je cherche dans un problème.",
+                "checklist": [
+                      "Lire ou écouter l’énoncé entier",
+                      "Reformuler la situation",
+                      "Identifier la question",
+                      "Repérer les données utiles",
+                      "Distinguer données et réponse cherchée"
+                ],
+                "proofs": [
+                      "Reformulation de deux problèmes",
+                      "Choix de la question correspondant à un énoncé"
+                ],
+                "lsu": "Résoudre des problèmes arithmétiques"
+          },
+          {
+                "code": "PRO-P1-02",
+                "domain": "Résolution de problèmes",
+                "title": "Résoudre un problème additif en une étape",
+                "jeSais": "Je sais choisir une addition ou une soustraction pour résoudre un problème simple.",
+                "checklist": [
+                      "Identifier la structure parties-tout ou transformation",
+                      "Faire un schéma",
+                      "Choisir l’opération",
+                      "Effectuer le calcul",
+                      "Rédiger une réponse"
+                ],
+                "proofs": [
+                      "Deux problèmes de structures différentes",
+                      "Explication du choix de l’opération"
+                ],
+                "lsu": "Résoudre des problèmes arithmétiques"
+          },
+          {
+                "code": "PRO-P1-03",
+                "domain": "Résolution de problèmes",
+                "title": "Résoudre un problème additif en deux étapes",
+                "jeSais": "Je sais organiser deux calculs pour résoudre un problème.",
+                "checklist": [
+                      "Repérer la première information à chercher",
+                      "Choisir le premier calcul",
+                      "Utiliser le résultat intermédiaire",
+                      "Choisir le second calcul",
+                      "Contrôler et répondre"
+                ],
+                "proofs": [
+                      "Problème à deux étapes",
+                      "Remise en ordre des étapes d’une solution"
+                ],
+                "lsu": "Résoudre des problèmes arithmétiques"
+          },
+          {
+                "code": "MES-P1-01",
+                "domain": "Longueurs",
+                "title": "Mesurer une longueur en cm et mm",
+                "jeSais": "Je sais mesurer précisément une longueur avec une règle graduée.",
+                "checklist": [
+                      "Placer le zéro au début",
+                      "Maintenir la règle alignée",
+                      "Lire la graduation finale",
+                      "Exprimer la mesure avec l’unité",
+                      "Vérifier la cohérence"
+                ],
+                "proofs": [
+                      "Mesure de cinq segments",
+                      "Détection d’erreurs de mesurage"
+                ],
+                "lsu": "Comparer, estimer et mesurer des longueurs"
+          },
+          {
+                "code": "MES-P1-02",
+                "domain": "Longueurs",
+                "title": "Tracer un segment de longueur donnée",
+                "jeSais": "Je sais tracer un segment précis en cm ou en mm.",
+                "checklist": [
+                      "Placer un premier point",
+                      "Aligner la règle",
+                      "Repérer la graduation demandée",
+                      "Tracer proprement",
+                      "Nommer et contrôler le segment"
+                ],
+                "proofs": [
+                      "Tracer trois segments",
+                      "Contrôle croisé par mesurage"
+                ],
+                "lsu": "Comparer, estimer et mesurer des longueurs"
+          },
+          {
+                "code": "MON-P1-01",
+                "domain": "Monnaie",
+                "title": "Composer une somme en euros",
+                "jeSais": "Je sais utiliser pièces et billets pour composer une somme entière.",
+                "checklist": [
+                      "Reconnaître pièces et billets",
+                      "Additionner les valeurs",
+                      "Choisir plusieurs compositions",
+                      "Limiter le nombre de pièces si demandé",
+                      "Vérifier la somme"
+                ],
+                "proofs": [
+                      "Composer trois sommes",
+                      "Trouver deux compositions d’une même somme"
+                ],
+                "lsu": "Utiliser la monnaie"
+          },
+          {
+                "code": "GEO-P1-01",
+                "domain": "Géométrie plane",
+                "title": "Reconnaître un point, une droite et un segment",
+                "jeSais": "Je sais reconnaître et nommer un point, une droite et un segment.",
+                "checklist": [
+                      "Observer les extrémités",
+                      "Distinguer droite et segment",
+                      "Nommer avec les conventions",
+                      "Tracer à la règle",
+                      "Employer le vocabulaire exact"
+                ],
+                "proofs": [
+                      "Identification sur une figure",
+                      "Tracé demandé avec codage"
+                ],
+                "lsu": "Reconnaître, nommer et construire des figures"
+          },
+          {
+                "code": "GEO-P1-02",
+                "domain": "Géométrie plane",
+                "title": "Vérifier un alignement",
+                "jeSais": "Je sais vérifier si des points sont alignés avec une règle.",
+                "checklist": [
+                      "Placer la règle sur deux points",
+                      "Observer le troisième point",
+                      "Tracer la droite support",
+                      "Conclure avec le vocabulaire adapté",
+                      "Justifier par l’instrument"
+                ],
+                "proofs": [
+                      "Vérifier quatre alignements",
+                      "Construire un point aligné"
+                ],
+                "lsu": "Reconnaître, nommer et construire des figures"
+          },
+          {
+                "code": "GEO-P1-03",
+                "domain": "Géométrie plane",
+                "title": "Reconnaître un angle droit",
+                "jeSais": "Je sais reconnaître et vérifier un angle droit avec une équerre.",
+                "checklist": [
+                      "Identifier le sommet",
+                      "Placer correctement l’équerre",
+                      "Comparer les côtés de l’angle",
+                      "Coder l’angle droit",
+                      "Distinguer angle droit et angle presque droit"
+                ],
+                "proofs": [
+                      "Repérage d’angles droits",
+                      "Vérification instrumentée"
+                ],
+                "lsu": "Reconnaître, nommer et construire des figures"
+          },
+          {
+                "code": "SOL-P1-01",
+                "domain": "Solides",
+                "title": "Décrire un solide usuel",
+                "jeSais": "Je sais décrire un solide avec un vocabulaire précis.",
+                "checklist": [
+                      "Reconnaître cube et pavé",
+                      "Observer faces, arêtes et sommets",
+                      "Distinguer surfaces planes et courbes",
+                      "Comparer deux solides",
+                      "Nommer le solide"
+                ],
+                "proofs": [
+                      "Description d’un solide manipulé",
+                      "Jeu de portrait de solides"
+                ],
+                "lsu": "Reconnaître et décrire des solides"
+          },
+          {
+                "code": "DON-P1-01",
+                "domain": "Données",
+                "title": "Lire un tableau simple",
+                "jeSais": "Je sais retrouver une information dans un tableau.",
+                "checklist": [
+                      "Lire le titre",
+                      "Identifier lignes et colonnes",
+                      "Repérer la bonne case",
+                      "Comparer des valeurs",
+                      "Formuler une réponse avec l’unité"
+                ],
+                "proofs": [
+                      "Questions sur un tableau",
+                      "Explication du chemin de lecture"
+                ],
+                "lsu": "Lire et interpréter des données"
+          }
+    ],
+    p2Competencies: [
+          {
+                "code": "NUM-P2-01",
+                "domain": "Nombres entiers",
+                "title": "Associer différentes écritures d’un nombre",
+                "jeSais": "Je sais reconnaître plusieurs écritures du même nombre.",
+                "checklist": [
+                      "Associer chiffres et lettres",
+                      "Associer décomposition additive",
+                      "Associer unités de numération",
+                      "Associer représentation sur droite graduée",
+                      "Justifier les équivalences"
+                ],
+                "proofs": [
+                      "Jeu d’associations",
+                      "Compléter une carte d’identité du nombre"
+                ],
+                "lsu": "Utiliser et représenter les nombres entiers"
+          },
+          {
+                "code": "NUM-P2-02",
+                "domain": "Nombres entiers",
+                "title": "Repérer la valeur d’un chiffre",
+                "jeSais": "Je sais donner la valeur d’un chiffre selon sa position.",
+                "checklist": [
+                      "Identifier la position",
+                      "Distinguer chiffre et nombre",
+                      "Exprimer en unités de numération",
+                      "Modifier un chiffre et observer l’effet",
+                      "Justifier par une décomposition"
+                ],
+                "proofs": [
+                      "Questions de valeur de chiffres",
+                      "Transformation ciblée d’un nombre"
+                ],
+                "lsu": "Utiliser et représenter les nombres entiers"
+          },
+          {
+                "code": "NUM-P2-03",
+                "domain": "Nombres entiers",
+                "title": "Placer un nombre sur une droite graduée",
+                "jeSais": "Je sais placer un nombre sur une droite graduée.",
+                "checklist": [
+                      "Lire l’origine",
+                      "Identifier le pas de graduation",
+                      "Repérer les bornes",
+                      "Calculer la position",
+                      "Contrôler par encadrement"
+                ],
+                "proofs": [
+                      "Placement de cinq nombres",
+                      "Détermination de nombres repérés"
+                ],
+                "lsu": "Comparer, ranger et encadrer des nombres entiers"
+          },
+          {
+                "code": "NUM-P2-04",
+                "domain": "Nombres entiers",
+                "title": "Ranger des nombres",
+                "jeSais": "Je sais ranger des nombres dans l’ordre croissant ou décroissant.",
+                "checklist": [
+                      "Comparer les nombres",
+                      "Identifier le sens demandé",
+                      "Classer progressivement",
+                      "Utiliser les symboles si demandé",
+                      "Vérifier les nombres oubliés"
+                ],
+                "proofs": [
+                      "Ranger deux séries",
+                      "Corriger un rangement erroné"
+                ],
+                "lsu": "Comparer, ranger et encadrer des nombres entiers"
+          },
+          {
+                "code": "FRA-P2-01",
+                "domain": "Fractions",
+                "title": "Comparer des fractions de même dénominateur",
+                "jeSais": "Je sais comparer des fractions qui partagent la même unité et le même dénominateur.",
+                "checklist": [
+                      "Vérifier la même unité",
+                      "Observer le dénominateur",
+                      "Comparer les numérateurs",
+                      "Utiliser une représentation",
+                      "Employer <, > ou ="
+                ],
+                "proofs": [
+                      "Comparaison de six paires",
+                      "Justification avec bandes fractionnées"
+                ],
+                "lsu": "Utiliser et comparer des fractions"
+          },
+          {
+                "code": "FRA-P2-02",
+                "domain": "Fractions",
+                "title": "Reconnaître des fractions égales simples",
+                "jeSais": "Je sais reconnaître deux fractions simples qui représentent la même quantité.",
+                "checklist": [
+                      "Utiliser des pliages ou bandes",
+                      "Superposer les représentations",
+                      "Observer le nombre de parts",
+                      "Associer les écritures équivalentes",
+                      "Expliquer l’égalité"
+                ],
+                "proofs": [
+                      "Associations de fractions égales",
+                      "Construction de deux représentations égales"
+                ],
+                "lsu": "Utiliser et comparer des fractions"
+          },
+          {
+                "code": "CAL-P2-01",
+                "domain": "Calcul mental",
+                "title": "Connaître les doubles et les moitiés usuels",
+                "jeSais": "Je sais donner rapidement un double ou une moitié usuelle.",
+                "checklist": [
+                      "Mémoriser les doubles",
+                      "Mémoriser les moitiés",
+                      "Utiliser la relation inverse",
+                      "Décomposer les nombres plus grands",
+                      "Améliorer la fluence"
+                ],
+                "proofs": [
+                      "Test court doubles/moitiés",
+                      "Égalités à trou"
+                ],
+                "lsu": "Calculer mentalement"
+          },
+          {
+                "code": "CAL-P2-02",
+                "domain": "Calcul mental",
+                "title": "Multiplier un entier par 10 ou 100",
+                "jeSais": "Je sais multiplier un nombre entier par 10 ou 100 en utilisant la numération.",
+                "checklist": [
+                      "Comprendre le changement de valeur",
+                      "Déplacer chaque chiffre de position",
+                      "Ajouter les zéros nécessaires sans règle mécanique fausse",
+                      "Vérifier par décomposition",
+                      "Expliquer la procédure"
+                ],
+                "proofs": [
+                      "Série de calculs",
+                      "Justification avec tableau de numération"
+                ],
+                "lsu": "Calculer mentalement"
+          },
+          {
+                "code": "CAL-P2-03",
+                "domain": "Calcul mental",
+                "title": "Additionner deux nombres en les décomposant",
+                "jeSais": "Je sais additionner mentalement deux nombres en séparant dizaines et unités.",
+                "checklist": [
+                      "Décomposer les deux nombres",
+                      "Additionner les dizaines",
+                      "Additionner les unités",
+                      "Regrouper les résultats",
+                      "Vérifier par estimation"
+                ],
+                "proofs": [
+                      "Dix additions mentales",
+                      "Explication écrite d’une procédure"
+                ],
+                "lsu": "Calculer mentalement"
+          },
+          {
+                "code": "OPE-P2-01",
+                "domain": "Calcul posé",
+                "title": "Effectuer une addition avec retenue",
+                "jeSais": "Je sais effectuer une addition posée avec une ou plusieurs retenues.",
+                "checklist": [
+                      "Poser correctement",
+                      "Additionner les unités",
+                      "Écrire et reporter la retenue",
+                      "Poursuivre par position",
+                      "Vérifier le résultat"
+                ],
+                "proofs": [
+                      "Deux additions avec retenues",
+                      "Correction commentée"
+                ],
+                "lsu": "Calculer avec des nombres entiers"
+          },
+          {
+                "code": "OPE-P2-02",
+                "domain": "Calcul posé",
+                "title": "Effectuer une soustraction avec échange",
+                "jeSais": "Je sais effectuer une soustraction posée lorsqu’un échange est nécessaire.",
+                "checklist": [
+                      "Poser correctement",
+                      "Repérer l’impossibilité aux unités",
+                      "Échanger une dizaine",
+                      "Poursuivre le calcul",
+                      "Vérifier par addition"
+                ],
+                "proofs": [
+                      "Deux soustractions avec échange",
+                      "Explication d’un échange"
+                ],
+                "lsu": "Calculer avec des nombres entiers"
+          },
+          {
+                "code": "PRO-P2-01",
+                "domain": "Résolution de problèmes",
+                "title": "Résoudre un problème multiplicatif",
+                "jeSais": "Je sais représenter des groupes égaux et utiliser une multiplication.",
+                "checklist": [
+                      "Identifier les groupes égaux",
+                      "Faire un dessin ou schéma",
+                      "Écrire l’addition répétée",
+                      "Passer à la multiplication",
+                      "Rédiger la réponse"
+                ],
+                "proofs": [
+                      "Deux problèmes multiplicatifs",
+                      "Passage du schéma au calcul"
+                ],
+                "lsu": "Résoudre des problèmes arithmétiques"
+          },
+          {
+                "code": "PRO-P2-02",
+                "domain": "Résolution de problèmes",
+                "title": "Résoudre un problème de groupement",
+                "jeSais": "Je sais trouver combien de groupes égaux peuvent être formés.",
+                "checklist": [
+                      "Identifier le total",
+                      "Identifier la taille d’un groupe",
+                      "Représenter les groupements",
+                      "Compter les groupes",
+                      "Vérifier avec une multiplication"
+                ],
+                "proofs": [
+                      "Problème de groupement",
+                      "Explication avec schéma"
+                ],
+                "lsu": "Résoudre des problèmes arithmétiques"
+          },
+          {
+                "code": "PRO-P2-03",
+                "domain": "Résolution de problèmes",
+                "title": "Résoudre un problème de partage",
+                "jeSais": "Je sais partager une quantité en parts égales.",
+                "checklist": [
+                      "Identifier le total",
+                      "Identifier le nombre de parts",
+                      "Distribuer équitablement",
+                      "Trouver la valeur d’une part",
+                      "Vérifier le total"
+                ],
+                "proofs": [
+                      "Problème de partage",
+                      "Manipulation puis schématisation"
+                ],
+                "lsu": "Résoudre des problèmes arithmétiques"
+          },
+          {
+                "code": "MES-P2-01",
+                "domain": "Longueurs et périmètres",
+                "title": "Convertir mm, cm, dm et m",
+                "jeSais": "Je sais utiliser les relations entre les unités de longueur.",
+                "checklist": [
+                      "Choisir les unités concernées",
+                      "Utiliser 10 mm = 1 cm",
+                      "Utiliser 10 cm = 1 dm",
+                      "Utiliser 10 dm = 1 m",
+                      "Vérifier l’ordre de grandeur"
+                ],
+                "proofs": [
+                      "Conversions simples",
+                      "Mesures exprimées dans deux unités"
+                ],
+                "lsu": "Comparer, estimer et mesurer des longueurs"
+          },
+          {
+                "code": "MES-P2-02",
+                "domain": "Longueurs et périmètres",
+                "title": "Déterminer un périmètre par mesurage",
+                "jeSais": "Je sais trouver le périmètre d’une figure en mesurant tous ses côtés.",
+                "checklist": [
+                      "Identifier le contour",
+                      "Mesurer chaque côté",
+                      "Noter les mesures",
+                      "Additionner les longueurs",
+                      "Exprimer avec l’unité"
+                ],
+                "proofs": [
+                      "Périmètre de deux polygones",
+                      "Comparaison de deux périmètres"
+                ],
+                "lsu": "Mesurer et calculer des périmètres"
+          },
+          {
+                "code": "MAS-P2-01",
+                "domain": "Masses",
+                "title": "Mesurer une masse en g ou kg",
+                "jeSais": "Je sais utiliser une balance et exprimer une masse avec l’unité adaptée.",
+                "checklist": [
+                      "Choisir l’unité",
+                      "Lire ou équilibrer la balance",
+                      "Additionner les masses marquées",
+                      "Exprimer le résultat",
+                      "Estimer avant de mesurer"
+                ],
+                "proofs": [
+                      "Mesures de masses",
+                      "Choix de l’unité adaptée"
+                ],
+                "lsu": "Comparer, estimer et mesurer des masses"
+          },
+          {
+                "code": "TEM-P2-01",
+                "domain": "Temps et durées",
+                "title": "Lire l’heure entière et les minutes",
+                "jeSais": "Je sais lire une heure indiquée par une horloge.",
+                "checklist": [
+                      "Identifier aiguille des heures et minutes",
+                      "Lire l’heure entière",
+                      "Compter les minutes par pas de cinq",
+                      "Écrire l’heure",
+                      "Distinguer matin et après-midi si précisé"
+                ],
+                "proofs": [
+                      "Lecture de six horloges",
+                      "Placement d’aiguilles"
+                ],
+                "lsu": "Se repérer dans le temps et mesurer des durées"
+          },
+          {
+                "code": "GEO-P2-01",
+                "domain": "Géométrie plane",
+                "title": "Reconnaître et décrire un polygone",
+                "jeSais": "Je sais reconnaître un polygone et décrire ses côtés et ses sommets.",
+                "checklist": [
+                      "Vérifier que la figure est fermée",
+                      "Vérifier que les côtés sont des segments",
+                      "Compter les côtés",
+                      "Compter les sommets",
+                      "Nommer les polygones usuels"
+                ],
+                "proofs": [
+                      "Classement de figures",
+                      "Portrait d’un polygone"
+                ],
+                "lsu": "Reconnaître, nommer et construire des figures"
+          },
+          {
+                "code": "GEO-P2-02",
+                "domain": "Géométrie plane",
+                "title": "Reproduire une figure sur quadrillage",
+                "jeSais": "Je sais reproduire une figure en respectant ses longueurs et ses directions.",
+                "checklist": [
+                      "Choisir un point de départ",
+                      "Compter les carreaux",
+                      "Respecter horizontales et verticales",
+                      "Tracer à la règle",
+                      "Comparer au modèle"
+                ],
+                "proofs": [
+                      "Reproduction sur quadrillage",
+                      "Repérage et correction d’erreurs"
+                ],
+                "lsu": "Reconnaître, nommer et construire des figures"
+          },
+          {
+                "code": "SYM-P2-01",
+                "domain": "Symétrie",
+                "title": "Reconnaître un axe de symétrie",
+                "jeSais": "Je sais vérifier si une droite est un axe de symétrie.",
+                "checklist": [
+                      "Utiliser le pliage",
+                      "Observer la superposition",
+                      "Comparer les deux parties",
+                      "Tester plusieurs axes",
+                      "Tracer l’axe retenu"
+                ],
+                "proofs": [
+                      "Recherche d’axes",
+                      "Justification par pliage"
+                ],
+                "lsu": "Reconnaître et utiliser la symétrie"
+          },
+          {
+                "code": "SOL-P2-01",
+                "domain": "Solides",
+                "title": "Reconnaître les solides usuels",
+                "jeSais": "Je sais reconnaître le cube, le pavé, la boule, le cylindre, le cône et la pyramide.",
+                "checklist": [
+                      "Observer la forme générale",
+                      "Identifier surfaces planes et courbes",
+                      "Observer les faces",
+                      "Comparer les solides",
+                      "Nommer avec précision"
+                ],
+                "proofs": [
+                      "Classement de solides",
+                      "Jeu de reconnaissance sans vue globale"
+                ],
+                "lsu": "Reconnaître et décrire des solides"
+          },
+          {
+                "code": "DON-P2-01",
+                "domain": "Données",
+                "title": "Compléter un tableau à double entrée",
+                "jeSais": "Je sais placer une information à l’intersection d’une ligne et d’une colonne.",
+                "checklist": [
+                      "Lire les deux critères",
+                      "Repérer la ligne",
+                      "Repérer la colonne",
+                      "Compléter la bonne case",
+                      "Vérifier toutes les données"
+                ],
+                "proofs": [
+                      "Compléter un tableau",
+                      "Corriger un tableau partiellement faux"
+                ],
+                "lsu": "Organiser et représenter des données"
+          }
+    ],
+    p3Competencies: [
+          {
+                "code": "NUM-P3-01",
+                "domain": "Nombres entiers",
+                "title": "Dénombrer une collection complexe",
+                "jeSais": "Je sais dénombrer une collection organisée ou partiellement organisée.",
+                "checklist": [
+                      "Former des groupes de dix et de cent",
+                      "Échanger dix unités contre une dizaine",
+                      "Échanger dix dizaines contre une centaine",
+                      "Totaliser les unités de numération",
+                      "Écrire le nombre obtenu"
+                ],
+                "proofs": [
+                      "Dénombrement de deux collections",
+                      "Commande équivalente avec matériel"
+                ],
+                "lsu": "Utiliser et représenter les nombres entiers"
+          },
+          {
+                "code": "NUM-P3-02",
+                "domain": "Nombres entiers",
+                "title": "Convertir entre unités de numération",
+                "jeSais": "Je sais convertir milliers, centaines, dizaines et unités.",
+                "checklist": [
+                      "Utiliser les relations de dix en dix",
+                      "Compléter un tableau de numération",
+                      "Transformer sans changer la quantité",
+                      "Gérer des nombres d’unités supérieurs à neuf",
+                      "Justifier les échanges"
+                ],
+                "proofs": [
+                      "Conversions de numération",
+                      "Deux représentations équivalentes"
+                ],
+                "lsu": "Utiliser et représenter les nombres entiers"
+          },
+          {
+                "code": "NUM-P3-03",
+                "domain": "Nombres entiers",
+                "title": "Intercaler un nombre",
+                "jeSais": "Je sais trouver un nombre situé entre deux nombres donnés.",
+                "checklist": [
+                      "Comparer les bornes",
+                      "Vérifier qu’un entier peut être intercalé",
+                      "Proposer une valeur correcte",
+                      "Placer sur une droite graduée",
+                      "Justifier les inégalités"
+                ],
+                "proofs": [
+                      "Intercaler dans cinq intervalles",
+                      "Trouver plusieurs réponses possibles"
+                ],
+                "lsu": "Comparer, ranger et encadrer des nombres entiers"
+          },
+          {
+                "code": "FRA-P3-01",
+                "domain": "Fractions et longueurs",
+                "title": "Partager une unité de longueur en fractions",
+                "jeSais": "Je sais partager une bande-unité en parts égales et nommer une longueur fractionnaire.",
+                "checklist": [
+                      "Définir l’unité",
+                      "Partager en parts égales",
+                      "Repérer une part",
+                      "Reporter plusieurs parts",
+                      "Écrire la fraction obtenue"
+                ],
+                "proofs": [
+                      "Construction de bandes fractionnées",
+                      "Mesure fractionnaire de segments"
+                ],
+                "lsu": "Utiliser les fractions pour mesurer"
+          },
+          {
+                "code": "FRA-P3-02",
+                "domain": "Fractions et longueurs",
+                "title": "Placer une fraction sur une bande graduée",
+                "jeSais": "Je sais placer une fraction sur une bande-unité graduée.",
+                "checklist": [
+                      "Identifier l’unité",
+                      "Lire le dénominateur",
+                      "Partager l’unité",
+                      "Compter les parts depuis zéro",
+                      "Vérifier la position"
+                ],
+                "proofs": [
+                      "Placement de fractions",
+                      "Lecture de points fractionnaires"
+                ],
+                "lsu": "Utiliser les fractions comme nombres"
+          },
+          {
+                "code": "CAL-P3-01",
+                "domain": "Calcul mental",
+                "title": "Connaître les tables de multiplication",
+                "jeSais": "Je sais restituer progressivement les produits des tables étudiées.",
+                "checklist": [
+                      "Relier addition répétée et multiplication",
+                      "Mémoriser les produits",
+                      "Utiliser la commutativité",
+                      "Trouver un facteur manquant",
+                      "Améliorer sa fluence"
+                ],
+                "proofs": [
+                      "Test de tables",
+                      "Égalités à trou multiplicatives"
+                ],
+                "lsu": "Calculer mentalement"
+          },
+          {
+                "code": "CAL-P3-02",
+                "domain": "Calcul mental",
+                "title": "Multiplier par 4 ou par 8",
+                "jeSais": "Je sais multiplier par 4 ou par 8 en utilisant des doubles.",
+                "checklist": [
+                      "Multiplier par 4 comme double du double",
+                      "Multiplier par 8 comme trois doubles",
+                      "Garder une trace intermédiaire",
+                      "Choisir la procédure",
+                      "Vérifier avec la table"
+                ],
+                "proofs": [
+                      "Série de calculs",
+                      "Explication d’une procédure"
+                ],
+                "lsu": "Calculer mentalement"
+          },
+          {
+                "code": "CAL-P3-03",
+                "domain": "Calcul mental",
+                "title": "Trouver un quotient simple",
+                "jeSais": "Je sais trouver combien de fois un nombre est contenu dans un autre.",
+                "checklist": [
+                      "Mobiliser les tables",
+                      "Relier multiplication et division",
+                      "Interpréter groupement ou partage",
+                      "Trouver un facteur manquant",
+                      "Vérifier par multiplication"
+                ],
+                "proofs": [
+                      "Quotients exacts simples",
+                      "Petits problèmes oraux"
+                ],
+                "lsu": "Calculer mentalement"
+          },
+          {
+                "code": "OPE-P3-01",
+                "domain": "Calcul posé",
+                "title": "Poser une multiplication par un chiffre",
+                "jeSais": "Je sais poser et effectuer une multiplication par un chiffre.",
+                "checklist": [
+                      "Aligner le multiplicateur",
+                      "Multiplier chaque position",
+                      "Gérer les retenues",
+                      "Écrire le résultat",
+                      "Vérifier par estimation"
+                ],
+                "proofs": [
+                      "Deux multiplications posées",
+                      "Correction d’une procédure"
+                ],
+                "lsu": "Calculer avec des nombres entiers"
+          },
+          {
+                "code": "OPE-P3-02",
+                "domain": "Calcul et vocabulaire",
+                "title": "Utiliser facteur, produit et multiple",
+                "jeSais": "Je sais employer les mots facteur, produit et multiple dans une situation de calcul.",
+                "checklist": [
+                      "Identifier les facteurs",
+                      "Nommer le produit",
+                      "Reconnaître un multiple",
+                      "Relier écriture et vocabulaire",
+                      "Utiliser les termes dans une phrase"
+                ],
+                "proofs": [
+                      "Vocabulaire sur des égalités",
+                      "Classement de multiples simples"
+                ],
+                "lsu": "Calculer avec des nombres entiers"
+          },
+          {
+                "code": "PRO-P3-01",
+                "domain": "Résolution de problèmes",
+                "title": "Résoudre un problème de comparaison multiplicative",
+                "jeSais": "Je sais comprendre une situation où une quantité est plusieurs fois une autre.",
+                "checklist": [
+                      "Identifier la quantité de référence",
+                      "Repérer le nombre de fois",
+                      "Faire un schéma",
+                      "Choisir multiplication ou division",
+                      "Rédiger la réponse"
+                ],
+                "proofs": [
+                      "Deux problèmes de comparaison",
+                      "Explication du schéma"
+                ],
+                "lsu": "Résoudre des problèmes arithmétiques"
+          },
+          {
+                "code": "PRO-P3-02",
+                "domain": "Résolution de problèmes",
+                "title": "Résoudre un problème à deux ou trois étapes",
+                "jeSais": "Je sais organiser plusieurs calculs liés pour résoudre un problème.",
+                "checklist": [
+                      "Repérer les sous-questions implicites",
+                      "Planifier les étapes",
+                      "Conserver les résultats intermédiaires",
+                      "Effectuer les calculs",
+                      "Contrôler la réponse finale"
+                ],
+                "proofs": [
+                      "Problème à étapes",
+                      "Compléter une solution inachevée"
+                ],
+                "lsu": "Résoudre des problèmes arithmétiques"
+          },
+          {
+                "code": "PRO-P3-03",
+                "domain": "Résolution de problèmes",
+                "title": "Résoudre un problème avec des fractions simples",
+                "jeSais": "Je sais utiliser une fraction d’un tout dans un problème.",
+                "checklist": [
+                      "Identifier le tout",
+                      "Repérer le partage égal",
+                      "Représenter la fraction",
+                      "Calculer ou dénombrer les parts",
+                      "Répondre avec l’unité"
+                ],
+                "proofs": [
+                      "Problème de fraction d’un tout",
+                      "Schéma à compléter"
+                ],
+                "lsu": "Résoudre des problèmes arithmétiques"
+          },
+          {
+                "code": "MES-P3-01",
+                "domain": "Longueurs",
+                "title": "Choisir l’unité de longueur adaptée",
+                "jeSais": "Je sais choisir entre mm, cm, dm et m selon la longueur à mesurer.",
+                "checklist": [
+                      "Estimer la longueur",
+                      "Comparer aux références connues",
+                      "Choisir l’unité",
+                      "Justifier le choix",
+                      "Vérifier par mesurage"
+                ],
+                "proofs": [
+                      "Choix d’unités pour dix objets",
+                      "Estimation puis mesure"
+                ],
+                "lsu": "Comparer, estimer et mesurer des longueurs"
+          },
+          {
+                "code": "CAP-P3-01",
+                "domain": "Contenances",
+                "title": "Mesurer une contenance",
+                "jeSais": "Je sais mesurer une contenance avec les unités L, dL ou cL.",
+                "checklist": [
+                      "Comparer des récipients",
+                      "Choisir l’unité",
+                      "Utiliser un récipient gradué",
+                      "Lire la graduation",
+                      "Exprimer la mesure"
+                ],
+                "proofs": [
+                      "Mesures de contenances",
+                      "Choix d’unités adaptées"
+                ],
+                "lsu": "Comparer, estimer et mesurer des contenances"
+          },
+          {
+                "code": "TEM-P3-01",
+                "domain": "Temps et durées",
+                "title": "Lire la demi-heure et le quart d’heure",
+                "jeSais": "Je sais lire et représenter l’heure, la demi-heure et le quart d’heure.",
+                "checklist": [
+                      "Repérer les aiguilles",
+                      "Associer 30 minutes à la demi-heure",
+                      "Associer 15 et 45 minutes aux quarts",
+                      "Écrire l’heure de deux façons",
+                      "Placer les aiguilles"
+                ],
+                "proofs": [
+                      "Lecture d’horloges",
+                      "Placement d’aiguilles"
+                ],
+                "lsu": "Se repérer dans le temps et mesurer des durées"
+          },
+          {
+                "code": "GEO-P3-01",
+                "domain": "Géométrie plane",
+                "title": "Reconnaître et décrire un triangle",
+                "jeSais": "Je sais reconnaître un triangle et préciser s’il possède un angle droit.",
+                "checklist": [
+                      "Compter trois côtés",
+                      "Repérer les sommets",
+                      "Vérifier un angle droit",
+                      "Distinguer triangle quelconque et rectangle",
+                      "Justifier avec l’équerre"
+                ],
+                "proofs": [
+                      "Classement de triangles",
+                      "Description instrumentée"
+                ],
+                "lsu": "Reconnaître, nommer et construire des figures"
+          },
+          {
+                "code": "GEO-P3-02",
+                "domain": "Géométrie plane",
+                "title": "Construire un carré ou un rectangle",
+                "jeSais": "Je sais construire un carré ou un rectangle avec la règle et l’équerre.",
+                "checklist": [
+                      "Lire les dimensions",
+                      "Tracer un premier côté",
+                      "Construire des angles droits",
+                      "Reporter les longueurs",
+                      "Contrôler la figure"
+                ],
+                "proofs": [
+                      "Construction sur papier uni",
+                      "Construction sur quadrillage"
+                ],
+                "lsu": "Reconnaître, nommer et construire des figures"
+          },
+          {
+                "code": "SYM-P3-01",
+                "domain": "Symétrie",
+                "title": "Tracer un axe de symétrie",
+                "jeSais": "Je sais tracer un axe de symétrie sur quadrillage ou papier pointé.",
+                "checklist": [
+                      "Repérer des points correspondants",
+                      "Chercher le milieu",
+                      "Vérifier les distances",
+                      "Tracer l’axe droit",
+                      "Contrôler par pliage mental ou réel"
+                ],
+                "proofs": [
+                      "Tracé d’axes",
+                      "Validation de propositions"
+                ],
+                "lsu": "Reconnaître et utiliser la symétrie"
+          },
+          {
+                "code": "SOL-P3-01",
+                "domain": "Solides",
+                "title": "Identifier faces, arêtes et sommets",
+                "jeSais": "Je sais compter et nommer les faces, les arêtes et les sommets d’un polyèdre.",
+                "checklist": [
+                      "Distinguer les trois éléments",
+                      "Marquer les éléments déjà comptés",
+                      "Décrire la forme des faces",
+                      "Comparer cube et pavé",
+                      "Utiliser le vocabulaire"
+                ],
+                "proofs": [
+                      "Description de deux solides",
+                      "Tableau faces-arêtes-sommets"
+                ],
+                "lsu": "Reconnaître et décrire des solides"
+          },
+          {
+                "code": "DON-P3-01",
+                "domain": "Données",
+                "title": "Lire un diagramme en barres",
+                "jeSais": "Je sais lire une valeur et comparer des données dans un diagramme en barres.",
+                "checklist": [
+                      "Lire le titre",
+                      "Identifier les catégories",
+                      "Lire l’échelle",
+                      "Associer barre et valeur",
+                      "Comparer et calculer des écarts simples"
+                ],
+                "proofs": [
+                      "Questions sur un diagramme",
+                      "Formulation de deux conclusions"
+                ],
+                "lsu": "Lire et interpréter des données"
+          },
+          {
+                "code": "DON-P3-02",
+                "domain": "Données",
+                "title": "Construire un diagramme en barres",
+                "jeSais": "Je sais représenter des données dans un diagramme en barres.",
+                "checklist": [
+                      "Choisir les axes",
+                      "Inscrire les catégories",
+                      "Choisir une échelle",
+                      "Tracer des barres de largeur régulière",
+                      "Ajouter titre et légende"
+                ],
+                "proofs": [
+                      "Construction à partir d’un tableau",
+                      "Correction d’un diagramme"
+                ],
+                "lsu": "Organiser et représenter des données"
+          }
+    ],
+    p4Competencies: [
+          {
+                "code": "NUM-P4-01",
+                "domain": "Nombres entiers",
+                "title": "Résoudre un problème de numération",
+                "jeSais": "Je sais utiliser la valeur des chiffres pour résoudre une situation de numération.",
+                "checklist": [
+                      "Traduire la situation en unités de numération",
+                      "Effectuer des échanges",
+                      "Comparer les représentations",
+                      "Calculer si nécessaire",
+                      "Justifier le nombre obtenu"
+                ],
+                "proofs": [
+                      "Problème de commandes ou échanges",
+                      "Explication avec matériel dessiné"
+                ],
+                "lsu": "Utiliser et représenter les nombres entiers"
+          },
+          {
+                "code": "NUM-P4-02",
+                "domain": "Nombres entiers",
+                "title": "Estimer l’ordre de grandeur d’un nombre",
+                "jeSais": "Je sais choisir une approximation utile d’un nombre.",
+                "checklist": [
+                      "Repérer la précision attendue",
+                      "Encadrer par dizaines ou centaines",
+                      "Choisir la borne la plus proche",
+                      "Employer environ",
+                      "Vérifier la cohérence"
+                ],
+                "proofs": [
+                      "Arrondis simples contextualisés",
+                      "Estimation d’une quantité"
+                ],
+                "lsu": "Utiliser et représenter les nombres entiers"
+          },
+          {
+                "code": "FRA-P4-01",
+                "domain": "Fractions",
+                "title": "Comparer et ordonner des fractions simples",
+                "jeSais": "Je sais comparer et ranger des fractions simples à l’aide de représentations.",
+                "checklist": [
+                      "Utiliser la même unité",
+                      "Représenter sur une bande",
+                      "Comparer à 1/2 ou à 1",
+                      "Employer les symboles",
+                      "Justifier le rangement"
+                ],
+                "proofs": [
+                      "Rangement de fractions",
+                      "Justification graphique"
+                ],
+                "lsu": "Utiliser et comparer des fractions"
+          },
+          {
+                "code": "FRA-P4-02",
+                "domain": "Fractions",
+                "title": "Additionner ou soustraire des fractions simples",
+                "jeSais": "Je sais réunir ou retirer des parts de même taille.",
+                "checklist": [
+                      "Vérifier le même dénominateur",
+                      "Représenter les parts",
+                      "Additionner ou soustraire les numérateurs",
+                      "Conserver le dénominateur",
+                      "Vérifier le résultat sur la figure"
+                ],
+                "proofs": [
+                      "Calculs illustrés",
+                      "Petit problème fractionnaire"
+                ],
+                "lsu": "Calculer avec des fractions simples"
+          },
+          {
+                "code": "CAL-P4-01",
+                "domain": "Calcul mental",
+                "title": "Multiplier un nombre à deux chiffres par un chiffre",
+                "jeSais": "Je sais décomposer un nombre pour le multiplier mentalement par un chiffre.",
+                "checklist": [
+                      "Décomposer dizaines et unités",
+                      "Multiplier chaque partie",
+                      "Additionner les produits",
+                      "Garder une trace si besoin",
+                      "Vérifier par estimation"
+                ],
+                "proofs": [
+                      "Dix produits mentaux",
+                      "Explication de deux procédures"
+                ],
+                "lsu": "Calculer mentalement"
+          },
+          {
+                "code": "CAL-P4-02",
+                "domain": "Calcul mental",
+                "title": "Choisir une stratégie efficace",
+                "jeSais": "Je sais choisir entre calcul mémorisé, décomposition ou compensation.",
+                "checklist": [
+                      "Observer les nombres",
+                      "Identifier une propriété utile",
+                      "Choisir une procédure courte",
+                      "Calculer avec exactitude",
+                      "Comparer avec une autre stratégie"
+                ],
+                "proofs": [
+                      "Calculs avec stratégie justifiée",
+                      "Tri de procédures efficaces"
+                ],
+                "lsu": "Calculer mentalement"
+          },
+          {
+                "code": "OPE-P4-01",
+                "domain": "Calcul posé",
+                "title": "Multiplier par un nombre à deux chiffres",
+                "jeSais": "Je sais poser et effectuer une multiplication par un nombre à deux chiffres.",
+                "checklist": [
+                      "Décomposer le multiplicateur",
+                      "Calculer les produits partiels",
+                      "Décaler le second produit",
+                      "Additionner les résultats",
+                      "Vérifier par estimation"
+                ],
+                "proofs": [
+                      "Deux multiplications posées",
+                      "Correction d’une multiplication"
+                ],
+                "lsu": "Calculer avec des nombres entiers"
+          },
+          {
+                "code": "OPE-P4-02",
+                "domain": "Opérations",
+                "title": "Comprendre le sens de la division",
+                "jeSais": "Je sais reconnaître une situation de partage ou de groupement relevant de la division.",
+                "checklist": [
+                      "Identifier le total",
+                      "Identifier parts ou taille de groupe",
+                      "Représenter la situation",
+                      "Relier multiplication et division",
+                      "Interpréter quotient et reste simple"
+                ],
+                "proofs": [
+                      "Classement de problèmes",
+                      "Résolution par schéma et calcul"
+                ],
+                "lsu": "Calculer avec des nombres entiers"
+          },
+          {
+                "code": "PRO-P4-01",
+                "domain": "Résolution de problèmes",
+                "title": "Résoudre un problème de périmètre",
+                "jeSais": "Je sais utiliser les longueurs des côtés pour résoudre un problème de périmètre.",
+                "checklist": [
+                      "Identifier le contour",
+                      "Repérer les mesures connues",
+                      "Déduire les mesures manquantes",
+                      "Additionner les côtés",
+                      "Exprimer avec l’unité"
+                ],
+                "proofs": [
+                      "Deux problèmes de périmètre",
+                      "Comparaison de solutions"
+                ],
+                "lsu": "Résoudre des problèmes de grandeurs et mesures"
+          },
+          {
+                "code": "PRO-P4-02",
+                "domain": "Résolution de problèmes",
+                "title": "Résoudre un problème de durée",
+                "jeSais": "Je sais déterminer une heure de fin, une heure de début ou une durée.",
+                "checklist": [
+                      "Repérer les deux informations connues",
+                      "Représenter sur une ligne du temps",
+                      "Décomposer en heures et minutes",
+                      "Effectuer les calculs",
+                      "Contrôler la cohérence"
+                ],
+                "proofs": [
+                      "Deux problèmes de durées",
+                      "Explication sur ligne du temps"
+                ],
+                "lsu": "Résoudre des problèmes de grandeurs et mesures"
+          },
+          {
+                "code": "PRO-P4-03",
+                "domain": "Résolution de problèmes",
+                "title": "Résoudre un problème à partir de données",
+                "jeSais": "Je sais sélectionner et utiliser des informations d’un tableau ou d’un graphique.",
+                "checklist": [
+                      "Lire le document",
+                      "Repérer les données utiles",
+                      "Ignorer les données inutiles",
+                      "Choisir les opérations",
+                      "Rédiger une réponse"
+                ],
+                "proofs": [
+                      "Problème avec tableau",
+                      "Problème avec diagramme"
+                ],
+                "lsu": "Résoudre des problèmes utilisant des données"
+          },
+          {
+                "code": "MES-P4-01",
+                "domain": "Périmètres",
+                "title": "Calculer le périmètre d’un polygone",
+                "jeSais": "Je sais calculer le périmètre d’une figure à partir de ses dimensions.",
+                "checklist": [
+                      "Identifier tous les côtés",
+                      "Utiliser les égalités de longueurs",
+                      "Choisir une écriture de calcul",
+                      "Effectuer le calcul",
+                      "Exprimer avec l’unité"
+                ],
+                "proofs": [
+                      "Périmètres de figures",
+                      "Figure à dimension manquante"
+                ],
+                "lsu": "Mesurer et calculer des périmètres"
+          },
+          {
+                "code": "MAS-P4-01",
+                "domain": "Masses",
+                "title": "Utiliser la relation entre kg et g",
+                "jeSais": "Je sais convertir des masses simples entre kilogrammes et grammes.",
+                "checklist": [
+                      "Connaître 1 kg = 1 000 g",
+                      "Décomposer une masse",
+                      "Comparer des masses dans la même unité",
+                      "Effectuer une conversion",
+                      "Vérifier l’ordre de grandeur"
+                ],
+                "proofs": [
+                      "Conversions et comparaisons",
+                      "Problème de masse"
+                ],
+                "lsu": "Comparer, estimer et mesurer des masses"
+          },
+          {
+                "code": "MON-P4-01",
+                "domain": "Monnaie",
+                "title": "Rendre la monnaie",
+                "jeSais": "Je sais calculer et composer la monnaie à rendre.",
+                "checklist": [
+                      "Identifier le prix",
+                      "Identifier la somme donnée",
+                      "Calculer la différence",
+                      "Composer le rendu",
+                      "Vérifier prix + rendu"
+                ],
+                "proofs": [
+                      "Deux situations d’achat",
+                      "Jeu de caisse"
+                ],
+                "lsu": "Utiliser la monnaie"
+          },
+          {
+                "code": "TEM-P4-01",
+                "domain": "Temps et durées",
+                "title": "Mesurer une durée écoulée",
+                "jeSais": "Je sais calculer une durée simple entre deux horaires.",
+                "checklist": [
+                      "Lire les horaires",
+                      "Avancer jusqu’à une heure ronde",
+                      "Ajouter les étapes",
+                      "Exprimer heures et minutes",
+                      "Vérifier avec une ligne du temps"
+                ],
+                "proofs": [
+                      "Calcul de trois durées",
+                      "Situation vécue chronométrée"
+                ],
+                "lsu": "Se repérer dans le temps et mesurer des durées"
+          },
+          {
+                "code": "GEO-P4-01",
+                "domain": "Géométrie plane",
+                "title": "Reconnaître le cercle et le disque",
+                "jeSais": "Je sais distinguer un cercle d’un disque et utiliser centre, rayon et diamètre.",
+                "checklist": [
+                      "Distinguer contour et surface",
+                      "Identifier le centre",
+                      "Repérer un rayon",
+                      "Repérer un diamètre",
+                      "Employer le vocabulaire"
+                ],
+                "proofs": [
+                      "Légender une figure",
+                      "Classement cercle/disque"
+                ],
+                "lsu": "Reconnaître, nommer et construire des figures"
+          },
+          {
+                "code": "GEO-P4-02",
+                "domain": "Géométrie plane",
+                "title": "Tracer un cercle au compas",
+                "jeSais": "Je sais tracer un cercle de centre et de rayon donnés.",
+                "checklist": [
+                      "Placer le centre",
+                      "Régler l’ouverture du compas",
+                      "Maintenir la pointe fixe",
+                      "Tracer sans modifier l’ouverture",
+                      "Contrôler le rayon"
+                ],
+                "proofs": [
+                      "Tracé de cercles",
+                      "Reproduction d’une figure avec cercles"
+                ],
+                "lsu": "Reconnaître, nommer et construire des figures"
+          },
+          {
+                "code": "GEO-P4-03",
+                "domain": "Géométrie plane",
+                "title": "Suivre un programme de construction",
+                "jeSais": "Je sais réaliser une figure en suivant des instructions géométriques.",
+                "checklist": [
+                      "Lire toutes les étapes",
+                      "Identifier les outils",
+                      "Respecter l’ordre",
+                      "Coder la figure",
+                      "Contrôler chaque propriété"
+                ],
+                "proofs": [
+                      "Programme court",
+                      "Comparaison avec la figure attendue"
+                ],
+                "lsu": "Reconnaître, nommer et construire des figures"
+          },
+          {
+                "code": "SYM-P4-01",
+                "domain": "Symétrie",
+                "title": "Compléter une figure par symétrie",
+                "jeSais": "Je sais construire l’image de points par rapport à un axe vertical ou horizontal.",
+                "checklist": [
+                      "Repérer la direction perpendiculaire",
+                      "Compter la distance à l’axe",
+                      "Reporter la même distance",
+                      "Placer les points images",
+                      "Relier dans le même ordre"
+                ],
+                "proofs": [
+                      "Compléter deux figures",
+                      "Vérification par pliage"
+                ],
+                "lsu": "Reconnaître et utiliser la symétrie"
+          },
+          {
+                "code": "SOL-P4-01",
+                "domain": "Solides",
+                "title": "Assembler des solides selon un modèle",
+                "jeSais": "Je sais construire un assemblage de solides et le comparer à une représentation.",
+                "checklist": [
+                      "Identifier les solides nécessaires",
+                      "Repérer leur position",
+                      "Respecter les contacts",
+                      "Changer de point de vue",
+                      "Comparer au modèle"
+                ],
+                "proofs": [
+                      "Assemblage réel",
+                      "Choix de la bonne vue"
+                ],
+                "lsu": "Reconnaître et décrire des solides"
+          },
+          {
+                "code": "DON-P4-01",
+                "domain": "Données",
+                "title": "Résoudre un problème avec un tableau ou diagramme",
+                "jeSais": "Je sais effectuer un ou plusieurs calculs à partir de données organisées.",
+                "checklist": [
+                      "Lire les unités",
+                      "Sélectionner les valeurs",
+                      "Comparer ou combiner les données",
+                      "Effectuer le calcul",
+                      "Interpréter le résultat"
+                ],
+                "proofs": [
+                      "Problème sur tableau",
+                      "Problème sur diagramme"
+                ],
+                "lsu": "Lire et interpréter des données"
+          }
+    ],
+    p5Competencies: [
+          {
+                "code": "NUM-P5-01",
+                "domain": "Nombres entiers",
+                "title": "Mobiliser toutes les représentations des nombres",
+                "jeSais": "Je sais passer rapidement d’une représentation d’un nombre à une autre.",
+                "checklist": [
+                      "Lire et écrire en chiffres",
+                      "Écrire en lettres",
+                      "Décomposer",
+                      "Utiliser unités de numération",
+                      "Placer sur une droite graduée"
+                ],
+                "proofs": [
+                      "Carte d’identité complète",
+                      "Défi de transformations"
+                ],
+                "lsu": "Utiliser et représenter les nombres entiers"
+          },
+          {
+                "code": "NUM-P5-02",
+                "domain": "Nombres entiers",
+                "title": "Comparer, encadrer et ordonner avec autonomie",
+                "jeSais": "Je sais choisir la bonne procédure pour comparer, encadrer ou ranger des nombres.",
+                "checklist": [
+                      "Identifier la tâche",
+                      "Mobiliser la valeur de position",
+                      "Utiliser les symboles",
+                      "Choisir les bornes adaptées",
+                      "Justifier brièvement"
+                ],
+                "proofs": [
+                      "Évaluation de synthèse",
+                      "Problème de classement"
+                ],
+                "lsu": "Comparer, ranger et encadrer des nombres entiers"
+          },
+          {
+                "code": "FRA-P5-01",
+                "domain": "Fractions",
+                "title": "Calculer une fraction simple d’un nombre entier",
+                "jeSais": "Je sais trouver une moitié, un tiers ou un quart d’une quantité partageable.",
+                "checklist": [
+                      "Identifier le nombre de parts",
+                      "Partager équitablement",
+                      "Calculer la valeur d’une part",
+                      "Prendre le nombre de parts demandé",
+                      "Vérifier en recomposant le tout"
+                ],
+                "proofs": [
+                      "Fractions de quantités",
+                      "Problème de partage fractionnaire"
+                ],
+                "lsu": "Utiliser les fractions dans des situations simples"
+          },
+          {
+                "code": "FRA-P5-02",
+                "domain": "Fractions",
+                "title": "Mobiliser les fractions jusqu’au dénominateur 12",
+                "jeSais": "Je sais représenter, placer et comparer des fractions simples.",
+                "checklist": [
+                      "Lire la fraction",
+                      "Choisir une représentation",
+                      "Placer sur une bande graduée",
+                      "Comparer des fractions",
+                      "Expliquer la stratégie"
+                ],
+                "proofs": [
+                      "Bilan fractionnaire",
+                      "Problème de mesure fractionnaire"
+                ],
+                "lsu": "Utiliser et comparer des fractions"
+          },
+          {
+                "code": "CAL-P5-01",
+                "domain": "Calcul mental",
+                "title": "Automatiser les faits numériques étudiés",
+                "jeSais": "Je sais restituer rapidement les faits d’addition et de multiplication étudiés.",
+                "checklist": [
+                      "Répondre avec exactitude",
+                      "Respecter le temps donné",
+                      "Trouver des termes manquants",
+                      "Utiliser les relations inverses",
+                      "Mesurer ses progrès"
+                ],
+                "proofs": [
+                      "Test de fluence",
+                      "Égalités à trou mixtes"
+                ],
+                "lsu": "Calculer mentalement"
+          },
+          {
+                "code": "CAL-P5-02",
+                "domain": "Calcul mental",
+                "title": "Combiner plusieurs procédures",
+                "jeSais": "Je sais combiner décomposition, compensation et faits mémorisés.",
+                "checklist": [
+                      "Analyser les nombres",
+                      "Planifier les étapes",
+                      "Garder un résultat intermédiaire",
+                      "Choisir une procédure efficace",
+                      "Contrôler par estimation"
+                ],
+                "proofs": [
+                      "Calculs complexes courts",
+                      "Comparaison de stratégies"
+                ],
+                "lsu": "Calculer mentalement"
+          },
+          {
+                "code": "OPE-P5-01",
+                "domain": "Opérations",
+                "title": "Choisir l’opération adaptée",
+                "jeSais": "Je sais choisir entre addition, soustraction, multiplication et division selon la situation.",
+                "checklist": [
+                      "Comprendre la relation entre quantités",
+                      "Identifier la structure",
+                      "Écarter les mots-indices trompeurs",
+                      "Écrire le calcul",
+                      "Justifier le choix"
+                ],
+                "proofs": [
+                      "Classement de problèmes",
+                      "Choix d’opération justifié"
+                ],
+                "lsu": "Calculer avec des nombres entiers"
+          },
+          {
+                "code": "OPE-P5-02",
+                "domain": "Opérations",
+                "title": "Estimer et vérifier un résultat",
+                "jeSais": "Je sais contrôler un calcul avec un ordre de grandeur ou une opération inverse.",
+                "checklist": [
+                      "Arrondir les nombres",
+                      "Estimer le résultat",
+                      "Comparer estimation et résultat",
+                      "Utiliser l’opération inverse",
+                      "Corriger si nécessaire"
+                ],
+                "proofs": [
+                      "Contrôle de calculs",
+                      "Détection de résultats impossibles"
+                ],
+                "lsu": "Calculer avec des nombres entiers"
+          },
+          {
+                "code": "PRO-P5-01",
+                "domain": "Résolution de problèmes",
+                "title": "Choisir une représentation adaptée",
+                "jeSais": "Je sais choisir un schéma, un tableau ou une ligne du temps pour modéliser un problème.",
+                "checklist": [
+                      "Identifier la structure",
+                      "Comparer les représentations possibles",
+                      "Choisir l’outil utile",
+                      "Faire apparaître les données",
+                      "Passer au calcul"
+                ],
+                "proofs": [
+                      "Deux problèmes avec représentations différentes",
+                      "Justification du modèle choisi"
+                ],
+                "lsu": "Résoudre des problèmes arithmétiques"
+          },
+          {
+                "code": "PRO-P5-02",
+                "domain": "Résolution de problèmes",
+                "title": "Résoudre un problème complexe ou atypique",
+                "jeSais": "Je sais essayer, réguler et expliquer une démarche pour un problème nouveau.",
+                "checklist": [
+                      "Reformuler",
+                      "Faire des essais organisés",
+                      "Conserver les traces utiles",
+                      "Vérifier les contraintes",
+                      "Communiquer la démarche"
+                ],
+                "proofs": [
+                      "Problème de recherche",
+                      "Présentation d’une stratégie"
+                ],
+                "lsu": "Résoudre des problèmes arithmétiques"
+          },
+          {
+                "code": "PRO-P5-03",
+                "domain": "Résolution de problèmes",
+                "title": "Rédiger une solution complète",
+                "jeSais": "Je sais présenter les calculs et une phrase-réponse compréhensible.",
+                "checklist": [
+                      "Présenter le raisonnement",
+                      "Écrire les calculs dans l’ordre",
+                      "Nommer les résultats intermédiaires",
+                      "Utiliser les unités",
+                      "Répondre à la question"
+                ],
+                "proofs": [
+                      "Rédaction d’une solution",
+                      "Amélioration d’une réponse incomplète"
+                ],
+                "lsu": "Résoudre des problèmes arithmétiques"
+          },
+          {
+                "code": "MES-P5-01",
+                "domain": "Mesures",
+                "title": "Convertir des mesures usuelles",
+                "jeSais": "Je sais convertir des longueurs, masses ou contenances dans des cas simples.",
+                "checklist": [
+                      "Identifier la grandeur",
+                      "Choisir la relation entre unités",
+                      "Effectuer la conversion",
+                      "Comparer dans une même unité",
+                      "Vérifier l’ordre de grandeur"
+                ],
+                "proofs": [
+                      "Conversions mixtes",
+                      "Problème nécessitant une conversion"
+                ],
+                "lsu": "Utiliser les unités de mesure"
+          },
+          {
+                "code": "MES-P5-02",
+                "domain": "Mesures",
+                "title": "Résoudre un problème de mesures à plusieurs étapes",
+                "jeSais": "Je sais organiser plusieurs calculs avec des mesures et leurs unités.",
+                "checklist": [
+                      "Repérer les grandeurs",
+                      "Mettre les données dans une même unité",
+                      "Planifier les calculs",
+                      "Effectuer les opérations",
+                      "Exprimer la réponse avec l’unité"
+                ],
+                "proofs": [
+                      "Problème de synthèse",
+                      "Correction d’une solution"
+                ],
+                "lsu": "Résoudre des problèmes de grandeurs et mesures"
+          },
+          {
+                "code": "TEM-P5-01",
+                "domain": "Temps et durées",
+                "title": "Comparer et calculer des durées",
+                "jeSais": "Je sais comparer des durées et résoudre un problème à une ou deux étapes.",
+                "checklist": [
+                      "Convertir heures et minutes si nécessaire",
+                      "Utiliser une ligne du temps",
+                      "Additionner ou soustraire des durées",
+                      "Comparer dans la même unité",
+                      "Contrôler la cohérence"
+                ],
+                "proofs": [
+                      "Problèmes de durées",
+                      "Comparaison d’emplois du temps"
+                ],
+                "lsu": "Se repérer dans le temps et mesurer des durées"
+          },
+          {
+                "code": "GEO-P5-01",
+                "domain": "Géométrie plane",
+                "title": "Mobiliser les propriétés des figures usuelles",
+                "jeSais": "Je sais identifier une figure grâce à ses propriétés vérifiées avec des instruments.",
+                "checklist": [
+                      "Observer côtés et sommets",
+                      "Mesurer les longueurs",
+                      "Vérifier les angles droits",
+                      "Chercher parallélisme simple si utile",
+                      "Justifier le nom de la figure"
+                ],
+                "proofs": [
+                      "Classement instrumenté",
+                      "Portrait de figure"
+                ],
+                "lsu": "Reconnaître, nommer et construire des figures"
+          },
+          {
+                "code": "GEO-P5-02",
+                "domain": "Géométrie plane",
+                "title": "Réaliser une construction complexe",
+                "jeSais": "Je sais combiner règle, équerre et compas dans un programme de construction.",
+                "checklist": [
+                      "Analyser la figure finale",
+                      "Planifier les étapes",
+                      "Utiliser les outils précisément",
+                      "Respecter dimensions et propriétés",
+                      "Contrôler la construction"
+                ],
+                "proofs": [
+                      "Programme de construction",
+                      "Reproduction d’une figure complexe"
+                ],
+                "lsu": "Reconnaître, nommer et construire des figures"
+          },
+          {
+                "code": "SYM-P5-01",
+                "domain": "Symétrie",
+                "title": "Utiliser la symétrie dans une frise ou un pavage",
+                "jeSais": "Je sais reconnaître et construire des motifs utilisant la symétrie.",
+                "checklist": [
+                      "Identifier le motif de base",
+                      "Repérer les axes",
+                      "Construire les images",
+                      "Respecter les distances",
+                      "Poursuivre régulièrement"
+                ],
+                "proofs": [
+                      "Compléter une frise",
+                      "Créer un motif symétrique"
+                ],
+                "lsu": "Reconnaître et utiliser la symétrie"
+          },
+          {
+                "code": "SOL-P5-01",
+                "domain": "Solides",
+                "title": "Reconnaître un patron de cube ou de pavé",
+                "jeSais": "Je sais déterminer si un assemblage de faces peut former un cube ou un pavé.",
+                "checklist": [
+                      "Compter les faces",
+                      "Observer leur disposition",
+                      "Imaginer le pliage",
+                      "Repérer les faces opposées",
+                      "Valider par manipulation"
+                ],
+                "proofs": [
+                      "Tri de patrons",
+                      "Construction d’un solide"
+                ],
+                "lsu": "Reconnaître, décrire et construire des solides"
+          },
+          {
+                "code": "DON-P5-01",
+                "domain": "Données",
+                "title": "Mener une enquête et organiser les données",
+                "jeSais": "Je sais recueillir, classer et compter des réponses.",
+                "checklist": [
+                      "Formuler une question claire",
+                      "Définir les catégories",
+                      "Recueillir sans oublier de réponse",
+                      "Effectuer les effectifs",
+                      "Vérifier le total"
+                ],
+                "proofs": [
+                      "Mini-enquête de classe",
+                      "Tableau d’effectifs"
+                ],
+                "lsu": "Organiser et représenter des données"
+          },
+          {
+                "code": "DON-P5-02",
+                "domain": "Données",
+                "title": "Communiquer des données avec un graphique",
+                "jeSais": "Je sais choisir et produire une représentation claire des résultats.",
+                "checklist": [
+                      "Choisir tableau ou diagramme",
+                      "Définir une échelle",
+                      "Ajouter titre et légende",
+                      "Construire avec précision",
+                      "Formuler une conclusion"
+                ],
+                "proofs": [
+                      "Diagramme d’enquête",
+                      "Présentation orale des résultats"
+                ],
+                "lsu": "Organiser, représenter et interpréter des données"
+          }
+    ],
     rows: [
       ["Nombres entiers","Nombres au-delà de 1 000 dès le début. Lire, écrire, décomposer, comparer, encadrer. Relations unités/dizaines/centaines/milliers.","Étendre jusqu’à 10 000 au plus tard. Différentes écritures, valeur des chiffres, droite graduée.","Dénombrements complexes et conversions entre unités de numération. Intercaler et ordonner.","Consolider jusqu’à 10 000. Résoudre des problèmes mobilisant la numération.","Synthèse, automatismes, estimation et réinvestissement dans toutes les situations."],
       ["Fractions","Réinvestir demi, tiers, quart, dixième comme fractions d’un tout. Représenter et nommer.","Égalités simples entre fractions inférieures ou égales à 1. Comparer par manipulation.","À partir de P3 : fractions d’une unité de longueur. Mesurer et tracer des longueurs non entières.","Placer, comparer et ordonner des fractions. Additions et soustractions simples avec représentations.","Fractions de nombres entiers dans des cas simples. Synthèse avec dénominateur inférieur ou égal à 12."],
