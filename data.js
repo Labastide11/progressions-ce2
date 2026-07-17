@@ -7584,5 +7584,788 @@ window.PROGRESSIONS = {
         "lsu": "Mobiliser quelques repères culturels et utiliser l’écrit comme appui."
       }
     ]
+  },
+  sciences: {
+    "title": "Sciences et technologie",
+    "icon": "🔬",
+    "subtitle": "Matière, vivant, corps humain, objets techniques et environnement",
+    "routines": [
+      "Partir d’une question scientifique précise",
+      "Faire formuler des hypothèses avant l’expérience",
+      "Observer, mesurer, comparer et garder une trace",
+      "Distinguer résultat observé et interprétation",
+      "Employer un vocabulaire scientifique précis",
+      "Présenter oralement ou par écrit une conclusion courte"
+    ],
+    "rows": [
+      [
+        "Matière et mesures",
+        "Propriétés des solides et des liquides, masses, volumes, contenances et durées.",
+        "Réinvestissement des mesures dans l’étude de la croissance.",
+        "Mesures et représentations liées au vivant.",
+        "Mesures du pouls, de la respiration et de l’effort.",
+        "Mesures et tests dans un projet technique ou environnemental."
+      ],
+      [
+        "Le vivant",
+        "Premiers repères sur les caractéristiques du vivant.",
+        "Croissance, développement et reproduction des êtres vivants.",
+        "Locomotion, milieux de vie, biodiversité et chaînes alimentaires.",
+        "Comparaison du fonctionnement humain avec d’autres êtres vivants.",
+        "Effets des activités humaines et projet de préservation."
+      ],
+      [
+        "Corps humain et santé",
+        "Mesurer et utiliser des grandeurs simples.",
+        "Croissance et développement du corps.",
+        "Mouvements et déplacements.",
+        "Muscles, articulations, respiration, pouls, effort et apprentissages.",
+        "Usage responsable des objets et du numérique."
+      ],
+      [
+        "Objets et programmation",
+        "Mesurer et construire avec précision.",
+        "Observer des objets liés au vivant.",
+        "Modéliser un déplacement.",
+        "Utiliser des outils de mesure et des dispositifs simples.",
+        "Fonction, matériaux, énergie, algorithmes et réalisation d’un projet."
+      ]
+    ],
+    "p1Competencies": [
+      {
+        "code": "SCI-P1-01",
+        "domain": "Démarche scientifique",
+        "title": "Formuler une question scientifique",
+        "jeSais": "Je sais transformer une observation en question que l’on peut étudier.",
+        "checklist": [
+          "Observer une situation ou un objet.",
+          "Distinguer une question scientifique d’une préférence.",
+          "Formuler une question précise.",
+          "Identifier ce qu’il faudra observer ou mesurer.",
+          "Proposer une première hypothèse."
+        ],
+        "proofs": [
+          "Question formulée avant une expérience.",
+          "Échange oral à partir d’une situation-problème."
+        ],
+        "lsu": "Pratiquer une démarche scientifique."
+      },
+      {
+        "code": "SCI-P1-02",
+        "domain": "Matière",
+        "title": "Distinguer un solide d’un liquide",
+        "jeSais": "Je sais reconnaître un solide et un liquide grâce à leurs propriétés.",
+        "checklist": [
+          "Observer la forme d’une matière.",
+          "Tester le changement de récipient.",
+          "Comprendre qu’un liquide prend la forme du récipient.",
+          "Comprendre qu’un solide conserve sa forme propre.",
+          "Justifier le classement par une propriété."
+        ],
+        "proofs": [
+          "Classement expérimental de matières.",
+          "Explication orale ou écrite."
+        ],
+        "lsu": "Identifier quelques propriétés de la matière."
+      },
+      {
+        "code": "SCI-P1-03",
+        "domain": "Mesures",
+        "title": "Comparer et mesurer des masses",
+        "jeSais": "Je sais comparer et mesurer la masse de plusieurs objets.",
+        "checklist": [
+          "Utiliser une balance.",
+          "Comparer plus lourd et plus léger.",
+          "Lire une masse en grammes ou kilogrammes.",
+          "Choisir une unité adaptée.",
+          "Noter correctement le résultat."
+        ],
+        "proofs": [
+          "Mesure de plusieurs objets.",
+          "Problème expérimental de comparaison."
+        ],
+        "lsu": "Mesurer des grandeurs physiques."
+      },
+      {
+        "code": "SCI-P1-04",
+        "domain": "Mesures",
+        "title": "Convertir des masses simples",
+        "jeSais": "Je sais utiliser la relation entre grammes et kilogrammes dans des situations simples.",
+        "checklist": [
+          "Savoir que 1 kg = 1 000 g.",
+          "Comparer des masses exprimées dans des unités différentes.",
+          "Effectuer une conversion simple.",
+          "Vérifier la vraisemblance.",
+          "Réutiliser la conversion dans un problème."
+        ],
+        "proofs": [
+          "Exercices de conversion contextualisés.",
+          "Préparation d’une mesure ou d’une recette."
+        ],
+        "lsu": "Utiliser les unités de masse."
+      },
+      {
+        "code": "SCI-P1-05",
+        "domain": "Volumes et contenances",
+        "title": "Comparer des contenances",
+        "jeSais": "Je sais déterminer quel récipient peut contenir le plus de liquide.",
+        "checklist": [
+          "Distinguer forme du récipient et contenance.",
+          "Comparer par transvasement.",
+          "Utiliser un même récipient étalon.",
+          "Classer plusieurs contenants.",
+          "Expliquer la méthode choisie."
+        ],
+        "proofs": [
+          "Expérience de transvasement.",
+          "Classement argumenté de contenants."
+        ],
+        "lsu": "Comparer des contenances."
+      },
+      {
+        "code": "SCI-P1-06",
+        "domain": "Volumes et contenances",
+        "title": "Mesurer un volume liquide",
+        "jeSais": "Je sais mesurer un volume de liquide avec un récipient gradué.",
+        "checklist": [
+          "Choisir le récipient adapté.",
+          "Repérer les graduations.",
+          "Placer les yeux au niveau du liquide.",
+          "Lire la valeur correctement.",
+          "Noter l’unité."
+        ],
+        "proofs": [
+          "Mesure de différents volumes.",
+          "Préparation d’un volume demandé."
+        ],
+        "lsu": "Mesurer un volume liquide."
+      },
+      {
+        "code": "SCI-P1-07",
+        "domain": "Durées",
+        "title": "Comparer et mesurer des durées",
+        "jeSais": "Je sais choisir un outil pour mesurer une durée.",
+        "checklist": [
+          "Identifier la durée à mesurer.",
+          "Choisir montre, chronomètre ou sablier.",
+          "Démarrer et arrêter au bon moment.",
+          "Comparer plusieurs durées.",
+          "Exprimer le résultat avec une unité."
+        ],
+        "proofs": [
+          "Mesure d’activités courtes.",
+          "Comparaison de plusieurs dispositifs."
+        ],
+        "lsu": "Mesurer et comparer des durées."
+      },
+      {
+        "code": "SCI-P1-08",
+        "domain": "Objet technique",
+        "title": "Construire et tester un sablier",
+        "jeSais": "Je sais réaliser un sablier simple et vérifier sa régularité.",
+        "checklist": [
+          "Identifier le besoin.",
+          "Choisir les matériaux.",
+          "Suivre un schéma de montage.",
+          "Tester l’écoulement.",
+          "Modifier la quantité ou l’ouverture.",
+          "Comparer plusieurs mesures."
+        ],
+        "proofs": [
+          "Fabrication d’un sablier.",
+          "Compte rendu de tests et d’améliorations."
+        ],
+        "lsu": "Concevoir et réaliser un objet technique."
+      }
+    ],
+    "p2Competencies": [
+      {
+        "code": "SCI-P2-01",
+        "domain": "Vivant",
+        "title": "Identifier les caractéristiques d’un être vivant",
+        "jeSais": "Je sais utiliser plusieurs critères pour reconnaître un être vivant.",
+        "checklist": [
+          "Observer des caractéristiques.",
+          "Repérer naissance, croissance, alimentation et reproduction.",
+          "Distinguer vivant, non-vivant et objet fabriqué.",
+          "Justifier le classement.",
+          "Accepter les cas qui nécessitent davantage d’informations."
+        ],
+        "proofs": [
+          "Classement argumenté.",
+          "Fiche d’identité d’un être vivant."
+        ],
+        "lsu": "Connaître les caractéristiques du vivant."
+      },
+      {
+        "code": "SCI-P2-02",
+        "domain": "Croissance végétale",
+        "title": "Ordonner les étapes de la vie d’une plante à fleurs",
+        "jeSais": "Je sais remettre dans l’ordre les principales étapes de la vie d’une plante.",
+        "checklist": [
+          "Identifier graine, germination, plantule, plante adulte, fleur et fruit.",
+          "Respecter l’ordre chronologique.",
+          "Relier fleur, fruit et graines.",
+          "Utiliser un vocabulaire précis.",
+          "Construire un cycle."
+        ],
+        "proofs": [
+          "Images à ordonner.",
+          "Schéma du cycle de vie."
+        ],
+        "lsu": "Décrire le développement d’un végétal."
+      },
+      {
+        "code": "SCI-P2-03",
+        "domain": "Expérimentation",
+        "title": "Identifier les besoins d’une plante",
+        "jeSais": "Je sais mettre en place une expérience pour étudier les besoins d’une plante.",
+        "checklist": [
+          "Choisir un facteur à tester.",
+          "Conserver les autres conditions identiques.",
+          "Prévoir un témoin.",
+          "Observer sur plusieurs jours.",
+          "Comparer les résultats.",
+          "Formuler une conclusion prudente."
+        ],
+        "proofs": [
+          "Expérience sur eau, lumière ou température.",
+          "Tableau d’observations."
+        ],
+        "lsu": "Mettre en œuvre une démarche expérimentale."
+      },
+      {
+        "code": "SCI-P2-04",
+        "domain": "Croissance",
+        "title": "Mesurer la croissance d’un être vivant",
+        "jeSais": "Je sais suivre la croissance d’un être vivant avec des mesures régulières.",
+        "checklist": [
+          "Choisir une grandeur mesurable.",
+          "Utiliser le même protocole.",
+          "Noter la date et la mesure.",
+          "Organiser les résultats dans un tableau.",
+          "Construire ou lire un graphique simple."
+        ],
+        "proofs": [
+          "Suivi d’une culture ou d’un élevage.",
+          "Graphique de croissance."
+        ],
+        "lsu": "Mesurer et représenter la croissance."
+      },
+      {
+        "code": "SCI-P2-05",
+        "domain": "Développement animal",
+        "title": "Distinguer croissance continue et croissance avec mues",
+        "jeSais": "Je sais comparer deux manières de grandir chez les animaux.",
+        "checklist": [
+          "Observer plusieurs cycles de vie.",
+          "Identifier une croissance progressive.",
+          "Reconnaître une mue.",
+          "Comparer les étapes.",
+          "Utiliser les mots croissance et mue."
+        ],
+        "proofs": [
+          "Comparaison de documents.",
+          "Tableau de deux développements."
+        ],
+        "lsu": "Comprendre la diversité des développements animaux."
+      },
+      {
+        "code": "SCI-P2-06",
+        "domain": "Développement animal",
+        "title": "Distinguer larve, jeune et adulte",
+        "jeSais": "Je sais reconnaître les principales étapes du développement d’un animal.",
+        "checklist": [
+          "Identifier l’œuf si présent.",
+          "Reconnaître une forme larvaire.",
+          "Distinguer jeune et adulte.",
+          "Repérer une métamorphose.",
+          "Ordonner les étapes."
+        ],
+        "proofs": [
+          "Cycle de vie à compléter.",
+          "Étude d’un insecte ou d’un amphibien."
+        ],
+        "lsu": "Décrire le cycle de vie d’un animal."
+      },
+      {
+        "code": "SCI-P2-07",
+        "domain": "Reproduction",
+        "title": "Comprendre que les êtres vivants se reproduisent",
+        "jeSais": "Je sais expliquer simplement que les êtres vivants donnent naissance à de nouveaux individus.",
+        "checklist": [
+          "Identifier parents et descendants.",
+          "Distinguer naissance et croissance.",
+          "Repérer œuf ou naissance directe selon les espèces.",
+          "Comprendre la continuité de l’espèce.",
+          "Employer un vocabulaire adapté au CE2."
+        ],
+        "proofs": [
+          "Comparaison de cycles de vie.",
+          "Explication orale guidée."
+        ],
+        "lsu": "Comprendre la reproduction des êtres vivants."
+      }
+    ],
+    "p3Competencies": [
+      {
+        "code": "SCI-P3-01",
+        "domain": "Locomotion",
+        "title": "Identifier les organes qui permettent le déplacement",
+        "jeSais": "Je sais relier les parties du corps d’un animal à son mode de déplacement.",
+        "checklist": [
+          "Repérer pattes, ailes, nageoires ou corps allongé.",
+          "Identifier marcher, voler, nager, ramper ou sauter.",
+          "Comparer plusieurs animaux.",
+          "Éviter d’associer un seul organe à une seule fonction universelle.",
+          "Justifier avec une observation."
+        ],
+        "proofs": [
+          "Classement d’animaux.",
+          "Fiche fonction-organe."
+        ],
+        "lsu": "Relier organisation du corps et déplacement."
+      },
+      {
+        "code": "SCI-P3-02",
+        "domain": "Locomotion",
+        "title": "Comparer plusieurs modes de déplacement",
+        "jeSais": "Je sais comparer comment différents animaux se déplacent dans leur milieu.",
+        "checklist": [
+          "Observer trajectoire et vitesse.",
+          "Identifier l’appui utilisé.",
+          "Relier déplacement et milieu.",
+          "Repérer ressemblances et différences.",
+          "Organiser la comparaison."
+        ],
+        "proofs": [
+          "Tableau comparatif.",
+          "Observation de vidéos courtes."
+        ],
+        "lsu": "Comparer les fonctions de locomotion."
+      },
+      {
+        "code": "SCI-P3-03",
+        "domain": "Milieux de vie",
+        "title": "Décrire un milieu de vie",
+        "jeSais": "Je sais décrire les éléments vivants et non vivants d’un milieu.",
+        "checklist": [
+          "Identifier les êtres vivants.",
+          "Observer sol, eau, lumière et température.",
+          "Distinguer composantes vivantes et non vivantes.",
+          "Employer le mot milieu.",
+          "Présenter une description organisée."
+        ],
+        "proofs": [
+          "Étude du sol, jardin ou mare.",
+          "Croquis légendé d’un milieu."
+        ],
+        "lsu": "Décrire un environnement."
+      },
+      {
+        "code": "SCI-P3-04",
+        "domain": "Biodiversité",
+        "title": "Comparer la diversité de deux milieux",
+        "jeSais": "Je sais comparer les êtres vivants présents dans deux environnements.",
+        "checklist": [
+          "Réaliser ou exploiter un inventaire.",
+          "Comparer le nombre et les types d’espèces.",
+          "Relier certaines différences aux conditions du milieu.",
+          "Distinguer observation et explication.",
+          "Formuler une conclusion."
+        ],
+        "proofs": [
+          "Inventaire de deux espaces.",
+          "Tableau comparatif de biodiversité."
+        ],
+        "lsu": "Comprendre la diversité du vivant."
+      },
+      {
+        "code": "SCI-P3-05",
+        "domain": "Sol vivant",
+        "title": "Comprendre que le sol est un milieu de vie",
+        "jeSais": "Je sais montrer que le sol contient des êtres vivants.",
+        "checklist": [
+          "Observer un échantillon de sol.",
+          "Identifier quelques organismes.",
+          "Repérer matière minérale et matière organique.",
+          "Respecter les êtres vivants observés.",
+          "Expliquer le rôle possible de certains décomposeurs."
+        ],
+        "proofs": [
+          "Observation de sol.",
+          "Dessin ou compte rendu scientifique."
+        ],
+        "lsu": "Comprendre les interactions dans un milieu."
+      },
+      {
+        "code": "SCI-P3-06",
+        "domain": "Relations alimentaires",
+        "title": "Construire une chaîne alimentaire courte",
+        "jeSais": "Je sais représenter qui mange qui dans une chaîne alimentaire.",
+        "checklist": [
+          "Identifier les aliments de plusieurs animaux.",
+          "Placer le producteur au début lorsque c’est pertinent.",
+          "Orienter les flèches selon la convention choisie.",
+          "Construire une chaîne de trois ou quatre maillons.",
+          "Expliquer qu’un être vivant peut appartenir à plusieurs chaînes."
+        ],
+        "proofs": [
+          "Chaîne alimentaire à construire.",
+          "Explication d’un réseau simple."
+        ],
+        "lsu": "Comprendre les relations alimentaires."
+      },
+      {
+        "code": "SCI-P3-07",
+        "domain": "Interactions",
+        "title": "Expliquer une interdépendance entre êtres vivants",
+        "jeSais": "Je sais donner un exemple montrant que des êtres vivants dépendent les uns des autres.",
+        "checklist": [
+          "Identifier les organismes concernés.",
+          "Décrire la relation.",
+          "Repérer alimentation, abri, reproduction ou décomposition.",
+          "Imaginer l’effet d’une disparition.",
+          "Formuler une explication simple."
+        ],
+        "proofs": [
+          "Étude d’un cas concret.",
+          "Schéma d’interactions."
+        ],
+        "lsu": "Comprendre les interactions dans un écosystème."
+      }
+    ],
+    "p4Competencies": [
+      {
+        "code": "SCI-P4-01",
+        "domain": "Mouvement",
+        "title": "Identifier le rôle des articulations",
+        "jeSais": "Je sais expliquer qu’une articulation permet le mouvement entre deux parties du corps.",
+        "checklist": [
+          "Repérer coude, genou, épaule ou cheville.",
+          "Observer flexion et extension.",
+          "Identifier les os de part et d’autre.",
+          "Comprendre qu’une articulation relie des parties mobiles.",
+          "Utiliser un modèle simple."
+        ],
+        "proofs": [
+          "Observation d’un mouvement.",
+          "Modèle articulé."
+        ],
+        "lsu": "Comprendre le fonctionnement du corps humain."
+      },
+      {
+        "code": "SCI-P4-02",
+        "domain": "Muscles",
+        "title": "Comprendre le rôle des muscles dans le mouvement",
+        "jeSais": "Je sais expliquer que les muscles se contractent pour produire un mouvement.",
+        "checklist": [
+          "Observer un muscle au repos et en action.",
+          "Identifier biceps et triceps.",
+          "Relier contraction et raccourcissement.",
+          "Comprendre le fonctionnement en paire.",
+          "Modéliser flexion et extension."
+        ],
+        "proofs": [
+          "Modèle bras-muscles.",
+          "Explication orale avec schéma."
+        ],
+        "lsu": "Comprendre le rôle des muscles."
+      },
+      {
+        "code": "SCI-P4-03",
+        "domain": "Effort physique",
+        "title": "Mesurer le pouls",
+        "jeSais": "Je sais mesurer et comparer mon pouls au repos et après un effort.",
+        "checklist": [
+          "Repérer un endroit où sentir le pouls.",
+          "Compter pendant une durée définie.",
+          "Utiliser un chronomètre.",
+          "Noter le résultat.",
+          "Comparer avant et après l’effort.",
+          "Respecter les règles de sécurité."
+        ],
+        "proofs": [
+          "Mesure encadrée du pouls.",
+          "Tableau de résultats."
+        ],
+        "lsu": "Observer les effets de l’effort sur le corps."
+      },
+      {
+        "code": "SCI-P4-04",
+        "domain": "Respiration",
+        "title": "Observer les effets de l’effort sur la respiration",
+        "jeSais": "Je sais comparer ma respiration au repos et après un effort.",
+        "checklist": [
+          "Observer fréquence et amplitude.",
+          "Compter les mouvements respiratoires.",
+          "Repérer l’essoufflement.",
+          "Comparer les mesures.",
+          "Relier le changement à l’activité musculaire."
+        ],
+        "proofs": [
+          "Mesures avant/après effort.",
+          "Graphique ou tableau comparatif."
+        ],
+        "lsu": "Comprendre les effets de l’activité physique."
+      },
+      {
+        "code": "SCI-P4-05",
+        "domain": "Thermorégulation",
+        "title": "Identifier quelques réactions du corps pendant l’effort",
+        "jeSais": "Je sais décrire les changements visibles du corps pendant une activité physique.",
+        "checklist": [
+          "Repérer transpiration, chaleur et rougeur.",
+          "Distinguer observation et sensation.",
+          "Relier ces réactions à l’effort.",
+          "Comprendre l’importance de boire et récupérer.",
+          "Formuler une conclusion."
+        ],
+        "proofs": [
+          "Observation après effort.",
+          "Compte rendu collectif."
+        ],
+        "lsu": "Adopter des comportements favorables à la santé."
+      },
+      {
+        "code": "SCI-P4-06",
+        "domain": "Santé",
+        "title": "Expliquer les bénéfices d’une activité physique régulière",
+        "jeSais": "Je sais expliquer pourquoi bouger régulièrement est bon pour la santé.",
+        "checklist": [
+          "Identifier plusieurs bénéfices.",
+          "Distinguer activité régulière et effort excessif.",
+          "Relier mouvement, sommeil et bien-être.",
+          "Prendre en compte les possibilités de chacun.",
+          "Proposer une habitude réaliste."
+        ],
+        "proofs": [
+          "Affiche de conseils argumentés.",
+          "Présentation orale."
+        ],
+        "lsu": "Reconnaître des comportements favorables à la santé."
+      },
+      {
+        "code": "SCI-P4-07",
+        "domain": "Cerveau et apprentissages",
+        "title": "Comprendre que l’entraînement aide à apprendre",
+        "jeSais": "Je sais expliquer que répéter, se concentrer et se corriger permettent de progresser.",
+        "checklist": [
+          "Observer un progrès après plusieurs essais.",
+          "Comprendre le rôle de l’attention.",
+          "Utiliser la relecture ou le rappel actif.",
+          "Accepter l’erreur comme information.",
+          "Choisir une stratégie d’apprentissage."
+        ],
+        "proofs": [
+          "Comparaison premier/dernier essai.",
+          "Explication d’une stratégie efficace."
+        ],
+        "lsu": "Comprendre quelques conditions favorables aux apprentissages."
+      },
+      {
+        "code": "SCI-P4-08",
+        "domain": "Santé et équilibre",
+        "title": "Relier sommeil, repos et concentration",
+        "jeSais": "Je sais expliquer pourquoi le sommeil et le repos aident le corps et le cerveau.",
+        "checklist": [
+          "Identifier des signes de fatigue.",
+          "Comprendre que les besoins varient avec l’âge.",
+          "Relier sommeil et attention.",
+          "Distinguer repos et temps d’écran.",
+          "Proposer une habitude favorable."
+        ],
+        "proofs": [
+          "Analyse de situations.",
+          "Conseil argumenté."
+        ],
+        "lsu": "Adopter des habitudes favorables à la santé."
+      }
+    ],
+    "p5Competencies": [
+      {
+        "code": "SCI-P5-01",
+        "domain": "Objets techniques",
+        "title": "Identifier le besoin auquel répond un objet",
+        "jeSais": "Je sais expliquer pourquoi un objet technique a été fabriqué.",
+        "checklist": [
+          "Observer l’objet.",
+          "Identifier son utilisateur.",
+          "Formuler le besoin.",
+          "Distinguer fonction d’usage et apparence.",
+          "Comparer plusieurs solutions au même besoin."
+        ],
+        "proofs": [
+          "Analyse d’un objet.",
+          "Classement objet-besoin."
+        ],
+        "lsu": "Comprendre la fonction des objets techniques."
+      },
+      {
+        "code": "SCI-P5-02",
+        "domain": "Objets techniques",
+        "title": "Identifier les principales parties d’un objet",
+        "jeSais": "Je sais nommer les éléments d’un objet et expliquer leur rôle.",
+        "checklist": [
+          "Observer sans démonter dangereusement.",
+          "Repérer les composants.",
+          "Associer composant et fonction.",
+          "Décrire les relations entre les parties.",
+          "Produire un schéma légendé."
+        ],
+        "proofs": [
+          "Fiche d’analyse fonctionnelle.",
+          "Schéma d’un objet."
+        ],
+        "lsu": "Comprendre le fonctionnement d’un objet technique."
+      },
+      {
+        "code": "SCI-P5-03",
+        "domain": "Matériaux",
+        "title": "Choisir un matériau selon ses propriétés",
+        "jeSais": "Je sais choisir un matériau adapté à une fonction.",
+        "checklist": [
+          "Identifier rigidité, souplesse, transparence ou imperméabilité.",
+          "Tester une propriété.",
+          "Comparer plusieurs matériaux.",
+          "Relier propriété et usage.",
+          "Justifier un choix."
+        ],
+        "proofs": [
+          "Tests de matériaux.",
+          "Choix argumenté pour une fabrication."
+        ],
+        "lsu": "Relier matériaux, propriétés et usages."
+      },
+      {
+        "code": "SCI-P5-04",
+        "domain": "Énergie",
+        "title": "Identifier l’énergie utilisée par un objet",
+        "jeSais": "Je sais reconnaître comment un objet reçoit l’énergie nécessaire à son fonctionnement.",
+        "checklist": [
+          "Repérer effort humain, pile, secteur, soleil ou vent.",
+          "Distinguer source d’énergie et fonction.",
+          "Identifier les risques simples.",
+          "Comparer deux objets.",
+          "Employer un vocabulaire adapté."
+        ],
+        "proofs": [
+          "Classement d’objets.",
+          "Présentation d’un fonctionnement."
+        ],
+        "lsu": "Identifier des sources d’énergie."
+      },
+      {
+        "code": "SCI-P5-05",
+        "domain": "Programmation",
+        "title": "Suivre une suite d’instructions",
+        "jeSais": "Je sais exécuter un algorithme simple dans l’ordre.",
+        "checklist": [
+          "Identifier le point de départ.",
+          "Lire chaque instruction.",
+          "Respecter l’ordre.",
+          "Repérer les déplacements et actions.",
+          "Vérifier le résultat final."
+        ],
+        "proofs": [
+          "Camarade-robot.",
+          "Déplacement sur quadrillage."
+        ],
+        "lsu": "Comprendre et exécuter un algorithme."
+      },
+      {
+        "code": "SCI-P5-06",
+        "domain": "Programmation",
+        "title": "Écrire un programme de déplacement simple",
+        "jeSais": "Je sais écrire une suite d’instructions pour atteindre un objectif.",
+        "checklist": [
+          "Définir le départ et l’arrivée.",
+          "Choisir des instructions précises.",
+          "Ordonner les étapes.",
+          "Tester le programme.",
+          "Corriger une erreur.",
+          "Utiliser une répétition simple si utile."
+        ],
+        "proofs": [
+          "Programmation par blocs ou robot.",
+          "Algorithme sur quadrillage."
+        ],
+        "lsu": "Concevoir et corriger un programme simple."
+      },
+      {
+        "code": "SCI-P5-07",
+        "domain": "Projet environnemental",
+        "title": "Identifier un problème environnemental proche",
+        "jeSais": "Je sais décrire un problème concret lié à l’eau, aux déchets ou à la biodiversité.",
+        "checklist": [
+          "Observer le problème.",
+          "Recueillir quelques données.",
+          "Identifier les causes possibles.",
+          "Distinguer fait et opinion.",
+          "Choisir un problème sur lequel la classe peut agir."
+        ],
+        "proofs": [
+          "Diagnostic de l’école.",
+          "Tableau d’observations."
+        ],
+        "lsu": "Comprendre les effets des activités humaines."
+      },
+      {
+        "code": "SCI-P5-08",
+        "domain": "Projet environnemental",
+        "title": "Proposer une solution réalisable",
+        "jeSais": "Je sais imaginer une action ou un objet pour améliorer une situation.",
+        "checklist": [
+          "Formuler l’objectif.",
+          "Proposer plusieurs solutions.",
+          "Comparer avantages et contraintes.",
+          "Choisir une solution réaliste.",
+          "Prévoir le matériel et les étapes."
+        ],
+        "proofs": [
+          "Cahier des charges simple.",
+          "Présentation argumentée d’une solution."
+        ],
+        "lsu": "Concevoir une action au service de l’environnement."
+      },
+      {
+        "code": "SCI-P5-09",
+        "domain": "Projet technique",
+        "title": "Fabriquer, tester et améliorer une réalisation",
+        "jeSais": "Je sais construire un dispositif puis le modifier après un test.",
+        "checklist": [
+          "Suivre un schéma ou un plan.",
+          "Respecter les règles de sécurité.",
+          "Tester avec un critère précis.",
+          "Repérer une difficulté.",
+          "Modifier un élément.",
+          "Comparer avant et après."
+        ],
+        "proofs": [
+          "Fabrication d’un dispositif d’économie d’eau ou d’un abri.",
+          "Fiche de tests."
+        ],
+        "lsu": "Concevoir et réaliser un objet technique."
+      },
+      {
+        "code": "SCI-P5-10",
+        "domain": "Projet environnemental",
+        "title": "Évaluer les effets d’une action collective",
+        "jeSais": "Je sais observer si notre projet a produit un effet.",
+        "checklist": [
+          "Choisir un indicateur.",
+          "Mesurer avant et après.",
+          "Noter les résultats.",
+          "Comparer les données.",
+          "Reconnaître les limites.",
+          "Présenter le bilan."
+        ],
+        "proofs": [
+          "Bilan d’un projet de réduction des déchets ou d’économie d’eau.",
+          "Présentation scientifique collective."
+        ],
+        "lsu": "S’engager dans un projet de préservation de l’environnement."
+      }
+    ]
   }
 };

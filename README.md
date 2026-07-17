@@ -4,7 +4,7 @@ Mini-site statique prêt pour GitHub Pages.
 
 ## Fonctions
 
-- référentiel annuel en français, mathématiques, EMC, histoire, géographie et anglais ;
+- référentiel annuel en français, mathématiques, EMC, histoire, géographie, anglais et sciences ;
 - vues par période ;
 - suivi interactif avec états : À faire, En cours, Travaillé, À reprendre, Stabilisé ;
 - checklist pédagogique par notion ;
@@ -64,3 +64,16 @@ une ou deux observations retenues et un regroupement compatible LSU.
 Les cinq périodes d’anglais comportent 30 compétences, essentiellement orales :
 compréhension, interaction, parole en continu et culture anglophone.
 L’écrit est volontairement limité à deux cartes d’appui sur l’ensemble de l’année.
+
+
+## Sciences et technologie — nouveaux programmes
+
+Le site intègre une progression anticipée des nouveaux programmes de sciences et technologie :
+- P1 : matière, masses, volumes, contenances et durées ;
+- P2 : croissance, développement et reproduction du vivant ;
+- P3 : locomotion, milieux de vie, biodiversité et chaînes alimentaires ;
+- P4 : corps humain, muscles, respiration, pouls, activité physique et apprentissages ;
+- P5 : objets techniques, programmation et projet environnemental.
+
+La P5 distingue clairement les cartes « Objets techniques », « Programmation »
+et « Projet environnemental », même lorsqu’elles sont travaillées dans un projet commun.
