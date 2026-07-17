@@ -8,7 +8,7 @@ Mini-site statique prêt pour GitHub Pages.
 - vues par période ;
 - suivi interactif avec états : À faire, En cours, Travaillé, À reprendre, Stabilisé ;
 - checklist pédagogique par notion ;
-- Français période 1 : 35 compétences précises, une ou deux évaluations retenues, bilan et regroupement LSU ;
+- Français : suivi détaillé des périodes 1 et 2, compatible avec la préparation du LSU ;
 - zone éditable « Je sais / J’ai retenu » ;
 - notes personnelles ;
 - sauvegarde automatique dans le navigateur ;

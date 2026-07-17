@@ -662,6 +662,787 @@ window.PROGRESSIONS = {
             "lsu": "Utiliser l’ordre alphabétique et le dictionnaire."
       }
 ],
+    p2Competencies: [
+      {
+            "code": "OR-P2-01",
+            "domain": "Langage oral",
+            "title": "Reformuler une démarche",
+            "jeSais": "Je sais expliquer avec mes mots comment j’ai réalisé un travail.",
+            "checklist": [
+                  "Nommer l’objectif de l’activité.",
+                  "Présenter les principales étapes.",
+                  "Utiliser un vocabulaire précis.",
+                  "Respecter l’ordre des actions.",
+                  "Expliquer une difficulté rencontrée.",
+                  "Dire comment le résultat a été vérifié."
+            ],
+            "proofs": [
+                  "Présentation d’une procédure de calcul.",
+                  "Explication d’une démarche de recherche."
+            ],
+            "lsu": "Prendre la parole pour expliquer et se faire comprendre."
+      },
+      {
+            "code": "OR-P2-02",
+            "domain": "Langage oral",
+            "title": "Poser une question pertinente",
+            "jeSais": "Je sais poser une question qui aide à comprendre ou à avancer.",
+            "checklist": [
+                  "Écouter avant de questionner.",
+                  "Repérer ce qui n’est pas compris.",
+                  "Formuler une question complète.",
+                  "Rester dans le sujet.",
+                  "Éviter de répéter une question déjà posée.",
+                  "Demander une précision utile."
+            ],
+            "proofs": [
+                  "Observation lors d’une recherche collective.",
+                  "Question préparée après une lecture."
+            ],
+            "lsu": "Prendre la parole et participer à des échanges."
+      },
+      {
+            "code": "OR-P2-03",
+            "domain": "Langage oral",
+            "title": "Respecter les tours de parole",
+            "jeSais": "Je sais écouter les autres et prendre la parole au bon moment.",
+            "checklist": [
+                  "Attendre son tour.",
+                  "Ne pas interrompre.",
+                  "Écouter la réponse d’un camarade.",
+                  "Reprendre une idée déjà exprimée.",
+                  "Accepter un avis différent.",
+                  "Répondre sans s’éloigner du sujet."
+            ],
+            "proofs": [
+                  "Observation lors d’un débat.",
+                  "Travail oral en petit groupe."
+            ],
+            "lsu": "Prendre la parole et participer à des échanges."
+      },
+      {
+            "code": "OR-P2-04",
+            "domain": "Langage oral",
+            "title": "Présenter brièvement un travail préparé",
+            "jeSais": "Je sais présenter un travail avec une voix claire et des phrases organisées.",
+            "checklist": [
+                  "Préparer les informations à donner.",
+                  "Parler assez fort.",
+                  "Regarder les personnes qui écoutent.",
+                  "Utiliser des phrases complètes.",
+                  "Suivre un ordre logique.",
+                  "Répondre à une question simple."
+            ],
+            "proofs": [
+                  "Présentation d’un livre ou d’un document.",
+                  "Restitution d’un travail de groupe."
+            ],
+            "lsu": "Prendre la parole pour expliquer et se faire comprendre."
+      },
+      {
+            "code": "LEC-P2-01",
+            "domain": "Lecture et fluence",
+            "title": "Lire un texte avec exactitude",
+            "jeSais": "Je sais lire un texte en évitant les oublis, les ajouts et les transformations de mots.",
+            "checklist": [
+                  "Lire tous les mots.",
+                  "Respecter les terminaisons.",
+                  "Ne pas remplacer un mot par un autre.",
+                  "Corriger spontanément une erreur.",
+                  "Utiliser le sens pour vérifier.",
+                  "Relire une phrase mal comprise."
+            ],
+            "proofs": [
+                  "Lecture d’un texte inédit.",
+                  "Comparaison de deux lectures espacées."
+            ],
+            "lsu": "Identifier les mots et lire avec fluidité."
+      },
+      {
+            "code": "LEC-P2-02",
+            "domain": "Lecture et fluence",
+            "title": "Maintenir une vitesse de lecture régulière",
+            "jeSais": "Je sais lire sans longues hésitations et sans aller trop vite.",
+            "checklist": [
+                  "Reconnaître rapidement les mots fréquents.",
+                  "Décoder les mots nouveaux sans abandonner.",
+                  "Éviter les arrêts inutiles.",
+                  "Maintenir un rythme régulier.",
+                  "Ralentir devant une difficulté.",
+                  "Reprendre sa lecture après une erreur."
+            ],
+            "proofs": [
+                  "Mesure de fluence.",
+                  "Lecture chronométrée d’un passage préparé."
+            ],
+            "lsu": "Identifier les mots et lire avec fluidité."
+      },
+      {
+            "code": "LEC-P2-03",
+            "domain": "Lecture et fluence",
+            "title": "Préparer une lecture à voix haute",
+            "jeSais": "Je sais préparer un texte avant de le lire devant les autres.",
+            "checklist": [
+                  "Lire silencieusement le passage.",
+                  "Repérer les mots difficiles.",
+                  "Marquer les groupes de sens.",
+                  "Observer la ponctuation.",
+                  "Choisir l’intonation.",
+                  "Répéter les passages difficiles."
+            ],
+            "proofs": [
+                  "Lecture préparée d’un court récit.",
+                  "Préparation d’un dialogue."
+            ],
+            "lsu": "Lire à voix haute."
+      },
+      {
+            "code": "LEC-P2-04",
+            "domain": "Lecture et fluence",
+            "title": "Adapter sa voix au texte",
+            "jeSais": "Je sais changer le ton et le rythme selon le sens du texte.",
+            "checklist": [
+                  "Respecter la ponctuation.",
+                  "Différencier narration et paroles.",
+                  "Adapter la voix aux personnages.",
+                  "Marquer une émotion simple.",
+                  "Faire entendre les groupes de sens.",
+                  "Rester audible."
+            ],
+            "proofs": [
+                  "Lecture dialoguée.",
+                  "Mise en voix d’un court passage."
+            ],
+            "lsu": "Lire à voix haute."
+      },
+      {
+            "code": "COM-P2-01",
+            "domain": "Compréhension de l’écrit",
+            "title": "Comprendre un mot grâce au contexte",
+            "jeSais": "Je sais utiliser la phrase et le texte pour proposer le sens d’un mot inconnu.",
+            "checklist": [
+                  "Relire la phrase.",
+                  "Observer les mots placés autour.",
+                  "Repérer le thème du passage.",
+                  "Proposer un sens possible.",
+                  "Remplacer le mot pour vérifier.",
+                  "Confirmer avec un dictionnaire."
+            ],
+            "proofs": [
+                  "Explication d’un mot rencontré en lecture.",
+                  "Choix du sens correct parmi plusieurs propositions."
+            ],
+            "lsu": "Comprendre un texte et contrôler sa compréhension."
+      },
+      {
+            "code": "COM-P2-02",
+            "domain": "Compréhension de l’écrit",
+            "title": "Identifier ce que remplace un pronom",
+            "jeSais": "Je sais retrouver le personnage ou le groupe de mots remplacé par un pronom.",
+            "checklist": [
+                  "Repérer le pronom.",
+                  "Chercher les personnages déjà nommés.",
+                  "Vérifier le genre.",
+                  "Vérifier le nombre.",
+                  "Remplacer le pronom pour contrôler.",
+                  "Vérifier que la phrase conserve son sens."
+            ],
+            "proofs": [
+                  "Relier des pronoms à leurs référents.",
+                  "Justifier une reprise dans un récit."
+            ],
+            "lsu": "Comprendre les relations entre les informations d’un texte."
+      },
+      {
+            "code": "COM-P2-03",
+            "domain": "Compréhension de l’écrit",
+            "title": "Identifier une reprise nominale",
+            "jeSais": "Je sais reconnaître plusieurs expressions qui désignent le même personnage ou le même objet.",
+            "checklist": [
+                  "Repérer les groupes nominaux.",
+                  "Observer le sens des expressions.",
+                  "Relier les désignations au bon personnage.",
+                  "Distinguer deux personnages différents.",
+                  "Expliquer le lien entre les expressions.",
+                  "Utiliser une reprise dans une reformulation."
+            ],
+            "proofs": [
+                  "Surlignage des désignations d’un personnage.",
+                  "Tableau des personnages et de leurs reprises."
+            ],
+            "lsu": "Comprendre les relations entre les informations d’un texte."
+      },
+      {
+            "code": "COM-P2-04",
+            "domain": "Compréhension de l’écrit",
+            "title": "Comparer un texte et une illustration",
+            "jeSais": "Je sais dire ce que l’image confirme, complète ou ajoute au texte.",
+            "checklist": [
+                  "Observer précisément l’illustration.",
+                  "Retrouver les éléments déjà écrits.",
+                  "Repérer une information ajoutée par l’image.",
+                  "Repérer une différence éventuelle.",
+                  "Justifier avec un détail.",
+                  "Formuler une comparaison complète."
+            ],
+            "proofs": [
+                  "Tableau texte-image.",
+                  "Réponse orale ou écrite justifiée."
+            ],
+            "lsu": "Comprendre des textes et des documents."
+      },
+      {
+            "code": "COM-P2-05",
+            "domain": "Compréhension de l’écrit",
+            "title": "Reformuler l’essentiel d’un passage",
+            "jeSais": "Je sais redire les informations importantes sans raconter tous les détails.",
+            "checklist": [
+                  "Identifier le sujet du passage.",
+                  "Repérer l’événement principal.",
+                  "Écarter les détails secondaires.",
+                  "Respecter l’ordre des informations.",
+                  "Employer ses propres mots.",
+                  "Produire une ou deux phrases cohérentes."
+            ],
+            "proofs": [
+                  "Résumé oral d’un paragraphe.",
+                  "Reformulation écrite en deux phrases."
+            ],
+            "lsu": "Comprendre un texte."
+      },
+      {
+            "code": "LIT-P2-01",
+            "domain": "Culture littéraire",
+            "title": "Identifier les caractéristiques d’un récit d’aventure",
+            "jeSais": "Je sais reconnaître un récit d’aventure et expliquer ce qui le caractérise.",
+            "checklist": [
+                  "Identifier le héros.",
+                  "Repérer le but ou la mission.",
+                  "Identifier les obstacles.",
+                  "Repérer les dangers ou les imprévus.",
+                  "Observer les lieux de l’aventure.",
+                  "Comparer avec un autre récit."
+            ],
+            "proofs": [
+                  "Classement de textes.",
+                  "Présentation d’un récit lu."
+            ],
+            "lsu": "Construire une culture littéraire."
+      },
+      {
+            "code": "LIT-P2-02",
+            "domain": "Culture littéraire",
+            "title": "Présenter une lecture personnelle",
+            "jeSais": "Je sais présenter un livre et donner un avis expliqué.",
+            "checklist": [
+                  "Donner le titre.",
+                  "Identifier l’auteur ou l’illustrateur.",
+                  "Présenter brièvement le sujet.",
+                  "Éviter de révéler toute la fin.",
+                  "Donner un avis personnel.",
+                  "Justifier cet avis par un exemple."
+            ],
+            "proofs": [
+                  "Présentation orale d’un livre.",
+                  "Courte trace dans le carnet de lecteur."
+            ],
+            "lsu": "Partager ses lectures et construire son parcours de lecteur."
+      },
+      {
+            "code": "ECR-P2-01",
+            "domain": "Écriture et copie",
+            "title": "Copier par groupes de mots",
+            "jeSais": "Je sais mémoriser un groupe de mots avant de le copier.",
+            "checklist": [
+                  "Lire la phrase entière.",
+                  "Repérer un groupe de sens.",
+                  "Mémoriser plusieurs mots.",
+                  "Copier sans regarder chaque lettre.",
+                  "Limiter les retours au modèle.",
+                  "Conserver l’ordre des mots."
+            ],
+            "proofs": [
+                  "Copie avec comptage des retours au modèle.",
+                  "Copie éloignée."
+            ],
+            "lsu": "Copier avec efficacité."
+      },
+      {
+            "code": "ECR-P2-02",
+            "domain": "Écriture et copie",
+            "title": "Réaliser une copie différée",
+            "jeSais": "Je sais observer un texte, le mémoriser puis le copier sans garder le modèle sous les yeux.",
+            "checklist": [
+                  "Lire avant de mémoriser.",
+                  "Découper le texte en groupes.",
+                  "Mémoriser l’orthographe.",
+                  "Mémoriser la ponctuation.",
+                  "Copier fidèlement.",
+                  "Comparer ensuite avec le modèle."
+            ],
+            "proofs": [
+                  "Phrase copiée après masquage.",
+                  "Courte copie différée chronométrée."
+            ],
+            "lsu": "Copier avec efficacité."
+      },
+      {
+            "code": "ECR-P2-03",
+            "domain": "Écriture et copie",
+            "title": "Respecter la mise en page d’un texte",
+            "jeSais": "Je sais reproduire la présentation d’un texte, d’un dialogue ou d’une poésie.",
+            "checklist": [
+                  "Respecter le titre.",
+                  "Respecter les retours à la ligne.",
+                  "Respecter les paragraphes.",
+                  "Respecter les tirets du dialogue.",
+                  "Respecter les majuscules.",
+                  "Vérifier la ponctuation."
+            ],
+            "proofs": [
+                  "Copie d’un dialogue.",
+                  "Copie d’un court poème."
+            ],
+            "lsu": "Copier avec efficacité."
+      },
+      {
+            "code": "ECR-P2-04",
+            "domain": "Écriture et copie",
+            "title": "Raconter des événements dans l’ordre",
+            "jeSais": "Je sais écrire plusieurs phrases pour raconter des événements dans l’ordre.",
+            "checklist": [
+                  "Identifier le début.",
+                  "Choisir les événements importants.",
+                  "Respecter leur ordre.",
+                  "Utiliser des connecteurs temporels.",
+                  "Éviter les contradictions.",
+                  "Terminer clairement le récit."
+            ],
+            "proofs": [
+                  "Récit à partir d’images séquentielles.",
+                  "Récit court d’un événement vécu."
+            ],
+            "lsu": "Produire des écrits."
+      },
+      {
+            "code": "ECR-P2-05",
+            "domain": "Écriture et copie",
+            "title": "Écrire une courte lettre",
+            "jeSais": "Je sais écrire une lettre avec les principales marques de présentation.",
+            "checklist": [
+                  "Identifier le destinataire.",
+                  "Utiliser une formule d’appel.",
+                  "Expliquer le motif de la lettre.",
+                  "Organiser le message.",
+                  "Utiliser une formule de fin.",
+                  "Signer."
+            ],
+            "proofs": [
+                  "Lettre à un personnage.",
+                  "Lettre liée à un projet de classe."
+            ],
+            "lsu": "Produire des écrits adaptés à une situation."
+      },
+      {
+            "code": "ECR-P2-06",
+            "domain": "Écriture et copie",
+            "title": "Écrire un dialogue court",
+            "jeSais": "Je sais écrire un échange entre deux personnages.",
+            "checklist": [
+                  "Identifier les personnages.",
+                  "Utiliser les tirets ou la présentation choisie.",
+                  "Changer de ligne lorsque le personnage change.",
+                  "Employer une ponctuation adaptée.",
+                  "Faire progresser l’échange.",
+                  "Relire pour vérifier qui parle."
+            ],
+            "proofs": [
+                  "Dialogue à partir d’une image.",
+                  "Ajout d’un dialogue dans un récit."
+            ],
+            "lsu": "Produire des écrits adaptés à une situation."
+      },
+      {
+            "code": "VOC-P2-01",
+            "domain": "Vocabulaire",
+            "title": "Reconnaître des mots de la même famille",
+            "jeSais": "Je sais reconnaître des mots qui ont une partie commune et un lien de sens.",
+            "checklist": [
+                  "Repérer la partie commune.",
+                  "Vérifier le lien de sens.",
+                  "Écarter un faux mot de la famille.",
+                  "Classer plusieurs mots.",
+                  "Ajouter un mot à la famille.",
+                  "Utiliser cette famille pour comprendre un mot."
+            ],
+            "proofs": [
+                  "Classement de mots.",
+                  "Compléter deux familles."
+            ],
+            "lsu": "Enrichir et structurer son vocabulaire."
+      },
+      {
+            "code": "VOC-P2-02",
+            "domain": "Vocabulaire",
+            "title": "Identifier le radical d’un mot",
+            "jeSais": "Je sais repérer la partie commune aux mots d’une même famille.",
+            "checklist": [
+                  "Comparer plusieurs mots.",
+                  "Repérer la partie stable.",
+                  "Vérifier le lien de sens.",
+                  "Distinguer radical et terminaison.",
+                  "Observer les petites variations du radical.",
+                  "Utiliser le radical pour écrire un mot."
+            ],
+            "proofs": [
+                  "Souligner le radical.",
+                  "Former une famille autour d’un radical."
+            ],
+            "lsu": "Comprendre la construction des mots."
+      },
+      {
+            "code": "VOC-P2-03",
+            "domain": "Vocabulaire",
+            "title": "Reconnaître un préfixe ou un suffixe",
+            "jeSais": "Je sais repérer un élément ajouté avant ou après le radical.",
+            "checklist": [
+                  "Identifier le radical.",
+                  "Repérer l’élément placé avant.",
+                  "Repérer l’élément placé après.",
+                  "Observer le changement de sens.",
+                  "Former un nouveau mot.",
+                  "Vérifier que le mot existe."
+            ],
+            "proofs": [
+                  "Décomposer des mots simples.",
+                  "Construire des mots à partir d’un radical."
+            ],
+            "lsu": "Comprendre la construction des mots."
+      },
+      {
+            "code": "VOC-P2-04",
+            "domain": "Vocabulaire",
+            "title": "Trouver un synonyme",
+            "jeSais": "Je sais trouver un mot de sens proche qui convient dans la phrase.",
+            "checklist": [
+                  "Comprendre le sens du mot.",
+                  "Proposer un mot proche.",
+                  "Vérifier le contexte.",
+                  "Respecter la classe grammaticale.",
+                  "Remplacer le mot dans la phrase.",
+                  "Observer les nuances de sens."
+            ],
+            "proofs": [
+                  "Remplacement dans des phrases.",
+                  "Choix du synonyme adapté."
+            ],
+            "lsu": "Enrichir et structurer son vocabulaire."
+      },
+      {
+            "code": "VOC-P2-05",
+            "domain": "Vocabulaire",
+            "title": "Trouver un contraire",
+            "jeSais": "Je sais trouver un mot de sens opposé qui convient dans la phrase.",
+            "checklist": [
+                  "Comprendre le mot de départ.",
+                  "Proposer un mot opposé.",
+                  "Vérifier le contexte.",
+                  "Utiliser parfois un préfixe.",
+                  "Respecter la classe grammaticale.",
+                  "Produire une phrase avec le contraire."
+            ],
+            "proofs": [
+                  "Association de mots contraires.",
+                  "Transformation de phrases."
+            ],
+            "lsu": "Enrichir et structurer son vocabulaire."
+      },
+      {
+            "code": "GRA-P2-01",
+            "domain": "Grammaire",
+            "title": "Reconnaître un nom commun",
+            "jeSais": "Je sais reconnaître un mot qui désigne une personne, un animal, un objet, un lieu ou une idée.",
+            "checklist": [
+                  "Observer ce que le mot désigne.",
+                  "Repérer le déterminant.",
+                  "Faire varier le nombre.",
+                  "Classer le mot.",
+                  "Distinguer le nom du verbe.",
+                  "Réutiliser le nom dans un groupe nominal."
+            ],
+            "proofs": [
+                  "Repérage dans des phrases.",
+                  "Classement de mots."
+            ],
+            "lsu": "Reconnaître les principales classes de mots."
+      },
+      {
+            "code": "GRA-P2-02",
+            "domain": "Grammaire",
+            "title": "Reconnaître un nom propre",
+            "jeSais": "Je sais reconnaître un nom particulier qui commence par une majuscule.",
+            "checklist": [
+                  "Identifier ce que le nom désigne.",
+                  "Repérer la majuscule.",
+                  "Distinguer nom commun et nom propre.",
+                  "Classer des noms.",
+                  "Ajouter la majuscule manquante.",
+                  "Employer un nom propre dans une phrase."
+            ],
+            "proofs": [
+                  "Tri nom commun ou nom propre.",
+                  "Correction de phrases."
+            ],
+            "lsu": "Reconnaître les principales classes de mots."
+      },
+      {
+            "code": "GRA-P2-03",
+            "domain": "Grammaire",
+            "title": "Reconnaître un pronom personnel sujet",
+            "jeSais": "Je sais reconnaître les pronoms personnels qui peuvent être sujets d’un verbe.",
+            "checklist": [
+                  "Mémoriser les pronoms sujets.",
+                  "Les repérer dans une phrase.",
+                  "Identifier leur personne.",
+                  "Identifier leur nombre.",
+                  "Les relier au verbe.",
+                  "Distinguer pronom et déterminant dans des cas simples."
+            ],
+            "proofs": [
+                  "Repérage dans des phrases.",
+                  "Classement par personne et nombre."
+            ],
+            "lsu": "Reconnaître les principales classes de mots."
+      },
+      {
+            "code": "GRA-P2-04",
+            "domain": "Grammaire",
+            "title": "Remplacer un groupe sujet par un pronom",
+            "jeSais": "Je sais choisir le pronom personnel qui remplace correctement un groupe sujet.",
+            "checklist": [
+                  "Identifier le groupe sujet.",
+                  "Repérer son genre.",
+                  "Repérer son nombre.",
+                  "Choisir le pronom adapté.",
+                  "Relire la phrase transformée.",
+                  "Vérifier la forme du verbe."
+            ],
+            "proofs": [
+                  "Remplacements écrits.",
+                  "Transformation orale rapide."
+            ],
+            "lsu": "Identifier les constituants de la phrase simple."
+      },
+      {
+            "code": "CONJ-P2-01",
+            "domain": "Conjugaison",
+            "title": "Identifier le présent",
+            "jeSais": "Je sais reconnaître une phrase qui indique ce qui se passe maintenant ou habituellement.",
+            "checklist": [
+                  "Repérer le verbe.",
+                  "Observer les indicateurs de temps.",
+                  "Distinguer présent, passé et futur.",
+                  "Justifier le choix.",
+                  "Transformer une phrase au présent.",
+                  "Utiliser le présent dans une phrase."
+            ],
+            "proofs": [
+                  "Classement de phrases.",
+                  "Transformation temporelle."
+            ],
+            "lsu": "Se repérer dans le temps et conjuguer."
+      },
+      {
+            "code": "CONJ-P2-02",
+            "domain": "Conjugaison",
+            "title": "Conjuguer un verbe en -er au présent",
+            "jeSais": "Je sais conjuguer un verbe régulier en -er au présent.",
+            "checklist": [
+                  "Trouver l’infinitif.",
+                  "Repérer le radical.",
+                  "Identifier le sujet.",
+                  "Choisir la bonne terminaison.",
+                  "Vérifier l’accord sujet-verbe.",
+                  "Réutiliser le verbe dans une phrase."
+            ],
+            "proofs": [
+                  "Conjugaison d’un verbe.",
+                  "Compléter des phrases."
+            ],
+            "lsu": "Conjuguer les verbes étudiés."
+      },
+      {
+            "code": "CONJ-P2-03",
+            "domain": "Conjugaison",
+            "title": "Conjuguer le verbe être au présent",
+            "jeSais": "Je sais conjuguer le verbe être au présent.",
+            "checklist": [
+                  "Mémoriser les six formes.",
+                  "Associer sujet et forme verbale.",
+                  "Distinguer es, est et sont.",
+                  "Compléter une phrase.",
+                  "Produire une phrase.",
+                  "Relire l’accord."
+            ],
+            "proofs": [
+                  "Tableau de conjugaison.",
+                  "Phrases à compléter."
+            ],
+            "lsu": "Conjuguer les verbes étudiés."
+      },
+      {
+            "code": "CONJ-P2-04",
+            "domain": "Conjugaison",
+            "title": "Conjuguer le verbe avoir au présent",
+            "jeSais": "Je sais conjuguer le verbe avoir au présent.",
+            "checklist": [
+                  "Mémoriser les six formes.",
+                  "Associer sujet et forme verbale.",
+                  "Distinguer a, as et ont.",
+                  "Compléter une phrase.",
+                  "Produire une phrase.",
+                  "Relire l’accord."
+            ],
+            "proofs": [
+                  "Tableau de conjugaison.",
+                  "Phrases à compléter."
+            ],
+            "lsu": "Conjuguer les verbes étudiés."
+      },
+      {
+            "code": "ORT-P2-01",
+            "domain": "Orthographe",
+            "title": "Accorder le déterminant et le nom en nombre",
+            "jeSais": "Je sais faire correspondre le déterminant et le nom au singulier ou au pluriel.",
+            "checklist": [
+                  "Repérer le déterminant.",
+                  "Repérer le nom.",
+                  "Identifier singulier ou pluriel.",
+                  "Choisir un déterminant adapté.",
+                  "Ajouter la marque régulière du pluriel.",
+                  "Relire le groupe nominal."
+            ],
+            "proofs": [
+                  "Transformation singulier-pluriel.",
+                  "Groupes nominaux à compléter."
+            ],
+            "lsu": "Maîtriser les accords dans le groupe nominal."
+      },
+      {
+            "code": "ORT-P2-02",
+            "domain": "Orthographe",
+            "title": "Choisir entre son et sont",
+            "jeSais": "Je sais choisir entre son et sont en utilisant une manipulation.",
+            "checklist": [
+                  "Repérer la place du mot.",
+                  "Identifier le nom placé après son.",
+                  "Remplacer sont par étaient.",
+                  "Vérifier le sens.",
+                  "Justifier oralement le choix.",
+                  "Relire la phrase complète."
+            ],
+            "proofs": [
+                  "Phrases à compléter.",
+                  "Dictée de phrases avec justification."
+            ],
+            "lsu": "Raisonner pour choisir une orthographe grammaticale."
+      },
+      {
+            "code": "ORT-P2-03",
+            "domain": "Orthographe",
+            "title": "Choisir entre on et ont",
+            "jeSais": "Je sais choisir entre on et ont en utilisant une manipulation.",
+            "checklist": [
+                  "Repérer si le mot est sujet.",
+                  "Remplacer on par il.",
+                  "Remplacer ont par avaient.",
+                  "Vérifier le sens.",
+                  "Justifier le choix.",
+                  "Relire la phrase complète."
+            ],
+            "proofs": [
+                  "Phrases à compléter.",
+                  "Dictée de phrases avec justification."
+            ],
+            "lsu": "Raisonner pour choisir une orthographe grammaticale."
+      },
+      {
+            "code": "ORT-P2-04",
+            "domain": "Orthographe",
+            "title": "Choisir entre ou et où",
+            "jeSais": "Je sais choisir entre ou et où selon le sens de la phrase.",
+            "checklist": [
+                  "Repérer si un choix est proposé.",
+                  "Remplacer ou par ou bien.",
+                  "Repérer une indication de lieu.",
+                  "Observer l’accent de où.",
+                  "Justifier le choix.",
+                  "Relire la phrase."
+            ],
+            "proofs": [
+                  "Phrases à compléter.",
+                  "Transformation avec ou bien."
+            ],
+            "lsu": "Raisonner pour choisir une orthographe grammaticale."
+      },
+      {
+            "code": "ORT-P2-05",
+            "domain": "Orthographe",
+            "title": "Choisir entre s et ss",
+            "jeSais": "Je sais choisir s ou ss pour écrire le son [s] dans les mots étudiés.",
+            "checklist": [
+                  "Repérer la position du son dans le mot.",
+                  "Observer les lettres placées autour.",
+                  "Distinguer s entre deux voyelles et ss.",
+                  "Comparer avec des mots connus.",
+                  "Mémoriser les mots fréquents.",
+                  "Réutiliser la régularité dans une dictée."
+            ],
+            "proofs": [
+                  "Dictée de mots ciblés.",
+                  "Classement de mots selon s ou ss."
+            ],
+            "lsu": "Mémoriser l’orthographe des mots et utiliser des régularités."
+      },
+      {
+            "code": "ORT-P2-06",
+            "domain": "Orthographe",
+            "title": "Choisir entre c et ç",
+            "jeSais": "Je sais choisir c ou ç pour écrire le son [s] dans les mots étudiés.",
+            "checklist": [
+                  "Observer la voyelle qui suit.",
+                  "Repérer c devant e, i ou y.",
+                  "Repérer ç devant a, o ou u.",
+                  "Comparer avec des mots connus.",
+                  "Mémoriser les mots fréquents.",
+                  "Réutiliser la règle dans une phrase."
+            ],
+            "proofs": [
+                  "Dictée de mots ciblés.",
+                  "Mots à compléter par c ou ç."
+            ],
+            "lsu": "Mémoriser l’orthographe des mots et utiliser des régularités."
+      },
+      {
+            "code": "ORT-P2-07",
+            "domain": "Orthographe",
+            "title": "Choisir entre g, ge et gu",
+            "jeSais": "Je sais choisir g, ge ou gu pour écrire les sons [g] et [j] dans les mots étudiés.",
+            "checklist": [
+                  "Identifier le son entendu.",
+                  "Observer la voyelle qui suit.",
+                  "Repérer gu devant e ou i pour conserver le son [g].",
+                  "Repérer ge devant a ou o pour conserver le son [j].",
+                  "Comparer avec des mots connus.",
+                  "Réutiliser la régularité dans une dictée."
+            ],
+            "proofs": [
+                  "Dictée de mots ciblés.",
+                  "Mots à compléter par g, ge ou gu."
+            ],
+            "lsu": "Mémoriser l’orthographe des mots et utiliser des régularités."
+      }
+],
     rows: [
       ["Lecture — fluence","Évaluation diagnostique. Lecture orale quotidienne. Respect de la ponctuation. Groupes de sens. Automatismes sur mots fréquents.","Gagner en exactitude et en vitesse. Lire des textes variés. Préparer puis relire à voix haute.","Fluidité, liaisons, intonation. Lecture dialoguée. Suivi régulier de la fluence.","Lecture expressive. Mise en voix de poèmes, dialogues et courts textes documentaires.","Consolider une lecture autonome, fluide et expressive. Bilan et objectifs individuels."],
       ["Lecture — compréhension","Repérer personnages, lieux, chronologie et informations explicites. Reformuler l’essentiel.","Comprendre un mot en contexte. Identifier les reprises nominales et pronominales.","Hiérarchiser les informations. Produire des inférences simples. Justifier avec le texte.","Comprendre l’implicite, les intentions et les relations de cause à conséquence.","Mobiliser les stratégies apprises sur récits, documents, poèmes et théâtre. Synthétiser."],
