@@ -4,7 +4,7 @@ Mini-site statique prêt pour GitHub Pages.
 
 ## Fonctions
 
-- référentiel annuel en français, mathématiques et EMC ;
+- référentiel annuel en français, mathématiques, EMC, histoire et géographie ;
 - vues par période ;
 - suivi interactif avec états : À faire, En cours, Travaillé, À reprendre, Stabilisé ;
 - checklist pédagogique par notion ;
@@ -47,3 +47,13 @@ information et responsabilité numérique, égalité et valeurs de la Républiqu
 services publics, commune, secours, environnement et engagement pour le bien commun.
 
 Les élections de délégués ne font pas partie de cette programmation.
+
+
+## Histoire et géographie — nouveaux programmes
+
+Le site intègre désormais les cinq périodes d’histoire et de géographie du CE2 :
+- histoire : Préhistoire, Rome et Gaule romaine, construction du royaume de France ;
+- géographie : vivre en France, répartition de la population, se loger et travailler.
+
+Chaque période propose des compétences précises, une checklist, des preuves possibles,
+une ou deux observations retenues et un regroupement compatible LSU.

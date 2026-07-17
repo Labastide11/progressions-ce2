@@ -5637,5 +5637,1363 @@ window.PROGRESSIONS = {
         "lsu": "S’engager dans une action collective au service du bien commun."
       }
     ]
+  },
+  histoire: {
+    "title": "Histoire",
+    "icon": "🏺",
+    "subtitle": "Préhistoire, Antiquité et construction du royaume de France",
+    "routines": [
+      "Utiliser une frise chronologique tout au long de l’année",
+      "Localiser les lieux étudiés sur une carte",
+      "Observer des traces et des documents de natures variées",
+      "Distinguer récit historique et fiction",
+      "Employer un vocabulaire historique précis",
+      "Décrire, comparer, raconter et expliquer"
+    ],
+    "rows": [
+      [
+        "Préhistoire",
+        "Paléolithique et Néolithique : nomadisme, chasseurs-cueilleurs, art pariétal, agriculture et sédentarisation.",
+        "Réactivation des repères de la Préhistoire et transition vers l’Antiquité.",
+        "Réinvestissement des démarches historiques à partir des traces.",
+        "Réactivation des repères chronologiques avant le Moyen Âge.",
+        "Bilan annuel et mise en relation des grandes évolutions."
+      ],
+      [
+        "Rome et Gaule romaine",
+        "Premiers repères sur la fin de la Préhistoire et l’entrée dans l’Antiquité.",
+        "Vie quotidienne à Rome, société romaine, monuments et aménagements.",
+        "Empire romain, conquête de la Gaule et culture gallo-romaine.",
+        "Réactivation par comparaison avec le royaume médiéval.",
+        "Bilan et mémorisation des repères antiques."
+      ],
+      [
+        "Royaume de France",
+        "Premiers repères sur le temps long.",
+        "Premiers jalons vers le Moyen Âge.",
+        "Transition de l’Antiquité au Moyen Âge.",
+        "Capétiens, sacre, domaine royal et affirmation du pouvoir.",
+        "Valois, guerre de Cent Ans, figures historiques et bilan."
+      ]
+    ],
+    "p1Competencies": [
+      {
+        "code": "HIS-P1-01",
+        "domain": "Repères chronologiques",
+        "title": "Situer le Paléolithique et le Néolithique",
+        "jeSais": "Je sais placer le Paléolithique et le Néolithique sur une frise.",
+        "checklist": [
+          "Identifier le sens de lecture d’une frise.",
+          "Repérer le Paléolithique.",
+          "Repérer le Néolithique.",
+          "Respecter leur ordre chronologique.",
+          "Comprendre qu’ils appartiennent à la Préhistoire."
+        ],
+        "proofs": [
+          "Placement de repères sur une frise.",
+          "Lecture commentée d’une frise."
+        ],
+        "lsu": "Se repérer dans le temps historique."
+      },
+      {
+        "code": "HIS-P1-02",
+        "domain": "Paléolithique",
+        "title": "Décrire le mode de vie des chasseurs-cueilleurs",
+        "jeSais": "Je sais décrire comment vivaient les femmes et les hommes au Paléolithique.",
+        "checklist": [
+          "Identifier les activités de chasse, pêche et cueillette.",
+          "Décrire un habitat temporaire.",
+          "Comprendre le nomadisme.",
+          "Repérer quelques outils.",
+          "Employer le vocabulaire adapté."
+        ],
+        "proofs": [
+          "Description d’une scène reconstituée.",
+          "Réponse organisée à partir de documents."
+        ],
+        "lsu": "Connaître le mode de vie au Paléolithique."
+      },
+      {
+        "code": "HIS-P1-03",
+        "domain": "Traces du passé",
+        "title": "Décrire une œuvre d’art pariétal",
+        "jeSais": "Je sais observer et décrire une peinture ou une gravure préhistorique.",
+        "checklist": [
+          "Identifier le support.",
+          "Décrire les formes représentées.",
+          "Distinguer observation et interprétation.",
+          "Utiliser le mot pariétal ou rupestre.",
+          "Expliquer ce que cette trace nous apprend."
+        ],
+        "proofs": [
+          "Description d’une peinture pariétale.",
+          "Analyse guidée d’un document archéologique."
+        ],
+        "lsu": "Observer et comprendre une trace du passé."
+      },
+      {
+        "code": "HIS-P1-04",
+        "domain": "Néolithique",
+        "title": "Expliquer la naissance de l’agriculture",
+        "jeSais": "Je sais expliquer pourquoi l’agriculture transforme le mode de vie.",
+        "checklist": [
+          "Identifier culture et élevage.",
+          "Comprendre la production de nourriture.",
+          "Relier agriculture et installation durable.",
+          "Repérer le développement des villages.",
+          "Employer le vocabulaire sédentarité et agriculture."
+        ],
+        "proofs": [
+          "Schéma explicatif.",
+          "Court texte de comparaison."
+        ],
+        "lsu": "Comprendre la révolution néolithique."
+      },
+      {
+        "code": "HIS-P1-05",
+        "domain": "Comparaison",
+        "title": "Comparer nomadisme et sédentarité",
+        "jeSais": "Je sais comparer un mode de vie nomade et un mode de vie sédentaire.",
+        "checklist": [
+          "Choisir des critères de comparaison.",
+          "Comparer habitat, alimentation et déplacements.",
+          "Repérer ressemblances et différences.",
+          "Organiser les informations dans un tableau.",
+          "Formuler une conclusion."
+        ],
+        "proofs": [
+          "Tableau comparatif.",
+          "Explication orale structurée."
+        ],
+        "lsu": "Comparer des modes de vie du passé."
+      },
+      {
+        "code": "HIS-P1-06",
+        "domain": "Repères historiques",
+        "title": "Connaître quelques repères de la fin de la Préhistoire",
+        "jeSais": "Je sais mémoriser et expliquer quelques repères de la Préhistoire.",
+        "checklist": [
+          "Connaître la naissance de l’agriculture vers 10 000/9 000 av. J.-C.",
+          "Situer Ötzi vers 3200 av. J.-C.",
+          "Situer l’apparition de l’écriture vers 3000 av. J.-C.",
+          "Comprendre le rôle conventionnel de l’écriture.",
+          "Associer date et événement."
+        ],
+        "proofs": [
+          "Association dates-événements.",
+          "Placement sur une frise."
+        ],
+        "lsu": "Mémoriser des repères historiques."
+      },
+      {
+        "code": "HIS-P1-07",
+        "domain": "Démarche historique",
+        "title": "Prélever des informations dans plusieurs documents",
+        "jeSais": "Je sais utiliser des documents pour répondre à une question d’histoire.",
+        "checklist": [
+          "Identifier la nature du document.",
+          "Lire une légende.",
+          "Prélever une information utile.",
+          "Comparer deux documents.",
+          "Formuler une réponse appuyée sur les documents."
+        ],
+        "proofs": [
+          "Questionnaire documentaire.",
+          "Réponse justifiée par un document."
+        ],
+        "lsu": "S’initier à la démarche historique."
+      }
+    ],
+    "p2Competencies": [
+      {
+        "code": "HIS-P2-01",
+        "domain": "Repères chronologiques",
+        "title": "Situer Rome dans l’Antiquité",
+        "jeSais": "Je sais situer Rome et le règne d’Auguste dans l’Antiquité.",
+        "checklist": [
+          "Repérer l’Antiquité sur une frise.",
+          "Situer le Ier siècle av. J.-C.",
+          "Situer le Ier siècle ap. J.-C.",
+          "Placer le règne d’Auguste.",
+          "Lire les abréviations av. J.-C. et ap. J.-C."
+        ],
+        "proofs": [
+          "Placement sur une frise.",
+          "Lecture de repères chronologiques."
+        ],
+        "lsu": "Se repérer dans l’Antiquité."
+      },
+      {
+        "code": "HIS-P2-02",
+        "domain": "Vie quotidienne",
+        "title": "Décrire la vie quotidienne à Rome",
+        "jeSais": "Je sais décrire comment les habitants de Rome se logeaient, se nourrissaient et se déplaçaient.",
+        "checklist": [
+          "Observer plusieurs documents.",
+          "Identifier différents types d’habitats.",
+          "Décrire des aliments courants.",
+          "Repérer des moyens de déplacement.",
+          "Organiser une description."
+        ],
+        "proofs": [
+          "Texte descriptif court.",
+          "Tableau sur la vie quotidienne."
+        ],
+        "lsu": "Connaître la vie quotidienne à Rome."
+      },
+      {
+        "code": "HIS-P2-03",
+        "domain": "Société romaine",
+        "title": "Comprendre que la société romaine est hiérarchisée",
+        "jeSais": "Je sais expliquer que tous les habitants de Rome n’avaient pas la même place.",
+        "checklist": [
+          "Identifier citoyens, femmes, étrangers et esclaves.",
+          "Comparer leurs droits et conditions.",
+          "Éviter les jugements anachroniques.",
+          "Employer le mot hiérarchisée.",
+          "Appuyer une réponse sur un document."
+        ],
+        "proofs": [
+          "Classement argumenté.",
+          "Réponse à une question documentaire."
+        ],
+        "lsu": "Comprendre l’organisation de la société romaine."
+      },
+      {
+        "code": "HIS-P2-04",
+        "domain": "Ville romaine",
+        "title": "Identifier la fonction d’un monument romain",
+        "jeSais": "Je sais expliquer à quoi servait un monument ou un aménagement romain.",
+        "checklist": [
+          "Reconnaître forum, thermes, amphithéâtre, temple et aqueduc.",
+          "Associer monument et fonction.",
+          "Décrire un élément architectural.",
+          "Employer un vocabulaire précis.",
+          "Comparer avec un équipement actuel."
+        ],
+        "proofs": [
+          "Association monument-fonction.",
+          "Présentation d’un monument."
+        ],
+        "lsu": "Connaître les monuments de la ville romaine."
+      },
+      {
+        "code": "HIS-P2-05",
+        "domain": "Techniques",
+        "title": "Expliquer le rôle d’un aqueduc",
+        "jeSais": "Je sais expliquer comment un aqueduc apportait de l’eau à la ville.",
+        "checklist": [
+          "Identifier le point de départ et d’arrivée de l’eau.",
+          "Comprendre la pente.",
+          "Repérer arches et conduites.",
+          "Relier l’aqueduc aux besoins de la ville.",
+          "Produire un schéma simple."
+        ],
+        "proofs": [
+          "Schéma légendé.",
+          "Explication orale."
+        ],
+        "lsu": "Comprendre un aménagement romain."
+      },
+      {
+        "code": "HIS-P2-06",
+        "domain": "Carte historique",
+        "title": "Localiser Rome et les principaux espaces de l’Empire",
+        "jeSais": "Je sais utiliser une carte pour localiser Rome et les espaces autour de la Méditerranée.",
+        "checklist": [
+          "Lire le titre et la légende.",
+          "Localiser Rome.",
+          "Repérer la mer Méditerranée.",
+          "Identifier quelques provinces.",
+          "Utiliser des points cardinaux simples."
+        ],
+        "proofs": [
+          "Localisation sur carte.",
+          "Lecture d’une carte historique."
+        ],
+        "lsu": "Se repérer dans l’espace historique."
+      },
+      {
+        "code": "HIS-P2-07",
+        "domain": "Démarche historique",
+        "title": "Croiser texte, image et vestige",
+        "jeSais": "Je sais comparer plusieurs documents pour comprendre la vie à Rome.",
+        "checklist": [
+          "Identifier la nature des documents.",
+          "Prélever une information dans chacun.",
+          "Repérer accords et différences.",
+          "Distinguer reconstitution et vestige.",
+          "Rédiger une synthèse courte."
+        ],
+        "proofs": [
+          "Étude documentaire.",
+          "Synthèse de deux ou trois documents."
+        ],
+        "lsu": "S’initier à la démarche historique."
+      }
+    ],
+    "p3Competencies": [
+      {
+        "code": "HIS-P3-01",
+        "domain": "Empire romain",
+        "title": "Repérer l’étendue de l’Empire romain",
+        "jeSais": "Je sais repérer l’Empire romain à son apogée sur une carte.",
+        "checklist": [
+          "Lire la légende.",
+          "Repérer les limites de l’Empire.",
+          "Identifier la Méditerranée au centre.",
+          "Localiser Rome.",
+          "Employer le mot empire."
+        ],
+        "proofs": [
+          "Carte à compléter.",
+          "Questionnaire cartographique."
+        ],
+        "lsu": "Connaître l’étendue de l’Empire romain."
+      },
+      {
+        "code": "HIS-P3-02",
+        "domain": "Gaule",
+        "title": "Localiser la Gaule dans l’Empire romain",
+        "jeSais": "Je sais localiser la Gaule et la situer par rapport à Rome.",
+        "checklist": [
+          "Repérer la Gaule sur une carte.",
+          "Localiser Rome.",
+          "Utiliser nord, sud, est et ouest.",
+          "Relier Gaule et Empire.",
+          "Comparer avec la France actuelle sans les confondre."
+        ],
+        "proofs": [
+          "Localisation sur carte.",
+          "Phrase de situation géographique."
+        ],
+        "lsu": "Se repérer dans l’espace historique."
+      },
+      {
+        "code": "HIS-P3-03",
+        "domain": "Repères historiques",
+        "title": "Situer Alésia et Vercingétorix",
+        "jeSais": "Je sais situer la défaite de Vercingétorix à Alésia en 52 av. J.-C.",
+        "checklist": [
+          "Identifier César et Vercingétorix.",
+          "Situer 52 av. J.-C.",
+          "Comprendre qu’Alésia marque la défaite gauloise.",
+          "Distinguer événement et légende.",
+          "Associer personnage, lieu et date."
+        ],
+        "proofs": [
+          "Frise et légendes à compléter.",
+          "Court récit historique."
+        ],
+        "lsu": "Mémoriser un repère de l’Antiquité."
+      },
+      {
+        "code": "HIS-P3-04",
+        "domain": "Gaule romaine",
+        "title": "Expliquer la romanisation de la Gaule",
+        "jeSais": "Je sais expliquer comment les modes de vie gaulois et romains se sont mélangés.",
+        "checklist": [
+          "Identifier des apports romains.",
+          "Repérer la permanence de pratiques gauloises.",
+          "Observer villes, routes et langue.",
+          "Employer le mot gallo-romain.",
+          "Donner un exemple de mélange culturel."
+        ],
+        "proofs": [
+          "Tableau avant/après.",
+          "Explication à partir de documents."
+        ],
+        "lsu": "Comprendre la culture gallo-romaine."
+      },
+      {
+        "code": "HIS-P3-05",
+        "domain": "Vie quotidienne",
+        "title": "Décrire une ville ou une villa gallo-romaine",
+        "jeSais": "Je sais décrire un lieu de vie en Gaule romaine.",
+        "checklist": [
+          "Identifier les espaces principaux.",
+          "Associer espace et fonction.",
+          "Observer les techniques de construction.",
+          "Décrire les activités des habitants.",
+          "Utiliser un vocabulaire historique."
+        ],
+        "proofs": [
+          "Description d’un plan ou d’une reconstitution.",
+          "Présentation d’un site gallo-romain."
+        ],
+        "lsu": "Connaître la vie quotidienne en Gaule romaine."
+      },
+      {
+        "code": "HIS-P3-06",
+        "domain": "Patrimoine",
+        "title": "Interpréter un vestige gallo-romain",
+        "jeSais": "Je sais expliquer ce qu’un vestige nous apprend sur la Gaule romaine.",
+        "checklist": [
+          "Identifier le vestige.",
+          "Décrire sa matière et sa forme.",
+          "Proposer sa fonction.",
+          "Vérifier avec une légende.",
+          "Relier le vestige au mode de vie."
+        ],
+        "proofs": [
+          "Fiche d’analyse d’un vestige.",
+          "Étude d’un site local ou national."
+        ],
+        "lsu": "Utiliser les traces du passé."
+      },
+      {
+        "code": "HIS-P3-07",
+        "domain": "Synthèse",
+        "title": "Comparer Rome et la Gaule romaine",
+        "jeSais": "Je sais comparer la vie à Rome et en Gaule romaine.",
+        "checklist": [
+          "Choisir des critères.",
+          "Comparer habitat, équipements et activités.",
+          "Repérer des éléments communs.",
+          "Identifier des différences locales.",
+          "Rédiger une conclusion."
+        ],
+        "proofs": [
+          "Tableau comparatif.",
+          "Texte de synthèse."
+        ],
+        "lsu": "Comparer des sociétés de l’Antiquité."
+      }
+    ],
+    "p4Competencies": [
+      {
+        "code": "HIS-P4-01",
+        "domain": "Repères chronologiques",
+        "title": "Situer le Moyen Âge et l’an 987",
+        "jeSais": "Je sais situer le Moyen Âge et l’élection d’Hugues Capet en 987.",
+        "checklist": [
+          "Repérer le Moyen Âge sur une frise.",
+          "Placer 987.",
+          "Identifier Hugues Capet.",
+          "Comprendre le début de la dynastie capétienne.",
+          "Relier date et événement."
+        ],
+        "proofs": [
+          "Frise à compléter.",
+          "Association repère-personnage."
+        ],
+        "lsu": "Se repérer dans le Moyen Âge."
+      },
+      {
+        "code": "HIS-P4-02",
+        "domain": "Royaume de France",
+        "title": "Comprendre la notion de domaine royal",
+        "jeSais": "Je sais expliquer la différence entre le domaine royal et le royaume.",
+        "checklist": [
+          "Observer une carte du royaume.",
+          "Identifier le domaine directement contrôlé par le roi.",
+          "Repérer les grands fiefs.",
+          "Comprendre l’évolution du domaine royal.",
+          "Employer domaine royal et royaume."
+        ],
+        "proofs": [
+          "Lecture de cartes successives.",
+          "Explication orale."
+        ],
+        "lsu": "Comprendre la construction territoriale du royaume."
+      },
+      {
+        "code": "HIS-P4-03",
+        "domain": "Pouvoir royal",
+        "title": "Décrire la cérémonie du sacre",
+        "jeSais": "Je sais décrire les principales étapes du sacre d’un roi.",
+        "checklist": [
+          "Identifier le lieu et les acteurs.",
+          "Repérer les objets symboliques.",
+          "Décrire l’onction et le couronnement.",
+          "Comprendre la dimension religieuse.",
+          "Expliquer ce que le sacre affirme."
+        ],
+        "proofs": [
+          "Description d’une miniature.",
+          "Remise en ordre des étapes du sacre."
+        ],
+        "lsu": "Comprendre l’affirmation de l’autorité royale."
+      },
+      {
+        "code": "HIS-P4-04",
+        "domain": "Dynasties",
+        "title": "Comprendre ce qu’est une dynastie",
+        "jeSais": "Je sais expliquer ce qu’est une dynastie royale.",
+        "checklist": [
+          "Comprendre la succession au sein d’une famille.",
+          "Identifier les Capétiens.",
+          "Distinguer roi et dynastie.",
+          "Lire un arbre généalogique simple.",
+          "Employer le mot dynastie."
+        ],
+        "proofs": [
+          "Lecture d’un arbre généalogique.",
+          "Définition illustrée."
+        ],
+        "lsu": "Connaître l’organisation de la monarchie."
+      },
+      {
+        "code": "HIS-P4-05",
+        "domain": "Cartes historiques",
+        "title": "Lire l’agrandissement du royaume sur plusieurs cartes",
+        "jeSais": "Je sais comparer des cartes pour voir comment le royaume de France s’agrandit.",
+        "checklist": [
+          "Lire dates, titres et légendes.",
+          "Repérer les territoires ajoutés.",
+          "Comparer deux cartes.",
+          "Décrire une évolution.",
+          "Formuler une conclusion chronologique."
+        ],
+        "proofs": [
+          "Comparaison de cartes.",
+          "Texte d’évolution."
+        ],
+        "lsu": "Lire une évolution territoriale."
+      },
+      {
+        "code": "HIS-P4-06",
+        "domain": "Figures historiques",
+        "title": "Connaître une figure de la construction du royaume",
+        "jeSais": "Je sais présenter le rôle d’une figure historique comme Philippe Auguste, Aliénor d’Aquitaine ou Blanche de Castille.",
+        "checklist": [
+          "Identifier la personne.",
+          "La situer dans le temps.",
+          "Décrire une action importante.",
+          "Utiliser des sources adaptées.",
+          "Éviter de réduire son rôle à une anecdote."
+        ],
+        "proofs": [
+          "Portrait historique.",
+          "Présentation orale courte."
+        ],
+        "lsu": "Connaître des acteurs et actrices de l’histoire."
+      },
+      {
+        "code": "HIS-P4-07",
+        "domain": "Pouvoir royal",
+        "title": "Identifier des moyens d’affirmer l’autorité du roi",
+        "jeSais": "Je sais citer des moyens utilisés par les rois pour renforcer leur pouvoir.",
+        "checklist": [
+          "Repérer armée, justice, impôt et monnaie.",
+          "Comprendre le rôle des agents du roi.",
+          "Relier château et contrôle du territoire.",
+          "Donner plusieurs exemples.",
+          "Organiser une réponse."
+        ],
+        "proofs": [
+          "Carte mentale.",
+          "Question de synthèse."
+        ],
+        "lsu": "Comprendre l’affirmation du pouvoir royal."
+      }
+    ],
+    "p5Competencies": [
+      {
+        "code": "HIS-P5-01",
+        "domain": "Repères chronologiques",
+        "title": "Situer les Capétiens, les Valois et la guerre de Cent Ans",
+        "jeSais": "Je sais placer les dynasties et la guerre de Cent Ans sur une frise.",
+        "checklist": [
+          "Repérer Capétiens et Valois.",
+          "Situer les XIVe et XVe siècles.",
+          "Placer la guerre de Cent Ans.",
+          "Respecter l’ordre chronologique.",
+          "Relier dynastie et période."
+        ],
+        "proofs": [
+          "Frise de synthèse.",
+          "Questions de repérage."
+        ],
+        "lsu": "Mémoriser des repères du Moyen Âge."
+      },
+      {
+        "code": "HIS-P5-02",
+        "domain": "Guerre de Cent Ans",
+        "title": "Expliquer simplement l’origine d’un conflit dynastique",
+        "jeSais": "Je sais expliquer pourquoi plusieurs souverains revendiquent le royaume de France.",
+        "checklist": [
+          "Identifier le problème de succession.",
+          "Comprendre une revendication dynastique simple.",
+          "Distinguer causes et déroulement.",
+          "Employer le mot guerre.",
+          "Formuler une explication adaptée."
+        ],
+        "proofs": [
+          "Schéma de succession simplifié.",
+          "Court paragraphe explicatif."
+        ],
+        "lsu": "Comprendre une cause historique."
+      },
+      {
+        "code": "HIS-P5-03",
+        "domain": "Figures historiques",
+        "title": "Présenter une figure de la guerre de Cent Ans",
+        "jeSais": "Je sais présenter le rôle d’une personne importante de la guerre de Cent Ans.",
+        "checklist": [
+          "Identifier la personne.",
+          "La situer dans le temps.",
+          "Décrire une action.",
+          "Distinguer faits et légendes.",
+          "Expliquer son importance."
+        ],
+        "proofs": [
+          "Portrait historique.",
+          "Présentation orale."
+        ],
+        "lsu": "Connaître des acteurs et actrices de l’histoire."
+      },
+      {
+        "code": "HIS-P5-04",
+        "domain": "Monarchie",
+        "title": "Expliquer comment le roi affirme son autorité",
+        "jeSais": "Je sais expliquer comment la monarchie renforce son pouvoir sur le royaume.",
+        "checklist": [
+          "Mobiliser sacre, armée, justice, impôt et monnaie.",
+          "Relier pouvoir et territoire.",
+          "Donner des exemples précis.",
+          "Comparer début et fin de période.",
+          "Rédiger une conclusion."
+        ],
+        "proofs": [
+          "Réponse organisée.",
+          "Carte mentale de synthèse."
+        ],
+        "lsu": "Comprendre la construction de l’État royal."
+      },
+      {
+        "code": "HIS-P5-05",
+        "domain": "Cartes historiques",
+        "title": "Décrire l’évolution du royaume de France",
+        "jeSais": "Je sais utiliser des cartes pour raconter l’agrandissement du royaume.",
+        "checklist": [
+          "Classer les cartes chronologiquement.",
+          "Repérer les changements.",
+          "Employer des connecteurs temporels.",
+          "Identifier des territoires.",
+          "Expliquer une évolution générale."
+        ],
+        "proofs": [
+          "Récit à partir de cartes.",
+          "Carte commentée."
+        ],
+        "lsu": "Maîtriser la lecture de cartes historiques."
+      },
+      {
+        "code": "HIS-P5-06",
+        "domain": "Vocabulaire",
+        "title": "Employer le vocabulaire du royaume médiéval",
+        "jeSais": "Je sais utiliser correctement les mots monarchie, royaume, dynastie, sacre, impôt et guerre.",
+        "checklist": [
+          "Définir chaque mot simplement.",
+          "Associer mot et exemple.",
+          "Réutiliser dans une phrase.",
+          "Distinguer royaume et domaine royal.",
+          "Corriger un emploi imprécis."
+        ],
+        "proofs": [
+          "Lexique illustré.",
+          "Texte utilisant plusieurs mots-clés."
+        ],
+        "lsu": "Maîtriser le vocabulaire historique."
+      },
+      {
+        "code": "HIS-P5-07",
+        "domain": "Synthèse annuelle",
+        "title": "Raconter une grande évolution historique étudiée",
+        "jeSais": "Je sais raconter une évolution de la Préhistoire au royaume de France en utilisant des repères.",
+        "checklist": [
+          "Choisir une évolution.",
+          "Sélectionner des repères utiles.",
+          "Respecter la chronologie.",
+          "Employer des connecteurs temporels.",
+          "Conclure sans anachronisme."
+        ],
+        "proofs": [
+          "Récit historique court.",
+          "Frise commentée."
+        ],
+        "lsu": "Décrire et expliquer le passé."
+      }
+    ]
+  },
+  geographie: {
+    "title": "Géographie",
+    "icon": "🗺️",
+    "subtitle": "Vivre en France : population, logement et travail",
+    "routines": [
+      "Localiser chaque étude sur une carte de France",
+      "Lire régulièrement cartes, plans, photographies et graphiques",
+      "Employer un vocabulaire géographique précis",
+      "Décrire puis expliquer les paysages",
+      "Changer d’échelle : commune, région, France",
+      "Comparer des territoires français variés"
+    ],
+    "rows": [
+      [
+        "Population en France",
+        "Répartition de la population, grandes villes, littoraux, vallées et espaces peu peuplés.",
+        "Réactivation des repères de peuplement dans l’étude des villes.",
+        "Lien entre habitat et densité de population.",
+        "Lien entre activités et concentrations humaines.",
+        "Bilan des contrastes du territoire français."
+      ],
+      [
+        "Se loger en France",
+        "Premières observations de formes d’habitat.",
+        "Se loger dans les espaces urbains.",
+        "Se loger dans les espaces ruraux, littoraux et montagnards.",
+        "Réinvestissement à travers les mobilités liées au travail.",
+        "Bilan des façons d’habiter."
+      ],
+      [
+        "Travailler en France",
+        "Premiers liens entre population et activités.",
+        "Services et emplois urbains.",
+        "Activités rurales et touristiques liées aux lieux de vie.",
+        "Travailler dans les espaces urbains, industriels et logistiques.",
+        "Agriculture, tourisme, services et transformations des territoires."
+      ]
+    ],
+    "p1Competencies": [
+      {
+        "code": "GEOG-P1-01",
+        "domain": "Repères spatiaux",
+        "title": "Localiser la France à différentes échelles",
+        "jeSais": "Je sais localiser la France sur un globe, un planisphère et une carte d’Europe.",
+        "checklist": [
+          "Reconnaître globe et planisphère.",
+          "Localiser l’Europe.",
+          "Localiser la France hexagonale.",
+          "Repérer les territoires ultramarins sur une carte adaptée.",
+          "Employer continent, pays et territoire."
+        ],
+        "proofs": [
+          "Localisation sur différents supports.",
+          "Phrase de situation."
+        ],
+        "lsu": "Se repérer dans l’espace."
+      },
+      {
+        "code": "GEOG-P1-02",
+        "domain": "Population",
+        "title": "Lire une carte de densité de population",
+        "jeSais": "Je sais lire une carte qui montre où la population est nombreuse ou peu nombreuse.",
+        "checklist": [
+          "Lire le titre.",
+          "Comprendre la légende.",
+          "Associer couleur et densité.",
+          "Localiser une zone dense.",
+          "Localiser une zone peu dense."
+        ],
+        "proofs": [
+          "Questionnaire cartographique.",
+          "Carte à légender."
+        ],
+        "lsu": "Lire une carte thématique."
+      },
+      {
+        "code": "GEOG-P1-03",
+        "domain": "Villes",
+        "title": "Localiser Paris et quelques grandes villes françaises",
+        "jeSais": "Je sais localiser Paris et plusieurs grandes villes de France.",
+        "checklist": [
+          "Localiser Paris.",
+          "Repérer quelques métropoles régionales.",
+          "Utiliser les points cardinaux.",
+          "Associer une ville à sa position.",
+          "Mémoriser des repères."
+        ],
+        "proofs": [
+          "Carte muette.",
+          "Jeu de localisation."
+        ],
+        "lsu": "Mémoriser des repères géographiques."
+      },
+      {
+        "code": "GEOG-P1-04",
+        "domain": "Espaces peuplés",
+        "title": "Identifier les espaces densément peuplés",
+        "jeSais": "Je sais reconnaître les espaces français où vivent beaucoup d’habitants.",
+        "checklist": [
+          "Repérer les grandes agglomérations.",
+          "Identifier certains littoraux.",
+          "Identifier les grandes vallées.",
+          "Observer les axes de transport.",
+          "Formuler une caractéristique commune."
+        ],
+        "proofs": [
+          "Lecture de carte.",
+          "Comparaison de documents."
+        ],
+        "lsu": "Comprendre la répartition de la population."
+      },
+      {
+        "code": "GEOG-P1-05",
+        "domain": "Espaces peu peuplés",
+        "title": "Identifier les espaces faiblement peuplés",
+        "jeSais": "Je sais reconnaître des espaces français où vivent peu d’habitants.",
+        "checklist": [
+          "Repérer des zones rurales.",
+          "Identifier certains massifs montagneux.",
+          "Lire une carte de densité.",
+          "Décrire un paysage peu peuplé.",
+          "Éviter de confondre peu peuplé et inhabité."
+        ],
+        "proofs": [
+          "Localisation sur carte.",
+          "Description de paysage."
+        ],
+        "lsu": "Comprendre les contrastes de peuplement."
+      },
+      {
+        "code": "GEOG-P1-06",
+        "domain": "Comparaison",
+        "title": "Comparer deux espaces de peuplement",
+        "jeSais": "Je sais comparer un espace très peuplé et un espace peu peuplé.",
+        "checklist": [
+          "Choisir des critères.",
+          "Comparer bâtiments, routes et activités.",
+          "Utiliser plus/moins.",
+          "Relier paysage et population.",
+          "Rédiger une conclusion."
+        ],
+        "proofs": [
+          "Tableau comparatif.",
+          "Court texte géographique."
+        ],
+        "lsu": "Comparer des territoires."
+      },
+      {
+        "code": "GEOG-P1-07",
+        "domain": "Explication",
+        "title": "Expliquer simplement une différence de peuplement",
+        "jeSais": "Je sais proposer une explication simple à la répartition de la population.",
+        "checklist": [
+          "Mobiliser emplois et services.",
+          "Prendre en compte relief et accessibilité.",
+          "Repérer le rôle des transports.",
+          "Distinguer constat et explication.",
+          "Appuyer l’explication sur un document."
+        ],
+        "proofs": [
+          "Réponse argumentée.",
+          "Schéma causes-conséquences."
+        ],
+        "lsu": "Expliquer une organisation spatiale."
+      }
+    ],
+    "p2Competencies": [
+      {
+        "code": "GEOG-P2-01",
+        "domain": "Paysage urbain",
+        "title": "Reconnaître et décrire un paysage urbain",
+        "jeSais": "Je sais reconnaître une ville et décrire ses principaux éléments.",
+        "checklist": [
+          "Identifier bâtiments et rues.",
+          "Repérer la densité des constructions.",
+          "Nommer des équipements.",
+          "Décrire les déplacements.",
+          "Employer paysage urbain."
+        ],
+        "proofs": [
+          "Description de photographie.",
+          "Croquis simple."
+        ],
+        "lsu": "Décrire un espace urbain."
+      },
+      {
+        "code": "GEOG-P2-02",
+        "domain": "Habitat",
+        "title": "Distinguer habitat individuel et habitat collectif",
+        "jeSais": "Je sais distinguer une maison individuelle d’un immeuble collectif.",
+        "checklist": [
+          "Observer la forme des bâtiments.",
+          "Identifier le nombre de logements.",
+          "Comparer l’usage du sol.",
+          "Repérer les espaces partagés.",
+          "Employer individuel et collectif."
+        ],
+        "proofs": [
+          "Classement de photographies.",
+          "Tableau comparatif."
+        ],
+        "lsu": "Identifier des formes d’habitat."
+      },
+      {
+        "code": "GEOG-P2-03",
+        "domain": "Organisation urbaine",
+        "title": "Identifier les fonctions d’un quartier",
+        "jeSais": "Je sais repérer où l’on habite, travaille, achète, se soigne ou se divertit.",
+        "checklist": [
+          "Observer bâtiments et équipements.",
+          "Associer lieu et fonction.",
+          "Distinguer habitat et activité.",
+          "Repérer des services.",
+          "Comprendre qu’un quartier peut avoir plusieurs fonctions."
+        ],
+        "proofs": [
+          "Plan ou photographie annotée.",
+          "Classement de lieux."
+        ],
+        "lsu": "Comprendre l’organisation d’un espace urbain."
+      },
+      {
+        "code": "GEOG-P2-04",
+        "domain": "Plan",
+        "title": "Lire un plan de ville ou de quartier",
+        "jeSais": "Je sais utiliser un plan pour localiser un lieu et préparer un trajet.",
+        "checklist": [
+          "Lire le titre et la légende.",
+          "Repérer les rues.",
+          "Utiliser un quadrillage ou des repères.",
+          "Localiser départ et arrivée.",
+          "Décrire un itinéraire."
+        ],
+        "proofs": [
+          "Trajet sur plan.",
+          "Questions de localisation."
+        ],
+        "lsu": "Se repérer sur un plan."
+      },
+      {
+        "code": "GEOG-P2-05",
+        "domain": "Centre et périphérie",
+        "title": "Comparer centre-ville et périphérie",
+        "jeSais": "Je sais comparer un centre-ville et un quartier périphérique.",
+        "checklist": [
+          "Observer densité et hauteur des bâtiments.",
+          "Comparer types de logements.",
+          "Repérer commerces et services.",
+          "Comparer circulation et espaces verts.",
+          "Formuler une conclusion."
+        ],
+        "proofs": [
+          "Tableau comparatif.",
+          "Description croisée de photographies."
+        ],
+        "lsu": "Comparer des espaces urbains."
+      },
+      {
+        "code": "GEOG-P2-06",
+        "domain": "Mobilités",
+        "title": "Comprendre les déplacements liés au logement",
+        "jeSais": "Je sais expliquer pourquoi les habitants se déplacent chaque jour.",
+        "checklist": [
+          "Identifier domicile, travail et école.",
+          "Repérer différents moyens de transport.",
+          "Comprendre les trajets quotidiens.",
+          "Lire une carte simple de réseau.",
+          "Relier logement et accessibilité."
+        ],
+        "proofs": [
+          "Schéma de mobilités.",
+          "Étude d’un trajet quotidien."
+        ],
+        "lsu": "Comprendre les mobilités quotidiennes."
+      },
+      {
+        "code": "GEOG-P2-07",
+        "domain": "Aménagement",
+        "title": "Identifier un aménagement qui améliore la vie des habitants",
+        "jeSais": "Je sais expliquer à quoi sert un aménagement urbain.",
+        "checklist": [
+          "Identifier l’aménagement.",
+          "Décrire son usage.",
+          "Nommer les habitants concernés.",
+          "Repérer avantages et contraintes.",
+          "Relier l’aménagement à un besoin."
+        ],
+        "proofs": [
+          "Étude d’un parc, tramway ou équipement.",
+          "Présentation orale."
+        ],
+        "lsu": "Comprendre l’aménagement d’un territoire."
+      }
+    ],
+    "p3Competencies": [
+      {
+        "code": "GEOG-P3-01",
+        "domain": "Espace rural",
+        "title": "Reconnaître et décrire un espace rural",
+        "jeSais": "Je sais reconnaître un espace rural et décrire son habitat.",
+        "checklist": [
+          "Repérer faible densité de bâtiments.",
+          "Identifier champs, routes et villages.",
+          "Distinguer rural et agricole.",
+          "Décrire les services présents.",
+          "Employer espace rural."
+        ],
+        "proofs": [
+          "Description de paysage.",
+          "Croquis légendé."
+        ],
+        "lsu": "Décrire un espace rural."
+      },
+      {
+        "code": "GEOG-P3-02",
+        "domain": "Habitat rural",
+        "title": "Comparer habitat groupé et habitat dispersé",
+        "jeSais": "Je sais distinguer un village groupé de maisons dispersées.",
+        "checklist": [
+          "Observer la disposition des bâtiments.",
+          "Repérer le centre du village.",
+          "Identifier hameaux et fermes isolées.",
+          "Comparer les distances.",
+          "Relier habitat et déplacements."
+        ],
+        "proofs": [
+          "Classement de photographies.",
+          "Comparaison écrite."
+        ],
+        "lsu": "Identifier des formes d’habitat rural."
+      },
+      {
+        "code": "GEOG-P3-03",
+        "domain": "Littoral",
+        "title": "Décrire comment on se loge sur un littoral",
+        "jeSais": "Je sais décrire différentes formes de logement dans un espace littoral.",
+        "checklist": [
+          "Repérer ville, village ou station.",
+          "Identifier résidences principales et touristiques.",
+          "Observer contraintes du relief et du risque.",
+          "Décrire les accès.",
+          "Relier habitat et tourisme."
+        ],
+        "proofs": [
+          "Étude de paysage littoral.",
+          "Plan annoté."
+        ],
+        "lsu": "Comprendre les façons d’habiter un littoral."
+      },
+      {
+        "code": "GEOG-P3-04",
+        "domain": "Montagne",
+        "title": "Décrire comment on se loge en montagne",
+        "jeSais": "Je sais expliquer comment le relief influence les logements et les déplacements.",
+        "checklist": [
+          "Repérer vallée et versant.",
+          "Observer la concentration des habitations.",
+          "Identifier routes et contraintes.",
+          "Comparer habitat permanent et touristique.",
+          "Relier relief et aménagement."
+        ],
+        "proofs": [
+          "Description de paysage montagnard.",
+          "Schéma vallée-versant."
+        ],
+        "lsu": "Comprendre les façons d’habiter la montagne."
+      },
+      {
+        "code": "GEOG-P3-05",
+        "domain": "Comparaison",
+        "title": "Comparer trois façons de se loger en France",
+        "jeSais": "Je sais comparer un espace urbain, rural et montagnard ou littoral.",
+        "checklist": [
+          "Choisir des critères communs.",
+          "Comparer densité, habitat et services.",
+          "Repérer les contraintes.",
+          "Identifier les mobilités.",
+          "Rédiger une synthèse."
+        ],
+        "proofs": [
+          "Tableau comparatif.",
+          "Texte de synthèse."
+        ],
+        "lsu": "Comparer des territoires français."
+      },
+      {
+        "code": "GEOG-P3-06",
+        "domain": "Services",
+        "title": "Comprendre l’accès aux services selon le lieu de vie",
+        "jeSais": "Je sais expliquer pourquoi l’accès aux services varie selon les territoires.",
+        "checklist": [
+          "Identifier école, santé, commerces et transports.",
+          "Comparer distances.",
+          "Repérer concentration et dispersion.",
+          "Comprendre le rôle des mobilités.",
+          "Proposer une solution d’aménagement."
+        ],
+        "proofs": [
+          "Étude de cas.",
+          "Schéma d’accès aux services."
+        ],
+        "lsu": "Comprendre les inégalités d’accès aux services."
+      },
+      {
+        "code": "GEOG-P3-07",
+        "domain": "Carte de France",
+        "title": "Localiser les grands types d’espaces étudiés",
+        "jeSais": "Je sais localiser des espaces urbains, ruraux, littoraux et montagnards en France.",
+        "checklist": [
+          "Repérer de grandes villes.",
+          "Localiser quelques littoraux.",
+          "Localiser Alpes, Pyrénées ou Massif central.",
+          "Identifier des espaces ruraux.",
+          "Utiliser une légende."
+        ],
+        "proofs": [
+          "Carte à compléter.",
+          "Questions de localisation."
+        ],
+        "lsu": "Mémoriser des repères géographiques."
+      }
+    ],
+    "p4Competencies": [
+      {
+        "code": "GEOG-P4-01",
+        "domain": "Activités urbaines",
+        "title": "Identifier les principaux lieux de travail en ville",
+        "jeSais": "Je sais repérer où les habitants travaillent dans un espace urbain.",
+        "checklist": [
+          "Identifier commerces, bureaux, hôpitaux et écoles.",
+          "Repérer zones industrielles ou artisanales.",
+          "Associer métier et lieu.",
+          "Distinguer habitat et activité.",
+          "Employer activité économique."
+        ],
+        "proofs": [
+          "Carte ou photographie annotée.",
+          "Classement métiers-lieux."
+        ],
+        "lsu": "Comprendre les espaces de travail urbains."
+      },
+      {
+        "code": "GEOG-P4-02",
+        "domain": "Secteurs d’activité",
+        "title": "Distinguer produire un bien et rendre un service",
+        "jeSais": "Je sais distinguer une activité de production d’une activité de service.",
+        "checklist": [
+          "Observer le résultat de l’activité.",
+          "Identifier bien matériel et service.",
+          "Classer des métiers.",
+          "Justifier un classement.",
+          "Relier activité et territoire."
+        ],
+        "proofs": [
+          "Classement de métiers.",
+          "Étude de documents."
+        ],
+        "lsu": "Identifier différentes activités économiques."
+      },
+      {
+        "code": "GEOG-P4-03",
+        "domain": "Industrie",
+        "title": "Décrire un espace industriel ou logistique",
+        "jeSais": "Je sais décrire comment est organisé un espace industriel ou logistique.",
+        "checklist": [
+          "Repérer bâtiments et entrepôts.",
+          "Identifier voies de transport.",
+          "Observer machines et stockage.",
+          "Comprendre les flux de marchandises.",
+          "Employer industrie ou logistique."
+        ],
+        "proofs": [
+          "Description de photographie aérienne.",
+          "Schéma d’organisation."
+        ],
+        "lsu": "Comprendre un espace productif."
+      },
+      {
+        "code": "GEOG-P4-04",
+        "domain": "Transports",
+        "title": "Expliquer le rôle des transports dans le travail",
+        "jeSais": "Je sais expliquer pourquoi les activités se situent près des routes, gares ou ports.",
+        "checklist": [
+          "Identifier les infrastructures.",
+          "Repérer les déplacements de personnes et marchandises.",
+          "Relier accessibilité et implantation.",
+          "Comparer deux localisations.",
+          "Formuler une explication."
+        ],
+        "proofs": [
+          "Étude de carte.",
+          "Réponse argumentée."
+        ],
+        "lsu": "Comprendre les réseaux et les flux."
+      },
+      {
+        "code": "GEOG-P4-05",
+        "domain": "Métropole",
+        "title": "Comprendre la concentration des emplois dans une grande ville",
+        "jeSais": "Je sais expliquer pourquoi une grande ville rassemble de nombreux emplois.",
+        "checklist": [
+          "Identifier population et services.",
+          "Repérer administrations et entreprises.",
+          "Comprendre l’attractivité.",
+          "Relier emplois et transports.",
+          "Nuancer avec les contraintes."
+        ],
+        "proofs": [
+          "Étude de cas métropolitaine.",
+          "Carte mentale."
+        ],
+        "lsu": "Comprendre l’attractivité urbaine."
+      },
+      {
+        "code": "GEOG-P4-06",
+        "domain": "Paysage",
+        "title": "Lire un paysage de travail",
+        "jeSais": "Je sais prélever des indices pour identifier l’activité dominante d’un paysage.",
+        "checklist": [
+          "Observer bâtiments et parcelles.",
+          "Repérer véhicules et machines.",
+          "Identifier travailleurs ou usagers.",
+          "Formuler une hypothèse.",
+          "Vérifier avec la légende."
+        ],
+        "proofs": [
+          "Analyse de paysage.",
+          "Justification orale."
+        ],
+        "lsu": "Lire et interpréter un paysage."
+      },
+      {
+        "code": "GEOG-P4-07",
+        "domain": "Aménagement",
+        "title": "Comprendre qu’une activité transforme le territoire",
+        "jeSais": "Je sais expliquer comment un espace est aménagé pour travailler.",
+        "checklist": [
+          "Identifier l’état initial si disponible.",
+          "Repérer constructions et réseaux.",
+          "Nommer les besoins de l’activité.",
+          "Observer les effets sur le paysage.",
+          "Évoquer une contrainte environnementale."
+        ],
+        "proofs": [
+          "Comparaison avant/après.",
+          "Texte explicatif."
+        ],
+        "lsu": "Comprendre la transformation des territoires."
+      }
+    ],
+    "p5Competencies": [
+      {
+        "code": "GEOG-P5-01",
+        "domain": "Agriculture",
+        "title": "Décrire un espace agricole",
+        "jeSais": "Je sais reconnaître et décrire un paysage agricole français.",
+        "checklist": [
+          "Identifier cultures ou élevage.",
+          "Observer parcelles et bâtiments.",
+          "Repérer machines et voies d’accès.",
+          "Distinguer type de production.",
+          "Employer espace agricole."
+        ],
+        "proofs": [
+          "Description de photographie.",
+          "Croquis légendé."
+        ],
+        "lsu": "Comprendre un espace productif agricole."
+      },
+      {
+        "code": "GEOG-P5-02",
+        "domain": "Chaîne de production",
+        "title": "Suivre le parcours d’un produit",
+        "jeSais": "Je sais expliquer les étapes entre la production d’une ressource et sa vente.",
+        "checklist": [
+          "Identifier matière première.",
+          "Repérer transformation.",
+          "Comprendre transport et stockage.",
+          "Identifier lieu de vente.",
+          "Ordonner les étapes."
+        ],
+        "proofs": [
+          "Schéma de filière.",
+          "Remise en ordre de documents."
+        ],
+        "lsu": "Comprendre une chaîne de production."
+      },
+      {
+        "code": "GEOG-P5-03",
+        "domain": "Tourisme",
+        "title": "Identifier les activités touristiques d’un territoire",
+        "jeSais": "Je sais expliquer comment le tourisme crée des emplois et transforme les lieux.",
+        "checklist": [
+          "Repérer hébergements et loisirs.",
+          "Identifier emplois directs.",
+          "Observer les transports.",
+          "Comparer saison et hors saison.",
+          "Repérer effets positifs et contraintes."
+        ],
+        "proofs": [
+          "Étude d’une station.",
+          "Carte mentale du tourisme."
+        ],
+        "lsu": "Comprendre un espace touristique."
+      },
+      {
+        "code": "GEOG-P5-04",
+        "domain": "Services publics",
+        "title": "Identifier des emplois au service des habitants",
+        "jeSais": "Je sais reconnaître des activités de service dans une commune ou un territoire.",
+        "checklist": [
+          "Identifier école, santé, mairie et sécurité.",
+          "Associer métiers et besoins.",
+          "Distinguer service public et commerce.",
+          "Localiser les équipements.",
+          "Expliquer leur utilité."
+        ],
+        "proofs": [
+          "Enquête locale.",
+          "Plan des services."
+        ],
+        "lsu": "Comprendre le rôle des services."
+      },
+      {
+        "code": "GEOG-P5-05",
+        "domain": "Environnement",
+        "title": "Repérer les effets d’une activité sur l’environnement",
+        "jeSais": "Je sais identifier des effets positifs ou négatifs d’une activité sur un territoire.",
+        "checklist": [
+          "Observer consommation d’espace.",
+          "Repérer pollution ou protection.",
+          "Distinguer constat et jugement.",
+          "Identifier des acteurs.",
+          "Proposer une amélioration réaliste."
+        ],
+        "proofs": [
+          "Étude de documents contradictoires.",
+          "Tableau effets-solutions."
+        ],
+        "lsu": "Comprendre les enjeux d’aménagement durable."
+      },
+      {
+        "code": "GEOG-P5-06",
+        "domain": "Comparaison",
+        "title": "Comparer plusieurs espaces de travail en France",
+        "jeSais": "Je sais comparer un espace agricole, industriel, urbain ou touristique.",
+        "checklist": [
+          "Choisir des critères.",
+          "Comparer activités et paysages.",
+          "Repérer réseaux et emplois.",
+          "Identifier contraintes.",
+          "Formuler une synthèse."
+        ],
+        "proofs": [
+          "Tableau comparatif.",
+          "Présentation orale."
+        ],
+        "lsu": "Comparer des espaces productifs."
+      },
+      {
+        "code": "GEOG-P5-07",
+        "domain": "Synthèse annuelle",
+        "title": "Expliquer comment les habitants vivent et travaillent en France",
+        "jeSais": "Je sais utiliser des cartes et des paysages pour présenter les contrastes du territoire français.",
+        "checklist": [
+          "Mobiliser population, habitat et travail.",
+          "Choisir des exemples variés.",
+          "Localiser les exemples.",
+          "Employer un vocabulaire précis.",
+          "Organiser une réponse en plusieurs idées."
+        ],
+        "proofs": [
+          "Carte commentée.",
+          "Synthèse écrite ou orale."
+        ],
+        "lsu": "Décrire et expliquer l’organisation du territoire français."
+      }
+    ]
   }
 };
