@@ -4,7 +4,7 @@ Mini-site statique prêt pour GitHub Pages.
 
 ## Fonctions
 
-- référentiel annuel en français et mathématiques ;
+- référentiel annuel en français, mathématiques et EMC ;
 - vues par période ;
 - suivi interactif avec états : À faire, En cours, Travaillé, À reprendre, Stabilisé ;
 - checklist pédagogique par notion ;
@@ -37,3 +37,13 @@ Les périodes 1 à 5 disposent de cartes par microcompétence : checklist pédag
 ## Suivi détaillé compatible LSU
 
 Les cinq périodes de français et de mathématiques comportent des compétences précises, une checklist pédagogique, une ou deux évaluations retenues, un bilan de maîtrise et un regroupement LSU.
+
+
+## EMC — suivi détaillé
+
+Les cinq périodes d’EMC sont organisées autour de 25 compétences observables :
+règles et responsabilités, respect d’autrui, prévention des violences et du harcèlement,
+information et responsabilité numérique, égalité et valeurs de la République,
+services publics, commune, secours, environnement et engagement pour le bien commun.
+
+Les élections de délégués ne font pas partie de cette programmation.
