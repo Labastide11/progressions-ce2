@@ -3,3 +3,24 @@
 @media(max-width:1000px){.annual-grid{grid-template-columns:1fr}.period-cell{border-right:0}.followup-periods.all{grid-template-columns:repeat(2,minmax(260px,1fr))}.toolbar,.intro{align-items:flex-start;flex-direction:column}.stats{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:650px){.shell{width:min(100% - 16px,1400px)}.followup-periods.all{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.dashboard__top{grid-template-columns:1fr}.routines ul{columns:1}.statusbar{align-items:flex-start;flex-direction:column}.hero{padding:25px 14px}}
 @media print{.hero__actions,.toolbar,.mode-switch,.print-btn,.save-tools,.sources,footer{display:none!important}.hero{padding:12px;background:#fff;color:#000}.subtitle,.eyebrow{color:#333}.shell{width:100%;margin:0}.card,.domain-card{box-shadow:none}.followup-periods.all{grid-template-columns:repeat(2,1fr);overflow:visible}.followup-card{break-inside:avoid}.retention textarea,.teacher-note textarea{border:1px solid #999;min-height:60px}.dashboard{break-inside:avoid}}
+
+/* Français P1 — compétences précises, évaluations et synthèse LSU */
+.skill-intro{padding:16px 20px;display:flex;flex-direction:column;gap:5px;border-left:8px solid var(--p1)}
+.skill-intro strong{font-size:20px;color:var(--navy)}.skill-intro span{color:var(--muted);line-height:1.45}
+.skill-domain .domain-title{display:flex;justify-content:space-between;align-items:center}.domain-title small{font-size:12px;color:var(--muted);font-weight:800}
+.skill-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:14px}
+.skill-card{border:1px solid var(--line);border-radius:15px;background:#fff;overflow:hidden;box-shadow:0 5px 16px rgba(23,50,77,.06)}
+.skill-card summary{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:14px;cursor:pointer;list-style:none}.skill-card summary::-webkit-details-marker{display:none}
+.skill-card summary:before{content:'›';font-size:25px;font-weight:900;color:var(--blue);transition:.2s}.skill-card[open] summary:before{transform:rotate(90deg)}
+.skill-code{font-size:12px;font-weight:950;color:#174d84;background:#edf5ff;border-radius:8px;padding:5px 7px}.skill-title{font-weight:900;color:var(--navy);line-height:1.25}.skill-state{font-size:12px;font-weight:900;border:1px solid;padding:5px 8px;border-radius:999px;white-space:nowrap}
+.skill-body{border-top:1px solid var(--line);padding:15px}.skill-top{display:grid;grid-template-columns:1fr 1fr;gap:12px}.skill-top label>span,.evaluation-row label>span{display:block;font-size:12px;font-weight:900;color:var(--muted);margin-bottom:5px}
+.mastery-select,.evaluation-row input,.evaluation-row select{width:100%;border:1px solid var(--line);border-radius:10px;padding:8px;font:inherit;background:#fff}
+.je-sais{margin:14px 0;padding:12px 14px;background:#fff9db;border:1px solid #f0cd4b;border-radius:12px;line-height:1.45}.je-sais strong{display:block;color:var(--navy);margin-bottom:4px}
+.skill-checklist{columns:2;column-gap:20px}.skill-checklist .check-row{break-inside:avoid}
+.proofs{padding:11px 13px;background:#f6f9fc;border-radius:11px;margin:12px 0}.proofs strong{color:var(--navy)}.proofs ul{margin:6px 0 0;padding-left:20px}.proofs li{margin:4px 0}
+.evaluations{border-top:1px solid var(--line);padding-top:12px}.evaluations h4{margin:0 0 10px;color:var(--navy)}.evaluation-row{display:grid;grid-template-columns:1fr 145px 210px;gap:10px;margin-bottom:10px;padding:10px;background:#fafcfe;border:1px solid var(--line);border-radius:11px}
+.lsu-box{display:flex;gap:10px;align-items:flex-start;padding:11px 13px;background:#f3efff;border-left:5px solid var(--violet);border-radius:10px;margin:12px 0}.lsu-box strong{color:#4f3fb2;white-space:nowrap}.lsu-box span{line-height:1.4}
+.mastery-none{border-color:#9aa8b5}.mastery-fragile{border-color:#e76f51;background:#fff2ee}.mastery-encours{border-color:#f4a261;background:#fff8ed}.mastery-acquise{border-color:#43aa8b;background:#effcf8}.mastery-maitrisee{border-color:#6c5ce7;background:#f4f0ff}
+@media(max-width:900px){.skill-grid{grid-template-columns:1fr}.skill-checklist{columns:1}.evaluation-row{grid-template-columns:1fr 130px}.evaluation-row label:last-child{grid-column:1/-1}}
+@media(max-width:600px){.skill-card summary{grid-template-columns:auto 1fr}.skill-state{grid-column:2}.skill-top,.evaluation-row{grid-template-columns:1fr}.evaluation-row label:last-child{grid-column:auto}.lsu-box{flex-direction:column}.skill-grid{padding:8px}}
+@media print{.skill-card{break-inside:avoid}.skill-card:not([open]) .skill-body{display:block}.skill-card summary:before{display:none}.skill-grid{grid-template-columns:1fr}.evaluation-row{grid-template-columns:1fr 120px 190px}}

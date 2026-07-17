@@ -8,12 +8,15 @@ Mini-site statique prêt pour GitHub Pages.
 - vues par période ;
 - suivi interactif avec états : À faire, En cours, Travaillé, À reprendre, Stabilisé ;
 - checklist pédagogique par notion ;
+- Français période 1 : 35 compétences précises, une ou deux évaluations retenues, bilan et regroupement LSU ;
 - zone éditable « Je sais / J’ai retenu » ;
 - notes personnelles ;
 - sauvegarde automatique dans le navigateur ;
 - export/import JSON ;
 - impression de la vue ;
 - PDF et Excel de référence conservés dans `assets/`.
+
+La rubrique visible « Sources » a été retirée du site afin de garder une interface centrée sur le pilotage pédagogique.
 
 ## Mise à jour sur GitHub
 
