@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période.">
   <title>CE2 — Suivi de classe et référentiel officiel</title>
-  <link rel="stylesheet" href="styles.css?v=28">
+  <link rel="stylesheet" href="styles.css?v=29">
 </head>
 <body>
   <header class="app-header">
@@ -24,6 +24,7 @@
           <div class="mode-switch" role="tablist" aria-label="Mode d'affichage">
             <button class="mode-btn is-active" data-mode="suivi">🟢 Mon suivi</button>
             <button class="mode-btn" data-mode="reference">📘 Référentiel</button>
+            <button class="mode-btn" data-mode="classe">👥 Élèves</button>
           </div>
         </div>
         <div class="header-actions">
@@ -120,7 +121,7 @@
         <label class="import-label">📂 Importer une sauvegarde<input id="importInput" type="file" accept="application/json"></label>
         <button id="resetBtn" class="danger">↺ Réinitialiser la vue</button>
       </div>
-      <p class="local-note">Les coches et notes sont enregistrées uniquement dans ce navigateur. Aucune donnée d’élève n’est stockée.</p>
+      <p class="local-note">Les coches, notes, listes d’élèves et niveaux sont enregistrés uniquement dans ce navigateur.</p>
     </section>
 
     <section id="progressionGrid" class="progression-grid" aria-live="polite"></section>
@@ -132,8 +133,30 @@
   </main>
 
   <footer><p>Progressions CE2 — suivi pédagogique précis et synthèse LSU, enregistrés localement.</p></footer>
-  <script src="data.js?v=28"></script>
-  <script src="app.js?v=28"></script>
+  <script src="data.js?v=29"></script>
+  <script src="app.js?v=29"></script>
+
+
+  <section id="rosterEditor" class="roster-editor hidden" aria-hidden="true" aria-labelledby="rosterEditorTitle">
+    <div class="roster-editor__panel" role="dialog" aria-modal="true">
+      <header class="roster-editor__header">
+        <div>
+          <p class="eyebrow">SUIVI DE CLASSE</p>
+          <h2 id="rosterEditorTitle">Gérer la liste des élèves</h2>
+          <p>Écris un prénom par ligne. L’ordre saisi sera conservé.</p>
+        </div>
+        <button id="closeRosterBtn" class="document-library__close" type="button" aria-label="Fermer">×</button>
+      </header>
+      <label class="roster-editor__field">
+        <span>Prénoms des élèves</span>
+        <textarea id="rosterTextarea" rows="16" placeholder="Anissa&#10;Badr&#10;Ibrahim"></textarea>
+      </label>
+      <div class="roster-editor__actions">
+        <button id="clearRosterBtn" class="btn btn--light" type="button">Effacer la liste</button>
+        <button id="saveRosterBtn" class="btn btn--hibou" type="button">✓ Enregistrer la classe</button>
+      </div>
+    </div>
+  </section>
 
   <section id="documentLibrary" class="document-library hidden" aria-hidden="true" aria-labelledby="documentLibraryTitle">
     <div class="document-library__panel" role="dialog" aria-modal="true">
@@ -157,6 +180,6 @@
     </div>
   </section>
 
-  <script src="documents.js?v=28"></script>
+  <script src="documents.js?v=29"></script>
 </body>
 </html>

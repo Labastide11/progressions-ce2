@@ -444,3 +444,50 @@ body{background:#f8fafc;color:var(--mh-text)}
   transform:translateY(-1px);
   box-shadow:0 8px 22px rgba(23,59,104,.14);
 }
+\n\n/* ===== V29 — suivi des compétences par élève ===== */
+.class-tracking{display:grid;gap:14px}
+.class-toolbar{display:grid;grid-template-columns:minmax(240px,1.6fr) minmax(180px,.8fr) auto;gap:10px;align-items:end;padding:14px}
+.class-toolbar label{display:grid;gap:6px;font-weight:900;color:#39366b}
+.class-toolbar label span{font-size:13px;color:#6f6b91}
+.class-toolbar select{width:100%;min-height:46px;border:2px solid #ddd7ff;border-radius:14px;padding:9px 12px;background:#fff;font:inherit;font-weight:800;color:#25234d}
+.class-toolbar__actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.class-view-switch{display:flex;gap:8px;flex-wrap:wrap;padding:10px;background:#f8f7ff;border:2px solid #e6e2ff;border-radius:17px}
+.class-view-switch button{border:2px solid #ded8ff;background:#fff;border-radius:13px;padding:10px 13px;font:inherit;font-weight:950;color:#39366b;cursor:pointer}
+.class-view-switch button.is-active{background:#f0edff;border-color:#8b83ff;color:#5146d8}
+.class-skill-summary{background:linear-gradient(135deg,#fff8d6,#f0edff);border:2px solid #e4d87a;border-radius:19px;padding:14px}
+.class-skill-summary strong{display:block;color:#5146d8;font-size:19px;margin-bottom:5px}
+.class-skill-summary p{margin:4px 0;color:#4e4a70;font-weight:800;line-height:1.4}
+.class-skill-summary small{display:block;margin-top:7px;color:#6f6b91;font-weight:800}
+.class-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.class-stat{border:2px solid #e6e2ff;border-radius:15px;padding:10px;text-align:center;background:#fff;font-weight:900;color:#6f6b91}
+.class-stat b{display:block;font-size:24px;color:#25234d}
+.class-stat--none{background:#f8fafc}.class-stat--encours{background:#fff7d6}.class-stat--acquis{background:#dcfce7}.class-stat--renforcer{background:#fee2e2}
+.student-tracking-list{display:grid;gap:8px}
+.student-tracking-row{display:grid;grid-template-columns:minmax(150px,1fr) minmax(430px,2.4fr) minmax(150px,.8fr);gap:10px;align-items:center;background:#fff;border:2px solid #e6e2ff;border-radius:17px;padding:10px 12px}
+.student-tracking-name{display:flex;align-items:center;gap:9px;font-weight:1000;color:#39366b}
+.student-initial{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:#f0edff;border:2px solid #d8d1ff;color:#5146d8;font-weight:1000}
+.mastery-buttons{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.mastery-btn{border:2px solid #e2e0eb;background:#fff;border-radius:11px;padding:8px 5px;font:inherit;font-size:12px;font-weight:950;color:#5f5b7d;cursor:pointer}
+.mastery-btn.is-active[data-level="none"]{background:#e2e8f0;border-color:#94a3b8;color:#334155}
+.mastery-btn.is-active[data-level="encours"]{background:#fff3b0;border-color:#eab308;color:#7a5200}
+.mastery-btn.is-active[data-level="acquis"]{background:#dcfce7;border-color:#22c55e;color:#166534}
+.mastery-btn.is-active[data-level="renforcer"]{background:#fee2e2;border-color:#ef4444;color:#991b1b}
+.student-note-input{width:100%;border:2px solid #e2ddff;border-radius:11px;padding:8px 9px;font:inherit;font-size:12px;font-weight:750}
+.class-empty{background:#fff;border:2px dashed #cfc7ff;border-radius:20px;padding:28px;text-align:center;color:#615d82;font-weight:850}
+.class-empty strong{display:block;color:#5146d8;font-size:22px;margin-bottom:8px}
+.student-overview{display:grid;gap:12px}
+.student-overview-card{background:#fff;border:2px solid #e6e2ff;border-radius:19px;padding:14px}
+.student-overview-head{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:2px dashed #ece8ff;padding-bottom:10px;margin-bottom:10px}
+.student-overview-head strong{font-size:20px;color:#5146d8}
+.student-skill-list{display:grid;gap:7px}
+.student-skill-row{display:grid;grid-template-columns:110px minmax(0,1fr) 170px;gap:9px;align-items:center;padding:8px;border-radius:12px;background:#faf9ff}
+.student-skill-row .skill-code{font-size:11px}
+.level-pill{display:inline-flex;justify-content:center;border-radius:999px;padding:5px 8px;font-size:11px;font-weight:1000}
+.level-pill--none{background:#e2e8f0;color:#334155}.level-pill--encours{background:#fff3b0;color:#7a5200}.level-pill--acquis{background:#dcfce7;color:#166534}.level-pill--renforcer{background:#fee2e2;color:#991b1b}
+.roster-editor{position:fixed;inset:0;z-index:1000;background:rgba(37,35,77,.62);display:grid;place-items:center;padding:16px}
+.roster-editor__panel{width:min(650px,100%);max-height:94vh;overflow:auto;background:#fff;border:3px solid #d9d3ff;border-radius:24px;padding:20px;box-shadow:0 24px 70px rgba(0,0,0,.28)}
+.roster-editor__header{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}.roster-editor__header h2{margin:0;color:#5146d8}.roster-editor__header p{color:#6f6b91;font-weight:800}
+.roster-editor__field{display:grid;gap:7px;font-weight:950;color:#39366b}.roster-editor__field textarea{width:100%;resize:vertical;border:2px solid #dcd5ff;border-radius:15px;padding:12px;font:inherit;line-height:1.5}
+.roster-editor__actions{display:flex;justify-content:flex-end;gap:9px;flex-wrap:wrap;margin-top:14px}
+@media(max-width:900px){.class-toolbar{grid-template-columns:1fr}.class-toolbar__actions{justify-content:flex-start}.student-tracking-row{grid-template-columns:1fr}.mastery-buttons{grid-template-columns:1fr 1fr}.class-stats{grid-template-columns:1fr 1fr}.student-skill-row{grid-template-columns:90px 1fr}.student-skill-row .level-pill{grid-column:2}}
+@media(max-width:520px){.mastery-buttons{grid-template-columns:1fr}.class-stats{grid-template-columns:1fr 1fr}.roster-editor__actions .btn{width:100%}}

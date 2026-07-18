@@ -1,3 +1,7 @@
+# Progressions CE2 — V29
+
+Nouvelle vue **👥 Élèves** : liste de classe modifiable, suivi par compétence ou par élève, quatre niveaux, remarques et export CSV. Les données restent enregistrées localement dans le navigateur.
+
 # Progressions CE2 — Référentiel & suivi interactif
 
 Mini-site statique prêt pour GitHub Pages.
