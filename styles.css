@@ -432,3 +432,15 @@ body{background:#f8fafc;color:var(--mh-text)}
 .document-card--francais{--doc-color:#236db0;--doc-soft:#e8f3ff}.document-card--mathematiques{--doc-color:#dc682f;--doc-soft:#fff0e7}.document-card--emc{--doc-color:#ae7a12;--doc-soft:#fff5d9}.document-card--histoire{--doc-color:#8b5b37;--doc-soft:#f7eee8}.document-card--geographie{--doc-color:#39875b;--doc-soft:#e9f7ee}.document-card--anglais{--doc-color:#6d55b4;--doc-soft:#f0ecff}.document-card--sciences{--doc-color:#168c8b;--doc-soft:#e5f8f7}.document-card--evar{--doc-color:#cb4f84;--doc-soft:#fdeaf2}.document-card--eps{--doc-color:#e06e38;--doc-soft:#fff0e8}.document-card--arts{--doc-color:#a64f9e;--doc-soft:#faebf8}.document-card--emi{--doc-color:#5367b7;--doc-soft:#edf0ff}.document-card--organisation{--doc-color:#55738f;--doc-soft:#edf3f7}.document-card--general{--doc-color:#6b7e91;--doc-soft:#eef2f5}
 .document-empty{padding:30px;text-align:center;color:#60758b}
 @media(max-width:760px){.document-library{padding:8px}.document-library__panel{max-height:calc(100vh - 16px);border-radius:16px}.document-library__header{padding:16px}.document-library__tools{align-items:stretch;flex-direction:column;padding:14px}.document-filters{padding:0 14px 14px;overflow-x:auto;flex-wrap:nowrap}.document-list{padding:0 12px 18px}.document-card{grid-template-columns:46px 1fr;padding:12px}.document-card__icon{width:42px;height:42px}.document-card__actions{grid-column:1/-1;justify-content:stretch}.document-card__actions a{flex:1;text-align:center}}
+
+
+/* V28 — Accès direct vers Maître Hibou */
+.btn--hibou{
+  background:#fff7df;
+  color:#173b68;
+  border-color:#f1d58b;
+}
+.btn--hibou:hover{
+  transform:translateY(-1px);
+  box-shadow:0 8px 22px rgba(23,59,104,.14);
+}

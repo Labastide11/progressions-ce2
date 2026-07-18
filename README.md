@@ -181,3 +181,7 @@ Dans les vues Période 1 à Période 5, toutes les fiches de compétences sont d
 - badges matière et catégorie ;
 - filtres enrichis avec icônes ;
 - cartes plus lisibles et actions Ouvrir / Télécharger mieux identifiées.
+
+
+## V28 — Accès Maître Hibou
+Ajout d’un bouton 🦉 Maître Hibou à droite de Bibliothèque, PDF et Excel. Le site s’ouvre dans un nouvel onglet.
