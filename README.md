@@ -77,3 +77,7 @@ Le site intègre une progression anticipée des nouveaux programmes de sciences 
 
 La P5 distingue clairement les cartes « Objets techniques », « Programmation »
 et « Projet environnemental », même lorsqu’elles sont travaillées dans un projet commun.
+
+
+## EVAR
+20 compétences réparties sur cinq périodes, avec des formulations adaptées : « J’ai compris que… », « Je peux… » et « Je sais reconnaître… ». Le suivi porte sur des situations générales ou fictives et ne demande jamais de récit personnel.

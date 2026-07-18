@@ -8367,5 +8367,432 @@ window.PROGRESSIONS = {
         "lsu": "S’engager dans un projet de préservation de l’environnement."
       }
     ]
+  },
+  evar: {
+    "title": "EVAR",
+    "icon": "💗",
+    "subtitle": "Se connaître, construire des relations respectueuses et connaître ses droits",
+    "routines": [
+      "Installer un cadre sans jugement et respectueux du silence",
+      "Parler de situations générales ou fictives, jamais exiger un récit personnel",
+      "Employer un vocabulaire clair et adapté à l’âge",
+      "Privilégier échanges, classements et jeux de rôle protégés",
+      "Identifier des adultes de confiance et les moyens de demander de l’aide",
+      "Articuler l’EVAR avec l’EMC, les sciences, le français et le parcours de santé"
+    ],
+    "rows": [
+      [
+        "Se connaître et respecter son intimité",
+        "Cadre de parole, droit au silence et intimité.",
+        "Corps, bien-être, émotions et limites.",
+        "Réinvestissement dans les relations.",
+        "Intimité et consentement.",
+        "Droits, protection et demande d’aide."
+      ],
+      [
+        "Construire des relations respectueuses",
+        "Écoute et respect de la parole.",
+        "Respect des différences et des besoins.",
+        "Désaccord, pression et entraide.",
+        "Accord, refus et changement d’avis.",
+        "Reconnaître une relation protectrice ou inquiétante."
+      ],
+      [
+        "Être libre, responsable et protégé",
+        "Règles qui sécurisent les échanges.",
+        "Comprendre les limites personnelles.",
+        "Identifier des adultes de confiance.",
+        "Comprendre et exercer le consentement.",
+        "Connaître ses droits et demander de l’aide."
+      ]
+    ],
+    "p1Competencies": [
+      {
+        "code": "EVAR-P1-01",
+        "domain": "Cadre de confiance",
+        "title": "Comprendre le droit de parler ou de garder le silence",
+        "jeSais": "J’ai compris que je peux participer sans raconter ma vie personnelle.",
+        "checklist": [
+          "Comprendre que la prise de parole est volontaire.",
+          "Respecter le silence d’un camarade.",
+          "Parler de situations générales.",
+          "Ne pas citer de prénom.",
+          "Accepter une reformulation qui protège l’intimité."
+        ],
+        "proofs": [
+          "Reformulation d’une règle du cadre.",
+          "Choix d’une réaction adaptée."
+        ],
+        "lsu": "Respecter l’intimité et la liberté de parole."
+      },
+      {
+        "code": "EVAR-P1-02",
+        "domain": "Intimité",
+        "title": "Reconnaître ce qui relève de l’intimité",
+        "jeSais": "Je sais reconnaître une situation qui relève de l’intimité corporelle, émotionnelle ou personnelle.",
+        "checklist": [
+          "Distinguer public et privé.",
+          "Identifier une information personnelle.",
+          "Comprendre que les limites varient selon les personnes.",
+          "Ne pas exiger une confidence.",
+          "Respecter une limite exprimée."
+        ],
+        "proofs": [
+          "Classement de situations fictives.",
+          "Discussion à partir d’un album."
+        ],
+        "lsu": "Comprendre et respecter l’intimité."
+      },
+      {
+        "code": "EVAR-P1-03",
+        "domain": "Respect",
+        "title": "Reconnaître une parole ou une attitude respectueuse",
+        "jeSais": "Je sais reconnaître une parole ou une attitude qui respecte une personne.",
+        "checklist": [
+          "Repérer l’écoute et l’absence de moquerie.",
+          "Distinguer désaccord et humiliation.",
+          "Identifier une formulation respectueuse.",
+          "Comprendre l’égale dignité.",
+          "Reformuler une parole blessante."
+        ],
+        "proofs": [
+          "Analyse de dialogues fictifs.",
+          "Reformulation guidée."
+        ],
+        "lsu": "Construire des relations fondées sur le respect."
+      },
+      {
+        "code": "EVAR-P1-04",
+        "domain": "Protection",
+        "title": "Identifier des adultes de confiance",
+        "jeSais": "Je peux identifier plusieurs adultes à qui demander de l’aide.",
+        "checklist": [
+          "Comprendre le rôle protecteur d’un adulte.",
+          "Identifier plusieurs personnes ressources.",
+          "Chercher un autre adulte si nécessaire.",
+          "Savoir demander un moment pour parler.",
+          "Comprendre qu’on peut demander de l’aide pour soi ou pour autrui."
+        ],
+        "proofs": [
+          "Carte des personnes ressources.",
+          "Mise en situation de demande d’aide."
+        ],
+        "lsu": "Identifier des personnes ressources."
+      }
+    ],
+    "p2Competencies": [
+      {
+        "code": "EVAR-P2-01",
+        "domain": "Corps et singularité",
+        "title": "Comprendre que chaque personne est unique",
+        "jeSais": "J’ai compris que les corps sont différents et que toutes les personnes ont la même dignité.",
+        "checklist": [
+          "Observer des différences sans les hiérarchiser.",
+          "Distinguer différence et défaut.",
+          "Refuser les moqueries sur le corps.",
+          "Comprendre que le corps change en grandissant.",
+          "Employer un vocabulaire respectueux."
+        ],
+        "proofs": [
+          "Analyse d’images.",
+          "Production d’une règle de respect."
+        ],
+        "lsu": "Respecter le corps et la singularité de chacun."
+      },
+      {
+        "code": "EVAR-P2-02",
+        "domain": "Bien-être",
+        "title": "Identifier ce qui aide à se sentir bien",
+        "jeSais": "Je peux reconnaître ce qui favorise mon bien-être physique et émotionnel.",
+        "checklist": [
+          "Identifier repos, activité, hygiène et relations sécurisantes.",
+          "Reconnaître fatigue ou inconfort.",
+          "Distinguer besoin et envie.",
+          "Comprendre que les besoins varient.",
+          "Choisir une action adaptée."
+        ],
+        "proofs": [
+          "Classement de situations.",
+          "Choix argumenté d’une action."
+        ],
+        "lsu": "Prendre soin de soi et de son bien-être."
+      },
+      {
+        "code": "EVAR-P2-03",
+        "domain": "Émotions",
+        "title": "Nommer une émotion et un besoin",
+        "jeSais": "Je peux nommer une émotion et chercher ce dont une personne peut avoir besoin.",
+        "checklist": [
+          "Reconnaître plusieurs émotions.",
+          "Distinguer émotion et comportement.",
+          "Accepter des émotions différentes.",
+          "Formuler un besoin sans accuser.",
+          "Proposer une aide sans l’imposer."
+        ],
+        "proofs": [
+          "Analyse d’un personnage fictif.",
+          "Carte des émotions."
+        ],
+        "lsu": "Développer la connaissance de soi et l’empathie."
+      },
+      {
+        "code": "EVAR-P2-04",
+        "domain": "Limites personnelles",
+        "title": "Comprendre que chacun possède ses propres limites",
+        "jeSais": "J’ai compris que ce qui convient à une personne peut ne pas convenir à une autre.",
+        "checklist": [
+          "Reconnaître une limite corporelle ou émotionnelle.",
+          "Ne pas décider à la place de l’autre.",
+          "Comprendre qu’une limite peut changer.",
+          "Respecter une demande d’espace.",
+          "Ne pas ridiculiser une sensibilité différente."
+        ],
+        "proofs": [
+          "Étude de situations fictives.",
+          "Discussion réglée."
+        ],
+        "lsu": "Respecter les limites et les différences."
+      }
+    ],
+    "p3Competencies": [
+      {
+        "code": "EVAR-P3-01",
+        "domain": "Relations",
+        "title": "Reconnaître une relation respectueuse",
+        "jeSais": "Je sais reconnaître une relation dans laquelle les personnes s’écoutent et se respectent.",
+        "checklist": [
+          "Repérer écoute, confiance et entraide.",
+          "Distinguer aide et contrôle.",
+          "Reconnaître la possibilité d’un désaccord.",
+          "Identifier l’absence de peur ou de pression.",
+          "Justifier son analyse."
+        ],
+        "proofs": [
+          "Classement de relations fictives.",
+          "Analyse d’un album."
+        ],
+        "lsu": "Comprendre les caractéristiques d’une relation respectueuse."
+      },
+      {
+        "code": "EVAR-P3-02",
+        "domain": "Désaccord",
+        "title": "Exprimer un désaccord sans blesser",
+        "jeSais": "Je peux exprimer mon désaccord sans humilier ni menacer.",
+        "checklist": [
+          "Décrire les faits calmement.",
+          "Utiliser une phrase en « je ».",
+          "Éviter insulte et moquerie.",
+          "Écouter la réponse.",
+          "Chercher une solution ou une médiation."
+        ],
+        "proofs": [
+          "Jeu de rôle protégé.",
+          "Reformulation de phrases."
+        ],
+        "lsu": "Communiquer de manière respectueuse."
+      },
+      {
+        "code": "EVAR-P3-03",
+        "domain": "Pression",
+        "title": "Reconnaître une situation de pression",
+        "jeSais": "Je sais reconnaître quand une personne insiste, menace ou cherche à imposer quelque chose.",
+        "checklist": [
+          "Repérer l’insistance après un refus.",
+          "Identifier menace ou chantage.",
+          "Distinguer proposition et pression.",
+          "Comprendre que la peur empêche un choix libre.",
+          "Identifier le besoin d’aide."
+        ],
+        "proofs": [
+          "Analyse de scénarios.",
+          "Choix d’une réaction protectrice."
+        ],
+        "lsu": "Repérer les relations non respectueuses."
+      },
+      {
+        "code": "EVAR-P3-04",
+        "domain": "Entraide",
+        "title": "Aider sans décider à la place de l’autre",
+        "jeSais": "Je peux proposer mon aide tout en respectant le choix de l’autre.",
+        "checklist": [
+          "Demander si l’aide est souhaitée.",
+          "Écouter la réponse.",
+          "Ne pas imposer une solution.",
+          "Chercher un adulte si la sécurité est en jeu.",
+          "Ne pas promettre de garder un secret dangereux."
+        ],
+        "proofs": [
+          "Jeu de rôle.",
+          "Analyse d’une situation d’entraide."
+        ],
+        "lsu": "Développer des relations solidaires et respectueuses."
+      }
+    ],
+    "p4Competencies": [
+      {
+        "code": "EVAR-P4-01",
+        "domain": "Consentement",
+        "title": "Comprendre ce que signifie consentir",
+        "jeSais": "J’ai compris que consentir signifie donner un accord libre, clair et sans pression.",
+        "checklist": [
+          "Comprendre qu’un silence n’est pas forcément un accord.",
+          "Repérer un accord explicite.",
+          "Identifier pression ou chantage.",
+          "Relier l’accord à une situation précise.",
+          "Savoir qu’un accord peut être retiré."
+        ],
+        "proofs": [
+          "Classement de situations fictives.",
+          "Reformulation d’une définition."
+        ],
+        "lsu": "Comprendre le principe du consentement."
+      },
+      {
+        "code": "EVAR-P4-02",
+        "domain": "Demande d’accord",
+        "title": "Demander l’accord avant une action",
+        "jeSais": "Je peux demander clairement l’accord d’une personne avant une action qui la concerne.",
+        "checklist": [
+          "Formuler une question claire.",
+          "Laisser le temps de répondre.",
+          "Ne pas orienter la réponse.",
+          "Observer un éventuel inconfort.",
+          "Accepter la réponse."
+        ],
+        "proofs": [
+          "Jeux de rôle du quotidien.",
+          "Choix de formulations adaptées."
+        ],
+        "lsu": "Demander et respecter le consentement."
+      },
+      {
+        "code": "EVAR-P4-03",
+        "domain": "Accord et refus",
+        "title": "Exprimer un accord ou un refus",
+        "jeSais": "Je peux dire clairement si je suis d’accord ou non.",
+        "checklist": [
+          "Utiliser oui, non, stop ou je ne veux pas.",
+          "Parler clairement.",
+          "Savoir qu’on n’a pas à se justifier longuement.",
+          "Demander de l’aide si le refus n’est pas respecté.",
+          "Écouter ses sensations d’inconfort."
+        ],
+        "proofs": [
+          "Mise en situation protégée.",
+          "Choix d’une phrase adaptée."
+        ],
+        "lsu": "Exprimer ses limites et demander de l’aide."
+      },
+      {
+        "code": "EVAR-P4-04",
+        "domain": "Respect du refus",
+        "title": "Respecter un refus et un changement d’avis",
+        "jeSais": "Je peux accepter un refus et arrêter immédiatement, même si la personne avait accepté avant.",
+        "checklist": [
+          "Comprendre que non met fin à la demande.",
+          "Ne pas insister ni culpabiliser.",
+          "Accepter un changement d’avis.",
+          "Redemander l’accord dans une nouvelle situation.",
+          "Choisir une autre activité."
+        ],
+        "proofs": [
+          "Analyse de mini-dialogues.",
+          "Jeu de rôle."
+        ],
+        "lsu": "Respecter la liberté et les limites d’autrui."
+      }
+    ],
+    "p5Competencies": [
+      {
+        "code": "EVAR-P5-01",
+        "domain": "Droits de l’enfant",
+        "title": "Connaître le droit au respect et à la dignité",
+        "jeSais": "J’ai compris que chaque enfant a droit au respect et à la dignité.",
+        "checklist": [
+          "Comprendre que ce droit concerne tous les enfants.",
+          "Identifier humiliation ou discrimination.",
+          "Relier dignité et égalité.",
+          "Savoir qu’aucune différence ne justifie une violence.",
+          "Formuler une règle protectrice."
+        ],
+        "proofs": [
+          "Analyse d’une situation.",
+          "Affiche de droits."
+        ],
+        "lsu": "Connaître les droits fondamentaux de l’enfant."
+      },
+      {
+        "code": "EVAR-P5-02",
+        "domain": "Droit à l’intimité",
+        "title": "Connaître le droit à la vie privée",
+        "jeSais": "J’ai compris que mon corps, mes pensées et mes informations personnelles doivent être respectés.",
+        "checklist": [
+          "Identifier une information privée.",
+          "Ne pas diffuser une image sans accord.",
+          "Respecter un espace personnel.",
+          "Distinguer protection et intrusion.",
+          "Savoir qu’un adulte protecteur intervient en cas de danger."
+        ],
+        "proofs": [
+          "Classement de situations.",
+          "Analyse d’un usage numérique simple."
+        ],
+        "lsu": "Connaître le droit à l’intimité et à la vie privée."
+      },
+      {
+        "code": "EVAR-P5-03",
+        "domain": "Violences",
+        "title": "Reconnaître une situation de violence",
+        "jeSais": "Je sais reconnaître une situation de violence physique, verbale, psychologique ou sexuelle.",
+        "checklist": [
+          "Identifier les faits sans minimiser.",
+          "Distinguer conflit et violence.",
+          "Comprendre qu’un acte unique peut être violent.",
+          "Savoir que la victime n’est pas responsable.",
+          "Identifier la nécessité d’en parler."
+        ],
+        "proofs": [
+          "Classement de scénarios fictifs.",
+          "Choix d’une conduite protectrice."
+        ],
+        "lsu": "Prévenir et repérer les violences."
+      },
+      {
+        "code": "EVAR-P5-04",
+        "domain": "Secrets",
+        "title": "Reconnaître un secret inquiétant",
+        "jeSais": "Je sais reconnaître un secret qui doit être confié à un adulte de confiance.",
+        "checklist": [
+          "Distinguer surprise et secret imposé.",
+          "Repérer peur, honte, menace ou malaise.",
+          "Comprendre qu’un secret dangereux ne doit pas être gardé.",
+          "Savoir qu’en parler n’est pas trahir.",
+          "Choisir un adulte de confiance."
+        ],
+        "proofs": [
+          "Classement de situations.",
+          "Reformulation d’une règle de protection."
+        ],
+        "lsu": "Savoir demander de l’aide."
+      },
+      {
+        "code": "EVAR-P5-05",
+        "domain": "Demande d’aide",
+        "title": "Expliquer des faits pour demander de l’aide",
+        "jeSais": "Je peux expliquer à un adulte ce qui s’est passé pour demander de l’aide.",
+        "checklist": [
+          "Dire qui, quoi, où et quand si possible.",
+          "Parler progressivement.",
+          "Utiliser écrit ou dessin si nécessaire.",
+          "Persévérer si le premier adulte ne comprend pas.",
+          "Comprendre que l’adulte doit protéger."
+        ],
+        "proofs": [
+          "Mise en situation générale.",
+          "Préparation d’un message d’aide."
+        ],
+        "lsu": "Mobiliser des moyens de protection."
+      }
+    ]
   }
 };
