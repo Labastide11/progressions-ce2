@@ -5,29 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période.">
   <title>CE2 — Suivi de classe et référentiel officiel</title>
-  <link rel="stylesheet" href="styles.css?v=19">
+  <link rel="stylesheet" href="styles.css?v=20">
 </head>
 <body>
   <header class="app-header">
     <div class="brandbar">
-      <div class="brand">
-        <img src="assets/maitre-hibou-logo.svg" alt="" class="brand__owl">
-        <div>
-          <strong>Maître Hibou</strong>
-          <span>Espace enseignant</span>
+      <div class="brandbar__main">
+        <div class="brand">
+          <img src="assets/maitre-hibou-logo.svg" alt="" class="brand__owl">
+          <div>
+            <strong>Maître Hibou</strong>
+            <span>Espace enseignant</span>
+          </div>
         </div>
-      </div>
-      <button class="brand-resource" id="openLibraryTopBtn" type="button">📚 Ressources</button>
-    </div>
-
-    <div class="hero hero--compact">
-      <div class="hero__inner">
-        <h1>CE2 Suivi de classe + référence officiel</h1>
-        <div class="hero__actions">
-          <button class="btn btn--library" id="openLibraryBtn" type="button">📚 Bibliothèque</button>
-          <a class="btn btn--light" href="assets/Progressions_CE2_Francais_Maths_2026_2027.pdf" download>📄 PDF</a>
-          <a class="btn btn--outline" href="assets/Progressions_CE2_Francais_Maths_2026_2027.xlsx" download>📊 Excel</a>
-        </div>
+        <h1 class="brandbar__title">CE2 Suivi de classe + référence officiel</h1>
       </div>
     </div>
   </header>
@@ -39,7 +30,12 @@
         <button class="mode-btn is-active" data-mode="suivi">🟢 Mon suivi</button>
         <button class="mode-btn" data-mode="reference">📘 Référentiel</button>
       </div>
-      <p><strong>Mon suivi</strong> montre ce qui reste à faire, ce qui a été travaillé, repris ou stabilisé.</p>
+      <div class="viewbar__spacer" aria-hidden="true"></div>
+      <div class="viewbar__actions">
+        <button class="btn btn--library btn--compact" id="openLibraryBtn" type="button">📚 Bibliothèque</button>
+        <a class="btn btn--light btn--compact" href="assets/Progressions_CE2_Francais_Maths_2026_2027.pdf" download>📄 PDF</a>
+        <a class="btn btn--outline btn--compact" href="assets/Progressions_CE2_Francais_Maths_2026_2027.xlsx" download>📊 Excel</a>
+      </div>
       <button class="help-btn" type="button" title="Les données sont enregistrées uniquement dans ce navigateur." aria-label="Aide">?</button>
     </section>
 
@@ -131,8 +127,8 @@
   </main>
 
   <footer><p>Progressions CE2 — suivi pédagogique précis et synthèse LSU, enregistrés localement.</p></footer>
-  <script src="data.js?v=19"></script>
-  <script src="app.js?v=19"></script>
+  <script src="data.js?v=20"></script>
+  <script src="app.js?v=20"></script>
 
   <section id="documentLibrary" class="document-library hidden" aria-hidden="true" aria-labelledby="documentLibraryTitle">
     <div class="document-library__panel" role="dialog" aria-modal="true">
@@ -156,6 +152,6 @@
     </div>
   </section>
 
-  <script src="documents.js?v=19"></script>
+  <script src="documents.js?v=20"></script>
 </body>
 </html>
