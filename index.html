@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période.">
   <title>CE2 — Suivi de classe et référentiel officiel</title>
-  <link rel="stylesheet" href="styles.css?v=18">
+  <link rel="stylesheet" href="styles.css?v=19">
 </head>
 <body>
   <header class="app-header">
@@ -43,7 +43,18 @@
       <button class="help-btn" type="button" title="Les données sont enregistrées uniquement dans ce navigateur." aria-label="Aide">?</button>
     </section>
 
-    <nav class="subject-navigation" aria-label="Navigation des progressions">
+    <section class="compact-controlbar card">
+      <div class="compact-controlbar__summary">
+        <span><strong>Vue :</strong> <span id="compactMode">Mon suivi</span></span>
+        <span><strong>Matière :</strong> <span id="compactSubject">Français</span></span>
+        <span><strong>Période :</strong> <span id="compactPeriod">Vue annuelle</span></span>
+      </div>
+      <button id="toggleFiltersBtn" class="toggle-filters-btn" type="button" aria-expanded="false" aria-controls="filtersPanel">
+        ☰ Filtres
+      </button>
+    </section>
+
+    <section id="filtersPanel" class="filters-panel card is-collapsed" aria-hidden="true">
       <div class="category-tabs" role="tablist" aria-label="Familles de matières">
         <button class="category-tab is-active" data-category="fondamentaux">📘 <span>Fondamentaux</span></button>
         <button class="category-tab" data-category="monde">🌍 <span>Questionner le monde</span></button>
@@ -52,7 +63,7 @@
         <button class="category-tab" data-category="emi">💻 <span>EMI</span></button>
       </div>
 
-      <div class="subject-tabs card" role="tablist" aria-label="Matières">
+      <div class="subject-tabs" role="tablist" aria-label="Matières">
         <button class="tab is-active" data-category="fondamentaux" data-subject="francais" role="tab">✏️ Français</button>
         <button class="tab" data-category="fondamentaux" data-subject="maths" role="tab">🧮 Mathématiques</button>
 
@@ -71,7 +82,7 @@
         <button class="tab" data-category="emi" data-subject="emi" role="tab">📰 EMI</button>
       </div>
 
-      <div class="filters card" aria-label="Filtrer par période">
+      <div class="filters" aria-label="Filtrer par période">
         <button class="filter is-active" data-period="all">🗓️ Vue annuelle</button>
         <button class="filter p1" data-period="p1">🔵 Période 1</button>
         <button class="filter p2" data-period="p2">🟡 Période 2</button>
@@ -79,7 +90,7 @@
         <button class="filter p4" data-period="p4">🔷 Période 4</button>
         <button class="filter p5" data-period="p5">🟣 Période 5</button>
       </div>
-    </nav>
+    </section>
 
     <section class="statusbar statusbar--compact">
       <div class="statusbar__title">
@@ -120,8 +131,8 @@
   </main>
 
   <footer><p>Progressions CE2 — suivi pédagogique précis et synthèse LSU, enregistrés localement.</p></footer>
-  <script src="data.js?v=18"></script>
-  <script src="app.js?v=18"></script>
+  <script src="data.js?v=19"></script>
+  <script src="app.js?v=19"></script>
 
   <section id="documentLibrary" class="document-library hidden" aria-hidden="true" aria-labelledby="documentLibraryTitle">
     <div class="document-library__panel" role="dialog" aria-modal="true">
@@ -145,6 +156,6 @@
     </div>
   </section>
 
-  <script src="documents.js?v=18"></script>
+  <script src="documents.js?v=19"></script>
 </body>
 </html>

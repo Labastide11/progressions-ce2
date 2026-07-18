@@ -143,3 +143,16 @@ La bibliothèque permet de rechercher, filtrer, ouvrir et télécharger chaque P
 - périodes sur une ligne distincte ;
 - barre de contexte compacte et fixe pendant le défilement ;
 - adaptation PC, tablette et smartphone.
+
+
+## V19 — Filtres repliables
+
+La navigation est réduite à une seule ligne permanente :
+- vue active ;
+- matière active ;
+- période active ;
+- bouton « Filtres ».
+
+Le panneau complet s’ouvre au clic ou au toucher. Sur ordinateur, il peut aussi
+s’ouvrir au survol, mais le clic reste disponible et prioritaire. La touche Échap
+referme le panneau.
