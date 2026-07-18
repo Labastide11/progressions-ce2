@@ -104,3 +104,7 @@ La rubrique « Arts » regroupe arts plastiques et éducation musicale :
 - P5 : photographie, light painting, bande dessinée et interprétation musicale.
 
 Elle comporte 30 compétences observables, soit 6 par période.
+
+
+## EMI
+26 compétences réparties sur cinq périodes : comprendre l’information, rechercher et identifier les sources, vérifier les contenus, décrypter les images, protéger les données et produire un média collectif.

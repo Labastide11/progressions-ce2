@@ -9988,5 +9988,530 @@ window.PROGRESSIONS = {
         "lsu": "Échanger et partager autour d’une création."
       }
     ]
+  },
+  emi: {
+    "title": "Éducation aux médias et à l’information",
+    "icon": "📰",
+    "subtitle": "Comprendre l’information, vérifier les sources, décrypter les images et publier avec responsabilité",
+    "routines": [
+      "Se demander qui parle, où, quand et dans quel but",
+      "Distinguer un fait, une opinion, une publicité et une fiction",
+      "Comparer plusieurs sources avant de croire ou de partager",
+      "Observer le cadrage, le montage et les modifications d’une image",
+      "Protéger les données personnelles et respecter le droit à l’image",
+      "Produire et publier collectivement en citant les sources utilisées"
+    ],
+    "rows": [
+      [
+        "Comprendre l’information",
+        "Définir une information et la distinguer d’une opinion ou d’une anecdote.",
+        "Identifier auteur, date, titre, média et source.",
+        "Repérer les indices d’une information douteuse.",
+        "Comprendre qu’une image ne montre qu’une partie de la réalité.",
+        "Produire une information claire et utile."
+      ],
+      [
+        "Rechercher et vérifier",
+        "Formuler une question et choisir des mots-clés.",
+        "Lire une page de résultats et choisir une ressource adaptée.",
+        "Comparer plusieurs sources et vérifier une affirmation.",
+        "Interroger l’origine et les transformations d’une image.",
+        "Citer les sources utilisées dans une production."
+      ],
+      [
+        "Connaître les médias",
+        "Reconnaître différents supports et leurs usages.",
+        "Distinguer information, publicité, divertissement et communication.",
+        "Comprendre quelques étapes de fabrication de l’information.",
+        "Observer le rôle du cadrage et du montage.",
+        "Participer à une production médiatique collective."
+      ],
+      [
+        "Agir en citoyen numérique",
+        "Respecter les règles de communication et la vie privée.",
+        "Protéger ses informations personnelles.",
+        "Ne pas relayer une information non vérifiée.",
+        "Demander l’autorisation avant de publier une image.",
+        "Publier un contenu respectueux et adapté à son destinataire."
+      ]
+    ],
+    "p1Competencies": [
+      {
+        "code": "EMI-P1-01",
+        "domain": "Information",
+        "title": "Distinguer une information d’une anecdote",
+        "jeSais": "Je sais reconnaître une information qui présente un intérêt pour un groupe.",
+        "checklist": [
+          "Repérer ce qui apporte un élément nouveau.",
+          "Identifier le public concerné.",
+          "Distinguer une information d’un détail privé.",
+          "Expliquer pourquoi le sujet peut intéresser.",
+          "Éviter de confondre information et potin."
+        ],
+        "proofs": [
+          "Classement de courts énoncés.",
+          "Justification orale."
+        ],
+        "lsu": "Comprendre ce qu’est une information."
+      },
+      {
+        "code": "EMI-P1-02",
+        "domain": "Information",
+        "title": "Distinguer un fait d’une opinion",
+        "jeSais": "Je sais distinguer un fait vérifiable d’une opinion personnelle.",
+        "checklist": [
+          "Repérer une affirmation vérifiable.",
+          "Identifier une préférence ou un jugement.",
+          "Chercher les mots qui expriment une opinion.",
+          "Reformuler un fait sans jugement.",
+          "Justifier le classement."
+        ],
+        "proofs": [
+          "Tri de phrases.",
+          "Analyse d’un court article."
+        ],
+        "lsu": "Développer un regard critique sur l’information."
+      },
+      {
+        "code": "EMI-P1-03",
+        "domain": "Médias",
+        "title": "Reconnaître différents médias",
+        "jeSais": "Je sais reconnaître plusieurs médias et expliquer à quoi ils servent.",
+        "checklist": [
+          "Identifier journal, radio, télévision et site internet.",
+          "Distinguer support papier et numérique.",
+          "Associer un média à un usage.",
+          "Comprendre qu’un même sujet peut apparaître dans plusieurs médias.",
+          "Employer un vocabulaire précis."
+        ],
+        "proofs": [
+          "Classement de supports.",
+          "Présentation d’un média."
+        ],
+        "lsu": "Découvrir la diversité des médias."
+      },
+      {
+        "code": "EMI-P1-04",
+        "domain": "Message médiatique",
+        "title": "Identifier le but d’un document",
+        "jeSais": "Je sais reconnaître si un document veut informer, divertir, convaincre ou vendre.",
+        "checklist": [
+          "Observer le titre et les images.",
+          "Repérer le destinataire.",
+          "Identifier la présence d’un produit ou d’une marque.",
+          "Distinguer information et publicité.",
+          "Justifier avec un indice."
+        ],
+        "proofs": [
+          "Analyse de documents variés.",
+          "Classement argumenté."
+        ],
+        "lsu": "Comprendre les intentions d’un message médiatique."
+      },
+      {
+        "code": "EMI-P1-05",
+        "domain": "Communication numérique",
+        "title": "Respecter les règles d’un échange en ligne",
+        "jeSais": "Je sais communiquer avec respect dans un espace numérique.",
+        "checklist": [
+          "Rester dans le sujet.",
+          "Employer des mots respectueux.",
+          "Ne pas écrire tout en majuscules.",
+          "Relire avant d’envoyer.",
+          "Demander l’aide d’un adulte en cas de message inquiétant."
+        ],
+        "proofs": [
+          "Analyse de messages fictifs.",
+          "Rédaction d’une charte."
+        ],
+        "lsu": "Adopter un comportement responsable dans les médias."
+      }
+    ],
+    "p2Competencies": [
+      {
+        "code": "EMI-P2-01",
+        "domain": "Recherche",
+        "title": "Formuler une question de recherche",
+        "jeSais": "Je sais transformer un sujet en question précise.",
+        "checklist": [
+          "Identifier ce que l’on cherche.",
+          "Éviter une question trop large.",
+          "Employer un vocabulaire précis.",
+          "Repérer les mots importants.",
+          "Vérifier que la question peut recevoir une réponse."
+        ],
+        "proofs": [
+          "Question de recherche écrite.",
+          "Reformulation collective."
+        ],
+        "lsu": "Mener une recherche d’information."
+      },
+      {
+        "code": "EMI-P2-02",
+        "domain": "Recherche",
+        "title": "Choisir des mots-clés",
+        "jeSais": "Je sais choisir des mots-clés efficaces pour effectuer une recherche.",
+        "checklist": [
+          "Supprimer les mots inutiles.",
+          "Conserver les noms importants.",
+          "Ajouter un lieu ou une date si nécessaire.",
+          "Modifier les mots-clés si les résultats sont mauvais.",
+          "Comparer deux recherches."
+        ],
+        "proofs": [
+          "Recherche guidée.",
+          "Liste de mots-clés."
+        ],
+        "lsu": "Utiliser un outil de recherche."
+      },
+      {
+        "code": "EMI-P2-03",
+        "domain": "Source",
+        "title": "Identifier l’auteur et la source",
+        "jeSais": "Je sais repérer qui a créé ou publié un document.",
+        "checklist": [
+          "Chercher le nom de l’auteur.",
+          "Identifier le média ou le site.",
+          "Repérer la date.",
+          "Distinguer auteur et personne citée.",
+          "Signaler une information manquante."
+        ],
+        "proofs": [
+          "Fiche d’identité d’un document.",
+          "Analyse d’une page web."
+        ],
+        "lsu": "Identifier la source d’une information."
+      },
+      {
+        "code": "EMI-P2-04",
+        "domain": "Résultats de recherche",
+        "title": "Choisir une ressource adaptée",
+        "jeSais": "Je sais choisir un résultat de recherche en observant son titre, son adresse et son résumé.",
+        "checklist": [
+          "Lire plusieurs titres.",
+          "Repérer le nom du site.",
+          "Éviter de cliquer seulement sur la première réponse.",
+          "Choisir une ressource adaptée à l’âge et au sujet.",
+          "Expliquer son choix."
+        ],
+        "proofs": [
+          "Lecture d’une page de résultats.",
+          "Choix argumenté."
+        ],
+        "lsu": "Sélectionner une information pertinente."
+      },
+      {
+        "code": "EMI-P2-05",
+        "domain": "Sources",
+        "title": "Comparer deux documents",
+        "jeSais": "Je sais comparer deux sources qui parlent du même sujet.",
+        "checklist": [
+          "Repérer les informations communes.",
+          "Identifier les différences.",
+          "Comparer auteur, date et média.",
+          "Distinguer précision et contradiction.",
+          "Formuler une conclusion prudente."
+        ],
+        "proofs": [
+          "Tableau comparatif.",
+          "Échange oral."
+        ],
+        "lsu": "Croiser des sources d’information."
+      }
+    ],
+    "p3Competencies": [
+      {
+        "code": "EMI-P3-01",
+        "domain": "Vérification",
+        "title": "Repérer une information douteuse",
+        "jeSais": "Je sais reconnaître plusieurs indices qui rendent une information douteuse.",
+        "checklist": [
+          "Repérer un titre exagéré.",
+          "Chercher l’auteur et la date.",
+          "Observer les fautes ou incohérences.",
+          "Se méfier d’une affirmation extraordinaire.",
+          "Ne pas confondre popularité et vérité."
+        ],
+        "proofs": [
+          "Analyse de publications fictives.",
+          "Liste d’indices."
+        ],
+        "lsu": "Développer l’esprit critique."
+      },
+      {
+        "code": "EMI-P3-02",
+        "domain": "Vérification",
+        "title": "Vérifier une affirmation",
+        "jeSais": "Je sais utiliser plusieurs méthodes pour vérifier une information.",
+        "checklist": [
+          "Rechercher la même information ailleurs.",
+          "Consulter une source reconnue.",
+          "Vérifier la date et le contexte.",
+          "Chercher l’origine d’une citation.",
+          "Demander l’aide d’un adulte si nécessaire."
+        ],
+        "proofs": [
+          "Enquête info ou intox.",
+          "Fiche de vérification."
+        ],
+        "lsu": "Vérifier la fiabilité d’une information."
+      },
+      {
+        "code": "EMI-P3-03",
+        "domain": "Canular et fiction",
+        "title": "Reconnaître un canular",
+        "jeSais": "Je sais reconnaître qu’un document présenté comme réel peut être une fiction ou un canular.",
+        "checklist": [
+          "Repérer les détails impossibles.",
+          "Comparer avec des connaissances fiables.",
+          "Chercher la présentation du document.",
+          "Identifier l’intention humoristique ou pédagogique.",
+          "Expliquer les vérifications nécessaires."
+        ],
+        "proofs": [
+          "Étude d’un faux reportage.",
+          "Débat argumenté."
+        ],
+        "lsu": "Distinguer réel, fiction et manipulation."
+      },
+      {
+        "code": "EMI-P3-04",
+        "domain": "Partage responsable",
+        "title": "Vérifier avant de partager",
+        "jeSais": "J’ai compris qu’une information doit être vérifiée avant d’être transmise.",
+        "checklist": [
+          "Prendre le temps de lire le contenu.",
+          "Identifier la source.",
+          "Comparer avec un autre document.",
+          "Ne pas partager sous le coup de l’émotion.",
+          "Corriger une information fausse déjà transmise."
+        ],
+        "proofs": [
+          "Analyse de scénarios.",
+          "Choix d’une réaction responsable."
+        ],
+        "lsu": "Agir de manière responsable face à l’information."
+      },
+      {
+        "code": "EMI-P3-05",
+        "domain": "Publicité",
+        "title": "Reconnaître une publicité déguisée",
+        "jeSais": "Je sais repérer quand un contenu cherche à faire acheter ou aimer un produit.",
+        "checklist": [
+          "Identifier une marque.",
+          "Repérer un placement de produit.",
+          "Observer les promesses.",
+          "Chercher la mention de publicité ou partenariat.",
+          "Distinguer témoignage et information indépendante."
+        ],
+        "proofs": [
+          "Analyse d’images et vidéos.",
+          "Classement de contenus."
+        ],
+        "lsu": "Comprendre les stratégies publicitaires."
+      }
+    ],
+    "p4Competencies": [
+      {
+        "code": "EMI-P4-01",
+        "domain": "Image médiatique",
+        "title": "Comprendre le rôle du cadrage",
+        "jeSais": "J’ai compris qu’un cadrage montre certains éléments et en cache d’autres.",
+        "checklist": [
+          "Observer ce qui est dans l’image.",
+          "Imaginer ce qui est hors champ.",
+          "Comparer deux cadrages.",
+          "Identifier l’effet produit.",
+          "Éviter de conclure sans connaître le contexte."
+        ],
+        "proofs": [
+          "Comparaison de photographies.",
+          "Prises de vue différentes."
+        ],
+        "lsu": "Lire et comprendre une image médiatique."
+      },
+      {
+        "code": "EMI-P4-02",
+        "domain": "Image médiatique",
+        "title": "Repérer une image modifiée",
+        "jeSais": "Je sais repérer des indices qui montrent qu’une image a pu être transformée.",
+        "checklist": [
+          "Observer les ombres et proportions.",
+          "Repérer des contours étranges.",
+          "Comparer avec l’image d’origine si disponible.",
+          "Comprendre qu’un détail peut être ajouté ou supprimé.",
+          "Formuler une hypothèse prudente."
+        ],
+        "proofs": [
+          "Analyse avant/après.",
+          "Enquête visuelle."
+        ],
+        "lsu": "Développer un regard critique sur les images."
+      },
+      {
+        "code": "EMI-P4-03",
+        "domain": "Image et légende",
+        "title": "Comprendre l’effet d’une légende",
+        "jeSais": "Je sais expliquer comment une légende peut orienter la compréhension d’une image.",
+        "checklist": [
+          "Lire l’image avant la légende.",
+          "Comparer plusieurs légendes.",
+          "Repérer les mots qui orientent.",
+          "Distinguer description et interprétation.",
+          "Proposer une légende neutre."
+        ],
+        "proofs": [
+          "Atelier de légendes.",
+          "Analyse collective."
+        ],
+        "lsu": "Comprendre la relation entre texte et image."
+      },
+      {
+        "code": "EMI-P4-04",
+        "domain": "Montage",
+        "title": "Comprendre qu’un montage peut modifier le sens",
+        "jeSais": "J’ai compris que l’ordre des images ou des sons peut changer le message.",
+        "checklist": [
+          "Observer l’ordre des plans.",
+          "Repérer une coupure.",
+          "Comparer deux montages.",
+          "Identifier une émotion produite.",
+          "Demander le contexte complet."
+        ],
+        "proofs": [
+          "Comparaison de deux montages courts.",
+          "Remise en ordre d’images."
+        ],
+        "lsu": "Comprendre la construction d’un message audiovisuel."
+      },
+      {
+        "code": "EMI-P4-05",
+        "domain": "Droit à l’image",
+        "title": "Demander une autorisation avant de publier",
+        "jeSais": "Je peux demander l’accord d’une personne avant de diffuser son image.",
+        "checklist": [
+          "Expliquer où l’image sera publiée.",
+          "Demander un accord clair.",
+          "Respecter un refus.",
+          "Comprendre qu’un accord peut être retiré.",
+          "Demander l’aide d’un adulte pour une publication scolaire."
+        ],
+        "proofs": [
+          "Jeu de rôle.",
+          "Préparation d’une publication."
+        ],
+        "lsu": "Respecter le droit à l’image et la vie privée."
+      }
+    ],
+    "p5Competencies": [
+      {
+        "code": "EMI-P5-01",
+        "domain": "Données personnelles",
+        "title": "Reconnaître une donnée personnelle",
+        "jeSais": "Je sais reconnaître une information personnelle qu’il faut protéger.",
+        "checklist": [
+          "Identifier nom complet, adresse, école et photo.",
+          "Repérer un mot de passe ou un identifiant.",
+          "Comprendre qu’une donnée peut concerner un proche.",
+          "Éviter de publier une information privée.",
+          "Demander conseil à un adulte."
+        ],
+        "proofs": [
+          "Classement de données.",
+          "Analyse d’un profil fictif."
+        ],
+        "lsu": "Protéger les données personnelles et la vie privée."
+      },
+      {
+        "code": "EMI-P5-02",
+        "domain": "Sécurité",
+        "title": "Créer et protéger un mot de passe",
+        "jeSais": "Je sais expliquer les règles d’un mot de passe difficile à deviner.",
+        "checklist": [
+          "Éviter prénom et date de naissance.",
+          "Utiliser une phrase secrète ou un mélange de caractères.",
+          "Ne pas partager son mot de passe.",
+          "Utiliser un mot de passe différent si possible.",
+          "Prévenir un adulte en cas de problème."
+        ],
+        "proofs": [
+          "Création de mots de passe fictifs.",
+          "Analyse de situations."
+        ],
+        "lsu": "Sécuriser son environnement numérique."
+      },
+      {
+        "code": "EMI-P5-03",
+        "domain": "Production médiatique",
+        "title": "Rédiger une information claire",
+        "jeSais": "Je sais produire une information en répondant aux questions essentielles.",
+        "checklist": [
+          "Répondre à qui, quoi, où et quand.",
+          "Ajouter pourquoi ou comment si utile.",
+          "Choisir un titre précis.",
+          "Distinguer les faits des opinions.",
+          "Relire pour vérifier la clarté."
+        ],
+        "proofs": [
+          "Brève d’actualité scolaire.",
+          "Article collectif."
+        ],
+        "lsu": "Écrire et créer un contenu médiatique."
+      },
+      {
+        "code": "EMI-P5-04",
+        "domain": "Sources",
+        "title": "Citer les documents utilisés",
+        "jeSais": "Je sais indiquer d’où viennent les informations et les images utilisées.",
+        "checklist": [
+          "Noter le titre.",
+          "Identifier l’auteur ou l’organisme.",
+          "Nommer le support ou le site.",
+          "Indiquer la date si elle est utile.",
+          "Ne pas présenter le travail d’autrui comme le sien."
+        ],
+        "proofs": [
+          "Bibliographie simplifiée.",
+          "Crédits d’une production."
+        ],
+        "lsu": "Respecter les sources et les auteurs."
+      },
+      {
+        "code": "EMI-P5-05",
+        "domain": "Publication",
+        "title": "Adapter une publication à son public",
+        "jeSais": "Je sais choisir le ton, les mots et les images adaptés au destinataire.",
+        "checklist": [
+          "Identifier le public.",
+          "Choisir un vocabulaire compréhensible.",
+          "Éviter les informations privées.",
+          "Vérifier les droits sur les images.",
+          "Relire avant publication."
+        ],
+        "proofs": [
+          "Affiche, journal ou article numérique.",
+          "Grille de relecture."
+        ],
+        "lsu": "Publier de manière responsable."
+      },
+      {
+        "code": "EMI-P5-06",
+        "domain": "Projet collectif",
+        "title": "Participer à une production médiatique",
+        "jeSais": "Je peux coopérer pour réaliser un journal, une affiche, un podcast ou un reportage.",
+        "checklist": [
+          "Choisir un rôle.",
+          "Respecter les étapes du projet.",
+          "Partager les informations.",
+          "Écouter les propositions.",
+          "Vérifier le contenu avant diffusion."
+        ],
+        "proofs": [
+          "Production collective.",
+          "Présentation au public."
+        ],
+        "lsu": "Créer, collaborer et publier."
+      }
+    ]
   }
 };
