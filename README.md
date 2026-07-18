@@ -81,3 +81,14 @@ et « Projet environnemental », même lorsqu’elles sont travaillées dans un 
 
 ## EVAR
 20 compétences réparties sur cinq périodes, avec des formulations adaptées : « J’ai compris que… », « Je peux… » et « Je sais reconnaître… ». Le suivi porte sur des situations générales ou fictives et ne demande jamais de récit personnel.
+
+
+## EPS — programmation adaptée à la classe de M. Cotty
+
+- P1 : course longue et jeux collectifs à l’école ;
+- P2 : natation à Grazailles, vendredi 15 h 55–16 h 35 ;
+- P3 : course d’orientation et sandball à la Cavayère ;
+- P4 : gymnastique et lutte à Domec ;
+- P5 : athlétisme, relais, lancer et expression corporelle.
+
+La rubrique comporte 30 compétences observables, réparties sur les cinq périodes.

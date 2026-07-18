@@ -8794,5 +8794,602 @@ window.PROGRESSIONS = {
         "lsu": "Mobiliser des moyens de protection."
       }
     ]
+  },
+  eps: {
+    "title": "Éducation physique et sportive",
+    "icon": "🏃",
+    "subtitle": "Motricité, santé, coopération, sécurité et culture sportive",
+    "routines": [
+      "S’échauffer progressivement et respecter les règles de sécurité",
+      "Observer ses résultats pour adapter son action et progresser",
+      "Coopérer, encourager et respecter partenaires, adversaires et arbitres",
+      "Assumer différents rôles : joueur, observateur, juge, arbitre ou aide",
+      "Adapter son effort à ses possibilités et récupérer après l’activité",
+      "Employer un vocabulaire précis pour expliquer une action ou une stratégie"
+    ],
+    "rows": [
+      [
+        "Produire une performance mesurable",
+        "Course longue : gérer son allure et mesurer ses progrès.",
+        "Natation : enchaîner des actions et mesurer ses réussites.",
+        "Course d’orientation : se déplacer efficacement.",
+        "Gymnastique et lutte : maîtriser ses actions.",
+        "Athlétisme : courir vite, franchir, relayer et lancer."
+      ],
+      [
+        "Adapter ses déplacements à des environnements variés",
+        "Se déplacer dans différents espaces de l’école.",
+        "Adapter ses déplacements au milieu aquatique.",
+        "S’orienter avec un plan à la Cavayère.",
+        "Adapter ses appuis aux agrès et au contact.",
+        "Réinvestir les règles de sécurité dans des parcours variés."
+      ],
+      [
+        "S’exprimer devant les autres",
+        "Jeux d’expression et enchaînements simples.",
+        "Présenter des actions aquatiques maîtrisées.",
+        "Coopérer dans des jeux collectifs sur sable.",
+        "Construire un enchaînement gymnique.",
+        "Créer et présenter une courte production collective."
+      ],
+      [
+        "Conduire et maîtriser un affrontement",
+        "Jeux collectifs : coopérer et respecter les règles.",
+        "Jeux aquatiques collectifs et coopération.",
+        "Sandball : progresser, passer, tirer et défendre.",
+        "Lutte : attaquer, résister et arbitrer.",
+        "Jeux de relais et défis collectifs."
+      ]
+    ],
+    "p1Competencies": [
+      {
+        "code": "EPS-P1-01",
+        "domain": "Course longue",
+        "title": "Gérer son allure",
+        "jeSais": "Je sais courir longtemps sans partir trop vite.",
+        "checklist": [
+          "Choisir une allure régulière.",
+          "Éviter les accélérations inutiles.",
+          "Respirer de façon régulière.",
+          "Maintenir l’effort jusqu’au signal.",
+          "Comparer son allure prévue et réalisée."
+        ],
+        "proofs": [
+          "Course chronométrée.",
+          "Observation par un camarade."
+        ],
+        "lsu": "Produire une performance mesurable."
+      },
+      {
+        "code": "EPS-P1-02",
+        "domain": "Course longue",
+        "title": "Maintenir un effort",
+        "jeSais": "Je sais maintenir un effort pendant une durée annoncée.",
+        "checklist": [
+          "Connaître la durée à atteindre.",
+          "Adapter son rythme.",
+          "Continuer malgré une fatigue normale.",
+          "S’arrêter en cas de douleur inhabituelle.",
+          "Récupérer progressivement."
+        ],
+        "proofs": [
+          "Défi de durée.",
+          "Fiche de suivi individuelle."
+        ],
+        "lsu": "Adapter son effort à ses possibilités."
+      },
+      {
+        "code": "EPS-P1-03",
+        "domain": "Mesure et progrès",
+        "title": "Observer ses résultats",
+        "jeSais": "Je sais utiliser une durée ou une distance pour mesurer mes progrès.",
+        "checklist": [
+          "Lire un chronomètre simple.",
+          "Compter des tours.",
+          "Noter un résultat.",
+          "Comparer deux essais.",
+          "Identifier un progrès réaliste."
+        ],
+        "proofs": [
+          "Tableau de résultats.",
+          "Bilan oral après plusieurs essais."
+        ],
+        "lsu": "Mesurer et analyser une performance."
+      },
+      {
+        "code": "EPS-P1-04",
+        "domain": "Jeux collectifs",
+        "title": "Occuper un espace libre",
+        "jeSais": "Je sais me déplacer pour proposer une solution à mes partenaires.",
+        "checklist": [
+          "Lever la tête.",
+          "Repérer un espace disponible.",
+          "S’éloigner d’un défenseur.",
+          "Rester visible du porteur.",
+          "Changer de direction si nécessaire."
+        ],
+        "proofs": [
+          "Jeu collectif aménagé.",
+          "Observation ciblée."
+        ],
+        "lsu": "Coopérer dans un jeu collectif."
+      },
+      {
+        "code": "EPS-P1-05",
+        "domain": "Jeux collectifs",
+        "title": "Faire une passe utile",
+        "jeSais": "Je sais passer le ballon à un partenaire disponible.",
+        "checklist": [
+          "Regarder avant de passer.",
+          "Adapter la force.",
+          "Viser devant le partenaire en mouvement.",
+          "Choisir un partenaire démarqué.",
+          "Se replacer après la passe."
+        ],
+        "proofs": [
+          "Jeu de passes.",
+          "Match à effectif réduit."
+        ],
+        "lsu": "Conduire un affrontement collectif."
+      },
+      {
+        "code": "EPS-P1-06",
+        "domain": "Règles et rôles",
+        "title": "Respecter les règles d’un jeu",
+        "jeSais": "Je sais respecter les règles et accepter une décision d’arbitrage.",
+        "checklist": [
+          "Connaître les règles essentielles.",
+          "S’arrêter au signal.",
+          "Accepter une décision.",
+          "Éviter les gestes dangereux.",
+          "Reprendre le jeu calmement."
+        ],
+        "proofs": [
+          "Situation de jeu.",
+          "Rôle de joueur ou d’arbitre."
+        ],
+        "lsu": "Respecter les règles et autrui."
+      }
+    ],
+    "p2Competencies": [
+      {
+        "code": "EPS-P2-01",
+        "domain": "Natation",
+        "title": "Entrer dans l’eau en sécurité",
+        "jeSais": "Je sais entrer dans l’eau en respectant les consignes de sécurité.",
+        "checklist": [
+          "Attendre l’autorisation.",
+          "Choisir une entrée adaptée.",
+          "Contrôler son corps.",
+          "S’éloigner de la zone d’entrée.",
+          "Rejoindre un point prévu."
+        ],
+        "proofs": [
+          "Parcours aquatique.",
+          "Observation en situation."
+        ],
+        "lsu": "Adapter ses déplacements au milieu aquatique."
+      },
+      {
+        "code": "EPS-P2-02",
+        "domain": "Natation",
+        "title": "S’immerger et souffler",
+        "jeSais": "Je sais m’immerger complètement et souffler dans l’eau.",
+        "checklist": [
+          "Mettre le visage dans l’eau.",
+          "Expirer par la bouche ou le nez.",
+          "Ouvrir les yeux si possible.",
+          "Rester calme.",
+          "Revenir à la surface de façon contrôlée."
+        ],
+        "proofs": [
+          "Jeu d’immersion.",
+          "Passage sous un obstacle."
+        ],
+        "lsu": "Maîtriser l’immersion."
+      },
+      {
+        "code": "EPS-P2-03",
+        "domain": "Natation",
+        "title": "Quitter les appuis",
+        "jeSais": "Je sais quitter mes appuis et flotter quelques secondes.",
+        "checklist": [
+          "Accepter de ne plus toucher le fond.",
+          "Allonger le corps.",
+          "Relâcher les tensions.",
+          "Maintenir une position ventrale ou dorsale.",
+          "Reprendre un appui calmement."
+        ],
+        "proofs": [
+          "Étoile ventrale ou dorsale.",
+          "Défi de flottaison."
+        ],
+        "lsu": "Se déplacer en sécurité dans l’eau."
+      },
+      {
+        "code": "EPS-P2-04",
+        "domain": "Natation",
+        "title": "Se déplacer dans l’eau",
+        "jeSais": "Je sais me déplacer sur une courte distance avec ou sans matériel.",
+        "checklist": [
+          "S’allonger dans l’eau.",
+          "Utiliser bras et jambes.",
+          "Souffler régulièrement.",
+          "Garder une direction.",
+          "Atteindre le point prévu."
+        ],
+        "proofs": [
+          "Déplacement de 5 à 10 mètres.",
+          "Parcours aquatique."
+        ],
+        "lsu": "Réaliser un déplacement aquatique."
+      },
+      {
+        "code": "EPS-P2-05",
+        "domain": "Natation",
+        "title": "Enchaîner plusieurs actions",
+        "jeSais": "Je sais enchaîner une entrée, une immersion et un déplacement.",
+        "checklist": [
+          "Mémoriser l’ordre des actions.",
+          "Entrer sans se précipiter.",
+          "S’immerger volontairement.",
+          "Se déplacer jusqu’au repère.",
+          "Sortir par l’endroit prévu."
+        ],
+        "proofs": [
+          "Parcours enchaîné.",
+          "Évaluation en situation."
+        ],
+        "lsu": "Enchaîner des actions motrices en milieu aquatique."
+      },
+      {
+        "code": "EPS-P2-06",
+        "domain": "Sécurité aquatique",
+        "title": "Respecter les règles de la piscine",
+        "jeSais": "Je sais appliquer les règles de sécurité dans et autour du bassin.",
+        "checklist": [
+          "Marcher sur les plages.",
+          "Attendre les consignes.",
+          "Respecter les zones.",
+          "Ne pas pousser.",
+          "Alerter un adulte en cas de problème."
+        ],
+        "proofs": [
+          "Observation quotidienne.",
+          "Quiz de sécurité."
+        ],
+        "lsu": "Adopter un comportement responsable."
+      }
+    ],
+    "p3Competencies": [
+      {
+        "code": "EPS-P3-01",
+        "domain": "Course d’orientation",
+        "title": "Orienter un plan",
+        "jeSais": "Je sais orienter un plan dans le même sens que le terrain.",
+        "checklist": [
+          "Repérer un élément remarquable.",
+          "Tourner le plan correctement.",
+          "Faire correspondre plan et paysage.",
+          "Vérifier avant de partir.",
+          "Réorienter après un déplacement."
+        ],
+        "proofs": [
+          "Départ de parcours.",
+          "Exercice plan-terrain."
+        ],
+        "lsu": "Se repérer dans un environnement."
+      },
+      {
+        "code": "EPS-P3-02",
+        "domain": "Course d’orientation",
+        "title": "Se situer sur un plan",
+        "jeSais": "Je sais repérer ma position et un point à atteindre.",
+        "checklist": [
+          "Identifier le point de départ.",
+          "Repérer les limites.",
+          "Trouver un élément proche.",
+          "Localiser la balise.",
+          "Décrire la direction à suivre."
+        ],
+        "proofs": [
+          "Questionnement sur plan.",
+          "Parcours balisé."
+        ],
+        "lsu": "Adapter ses déplacements à l’environnement."
+      },
+      {
+        "code": "EPS-P3-03",
+        "domain": "Course d’orientation",
+        "title": "Suivre un itinéraire",
+        "jeSais": "Je sais suivre un itinéraire simple et retrouver une balise.",
+        "checklist": [
+          "Mémoriser une partie du trajet.",
+          "Observer les repères.",
+          "Vérifier régulièrement.",
+          "Respecter les limites de sécurité.",
+          "Valider la balise trouvée."
+        ],
+        "proofs": [
+          "Parcours individuel ou en binôme.",
+          "Carte de contrôle."
+        ],
+        "lsu": "Réaliser un itinéraire en sécurité."
+      },
+      {
+        "code": "EPS-P3-04",
+        "domain": "Sandball",
+        "title": "Se démarquer",
+        "jeSais": "Je sais me déplacer sur le sable pour recevoir le ballon.",
+        "checklist": [
+          "Lever la tête.",
+          "Changer de direction.",
+          "Créer de la distance avec un défenseur.",
+          "Rester dans l’espace de jeu.",
+          "Appeler le ballon sans gêner."
+        ],
+        "proofs": [
+          "Jeu à effectif réduit.",
+          "Observation ciblée."
+        ],
+        "lsu": "Coopérer dans un affrontement collectif."
+      },
+      {
+        "code": "EPS-P3-05",
+        "domain": "Sandball",
+        "title": "Progresser vers la cible",
+        "jeSais": "Je sais faire progresser collectivement le ballon vers la cible.",
+        "checklist": [
+          "Choisir entre passe et déplacement.",
+          "Passer à un partenaire disponible.",
+          "Se replacer.",
+          "Éviter de conserver le ballon trop longtemps.",
+          "Chercher une position favorable."
+        ],
+        "proofs": [
+          "Situation de montée de balle.",
+          "Match aménagé."
+        ],
+        "lsu": "Construire une stratégie collective."
+      },
+      {
+        "code": "EPS-P3-06",
+        "domain": "Sandball",
+        "title": "Défendre sans danger",
+        "jeSais": "Je sais défendre sans contact dangereux.",
+        "checklist": [
+          "Se placer entre l’adversaire et la cible.",
+          "Garder une distance adaptée.",
+          "Intercepter sans arracher.",
+          "Éviter de pousser ou retenir.",
+          "Respecter le signal de l’arbitre."
+        ],
+        "proofs": [
+          "Jeu défensif.",
+          "Match aménagé."
+        ],
+        "lsu": "Maîtriser un affrontement collectif."
+      }
+    ],
+    "p4Competencies": [
+      {
+        "code": "EPS-P4-01",
+        "domain": "Gymnastique",
+        "title": "Réaliser une roulade avant",
+        "jeSais": "Je sais réaliser une roulade avant en sécurité.",
+        "checklist": [
+          "Placer les mains.",
+          "Rentrer la tête.",
+          "Pousser sur les jambes.",
+          "Rouler dans l’axe.",
+          "Se relever de façon contrôlée."
+        ],
+        "proofs": [
+          "Atelier de roulade.",
+          "Enchaînement gymnique."
+        ],
+        "lsu": "Réaliser une action gymnique."
+      },
+      {
+        "code": "EPS-P4-02",
+        "domain": "Gymnastique",
+        "title": "Tenir un équilibre",
+        "jeSais": "Je sais tenir une position d’équilibre quelques secondes.",
+        "checklist": [
+          "Choisir des appuis stables.",
+          "Gainer le corps.",
+          "Fixer un point.",
+          "Maintenir la position.",
+          "Sortir de la position sans chute."
+        ],
+        "proofs": [
+          "Atelier d’équilibre.",
+          "Présentation d’un enchaînement."
+        ],
+        "lsu": "Maîtriser une prestation acrobatique."
+      },
+      {
+        "code": "EPS-P4-03",
+        "domain": "Gymnastique",
+        "title": "Enchaîner plusieurs actions",
+        "jeSais": "Je sais enchaîner au moins trois actions gymniques.",
+        "checklist": [
+          "Prévoir un début et une fin.",
+          "Choisir des actions réalisables.",
+          "Lier les actions sans arrêt prolongé.",
+          "Respecter le sens du parcours.",
+          "Présenter l’enchaînement."
+        ],
+        "proofs": [
+          "Prestation individuelle.",
+          "Observation avec critères."
+        ],
+        "lsu": "S’exprimer par une prestation acrobatique."
+      },
+      {
+        "code": "EPS-P4-04",
+        "domain": "Lutte",
+        "title": "Déséquilibrer sans faire mal",
+        "jeSais": "Je sais déséquilibrer un adversaire en respectant les règles.",
+        "checklist": [
+          "Accepter le contact.",
+          "Utiliser poussée ou traction autorisée.",
+          "Garder des appuis solides.",
+          "Éviter les gestes interdits.",
+          "Arrêter au signal."
+        ],
+        "proofs": [
+          "Duel aménagé.",
+          "Observation par un arbitre."
+        ],
+        "lsu": "Conduire un affrontement interindividuel."
+      },
+      {
+        "code": "EPS-P4-05",
+        "domain": "Lutte",
+        "title": "Immobiliser et résister",
+        "jeSais": "Je sais immobiliser un adversaire ou résister sans geste dangereux.",
+        "checklist": [
+          "Contrôler sans étrangler.",
+          "Garder le contact au sol.",
+          "Chercher une position stable.",
+          "Utiliser ses appuis pour résister.",
+          "Relâcher immédiatement au signal."
+        ],
+        "proofs": [
+          "Situation d’immobilisation.",
+          "Duel réglementé."
+        ],
+        "lsu": "Maîtriser un affrontement interindividuel."
+      },
+      {
+        "code": "EPS-P4-06",
+        "domain": "Arbitrage",
+        "title": "Arbitrer une rencontre simple",
+        "jeSais": "Je sais observer un duel et appliquer une règle simple.",
+        "checklist": [
+          "Connaître le critère de réussite.",
+          "Se placer pour voir.",
+          "Annoncer clairement.",
+          "Arrêter en cas de danger.",
+          "Rester impartial."
+        ],
+        "proofs": [
+          "Rôle d’arbitre.",
+          "Fiche d’observation."
+        ],
+        "lsu": "Assumer des rôles et des responsabilités."
+      }
+    ],
+    "p5Competencies": [
+      {
+        "code": "EPS-P5-01",
+        "domain": "Vitesse",
+        "title": "Courir vite jusqu’à une ligne",
+        "jeSais": "Je sais courir vite sans ralentir avant la ligne d’arrivée.",
+        "checklist": [
+          "Réagir au signal.",
+          "Accélérer rapidement.",
+          "Garder une trajectoire droite.",
+          "Maintenir l’effort.",
+          "Dépasser la ligne avant de ralentir."
+        ],
+        "proofs": [
+          "Sprint chronométré.",
+          "Course en duel."
+        ],
+        "lsu": "Produire une performance mesurable."
+      },
+      {
+        "code": "EPS-P5-02",
+        "domain": "Haies",
+        "title": "Franchir des obstacles en courant",
+        "jeSais": "Je sais franchir plusieurs obstacles sans casser ma course.",
+        "checklist": [
+          "Regarder loin.",
+          "Adapter la longueur des foulées.",
+          "Franchir sans sauter trop haut.",
+          "Reprendre rapidement la course.",
+          "Respecter son couloir."
+        ],
+        "proofs": [
+          "Parcours de haies.",
+          "Comparaison de deux essais."
+        ],
+        "lsu": "Enchaîner course et franchissement."
+      },
+      {
+        "code": "EPS-P5-03",
+        "domain": "Relais",
+        "title": "Transmettre un témoin en mouvement",
+        "jeSais": "Je sais transmettre un témoin sans arrêter la course.",
+        "checklist": [
+          "Partir au bon moment.",
+          "Tendre la main correctement.",
+          "Donner un signal.",
+          "Transmettre dans la zone.",
+          "Poursuivre après la transmission."
+        ],
+        "proofs": [
+          "Relais par équipes.",
+          "Observation de la zone de transmission."
+        ],
+        "lsu": "Coopérer pour réaliser une performance."
+      },
+      {
+        "code": "EPS-P5-04",
+        "domain": "Lancer",
+        "title": "Lancer loin dans une zone",
+        "jeSais": "Je sais lancer un objet loin avec un geste adapté.",
+        "checklist": [
+          "Se placer de profil si nécessaire.",
+          "Armer le bras.",
+          "Coordonner jambes et bras.",
+          "Lancer vers l’avant et vers le haut.",
+          "Respecter la zone de sécurité."
+        ],
+        "proofs": [
+          "Mesure de lancer.",
+          "Défi de zones."
+        ],
+        "lsu": "Produire une performance de lancer."
+      },
+      {
+        "code": "EPS-P5-05",
+        "domain": "Expression corporelle",
+        "title": "Créer une courte phrase corporelle",
+        "jeSais": "Je sais enchaîner plusieurs mouvements pour exprimer une intention.",
+        "checklist": [
+          "Choisir trois ou quatre actions.",
+          "Varier niveaux et directions.",
+          "Utiliser l’espace.",
+          "Mémoriser l’ordre.",
+          "Commencer et terminer nettement."
+        ],
+        "proofs": [
+          "Création en petit groupe.",
+          "Présentation devant la classe."
+        ],
+        "lsu": "S’exprimer devant les autres."
+      },
+      {
+        "code": "EPS-P5-06",
+        "domain": "Coopération artistique",
+        "title": "Présenter une production collective",
+        "jeSais": "Je sais coopérer pour présenter une courte production corporelle.",
+        "checklist": [
+          "Écouter les propositions.",
+          "Choisir ensemble.",
+          "Se synchroniser.",
+          "Respecter la place de chacun.",
+          "Observer et commenter avec bienveillance."
+        ],
+        "proofs": [
+          "Prestation collective.",
+          "Retour avec critères."
+        ],
+        "lsu": "Construire une prestation artistique collective."
+      }
+    ]
   }
 };
