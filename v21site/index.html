@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période.">
+  <title>CE2 — Suivi de classe et référentiel officiel</title>
+  <link rel="stylesheet" href="styles.css?v=21">
+</head>
+<body>
+  <header class="app-header">
+    <div class="brandbar">
+      <div class="brandbar__main">
+        <div class="brand">
+          <img src="assets/maitre-hibou-logo.svg" alt="" class="brand__owl">
+          <div>
+            <strong>Maître Hibou</strong>
+            <span>Espace enseignant</span>
+          </div>
+        </div>
+        <h1 class="brandbar__title">CE2 Suivi de classe + référence officiel</h1>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="viewbar card">
+      <strong>Vue :</strong>
+      <div class="mode-switch" role="tablist" aria-label="Mode d'affichage">
+        <button class="mode-btn is-active" data-mode="suivi">🟢 Mon suivi</button>
+        <button class="mode-btn" data-mode="reference">📘 Référentiel</button>
+      </div>
+      <div class="viewbar__spacer" aria-hidden="true"></div>
+      <div class="viewbar__actions">
+        <button class="btn btn--library btn--compact" id="openLibraryBtn" type="button">📚 Bibliothèque</button>
+        <a class="btn btn--light btn--compact" href="assets/Progressions_CE2_Francais_Maths_2026_2027.pdf" download>📄 PDF</a>
+        <a class="btn btn--outline btn--compact" href="assets/Progressions_CE2_Francais_Maths_2026_2027.xlsx" download>📊 Excel</a>
+      </div>
+      <button class="help-btn" type="button" title="Les données sont enregistrées uniquement dans ce navigateur." aria-label="Aide">?</button>
+    </section>
+
+    <section class="compact-controlbar card">
+      <div class="compact-controlbar__summary">
+        <span><strong>Vue :</strong> <span id="compactMode">Mon suivi</span></span>
+        <span><strong>Matière :</strong> <span id="compactSubject">Français</span></span>
+        <span><strong>Période :</strong> <span id="compactPeriod">Vue annuelle</span></span>
+      </div>
+      <button id="toggleFiltersBtn" class="toggle-filters-btn" type="button" aria-expanded="false" aria-controls="filtersPanel">
+        ☰ Filtres
+      </button>
+    </section>
+
+    <section id="filtersPanel" class="filters-panel card is-collapsed" aria-hidden="true">
+      <div class="category-tabs" role="tablist" aria-label="Familles de matières">
+        <button class="category-tab is-active" data-category="fondamentaux">📘 <span>Fondamentaux</span></button>
+        <button class="category-tab" data-category="monde">🌍 <span>Questionner le monde</span></button>
+        <button class="category-tab" data-category="anglais">🇬🇧 <span>Anglais</span></button>
+        <button class="category-tab" data-category="citoyennete">🧡 <span>Citoyenneté</span></button>
+        <button class="category-tab" data-category="emi">💻 <span>EMI</span></button>
+      </div>
+
+      <div class="subject-tabs" role="tablist" aria-label="Matières">
+        <button class="tab is-active" data-category="fondamentaux" data-subject="francais" role="tab">✏️ Français</button>
+        <button class="tab" data-category="fondamentaux" data-subject="maths" role="tab">🧮 Mathématiques</button>
+
+        <button class="tab" data-category="monde" data-subject="histoire" role="tab">🏺 Histoire</button>
+        <button class="tab" data-category="monde" data-subject="geographie" role="tab">🗺️ Géographie</button>
+        <button class="tab" data-category="monde" data-subject="sciences" role="tab">🔬 Sciences</button>
+
+        <button class="tab" data-category="anglais" data-subject="anglais" role="tab">🇬🇧 Anglais</button>
+        <button class="tab" data-category="anglais" data-subject="arts" role="tab">🎨 Arts</button>
+        <button class="tab" data-category="anglais" data-subject="eps" role="tab">🏃 EPS</button>
+
+        <button class="tab" data-category="citoyennete" data-subject="emc" role="tab">🤝 EMC</button>
+        <button class="tab" data-category="citoyennete" data-subject="evar" role="tab">💗 EVAR</button>
+        <button class="tab" data-category="citoyennete" data-subject="parcours" role="tab">🧭 Parcours éducatifs</button>
+
+        <button class="tab" data-category="emi" data-subject="emi" role="tab">📰 EMI</button>
+      </div>
+
+      <div class="filters" aria-label="Filtrer par période">
+        <button class="filter is-active" data-period="all">🗓️ Vue annuelle</button>
+        <button class="filter p1" data-period="p1">🔵 Période 1</button>
+        <button class="filter p2" data-period="p2">🟡 Période 2</button>
+        <button class="filter p3" data-period="p3">🟢 Période 3</button>
+        <button class="filter p4" data-period="p4">🔷 Période 4</button>
+        <button class="filter p5" data-period="p5">🟣 Période 5</button>
+      </div>
+    </section>
+
+    <section class="statusbar statusbar--compact">
+      <div class="statusbar__title">
+        <span class="subject-icon" id="subjectIcon">📘</span>
+        <strong id="subjectTitle">Français</strong>
+        <span class="statusbar__separator">—</span>
+        <span id="currentPeriodLabel">Vue annuelle</span>
+        <span class="statusbar__separator">—</span>
+        <span id="currentModeLabel">Mon suivi</span>
+        <p id="subjectSubtitle" class="visually-hidden">Lecture, écriture, oral, vocabulaire, grammaire et orthographe</p>
+      </div>
+      <button class="print-btn" id="printBtn">🖨️ Imprimer</button>
+    </section>
+
+    <section id="dashboard" class="dashboard card hidden" aria-live="polite">
+      <div class="dashboard__top">
+        <div>
+          <span class="dashboard__label">Avancement de la vue</span>
+          <strong id="progressPercent">0 %</strong>
+        </div>
+        <div class="progress-track"><span id="progressBar"></span></div>
+      </div>
+      <div class="stats" id="stats"></div>
+      <div class="save-tools">
+        <button id="exportBtn">💾 Exporter ma sauvegarde</button>
+        <label class="import-label">📂 Importer une sauvegarde<input id="importInput" type="file" accept="application/json"></label>
+        <button id="resetBtn" class="danger">↺ Réinitialiser la vue</button>
+      </div>
+      <p class="local-note">Les coches et notes sont enregistrées uniquement dans ce navigateur. Aucune donnée d’élève n’est stockée.</p>
+    </section>
+
+    <section id="progressionGrid" class="progression-grid" aria-live="polite"></section>
+
+    <section class="routines card">
+      <h2>Repères permanents</h2>
+      <ul id="routinesList"></ul>
+    </section>
+  </main>
+
+  <footer><p>Progressions CE2 — suivi pédagogique précis et synthèse LSU, enregistrés localement.</p></footer>
+  <script src="data.js?v=21"></script>
+  <script src="app.js?v=21"></script>
+
+  <section id="documentLibrary" class="document-library hidden" aria-hidden="true" aria-labelledby="documentLibraryTitle">
+    <div class="document-library__panel" role="dialog" aria-modal="true">
+      <header class="document-library__header">
+        <div>
+          <p class="eyebrow">RESSOURCES DU RÉFÉRENTIEL</p>
+          <h2 id="documentLibraryTitle">Bibliothèque documentaire</h2>
+          <p>Programmes, attendus, ressources pédagogiques et plannings utilisés pour construire le suivi CE2.</p>
+        </div>
+        <button id="closeLibraryBtn" class="document-library__close" type="button" aria-label="Fermer la bibliothèque">×</button>
+      </header>
+      <div class="document-library__tools">
+        <label>
+          <span>Rechercher un document</span>
+          <input id="documentSearch" type="search" placeholder="Ex. français, EVAR, piscine…">
+        </label>
+        <strong id="documentCount"></strong>
+      </div>
+      <div id="documentFilters" class="document-filters" aria-label="Catégories de documents"></div>
+      <div id="documentList" class="document-list"></div>
+    </div>
+  </section>
+
+  <script src="documents.js?v=21"></script>
+</body>
+</html>
