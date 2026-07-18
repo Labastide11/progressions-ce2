@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période.">
   <title>CE2 — Suivi de classe et référentiel officiel</title>
-  <link rel="stylesheet" href="styles.css?v=21">
+  <link rel="stylesheet" href="styles.css?v=22">
 </head>
 <body>
   <header class="app-header">
@@ -19,29 +19,27 @@
           </div>
         </div>
         <h1 class="brandbar__title">CE2 Suivi de classe + référence officiel</h1>
+        <div class="header-view">
+          <span class="header-view__label">Vue :</span>
+          <div class="mode-switch" role="tablist" aria-label="Mode d'affichage">
+            <button class="mode-btn is-active" data-mode="suivi">🟢 Mon suivi</button>
+            <button class="mode-btn" data-mode="reference">📘 Référentiel</button>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn--library btn--compact" id="openLibraryBtn" type="button">📚 Bibliothèque</button>
+          <a class="btn btn--light btn--compact" href="assets/Progressions_CE2_Francais_Maths_2026_2027.pdf" download>📄 PDF</a>
+          <a class="btn btn--outline btn--compact" href="assets/Progressions_CE2_Francais_Maths_2026_2027.xlsx" download>📊 Excel</a>
+        </div>
+        <button class="help-btn" type="button" title="Les données sont enregistrées uniquement dans ce navigateur." aria-label="Aide">?</button>
       </div>
     </div>
   </header>
 
   <main class="shell">
-    <section class="viewbar card">
-      <strong>Vue :</strong>
-      <div class="mode-switch" role="tablist" aria-label="Mode d'affichage">
-        <button class="mode-btn is-active" data-mode="suivi">🟢 Mon suivi</button>
-        <button class="mode-btn" data-mode="reference">📘 Référentiel</button>
-      </div>
-      <div class="viewbar__spacer" aria-hidden="true"></div>
-      <div class="viewbar__actions">
-        <button class="btn btn--library btn--compact" id="openLibraryBtn" type="button">📚 Bibliothèque</button>
-        <a class="btn btn--light btn--compact" href="assets/Progressions_CE2_Francais_Maths_2026_2027.pdf" download>📄 PDF</a>
-        <a class="btn btn--outline btn--compact" href="assets/Progressions_CE2_Francais_Maths_2026_2027.xlsx" download>📊 Excel</a>
-      </div>
-      <button class="help-btn" type="button" title="Les données sont enregistrées uniquement dans ce navigateur." aria-label="Aide">?</button>
-    </section>
 
     <section class="compact-controlbar card">
       <div class="compact-controlbar__summary">
-        <span><strong>Vue :</strong> <span id="compactMode">Mon suivi</span></span>
         <span><strong>Matière :</strong> <span id="compactSubject">Français</span></span>
         <span><strong>Période :</strong> <span id="compactPeriod">Vue annuelle</span></span>
       </div>
@@ -51,33 +49,29 @@
     </section>
 
     <section id="filtersPanel" class="filters-panel card is-collapsed" aria-hidden="true">
-      <div class="category-tabs" role="tablist" aria-label="Familles de matières">
-        <button class="category-tab is-active" data-category="fondamentaux">📘 <span>Fondamentaux</span></button>
-        <button class="category-tab" data-category="monde">🌍 <span>Questionner le monde</span></button>
-        <button class="category-tab" data-category="anglais">🇬🇧 <span>Anglais</span></button>
-        <button class="category-tab" data-category="citoyennete">🧡 <span>Citoyenneté</span></button>
-        <button class="category-tab" data-category="emi">💻 <span>EMI</span></button>
+      <div class="navigation-ribbon" aria-label="Familles et matières">
+        <div class="family-group family-group--fondamentaux is-active" data-category="fondamentaux">
+          <span class="family-label">📘 Fondamentaux</span>
+          <button class="tab is-active" data-category="fondamentaux" data-subject="francais" role="tab">✏️ Français</button>
+          <button class="tab" data-category="fondamentaux" data-subject="maths" role="tab">🧮 Mathématiques</button>
+        </div>
+        <button class="category-tab category-tab--compact" data-category="monde">🌍 <span>Questionner le monde</span></button>
+        <button class="category-tab category-tab--compact" data-category="anglais">🇬🇧 <span>Anglais</span></button>
+        <button class="category-tab category-tab--compact" data-category="citoyennete">🧡 <span>Citoyenneté</span></button>
+        <button class="category-tab category-tab--compact" data-category="emi">💻 <span>EMI</span></button>
       </div>
-
-      <div class="subject-tabs" role="tablist" aria-label="Matières">
-        <button class="tab is-active" data-category="fondamentaux" data-subject="francais" role="tab">✏️ Français</button>
-        <button class="tab" data-category="fondamentaux" data-subject="maths" role="tab">🧮 Mathématiques</button>
-
+      <div class="subject-tabs subject-tabs--secondary" role="tablist" aria-label="Matières complémentaires">
         <button class="tab" data-category="monde" data-subject="histoire" role="tab">🏺 Histoire</button>
         <button class="tab" data-category="monde" data-subject="geographie" role="tab">🗺️ Géographie</button>
         <button class="tab" data-category="monde" data-subject="sciences" role="tab">🔬 Sciences</button>
-
         <button class="tab" data-category="anglais" data-subject="anglais" role="tab">🇬🇧 Anglais</button>
         <button class="tab" data-category="anglais" data-subject="arts" role="tab">🎨 Arts</button>
         <button class="tab" data-category="anglais" data-subject="eps" role="tab">🏃 EPS</button>
-
         <button class="tab" data-category="citoyennete" data-subject="emc" role="tab">🤝 EMC</button>
         <button class="tab" data-category="citoyennete" data-subject="evar" role="tab">💗 EVAR</button>
         <button class="tab" data-category="citoyennete" data-subject="parcours" role="tab">🧭 Parcours éducatifs</button>
-
         <button class="tab" data-category="emi" data-subject="emi" role="tab">📰 EMI</button>
       </div>
-
       <div class="filters" aria-label="Filtrer par période">
         <button class="filter is-active" data-period="all">🗓️ Vue annuelle</button>
         <button class="filter p1" data-period="p1">🔵 Période 1</button>
@@ -127,8 +121,8 @@
   </main>
 
   <footer><p>Progressions CE2 — suivi pédagogique précis et synthèse LSU, enregistrés localement.</p></footer>
-  <script src="data.js?v=21"></script>
-  <script src="app.js?v=21"></script>
+  <script src="data.js?v=22"></script>
+  <script src="app.js?v=22"></script>
 
   <section id="documentLibrary" class="document-library hidden" aria-hidden="true" aria-labelledby="documentLibraryTitle">
     <div class="document-library__panel" role="dialog" aria-modal="true">
@@ -152,6 +146,6 @@
     </div>
   </section>
 
-  <script src="documents.js?v=21"></script>
+  <script src="documents.js?v=22"></script>
 </body>
 </html>

@@ -156,3 +156,10 @@ La navigation est réduite à une seule ligne permanente :
 Le panneau complet s’ouvre au clic ou au toucher. Sur ordinateur, il peut aussi
 s’ouvrir au survol, mais le clic reste disponible et prioritaire. La touche Échap
 referme le panneau.
+
+
+## V22 — Entête et navigation condensées
+- vue, bibliothèque, PDF et Excel intégrés sur la même ligne que Maître Hibou ;
+- barre compacte matière/période + bouton Filtres ;
+- ruban coloré : Fondamentaux + Français/Mathématiques sur une ligne, puis familles colorées ;
+- sous-matières secondaires affichées seulement pour les autres familles.

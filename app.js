@@ -24,7 +24,7 @@
   function defaultRetention(domain,text){const clean=String(text||'').replace(/\s+/g,' ').trim();const first=clean.split(/(?<=[.!?])\s+/)[0].replace(/[.!]$/,'');const t={'Lecture — fluence':'Je sais lire à voix haute avec fluidité, respecter la ponctuation et mettre le ton.','Lecture — compréhension':'Je sais expliquer ce que j’ai compris et justifier mes réponses avec le texte.','Culture littéraire':'Je sais parler d’une œuvre, reconnaître son genre et faire des liens avec d’autres lectures.','Écriture — copie':'Je sais copier avec soin, respecter la présentation et me relire.','Production d’écrits':'Je sais organiser mes idées, écrire un texte cohérent puis l’améliorer.','Oral':'Je sais écouter, prendre la parole clairement et respecter les échanges.','Vocabulaire':'Je sais comprendre, classer et réutiliser des mots nouveaux.','Grammaire — phrase':'Je sais observer une phrase et utiliser les mots de la grammaire pour l’analyser.','Conjugaison':'Je sais reconnaître le temps d’un verbe et conjuguer les verbes étudiés.','Orthographe grammaticale':'Je sais raisonner pour réaliser les accords étudiés.','Orthographe lexicale — dictée':'Je sais mémoriser l’orthographe des mots et utiliser des régularités pour écrire.','Nombres entiers':'Je sais lire, écrire, comparer et décomposer les nombres étudiés.','Fractions':'Je sais représenter, nommer et comparer les fractions étudiées.','Calcul mental':'Je sais choisir une stratégie de calcul mental efficace.','Calcul posé — opérations':'Je sais poser une opération, estimer et vérifier mon résultat.','Résolution de problèmes':'Je sais comprendre un problème, choisir une représentation et expliquer ma démarche.','Longueurs — périmètres':'Je sais mesurer, choisir une unité et résoudre des problèmes de longueur ou de périmètre.','Masses — contenances':'Je sais mesurer, comparer et choisir une unité adaptée.','Monnaie — durées':'Je sais utiliser la monnaie et calculer des durées dans des situations simples.','Géométrie plane':'Je sais reconnaître, décrire et construire les figures étudiées.','Symétrie':'Je sais reconnaître un axe et compléter une figure symétrique.','Solides':'Je sais reconnaître, décrire et représenter les solides étudiés.','Données':'Je sais lire, organiser et interpréter des données dans un tableau ou un graphique.'};return t[domain]||`Je sais expliquer et utiliser ce que j’ai appris : ${first}.`;}
 
   function currentSkills(){if(state.mode!=='suivi')return null;const data=window.PROGRESSIONS[state.subject];const map={p1:'p1Competencies',p2:'p2Competencies',p3:'p3Competencies',p4:'p4Competencies',p5:'p5Competencies'};const key=map[state.period];return key?(data[key]||[]):null;}
-  function render(){const data=window.PROGRESSIONS[state.subject];title.textContent=data.title;subtitle.textContent=data.subtitle;icon.textContent=data.icon;document.getElementById('currentPeriodLabel').textContent=state.period==='all'?'Vue annuelle':labels[classes.indexOf(state.period)];document.getElementById('currentModeLabel').textContent=state.mode==='suivi'?'Mon suivi':'Référentiel';document.getElementById('compactMode').textContent=state.mode==='suivi'?'Mon suivi':'Référentiel';document.getElementById('compactSubject').textContent=data.title;document.getElementById('compactPeriod').textContent=state.period==='all'?'Vue annuelle':labels[classes.indexOf(state.period)];routines.innerHTML=data.routines.map(x=>`<li>${esc(x)}</li>`).join('');dashboard.classList.toggle('hidden',state.mode!=='suivi');grid.classList.toggle('is-followup',state.mode==='suivi');if(state.mode==='reference')renderReference(data);else if(state.subject==='parcours')renderFollowup(data);else{const skills=currentSkills();if(skills)renderSkills(skills);else renderFollowup(data);}updateDashboard();}
+  function render(){const data=window.PROGRESSIONS[state.subject];title.textContent=data.title;subtitle.textContent=data.subtitle;icon.textContent=data.icon;document.getElementById('currentPeriodLabel').textContent=state.period==='all'?'Vue annuelle':labels[classes.indexOf(state.period)];document.getElementById('currentModeLabel').textContent=state.mode==='suivi'?'Mon suivi':'Référentiel';document.getElementById('compactSubject').textContent=data.title;document.getElementById('compactPeriod').textContent=state.period==='all'?'Vue annuelle':labels[classes.indexOf(state.period)];showCategory(subjectCategory(state.subject));routines.innerHTML=data.routines.map(x=>`<li>${esc(x)}</li>`).join('');dashboard.classList.toggle('hidden',state.mode!=='suivi');grid.classList.toggle('is-followup',state.mode==='suivi');if(state.mode==='reference')renderReference(data);else if(state.subject==='parcours')renderFollowup(data);else{const skills=currentSkills();if(skills)renderSkills(skills);else renderFollowup(data);}updateDashboard();}
   function renderReference(data){grid.innerHTML=data.rows.map(row=>{if(state.period==='all')return `<article class="domain-card"><h3 class="domain-title">${esc(row[0])}</h3><div class="annual-grid">${row.slice(1).map((text,i)=>`<section class="period-cell ${classes[i]}"><h4>${labels[i]}</h4><p>${esc(text)}</p></section>`).join('')}</div></article>`;const i=classes.indexOf(state.period);return `<article class="domain-card"><h3 class="domain-title">${esc(row[0])}</h3><div class="single-period ${state.period}">${esc(row[i+1])}</div></article>`;}).join('');}
   function renderFollowup(data){const ps=state.period==='all'?[0,1,2,3,4]:[classes.indexOf(state.period)];grid.innerHTML=data.rows.map((row,ri)=>`<article class="domain-card followup-domain"><h3 class="domain-title">${esc(row[0])}</h3><div class="followup-periods ${state.period==='all'?'all':''}">${ps.map(pi=>followupCard(row,ri,pi)).join('')}</div></article>`).join('');bindFollowupEvents();}
   function followupCard(row,ri,pi){const e=entry(state.subject,ri,pi);const isParcours=state.subject==='parcours';const retention=e.retention||(isParcours?'Projet ou action :\nMatières / partenaires :\nTrace LSU :':defaultRetention(row[0],row[pi+1]));const checklist=isParcours?`${step('present','Projet ou action défini',e.steps.present)}${step('practice','Matières, partenaires ou ressources renseignés',e.steps.practice)}${step('reuse','Action réellement menée',e.steps.reuse)}${step('check','Trace LSU rédigée',e.steps.check)}`:`${step('present','Notion présentée',e.steps.present)}${step('practice','Entraînement réalisé',e.steps.practice)}${step('reuse','Réinvestissement prévu ou réalisé',e.steps.reuse)}${step('check','Vérification ou observation réalisée',e.steps.check)}`;const retentionTitle=isParcours?'📘 Mémoire du projet et trace LSU':'🦉 Je sais / J’ai retenu';const notePlaceholder=isParcours?'Dates, production, sortie, rencontre, bilan…':'Adaptation, difficulté, reprise, projet…';return `<section class="followup-card ${classes[pi]}" data-key="${key(state.subject,ri,pi)}"><div class="followup-head"><span>${labels[pi]}</span><select class="status-select status-${e.status}">${options(statusLabels,e.status)}</select></div><p class="planned"><strong>Cadre proposé</strong>${esc(row[pi+1])}</p><fieldset class="checklist"><legend>Ma checklist</legend>${checklist}</fieldset><label class="retention"><span>${retentionTitle}</span><textarea data-field="retention" rows="4">${esc(retention)}</textarea></label><label class="teacher-note"><span>📝 Ma note</span><textarea data-field="note" rows="2" placeholder="${notePlaceholder}">${esc(e.note)}</textarea></label></section>`;}
@@ -40,56 +40,30 @@
   function visibleKeys(){const skills=currentFrenchSkills();if(skills)return skills.map(s=>skillKey(s.code));const data=window.PROGRESSIONS[state.subject],ps=state.period==='all'?[0,1,2,3,4]:[classes.indexOf(state.period)],keys=[];data.rows.forEach((_,ri)=>ps.forEach(pi=>keys.push(key(state.subject,ri,pi))));return keys;}
   function updateDashboard(){if(state.mode!=='suivi')return;const counts={afaire:0,encours:0,travaille:0,reprendre:0,stabilise:0};const keys=visibleKeys();keys.forEach(k=>{const e=saved[k]||{status:'afaire'};counts[e.status]=(counts[e.status]||0)+1;});const done=counts.travaille+counts.stabilise;const percent=keys.length?Math.round(done/keys.length*100):0;document.getElementById('progressPercent').textContent=percent+' %';document.getElementById('progressBar').style.width=percent+'%';document.getElementById('stats').innerHTML=Object.entries(statusLabels).map(([k,l])=>`<div class="stat stat-${k}"><strong>${counts[k]||0}</strong><span>${l}</span></div>`).join('');}
 
+  function subjectCategory(subject){
+    const map={francais:'fondamentaux',maths:'fondamentaux',histoire:'monde',geographie:'monde',sciences:'monde',anglais:'anglais',arts:'anglais',eps:'anglais',emc:'citoyennete',evar:'citoyennete',parcours:'citoyennete',emi:'emi'};
+    return map[subject]||'fondamentaux';
+  }
   function showCategory(category){
     document.querySelectorAll('.category-tab').forEach(b=>b.classList.toggle('is-active',b.dataset.category===category));
-    document.querySelectorAll('.subject-tabs .tab').forEach(b=>b.classList.toggle('is-hidden',b.dataset.category!==category));
+    document.querySelectorAll('.family-group').forEach(g=>g.classList.toggle('is-active',g.dataset.category===category));
+    const secondary=document.querySelector('.subject-tabs--secondary');
+    document.querySelectorAll('.subject-tabs--secondary .tab').forEach(b=>b.classList.toggle('is-hidden',b.dataset.category!==category));
+    if(secondary) secondary.classList.toggle('is-empty',category==='fondamentaux');
   }
   document.querySelectorAll('.category-tab').forEach(btn=>btn.addEventListener('click',()=>{
     const category=btn.dataset.category;
     showCategory(category);
-    const first=document.querySelector(`.subject-tabs .tab[data-category="${category}"]`);
-    if(first && !document.querySelector(`.subject-tabs .tab[data-category="${category}"].is-active`)){
+    const first=document.querySelector(`.subject-tabs--secondary .tab[data-category="${category}"]`);
+    if(first){
       document.querySelectorAll('.tab').forEach(b=>b.classList.remove('is-active'));
       first.classList.add('is-active');
       state.subject=first.dataset.subject;
       render();
+      if(!filtersPinned)setFiltersOpen(false);
     }
   }));
-  const filtersPanel=document.getElementById('filtersPanel');
-  const toggleFiltersBtn=document.getElementById('toggleFiltersBtn');
-  let filtersPinned=false;
-
-  function setFiltersOpen(open){
-    filtersPanel.classList.toggle('is-collapsed',!open);
-    filtersPanel.setAttribute('aria-hidden',String(!open));
-    toggleFiltersBtn.setAttribute('aria-expanded',String(open));
-    toggleFiltersBtn.textContent=open?'✕ Fermer':'☰ Filtres';
-  }
-
-  toggleFiltersBtn.addEventListener('click',()=>{
-    const open=filtersPanel.classList.contains('is-collapsed');
-    filtersPinned=open;
-    setFiltersOpen(open);
-  });
-
-  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
-    const hoverZone=document.querySelector('.compact-controlbar');
-    hoverZone.addEventListener('mouseenter',()=>{if(!filtersPinned)setFiltersOpen(true);});
-    filtersPanel.addEventListener('mouseleave',()=>{if(!filtersPinned)setFiltersOpen(false);});
-  }
-
-  document.addEventListener('keydown',e=>{
-    if(e.key==='Escape'&&!filtersPanel.classList.contains('is-collapsed')){
-      filtersPinned=false;
-      setFiltersOpen(false);
-      toggleFiltersBtn.focus();
-    }
-  });
-
-  document.querySelectorAll('.mode-btn').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('is-active'));btn.classList.add('is-active');state.mode=btn.dataset.mode;render();}));
-  document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(b=>b.classList.remove('is-active'));btn.classList.add('is-active');state.subject=btn.dataset.subject;render();if(!filtersPinned)setFiltersOpen(false);}));
-  document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(b=>b.classList.remove('is-active'));btn.classList.add('is-active');state.period=btn.dataset.period;render();if(!filtersPinned)setFiltersOpen(false);}));
-  showCategory('fondamentaux');
+  showCategory(subjectCategory(state.subject));
   document.getElementById('printBtn').addEventListener('click',()=>window.print());
   document.getElementById('exportBtn').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({version:5,exportedAt:new Date().toISOString(),data:saved},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='sauvegarde_progressions_ce2.json';a.click();URL.revokeObjectURL(a.href);});
   document.getElementById('importInput').addEventListener('change',event=>{const file=event.target.files[0];if(!file)return;const r=new FileReader();r.onload=()=>{try{const p=JSON.parse(r.result);saved=p.data||p;persist();render();alert('Sauvegarde importée.');}catch(e){alert('Ce fichier de sauvegarde n’est pas valide.');}};r.readAsText(file);event.target.value='';});
