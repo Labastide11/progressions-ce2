@@ -1,4 +1,8 @@
-# Progressions CE2 — V29
+# Progressions CE2 — V31
+
+Correctif : le bouton « Enregistrer la classe » fonctionne désormais. Les scripts sont chargés après les fenêtres modales, ce qui garantit que les boutons existent au moment où leurs événements sont branchés.
+
+# Progressions CE2 — V31
 
 Nouvelle vue **👥 Élèves** : liste de classe modifiable, suivi par compétence ou par élève, quatre niveaux, remarques et export CSV. Les données restent enregistrées localement dans le navigateur.
 
@@ -189,3 +193,10 @@ Dans les vues Période 1 à Période 5, toutes les fiches de compétences sont d
 
 ## V28 — Accès Maître Hibou
 Ajout d’un bouton 🦉 Maître Hibou à droite de Bibliothèque, PDF et Excel. Le site s’ouvre dans un nouvel onglet.
+
+
+## Synchronisation Google Sheet
+La liste des élèves est chargée et enregistrée dans l’onglet `eleves` via l’application Web Apps Script :
+`https://script.google.com/macros/s/AKfycbwXa4M0UdjpGqF-ik2IS5JgFAoujyxdaqs3M85msXioBP4GQZO0C_YcJp9p60EQu8kY7w/exec`
+
+Colonnes attendues : `prenom`, `initiale`, `naissance`, `sexe`, `actif`.

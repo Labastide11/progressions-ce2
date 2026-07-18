@@ -14,6 +14,8 @@
   const masteryLabels={none:'Non évaluée',fragile:'Fragile',encours:'En cours d’acquisition',acquise:'Acquise',maitrisee:'Très bien maîtrisée'};
   const CLASS_ROSTER_KEY='progressions_ce2_classe_v1';
   const CLASS_TRACKING_KEY='progressions_ce2_suivi_eleves_v1';
+  const ELEVES_API='https://script.google.com/macros/s/AKfycbwXa4M0UdjpGqF-ik2IS5JgFAoujyxdaqs3M85msXioBP4GQZO0C_YcJp9p60EQu8kY7w/exec';
+  const ELEVES_SYNC_TIMEOUT=20000;
   const classLevelLabels={none:'⚪ Non évalué',encours:'🟡 En cours',acquis:'🟢 Acquis',renforcer:'🔴 À renforcer'};
   let classRoster=loadClassRoster();
   let classTracking=loadClassTracking();
@@ -39,6 +41,36 @@
   function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
   function defaultRetention(domain,text){const clean=String(text||'').replace(/\s+/g,' ').trim();const first=clean.split(/(?<=[.!?])\s+/)[0].replace(/[.!]$/,'');const t={'Lecture — fluence':'Je sais lire à voix haute avec fluidité, respecter la ponctuation et mettre le ton.','Lecture — compréhension':'Je sais expliquer ce que j’ai compris et justifier mes réponses avec le texte.','Culture littéraire':'Je sais parler d’une œuvre, reconnaître son genre et faire des liens avec d’autres lectures.','Écriture — copie':'Je sais copier avec soin, respecter la présentation et me relire.','Production d’écrits':'Je sais organiser mes idées, écrire un texte cohérent puis l’améliorer.','Oral':'Je sais écouter, prendre la parole clairement et respecter les échanges.','Vocabulaire':'Je sais comprendre, classer et réutiliser des mots nouveaux.','Grammaire — phrase':'Je sais observer une phrase et utiliser les mots de la grammaire pour l’analyser.','Conjugaison':'Je sais reconnaître le temps d’un verbe et conjuguer les verbes étudiés.','Orthographe grammaticale':'Je sais raisonner pour réaliser les accords étudiés.','Orthographe lexicale — dictée':'Je sais mémoriser l’orthographe des mots et utiliser des régularités pour écrire.','Nombres entiers':'Je sais lire, écrire, comparer et décomposer les nombres étudiés.','Fractions':'Je sais représenter, nommer et comparer les fractions étudiées.','Calcul mental':'Je sais choisir une stratégie de calcul mental efficace.','Calcul posé — opérations':'Je sais poser une opération, estimer et vérifier mon résultat.','Résolution de problèmes':'Je sais comprendre un problème, choisir une représentation et expliquer ma démarche.','Longueurs — périmètres':'Je sais mesurer, choisir une unité et résoudre des problèmes de longueur ou de périmètre.','Masses — contenances':'Je sais mesurer, comparer et choisir une unité adaptée.','Monnaie — durées':'Je sais utiliser la monnaie et calculer des durées dans des situations simples.','Géométrie plane':'Je sais reconnaître, décrire et construire les figures étudiées.','Symétrie':'Je sais reconnaître un axe et compléter une figure symétrique.','Solides':'Je sais reconnaître, décrire et représenter les solides étudiés.','Données':'Je sais lire, organiser et interpréter des données dans un tableau ou un graphique.'};return t[domain]||`Je sais expliquer et utiliser ce que j’ai appris : ${first}.`;}
 
+  function elevesJsonp(params){
+    return new Promise((resolve,reject)=>{
+      const callback='__mhEleves'+Date.now()+Math.random().toString(36).slice(2);
+      const script=document.createElement('script');
+      const timer=setTimeout(()=>finish(new Error('Délai de connexion au Google Sheet dépassé.')),ELEVES_SYNC_TIMEOUT);
+      function finish(error,data){clearTimeout(timer);try{delete window[callback];}catch(e){window[callback]=undefined;}script.remove();error?reject(error):resolve(data);}
+      window[callback]=data=>finish(null,data);
+      const query=new URLSearchParams(Object.assign({},params,{callback}));
+      script.src=ELEVES_API+'?'+query.toString();
+      script.onerror=()=>finish(new Error('Connexion au Google Sheet impossible.'));
+      document.head.appendChild(script);
+    });
+  }
+  function normalizeRosterNames(rows){
+    if(!Array.isArray(rows))return [];
+    return [...new Set(rows.map(item=>typeof item==='string'?item:(item&&item.prenom)||'').map(x=>String(x).trim()).filter(Boolean))];
+  }
+  async function loadRosterFromSheet(){
+    try{
+      const data=await elevesJsonp({action:'get_eleves'});
+      const names=normalizeRosterNames(data);
+      if(names.length){classRoster=names;saveClassRoster();render();}
+    }catch(error){console.warn('Chargement des élèves depuis le Sheet :',error);}
+  }
+  async function syncRosterToSheet(){
+    const eleves=classRoster.map(prenom=>({prenom,initiale:String(prenom).trim().charAt(0).toUpperCase(),naissance:'',sexe:'',actif:'oui'}));
+    const result=await elevesJsonp({action:'save_eleves',remplacer:'oui',eleves:JSON.stringify(eleves)});
+    if(!result||result.ok===false)throw new Error(result&&result.error?result.error:'Enregistrement refusé par le Google Sheet.');
+    return result;
+  }
   function loadClassRoster(){try{const list=JSON.parse(localStorage.getItem(CLASS_ROSTER_KEY)||'[]');return Array.isArray(list)?list:[];}catch(e){return [];}}
   function saveClassRoster(){try{localStorage.setItem(CLASS_ROSTER_KEY,JSON.stringify(classRoster));}catch(e){alert('La liste des élèves ne peut pas être enregistrée dans ce navigateur.');}}
   function loadClassTracking(){try{return JSON.parse(localStorage.getItem(CLASS_TRACKING_KEY)||'{}')||{};}catch(e){return {};}}
@@ -56,7 +88,25 @@
   function bindClassTrackingEvents(skills){const skillSelect=document.getElementById('classSkillSelect');if(skillSelect)skillSelect.onchange=()=>{state.selectedSkill=skillSelect.value;renderClassTracking();};const studentSelect=document.getElementById('classStudentSelect');if(studentSelect)studentSelect.onchange=()=>{state.selectedStudent=studentSelect.value;renderClassTracking();};document.querySelectorAll('[data-class-view]').forEach(btn=>btn.onclick=()=>{state.classView=btn.dataset.classView;renderClassTracking();});const edit=document.getElementById('editRosterBtn');if(edit)edit.onclick=openRosterEditor;const exp=document.getElementById('exportClassBtn');if(exp)exp.onclick=exportClassCsv;document.querySelectorAll('.mastery-btn').forEach(btn=>btn.onclick=()=>{const skill=selectedClassSkill();const e=classEntry(btn.dataset.student,skill.code);e.level=btn.dataset.level;e.date=new Date().toISOString();saveClassTracking();renderClassTracking();});document.querySelectorAll('[data-note-student]').forEach(input=>input.onchange=()=>{const skill=selectedClassSkill();const e=classEntry(input.dataset.noteStudent,skill.code);e.note=input.value;e.date=new Date().toISOString();saveClassTracking();});}
   function openRosterEditor(){const modal=document.getElementById('rosterEditor');document.getElementById('rosterTextarea').value=classRoster.join('\n');modal.classList.remove('hidden');modal.setAttribute('aria-hidden','false');}
   function closeRosterEditor(){const modal=document.getElementById('rosterEditor');modal.classList.add('hidden');modal.setAttribute('aria-hidden','true');}
-  function saveRosterFromEditor(){const names=document.getElementById('rosterTextarea').value.split(/\r?\n|;/).map(x=>x.trim()).filter(Boolean);classRoster=[...new Set(names)];saveClassRoster();closeRosterEditor();render();}
+  async function saveRosterFromEditor(){
+    const button=document.getElementById('saveRosterBtn');
+    const names=document.getElementById('rosterTextarea').value.split(/\r?\n|;/).map(x=>x.trim()).filter(Boolean);
+    classRoster=[...new Set(names)];
+    saveClassRoster();
+    if(button){button.disabled=true;button.textContent='⏳ Enregistrement…';}
+    try{
+      const result=await syncRosterToSheet();
+      closeRosterEditor();
+      render();
+      alert(`Classe enregistrée : ${result.ajoutes||0} ajouté(s), ${result.mis_a_jour||0} mis à jour, ${result.desactives||0} désactivé(s).`);
+    }catch(error){
+      closeRosterEditor();
+      render();
+      alert('La classe est enregistrée localement, mais la synchronisation Google Sheet a échoué : '+(error.message||error));
+    }finally{
+      if(button){button.disabled=false;button.textContent='💾 Enregistrer la classe';}
+    }
+  }
   function exportClassCsv(){const skills=preciseSkillsFor(state.subject,state.period);const rows=[['Élève','Code','Matière','Période','Domaine','Compétence','Niveau','Remarque','Date']];classRoster.forEach(student=>skills.forEach(skill=>{const e=classEntry(student,skill.code);rows.push([student,skill.code,window.PROGRESSIONS[state.subject].title,labels[classes.indexOf(skill._period)]||skill._period,skill.domain,skill.title,classLevelLabels[e.level],e.note,e.date]);}));const csv=rows.map(r=>r.map(v=>'"'+String(v||'').replace(/"/g,'""')+'"').join(';')).join('\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`suivi_classe_${state.subject}_${state.period}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),0);}
 
   function currentSkills(){if(state.mode!=='suivi')return null;const data=window.PROGRESSIONS[state.subject];const map={p1:'p1Competencies',p2:'p2Competencies',p3:'p3Competencies',p4:'p4Competencies',p5:'p5Competencies'};const key=map[state.period];return key?(data[key]||[]):null;}
@@ -144,4 +194,5 @@
   document.getElementById('clearRosterBtn').addEventListener('click',()=>{document.getElementById('rosterTextarea').value='';});
   document.getElementById('rosterEditor').addEventListener('click',e=>{if(e.target.id==='rosterEditor')closeRosterEditor();});
   render();
+  loadRosterFromSheet();
 })();
