@@ -163,3 +163,9 @@ referme le panneau.
 - barre compacte matière/période + bouton Filtres ;
 - ruban coloré : Fondamentaux + Français/Mathématiques sur une ligne, puis familles colorées ;
 - sous-matières secondaires affichées seulement pour les autres familles.
+
+
+## V23 — Ruban conforme à la maquette
+- un bloc bleu clair unique : Fondamentaux + Français + Mathématiques ;
+- quatre capsules pastel distinctes : Questionner le monde, Anglais, Citoyenneté, EMI ;
+- lecture horizontale immédiate sur une seule ligne en version PC.

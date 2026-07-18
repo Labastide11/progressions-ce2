@@ -343,3 +343,141 @@ body{background:#f8fafc;color:var(--mh-text)}
 @media (max-width:1200px){.brandbar__title{white-space:normal}.header-actions{margin-left:0}}
 @media (max-width:900px){.brandbar__main{align-items:flex-start}.header-view,.header-actions{width:100%}.header-actions{justify-content:flex-start}}
 @media (max-width:760px){.brandbar{padding:8px 12px}.brandbar__title{font-size:1rem}.header-view{gap:8px}.header-view__label{font-size:.9rem}.mode-btn{font-size:.84rem;padding:7px 10px}.header-actions .btn--compact{font-size:.82rem;padding:6px 10px}.family-group,.category-tab--compact{width:100%}.subject-tabs--secondary .tab,.family-group .tab{flex:1 1 145px}}
+
+
+/* =========================================================
+   V23 — RUBAN VRAIMENT CONFORME A LA MAQUETTE
+   ========================================================= */
+.navigation-ribbon{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:nowrap;
+  overflow-x:auto;
+  padding-bottom:2px;
+  scrollbar-width:thin;
+}
+.navigation-ribbon::-webkit-scrollbar{height:8px}
+.navigation-ribbon::-webkit-scrollbar-thumb{background:#d5deea;border-radius:999px}
+
+.family-group{
+  flex:0 0 auto;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  flex-wrap:nowrap;
+  padding:6px 8px;
+  border:1px solid #bfd7f3;
+  border-radius:999px;
+  background:#e9f3ff;
+  box-shadow:0 2px 8px rgba(23,63,135,.05);
+}
+.family-group--fondamentaux.is-active{
+  box-shadow:inset 0 0 0 2px rgba(17,101,216,.18),0 6px 16px rgba(17,101,216,.08);
+}
+.family-group .family-label{
+  font-weight:900;
+  color:#153867;
+  white-space:nowrap;
+  padding:0 4px 0 6px;
+  font-size:.92rem;
+}
+.family-group .tab{
+  min-height:34px;
+  padding:7px 12px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid #cfe0f4;
+  min-width:0;
+  white-space:nowrap;
+  font-size:.88rem;
+}
+.family-group .tab.is-active{
+  background:var(--mh-navy);
+  color:#fff;
+  border-color:var(--mh-navy);
+}
+
+.category-tab--compact{
+  flex:0 0 auto;
+  min-height:42px;
+  padding:8px 14px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:.9rem;
+  font-weight:850;
+  white-space:nowrap;
+  border:1px solid transparent;
+  box-shadow:0 2px 8px rgba(23,50,77,.04);
+}
+.category-tab--compact[data-category="monde"]{
+  background:#edf8ef;
+  border-color:#cfe6d2;
+  color:#2d5c37;
+}
+.category-tab--compact[data-category="anglais"]{
+  background:#f1ecff;
+  border-color:#dcd4f9;
+  color:#4b3f8a;
+}
+.category-tab--compact[data-category="citoyennete"]{
+  background:#fff3dd;
+  border-color:#f0ddae;
+  color:#855f13;
+}
+.category-tab--compact[data-category="emi"]{
+  background:#eef0ff;
+  border-color:#d8defa;
+  color:#414f93;
+}
+.category-tab--compact.is-active{
+  transform:translateY(-1px);
+  box-shadow:inset 0 0 0 2px rgba(17,101,216,.12),0 6px 16px rgba(17,101,216,.08);
+}
+
+.filters-panel{
+  max-height:360px;
+  padding:12px;
+  gap:10px;
+}
+.subject-tabs--secondary{
+  min-height:0;
+  padding:8px 10px 2px;
+  border:1px dashed #dbe6f0;
+  border-radius:14px;
+  background:#fbfdff;
+  box-shadow:none;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.subject-tabs--secondary .tab{
+  min-height:34px;
+  padding:7px 12px;
+  min-width:0;
+  flex:0 0 auto;
+  border-radius:999px;
+  font-size:.88rem;
+  background:#fff;
+  white-space:nowrap;
+}
+.subject-tabs--secondary .tab.is-active{
+  background:var(--mh-navy);
+  color:#fff;
+  border-color:var(--mh-navy);
+}
+
+@media (max-width:980px){
+  .navigation-ribbon{flex-wrap:wrap;overflow:visible}
+}
+@media (max-width:760px){
+  .navigation-ribbon{gap:8px}
+  .family-group{width:100%;flex-wrap:wrap;border-radius:18px}
+  .family-group .family-label{width:100%;padding-bottom:2px}
+  .family-group .tab{flex:1 1 145px}
+  .category-tab--compact{width:100%;justify-content:flex-start;border-radius:16px}
+  .subject-tabs--secondary .tab{flex:1 1 145px}
+}
