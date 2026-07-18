@@ -163,3 +163,7 @@ referme le panneau.
 - le ruban coloré domaines / matières est toujours visible ;
 - Français et Mathématiques sont intégrés dans le bloc Fondamentaux ;
 - Filtres conserve les sous-matières complémentaires et les périodes.
+
+
+## V25 — Compétences ouvertes par défaut
+Dans les vues Période 1 à Période 5, toutes les fiches de compétences sont désormais dépliées automatiquement, comme demandé.
