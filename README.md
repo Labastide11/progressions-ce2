@@ -167,3 +167,10 @@ referme le panneau.
 
 ## V25 — Compétences ouvertes par défaut
 Dans les vues Période 1 à Période 5, toutes les fiches de compétences sont désormais dépliées automatiquement, comme demandé.
+
+
+## V26 — Blocs repliables
+- chaque grand domaine est ouvert par défaut ;
+- clic ou toucher sur toute la barre du titre pour replier ou déplier ;
+- état mémorisé dans le navigateur ;
+- bouton global Tout replier / Tout déplier dans le bandeau bleu.

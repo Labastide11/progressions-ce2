@@ -353,3 +353,65 @@ body{background:#f8fafc;color:var(--mh-text)}
   .subject-tabs--secondary .tab{flex:1 1 145px;min-width:0}
 }
 @media print{.navigation-strip{display:none!important}}
+
+
+/* =========================================================
+   V26 — BLOCS DE DOMAINES REPLIABLES, OUVERTS PAR DEFAUT
+   ========================================================= */
+.domain-title{padding:0}
+.domain-toggle{
+  width:100%;
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 16px;
+  border:0;
+  background:transparent;
+  color:var(--navy);
+  font:inherit;
+  font-size:19px;
+  font-weight:900;
+  text-align:left;
+  cursor:pointer;
+}
+.domain-toggle:hover{background:rgba(255,255,255,.38)}
+.domain-toggle:focus-visible{outline:3px solid rgba(47,128,237,.28);outline-offset:-3px}
+.domain-toggle small{font-size:.78em;font-weight:850}
+.domain-toggle__icon{
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:#fff;
+  border:1px solid #cbdbe8;
+  color:#17365d;
+  font-size:1rem;
+}
+.domain-content{display:block}
+.domain-card.is-collapsed .domain-content{display:none}
+.domain-card.is-collapsed .domain-title{border-radius:18px}
+.statusbar__actions{display:flex;align-items:center;gap:8px}
+.collapse-all-btn{
+  border:1px solid rgba(255,255,255,.55);
+  background:rgba(255,255,255,.12);
+  color:#fff;
+  border-radius:9px;
+  padding:6px 10px;
+  font:inherit;
+  font-size:.82rem;
+  font-weight:850;
+  cursor:pointer;
+}
+.collapse-all-btn:hover{background:rgba(255,255,255,.22)}
+@media (max-width:650px){
+  .statusbar__actions{width:100%;justify-content:flex-end}
+  .domain-toggle{min-height:44px;padding:10px 13px;font-size:17px}
+}
+@media print{
+  .collapse-all-btn,.domain-toggle__icon{display:none!important}
+  .domain-card.is-collapsed .domain-content{display:block!important}
+}

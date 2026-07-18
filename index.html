@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période.">
   <title>CE2 — Suivi de classe et référentiel officiel</title>
-  <link rel="stylesheet" href="styles.css?v=25">
+  <link rel="stylesheet" href="styles.css?v=26">
 </head>
 <body>
   <header class="app-header">
@@ -99,7 +99,10 @@
         <span id="currentModeLabel">Mon suivi</span>
         <p id="subjectSubtitle" class="visually-hidden">Lecture, écriture, oral, vocabulaire, grammaire et orthographe</p>
       </div>
-      <button class="print-btn" id="printBtn">🖨️ Imprimer</button>
+      <div class="statusbar__actions">
+        <button class="collapse-all-btn" id="collapseAllBtn" type="button" aria-pressed="false">▴ Tout replier</button>
+        <button class="print-btn" id="printBtn">🖨️ Imprimer</button>
+      </div>
     </section>
 
     <section id="dashboard" class="dashboard card hidden" aria-live="polite">
@@ -128,8 +131,8 @@
   </main>
 
   <footer><p>Progressions CE2 — suivi pédagogique précis et synthèse LSU, enregistrés localement.</p></footer>
-  <script src="data.js?v=25"></script>
-  <script src="app.js?v=25"></script>
+  <script src="data.js?v=26"></script>
+  <script src="app.js?v=26"></script>
 
   <section id="documentLibrary" class="document-library hidden" aria-hidden="true" aria-labelledby="documentLibraryTitle">
     <div class="document-library__panel" role="dialog" aria-modal="true">
@@ -153,6 +156,6 @@
     </div>
   </section>
 
-  <script src="documents.js?v=25"></script>
+  <script src="documents.js?v=26"></script>
 </body>
 </html>
