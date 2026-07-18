@@ -92,3 +92,15 @@ et « Projet environnemental », même lorsqu’elles sont travaillées dans un 
 - P5 : athlétisme, relais, lancer et expression corporelle.
 
 La rubrique comporte 30 compétences observables, réparties sur les cinq périodes.
+
+
+## Arts
+
+La rubrique « Arts » regroupe arts plastiques et éducation musicale :
+- P1 : forêt, animaux, matières, chant collectif et pulsation ;
+- P2 : image, message, illustration, émotions et jeux vocaux ;
+- P3 : paysages d’hiver, lumière, volume et paysages sonores ;
+- P4 : corps, mouvement, sculpture et création sonore ;
+- P5 : photographie, light painting, bande dessinée et interprétation musicale.
+
+Elle comporte 30 compétences observables, soit 6 par période.
