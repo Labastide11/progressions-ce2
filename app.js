@@ -44,25 +44,59 @@
     const map={francais:'fondamentaux',maths:'fondamentaux',histoire:'monde',geographie:'monde',sciences:'monde',anglais:'anglais',arts:'anglais',eps:'anglais',emc:'citoyennete',evar:'citoyennete',parcours:'citoyennete',emi:'emi'};
     return map[subject]||'fondamentaux';
   }
+
   function showCategory(category){
     document.querySelectorAll('.category-tab').forEach(b=>b.classList.toggle('is-active',b.dataset.category===category));
     document.querySelectorAll('.family-group').forEach(g=>g.classList.toggle('is-active',g.dataset.category===category));
-    const secondary=document.querySelector('.subject-tabs--secondary');
     document.querySelectorAll('.subject-tabs--secondary .tab').forEach(b=>b.classList.toggle('is-hidden',b.dataset.category!==category));
+    const secondary=document.querySelector('.subject-tabs--secondary');
     if(secondary) secondary.classList.toggle('is-empty',category==='fondamentaux');
   }
   document.querySelectorAll('.category-tab').forEach(btn=>btn.addEventListener('click',()=>{
     const category=btn.dataset.category;
     showCategory(category);
     const first=document.querySelector(`.subject-tabs--secondary .tab[data-category="${category}"]`);
-    if(first){
+    if(first && !document.querySelector(`.subject-tabs .tab[data-category="${category}"].is-active`)){
       document.querySelectorAll('.tab').forEach(b=>b.classList.remove('is-active'));
       first.classList.add('is-active');
       state.subject=first.dataset.subject;
       render();
-      if(!filtersPinned)setFiltersOpen(false);
     }
   }));
+  const filtersPanel=document.getElementById('filtersPanel');
+  const toggleFiltersBtn=document.getElementById('toggleFiltersBtn');
+  let filtersPinned=false;
+
+  function setFiltersOpen(open){
+    filtersPanel.classList.toggle('is-collapsed',!open);
+    filtersPanel.setAttribute('aria-hidden',String(!open));
+    toggleFiltersBtn.setAttribute('aria-expanded',String(open));
+    toggleFiltersBtn.textContent=open?'✕ Fermer':'☰ Filtres';
+  }
+
+  toggleFiltersBtn.addEventListener('click',()=>{
+    const open=filtersPanel.classList.contains('is-collapsed');
+    filtersPinned=open;
+    setFiltersOpen(open);
+  });
+
+  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    const hoverZone=document.querySelector('.compact-controlbar');
+    hoverZone.addEventListener('mouseenter',()=>{if(!filtersPinned)setFiltersOpen(true);});
+    filtersPanel.addEventListener('mouseleave',()=>{if(!filtersPinned)setFiltersOpen(false);});
+  }
+
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'&&!filtersPanel.classList.contains('is-collapsed')){
+      filtersPinned=false;
+      setFiltersOpen(false);
+      toggleFiltersBtn.focus();
+    }
+  });
+
+  document.querySelectorAll('.mode-btn').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('is-active'));btn.classList.add('is-active');state.mode=btn.dataset.mode;render();}));
+  document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(b=>b.classList.remove('is-active'));btn.classList.add('is-active');state.subject=btn.dataset.subject;showCategory(subjectCategory(state.subject));render();if(!filtersPinned)setFiltersOpen(false);}));
+  document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(b=>b.classList.remove('is-active'));btn.classList.add('is-active');state.period=btn.dataset.period;render();if(!filtersPinned)setFiltersOpen(false);}));
   showCategory(subjectCategory(state.subject));
   document.getElementById('printBtn').addEventListener('click',()=>window.print());
   document.getElementById('exportBtn').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({version:5,exportedAt:new Date().toISOString(),data:saved},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='sauvegarde_progressions_ce2.json';a.click();URL.revokeObjectURL(a.href);});

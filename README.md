@@ -158,14 +158,8 @@ s’ouvrir au survol, mais le clic reste disponible et prioritaire. La touche É
 referme le panneau.
 
 
-## V22 — Entête et navigation condensées
-- vue, bibliothèque, PDF et Excel intégrés sur la même ligne que Maître Hibou ;
-- barre compacte matière/période + bouton Filtres ;
-- ruban coloré : Fondamentaux + Français/Mathématiques sur une ligne, puis familles colorées ;
-- sous-matières secondaires affichées seulement pour les autres familles.
-
-
-## V23 — Ruban conforme à la maquette
-- un bloc bleu clair unique : Fondamentaux + Français + Mathématiques ;
-- quatre capsules pastel distinctes : Questionner le monde, Anglais, Citoyenneté, EMI ;
-- lecture horizontale immédiate sur une seule ligne en version PC.
+## V24 — Ligne colorée toujours visible
+- la vue et les actions principales sont sur la même ligne que Maître Hibou ;
+- le ruban coloré domaines / matières est toujours visible ;
+- Français et Mathématiques sont intégrés dans le bloc Fondamentaux ;
+- Filtres conserve les sous-matières complémentaires et les périodes.
