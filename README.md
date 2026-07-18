@@ -131,3 +131,15 @@ attendus et progressions, ressources pédagogiques, organisation locale et docum
 
 Les fichiers ont été renommés proprement et placés dans `assets/documents/`.
 La bibliothèque permet de rechercher, filtrer, ouvrir et télécharger chaque PDF.
+
+
+## Ergonomie compacte V18
+
+- petit hibou Maître Hibou intégré en SVG ;
+- titre réduit : « CE2 Suivi de classe + référence officiel » ;
+- boutons Bibliothèque, PDF et Excel condensés ;
+- cinq familles de matières avec les mêmes icônes que la maquette ;
+- seconde ligne contextuelle affichant seulement les matières de la famille choisie ;
+- périodes sur une ligne distincte ;
+- barre de contexte compacte et fixe pendant le défilement ;
+- adaptation PC, tablette et smartphone.

@@ -235,6 +235,8 @@ window.DOCUMENT_LIBRARY = [
   }
 
   openBtn.addEventListener('click', openLibrary);
+  const openTopBtn=document.getElementById('openLibraryTopBtn');
+  if(openTopBtn)openTopBtn.addEventListener('click',openLibrary);
   closeBtn.addEventListener('click', closeLibrary);
   modal.addEventListener('click', e => {
     if(e.target === modal) closeLibrary();
