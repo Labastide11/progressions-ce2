@@ -184,10 +184,57 @@ window.DOCUMENT_LIBRARY = [
     return (bytes / (1024 * 1024)).toFixed(1).replace('.', ',') + ' Mo';
   }
 
+
+  const subjectThemes = {
+    francais:{key:'francais',label:'Français',icon:'📘'},
+    mathematiques:{key:'mathematiques',label:'Mathématiques',icon:'🧮'},
+    emc:{key:'emc',label:'EMC',icon:'🤝'},
+    histoire:{key:'histoire',label:'Histoire',icon:'🏺'},
+    geographie:{key:'geographie',label:'Géographie',icon:'🌍'},
+    anglais:{key:'anglais',label:'Anglais',icon:'🇬🇧'},
+    sciences:{key:'sciences',label:'Sciences / QLM',icon:'🔬'},
+    evar:{key:'evar',label:'EVAR',icon:'💗'},
+    eps:{key:'eps',label:'EPS',icon:'🏃'},
+    arts:{key:'arts',label:'Arts',icon:'🎨'},
+    emi:{key:'emi',label:'EMI',icon:'💻'},
+    organisation:{key:'organisation',label:'Organisation',icon:'📅'},
+    general:{key:'general',label:'Document général',icon:'📄'}
+  };
+
+  function documentTheme(doc){
+    const text=`${doc.title} ${doc.description} ${doc.file}`.toLocaleLowerCase('fr');
+    if(/math[ée]mat|nombres|calcul/.test(text)) return subjectThemes.mathematiques;
+    if(/fran[cç]ais|lecture|écriture|orthographe|grammaire/.test(text)) return subjectThemes.francais;
+    if(/emi|m[ée]dias|information/.test(text)) return subjectThemes.emi;
+    if(/evar|affective|relationnelle/.test(text)) return subjectThemes.evar;
+    if(/emc|moral|civique|citoyen/.test(text)) return subjectThemes.emc;
+    if(/anglais/.test(text)) return subjectThemes.anglais;
+    if(/arts? plast|artistique|musique/.test(text)) return subjectThemes.arts;
+    if(/eps|sport|piscine|natation|domec|cavay[èe]re/.test(text)) return subjectThemes.eps;
+    if(/histoire/.test(text)) return subjectThemes.histoire;
+    if(/g[ée]ographie/.test(text)) return subjectThemes.geographie;
+    if(/questionner le monde|sciences?/.test(text)) return subjectThemes.sciences;
+    if(/planning|organisation locale/.test(text)) return subjectThemes.organisation;
+    return subjectThemes.general;
+  }
+
+  function categoryIcon(category){
+    const icons={
+      'Tous':'🗂️',
+      'Programmes officiels':'🏛️',
+      'Attendus et progressions':'🎯',
+      'Ressources pédagogiques':'🧰',
+      'Organisation locale':'📅',
+      'Documents de classe':'📚',
+      'Ressources complémentaires':'➕'
+    };
+    return icons[category]||'📁';
+  }
+
   function renderFilters(){
     const categories = ['Tous', ...new Set(window.DOCUMENT_LIBRARY.map(d => d.category))];
     filters.innerHTML = categories.map(cat =>
-      `<button type="button" class="doc-filter ${cat===activeCategory?'is-active':''}" data-category="${esc(cat)}">${esc(cat)}</button>`
+      `<button type="button" class="doc-filter ${cat===activeCategory?'is-active':''}" data-category="${esc(cat)}"><span aria-hidden="true">${categoryIcon(cat)}</span>${esc(cat)}</button>`
     ).join('');
     filters.querySelectorAll('.doc-filter').forEach(btn => btn.addEventListener('click', () => {
       activeCategory = btn.dataset.category;
@@ -204,21 +251,26 @@ window.DOCUMENT_LIBRARY = [
       return categoryOk && (!query || haystack.includes(query));
     });
     count.textContent = `${docs.length} document${docs.length>1?'s':''}`;
-    list.innerHTML = docs.length ? docs.map(doc => `
-      <article class="document-card">
-        <div class="document-card__icon">📄</div>
+    list.innerHTML = docs.length ? docs.map(doc => {
+      const theme=documentTheme(doc);
+      return `
+      <article class="document-card document-card--${theme.key}">
+        <div class="document-card__icon" aria-hidden="true">${theme.icon}</div>
         <div class="document-card__body">
-          <span class="document-card__category">${esc(doc.category)}</span>
+          <div class="document-card__badges">
+            <span class="document-card__subject">${esc(theme.label)}</span>
+            <span class="document-card__category">${esc(doc.category)}</span>
+          </div>
           <h3>${esc(doc.title)}</h3>
           <p>${esc(doc.description)}</p>
-          <small>${formatSize(doc.size)}</small>
+          <small>📄 PDF · ${formatSize(doc.size)}</small>
         </div>
         <div class="document-card__actions">
-          <a href="${encodeURI(doc.file)}" target="_blank" rel="noopener">Ouvrir le PDF</a>
-          <a href="${encodeURI(doc.file)}" download>Télécharger</a>
+          <a href="${encodeURI(doc.file)}" target="_blank" rel="noopener">👁️ Ouvrir</a>
+          <a href="${encodeURI(doc.file)}" download>⬇️ Télécharger</a>
         </div>
-      </article>
-    `).join('') : '<p class="document-empty">Aucun document ne correspond à cette recherche.</p>';
+      </article>`;
+    }).join('') : '<p class="document-empty">Aucun document ne correspond à cette recherche.</p>';
   }
 
   function openLibrary(){

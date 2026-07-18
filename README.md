@@ -174,3 +174,10 @@ Dans les vues Période 1 à Période 5, toutes les fiches de compétences sont d
 - clic ou toucher sur toute la barre du titre pour replier ou déplier ;
 - état mémorisé dans le navigateur ;
 - bouton global Tout replier / Tout déplier dans le bandeau bleu.
+
+
+## V27 — Bibliothèque colorée
+- icône et couleur attribuées automatiquement à chaque document selon sa matière ;
+- badges matière et catégorie ;
+- filtres enrichis avec icônes ;
+- cartes plus lisibles et actions Ouvrir / Télécharger mieux identifiées.
