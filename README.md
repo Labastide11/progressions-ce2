@@ -108,3 +108,16 @@ Elle comporte 30 compétences observables, soit 6 par période.
 
 ## EMI
 26 compétences réparties sur cinq périodes : comprendre l’information, rechercher et identifier les sources, vérifier les contenus, décrypter les images, protéger les données et produire un média collectif.
+
+
+## Parcours éducatifs
+
+La rubrique réunit :
+- le parcours citoyen ;
+- le parcours d’éducation artistique et culturelle ;
+- le parcours éducatif de santé.
+
+Elle ne duplique pas les compétences des matières. Elle sert de mémoire des projets
+collectifs, rencontres, sorties, productions et actions réellement menés. Chaque fiche
+comprend un statut, une checklist adaptée, les matières ou partenaires associés et une
+zone de synthèse directement exploitable dans le LSU.

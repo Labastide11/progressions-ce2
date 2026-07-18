@@ -10513,5 +10513,44 @@ window.PROGRESSIONS = {
         "lsu": "Créer, collaborer et publier."
       }
     ]
+  },
+  parcours: {
+    "title": "Parcours éducatifs",
+    "icon": "🧭",
+    "subtitle": "Mémoire des projets collectifs à valoriser dans le LSU",
+    "routines": [
+      "Ne pas recréer les compétences déjà suivies dans les matières",
+      "Conserver une trace courte des actions réellement menées",
+      "Associer chaque projet aux matières et partenaires concernés",
+      "Noter une production, une rencontre, une sortie ou un engagement significatif",
+      "Rédiger une synthèse factuelle et concise utilisable dans le LSU",
+      "Distinguer ce qui est prévu, commencé, réalisé ou à reprendre"
+    ],
+    "rows": [
+      [
+        "Parcours citoyen",
+        "Prévoir ou consigner une action liée à la vie collective, aux règles, à l’engagement, à la solidarité ou à la sécurité.",
+        "Prévoir ou consigner une action liée à l’EMC, à l’EVAR, à la prévention ou à la coopération.",
+        "Prévoir ou consigner une action liée à l’EMI, à l’esprit critique, à l’environnement ou à la citoyenneté numérique.",
+        "Prévoir ou consigner une action liée aux droits, au respect, à la responsabilité ou à un projet collectif.",
+        "Réaliser le bilan annuel des engagements et projets citoyens menés par la classe."
+      ],
+      [
+        "Parcours d’éducation artistique et culturelle",
+        "Prévoir ou consigner une rencontre avec une œuvre, un artiste, un lieu culturel ou un patrimoine.",
+        "Prévoir ou consigner une pratique artistique individuelle ou collective et les œuvres rencontrées.",
+        "Prévoir ou consigner un projet associant création, connaissances culturelles et présentation aux autres.",
+        "Prévoir ou consigner une rencontre ou une production liée aux arts, à la musique, au spectacle ou au patrimoine.",
+        "Réaliser le bilan annuel des œuvres rencontrées, des pratiques et des projets culturels."
+      ],
+      [
+        "Parcours éducatif de santé",
+        "Prévoir ou consigner une action liée au bien-être, à l’hygiène, à l’activité physique ou aux compétences psychosociales.",
+        "Prévoir ou consigner une action liée à la natation, à la sécurité, au corps, au sommeil ou à l’alimentation.",
+        "Prévoir ou consigner une action liée à l’activité physique, à l’environnement ou à la prévention.",
+        "Prévoir ou consigner une action liée au corps, aux émotions, à l’EVAR, à la protection ou aux premiers secours.",
+        "Réaliser le bilan annuel des actions de prévention, de santé, de sécurité et de bien-être."
+      ]
+    ]
   }
 };
