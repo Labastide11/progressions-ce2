@@ -121,3 +121,13 @@ Elle ne duplique pas les compétences des matières. Elle sert de mémoire des p
 collectifs, rencontres, sorties, productions et actions réellement menés. Chaque fiche
 comprend un statut, une checklist adaptée, les matières ou partenaires associés et une
 zone de synthèse directement exploitable dans le LSU.
+
+
+## Bibliothèque documentaire
+
+Une bibliothèque intégrée est accessible depuis le bandeau du site.
+Elle contient 23 PDF uniques, classés en programmes officiels,
+attendus et progressions, ressources pédagogiques, organisation locale et documents de classe.
+
+Les fichiers ont été renommés proprement et placés dans `assets/documents/`.
+La bibliothèque permet de rechercher, filtrer, ouvrir et télécharger chaque PDF.

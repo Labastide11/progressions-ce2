@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période.">
   <title>CE2 — Suivi de classe et référentiel officiel</title>
-  <link rel="stylesheet" href="styles.css?v=16">
+  <link rel="stylesheet" href="styles.css?v=17">
 </head>
 <body>
   <header class="hero">
@@ -16,6 +16,7 @@
       <div class="hero__actions">
         <a class="btn btn--light" href="assets/Progressions_CE2_Francais_Maths_2026_2027.pdf" download>📄 PDF de référence</a>
         <a class="btn btn--outline" href="assets/Progressions_CE2_Francais_Maths_2026_2027.xlsx" download>📊 Excel modifiable</a>
+        <button class="btn btn--library" id="openLibraryBtn" type="button">📚 Bibliothèque documentaire</button>
       </div>
     </div>
   </header>
@@ -96,7 +97,31 @@
   </main>
 
   <footer><p>Progressions CE2 — suivi pédagogique précis et synthèse LSU, enregistrés localement.</p></footer>
-  <script src="data.js?v=16"></script>
-  <script src="app.js?v=16"></script>
+  <script src="data.js?v=17"></script>
+  <script src="app.js?v=17"></script>
+
+  <section id="documentLibrary" class="document-library hidden" aria-hidden="true" aria-labelledby="documentLibraryTitle">
+    <div class="document-library__panel" role="dialog" aria-modal="true">
+      <header class="document-library__header">
+        <div>
+          <p class="eyebrow">RESSOURCES DU RÉFÉRENTIEL</p>
+          <h2 id="documentLibraryTitle">Bibliothèque documentaire</h2>
+          <p>Programmes, attendus, ressources pédagogiques et plannings utilisés pour construire le suivi CE2.</p>
+        </div>
+        <button id="closeLibraryBtn" class="document-library__close" type="button" aria-label="Fermer la bibliothèque">×</button>
+      </header>
+      <div class="document-library__tools">
+        <label>
+          <span>Rechercher un document</span>
+          <input id="documentSearch" type="search" placeholder="Ex. français, EVAR, piscine…">
+        </label>
+        <strong id="documentCount"></strong>
+      </div>
+      <div id="documentFilters" class="document-filters" aria-label="Catégories de documents"></div>
+      <div id="documentList" class="document-list"></div>
+    </div>
+  </section>
+
+  <script src="documents.js?v=17"></script>
 </body>
 </html>
