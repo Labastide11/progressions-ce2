@@ -18,6 +18,8 @@
   const ELEVES_SYNC_TIMEOUT=20000;
   const classLevelLabels={none:'⚪ Non évalué',encours:'🟡 En cours',acquis:'🟢 Acquis',renforcer:'🔴 À renforcer'};
   let classRoster=loadClassRoster();
+  let rosterSyncState=classRoster.length?'cache':'loading';
+  let rosterSyncMessage=classRoster.length?`${classRoster.length} élève${classRoster.length>1?'s':''} en mémoire locale`:'Connexion à Google Sheets…';
   let classTracking=loadClassTracking();
   let saved=loadSaved();
   const COLLAPSE_KEY='progressions_ce2_blocs_replies_v1';
@@ -58,18 +60,28 @@
     if(!Array.isArray(rows))return [];
     return [...new Set(rows.map(item=>typeof item==='string'?item:(item&&item.prenom)||'').map(x=>String(x).trim()).filter(Boolean))];
   }
-  async function loadRosterFromSheet(){
+  async function loadRosterFromSheet(showFeedback){
+    rosterSyncState='loading';
+    rosterSyncMessage='Connexion à Google Sheets…';
+    if(state.mode==='classe')renderClassTracking();
     try{
       const data=await elevesJsonp({action:'get_eleves'});
       const names=normalizeRosterNames(data);
-      if(names.length){classRoster=names;saveClassRoster();render();}
-    }catch(error){console.warn('Chargement des élèves depuis le Sheet :',error);}
-  }
-  async function syncRosterToSheet(){
-    const eleves=classRoster.map(prenom=>({prenom,initiale:String(prenom).trim().charAt(0).toUpperCase(),naissance:'',sexe:'',actif:'oui'}));
-    const result=await elevesJsonp({action:'save_eleves',remplacer:'oui',eleves:JSON.stringify(eleves)});
-    if(!result||result.ok===false)throw new Error(result&&result.error?result.error:'Enregistrement refusé par le Google Sheet.');
-    return result;
+      classRoster=names;
+      saveClassRoster();
+      rosterSyncState='online';
+      rosterSyncMessage=`${names.length} élève${names.length>1?'s':''} chargé${names.length>1?'s':''} depuis Google Sheets`;
+      render();
+      if(showFeedback)alert(rosterSyncMessage+'.');
+    }catch(error){
+      console.warn('Chargement des élèves depuis le Sheet :',error);
+      rosterSyncState=classRoster.length?'cache':'error';
+      rosterSyncMessage=classRoster.length
+        ? `Google Sheets indisponible — ${classRoster.length} élève${classRoster.length>1?'s':''} affiché${classRoster.length>1?'s':''} depuis la dernière liste enregistrée`
+        : 'Impossible de charger la liste depuis Google Sheets';
+      render();
+      if(showFeedback)alert(rosterSyncMessage+'.');
+    }
   }
   function loadClassRoster(){try{const list=JSON.parse(localStorage.getItem(CLASS_ROSTER_KEY)||'[]');return Array.isArray(list)?list:[];}catch(e){return [];}}
   function saveClassRoster(){try{localStorage.setItem(CLASS_ROSTER_KEY,JSON.stringify(classRoster));}catch(e){alert('La liste des élèves ne peut pas être enregistrée dans ce navigateur.');}}
@@ -82,31 +94,11 @@
   function classStatsHtml(skill){const c=classCounts(skill);return `<div class="class-stats"><div class="class-stat class-stat--none"><b>${c.none}</b>Non évalués</div><div class="class-stat class-stat--encours"><b>${c.encours}</b>En cours</div><div class="class-stat class-stat--acquis"><b>${c.acquis}</b>Acquis</div><div class="class-stat class-stat--renforcer"><b>${c.renforcer}</b>À renforcer</div></div>`;}
   function masteryButtons(student,skill){const e=classEntry(student,skill.code);return `<div class="mastery-buttons">${Object.entries(classLevelLabels).map(([level,label])=>`<button type="button" class="mastery-btn ${e.level===level?'is-active':''}" data-student="${esc(student)}" data-level="${level}">${label}</button>`).join('')}</div>`;}
   function classStudentRow(student,skill){const e=classEntry(student,skill.code);return `<article class="student-tracking-row"><div class="student-tracking-name"><span class="student-initial">${esc(student.slice(0,2).toUpperCase())}</span><span>${esc(student)}</span></div>${masteryButtons(student,skill)}<input class="student-note-input" data-note-student="${esc(student)}" value="${esc(e.note)}" placeholder="Remarque facultative"></article>`;}
-  function renderClassTracking(){const skills=preciseSkillsFor(state.subject,state.period);dashboard.classList.add('hidden');grid.classList.remove('is-followup');if(!classRoster.length){grid.innerHTML=`<section class="class-empty"><strong>👥 La classe n’est pas encore renseignée</strong><p>Ajoute la liste des élèves une seule fois, puis sélectionne une compétence pour renseigner toute la classe.</p><button class="btn btn--hibou" id="emptyRosterBtn" type="button">＋ Ajouter les élèves</button></section>`;document.getElementById('emptyRosterBtn').onclick=openRosterEditor;return;}if(!skills.length){grid.innerHTML='<section class="class-empty"><strong>Aucune compétence disponible</strong><p>Choisis une autre matière ou une autre période.</p></section>';return;}const skill=selectedClassSkill();const subject=window.PROGRESSIONS[state.subject];const optionsHtml=skills.map(s=>`<option value="${esc(s.code)}" ${s.code===skill.code?'selected':''}>${esc(s.domain)} — ${esc(s.title)}</option>`).join('');grid.innerHTML=`<section class="class-tracking"><div class="class-toolbar card"><label><span>Compétence sélectionnée</span><select id="classSkillSelect">${optionsHtml}</select></label><label><span>Vue du suivi</span><div class="class-view-switch"><button type="button" data-class-view="skill" class="${state.classView==='skill'?'is-active':''}">Par compétence</button><button type="button" data-class-view="student" class="${state.classView==='student'?'is-active':''}">Par élève</button></div></label><div class="class-toolbar__actions"><button class="btn btn--light" id="editRosterBtn" type="button">✏️ Gérer la classe</button><button class="btn btn--outline" id="exportClassBtn" type="button">⬇ Export CSV</button></div></div>${state.classView==='skill'?renderBySkill(skill):renderByStudent(skills)}</section>`;bindClassTrackingEvents(skills);}
+  function rosterStatusHtml(){return `<div class="roster-sync roster-sync--${rosterSyncState}" role="status"><span class="roster-sync__dot" aria-hidden="true"></span><span>${esc(rosterSyncMessage)}</span></div>`;}
+  function renderClassTracking(){const skills=preciseSkillsFor(state.subject,state.period);dashboard.classList.add('hidden');grid.classList.remove('is-followup');if(!classRoster.length){grid.innerHTML=`<section class="class-empty">${rosterStatusHtml()}<strong>👥 Aucun élève disponible</strong><p>La liste est lue automatiquement dans l’onglet <code>eleves</code> de ton Google Sheet. Vérifie que les prénoms sont renseignés et que la colonne <code>actif</code> contient « oui ».</p><button class="btn btn--hibou" id="refreshRosterEmptyBtn" type="button" ${rosterSyncState==='loading'?'disabled':''}>${rosterSyncState==='loading'?'⏳ Connexion…':'🔄 Actualiser la classe'}</button></section>`;const refresh=document.getElementById('refreshRosterEmptyBtn');if(refresh)refresh.onclick=()=>loadRosterFromSheet(true);return;}if(!skills.length){grid.innerHTML=`<section class="class-empty">${rosterStatusHtml()}<strong>Aucune compétence disponible</strong><p>Choisis une autre matière ou une autre période.</p><button class="btn btn--light" id="refreshRosterEmptyBtn" type="button">🔄 Actualiser la classe</button></section>`;document.getElementById('refreshRosterEmptyBtn').onclick=()=>loadRosterFromSheet(true);return;}const skill=selectedClassSkill();const optionsHtml=skills.map(s=>`<option value="${esc(s.code)}" ${s.code===skill.code?'selected':''}>${esc(s.domain)} — ${esc(s.title)}</option>`).join('');grid.innerHTML=`<section class="class-tracking">${rosterStatusHtml()}<div class="class-toolbar card"><label><span>Compétence sélectionnée</span><select id="classSkillSelect">${optionsHtml}</select></label><label><span>Vue du suivi</span><div class="class-view-switch"><button type="button" data-class-view="skill" class="${state.classView==='skill'?'is-active':''}">Par compétence</button><button type="button" data-class-view="student" class="${state.classView==='student'?'is-active':''}">Par élève</button></div></label><div class="class-toolbar__actions"><button class="btn btn--light" id="refreshRosterBtn" type="button" ${rosterSyncState==='loading'?'disabled':''}>${rosterSyncState==='loading'?'⏳ Connexion…':'🔄 Actualiser la classe'}</button><button class="btn btn--outline" id="exportClassBtn" type="button">⬇ Export CSV</button></div></div>${state.classView==='skill'?renderBySkill(skill):renderByStudent(skills)}</section>`;bindClassTrackingEvents(skills);}
   function renderBySkill(skill){return `<section class="class-skill-summary"><strong>${esc(skill.code)} — ${esc(skill.title)}</strong><p>${esc(skill.jeSais||'')}</p><small>${esc(skill.domain)} · ${esc(labels[classes.indexOf(skill._period)]||skill._period)}${skill.lsu?' · Référence LSU : '+esc(skill.lsu):''}</small></section>${classStatsHtml(skill)}<section class="student-tracking-list">${classRoster.map(name=>classStudentRow(name,skill)).join('')}</section>`;}
   function renderByStudent(skills){if(!state.selectedStudent||!classRoster.includes(state.selectedStudent))state.selectedStudent=classRoster[0];const student=state.selectedStudent;const rows=skills.map(skill=>{const e=classEntry(student,skill.code);return `<div class="student-skill-row"><span class="skill-code">${esc(skill.code)}</span><span><strong>${esc(skill.title)}</strong><br><small>${esc(skill.domain)}</small></span><span class="level-pill level-pill--${e.level}">${classLevelLabels[e.level]}</span></div>`;}).join('');return `<section class="class-toolbar card"><label><span>Élève</span><select id="classStudentSelect">${classRoster.map(n=>`<option value="${esc(n)}" ${n===student?'selected':''}>${esc(n)}</option>`).join('')}</select></label><div></div><div></div></section><section class="student-overview"><article class="student-overview-card"><div class="student-overview-head"><strong>👤 ${esc(student)}</strong><span>${skills.length} compétence${skills.length>1?'s':''} affichée${skills.length>1?'s':''}</span></div><div class="student-skill-list">${rows}</div></article></section>`;}
-  function bindClassTrackingEvents(skills){const skillSelect=document.getElementById('classSkillSelect');if(skillSelect)skillSelect.onchange=()=>{state.selectedSkill=skillSelect.value;renderClassTracking();};const studentSelect=document.getElementById('classStudentSelect');if(studentSelect)studentSelect.onchange=()=>{state.selectedStudent=studentSelect.value;renderClassTracking();};document.querySelectorAll('[data-class-view]').forEach(btn=>btn.onclick=()=>{state.classView=btn.dataset.classView;renderClassTracking();});const edit=document.getElementById('editRosterBtn');if(edit)edit.onclick=openRosterEditor;const exp=document.getElementById('exportClassBtn');if(exp)exp.onclick=exportClassCsv;document.querySelectorAll('.mastery-btn').forEach(btn=>btn.onclick=()=>{const skill=selectedClassSkill();const e=classEntry(btn.dataset.student,skill.code);e.level=btn.dataset.level;e.date=new Date().toISOString();saveClassTracking();renderClassTracking();});document.querySelectorAll('[data-note-student]').forEach(input=>input.onchange=()=>{const skill=selectedClassSkill();const e=classEntry(input.dataset.noteStudent,skill.code);e.note=input.value;e.date=new Date().toISOString();saveClassTracking();});}
-  function openRosterEditor(){const modal=document.getElementById('rosterEditor');document.getElementById('rosterTextarea').value=classRoster.join('\n');modal.classList.remove('hidden');modal.setAttribute('aria-hidden','false');}
-  function closeRosterEditor(){const modal=document.getElementById('rosterEditor');modal.classList.add('hidden');modal.setAttribute('aria-hidden','true');}
-  async function saveRosterFromEditor(){
-    const button=document.getElementById('saveRosterBtn');
-    const names=document.getElementById('rosterTextarea').value.split(/\r?\n|;/).map(x=>x.trim()).filter(Boolean);
-    classRoster=[...new Set(names)];
-    saveClassRoster();
-    if(button){button.disabled=true;button.textContent='⏳ Enregistrement…';}
-    try{
-      const result=await syncRosterToSheet();
-      closeRosterEditor();
-      render();
-      alert(`Classe enregistrée : ${result.ajoutes||0} ajouté(s), ${result.mis_a_jour||0} mis à jour, ${result.desactives||0} désactivé(s).`);
-    }catch(error){
-      closeRosterEditor();
-      render();
-      alert('La classe est enregistrée localement, mais la synchronisation Google Sheet a échoué : '+(error.message||error));
-    }finally{
-      if(button){button.disabled=false;button.textContent='💾 Enregistrer la classe';}
-    }
-  }
+  function bindClassTrackingEvents(skills){const skillSelect=document.getElementById('classSkillSelect');if(skillSelect)skillSelect.onchange=()=>{state.selectedSkill=skillSelect.value;renderClassTracking();};const studentSelect=document.getElementById('classStudentSelect');if(studentSelect)studentSelect.onchange=()=>{state.selectedStudent=studentSelect.value;renderClassTracking();};document.querySelectorAll('[data-class-view]').forEach(btn=>btn.onclick=()=>{state.classView=btn.dataset.classView;renderClassTracking();});const refresh=document.getElementById('refreshRosterBtn');if(refresh)refresh.onclick=()=>loadRosterFromSheet(true);const exp=document.getElementById('exportClassBtn');if(exp)exp.onclick=exportClassCsv;document.querySelectorAll('.mastery-btn').forEach(btn=>btn.onclick=()=>{const skill=selectedClassSkill();const e=classEntry(btn.dataset.student,skill.code);e.level=btn.dataset.level;e.date=new Date().toISOString();saveClassTracking();renderClassTracking();});document.querySelectorAll('[data-note-student]').forEach(input=>input.onchange=()=>{const skill=selectedClassSkill();const e=classEntry(input.dataset.noteStudent,skill.code);e.note=input.value;e.date=new Date().toISOString();saveClassTracking();});}
   function exportClassCsv(){const skills=preciseSkillsFor(state.subject,state.period);const rows=[['Élève','Code','Matière','Période','Domaine','Compétence','Niveau','Remarque','Date']];classRoster.forEach(student=>skills.forEach(skill=>{const e=classEntry(student,skill.code);rows.push([student,skill.code,window.PROGRESSIONS[state.subject].title,labels[classes.indexOf(skill._period)]||skill._period,skill.domain,skill.title,classLevelLabels[e.level],e.note,e.date]);}));const csv=rows.map(r=>r.map(v=>'"'+String(v||'').replace(/"/g,'""')+'"').join(';')).join('\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`suivi_classe_${state.subject}_${state.period}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),0);}
 
   function currentSkills(){if(state.mode!=='suivi')return null;const data=window.PROGRESSIONS[state.subject];const map={p1:'p1Competencies',p2:'p2Competencies',p3:'p3Competencies',p4:'p4Competencies',p5:'p5Competencies'};const key=map[state.period];return key?(data[key]||[]):null;}
@@ -189,10 +181,6 @@
   document.getElementById('exportBtn').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({version:5,exportedAt:new Date().toISOString(),data:saved},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='sauvegarde_progressions_ce2.json';a.click();URL.revokeObjectURL(a.href);});
   document.getElementById('importInput').addEventListener('change',event=>{const file=event.target.files[0];if(!file)return;const r=new FileReader();r.onload=()=>{try{const p=JSON.parse(r.result);saved=p.data||p;persist();render();alert('Sauvegarde importée.');}catch(e){alert('Ce fichier de sauvegarde n’est pas valide.');}};r.readAsText(file);event.target.value='';});
   document.getElementById('resetBtn').addEventListener('click',()=>{if(!confirm('Réinitialiser uniquement la matière et la période actuellement affichées ?'))return;visibleKeys().forEach(k=>delete saved[k]);persist();render();});
-  document.getElementById('closeRosterBtn').addEventListener('click',closeRosterEditor);
-  document.getElementById('saveRosterBtn').addEventListener('click',saveRosterFromEditor);
-  document.getElementById('clearRosterBtn').addEventListener('click',()=>{document.getElementById('rosterTextarea').value='';});
-  document.getElementById('rosterEditor').addEventListener('click',e=>{if(e.target.id==='rosterEditor')closeRosterEditor();});
   render();
   loadRosterFromSheet();
 })();

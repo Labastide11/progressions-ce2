@@ -1,6 +1,15 @@
+
+### Mise à jour V31.1 — Liste des élèves depuis Google Sheets
+
+- Suppression complète de la fenêtre manuelle « Gérer la liste des élèves ».
+- L’onglet **Élèves** lit automatiquement les prénoms avec `action=get_eleves`.
+- Le Google Sheet est la source officielle de la classe.
+- Le bouton **Actualiser la classe** relance la lecture à tout moment.
+- Un indicateur précise si la liste vient de Google Sheets ou de la dernière copie locale disponible.
+- Aucune écriture `save_eleves` n’est effectuée par ce site.
+
 # Progressions CE2 — V31
 
-Correctif : le bouton « Enregistrer la classe » fonctionne désormais. Les scripts sont chargés après les fenêtres modales, ce qui garantit que les boutons existent au moment où leurs événements sont branchés.
 
 # Progressions CE2 — V31
 

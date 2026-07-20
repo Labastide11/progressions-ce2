@@ -491,3 +491,12 @@ body{background:#f8fafc;color:var(--mh-text)}
 .roster-editor__actions{display:flex;justify-content:flex-end;gap:9px;flex-wrap:wrap;margin-top:14px}
 @media(max-width:900px){.class-toolbar{grid-template-columns:1fr}.class-toolbar__actions{justify-content:flex-start}.student-tracking-row{grid-template-columns:1fr}.mastery-buttons{grid-template-columns:1fr 1fr}.class-stats{grid-template-columns:1fr 1fr}.student-skill-row{grid-template-columns:90px 1fr}.student-skill-row .level-pill{grid-column:2}}
 @media(max-width:520px){.mastery-buttons{grid-template-columns:1fr}.class-stats{grid-template-columns:1fr 1fr}.roster-editor__actions .btn{width:100%}}
+
+/* Synchronisation de la liste des élèves — Google Sheets */
+.roster-sync{display:flex;align-items:center;gap:.55rem;margin:0 0 .75rem;padding:.65rem .85rem;border-radius:12px;background:#f5f7fa;color:#334155;font-size:.9rem;font-weight:700}
+.roster-sync__dot{width:.7rem;height:.7rem;border-radius:50%;background:#94a3b8;flex:0 0 auto}
+.roster-sync--online{background:#ecfdf5;color:#166534}.roster-sync--online .roster-sync__dot{background:#22c55e}
+.roster-sync--loading{background:#eff6ff;color:#1d4ed8}.roster-sync--loading .roster-sync__dot{background:#3b82f6;animation:rosterPulse 1s infinite alternate}
+.roster-sync--cache{background:#fff7ed;color:#9a3412}.roster-sync--cache .roster-sync__dot{background:#f97316}
+.roster-sync--error{background:#fef2f2;color:#991b1b}.roster-sync--error .roster-sync__dot{background:#ef4444}
+@keyframes rosterPulse{from{opacity:.35;transform:scale(.85)}to{opacity:1;transform:scale(1.15)}}
