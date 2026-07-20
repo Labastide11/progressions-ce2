@@ -1,7 +1,7 @@
 (function(){
   'use strict';
   const STORAGE_KEY='progressions_ce2_suivi_v2';
-  const state={subject:'francais',period:'all',mode:'suivi',classView:'skill',selectedSkill:'',selectedStudent:'',classFilter:'all'};
+  const state={subject:'francais',period:'all',mode:'classe',classView:'skill',selectedSkill:'',selectedStudent:'',classFilter:'all'};
   const grid=document.getElementById('progressionGrid');
   const title=document.getElementById('subjectTitle');
   const subtitle=document.getElementById('subjectSubtitle');

@@ -1,9 +1,9 @@
-# Progressions CE2 — V31.4
+# Progressions CE2 — V31.5
 
 
-### Mise à jour V31.4 — Version visible dans l’onglet
+### Mise à jour V31.5 — Version visible dans l’onglet
 
-- La balise HTML `<title>` affiche désormais clairement `Progressions CE2 — V31.4`.
+- La balise HTML `<title>` affiche désormais clairement `Progressions CE2 — V31.5`.
 - Les paramètres de cache des fichiers CSS et JavaScript passent à `v=31.4`.
 
 ### Mise à jour V31.3 — Suivi des élèves
@@ -224,3 +224,9 @@ La liste des élèves est chargée et enregistrée dans l’onglet `eleves` via 
 `https://script.google.com/macros/s/AKfycbxz1vYS24sv-c3XVja12geWEXIQl6bQyBoQKBx5kg_fwQaj80_Oc7Y34yeBSRN4lF1f/exec`
 
 Colonnes attendues : `prenom`, `initiale`, `naissance`, `sexe`, `actif`.
+
+
+## V31.5
+- Ordre des vues : Élèves, Mon suivi, Référentiel.
+- La vue Élèves s’ouvre systématiquement au chargement.
+- Numéro de version affiché dans la balise title.
