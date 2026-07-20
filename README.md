@@ -1,3 +1,18 @@
+# Progressions CE2 — V31.4
+
+
+### Mise à jour V31.4 — Version visible dans l’onglet
+
+- La balise HTML `<title>` affiche désormais clairement `Progressions CE2 — V31.4`.
+- Les paramètres de cache des fichiers CSS et JavaScript passent à `v=31.4`.
+
+### Mise à jour V31.3 — Suivi des élèves
+- ordre des niveaux : Non évalué → À renforcer → En cours → Acquis ;
+- boutons de niveau compactés pour agrandir la zone Remarque ;
+- filtres avec effectifs : Tous, Non évalués, À renforcer, En cours, Acquis ;
+- actions collectives avec confirmation avant remplacement ;
+- indicateur visible de sauvegarde locale.
+
 
 ### Mise à jour V31.1 — Liste des élèves depuis Google Sheets
 
@@ -206,6 +221,6 @@ Ajout d’un bouton 🦉 Maître Hibou à droite de Bibliothèque, PDF et Excel.
 
 ## Synchronisation Google Sheet
 La liste des élèves est chargée et enregistrée dans l’onglet `eleves` via l’application Web Apps Script :
-`https://script.google.com/macros/s/AKfycbwXa4M0UdjpGqF-ik2IS5JgFAoujyxdaqs3M85msXioBP4GQZO0C_YcJp9p60EQu8kY7w/exec`
+`https://script.google.com/macros/s/AKfycbxz1vYS24sv-c3XVja12geWEXIQl6bQyBoQKBx5kg_fwQaj80_Oc7Y34yeBSRN4lF1f/exec`
 
 Colonnes attendues : `prenom`, `initiale`, `naissance`, `sexe`, `actif`.

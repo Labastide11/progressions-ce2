@@ -500,3 +500,25 @@ body{background:#f8fafc;color:var(--mh-text)}
 .roster-sync--cache{background:#fff7ed;color:#9a3412}.roster-sync--cache .roster-sync__dot{background:#f97316}
 .roster-sync--error{background:#fef2f2;color:#991b1b}.roster-sync--error .roster-sync__dot{background:#ef4444}
 @keyframes rosterPulse{from{opacity:.35;transform:scale(.85)}to{opacity:1;transform:scale(1.15)}}
+
+/* ===== V31.3 — suivi élèves compact, filtres et actions collectives ===== */
+.class-bulk-panel{display:grid;gap:9px;background:#fff;border:2px solid #e6e2ff;border-radius:17px;padding:11px 13px}
+.class-filter-row,.class-bulk-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.class-filter-row>strong,.class-bulk-row>strong{color:#39366b;font-size:13px;white-space:nowrap}
+.class-filter-buttons,.class-bulk-buttons{display:flex;gap:6px;flex-wrap:wrap}
+.class-filter-buttons button,.class-bulk-buttons button{border:2px solid #e2e0eb;background:#fff;border-radius:999px;padding:6px 10px;font:inherit;font-size:11px;font-weight:950;color:#5f5b7d;cursor:pointer}
+.class-filter-buttons button b{display:inline-grid;place-items:center;min-width:20px;height:20px;margin-left:3px;padding:0 5px;border-radius:999px;background:#f0edff;color:#5146d8;font-size:10px}
+.class-filter-buttons button.is-active{background:#5146d8;border-color:#5146d8;color:#fff}
+.class-filter-buttons button.is-active b{background:#fff;color:#5146d8}
+.class-bulk-buttons .bulk-level--none{border-color:#94a3b8}.class-bulk-buttons .bulk-level--renforcer{border-color:#ef4444}.class-bulk-buttons .bulk-level--encours{border-color:#eab308}.class-bulk-buttons .bulk-level--acquis{border-color:#22c55e}
+.class-save-status{margin-left:auto;color:#166534;font-size:12px;font-weight:900;white-space:nowrap}.class-save-status.is-saving{color:#1d4ed8}
+.class-filter-empty{padding:22px;text-align:center;border:2px dashed #d8d1ff;border-radius:16px;background:#faf9ff;color:#6f6b91;font-weight:850}
+.student-tracking-row{grid-template-columns:minmax(135px,.85fr) minmax(390px,1.75fr) minmax(250px,1.35fr);gap:8px;padding:8px 10px}
+.student-initial{width:32px;height:32px;border-radius:10px;font-size:12px}
+.mastery-buttons{gap:4px}
+.mastery-btn{padding:6px 4px;font-size:10.5px;line-height:1.1;white-space:nowrap}
+.student-note-input{min-height:36px;padding:7px 9px;font-size:12px}
+.class-stats{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:1100px){.student-tracking-row{grid-template-columns:minmax(125px,.8fr) minmax(360px,1.7fr) minmax(210px,1.2fr)}.mastery-btn{font-size:10px}}
+@media(max-width:900px){.student-tracking-row{grid-template-columns:1fr}.mastery-buttons{grid-template-columns:repeat(4,minmax(0,1fr))}.class-save-status{width:100%;margin-left:0}}
+@media(max-width:620px){.mastery-buttons{grid-template-columns:1fr 1fr}.class-filter-row,.class-bulk-row{align-items:flex-start;flex-direction:column}.class-filter-buttons,.class-bulk-buttons{width:100%}.class-filter-buttons button,.class-bulk-buttons button{flex:1 1 auto}}
