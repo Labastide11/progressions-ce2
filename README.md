@@ -206,6 +206,6 @@ Ajout d’un bouton 🦉 Maître Hibou à droite de Bibliothèque, PDF et Excel.
 
 ## Synchronisation Google Sheet
 La liste des élèves est chargée et enregistrée dans l’onglet `eleves` via l’application Web Apps Script :
-`https://script.google.com/macros/s/AKfycbwXa4M0UdjpGqF-ik2IS5JgFAoujyxdaqs3M85msXioBP4GQZO0C_YcJp9p60EQu8kY7w/exec`
+`https://script.google.com/macros/s/AKfycbxz1vYS24sv-c3XVja12geWEXIQl6bQyBoQKBx5kg_fwQaj80_Oc7Y34yeBSRN4lF1f/exec`
 
 Colonnes attendues : `prenom`, `initiale`, `naissance`, `sexe`, `actif`.
