@@ -530,3 +530,35 @@ body{background:#f8fafc;color:var(--mh-text)}
 .hibou-proof__actions{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap}.hibou-proof button{border:0;border-radius:999px;padding:6px 10px;font:inherit;font-size:11px;font-weight:950;cursor:pointer}
 .hibou-apply{background:#238a4b;color:#fff}.hibou-ignore{background:#ebe7f7;color:#5e5875}.hibou-proof--empty,.hibou-proof--loading{justify-content:flex-start;color:#77718e;background:#fbfaff;border-style:dashed}.hibou-proof--ignored{justify-content:flex-start;color:#77718e;background:#fafafa;border-color:#e5e2eb}.hibou-proof--ignored button{background:#eeeaf8;color:#5146d8;margin-left:auto}
 @media(max-width:900px){.hibou-proof{align-items:flex-start;flex-direction:column}.hibou-proof__actions{justify-content:flex-start}}
+
+
+.hidden{display:none!important}
+.btn--notif{position:relative;background:#fff7e9;border:1px solid #f1d08c;color:#7a4d00}
+.btn--notif.has-new{box-shadow:0 0 0 2px rgba(234,88,12,.15)}
+.btn--notif__icon{font-size:1.05rem}
+.notif-badge{display:inline-flex;align-items:center;justify-content:center;min-width:1.45rem;height:1.45rem;border-radius:999px;background:#e53935;color:#fff;font-weight:800;font-size:.82rem;padding:0 .35rem}
+.hibou-notif-panel{max-width:1280px;margin:.75rem auto 0;padding:0 1rem}
+.hibou-notif-panel__box{background:#fff;border:1px solid #d8def8;border-radius:22px;padding:1rem 1rem .5rem;box-shadow:0 12px 28px rgba(41,59,136,.1)}
+.hibou-notif-panel__head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem;font-size:1.1rem}
+.hibou-notif-panel__close{border:none;background:none;font-size:1.8rem;line-height:1;color:#64748b;cursor:pointer}
+.hibou-notif-card,.hibou-priority-card{display:grid;grid-template-columns:auto 1fr auto;gap:.9rem;align-items:center;border:1px solid #f3d58e;background:#fffdf4;border-radius:18px;padding:.85rem 1rem;margin-bottom:.75rem}
+.hibou-notif-card__body,.hibou-priority-card__body{display:flex;flex-direction:column;gap:.15rem}
+.hibou-notif-card__body strong,.hibou-priority-card__body strong{font-size:1.15rem;color:#1d4ed8}
+.hibou-notif-card__actions,.hibou-priority-card__actions{display:flex;gap:.55rem;flex-wrap:wrap;justify-content:flex-end}
+.hibou-priority-block{background:#fff;border:1px solid #d8def8;border-radius:22px;padding:1rem;margin-bottom:1rem;box-shadow:0 8px 18px rgba(41,59,136,.06)}
+.hibou-priority-block__head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.85rem}
+.hibou-hide-all{border:none;background:none;color:#475569;font-weight:700;cursor:pointer}
+.student-avatar{width:44px;height:44px;border-radius:999px;border:2px solid #d4d4ff;background:linear-gradient(180deg,#fffef9,#eef4ff);display:inline-flex;align-items:center;justify-content:center;position:relative;flex:0 0 44px;overflow:hidden}
+.student-avatar--large{width:58px;height:58px;flex-basis:58px}
+.student-avatar__emoji{font-size:1.5rem;line-height:1}
+.student-avatar--large .student-avatar__emoji{font-size:2rem}
+.student-avatar__initials{position:absolute;bottom:2px;right:4px;font-size:.58rem;font-weight:800;color:#334155;background:rgba(255,255,255,.9);padding:0 .18rem;border-radius:999px}
+.student-tracking-name{display:flex;align-items:center;gap:.7rem}
+.student-tracking-row.is-highlighted{outline:3px solid #f7c948;outline-offset:2px;background:#fffdf2}
+.hibou-proof{display:flex;gap:.75rem;align-items:flex-start;padding:.7rem;border:1px solid #dfe7fb;border-radius:16px;background:#f8fbff;margin-top:.5rem;grid-column:1/-1}
+.hibou-proof__content{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;width:100%}
+.hibou-proof__content>div:first-child{display:flex;flex-direction:column}
+.hibou-proof__actions{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.btn--success{background:#e8f7ec;border:1px solid #8bc99b;color:#167a2e}
+.btn--danger{background:#fff1f1;border:1px solid #f0a8a8;color:#b42318}
+@media (max-width: 980px){.hibou-notif-card,.hibou-priority-card{grid-template-columns:1fr}.hibou-notif-card__actions,.hibou-priority-card__actions,.hibou-proof__actions{justify-content:flex-start}.hibou-proof,.hibou-proof__content{flex-direction:column}.hibou-priority-block__head,.hibou-notif-panel__head{align-items:flex-start;gap:.75rem;flex-direction:column}}

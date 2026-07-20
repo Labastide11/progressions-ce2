@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période.">
-  <title>Progressions CE2 — V31.6</title>
-  <link rel="stylesheet" href="styles.css?v=31.5">
+  <title>Progressions CE2 — V31.7</title>
+  <link rel="stylesheet" href="styles.css?v=31.7">
 </head>
 <body>
   <header class="app-header">
@@ -28,6 +28,11 @@
           </div>
         </div>
         <div class="header-actions">
+          <button class="btn btn--notif btn--compact hidden" id="hibouNotifBtn" type="button" aria-expanded="false" aria-controls="hibouNotifPanel">
+            <span class="btn--notif__icon">🦉</span>
+            <span id="hibouNotifLabel">0 nouvelle réussite</span>
+            <span id="hibouNotifBadge" class="notif-badge hidden">0</span>
+          </button>
           <button class="btn btn--library btn--compact" id="openLibraryBtn" type="button">📚 Bibliothèque</button>
           <a class="btn btn--light btn--compact" href="assets/Progressions_CE2_Francais_Maths_2026_2027.pdf" download>📄 PDF</a>
           <a class="btn btn--outline btn--compact" href="assets/Progressions_CE2_Francais_Maths_2026_2027.xlsx" download>📊 Excel</a>
@@ -107,6 +112,8 @@
       </div>
     </section>
 
+    <section id="hibouNotifPanel" class="hibou-notif-panel hidden" aria-hidden="true"></section>
+
     <section id="dashboard" class="dashboard card hidden" aria-live="polite">
       <div class="dashboard__top">
         <div>
@@ -157,9 +164,9 @@
     </div>
   </section>
 
-  <script src="documents.js?v=31.6"></script>
-  <script src="data.js?v=31.6"></script>
-  <script src="hibou-progression-map.js?v=31.6"></script>
-  <script src="app.js?v=31.6"></script>
+  <script src="documents.js?v=31.7"></script>
+  <script src="data.js?v=31.7"></script>
+  <script src="hibou-progression-map.js?v=31.7"></script>
+  <script src="app.js?v=31.7"></script>
 </body>
 </html>
