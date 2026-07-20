@@ -14,7 +14,7 @@
   const masteryLabels={none:'Non évaluée',fragile:'Fragile',encours:'En cours d’acquisition',acquise:'Acquise',maitrisee:'Très bien maîtrisée'};
   const CLASS_ROSTER_KEY='progressions_ce2_classe_v1';
   const CLASS_TRACKING_KEY='progressions_ce2_suivi_eleves_v1';
-  const ELEVES_API='https://script.google.com/macros/s/AKfycbxz1vYS24sv-c3XVja12geWEXIQl6bQyBoQKBx5kg_fwQaj80_Oc7Y34yeBSRN4lF1f/exec';
+  const ELEVES_API='https://script.google.com/macros/s/AKfycbwXa4M0UdjpGqF-ik2IS5JgFAoujyxdaqs3M85msXioBP4GQZO0C_YcJp9p60EQu8kY7w/exec';
   const ELEVES_SYNC_TIMEOUT=20000;
   const classLevelLabels={none:'⚪ Non évalué',encours:'🟡 En cours',acquis:'🟢 Acquis',renforcer:'🔴 À renforcer'};
   let classRoster=loadClassRoster();
