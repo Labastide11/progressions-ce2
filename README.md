@@ -1,3 +1,9 @@
+## V31.8 — Correctif notifications Maître Hibou
+
+- Appliquer et Ignorer retirent immédiatement la notification.
+- Une validation reliée à plusieurs compétences n’apparaît plus en double.
+- Voir la compétence ouvre directement la compétence concernée.
+
 # Progressions CE2 — V31.5
 
 
