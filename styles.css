@@ -522,3 +522,11 @@ body{background:#f8fafc;color:var(--mh-text)}
 @media(max-width:1100px){.student-tracking-row{grid-template-columns:minmax(125px,.8fr) minmax(360px,1.7fr) minmax(210px,1.2fr)}.mastery-btn{font-size:10px}}
 @media(max-width:900px){.student-tracking-row{grid-template-columns:1fr}.mastery-buttons{grid-template-columns:repeat(4,minmax(0,1fr))}.class-save-status{width:100%;margin-left:0}}
 @media(max-width:620px){.mastery-buttons{grid-template-columns:1fr 1fr}.class-filter-row,.class-bulk-row{align-items:flex-start;flex-direction:column}.class-filter-buttons,.class-bulk-buttons{width:100%}.class-filter-buttons button,.class-bulk-buttons button{flex:1 1 auto}}
+
+
+/* V31.6 — preuves Maître Hibou */
+.hibou-proof{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 10px;border:2px solid #d8cdfd;border-radius:12px;background:#f8f5ff;color:#3f386e;font-size:12px}
+.hibou-proof>div:first-child{display:flex;flex-direction:column;gap:2px}.hibou-proof strong{font-weight:950}.hibou-proof span{line-height:1.35}
+.hibou-proof__actions{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap}.hibou-proof button{border:0;border-radius:999px;padding:6px 10px;font:inherit;font-size:11px;font-weight:950;cursor:pointer}
+.hibou-apply{background:#238a4b;color:#fff}.hibou-ignore{background:#ebe7f7;color:#5e5875}.hibou-proof--empty,.hibou-proof--loading{justify-content:flex-start;color:#77718e;background:#fbfaff;border-style:dashed}.hibou-proof--ignored{justify-content:flex-start;color:#77718e;background:#fafafa;border-color:#e5e2eb}.hibou-proof--ignored button{background:#eeeaf8;color:#5146d8;margin-left:auto}
+@media(max-width:900px){.hibou-proof{align-items:flex-start;flex-direction:column}.hibou-proof__actions{justify-content:flex-start}}
