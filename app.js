@@ -151,9 +151,13 @@
       document.head.appendChild(script);
     });
   }
+  function sortRosterNames(names){
+    return [...names].sort((a,b)=>String(a).localeCompare(String(b),'fr',{sensitivity:'base',ignorePunctuation:true,numeric:true}));
+  }
   function normalizeRosterNames(rows){
     if(!Array.isArray(rows))return [];
-    return [...new Set(rows.map(item=>typeof item==='string'?item:(item&&item.prenom)||'').map(x=>String(x).trim()).filter(Boolean))];
+    const unique=[...new Set(rows.map(item=>typeof item==='string'?item:(item&&item.prenom)||'').map(x=>String(x).trim()).filter(Boolean))];
+    return sortRosterNames(unique);
   }
   async function loadRosterFromSheet(showFeedback){
     rosterSyncState='loading';
@@ -181,7 +185,7 @@
       if(showFeedback)alert(rosterSyncMessage+'.');
     }
   }
-  function loadClassRoster(){try{const list=JSON.parse(localStorage.getItem(CLASS_ROSTER_KEY)||'[]');return Array.isArray(list)?list:[];}catch(e){return [];}}
+  function loadClassRoster(){try{const list=JSON.parse(localStorage.getItem(CLASS_ROSTER_KEY)||'[]');return Array.isArray(list)?sortRosterNames(list):[];}catch(e){return [];}}
   function saveClassRoster(){try{localStorage.setItem(CLASS_ROSTER_KEY,JSON.stringify(classRoster));}catch(e){alert('La liste des élèves ne peut pas être enregistrée dans ce navigateur.');}}
   function loadClassTracking(){try{return JSON.parse(localStorage.getItem(CLASS_TRACKING_KEY)||'{}')||{};}catch(e){return {};}}
   function saveClassTracking(){try{localStorage.setItem(CLASS_TRACKING_KEY,JSON.stringify(classTracking));}catch(e){alert('Le suivi des élèves ne peut pas être enregistré dans ce navigateur.');}}
