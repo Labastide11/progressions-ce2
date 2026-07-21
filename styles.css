@@ -550,8 +550,7 @@ body{background:#f8fafc;color:var(--mh-text)}
 .hibou-hide-all{border:none;background:none;color:#475569;font-weight:700;cursor:pointer}
 .student-avatar{width:44px;height:44px;border-radius:999px;border:2px solid #d4d4ff;background:linear-gradient(180deg,#fffef9,#eef4ff);display:inline-flex;align-items:center;justify-content:center;position:relative;flex:0 0 44px;overflow:hidden}
 .student-avatar--large{width:58px;height:58px;flex-basis:58px}
-.student-avatar__emoji{font-size:1.5rem;line-height:1}
-.student-avatar--large .student-avatar__emoji{font-size:2rem}
+.student-avatar__image{width:100%;height:100%;object-fit:cover;display:block}
 .student-avatar__initials{position:absolute;bottom:2px;right:4px;font-size:.58rem;font-weight:800;color:#334155;background:rgba(255,255,255,.9);padding:0 .18rem;border-radius:999px}
 .student-tracking-name{display:flex;align-items:center;gap:.7rem}
 .student-tracking-row.is-highlighted{outline:3px solid #f7c948;outline-offset:2px;background:#fffdf2}
