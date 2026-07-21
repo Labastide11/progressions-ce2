@@ -1,4 +1,4 @@
-## V31.10 — Correctif notifications Maître Hibou
+## V31.11 — Correctif notifications Maître Hibou
 
 - Appliquer et Ignorer retirent immédiatement la notification.
 - Une validation reliée à plusieurs compétences n’apparaît plus en double.
