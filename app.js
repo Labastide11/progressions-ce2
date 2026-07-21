@@ -118,7 +118,57 @@
   function renderHibouPriorityBlock(){const items=hibouNotificationItems();if(!items.length)return '';const rows=items.map(item=>{const detail=[hibouMedalLabel(item.proof.medaille),item.proof.validations,item.proof.date].filter(Boolean).join(' · ');return '<article class="hibou-priority-card">'+studentAvatarHtml(item.student,'student-avatar--large')+'<div class="hibou-priority-card__body"><strong>'+esc(item.student)+'</strong><span>a validé <b>'+esc(item.proof.competence)+'</b>'+(detail?' — '+esc(detail):'')+'</span></div><div class="hibou-priority-card__actions"><button type="button" class="btn btn--outline btn--compact" data-hibou-view="'+esc(item.student)+'" data-hibou-code="'+esc(item.code)+'" data-hibou-codes="'+esc(item.codes.join(','))+'" data-hibou-key="'+esc(item.key)+'">Voir la compétence</button><button type="button" class="btn btn--success btn--compact" data-hibou-apply="'+esc(item.student)+'" data-hibou-code="'+esc(item.code)+'" data-hibou-codes="'+esc(item.codes.join(','))+'" data-hibou-key="'+esc(item.key)+'">Appliquer</button><button type="button" class="btn btn--danger btn--compact" data-hibou-ignore="'+esc(item.key)+'">Ignorer</button></div></article>';}).join('');return '<section class="hibou-priority-block"><div class="hibou-priority-block__head"><strong>🦉 Nouvelles réussites Maître Hibou — '+items.length+'</strong><button type="button" class="hibou-hide-all" id="hibouHideAllBtn">Masquer tout</button></div>'+rows+'</section>'; }
   function bindHibouActionButtons(scope=document){scope.querySelectorAll('[data-hibou-view]').forEach(btn=>btn.onclick=event=>{event.preventDefault();event.stopPropagation();viewHibouSuggestion(btn.dataset.hibouView,btn.dataset.hibouCode,btn.dataset.hibouKey);});scope.querySelectorAll('[data-hibou-apply][data-hibou-code]').forEach(btn=>btn.onclick=event=>{event.preventDefault();event.stopPropagation();applyHibouSuggestion(btn.dataset.hibouApply,btn.dataset.hibouCodes||btn.dataset.hibouCode,btn.dataset.hibouKey);});scope.querySelectorAll('[data-hibou-ignore]').forEach(btn=>btn.onclick=event=>{event.preventDefault();event.stopPropagation();ignoreHibouSuggestion(btn.dataset.hibouIgnore);});const hideAll=scope.querySelector('#hibouHideAllBtn');if(hideAll)hideAll.onclick=()=>{hibouNotificationItems().forEach(item=>{hibouSeen[item.key]=true;});saveHibouSeen();renderHibouHeaderNotifications();renderClassTracking();}; }
   function hibouProofHtml(student,skill){const mapping=hibouMappingForCode(skill.code);if(!mapping)return '';if(hibouProofState==='loading')return '<div class="hibou-proof hibou-proof--loading">🦉 Recherche des réussites Maître Hibou…</div>';const proof=hibouProofFor(student,skill.code);if(!proof)return '<div class="hibou-proof hibou-proof--empty">🦉 Aucune ceinture Maître Hibou trouvée pour cette compétence.</div>';const key=hibouProofKey(student,skill.code,proof);if(hibouIgnored[key])return '<div class="hibou-proof hibou-proof--ignored">🦉 Suggestion Maître Hibou ignorée <button type="button" data-hibou-restore="'+esc(key)+'">Réafficher</button></div>';const detail=[hibouMedalLabel(proof.medaille),proof.validations,proof.date].filter(Boolean).join(' · ');return '<div class="hibou-proof">'+studentAvatarHtml(student)+'<div class="hibou-proof__content"><div><strong>🦉 Maître Hibou : ceinture validée</strong><span>'+esc(proof.competence)+(detail?' — '+esc(detail):'')+'</span></div><div class="hibou-proof__actions"><span>Suggestion : <strong>Acquis</strong></span><button type="button" class="hibou-apply" data-hibou-apply="'+esc(student)+'" data-hibou-code="'+esc(skill.code)+'" data-hibou-key="'+esc(key)+'">Appliquer</button><button type="button" class="hibou-view" data-hibou-view="'+esc(student)+'" data-hibou-code="'+esc(skill.code)+'" data-hibou-key="'+esc(key)+'">Voir</button><button type="button" class="hibou-ignore" data-hibou-ignore="'+esc(key)+'">Ignorer</button></div></div></div>';}
-  async function loadHibouProofs(){hibouProofState='loading';try{const data=await elevesJsonp({action:'competences'});const rows=Array.isArray(data)?data:[];hibouProofs=rows.map(row=>{const mapping=hibouMappingForRow(row);return Object.assign({},row,{_codes:mapping?mapping.codes:[]});}).filter(row=>row._codes.length);hibouProofState='online';try{localStorage.setItem(HIBOU_PROOFS_KEY,JSON.stringify(hibouProofs));}catch(e){};}catch(error){console.warn('Chargement des réussites Maître Hibou :',error);try{hibouProofs=JSON.parse(localStorage.getItem(HIBOU_PROOFS_KEY)||'[]')||[];}catch(e){hibouProofs=[];}hibouProofState=hibouProofs.length?'cache':'error';}renderHibouHeaderNotifications();if(state.mode==='classe')renderClassTracking();}
+  function extractHibouRows(data){
+    if(Array.isArray(data))return data;
+    if(!data||typeof data!=='object')return [];
+    const keys=['competences','compétences','competences_validees','ceintures','belts','rows','results','data'];
+    for(const key of keys){
+      const value=data[key];
+      if(Array.isArray(value))return value;
+      if(value&&typeof value==='object'){
+        const nested=extractHibouRows(value);
+        if(nested.length)return nested;
+      }
+    }
+    return [];
+  }
+  function normalizeHibouProofRow(row){
+    row=row||{};
+    const pick=(keys)=>{for(const key of keys){if(row[key]!==undefined&&row[key]!==null&&String(row[key]).trim()!=='')return row[key];}return '';};
+    const normalized=Object.assign({},row,{
+      prenom:pick(['prenom','Prénom','Prenom','prénom','name','eleve','élève','student']),
+      competence:pick(['competence','Compétence','Competence','title','titre','label','libelle','Libellé']),
+      medaille:pick(['medaille','Médaille','Medaille','medal','rank','rang']),
+      validations:pick(['validations','score','resultat','résultat','Resultat','points']),
+      date:pick(['date','Date','horodatage','timestamp'])
+    });
+    const mapping=hibouMappingForRow(normalized);
+    normalized._codes=mapping?mapping.codes:[];
+    return normalized;
+  }
+  async function loadHibouProofs(){
+    hibouProofState='loading';
+    let lastError=null;
+    for(const action of ['ceintures','competences']){
+      try{
+        const data=await elevesJsonp({action,t:Date.now()});
+        const rows=extractHibouRows(data).map(normalizeHibouProofRow).filter(row=>row.prenom&&row.competence&&row._codes.length);
+        if(rows.length){
+          hibouProofs=rows;
+          hibouProofState='online';
+          try{localStorage.setItem(HIBOU_PROOFS_KEY,JSON.stringify(hibouProofs));}catch(e){}
+          renderHibouHeaderNotifications();
+          if(state.mode==='classe')renderClassTracking();
+          return;
+        }
+      }catch(error){lastError=error;}
+    }
+    if(lastError)console.warn('Chargement des réussites Maître Hibou :',lastError);
+    try{hibouProofs=JSON.parse(localStorage.getItem(HIBOU_PROOFS_KEY)||'[]')||[];}catch(e){hibouProofs=[];}
+    hibouProofState=hibouProofs.length?'cache':'error';
+    renderHibouHeaderNotifications();
+    if(state.mode==='classe')renderClassTracking();
+  }
 
   function loadCollapsedDomains(){try{return JSON.parse(localStorage.getItem(COLLAPSE_KEY)||'{}')||{};}catch(e){return {};}}
   function persistCollapsedDomains(){try{localStorage.setItem(COLLAPSE_KEY,JSON.stringify(collapsedDomains));}catch(e){}}
