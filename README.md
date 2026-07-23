@@ -1,4 +1,11 @@
-## V31.14 — Saisie reliée aux évaluations
+## V31.15 — Saisie par évaluation simplifiée
+
+- Chaque évaluation ne contient plus toutes les compétences de la période.
+- La P1 est reliée à 13 compétences réellement évaluées.
+- Les matrices P2 à P5 restent volontairement sans compétences tant qu’elles ne sont pas finalisées.
+- Le bouton ouvre uniquement la saisie des compétences de l’évaluation.
+
+## V31.15 — Saisie reliée aux évaluations
 
 - Le bouton **Saisir les résultats** ouvre directement la première compétence cochée.
 - Un bandeau **Évaluation active** permet de passer à la compétence précédente ou suivante.

@@ -50,17 +50,20 @@
   function periodCard(subject,period,ev){
     const key=currentKey(subject,period),saved=plan[key]||{};
     const status=saved.status||ev.status||'draft';
-    const skills=periodSkills(subject,period);
+    const allSkills=periodSkills(subject,period);
+    const configured=Array.isArray(ev.skillCodes)?ev.skillCodes:[];
+    const byCode=new Map(allSkills.map(skill=>[skill.code,skill]));
+    const skills=configured.length?configured.map(code=>byCode.get(code)).filter(Boolean):[];
     const included=saved.included||{};
     const skillRows=skills.length?skills.map(skill=>{
       const checked=included[skill.code]!==false;
       return `<label class="evaluation-skill"><input type="checkbox" data-eval-skill="${esc(skill.code)}" ${checked?'checked':''}><span class="evaluation-skill__code">${esc(skill.code)}</span><span>${esc(skill.title)}</span></label>`;
-    }).join(''):'<p class="evaluation-empty">Les compétences de cette période seront lues dans le référentiel lors de la finalisation.</p>';
+    }).join(''):'<p class="evaluation-empty">Les compétences de cette matrice ne sont pas encore arrêtées. Elles seront choisies au moment de finaliser la période.</p>';
     return `<article class="evaluation-card" data-eval-key="${esc(key)}" data-subject="${esc(subject)}" data-period="${esc(period)}">
       <header class="evaluation-card__head"><div><span class="evaluation-period">${period.toUpperCase()}</span><h3>${esc(ev.title)}</h3></div><select class="evaluation-status" aria-label="État de l’évaluation"><option value="draft" ${status==='draft'?'selected':''}>Matrice</option><option value="ready" ${status==='ready'?'selected':''}>Prête</option><option value="passed" ${status==='passed'?'selected':''}>Passée</option></select></header>
       <p>${esc(ev.description)}</p>
-      <div class="evaluation-docs"><a class="btn btn--outline btn--compact" href="${esc(ev.studentDoc)}" download>📄 Fiche élève</a><a class="btn btn--outline btn--compact" href="${esc(ev.teacherDoc)}" download>👨‍🏫 Grille enseignant</a><button class="btn btn--light btn--compact" type="button" data-open-tracking>👥 Saisir les résultats</button></div>
-      <details class="evaluation-skills"><summary>Compétences reliées <span>${skills.length||'à définir'}</span></summary><div class="evaluation-skill-list">${skillRows}</div></details>
+      <div class="evaluation-docs"><a class="btn btn--outline btn--compact" href="${esc(ev.studentDoc)}" download>📄 Fiche élève</a><a class="btn btn--outline btn--compact" href="${esc(ev.teacherDoc)}" download>👨‍🏫 Grille enseignant</a><button class="btn btn--light btn--compact" type="button" data-open-tracking ${skills.length?'':'disabled'}>👥 ${skills.length?`Renseigner l’évaluation (${skills.length})`:'Évaluation à finaliser'}</button></div>
+      <details class="evaluation-skills"><summary>Compétences de cette évaluation <span>${skills.length||'à définir'}</span></summary><div class="evaluation-skill-list">${skillRows}</div></details>
       <label class="evaluation-note"><span>Note de préparation</span><textarea rows="2" placeholder="Adaptations, corpus réellement travaillé, notions reportées…">${esc(saved.note||'')}</textarea></label>
     </article>`;
   }
@@ -130,7 +133,7 @@
     active.codes=available;active.index=index;saveActive(active);
     let nav=document.getElementById('evaluationTrackingNav');
     if(!nav){nav=document.createElement('section');nav.id='evaluationTrackingNav';nav.className='evaluation-tracking-nav card';tracking.prepend(nav);}
-    nav.innerHTML=`<div><span class="evaluation-tracking-nav__eyebrow">📝 Évaluation active</span><strong>${esc(active.title||'Évaluation')}</strong><small>Compétence ${index+1} sur ${available.length}</small></div><div class="evaluation-tracking-nav__actions"><button type="button" class="btn btn--outline btn--compact" data-eval-prev ${index===0?'disabled':''}>← Précédente</button><button type="button" class="btn btn--evaluations btn--compact" data-eval-next ${index===available.length-1?'disabled':''}>Suivante →</button><button type="button" class="btn btn--light btn--compact" data-eval-stop>Quitter l’évaluation</button></div>`;
+    nav.innerHTML=`<div><span class="evaluation-tracking-nav__eyebrow">📝 Évaluation active</span><strong>${esc(active.title||'Évaluation')}</strong><small>Résultat ${index+1} sur ${available.length} — uniquement les compétences de cette évaluation</small></div><div class="evaluation-tracking-nav__actions"><button type="button" class="btn btn--outline btn--compact" data-eval-prev ${index===0?'disabled':''}>← Précédente</button><button type="button" class="btn btn--evaluations btn--compact" data-eval-next ${index===available.length-1?'disabled':''}>Suivante →</button><button type="button" class="btn btn--light btn--compact" data-eval-stop>Terminer la saisie</button></div>`;
     nav.querySelector('[data-eval-prev]').onclick=()=>{if(index>0)selectSkill(available[index-1]);};
     nav.querySelector('[data-eval-next]').onclick=()=>{if(index<available.length-1)selectSkill(available[index+1]);};
     nav.querySelector('[data-eval-stop]').onclick=()=>{saveActive(null);nav.remove();};
@@ -143,7 +146,8 @@
       card.querySelector('.evaluation-status').addEventListener('change',e=>{ensure().status=e.target.value;save();});
       card.querySelector('.evaluation-note textarea').addEventListener('input',e=>{ensure().note=e.target.value;save();});
       card.querySelectorAll('[data-eval-skill]').forEach(box=>box.addEventListener('change',()=>{const p=ensure();p.included=p.included||{};p.included[box.dataset.evalSkill]=box.checked;save();}));
-      card.querySelector('[data-open-tracking]').addEventListener('click',()=>{
+      const trackingBtn=card.querySelector('[data-open-tracking]');
+      if(trackingBtn&&!trackingBtn.disabled)trackingBtn.addEventListener('click',()=>{
         const codes=[...card.querySelectorAll('[data-eval-skill]:checked')].map(box=>box.dataset.evalSkill);
         const title=card.querySelector('h3')?.textContent?.trim()||`${subject} ${period.toUpperCase()}`;
         openTracking(subject,period,title,codes);

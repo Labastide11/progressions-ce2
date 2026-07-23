@@ -8,35 +8,45 @@ window.EVALUATIONS_CE2 = {
         status: 'ready',
         description: 'Évaluation modifiable sans note ni point : grammaire, conjugaison, orthographe, vocabulaire et écrit court. La lecture est traitée séparément.',
         studentDoc: 'assets/evaluations/francais/P1_eleve_DRAS.docx',
-        teacherDoc: 'assets/evaluations/francais/P1_grille_enseignant.docx'
+        teacherDoc: 'assets/evaluations/francais/P1_grille_enseignant.docx',
+        skillCodes: [
+          'GRA-P1-01','GRA-P1-04','GRA-P1-05','GRA-P1-06','GRA-P1-07',
+          'ORT-P1-01','ORT-P1-02','ORT-P1-03',
+          'VOC-P1-02','VOC-P1-04','VOC-P1-05',
+          'ECR-P1-05','ECR-P1-06'
+        ]
       },
       p2: {
         title: 'Période 2 — Matrice évolutive',
         status: 'draft',
         description: 'Familles de mots, radical, préfixes et suffixes, synonymes et contraires. À adapter aux apprentissages réellement conduits.',
         studentDoc: 'assets/evaluations/francais/P2_P5_matrices_eleve_DRAS.docx',
-        teacherDoc: 'assets/evaluations/francais/P2_P5_grilles_enseignant_DRAS.docx'
+        teacherDoc: 'assets/evaluations/francais/P2_P5_grilles_enseignant_DRAS.docx',
+        skillCodes: []
       },
       p3: {
         title: 'Période 3 — Matrice évolutive',
         status: 'draft',
         description: 'Polysémie, niveaux de langue, réseaux lexicaux et échelles d’intensité. À finaliser au moment de la période.',
         studentDoc: 'assets/evaluations/francais/P2_P5_matrices_eleve_DRAS.docx',
-        teacherDoc: 'assets/evaluations/francais/P2_P5_grilles_enseignant_DRAS.docx'
+        teacherDoc: 'assets/evaluations/francais/P2_P5_grilles_enseignant_DRAS.docx',
+        skillCodes: []
       },
       p4: {
         title: 'Période 4 — Matrice évolutive',
         status: 'draft',
         description: 'Sens propre et figuré, expressions et associations fréquentes. Structure DRAS adaptable.',
         studentDoc: 'assets/evaluations/francais/P2_P5_matrices_eleve_DRAS.docx',
-        teacherDoc: 'assets/evaluations/francais/P2_P5_grilles_enseignant_DRAS.docx'
+        teacherDoc: 'assets/evaluations/francais/P2_P5_grilles_enseignant_DRAS.docx',
+        skillCodes: []
       },
       p5: {
         title: 'Période 5 — Matrice évolutive',
         status: 'draft',
         description: 'Réinvestissement des réseaux, morphologie, familles de mots, catégorisation et bilan lexical.',
         studentDoc: 'assets/evaluations/francais/P2_P5_matrices_eleve_DRAS.docx',
-        teacherDoc: 'assets/evaluations/francais/P2_P5_grilles_enseignant_DRAS.docx'
+        teacherDoc: 'assets/evaluations/francais/P2_P5_grilles_enseignant_DRAS.docx',
+        skillCodes: []
       }
     }
   }
