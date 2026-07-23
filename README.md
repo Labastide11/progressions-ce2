@@ -1,4 +1,4 @@
-## V31.17 — Évaluations de mathématiques intégrées
+## V31.18 — Évaluations de mathématiques P2 à P5 reliées
 
 - Ajout de Mathématiques dans le filtre du module Évaluations.
 - P1 reliée à 16 compétences réellement mobilisées dans la fiche.
