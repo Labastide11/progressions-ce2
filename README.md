@@ -1,17 +1,20 @@
-## V31.16 — Correctif de performance Firefox
+## V31.17 — Évaluations de mathématiques intégrées
 
-- Suppression de l'observation permanente de tout le DOM dans le module Évaluations.
-- Le navigateur d'évaluation se met désormais à jour uniquement lors des changements utiles : matière, période, mode ou compétence.
-- Correction de la boucle de rendu qui pouvait déclencher l'alerte « Cette page ralentit Firefox ».
+- Ajout de Mathématiques dans le filtre du module Évaluations.
+- P1 reliée à 16 compétences réellement mobilisées dans la fiche.
+- Téléchargement des documents élèves et enseignant de maths P1 à P5.
+- P2 à P5 restent des matrices évolutives, sans saisie activée tant qu’elles ne sont pas finalisées.
+- Le bouton de saisie ouvre directement la bonne matière, la bonne période et parcourt uniquement les compétences de l’évaluation.
+- Aucune note, aucun point ni pourcentage.
 
-## V31.16 — Saisie par évaluation simplifiée
+## V31.15 — Saisie par évaluation simplifiée
 
 - Chaque évaluation ne contient plus toutes les compétences de la période.
 - La P1 est reliée à 13 compétences réellement évaluées.
 - Les matrices P2 à P5 restent volontairement sans compétences tant qu’elles ne sont pas finalisées.
 - Le bouton ouvre uniquement la saisie des compétences de l’évaluation.
 
-## V31.16 — Saisie reliée aux évaluations
+## V31.15 — Saisie reliée aux évaluations
 
 - Le bouton **Saisir les résultats** ouvre directement la première compétence cochée.
 - Un bandeau **Évaluation active** permet de passer à la compétence précédente ou suivante.

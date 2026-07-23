@@ -49,5 +49,59 @@ window.EVALUATIONS_CE2 = {
         skillCodes: []
       }
     }
+  },
+  maths: {
+    label: 'Mathématiques',
+    icon: '📐',
+    periods: {
+      p1: {
+        title: 'Période 1 — Nombres, calcul, problèmes, fractions et géométrie',
+        status: 'ready',
+        description: 'Évaluation modifiable sans note ni point : nombres jusqu’à 999, calcul mental, addition posée, problèmes additifs, fractions simples, géométrie et longueurs.',
+        studentDoc: 'assets/evaluations/maths/Maths_P1_P5_eleve_modifiable.docx',
+        teacherDoc: 'assets/evaluations/maths/Maths_P1_P5_grilles_enseignant.docx',
+        skillCodes: [
+          'NUM-P1-01','NUM-P1-02','NUM-P1-03','NUM-P1-04','NUM-P1-05',
+          'FRA-P1-01','FRA-P1-02',
+          'CAL-P1-01','CAL-P1-02','CAL-P1-03',
+          'OPE-P1-01',
+          'PRO-P1-02',
+          'MES-P1-01','MES-P1-02',
+          'GEO-P1-01','GEO-P1-02'
+        ]
+      },
+      p2: {
+        title: 'Période 2 — Matrice évolutive',
+        status: 'draft',
+        description: 'Nombres jusqu’à 2 999, fractions simples, soustraction, comparaison, polygones et périmètre. À finaliser selon les apprentissages réellement conduits.',
+        studentDoc: 'assets/evaluations/maths/Maths_P1_P5_eleve_modifiable.docx',
+        teacherDoc: 'assets/evaluations/maths/Maths_P1_P5_grilles_enseignant.docx',
+        skillCodes: []
+      },
+      p3: {
+        title: 'Période 3 — Matrice évolutive',
+        status: 'draft',
+        description: 'Nombres jusqu’à 5 999, multiplication, fractions, données, triangles, cercle et durées. À adapter avant la passation.',
+        studentDoc: 'assets/evaluations/maths/Maths_P1_P5_eleve_modifiable.docx',
+        teacherDoc: 'assets/evaluations/maths/Maths_P1_P5_grilles_enseignant.docx',
+        skillCodes: []
+      },
+      p4: {
+        title: 'Période 4 — Matrice évolutive',
+        status: 'draft',
+        description: 'Nombres jusqu’à 8 999, fractions équivalentes, multiplication, prix, solides et masses. À finaliser au moment de la période.',
+        studentDoc: 'assets/evaluations/maths/Maths_P1_P5_eleve_modifiable.docx',
+        teacherDoc: 'assets/evaluations/maths/Maths_P1_P5_grilles_enseignant.docx',
+        skillCodes: []
+      },
+      p5: {
+        title: 'Période 5 — Matrice évolutive',
+        status: 'draft',
+        description: 'Nombres jusqu’à 10 000, division, fractions et longueurs, symétrie et contenances. Bilan modulable selon la progression réelle.',
+        studentDoc: 'assets/evaluations/maths/Maths_P1_P5_eleve_modifiable.docx',
+        teacherDoc: 'assets/evaluations/maths/Maths_P1_P5_grilles_enseignant.docx',
+        skillCodes: []
+      }
+    }
   }
 };
