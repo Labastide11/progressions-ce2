@@ -1,3 +1,10 @@
+## V31.19 — Emploi du temps annualisé
+
+- Nouveau bouton 🗓️ Emploi du temps.
+- Cinq onglets P1 à P5.
+- Intégration des contraintes CHAM, piscine, Cavayère et Domec.
+- Tableau de contrôle des volumes annuels nets.
+
 ## V31.18 — Évaluations de mathématiques P2 à P5 reliées
 
 - Ajout de Mathématiques dans le filtre du module Évaluations.
