@@ -1,3 +1,10 @@
+## V31.21 — Emploi du temps spécial rentrée
+
+- Ajout d’un onglet **Rentrée** pour les deux premières semaines.
+- Aucun créneau CHAM n’est appliqué dans cet emploi du temps de secours.
+- Le mardi et le jeudi restent en classe entière.
+- Les cinq périodes P1 à P5, les couleurs et les poids horaires sont conservés.
+
 ## V31.20 — Emploi du temps coloré et poids horaires
 
 - Nouveau bouton 🗓️ Emploi du temps.
