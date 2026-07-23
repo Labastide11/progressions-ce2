@@ -8,11 +8,14 @@
   const subjectFilter=document.getElementById('evaluationSubjectFilter');
   const periodFilter=document.getElementById('evaluationPeriodFilter');
   const STORAGE_KEY='progressions_ce2_evaluation_plan_v1';
-  const labels={ready:'Prête',draft:'Matrice',passed:'Passée'};
+  const ACTIVE_KEY='progressions_ce2_active_evaluation_v1';
   let plan={};
   try{plan=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')||{};}catch(e){plan={};}
-  const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const esc=s=>String(s??'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]));
   const save=()=>{try{localStorage.setItem(STORAGE_KEY,JSON.stringify(plan));}catch(e){}};
+  const saveActive=value=>{try{value?sessionStorage.setItem(ACTIVE_KEY,JSON.stringify(value)):sessionStorage.removeItem(ACTIVE_KEY);}catch(e){}};
+  const loadActive=()=>{try{return JSON.parse(sessionStorage.getItem(ACTIVE_KEY)||'null');}catch(e){return null;}};
+
   function skillsFor(subject,period){
     const ref=window.SKILLS?.[subject]||window.PROGRESSIONS_SKILLS?.[subject]||null;
     if(Array.isArray(ref))return ref.filter(x=>String(x.period||'').toLowerCase()===period);
@@ -37,7 +40,12 @@
     const seen=new Set();
     return candidates.filter(x=>!seen.has(x.code)&&seen.add(x.code));
   }
-  function periodSkills(subject,period){const direct=window.PROGRESSIONS?.[subject]?.[period+'Competencies'];if(Array.isArray(direct))return direct;const exact=skillsFor(subject,period);return exact.length?exact:allSkillsFallback(subject,period);}
+  function periodSkills(subject,period){
+    const direct=window.PROGRESSIONS?.[subject]?.[period+'Competencies'];
+    if(Array.isArray(direct))return direct;
+    const exact=skillsFor(subject,period);
+    return exact.length?exact:allSkillsFallback(subject,period);
+  }
   function currentKey(subject,period){return subject+'|'+period;}
   function periodCard(subject,period,ev){
     const key=currentKey(subject,period),saved=plan[key]||{};
@@ -68,6 +76,66 @@
   }
   function open(){modal.classList.remove('hidden');modal.setAttribute('aria-hidden','false');document.body.classList.add('modal-open');render();setTimeout(()=>closeBtn.focus(),0);}
   function close(){modal.classList.add('hidden');modal.setAttribute('aria-hidden','true');document.body.classList.remove('modal-open');openBtn.focus();}
+
+  function waitFor(selector,timeout=2500){
+    return new Promise(resolve=>{
+      const found=document.querySelector(selector);if(found){resolve(found);return;}
+      const obs=new MutationObserver(()=>{const el=document.querySelector(selector);if(el){obs.disconnect();resolve(el);}});
+      obs.observe(document.body,{childList:true,subtree:true});
+      setTimeout(()=>{obs.disconnect();resolve(document.querySelector(selector));},timeout);
+    });
+  }
+  function selectSkill(code){
+    const select=document.getElementById('classSkillSelect');
+    if(!select)return false;
+    const exists=[...select.options].some(o=>o.value===code);
+    if(!exists)return false;
+    select.value=code;
+    select.dispatchEvent(new Event('change',{bubbles:true}));
+    return true;
+  }
+  async function openTracking(subject,period,title,codes){
+    const unique=[...new Set(codes.filter(Boolean))];
+    if(!unique.length){alert('Aucune compétence n’est cochée pour cette évaluation.');return;}
+    saveActive({subject,period,title,codes:unique,index:0});
+    close();
+    const subjectBtn=document.querySelector(`.tab[data-subject="${subject}"]`);if(subjectBtn)subjectBtn.click();
+    const periodBtn=document.querySelector(`.filter[data-period="${period}"]`);if(periodBtn)periodBtn.click();
+    const classBtn=document.querySelector('.mode-btn[data-mode="classe"]');if(classBtn)classBtn.click();
+    const select=await waitFor('#classSkillSelect');
+    if(!select){alert('Le suivi des élèves n’a pas pu être ouvert.');return;}
+    const first=unique.find(code=>[...select.options].some(o=>o.value===code));
+    if(!first){
+      alert('Les compétences cochées ne sont pas disponibles dans le référentiel de cette période.');
+      return;
+    }
+    const active=loadActive();active.index=unique.indexOf(first);saveActive(active);
+    selectSkill(first);
+    ensureNavigator();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  function ensureNavigator(){
+    const active=loadActive();
+    const tracking=document.querySelector('.class-tracking');
+    const select=document.getElementById('classSkillSelect');
+    if(!active||!tracking||!select){document.getElementById('evaluationTrackingNav')?.remove();return;}
+    if(active.subject!==document.querySelector('.tab.is-active')?.dataset.subject||active.period!==document.querySelector('.filter.is-active')?.dataset.period){
+      document.getElementById('evaluationTrackingNav')?.remove();return;
+    }
+    const available=active.codes.filter(code=>[...select.options].some(o=>o.value===code));
+    if(!available.length){document.getElementById('evaluationTrackingNav')?.remove();return;}
+    let index=available.indexOf(select.value);
+    if(index<0){index=Math.min(active.index||0,available.length-1);selectSkill(available[index]);return;}
+    active.codes=available;active.index=index;saveActive(active);
+    let nav=document.getElementById('evaluationTrackingNav');
+    if(!nav){nav=document.createElement('section');nav.id='evaluationTrackingNav';nav.className='evaluation-tracking-nav card';tracking.prepend(nav);}
+    nav.innerHTML=`<div><span class="evaluation-tracking-nav__eyebrow">📝 Évaluation active</span><strong>${esc(active.title||'Évaluation')}</strong><small>Compétence ${index+1} sur ${available.length}</small></div><div class="evaluation-tracking-nav__actions"><button type="button" class="btn btn--outline btn--compact" data-eval-prev ${index===0?'disabled':''}>← Précédente</button><button type="button" class="btn btn--evaluations btn--compact" data-eval-next ${index===available.length-1?'disabled':''}>Suivante →</button><button type="button" class="btn btn--light btn--compact" data-eval-stop>Quitter l’évaluation</button></div>`;
+    nav.querySelector('[data-eval-prev]').onclick=()=>{if(index>0)selectSkill(available[index-1]);};
+    nav.querySelector('[data-eval-next]').onclick=()=>{if(index<available.length-1)selectSkill(available[index+1]);};
+    nav.querySelector('[data-eval-stop]').onclick=()=>{saveActive(null);nav.remove();};
+  }
+
   function bind(){
     list.querySelectorAll('.evaluation-card').forEach(card=>{
       const key=card.dataset.evalKey,subject=card.dataset.subject,period=card.dataset.period;
@@ -76,17 +144,21 @@
       card.querySelector('.evaluation-note textarea').addEventListener('input',e=>{ensure().note=e.target.value;save();});
       card.querySelectorAll('[data-eval-skill]').forEach(box=>box.addEventListener('change',()=>{const p=ensure();p.included=p.included||{};p.included[box.dataset.evalSkill]=box.checked;save();}));
       card.querySelector('[data-open-tracking]').addEventListener('click',()=>{
-        close();
-        const subjectBtn=document.querySelector(`.tab[data-subject="${subject}"]`);if(subjectBtn)subjectBtn.click();
-        const periodBtn=document.querySelector(`.filter[data-period="${period}"]`);if(periodBtn)periodBtn.click();
-        const classBtn=document.querySelector('.mode-btn[data-mode="classe"]');if(classBtn)classBtn.click();
-        window.scrollTo({top:0,behavior:'smooth'});
+        const codes=[...card.querySelectorAll('[data-eval-skill]:checked')].map(box=>box.dataset.evalSkill);
+        const title=card.querySelector('h3')?.textContent?.trim()||`${subject} ${period.toUpperCase()}`;
+        openTracking(subject,period,title,codes);
       });
     });
   }
+
   if(!openBtn||!modal)return;
   openBtn.addEventListener('click',open);closeBtn.addEventListener('click',close);
   modal.addEventListener('click',e=>{if(e.target===modal)close();});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.classList.contains('hidden'))close();});
   subjectFilter.addEventListener('change',render);periodFilter.addEventListener('change',render);
+
+  const observer=new MutationObserver(()=>ensureNavigator());
+  observer.observe(document.body,{childList:true,subtree:true});
+  document.addEventListener('change',e=>{if(e.target&&e.target.id==='classSkillSelect')setTimeout(ensureNavigator,0);});
+  setTimeout(ensureNavigator,0);
 })();

@@ -1,3 +1,10 @@
+## V31.14 — Saisie reliée aux évaluations
+
+- Le bouton **Saisir les résultats** ouvre directement la première compétence cochée.
+- Un bandeau **Évaluation active** permet de passer à la compétence précédente ou suivante.
+- Seules les compétences cochées dans la carte de l’évaluation sont parcourues.
+- Le bouton **Quitter l’évaluation** rend au suivi son fonctionnement habituel.
+
 ## V31.12 — Correctif notifications Maître Hibou
 
 - Appliquer et Ignorer retirent immédiatement la notification.
