@@ -236,3 +236,11 @@ Colonnes attendues : `prenom`, `initiale`, `naissance`, `sexe`, `actif`.
 - Ordre des vues : Élèves, Mon suivi, Référentiel.
 - La vue Élèves s’ouvre systématiquement au chargement.
 - Numéro de version affiché dans la balise title.
+
+## V31.13 — Module Évaluations
+- Bouton `📝 Évaluations` ajouté dans la barre d’outils, à côté de Maître Hibou.
+- Fenêtre dédiée Français P1 à P5.
+- Téléchargement direct des documents élève et enseignant modifiables.
+- Lecture automatique des compétences de chaque période depuis `data.js`.
+- Choix des compétences incluses, état Matrice / Prête / Passée et note de préparation enregistrés localement.
+- Accès direct à la saisie des résultats dans la vue Élèves, sans note ni point.

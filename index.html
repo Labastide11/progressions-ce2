@@ -4,8 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période.">
-  <title>Progressions CE2 — V31.12</title>
-  <link rel="stylesheet" href="styles.css?v=31.12">
+  <title>Progressions CE2 — V31.13</title>
+  <link rel="stylesheet" href="styles.css?v=31.13">
+  <link rel="stylesheet" href="evaluations.css?v=31.13">
 </head>
 <body>
   <header class="app-header">
@@ -37,6 +38,7 @@
           <a class="btn btn--light btn--compact" href="assets/Progressions_CE2_Francais_Maths_2026_2027.pdf" download>📄 PDF</a>
           <a class="btn btn--outline btn--compact" href="assets/Progressions_CE2_Francais_Maths_2026_2027.xlsx" download>📊 Excel</a>
           <a class="btn btn--hibou btn--compact" href="https://labastide11.github.io/Prof_virtuel/" target="_blank" rel="noopener noreferrer">🦉 Maître Hibou</a>
+          <button class="btn btn--evaluations btn--compact" id="openEvaluationsBtn" type="button">📝 Évaluations</button>
         </div>
         <button class="help-btn" type="button" title="Les données sont enregistrées uniquement dans ce navigateur." aria-label="Aide">?</button>
       </div>
@@ -164,9 +166,29 @@
     </div>
   </section>
 
-  <script src="documents.js?v=31.12"></script>
-  <script src="data.js?v=31.12"></script>
-  <script src="hibou-progression-map.js?v=31.12"></script>
-  <script src="app.js?v=31.12"></script>
+  <section id="evaluationsModal" class="evaluations-modal hidden" aria-hidden="true" aria-labelledby="evaluationsTitle">
+    <div class="evaluations-panel" role="dialog" aria-modal="true">
+      <header class="evaluations-header">
+        <div>
+          <p class="eyebrow">ÉVALUATIONS PAR COMPÉTENCES</p>
+          <h2 id="evaluationsTitle">Évaluations CE2</h2>
+          <p>Documents modifiables, compétences reliées et accès direct à la saisie des résultats.</p>
+        </div>
+        <button id="closeEvaluationsBtn" class="evaluations-close" type="button" aria-label="Fermer les évaluations">×</button>
+      </header>
+      <div class="evaluations-tools">
+        <label><span>Matière</span><select id="evaluationSubjectFilter"><option value="francais">Français</option></select></label>
+        <label><span>Période</span><select id="evaluationPeriodFilter"><option value="all">Toutes les périodes</option><option value="p1">Période 1</option><option value="p2">Période 2</option><option value="p3">Période 3</option><option value="p4">Période 4</option><option value="p5">Période 5</option></select></label>
+      </div>
+      <div id="evaluationsList" class="evaluations-list"></div>
+    </div>
+  </section>
+
+  <script src="documents.js?v=31.13"></script>
+  <script src="data.js?v=31.13"></script>
+  <script src="hibou-progression-map.js?v=31.13"></script>
+  <script src="app.js?v=31.13"></script>
+  <script src="evaluations-data.js?v=31.13"></script>
+  <script src="evaluations-ui.js?v=31.13"></script>
 </body>
 </html>
