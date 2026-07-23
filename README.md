@@ -1,4 +1,4 @@
-## V31.21 — Emploi du temps spécial rentrée
+## V31.22 — Emploi du temps détaillé de rentrée
 
 - Ajout d’un onglet **Rentrée** pour les deux premières semaines.
 - Aucun créneau CHAM n’est appliqué dans cet emploi du temps de secours.
@@ -287,3 +287,12 @@ Colonnes attendues : `prenom`, `initiale`, `naissance`, `sexe`, `actif`.
 - Légende visuelle des matières.
 - Poids horaire hebdomadaire en durée et pourcentage sous chaque emploi du temps.
 - Mise en évidence de la part prioritaire français + mathématiques.
+
+
+### Ajout V31.22
+- Vue synthétique Rentrée + P1 à P5 conservée.
+- Second niveau détaillé dans la même fenêtre.
+- Semaine 1 : mardi 1er au vendredi 4 septembre 2026, sans lundi fictif.
+- Semaine 2 : lundi 7 au vendredi 11 septembre 2026.
+- Matière, séance, compétence Progressions CE2 et statut Prévu / Réalisé / Reporté.
+- Classe entière prévue pendant les deux semaines de rentrée.
