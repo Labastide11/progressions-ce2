@@ -147,11 +147,29 @@
     const current=localStorage.getItem(key)||'Prévu';
     return `<select class="detail-status" data-status-key="${esc(key)}">${['Prévu','Réalisé','Reporté'].map(v=>`<option${v===current?' selected':''}>${v}</option>`).join('')}</select>`;
   }
+  function detailWeekSelector(period,activeKey=''){
+    if(period==='rentree'){
+      return `<nav class="detail-week-nav" aria-label="Semaines détaillées de la rentrée">
+        <button type="button" class="${activeKey==='rentree1'?'is-active':''}" data-open-detail="rentree1">Semaine 1<br><small>Accueillir et observer</small></button>
+        <button type="button" class="${activeKey==='rentree2'?'is-active':''}" data-open-detail="rentree2">Semaine 2<br><small>Commencer la progression P1</small></button>
+      </nav>`;
+    }
+    if(period==='p1'){
+      return `<nav class="detail-week-nav detail-week-nav--p1" aria-label="Semaines détaillées de la période 1">
+        ${Array.from({length:7},(_,i)=>`<button type="button" class="${activeKey===`p1s${i+1}`?'is-active':''}" data-open-p1-week="${i+1}">Semaine ${i+1}<br><small>À construire</small></button>`).join('')}
+      </nav>`;
+    }
+    return '';
+  }
   function renderDetailedWeek(key){
     const data=detailedWeeks[key];
     const content=document.getElementById('timetableContent');
-    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div><div class="timetable-note">${data.note}</div>${data.days.map(([day,rows])=>`<section class="detail-day"><h3>${day}</h3><div class="detail-table-wrap"><table class="detail-table"><thead><tr><th>Horaire</th><th>Matière</th><th>Séance proposée</th><th>Compétence reliée à Progressions CE2</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td><td>${r[2]}</td><td>${r[3]}</td><td>${statusSelect(statusKey(key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('rentree',key)}<div class="timetable-note">${data.note}</div>${data.days.map(([day,rows])=>`<section class="detail-day"><h3>${day}</h3><div class="detail-table-wrap"><table class="detail-table"><thead><tr><th>Horaire</th><th>Matière</th><th>Séance proposée</th><th>Compétence reliée à Progressions CE2</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td><td>${r[2]}</td><td>${r[3]}</td><td>${statusSelect(statusKey(key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
     content.querySelectorAll('[data-status-key]').forEach(sel=>sel.addEventListener('change',()=>localStorage.setItem(sel.dataset.statusKey,sel.value)));
+  }
+  function renderP1Week(week){
+    const content=document.getElementById('timetableContent');
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Période 1 — espace préparé</span><h2>Semaine ${week} de la période 1</h2><p>La proposition sera reliée aux progressions et ajustée selon les évaluations.</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('p1',`p1s${week}`)}<section class="detail-workspace"><div class="detail-workspace__icon">🧩</div><div><h3>Cette semaine sera construite progressivement</h3><p>L’espace est déjà prévu pour les quatre jours, les créneaux, les séances, les compétences et les statuts. Aucun contenu annuel n’est figé à l’avance.</p></div></section></section>`;
   }
   function render(p){
     const data=periods[p];
@@ -162,7 +180,9 @@
       const pct=(data.minutes[i]/1320*100).toFixed(1).replace('.',',');
       return `<div class="weight-row ${subjectClasses[i]}"><div class="weight-label"><span>${subjectIcons[i]} ${label}</span><strong>${data.hours[i]} · ${pct} %</strong></div><div class="weight-track"><span style="width:${data.minutes[i]/1320*100}%"></span></div></div>`;
     }).join('');
-    content.innerHTML=`<h2>${data.title}</h2><div class="timetable-note">${data.note}<br>${data.mode==='rentree'?'<strong>Organisation spéciale :</strong> aucun départ CHAM prévu ; tous les créneaux se déroulent en classe entière.':'<strong>Principe CHAM :</strong> aucune nouvelle notion ni évaluation commune pendant les absences du mardi et du jeudi.'}</div><div class="subject-legend" aria-label="Légende des matières">${legend}${data.mode==='rentree'?'':'<span class="subject-chip cham">🎵 CHAM</span>'}<span class="subject-chip break">☕ Récréation</span></div><div class="timetable-grid">${cards}</div><section class="weights-wrap"><div class="weights-title"><div><h3>Poids horaire des disciplines</h3><p>Répartition hebdomadaire nette de cette période, sur 22 heures d’enseignement.</p></div><strong>Français + maths : ${((data.minutes[0]+data.minutes[1])/1320*100).toFixed(1).replace('.',',')} %</strong></div><div class="weights-grid">${weights}</div></section><section class="hours-wrap"><h3>Contrôle annuel des volumes</h3><table class="hours-table"><thead><tr><th>Discipline</th><th>Moyenne hebdomadaire nette</th><th>Cible annuelle nette</th></tr></thead><tbody>${labels.map((l,i)=>`<tr class="subject-table-row ${subjectClasses[i]}"><td>${subjectIcons[i]} ${l}</td><td>${data.hours[i]}</td><td>${annual[i]}</td></tr>`).join('')}</tbody><tfoot><tr><td><strong>Total</strong></td><td><strong>22 h</strong></td><td class="ok">792 h sur l’année</td></tr></tfoot></table></section><section class="detail-entry"><div><h3>Proposition pédagogique détaillée</h3><p>${data.mode==='rentree'?'Choisis une des deux semaines de rentrée pour afficher chaque séance et sa compétence associée.':'Cette période sera détaillée progressivement à partir des progressions et des évaluations.'}</p></div>${data.mode==='rentree'?'<div class="detail-week-buttons"><button type="button" data-open-detail="rentree1">📋 Semaine 1 — Accueillir et observer</button><button type="button" data-open-detail="rentree2">📋 Semaine 2 — Commencer la progression P1</button></div>':'<button type="button" class="detail-disabled" disabled>📋 Voir une proposition détaillée — à construire</button>'}</section>`;
+    const detailEnabled=p==='rentree'||p==='p1';
+    const detailText=p==='rentree'?'Deux semaines de rentrée déjà préparées.':p==='p1'?'Espace prévu pour construire progressivement toute la période 1.':'Cette période sera détaillée ultérieurement à partir des progressions et des évaluations.';
+    content.innerHTML=`<section class="timetable-summary-head"><div><h2>${data.title}</h2><p class="summary-mode-label">Vue synthétique et poids horaires</p></div><button type="button" class="detail-launch ${detailEnabled?'':'is-disabled'}" ${detailEnabled?`data-open-detail-hub="${p}"`:'disabled'}>📋 Voir une proposition détaillée</button></section><div class="detail-context-line">${detailText}</div><div class="timetable-note">${data.note}<br>${data.mode==='rentree'?'<strong>Organisation spéciale :</strong> aucun départ CHAM prévu ; tous les créneaux se déroulent en classe entière.':'<strong>Principe CHAM :</strong> aucune nouvelle notion ni évaluation commune pendant les absences du mardi et du jeudi.'}</div><div class="subject-legend" aria-label="Légende des matières">${legend}${data.mode==='rentree'?'':'<span class="subject-chip cham">🎵 CHAM</span>'}<span class="subject-chip break">☕ Récréation</span></div><div class="timetable-grid">${cards}</div><section class="weights-wrap"><div class="weights-title"><div><h3>Poids horaire des disciplines</h3><p>Répartition hebdomadaire nette de cette période, sur 22 heures d’enseignement.</p></div><strong>Français + maths : ${((data.minutes[0]+data.minutes[1])/1320*100).toFixed(1).replace('.',',')} %</strong></div><div class="weights-grid">${weights}</div></section><section class="hours-wrap"><h3>Contrôle annuel des volumes</h3><table class="hours-table"><thead><tr><th>Discipline</th><th>Moyenne hebdomadaire nette</th><th>Cible annuelle nette</th></tr></thead><tbody>${labels.map((l,i)=>`<tr class="subject-table-row ${subjectClasses[i]}"><td>${subjectIcons[i]} ${l}</td><td>${data.hours[i]}</td><td>${annual[i]}</td></tr>`).join('')}</tbody><tfoot><tr><td><strong>Total</strong></td><td><strong>22 h</strong></td><td class="ok">792 h sur l’année</td></tr></tfoot></table></section>`;
   }
   function init(){
     const open=document.getElementById('openTimetableBtn'), close=document.getElementById('closeTimetableBtn'), modal=document.getElementById('timetableModal'), tabs=document.getElementById('timetableTabs');
@@ -171,6 +191,10 @@
     content.addEventListener('click',e=>{
       const detail=e.target.closest('[data-open-detail]');
       if(detail){renderDetailedWeek(detail.dataset.openDetail);content.scrollTop=0;return;}
+      const hub=e.target.closest('[data-open-detail-hub]');
+      if(hub){hub.dataset.openDetailHub==='rentree'?renderDetailedWeek('rentree1'):renderP1Week(1);content.scrollTop=0;return;}
+      const p1week=e.target.closest('[data-open-p1-week]');
+      if(p1week){renderP1Week(Number(p1week.dataset.openP1Week));content.scrollTop=0;return;}
       if(e.target.closest('[data-back-summary]')){const active=tabs.querySelector('.is-active');render(active?active.dataset.period:'rentree');content.scrollTop=0;}
     });
     tabs.innerHTML=Object.keys(periods).map((p,i)=>`<button class="timetable-tab ${i===0?'is-active':''}" data-period="${p}">${p.toUpperCase()}</button>`).join('');
