@@ -161,8 +161,15 @@
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.classList.contains('hidden'))close();});
   subjectFilter.addEventListener('change',render);periodFilter.addEventListener('change',render);
 
-  const observer=new MutationObserver(()=>ensureNavigator());
-  observer.observe(document.body,{childList:true,subtree:true});
-  document.addEventListener('change',e=>{if(e.target&&e.target.id==='classSkillSelect')setTimeout(ensureNavigator,0);});
+  // Mise à jour ciblée du navigateur d'évaluation.
+  // Ne pas observer tout le DOM : ensureNavigator() modifie lui-même le DOM,
+  // ce qui créait une boucle de MutationObserver et ralentissait Firefox.
+  document.addEventListener('change',e=>{
+    if(e.target&&e.target.id==='classSkillSelect')setTimeout(ensureNavigator,0);
+  });
+  document.addEventListener('click',e=>{
+    const control=e.target.closest?.('.tab[data-subject], .filter[data-period], .mode-btn[data-mode]');
+    if(control)setTimeout(ensureNavigator,0);
+  });
   setTimeout(ensureNavigator,0);
 })();
