@@ -1,4 +1,4 @@
-## V31.19 — Emploi du temps annualisé
+## V31.20 — Emploi du temps coloré et poids horaires
 
 - Nouveau bouton 🗓️ Emploi du temps.
 - Cinq onglets P1 à P5.
@@ -274,3 +274,9 @@ Colonnes attendues : `prenom`, `initiale`, `naissance`, `sexe`, `actif`.
 - Lecture automatique des compétences de chaque période depuis `data.js`.
 - Choix des compétences incluses, état Matrice / Prête / Passée et note de préparation enregistrés localement.
 - Accès direct à la saisie des résultats dans la vue Élèves, sans note ni point.
+
+
+- Couleurs distinctes par discipline dans les cinq emplois du temps.
+- Légende visuelle des matières.
+- Poids horaire hebdomadaire en durée et pourcentage sous chaque emploi du temps.
+- Mise en évidence de la part prioritaire français + mathématiques.
