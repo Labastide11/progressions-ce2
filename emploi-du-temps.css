@@ -122,3 +122,6 @@
 /* V31.27 — navigation P3 */
 .detail-week-nav--p3{grid-template-columns:repeat(5,minmax(165px,1fr));overflow-x:auto}
 @media(max-width:760px){.detail-week-nav--p3{display:flex}.detail-week-nav--p3 button{min-width:155px}}
+
+/* V31.28 — navigation P4/P5 */
+.detail-week-nav--p4{grid-template-columns:repeat(6,minmax(155px,1fr));overflow-x:auto}.detail-week-nav--p5{grid-template-columns:repeat(6,minmax(155px,1fr));overflow-x:auto}.holiday-note{margin:0 0 16px;padding:12px 14px;border-radius:13px;background:#fff7ed;border:1px solid #fdba74;color:#9a3412;font-weight:900;line-height:1.45}@media(max-width:760px){.detail-week-nav--p4,.detail-week-nav--p5{display:flex}.detail-week-nav--p4 button,.detail-week-nav--p5 button{min-width:160px}}
