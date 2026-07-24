@@ -11,3 +11,13 @@
 @media print{
   body.printing-parcours *{visibility:hidden!important}body.printing-parcours .pe-view,body.printing-parcours .pe-view *{visibility:visible!important}body.printing-parcours .pe-view{position:absolute;inset:0;background:#fff}body.printing-parcours .no-print{display:none!important}body.printing-parcours .pe-page{box-shadow:none;border:0;border-radius:0;margin:0;width:210mm;min-height:297mm;max-width:none;padding:12mm 11mm;break-after:page;page-break-after:always}body.printing-parcours .pe-page:last-child{break-after:auto;page-break-after:auto}body.printing-parcours .pe-objective-card{break-inside:avoid}body.printing-parcours .pe-objective-main details{display:none}body.printing-parcours .pe-stage{min-height:48px}body.printing-parcours .pe-bilan-grid textarea{min-height:48px;border-top:1px solid #e2e8f0}body.printing-parcours .pe-header h2{font-size:18pt}@page{size:A4 portrait;margin:0}
 }
+
+/* V31.30 — compétences élève écrites en toutes lettres */
+.pe-learning-details{margin-top:8px;border:1px solid #ddd6fe;border-radius:11px;background:#faf8ff;overflow:hidden}
+.pe-learning-details summary{cursor:pointer;padding:8px 10px;color:#5b21b6;font-weight:900;list-style:none}
+.pe-learning-details summary::-webkit-details-marker{display:none}
+.pe-learning-details summary::before{content:"▸ ";display:inline-block;transition:transform .15s ease}
+.pe-learning-details[open] summary::before{transform:rotate(90deg)}
+.pe-learning-details ul{margin:0;padding:0 12px 10px 29px;color:#334155;font-size:.88rem;line-height:1.4}
+.pe-learning-details li{margin:5px 0}
+@media print{.pe-learning-details{display:block;border-color:#cbd5e1;background:#fff}.pe-learning-details summary{color:#111827;padding-bottom:3px}.pe-learning-details summary::before{content:""}.pe-learning-details ul{display:block;font-size:8.5pt;line-height:1.25}}

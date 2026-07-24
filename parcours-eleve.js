@@ -17,7 +17,7 @@ function objectiveCard(period,o,index){
     <div class="pe-objective-main">
       <h3>${esc(o.texte)}</h3>
       <p><strong>${esc(o.semaines)}</strong></p>
-      <details><summary>Voir les compétences reliées</summary><small>${o.competences.map(esc).join(' · ')}</small></details>
+      <details class="pe-learning-details"><summary>Ce que je vais apprendre</summary><ul>${(o.savoirFaire||[]).map(item=>`<li>${esc(item)}</li>`).join('')}</ul></details>
     </div>
     <div class="pe-stage-row" role="group" aria-label="Progression pour l’objectif ${index+1}">
       ${stages.map(s=>`<button type="button" class="pe-stage ${active===s.id?'is-active':''} ${s.id==='valide'?'is-teacher':''}" data-pe-stage="${s.id}" data-pe-objective="${o.id}"><span>${s.icon}</span><small>${s.label}</small></button>`).join('')}
