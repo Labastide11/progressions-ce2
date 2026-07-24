@@ -118,3 +118,7 @@
 .detail-week-nav--p2{grid-template-columns:repeat(7,minmax(155px,1fr));overflow-x:auto}
 .holiday-note{margin:0 0 14px;padding:12px 14px;border-radius:13px;background:#fff7ed;border:1px solid #fdba74;color:#9a3412;font-weight:900}
 @media(max-width:760px){.detail-week-nav--p2{display:flex}.detail-week-nav--p2 button{min-width:155px}}
+
+/* V31.27 — navigation P3 */
+.detail-week-nav--p3{grid-template-columns:repeat(5,minmax(165px,1fr));overflow-x:auto}
+@media(max-width:760px){.detail-week-nav--p3{display:flex}.detail-week-nav--p3 button{min-width:155px}}
