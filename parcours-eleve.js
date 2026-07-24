@@ -25,23 +25,25 @@ function objectiveCard(period,o,index){
   </article>`;
 }
 function evaluationTable(rows){return `<div class="pe-table-wrap"><table class="pe-eval-table"><thead><tr><th>Moment prévu</th><th>Ce qui pourra être évalué</th><th>Comment ?</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${esc(r.moment)}</td><td>${esc(r.contenu)}</td><td>${esc(r.forme)}</td></tr>`).join('')}</tbody></table></div>`;}
-function renderP1(container){
-  const d=DATA.p1;
-  container.innerHTML=`<section class="pe-view" data-pe-root="p1">
+function renderPeriod(container,period){
+  const d=DATA[period];
+  if(!d)return;
+  const periodNumber=period.replace("p","");
+  container.innerHTML=`<section class="pe-view" data-pe-root="${period}">
     <div class="pe-toolbar no-print">
       <button type="button" class="pe-back" data-pe-back>← Retour à la vue synthétique</button>
-      <div class="pe-toolbar-actions"><button type="button" class="pe-reset" data-pe-reset>↺ Effacer les coches</button><a class="pe-print" href="assets/parcours-eleve/Mon_parcours_apprentissage_P1.pdf" target="_blank" rel="noopener">📄 Ouvrir le livret PDF</a></div>
+      <div class="pe-toolbar-actions"><button type="button" class="pe-reset" data-pe-reset>↺ Effacer les coches</button><a class="pe-print" href="${esc(d.pdf)}" target="_blank" rel="noopener">📄 Ouvrir le livret PDF</a></div>
     </div>
     <section class="pe-page pe-page-one">
       <header class="pe-header"><span class="pe-kicker">PARCOURS ÉLÈVE · CE2</span><h2>${esc(d.titre)}</h2><p>${esc(d.sousTitre)}</p></header>
-      <div class="pe-identity"><label>Prénom : <span></span></label><strong>Classe : CE2</strong><strong>Période : 1</strong></div>
+      <div class="pe-identity"><label>Prénom : <span></span></label><strong>Classe : CE2</strong><strong>Période : ${periodNumber}</strong></div>
       <div class="pe-explanation"><strong>Mes 5 grands objectifs</strong><p>Ils sont travaillés plusieurs fois pendant la période. Je peux avancer progressivement.</p></div>
-      <div class="pe-objectives">${d.objectifs.map((o,i)=>objectiveCard('p1',o,i)).join('')}</div>
+      <div class="pe-objectives">${d.objectifs.map((o,i)=>objectiveCard(period,o,i)).join('')}</div>
       <div class="pe-legend"><div><b>🌱 Je découvre</b><span>Je commence à comprendre.</span></div><div><b>🔧 Je m’entraîne</b><span>Je fais des exercices et je demande de l’aide.</span></div><div><b>⭐ Je me sens prêt</b><span>Je pense pouvoir réussir seul.</span></div><div><b>✅ Validé</b><span>L’enseignant confirme ma réussite.</span></div></div>
       <p class="pe-note"><strong>Important :</strong> les évaluations sont réparties pendant la période. Je ne suis pas évalué sur tout en même temps.</p>
     </section>
     <section class="pe-page pe-page-two">
-      <header class="pe-header pe-header-small"><span class="pe-kicker">PÉRIODE 1</span><h2>Mes évaluations et mon bilan</h2><p>Je sais ce qui pourra être évalué et je réfléchis à mes progrès.</p></header>
+      <header class="pe-header pe-header-small"><span class="pe-kicker">PÉRIODE ${periodNumber}</span><h2>Mes évaluations et mon bilan</h2><p>Je sais ce qui pourra être évalué et je réfléchis à mes progrès.</p></header>
       <h3 class="pe-section-title">Au cours de la période, je pourrai être évalué sur…</h3>
       ${evaluationTable(d.evaluations)}
       <h3 class="pe-section-title">Mon bilan personnel</h3>
@@ -54,7 +56,7 @@ function renderP1(container){
       <div class="pe-signatures"><div><strong>Le regard de l’enseignant</strong><span></span></div><div><strong>Signature de l’élève</strong><span></span></div><div><strong>Signature de la famille</strong><span></span></div></div>
     </section>
   </section>`;
-  bind(container,'p1');
+  bind(container,period);
 }
 function bind(container,period){
   container.querySelectorAll('[data-pe-stage]').forEach(btn=>btn.addEventListener('click',()=>{
@@ -62,7 +64,7 @@ function bind(container,period){
     localStorage.setItem(key(period,obj),stage);
     container.querySelectorAll(`[data-pe-objective="${obj}"]`).forEach(b=>b.classList.toggle('is-active',b.dataset.peStage===stage));
   }));
-  container.querySelector('[data-pe-reset]')?.addEventListener('click',()=>{DATA[period].objectifs.forEach(o=>localStorage.removeItem(key(period,o.id)));renderP1(container)});
+  container.querySelector('[data-pe-reset]')?.addEventListener('click',()=>{DATA[period].objectifs.forEach(o=>localStorage.removeItem(key(period,o.id)));renderPeriod(container,period)});
 }
-window.ProgressionsParcoursEleve={renderP1};
+window.ProgressionsParcoursEleve={renderPeriod,renderP1:(container)=>renderPeriod(container,'p1')};
 })();
