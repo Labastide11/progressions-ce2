@@ -30,7 +30,7 @@ function renderP1(container){
   container.innerHTML=`<section class="pe-view" data-pe-root="p1">
     <div class="pe-toolbar no-print">
       <button type="button" class="pe-back" data-pe-back>← Retour à la vue synthétique</button>
-      <div class="pe-toolbar-actions"><button type="button" class="pe-reset" data-pe-reset>↺ Effacer les coches</button><button type="button" class="pe-print" data-pe-print>🖨️ Imprimer le livret</button></div>
+      <div class="pe-toolbar-actions"><button type="button" class="pe-reset" data-pe-reset>↺ Effacer les coches</button><a class="pe-print" href="assets/parcours-eleve/Mon_parcours_apprentissage_P1.pdf" target="_blank" rel="noopener">📄 Ouvrir le livret PDF</a></div>
     </div>
     <section class="pe-page pe-page-one">
       <header class="pe-header"><span class="pe-kicker">PARCOURS ÉLÈVE · CE2</span><h2>${esc(d.titre)}</h2><p>${esc(d.sousTitre)}</p></header>
@@ -62,7 +62,6 @@ function bind(container,period){
     localStorage.setItem(key(period,obj),stage);
     container.querySelectorAll(`[data-pe-objective="${obj}"]`).forEach(b=>b.classList.toggle('is-active',b.dataset.peStage===stage));
   }));
-  container.querySelector('[data-pe-print]')?.addEventListener('click',()=>{document.body.classList.add('printing-parcours');window.print();setTimeout(()=>document.body.classList.remove('printing-parcours'),300)});
   container.querySelector('[data-pe-reset]')?.addEventListener('click',()=>{DATA[period].objectifs.forEach(o=>localStorage.removeItem(key(period,o.id)));renderP1(container)});
 }
 window.ProgressionsParcoursEleve={renderP1};
