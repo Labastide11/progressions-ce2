@@ -1,3 +1,10 @@
+## V34.08
+- Historisation des niveaux par élève et compétence.
+- Ajout du niveau interne `depasse` pour les évaluations.
+- Correspondance élève ↔ LSU verrouillée dans la trace.
+- Traçage distinct des sources : évaluation papier, observation de classe, Maître Hibou.
+- Export du suivi enrichi du nombre de traces et de la dernière source.
+
 ## V34.07
 - Alignement des emplois du temps P3–P5 avec toutes les compétences évaluées en français et mathématiques.
 - P3 vérifiée complète. P4 et P5 complétées sur les compétences de mesures/durées/géométrie/symétrie manquantes.

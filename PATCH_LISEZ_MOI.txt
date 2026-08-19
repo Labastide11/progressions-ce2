@@ -1,0 +1,5 @@
+PATCH Progressions CE2 V34.08 — Historique des évaluations
+
+Décompresser à la racine du projet et accepter le remplacement des fichiers.
+Aucune donnée locale existante n'est supprimée.
+La nouvelle clé localStorage progressions_ce2_traces_competences_v1 conserve les traces datées.

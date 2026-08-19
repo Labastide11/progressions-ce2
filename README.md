@@ -1,3 +1,12 @@
+## V34.08 — Historique daté des évaluations
+
+- Toute modification de niveau conserve une trace datée au lieu d’effacer l’historique.
+- Une saisie lancée depuis **Évaluations** est identifiée comme `evaluation_papier`.
+- Vocabulaire de correction : **Excellent / Réussi / En progrès / À revoir**.
+- Correspondance LSU enregistrée : **Dépassé / Atteint / Partiellement atteint / Non atteint**.
+- Les validations Maître Hibou appliquées au suivi sont tracées avec la source `maitre_hibou`.
+- Le suivi courant reste disponible ; l’historique est conservé séparément dans `progressions_ce2_traces_competences_v1`.
+
 ## V34.07 — Alignement emploi du temps P3–P5 / évaluations
 
 - Audit des compétences évaluées en P3, P4 et P5.

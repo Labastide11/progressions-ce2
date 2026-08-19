@@ -100,7 +100,7 @@
   async function openTracking(subject,period,title,codes){
     const unique=[...new Set(codes.filter(Boolean))];
     if(!unique.length){alert('Aucune compétence n’est cochée pour cette évaluation.');return;}
-    saveActive({subject,period,title,codes:unique,index:0});
+    const stamp=new Date();saveActive({id:'eval-'+subject+'-'+period+'-'+stamp.getTime(),subject,period,title,codes:unique,index:0,startedAt:stamp.toISOString(),date:stamp.toISOString().slice(0,10)});
     close();
     const subjectBtn=document.querySelector(`.tab[data-subject="${subject}"]`);if(subjectBtn)subjectBtn.click();
     const periodBtn=document.querySelector(`.filter[data-period="${period}"]`);if(periodBtn)periodBtn.click();
@@ -133,7 +133,7 @@
     active.codes=available;active.index=index;saveActive(active);
     let nav=document.getElementById('evaluationTrackingNav');
     if(!nav){nav=document.createElement('section');nav.id='evaluationTrackingNav';nav.className='evaluation-tracking-nav card';tracking.prepend(nav);}
-    nav.innerHTML=`<div><span class="evaluation-tracking-nav__eyebrow">📝 Évaluation active</span><strong>${esc(active.title||'Évaluation')}</strong><small>Résultat ${index+1} sur ${available.length} — uniquement les compétences de cette évaluation</small></div><div class="evaluation-tracking-nav__actions"><button type="button" class="btn btn--outline btn--compact" data-eval-prev ${index===0?'disabled':''}>← Précédente</button><button type="button" class="btn btn--evaluations btn--compact" data-eval-next ${index===available.length-1?'disabled':''}>Suivante →</button><button type="button" class="btn btn--light btn--compact" data-eval-stop>Terminer la saisie</button></div>`;
+    nav.innerHTML=`<div><span class="evaluation-tracking-nav__eyebrow">📝 Évaluation active</span><strong>${esc(active.title||'Évaluation')}</strong><small>Résultat ${index+1} sur ${available.length} — chaque niveau saisi est conservé dans l’historique</small></div><div class="evaluation-tracking-nav__actions"><button type="button" class="btn btn--outline btn--compact" data-eval-prev ${index===0?'disabled':''}>← Précédente</button><button type="button" class="btn btn--evaluations btn--compact" data-eval-next ${index===available.length-1?'disabled':''}>Suivante →</button><button type="button" class="btn btn--light btn--compact" data-eval-stop>Terminer la saisie</button></div>`;
     nav.querySelector('[data-eval-prev]').onclick=()=>{if(index>0)selectSkill(available[index-1]);};
     nav.querySelector('[data-eval-next]').onclick=()=>{if(index<available.length-1)selectSkill(available[index+1]);};
     nav.querySelector('[data-eval-stop]').onclick=()=>{saveActive(null);nav.remove();};

@@ -1488,3 +1488,17 @@ body.view-mode-suivi .compact-controlbar{margin-bottom:8px}
 .student-list-card.is-absent .student-list-card__absence-badge{background:#b23c3c}
 .student-list-card.is-absent .student-list-card__main strong{text-decoration:line-through;text-decoration-thickness:1px;text-decoration-color:#a64a4a}
 @media(max-width:760px){.student-attendance-copy{margin-left:0}.student-attendance-summary{align-items:stretch}.student-attendance-summary>*{flex:1 1 auto;text-align:center}}
+
+/* V34.08 — Historique des traces + niveau Dépassé */
+.class-stat--depasse{background:#e0e7ff}
+.mastery-btn.is-active[data-level="depasse"]{background:#e0e7ff;border-color:#6366f1;color:#3730a3}
+.level-pill--depasse{background:#e0e7ff;color:#3730a3}
+.class-bulk-buttons .bulk-level--depasse{border-color:#6366f1}
+.mastery-buttons--evaluation{grid-template-columns:repeat(5,minmax(0,1fr))}
+.student-trace-count{display:block;margin-top:2px;font-size:10px;font-weight:800;color:#6b7280}
+@media(max-width:1100px){.mastery-buttons--evaluation{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* V34.08 — cinq niveaux visibles quand le niveau Dépassé est disponible */
+.mastery-buttons{grid-template-columns:repeat(5,minmax(0,1fr))}
+.class-stats{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media(max-width:900px){.mastery-buttons,.mastery-buttons--evaluation{grid-template-columns:repeat(3,minmax(0,1fr))}.class-stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:620px){.mastery-buttons,.mastery-buttons--evaluation{grid-template-columns:1fr 1fr}.class-stats{grid-template-columns:1fr 1fr}}
