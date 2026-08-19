@@ -55,6 +55,16 @@
     return semesterForPeriod(period)==='s1'?'Semestre 1 — LSU S1':'Semestre 2 — LSU S2';
   }
   const PERIOD_LABELS={p1:'Période 1',p2:'Période 2',p3:'Période 3',p4:'Période 4',p5:'Période 5'};
+  const SUBJECT_META={
+    francais:{label:'Français',icon:'📘',order:1},
+    maths:{label:'Mathématiques',icon:'🔢',order:2},
+    anglais:{label:'Anglais',icon:'🇬🇧',order:3},
+    emc:{label:'EMC',icon:'🤝',order:4}
+  };
+  function subjectBadge(subject){
+    const meta=SUBJECT_META[subject]||{label:subject,icon:'📚'};
+    return `<span class="evaluation-subject evaluation-subject--${esc(subject)}">${meta.icon} ${esc(meta.label)}</span>`;
+  }
   function allowedPeriodsForSemester(semester){
     if(semester==='s1')return ['p1','p2'];
     if(semester==='s2')return ['p3','p4','p5'];
@@ -170,7 +180,7 @@
     const actionLabel=ev.traceType?'Renseigner la trace':'Renseigner l’évaluation';
     docs.push(`<button class="btn btn--light btn--compact" type="button" data-open-tracking ${skills.length?'':'disabled'}>👥 ${skills.length?`${actionLabel} (${selectedCount})`:'Évaluation à finaliser'}</button>`);
     return `<article class="evaluation-card" data-eval-key="${esc(key)}" data-subject="${esc(subject)}" data-period="${esc(period)}" data-semester="${esc(semester)}">
-      <header class="evaluation-card__head"><div><div class="evaluation-card__markers"><span class="evaluation-period">${period.toUpperCase()}</span><span class="evaluation-semester evaluation-semester--${esc(semester)}">🟣 ${esc(semesterLabel(period))}</span></div><h3>${esc(ev.title)}</h3></div><select class="evaluation-status" aria-label="État de l’évaluation"><option value="draft" ${status==='draft'?'selected':''}>Matrice</option><option value="ready" ${status==='ready'?'selected':''}>Prête</option><option value="passed" ${status==='passed'?'selected':''}>Passée</option></select></header>
+      <header class="evaluation-card__head"><div><div class="evaluation-card__markers">${subjectBadge(subject)}<span class="evaluation-period">${period.toUpperCase()}</span><span class="evaluation-semester evaluation-semester--${esc(semester)}">🟣 ${esc(semesterLabel(period))}</span></div><h3>${esc(ev.title)}</h3></div><select class="evaluation-status" aria-label="État de l’évaluation"><option value="draft" ${status==='draft'?'selected':''}>Matrice</option><option value="ready" ${status==='ready'?'selected':''}>Prête</option><option value="passed" ${status==='passed'?'selected':''}>Passée</option></select></header>
       <p>${esc(ev.description)}</p>
       ${traceBadge}
       ${scheduleBlock(subject,period,ev)}
@@ -180,16 +190,20 @@
     </article>`;
   }
   function render(){
-    const sf=subjectFilter.value||'francais',pf=periodFilter.value||'all',semf=semesterFilter?.value||'all';
+    const sf=subjectFilter.value||'all',pf=periodFilter.value||'all',semf=semesterFilter?.value||'all';
     const cards=[];
-    Object.entries(data).forEach(([subject,info])=>{
-      if(sf!=='all'&&sf!==subject)return;
-      Object.entries(info.periods||{}).forEach(([period,ev])=>{
-        if(pf!=='all'&&pf!==period)return;
-        if(semf!=='all'&&semf!==semesterForPeriod(period))return;
-        cards.push(periodCard(subject,period,ev));
+    Object.entries(data)
+      .sort(([a],[b])=>(SUBJECT_META[a]?.order||99)-(SUBJECT_META[b]?.order||99))
+      .forEach(([subject,info])=>{
+        if(sf!=='all'&&sf!==subject)return;
+        Object.entries(info.periods||{}).forEach(([period,ev])=>{
+          if(pf!=='all'&&pf!==period)return;
+          if(semf!=='all'&&semf!==semesterForPeriod(period))return;
+          cards.push(periodCard(subject,period,ev));
+        });
       });
-    });
+    list.classList.toggle('evaluations-list--single',cards.length===1);
+    list.classList.toggle('evaluations-list--multiple',cards.length>1);
     list.innerHTML=cards.join('')||'<p class="evaluation-empty">Aucune évaluation disponible pour ce filtre.</p>';
     bind();
   }

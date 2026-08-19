@@ -123,3 +123,11 @@ Le détail complet des anciennes versions est conservé dans `docs/historique/`.
 ## V34.25
 - Affinage des filtres de la fenêtre Évaluations : le choix du semestre limite dynamiquement les périodes disponibles (S1 = P1/P2 ; S2 = P3/P4/P5).
 - Réinitialisation automatique à « Toutes les périodes du semestre » si la période courante n’est plus compatible.
+
+
+## V34.26 — 20/08/2026
+- Fenêtre Évaluations agrandie sur PC.
+- Nouveau choix **Toutes les matières**.
+- Ordre des cartes : Français → Mathématiques → Anglais → EMC.
+- Badge matière ajouté à chaque carte.
+- Grille de 2 cartes larges par ligne sur PC ; carte unique pleine largeur ; responsive 1 colonne.

@@ -83,8 +83,18 @@ Chaque carte d’évaluation affiche désormais le semestre auquel elle contribu
 - Les entraînements, observations et retours pédagogiques de janvier restent possibles mais ne sont plus repérés comme évaluations.
 
 
-## V34.25 — Filtres semestre / période cohérents
+## V34.26 — Filtres semestre / période cohérents
 - Le filtre **Période** dépend maintenant du **Semestre LSU** sélectionné.
 - Semestre 1 : seules P1 et P2 sont proposées.
 - Semestre 2 : seules P3, P4 et P5 sont proposées.
 - Si une période sélectionnée devient incompatible lors d’un changement de semestre, le filtre revient automatiquement à « Toutes les périodes du semestre ».
+
+
+## V34.26 — Évaluations : vue toutes matières et fenêtre élargie
+- Ajout du filtre **Toutes les matières**.
+- Les filtres Semestre LSU et Période continuent de s'appliquer à la vue globale.
+- Ordre stable des cartes : Français, Mathématiques, Anglais, EMC.
+- Badge matière visible sur chaque carte.
+- Fenêtre Évaluations élargie sur PC.
+- Deux cartes larges par ligne lorsqu'il y en a plusieurs ; une carte unique utilise toute la largeur.
+- Retour automatique à une colonne sur tablette et écran étroit.
