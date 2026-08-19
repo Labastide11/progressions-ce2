@@ -147,7 +147,7 @@
       const looksLikeStudentFallback=rows.length>0 && validQuestions.length===0 && normalized.some(q=>norm(q.prenom));
       if(looksLikeStudentFallback){
         try{localStorage.removeItem(CACHE_KEY);}catch(e){}
-        throw new Error("L’API déployée ne reconnaît pas get_questions_classe (liste des élèves reçue à la place). Redéploie l’API V2.7.5.");
+        throw new Error("L’API déployée ne reconnaît pas get_questions_classe (liste des élèves reçue à la place). Redéploie l’API V2.8.1.");
       }
 
       // Réponse non vide mais sans structure exploitable : diagnostic explicite.

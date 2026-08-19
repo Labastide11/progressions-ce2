@@ -113,3 +113,9 @@ Correction du raccordement Évaluations → Mon suivi pour la saisie des résult
 
 ### V34.12 — Saisie des évaluations
 Le bouton « Renseigner l’évaluation » ouvre la page Mon suivi sur la matière, la période et la première compétence concernée. La navigation Précédente/Suivante permet de parcourir les compétences de l’évaluation. En contexte d’évaluation, les niveaux affichés sont : Excellent, Réussi, En progrès, À revoir ; ils sont enregistrés avec leur équivalent LSU dans l’historique et synchronisés vers Google Sheets.
+
+
+## V34.14 — Questions des élèves / API V2.8.1
+- Ajout de l’endpoint `get_questions_classe` dans Apps Script V2.8.1.
+- Ajout de `update_question` pour enregistrer statut, visibilité et date d’explication.
+- Le message de diagnostic Questions des élèves cible désormais l’API V2.8.1.

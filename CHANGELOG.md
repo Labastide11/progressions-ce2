@@ -1,3 +1,7 @@
+## V34.14 — Questions des élèves / API V2.8.1
+- Répare la synchronisation de la fenêtre Questions des élèves avec le Journal des Questions.
+- Support de `get_questions_classe` et `update_question`.
+
 ## V34.13
 - Correction de Mon suivi : lecture des compétences depuis p1Competencies à p5Competencies.
 - La compétence active d’une évaluation affiche maintenant code, intitulé et domaine.
