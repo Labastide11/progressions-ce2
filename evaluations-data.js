@@ -4,11 +4,11 @@ window.EVALUATIONS_CE2 = {
     icon: '✏️',
     periods: {
       p1: {
-        title: 'Période 1 — Étude de la langue avec le DRAS',
+        title: 'Période 1 — Corpus forêt et maîtrise de la langue avec le DRAS',
         status: 'ready',
-        description: 'Évaluation modifiable sans note ni point : grammaire, conjugaison, orthographe, vocabulaire et écrit court. La lecture est traitée séparément.',
-        studentDoc: 'assets/evaluations/francais/P1_eleve_DRAS.docx',
-        teacherDoc: 'assets/evaluations/francais/P1_grille_enseignant.docx',
+        description: 'Évaluation P1 verrouillée sur un corpus commun : grammaire, orthographe, vocabulaire et écriture manipulés avec le DRAS. 1 compétence = 1 code ; la conjugaison systématique au présent relève de P2.',
+        studentDoc: 'assets/evaluations/francais/Francais_P1_eleve_DRAS_verrouillee.docx',
+        teacherDoc: 'assets/evaluations/francais/Francais_P1_grille_enseignant_DRAS_verrouillee.docx',
         skillCodes: [
           'GRA-P1-01','GRA-P1-04','GRA-P1-05','GRA-P1-06','GRA-P1-07',
           'ORT-P1-01','ORT-P1-02','ORT-P1-03',

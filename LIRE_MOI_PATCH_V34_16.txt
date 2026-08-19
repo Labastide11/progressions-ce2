@@ -1,0 +1,3 @@
+PATCH V34.16 — Français P1 refondue
+Décompresser à la racine du projet V34.15 et accepter le remplacement des fichiers.
+Aucune modification Apps Script nécessaire.
