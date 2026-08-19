@@ -1308,6 +1308,25 @@
   }
   window.ProgressionsEDT = {
     periods,
+    openWeek(period='p1',weekNumber=1){
+      const modal=document.getElementById('timetableModal');
+      const tabs=document.getElementById('timetableTabs');
+      const content=document.getElementById('timetableContent');
+      if(!modal||!content)return false;
+      modal.classList.add('timetable-modal--direct');
+      modal.classList.remove('timetable-modal--tbi','hidden');
+      modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+      tabs?.querySelectorAll('button').forEach(x=>x.classList.toggle('is-active',x.dataset.period===period));
+      const week=Math.max(1,Number(weekNumber)||1);
+      if(period==='p1')renderP1Week(week);
+      else if(period==='p2')renderP2Week(week);
+      else if(period==='p3')renderP3Week(week);
+      else if(period==='p4'||period==='p5')renderLaterPeriodWeek(period,week);
+      else renderDetailedWeek('rentree1');
+      content.scrollTop=0;
+      return true;
+    },
     getDayRows(day, period='p1'){
       const selected=periods[period]||periods.p1;
       if(!base[day]) return [];

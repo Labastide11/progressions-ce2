@@ -47,6 +47,78 @@
     return exact.length?exact:allSkillsFallback(subject,period);
   }
   function currentKey(subject,period){return subject+'|'+period;}
+  const FR_MONTHS={janvier:0,'février':1,fevrier:1,mars:2,avril:3,mai:4,juin:5,juillet:6,'août':7,aout:7,septembre:8,octobre:9,novembre:10,'décembre':11,decembre:11};
+  function parseFrenchDay(label){
+    const m=String(label||'').toLowerCase().match(/(\d{1,2})(?:er)?\s+(janvier|février|fevrier|mars|avril|mai|juin|juillet|août|aout|septembre|octobre|novembre|décembre|decembre)\s+(20\d{2})/i);
+    if(!m)return null;
+    const month=FR_MONTHS[m[2].toLowerCase()];
+    if(month==null)return null;
+    const d=new Date(Number(m[3]),month,Number(m[1]));d.setHours(0,0,0,0);return d;
+  }
+  function codeSetFromText(text){
+    const src=String(text||'').replace(/[–—]/g,'-');
+    const found=new Set();
+    (src.match(/[A-Z]{2,6}-P\d-\d{2}/g)||[]).forEach(c=>found.add(c));
+    const range=/([A-Z]{2,6}-P\d)-(\d{2})\s*(?:à|a)\s*(?:(?:[A-Z]{2,6}-P\d)-)?(\d{2})/gi;
+    let m;
+    while((m=range.exec(src))){
+      const a=Number(m[2]),b=Number(m[3]);
+      for(let n=Math.min(a,b);n<=Math.max(a,b);n++)found.add(`${m[1].toUpperCase()}-${String(n).padStart(2,'0')}`);
+    }
+    src.split(/[;·]/).forEach(chunk=>{
+      const head=chunk.match(/([A-Z]{2,6}-P\d)-(\d{2})((?:\s*\/\s*\d{2})+)/i);
+      if(!head)return;
+      const prefix=head[1].toUpperCase();found.add(`${prefix}-${head[2]}`);
+      (head[3].match(/\d{2}/g)||[]).forEach(n=>found.add(`${prefix}-${n}`));
+    });
+    return found;
+  }
+  function evaluationWeekNumber(week){
+    const m=String(week?.title||'').match(/Semaine\s+(\d+)/i);return m?Number(m[1]):Number(String(week?.key||'').match(/s(\d+)$/)?.[1]||1);
+  }
+  function subjectMatchesRow(subject,row){
+    const kind=String(row?.[4]||'').toLowerCase(), name=String(row?.[1]||'').toLowerCase();
+    return subject==='francais' ? (kind==='french'||name.includes('français')) : (kind==='maths'||name.includes('math'));
+  }
+  function findEvaluationSchedule(subject,period,codes){
+    const weeks=window.PROGRESSIONS_EDT_DATA?.[period+'DetailedWeeks'];
+    if(!Array.isArray(weeks)||!weeks.length)return null;
+    const wanted=new Set(codes||[]), candidates=[];
+    weeks.forEach((week,weekIndex)=>{
+      let overlap=0, rows=0;const matchingDays=[];
+      (week.days||[]).forEach(([day,dayRows])=>(dayRows||[]).forEach(row=>{
+        if(!subjectMatchesRow(subject,row))return;
+        const text=`${row?.[2]||''} ${row?.[5]||''}`.toLowerCase();
+        if(/sans nouvelle évaluation/.test(text)||!/évaluation|évaluer|validation|valider|mini-test|test|bilan/.test(text))return;
+        const rowCodes=codeSetFromText(row?.[3]);
+        let hit=0;wanted.forEach(code=>{if(rowCodes.has(code))hit++;});
+        if(!hit)return;
+        overlap+=hit;rows++;matchingDays.push({day,time:row?.[0]||'',activity:row?.[2]||'',hit});
+      }));
+      if(!rows)return;
+      const title=String(week.title||'').toLowerCase();
+      const intentBonus=/valider|validation|évaluer|évaluation/.test(title)?12:/bilan/.test(title)?8:0;
+      const lateBonus=weekIndex*.35;
+      candidates.push({week,weekIndex,weekNumber:evaluationWeekNumber(week),overlap,rows,matchingDays,score:overlap*4+rows*2+intentBonus+lateBonus});
+    });
+    if(!candidates.length)return null;
+    candidates.sort((a,b)=>b.score-a.score||b.weekIndex-a.weekIndex);
+    const best=candidates[0];
+    const start=parseFrenchDay(best.week.days?.[0]?.[0]);
+    const end=parseFrenchDay(best.week.days?.[best.week.days.length-1]?.[0]);
+    const today=new Date();today.setHours(0,0,0,0);
+    let state='upcoming',label='À venir',icon='🟢';
+    if(start&&end&&today>=start&&today<=end){state='current';label='Cette semaine';icon='🟠';}
+    else if(end&&today>end){state='past';label='Passée';icon='🔵';}
+    const first=best.matchingDays[0]||null;
+    return {...best,start,end,state,label,icon,first};
+  }
+  function scheduleBlock(subject,period,ev){
+    const schedule=findEvaluationSchedule(subject,period,ev.skillCodes||[]);
+    if(!schedule)return `<div class="evaluation-schedule evaluation-schedule--missing"><div><span class="evaluation-schedule__label">📅 Programmation</span><strong>Repère non trouvé automatiquement</strong></div><button class="evaluation-schedule__link" type="button" data-open-eval-week data-eval-period="${esc(period)}" data-eval-week="1">Voir la période →</button></div>`;
+    const first=schedule.first?`<small>Premier créneau repéré : ${esc(schedule.first.day)} · ${esc(schedule.first.time)}</small>`:'';
+    return `<div class="evaluation-schedule evaluation-schedule--${schedule.state}"><div class="evaluation-schedule__main"><span class="evaluation-schedule__label">📅 Évaluation prévue</span><strong>Semaine ${schedule.weekNumber} · ${esc(schedule.week.dates||'')}</strong>${first}</div><span class="evaluation-auto-status evaluation-auto-status--${schedule.state}">${schedule.icon} ${schedule.label}</span><button class="evaluation-schedule__link" type="button" data-open-eval-week data-eval-period="${esc(period)}" data-eval-week="${schedule.weekIndex+1}">Voir dans l’emploi du temps →</button></div>`;
+  }
   function periodCard(subject,period,ev){
     const key=currentKey(subject,period),saved=plan[key]||{};
     const status=saved.status||ev.status||'draft';
@@ -62,6 +134,7 @@
     return `<article class="evaluation-card" data-eval-key="${esc(key)}" data-subject="${esc(subject)}" data-period="${esc(period)}">
       <header class="evaluation-card__head"><div><span class="evaluation-period">${period.toUpperCase()}</span><h3>${esc(ev.title)}</h3></div><select class="evaluation-status" aria-label="État de l’évaluation"><option value="draft" ${status==='draft'?'selected':''}>Matrice</option><option value="ready" ${status==='ready'?'selected':''}>Prête</option><option value="passed" ${status==='passed'?'selected':''}>Passée</option></select></header>
       <p>${esc(ev.description)}</p>
+      ${scheduleBlock(subject,period,ev)}
       <div class="evaluation-docs"><a class="btn btn--outline btn--compact" href="${esc(ev.studentDoc)}" download>📄 Fiche élève</a><a class="btn btn--outline btn--compact" href="${esc(ev.teacherDoc)}" download>👨‍🏫 Grille enseignant</a><button class="btn btn--light btn--compact" type="button" data-open-tracking ${skills.length?'':'disabled'}>👥 ${skills.length?`Renseigner l’évaluation (${skills.length})`:'Évaluation à finaliser'}</button></div>
       <details class="evaluation-skills"><summary>Compétences de cette évaluation <span>${skills.length||'à définir'}</span></summary><div class="evaluation-skill-list">${skillRows}</div></details>
       <label class="evaluation-note"><span>Note de préparation</span><textarea rows="2" placeholder="Adaptations, corpus réellement travaillé, notions reportées…">${esc(saved.note||'')}</textarea></label>
@@ -136,6 +209,14 @@
       card.querySelector('.evaluation-status').addEventListener('change',e=>{ensure().status=e.target.value;save();});
       card.querySelector('.evaluation-note textarea').addEventListener('input',e=>{ensure().note=e.target.value;save();});
       card.querySelectorAll('[data-eval-skill]').forEach(box=>box.addEventListener('change',()=>{const p=ensure();p.included=p.included||{};p.included[box.dataset.evalSkill]=box.checked;save();}));
+      const edtBtn=card.querySelector('[data-open-eval-week]');
+      if(edtBtn)edtBtn.addEventListener('click',()=>{
+        const targetPeriod=edtBtn.dataset.evalPeriod||period;
+        const week=Number(edtBtn.dataset.evalWeek)||1;
+        close();
+        if(window.ProgressionsEDT?.openWeek)window.ProgressionsEDT.openWeek(targetPeriod,week);
+        else document.querySelector(`[data-open-summary-period="${targetPeriod}"]`)?.click();
+      });
       const trackingBtn=card.querySelector('[data-open-tracking]');
       if(trackingBtn&&!trackingBtn.disabled)trackingBtn.addEventListener('click',()=>{
         const codes=[...card.querySelectorAll('[data-eval-skill]:checked')].map(box=>box.dataset.evalSkill);

@@ -1,137 +1,79 @@
-## V34.16 — 2026-08-19
-- Refonte complète de l’évaluation Français P1 autour d’un corpus commun et du DRAS.
-- Alignement strict 1 compétence = 1 code.
-- Nouvelle grille enseignant avec correspondance LSU.
+## V34.18 — Repères automatiques des évaluations
+- Ajout sur chaque carte d’évaluation d’un repère **semaine + dates** calculé depuis l’emploi du temps détaillé.
+- Ajout du statut automatique **À venir / Cette semaine / Passée** selon la date courante.
+- Ajout du lien **Voir dans l’emploi du temps** ouvrant directement la période et la semaine concernées.
+- Aucun doublon de saisie : le repère est déduit des compétences évaluées et des créneaux de validation programmés.
+
+# CHANGELOG — Progressions CE2
+
+Le détail complet des anciennes versions est conservé dans `docs/historique/`. Ce fichier ne garde que les étapes structurantes du projet.
+
+## V34.17 — Consolidation de la documentation
+- Nettoyage de la racine du projet : conservation de `README.md` et `CHANGELOG.md` uniquement pour la documentation active.
+- Archivage des anciens README, notes de patch et consignes d’installation dans `docs/historique/`.
+- Création d’un index de l’historique et sauvegarde du précédent CHANGELOG avant consolidation.
+- `README.md` recentré sur l’état actuel du projet.
+
+## V34.16 — Français P1 DRAS refondue
+- Corpus commun « Un matin dans la forêt » avec le renardeau.
+- 13 compétences P1 reliées à 13 codes canoniques.
+- DRAS explicite et retrait de la conjugaison systématique au présent, réservée à P2.
+- Harmonisation avec la correction Excellent / Réussi / En progrès / À revoir.
+
+## V34.15 — Français P2 à P5 finalisé avec le DRAS
+- Création de vraies évaluations élève et grilles enseignant pour P2 à P5.
+- Maîtrise de la langue évaluée à partir de corpus et de manipulations DRAS.
+- 14 compétences canoniques ciblées par période.
 
 ## V34.14 — Questions des élèves / API V2.8.1
-- Répare la synchronisation de la fenêtre Questions des élèves avec le Journal des Questions.
-- Support de `get_questions_classe` et `update_question`.
+- Réparation de la synchronisation de la fenêtre Questions des élèves.
+- Ajout des actions `get_questions_classe` et `update_question`.
 
-## V34.13
-- Correction de Mon suivi : lecture des compétences depuis p1Competencies à p5Competencies.
-- La compétence active d’une évaluation affiche maintenant code, intitulé et domaine.
+## V34.13 — Sélection de compétence en évaluation
+- Mon suivi lit les structures `p1Competencies` à `p5Competencies`.
+- La compétence active affiche code, intitulé et domaine.
 
+## V34.12 — Évaluation → Mon suivi
+- « Renseigner l’évaluation » ouvre réellement `mon-suivi.html`.
+- Conservation du contexte matière, période et compétence.
+- Navigation Précédente / Suivante / Terminer.
 
-## V34.10 — Correction connexion API partagée
-- Corrige `questions-eleves.js` qui forçait encore l'ancien déploiement Apps Script V2.7.5 dans `localStorage`.
-- L'URL Apps Script V2.8.0 devient la valeur de migration par défaut.
-- Une URL personnalisée déjà configurée n'est plus écrasée.
-- Migration automatique des navigateurs encore configurés sur l'ancien déploiement V2.7.5.
-- Balises `<title>` mises à jour en V34.10.
-## V34.09
+## V34.10 — Connexion API partagée
+- Correction de l’ancienne URL Apps Script encore forcée par le module Questions.
+- Migration vers le déploiement API V2.8.x sans écraser une URL personnalisée.
 
-- Synchronisation durable de l’historique des évaluations vers Google Sheets.
-- Ajout du stockage `traces_evaluations` côté Apps Script.
-- Envoi par lots depuis Progressions CE2 afin de limiter le nombre d’exécutions Apps Script.
-- Réconciliation par identifiant unique `trace_id` et reprise automatique des traces locales V34.08.
-- Lecture des traces depuis Google Sheets et ajout au `student_snapshot`.
-- API Apps Script portée en V2.8.0.
+## V34.09 — Traces d’évaluation ↔ Google Sheets
+- Création de l’onglet `traces_evaluations`.
+- Synchronisation par lots et réconciliation par `trace_id`.
+- Ajout des traces d’évaluation au `student_snapshot`.
 
-## V34.08
-- Historisation des niveaux par élève et compétence.
-- Ajout du niveau interne `depasse` pour les évaluations.
-- Correspondance élève ↔ LSU verrouillée dans la trace.
-- Traçage distinct des sources : évaluation papier, observation de classe, Maître Hibou.
-- Export du suivi enrichi du nombre de traces et de la dernière source.
+## V34.08 — Historique daté des évaluations
+- Une nouvelle saisie conserve une trace datée au lieu d’écraser l’état précédent.
+- Distinction des sources : évaluation papier, observation de classe, Maître Hibou.
+- Correspondance élève ↔ LSU enregistrée dans les traces.
 
-## V34.07
-- Alignement des emplois du temps P3–P5 avec toutes les compétences évaluées en français et mathématiques.
-- P3 vérifiée complète. P4 et P5 complétées sur les compétences de mesures/durées/géométrie/symétrie manquantes.
+## V34.07 — Programmation P3 à P5 alignée sur les évaluations
+- Vérification que chaque compétence évaluée possède une trace de programmation.
+- Compléments ciblés en P4 et P5.
 
-## V34.06 — Français P2 à P5 verrouillé sur les codes canoniques
+## V34.06 — Français P2 à P5 : codes canoniques
+- Finalisation des codes des évaluations de français P2 à P5.
+- Règle « 1 compétence = 1 code canonique » appliquée.
 
-- Finalisation des listes `skillCodes` pour les évaluations de français P2, P3, P4 et P5.
-- Correction de la progression temporelle : P3=futur, P4=imparfait, P5=passé composé.
-- Grilles DRAS mises en concordance exacte avec `data.js`.
-- Balises `<title>` mises à jour en V34.06.
-
-
-## V34.05 — Maths P5 verrouillée
-- P5 : 20 compétences canoniques, une tâche par compétence.
-- Nouveaux fichiers : `Maths_P5_eleve_verrouillee.docx` et `Maths_P5_grille_enseignant_verrouillee.docx`.
-- `evaluations-data.js` pointe désormais vers les documents P5 verrouillés.
-- Balises `<title>` mises à jour en V34.05.
-
-# CHANGELOG
-
-## V34.05
-- Verrouillage de l’évaluation de mathématiques P4.
-- 19 tâches distinctes reliées à 19 codes canoniques du référentiel.
-- Documents élève/enseignant dédiés à P4.
-- Mise à jour des titres HTML en V34.05.
-
-
-## V34.03
-- Verrouillage de l’évaluation Mathématiques P3.
-- 18 tâches distinctes reliées à 18 codes canoniques du référentiel.
-- Nouveaux fichiers `Maths_P3_eleve_verrouillee.docx` et `Maths_P3_grille_enseignant_verrouillee.docx`.
-
-# V34.02 — Mathématiques P2 verrouillées
-
-- P2 alignée sur la règle « 1 ligne d’évaluation = 1 compétence = 1 code canonique ».
-- 16 compétences P2 évaluées par 16 tâches distinctes.
-- Remplacement des anciens items non concordants (différences mentales, problèmes de comparaison/additifs, diagramme en barres) par les tâches correspondant exactement au référentiel P2.
-- Documents dédiés : `Maths_P2_eleve_verrouillee.docx` et `Maths_P2_grille_enseignant_verrouillee.docx`.
-- `evaluations-data.js` pointe désormais vers les documents P2 verrouillés.
-
-# V34.01 — Mathématiques P1 verrouillées
-
-- Règle officielle du projet : 1 ligne d’évaluation = 1 compétence = 1 code canonique.
-- Nouvelle évaluation élève P1 dédiée avec 16 compétences exactement reliées au référentiel.
-- Nouvelle grille enseignant P1 avec les 16 codes exacts ; suppression des « Code à relier ».
-- Alignement de la numération P1 sur le référentiel : nombres jusqu’à 10 000.
-- Suppression de l’évaluation P1 des items sans code canonique P1 dédié (équivalences de fractions, milieu).
-- `evaluations-data.js` pointe désormais vers les deux documents P1 verrouillés.
-
-# Changelog — Progressions CE2
-
-Ce fichier présente les grandes évolutions du projet. Le détail historique complet est conservé dans `docs/historique/`.
+## V34.01 à V34.05 — Mathématiques P1 à P5 verrouillées
+- Refonte progressive des évaluations de mathématiques.
+- Une tâche identifiable et un code canonique par compétence.
+- Alignement des fiches élève, grilles enseignant et `evaluations-data.js`.
 
 ## V34.00 — Socle de consolidation
+- Séparation entre documentation active et historique.
+- Mise en place de `docs/historique/`, `README.md` et `CHANGELOG.md`.
 
-- Première étape de consolidation du projet sans refonte fonctionnelle.
-- Regroupement des anciens README dans `docs/historique/`.
-- Création d’un `README.md` unique décrivant l’état actuel du projet.
-- Création de `CHANGELOG.md` pour conserver un historique synthétique.
-- Harmonisation du numéro de version des pages principales en V34.00.
-
-## V33.99 — Test des devoirs discret
-
-- Le mode de test des semaines de devoirs est déclenché par un appui long sur l’icône 📚 du titre « Devoirs ».
-- Les contrôles de simulation des semaines et le retour automatique sont conservés.
-
-## V33.94 à V33.98 — Devoirs des familles
-
-- Affichage d’une seule semaine de devoirs à la fois selon la date.
-- Présentation plus chaleureuse de la routine des devoirs.
-- Ajout puis amélioration progressive d’un mode de test enseignant.
-
-## V33.89 à V33.93 — Espace Parents
-
-- Ajout du PDF « Espace Parents & Maître Hibou » dans les ressources utiles.
-- Renommage de la rubrique en « Rappels des mots du cahier de liaison ».
-- Réorganisation des quatre accès principaux de l’accueil Parents.
-- Refonte de « Infos de la classe » avec six cartes illustrées et une seule rubrique visible à la fois.
-
-## V33.79 et versions précédentes
-
-- Consolidation de la synchronisation Progressions CE2 ↔ Maître Hibou ↔ API Apps Script ↔ Google Sheet.
-- Séparation de « Vue élèves » et « Mon suivi ».
+## V33 — Construction du socle fonctionnel
+- Séparation « Vue élèves » / « Mon suivi ».
 - Développement des espaces Parents, Élèves et Remplaçant.
-- Développement des outils rapides de classe, du suivi des présences et des vues TBI.
-- Construction progressive du référentiel CE2 et du suivi des compétences.
+- Outils rapides, présences, TBI, évaluations, référentiel et synchronisation Maître Hibou / API / Google Sheet.
 
-Pour l’historique détaillé des versions V32 et V33, consulter `docs/historique/`.
-
-
-## V34.11 — Correction ouverture saisie des évaluations
-- Le bouton « Renseigner l’évaluation » ouvre désormais Mon suivi, où se trouve la grille de compétences.
-- La matière, la période et la première compétence de l’évaluation sont sélectionnées automatiquement.
-- Suppression de l’erreur « Le suivi des élèves n’a pas pu être ouvert » liée à l’ancien chemin Vue élèves.
-
-## V34.12 — Correction du passage Évaluation → Mon suivi
-- « Renseigner l’évaluation » ouvre désormais réellement `mon-suivi.html` au lieu de basculer un mode caché sur la page d’accueil.
-- Le contexte de l’évaluation (matière, période, liste des codes, compétence courante) est conservé dans la session et repris automatiquement dans Mon suivi.
-- En mode évaluation, la saisie affiche le vocabulaire verrouillé : Excellent / Réussi / En progrès / À revoir.
-- Les traces saisies depuis Mon suivi sont enregistrées comme `evaluation_papier`, avec leur équivalent LSU et les références de l’évaluation.
-- Les traces sont mises en file puis synchronisées vers l’onglet Google Sheets `traces_evaluations` via l’API V2.8.0.
+## V32 et antérieures
+- Construction progressive du référentiel CE2, du suivi des compétences et des premières briques du tableau de bord.
+- Voir `docs/historique/` pour le détail version par version.
