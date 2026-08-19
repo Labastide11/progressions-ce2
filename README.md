@@ -1,3 +1,7 @@
+## V34.13 — Correction sélection compétence en évaluation
+
+Mon suivi lit désormais la structure canonique p1Competencies…p5Competencies et sélectionne automatiquement la compétence transmise par une évaluation.
+
 ## V34.10 — Historique des évaluations synchronisé avec Google Sheets
 
 - Nouvel onglet Google Sheet : `traces_evaluations`.

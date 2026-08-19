@@ -1,3 +1,7 @@
+## V34.13
+- Correction de Mon suivi : lecture des compétences depuis p1Competencies à p5Competencies.
+- La compétence active d’une évaluation affiche maintenant code, intitulé et domaine.
+
 
 ## V34.10 — Correction connexion API partagée
 - Corrige `questions-eleves.js` qui forçait encore l'ancien déploiement Apps Script V2.7.5 dans `localStorage`.

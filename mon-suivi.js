@@ -27,8 +27,16 @@ async function refresh(showAlert=false){setBusy(true);try{if(!configured()){sync
 async function loadRecent(){try{const data=await jsonp({action:'reussites',limit:300});recent=rowsFrom(data,['reussites','réussites','achievements','rows','results','data']);writeJson(KEYS.recent,recent)}catch(e){}}
 async function loadProofs(){for(const action of ['ceintures','competences']){try{const data=await jsonp({action});const rows=rowsFrom(data,['ceintures','competences','rows','results','data']);if(rows.length){proofs=rows;writeJson(KEYS.proofs,proofs);break}}catch(e){}}}
 function setBusy(v){const b=document.getElementById('refreshBtn');b.disabled=v;b.textContent=v?'⏳ Connexion…':'↻ Actualiser'}
-function subjects(){const p=window.PROGRESSIONS||{};return Object.entries(p).filter(([,v])=>v&&v.title&&Array.isArray(v.domains))}
-function allSkills(subject=state.subject){const obj=(window.PROGRESSIONS||{})[subject];if(!obj)return[];const out=[];(obj.domains||[]).forEach(d=>(d.items||[]).forEach(i=>{const periods=Array.isArray(i.periods)?i.periods:[];if(state.period==='all'||periods.includes(state.period)||i.period===state.period||!periods.length)out.push({code:i.code||i.id||'',label:i.label||i.title||i.competence||i.text||i.code||'Compétence',domain:d.title||d.label||''})}));return out.filter(x=>x.code)}
+function hasCompetencies(obj){if(!obj||!obj.title)return false;if(Array.isArray(obj.domains))return true;return ['p1','p2','p3','p4','p5'].some(p=>Array.isArray(obj[p+'Competencies']))}
+function subjects(){const p=window.PROGRESSIONS||{};return Object.entries(p).filter(([,v])=>hasCompetencies(v))}
+function normalizeSkill(i,domainFallback=''){return{code:i&&String(i.code||i.id||'').trim(),label:i&&String(i.label||i.title||i.competence||i.text||i.code||'Compétence').trim(),domain:i&&String(i.domain||domainFallback||'').trim()}}
+function allSkills(subject=state.subject){const obj=(window.PROGRESSIONS||{})[subject];if(!obj)return[];const out=[];const wanted=state.period;
+  // Structure actuelle du référentiel : p1Competencies ... p5Competencies.
+  const periods=wanted==='all'?['p1','p2','p3','p4','p5']:[wanted];
+  periods.forEach(p=>{const arr=obj[p+'Competencies'];if(Array.isArray(arr))arr.forEach(i=>out.push(normalizeSkill(i))) });
+  // Compatibilité avec l'ancienne structure domains/items.
+  (obj.domains||[]).forEach(d=>(d.items||[]).forEach(i=>{const ps=Array.isArray(i.periods)?i.periods:[];if(wanted==='all'||ps.includes(wanted)||i.period===wanted||!ps.length)out.push(normalizeSkill(i,d.title||d.label||''))}));
+  const seen=new Set();return out.filter(x=>x.code&&!seen.has(x.code)&&(seen.add(x.code),true))}
 function key(student,code){return student+'|'+code}
 function entry(student,code){return tracking[key(student,code)]||{level:'none',note:'',date:''}}
 function pendingTraces(limit=100){return traces.filter(t=>t&&t.trace_id&&t.sync_status!=='synced').slice(0,limit)}
