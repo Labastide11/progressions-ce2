@@ -1,3 +1,8 @@
+## V34.15 — Français P2 à P5 : évaluations DRAS finalisées
+- Remplacement des matrices P2-P5 par 8 documents dédiés (4 élève + 4 enseignant).
+- Maîtrise de la langue évaluée par manipulation/réécriture DRAS, avec codes canoniques verrouillés.
+- Ajout du vocabulaire de correction rapide annuel.
+
 ## V34.14 — Questions des élèves / API V2.8.1
 - Répare la synchronisation de la fenêtre Questions des élèves avec le Journal des Questions.
 - Support de `get_questions_classe` et `update_question`.

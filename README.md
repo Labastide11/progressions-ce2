@@ -115,7 +115,14 @@ Correction du raccordement Évaluations → Mon suivi pour la saisie des résult
 Le bouton « Renseigner l’évaluation » ouvre la page Mon suivi sur la matière, la période et la première compétence concernée. La navigation Précédente/Suivante permet de parcourir les compétences de l’évaluation. En contexte d’évaluation, les niveaux affichés sont : Excellent, Réussi, En progrès, À revoir ; ils sont enregistrés avec leur équivalent LSU dans l’historique et synchronisés vers Google Sheets.
 
 
-## V34.14 — Questions des élèves / API V2.8.1
+## V34.15 — Questions des élèves / API V2.8.1
 - Ajout de l’endpoint `get_questions_classe` dans Apps Script V2.8.1.
 - Ajout de `update_question` pour enregistrer statut, visibilité et date d’explication.
 - Le message de diagnostic Questions des élèves cible désormais l’API V2.8.1.
+
+
+## V34.15 — Français P2 à P5 finalisé avec le DRAS
+- 4 fiches élève séparées P2-P5, construites autour de manipulations DRAS (Déplacer, Remplacer, Ajouter, Supprimer).
+- 4 grilles enseignant séparées, 1 compétence = 1 code canonique.
+- Repère annuel intégré : Excellent / Réussi / En progrès / À revoir.
+- evaluations-data.js pointe désormais vers les documents dédiés P2-P5.

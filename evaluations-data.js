@@ -20,8 +20,8 @@ window.EVALUATIONS_CE2 = {
         title: 'Période 2 — Présent, familles de mots et écrit court',
         status: 'ready',
         description: 'Évaluation P2 codée et verrouillée : présent, nom/pronom, accord déterminant-nom, familles de mots, morphologie, synonymes/contraires et écriture courte avec le DRAS.',
-        studentDoc: 'assets/evaluations/francais/P2_P5_matrices_eleve_DRAS.docx',
-        teacherDoc: 'assets/evaluations/francais/P2_P5_grilles_enseignant_DRAS.docx',
+        studentDoc: 'assets/evaluations/francais/Francais_P2_eleve_DRAS_verrouillee.docx',
+        teacherDoc: 'assets/evaluations/francais/Francais_P2_grille_enseignant_DRAS_verrouillee.docx',
         skillCodes: [
           'GRA-P2-01',
           'GRA-P2-03',
@@ -43,8 +43,8 @@ window.EVALUATIONS_CE2 = {
         title: 'Période 3 — Groupe nominal, futur et précision lexicale',
         status: 'ready',
         description: 'Évaluation P3 codée et verrouillée : groupe nominal, futur, accords de l’adjectif, polysémie, niveaux de langue, réseau lexical, intensité et connecteurs temporels.',
-        studentDoc: 'assets/evaluations/francais/P2_P5_matrices_eleve_DRAS.docx',
-        teacherDoc: 'assets/evaluations/francais/P2_P5_grilles_enseignant_DRAS.docx',
+        studentDoc: 'assets/evaluations/francais/Francais_P3_eleve_DRAS_verrouillee.docx',
+        teacherDoc: 'assets/evaluations/francais/Francais_P3_grille_enseignant_DRAS_verrouillee.docx',
         skillCodes: [
           'GRA-P3-01',
           'GRA-P3-02',
@@ -66,8 +66,8 @@ window.EVALUATIONS_CE2 = {
         title: 'Période 4 — Groupes de phrase, imparfait et sens figuré',
         status: 'ready',
         description: 'Évaluation P4 codée et verrouillée : groupes de phrase, imparfait, accords, -er/-é, pluriels particuliers, sens propre/figuré, expressions et révision d’un écrit.',
-        studentDoc: 'assets/evaluations/francais/P2_P5_matrices_eleve_DRAS.docx',
-        teacherDoc: 'assets/evaluations/francais/P2_P5_grilles_enseignant_DRAS.docx',
+        studentDoc: 'assets/evaluations/francais/Francais_P4_eleve_DRAS_verrouillee.docx',
+        teacherDoc: 'assets/evaluations/francais/Francais_P4_grille_enseignant_DRAS_verrouillee.docx',
         skillCodes: [
           'GRA-P4-01',
           'GRA-P4-02',
@@ -89,8 +89,8 @@ window.EVALUATIONS_CE2 = {
         title: 'Période 5 — Réinvestissement, temps du passé et révision autonome',
         status: 'ready',
         description: 'Évaluation P5 codée et verrouillée : analyse de phrase, passé composé, articulation imparfait/passé composé, accords, relecture, morphologie lexicale et révision autonome d’un texte.',
-        studentDoc: 'assets/evaluations/francais/P2_P5_matrices_eleve_DRAS.docx',
-        teacherDoc: 'assets/evaluations/francais/P2_P5_grilles_enseignant_DRAS.docx',
+        studentDoc: 'assets/evaluations/francais/Francais_P5_eleve_DRAS_verrouillee.docx',
+        teacherDoc: 'assets/evaluations/francais/Francais_P5_grille_enseignant_DRAS_verrouillee.docx',
         skillCodes: [
           'GRA-P5-01',
           'GRA-P5-02',
