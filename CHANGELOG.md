@@ -1,3 +1,10 @@
+## V34.06 — Français P2 à P5 verrouillé sur les codes canoniques
+
+- Finalisation des listes `skillCodes` pour les évaluations de français P2, P3, P4 et P5.
+- Correction de la progression temporelle : P3=futur, P4=imparfait, P5=passé composé.
+- Grilles DRAS mises en concordance exacte avec `data.js`.
+- Balises `<title>` mises à jour en V34.06.
+
 
 ## V34.05 — Maths P5 verrouillée
 - P5 : 20 compétences canoniques, une tâche par compétence.

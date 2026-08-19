@@ -1,0 +1,12 @@
+PATCH Progressions CE2 V34.06 — Français P2 à P5 : codes canoniques finalisés
+
+Installation :
+1. Décompresser cette archive à la racine de Progressions CE2.
+2. Accepter le remplacement des fichiers existants.
+3. Ne supprimer aucun autre fichier du projet.
+
+Contenu fonctionnel :
+- P2, P3, P4 et P5 : 14 compétences ciblées par période.
+- 1 ligne d’évaluation = 1 compétence = 1 code canonique.
+- P3 : futur ; P4 : imparfait ; P5 : passé composé / imparfait-passé composé.
+- Les deux matrices DOCX P2-P5 sont remplacées par les versions codées.

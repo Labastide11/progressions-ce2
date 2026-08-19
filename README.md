@@ -1,5 +1,12 @@
 # Progressions CE2
 
+## V34.06 — Français P2 à P5 : codes canoniques finalisés
+
+- 14 compétences ciblées par période, chacune reliée à un code unique.
+- P3 corrigée sur le futur, P4 sur l’imparfait, P5 sur le passé composé et l’articulation imparfait/passé composé.
+- Grilles élève/enseignant P2-P5 régénérées avec les codes exacts.
+- Règle : 1 ligne d’évaluation = 1 compétence = 1 code canonique.
+
 ## V34.05 — Maths P4 verrouillée
 
 - P4 mathématiques : 19 compétences canoniques.

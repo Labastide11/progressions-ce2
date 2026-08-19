@@ -17,37 +17,97 @@ window.EVALUATIONS_CE2 = {
         ]
       },
       p2: {
-        title: 'Période 2 — Matrice évolutive',
-        status: 'draft',
-        description: 'Familles de mots, radical, préfixes et suffixes, synonymes et contraires. À adapter aux apprentissages réellement conduits.',
+        title: 'Période 2 — Présent, familles de mots et écrit court',
+        status: 'ready',
+        description: 'Évaluation P2 codée et verrouillée : présent, nom/pronom, accord déterminant-nom, familles de mots, morphologie, synonymes/contraires et écriture courte avec le DRAS.',
         studentDoc: 'assets/evaluations/francais/P2_P5_matrices_eleve_DRAS.docx',
         teacherDoc: 'assets/evaluations/francais/P2_P5_grilles_enseignant_DRAS.docx',
-        skillCodes: []
+        skillCodes: [
+          'GRA-P2-01',
+          'GRA-P2-03',
+          'GRA-P2-04',
+          'CONJ-P2-02',
+          'CONJ-P2-03',
+          'CONJ-P2-04',
+          'ORT-P2-01',
+          'VOC-P2-01',
+          'VOC-P2-02',
+          'VOC-P2-03',
+          'VOC-P2-04',
+          'VOC-P2-05',
+          'ECR-P2-04',
+          'ECR-P2-06'
+        ]
       },
       p3: {
-        title: 'Période 3 — Matrice évolutive',
-        status: 'draft',
-        description: 'Polysémie, niveaux de langue, réseaux lexicaux et échelles d’intensité. À finaliser au moment de la période.',
+        title: 'Période 3 — Groupe nominal, futur et précision lexicale',
+        status: 'ready',
+        description: 'Évaluation P3 codée et verrouillée : groupe nominal, futur, accords de l’adjectif, polysémie, niveaux de langue, réseau lexical, intensité et connecteurs temporels.',
         studentDoc: 'assets/evaluations/francais/P2_P5_matrices_eleve_DRAS.docx',
         teacherDoc: 'assets/evaluations/francais/P2_P5_grilles_enseignant_DRAS.docx',
-        skillCodes: []
+        skillCodes: [
+          'GRA-P3-01',
+          'GRA-P3-02',
+          'GRA-P3-03',
+          'CONJ-P3-01',
+          'CONJ-P3-02',
+          'CONJ-P3-03',
+          'ORT-P3-01',
+          'ORT-P3-02',
+          'ORT-P3-03',
+          'VOC-P3-01',
+          'VOC-P3-02',
+          'VOC-P3-03',
+          'VOC-P3-04',
+          'ECR-P3-04'
+        ]
       },
       p4: {
-        title: 'Période 4 — Matrice évolutive',
-        status: 'draft',
-        description: 'Sens propre et figuré, expressions et associations fréquentes. Structure DRAS adaptable.',
+        title: 'Période 4 — Groupes de phrase, imparfait et sens figuré',
+        status: 'ready',
+        description: 'Évaluation P4 codée et verrouillée : groupes de phrase, imparfait, accords, -er/-é, pluriels particuliers, sens propre/figuré, expressions et révision d’un écrit.',
         studentDoc: 'assets/evaluations/francais/P2_P5_matrices_eleve_DRAS.docx',
         teacherDoc: 'assets/evaluations/francais/P2_P5_grilles_enseignant_DRAS.docx',
-        skillCodes: []
+        skillCodes: [
+          'GRA-P4-01',
+          'GRA-P4-02',
+          'GRA-P4-03',
+          'CONJ-P4-01',
+          'CONJ-P4-02',
+          'CONJ-P4-03',
+          'ORT-P4-01',
+          'ORT-P4-03',
+          'ORT-P4-04',
+          'VOC-P4-01',
+          'VOC-P4-02',
+          'VOC-P4-03',
+          'ECR-P4-02',
+          'ECR-P4-05'
+        ]
       },
       p5: {
-        title: 'Période 5 — Matrice évolutive',
-        status: 'draft',
-        description: 'Réinvestissement des réseaux, morphologie, familles de mots, catégorisation et bilan lexical.',
+        title: 'Période 5 — Réinvestissement, temps du passé et révision autonome',
+        status: 'ready',
+        description: 'Évaluation P5 codée et verrouillée : analyse de phrase, passé composé, articulation imparfait/passé composé, accords, relecture, morphologie lexicale et révision autonome d’un texte.',
         studentDoc: 'assets/evaluations/francais/P2_P5_matrices_eleve_DRAS.docx',
         teacherDoc: 'assets/evaluations/francais/P2_P5_grilles_enseignant_DRAS.docx',
-        skillCodes: []
-      }
+        skillCodes: [
+          'GRA-P5-01',
+          'GRA-P5-02',
+          'GRA-P5-03',
+          'CONJ-P5-01',
+          'CONJ-P5-02',
+          'CONJ-P5-03',
+          'ORT-P5-01',
+          'ORT-P5-02',
+          'ORT-P5-05',
+          'VOC-P5-01',
+          'VOC-P5-02',
+          'VOC-P5-03',
+          'ECR-P5-03',
+          'ECR-P5-04'
+        ]
+      },
     }
   },
   maths: {
