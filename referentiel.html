@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Programmes officiels et repères annuels du CE2, organisés par matière et par période." name="description"/>
+<title>V34.22 — Programmes officiels du CE2</title>
+<link href="styles.css?v=33.11" rel="stylesheet"/>
+<link href="reference-page.css?v=33.11" rel="stylesheet"/>
+<link href="feliciter.css?v=33.27" rel="stylesheet"/><link href="timer.css?v=33.27" rel="stylesheet"/></head>
+<body class="reference-page">
+<header class="reference-header">
+<div class="reference-brand">
+<img alt="" class="reference-brand__logo" src="assets/maitre-hibou-logo.svg"/>
+<div class="reference-brand__text">
+<span>Maître Hibou</span>
+<small>Espace enseignant</small>
+</div>
+</div>
+<h1>Programmes officiels du CE2</h1>
+<div class="reference-header__actions">
+<span class="reference-header__page">Référentiel</span>
+<a class="reference-back" href="index.html">← Retour à l’accueil</a>
+</div>
+</header>
+<main class="reference-main">
+<section aria-label="Navigation des programmes" class="reference-controls">
+<div class="reference-controls__top">
+<div class="reference-current">
+<span class="reference-current__icon" id="currentSubjectIcon">📘</span>
+<div>
+<strong id="currentSubjectTitle">Français</strong>
+<small id="currentSubjectSubtitle">Lecture, écriture, oral, vocabulaire, grammaire et orthographe</small>
+</div>
+</div>
+<div class="reference-actions">
+<button id="toggleAllBtn" type="button">▴ Tout replier</button>
+<button id="printBtn" type="button">🖨️ Imprimer</button>
+</div>
+</div>
+<nav aria-label="Choisir une matière" class="reference-subjects">
+<div class="reference-subject-group reference-subject-group--core">
+<span class="reference-group-label">📘 Fondamentaux</span>
+<button class="subject-btn is-active" data-subject="francais" type="button">✏️ Français</button>
+<button class="subject-btn" data-subject="maths" type="button">🧮 Mathématiques</button>
+</div>
+<button class="subject-btn subject-btn--world" data-subject="histoire" type="button">🏺 Histoire</button>
+<button class="subject-btn subject-btn--world" data-subject="geographie" type="button">🗺️ Géographie</button>
+<button class="subject-btn subject-btn--world" data-subject="sciences" type="button">🔬 Sciences</button>
+<button class="subject-btn subject-btn--language" data-subject="anglais" type="button">🇬🇧 Anglais</button>
+<button class="subject-btn subject-btn--arts" data-subject="arts" type="button">🎨 Arts</button>
+<button class="subject-btn subject-btn--sport" data-subject="eps" type="button">🏃 EPS</button>
+<button class="subject-btn subject-btn--citizen" data-subject="emc" type="button">🤝 EMC</button>
+<button class="subject-btn subject-btn--citizen" data-subject="evar" type="button">💗 EVAR</button>
+<button class="subject-btn subject-btn--path" data-subject="parcours" type="button">🧭 Parcours éducatifs</button>
+<button class="subject-btn subject-btn--media" data-subject="emi" type="button">📰 EMI</button>
+</nav>
+<div class="reference-period-line">
+<span class="reference-period-label">Période</span>
+<div aria-label="Choisir une période" class="reference-periods" role="group">
+<button class="period-btn is-active" data-period="all" type="button">Vue annuelle</button>
+<button class="period-btn period-btn--p1" data-period="p1" type="button">Période 1</button>
+<button class="period-btn period-btn--p2" data-period="p2" type="button">Période 2</button>
+<button class="period-btn period-btn--p3" data-period="p3" type="button">Période 3</button>
+<button class="period-btn period-btn--p4" data-period="p4" type="button">Période 4</button>
+<button class="period-btn period-btn--p5" data-period="p5" type="button">Période 5</button>
+</div>
+<span class="reference-count" id="referenceCount"></span>
+</div>
+</section>
+<section aria-live="polite" class="reference-summary">
+<div>
+<span class="reference-summary__eyebrow">PROGRAMMES ET REPÈRES ANNUELS</span>
+<h2 id="contentTitle">Français — Vue annuelle</h2>
+<p id="contentIntro">Les apprentissages sont organisés par domaines et répartis sur les cinq périodes.</p>
+</div>
+<div class="reference-summary__stats" id="summaryStats"></div>
+</section>
+<section aria-live="polite" class="reference-grid" id="referenceGrid"></section>
+<section class="reference-routines" id="routinesSection">
+<header>
+<div>
+<span>REPÈRES PERMANENTS</span>
+<h2>À maintenir toute l’année</h2>
+</div>
+<button aria-expanded="true" id="toggleRoutinesBtn" type="button">▴ Replier</button>
+</header>
+<ul id="routinesList"></ul>
+</section>
+</main>
+<script src="data.js?v=33.11"></script>
+<script src="referentiel.js?v=33.11"></script>
+<div aria-hidden="true" aria-labelledby="feliciterTitle" aria-modal="true" class="feliciter-modal hidden" id="feliciterModal" role="dialog">
+<section class="feliciter-dialog">
+<header class="feliciter-head">
+<img alt="" class="feliciter-head__icon" src="assets/feliciter/etoile-applaudissements.png"/>
+<div class="feliciter-head__text"><h2 id="feliciterTitle">Féliciter et encourager</h2><p>Un mot positif pour valoriser les efforts, les progrès et l’entraide.</p></div>
+<button aria-label="Fermer" class="feliciter-close" id="closeFeliciterBtn" type="button">×</button>
+</header>
+<div class="feliciter-layout">
+<section class="feliciter-card">
+<div class="feliciter-mode"><button class="is-active" id="feliciterModeStudent" type="button">👤 Un élève</button><button id="feliciterModeClass" type="button">👥 Toute la classe</button></div>
+<div class="feliciter-field" id="feliciterStudentField"><label for="feliciterStudent">Prénom de l’élève</label><select id="feliciterStudent"></select></div>
+<div class="feliciter-field"><label>Motif principal</label><div class="feliciter-motifs">
+<button class="feliciter-motif" data-motif="efforts" type="button"><span>💪</span>Efforts</button>
+<button class="feliciter-motif is-active" data-motif="progres" type="button"><span>📈</span>Progrès</button>
+<button class="feliciter-motif" data-motif="comportement" type="button"><span>🤝</span>Comportement</button>
+<button class="feliciter-motif" data-motif="entraide" type="button"><span>🫶</span>Entraide</button>
+<button class="feliciter-motif" data-motif="perseverance" type="button"><span>⭐</span>Persévérance</button>
+</div></div>
+<div class="feliciter-field"><label>Arrière-plan</label><div class="feliciter-themes"><button class="feliciter-theme is-active" data-background="fete" type="button">🎉 Fête</button><button class="feliciter-theme" data-background="ecole" type="button">🏫 École</button><button class="feliciter-theme" data-background="reussite" type="button">🏆 Réussite</button><button class="feliciter-theme" data-background="aucun" type="button">◻ Aucun</button></div></div>
+<div class="feliciter-field"><label for="feliciterMessage">Votre message</label><textarea id="feliciterMessage" maxlength="420"></textarea></div>
+<div class="feliciter-actions"><button class="feliciter-generate" id="generateFeliciterBtn" type="button">✨ Générer le billet</button><button class="feliciter-print" id="printFeliciterBtn" type="button">📺 Agrandir au TBI</button><button class="feliciter-clear" id="clearFeliciterBtn" type="button">↺ Réinitialiser</button></div>
+<div class="feliciter-history"><h3>Derniers billets créés</h3><div class="feliciter-history-list" id="feliciterHistoryList"></div></div>
+</section>
+<section class="feliciter-card feliciter-preview-card background-fete"><h3 class="feliciter-preview-title">👁 Aperçu du billet</h3>
+<article class="feliciter-ticket" id="feliciterTicket">
+<div class="feliciter-ticket__recipient" id="feliciterPreviewRecipient">Pour un élève</div>
+<div class="feliciter-ticket__message" id="feliciterPreviewMessage">Tu as fait de beaux progrès. Ton travail et ta confiance grandissent chaque jour.</div>
+<div class="feliciter-ticket__bravo">Bravo, continue ainsi !</div>
+<div class="feliciter-ticket__date" aria-label="Date du billet"></div>
+<div class="feliciter-ticket__signature">Le maître</div>
+</article>
+</section>
+</div>
+</section>
+</div><script src="feliciter.js?v=33.27"></script><script src="timer.js?v=33.27"></script></body>
+</html>

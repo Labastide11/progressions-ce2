@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="Espace simplifié pour le remplacement dans la classe de CE2.">
+  <title>V34.22 — Espace Remplaçant — CE2</title>
+  <link rel="stylesheet" href="remplacant.css?v=33.40">
+</head>
+<body>
+  <header class="sub-header">
+    <div class="sub-header__brand">
+      <div class="sub-header__owl" aria-hidden="true">🦉</div>
+      <div>
+        <p class="sub-header__eyebrow">CE2 — La classe de Joël Cotty</p>
+        <h1>Espace Remplaçant</h1>
+        <p class="sub-header__welcome">Bienvenue. Voici l’essentiel pour prendre la classe rapidement.</p>
+      </div>
+    </div>
+    <div class="sub-header__date" id="todayDate"></div>
+  </header>
+
+  <main class="sub-main">
+    <section class="today-card" aria-labelledby="todayTitle">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">La journée en un coup d’œil</span>
+          <h2 id="todayTitle">☀️ Aujourd’hui</h2>
+        </div>
+        <span class="period-pill" id="periodBadge">—</span>
+      </div>
+      <div id="todayStatus" class="today-status">Chargement de la journée…</div>
+      <div id="todayTimeline" class="timeline" aria-live="polite"></div>
+    </section>
+
+    <section class="quick-grid" aria-label="Accès rapides">
+      <button class="quick-card quick-card--blue" type="button" data-open="schedule">
+        <span class="quick-card__icon" aria-hidden="true">📅</span>
+        <span class="quick-card__body"><strong>Emploi du temps</strong><small>Organisation de la semaine et séances prévues.</small></span>
+        <span class="quick-card__arrow" aria-hidden="true">›</span>
+      </button>
+      <button class="quick-card quick-card--amber" type="button" data-open="journal">
+        <span class="quick-card__icon" aria-hidden="true">📖</span>
+        <span class="quick-card__body"><strong>Cahier journal</strong><small>Déroulé détaillé et informations de la semaine.</small></span>
+        <span class="quick-card__arrow" aria-hidden="true">›</span>
+      </button>
+      <button class="quick-card quick-card--green" type="button" data-open="students">
+        <span class="quick-card__icon" aria-hidden="true">👥</span>
+        <span class="quick-card__body"><strong>Les élèves</strong><small><span id="studentSummary">Liste de classe</span></small></span>
+        <span class="quick-card__arrow" aria-hidden="true">›</span>
+      </button>
+      <button class="quick-card quick-card--purple" type="button" data-open="practical">
+        <span class="quick-card__icon" aria-hidden="true">ℹ️</span>
+        <span class="quick-card__body"><strong>Infos pratiques</strong><small>Horaires, récréations, services et fonctionnement.</small></span>
+        <span class="quick-card__arrow" aria-hidden="true">›</span>
+      </button>
+      <button class="quick-card quick-card--homework" type="button" data-open="homework">
+        <span class="quick-card__icon" aria-hidden="true">📚</span>
+        <span class="quick-card__body"><strong>Devoirs à la maison</strong><small>Ce qui a été demandé aux familles cette semaine.</small></span>
+        <span class="quick-card__arrow" aria-hidden="true">›</span>
+      </button>
+    </section>
+
+      </main>
+
+  <footer class="sub-footer"><span>Progressions CE2 · V33.40</span><span>Page dédiée au remplacement</span></footer>
+
+  <dialog class="sub-dialog" id="scheduleDialog">
+    <div class="dialog-shell dialog-shell--wide">
+      <header class="dialog-header"><div><span class="section-kicker">Organisation</span><h2>📅 Emploi du temps</h2></div><button class="icon-close" data-close aria-label="Fermer">×</button></header>
+      <div class="week-nav"><button type="button" id="prevWeek">← Semaine précédente</button><strong id="weekLabel">Semaine</strong><button type="button" id="nextWeek">Semaine suivante →</button></div>
+      <div id="weekSchedule" class="week-schedule"></div>
+    </div>
+  </dialog>
+
+  <dialog class="sub-dialog" id="journalDialog">
+    <div class="dialog-shell dialog-shell--wide">
+      <header class="dialog-header"><div><span class="section-kicker">Préparation de classe</span><h2>📖 Cahier journal</h2></div><button class="icon-close" data-close aria-label="Fermer">×</button></header>
+      <div class="journal-toolbar"><button type="button" id="journalTodayBtn" class="is-active">Aujourd’hui</button><button type="button" id="journalWeekBtn">Semaine</button></div>
+      <div id="journalContent"></div>
+      <section class="journal-summary" id="journalSummary"></section>
+    </div>
+  </dialog>
+
+  <dialog class="sub-dialog" id="studentsDialog">
+    <div class="dialog-shell">
+      <header class="dialog-header"><div><span class="section-kicker">Classe</span><h2>👥 Les élèves <span id="studentCountTitle"></span></h2></div><button class="icon-close" data-close aria-label="Fermer">×</button></header>
+      <div class="student-toolbar"><span id="studentSyncState">Liste de classe</span></div>
+      <div id="studentList" class="student-list"></div>
+    </div>
+  </dialog>
+
+  <dialog class="sub-dialog" id="homeworkDialog">
+    <div class="dialog-shell dialog-shell--wide">
+      <header class="dialog-header"><div><span class="section-kicker">Lien école-famille</span><h2>📚 Devoirs à la maison — Période 1</h2></div><button class="icon-close" data-close aria-label="Fermer">×</button></header>
+      <p class="homework-intro">5 à 10 minutes maximum · travail oral, lecture ou mémorisation · défis famille facultatifs.</p>
+      <div id="replacementHomework"></div>
+      <details class="replacement-homework-all"><summary>Voir toute la période 1</summary><div id="replacementHomeworkAll"></div></details>
+    </div>
+  </dialog>
+
+  <dialog class="sub-dialog" id="practicalDialog">
+    <div class="dialog-shell">
+      <header class="dialog-header"><div><span class="section-kicker">Repères essentiels</span><h2>ℹ️ Infos pratiques</h2></div><button class="icon-close" data-close aria-label="Fermer">×</button></header>
+      <div id="practicalView" class="practical-grid"></div>
+    </div>
+  </dialog>
+
+  <script src="emploi-du-temps-data-p1.js?v=31.97"></script>
+  <script src="emploi-du-temps-data-p2.js?v=31.97"></script>
+  <script src="emploi-du-temps-data-p3.js?v=31.97"></script>
+  <script src="emploi-du-temps-data-p4.js?v=31.97"></script>
+  <script src="emploi-du-temps-data-p5.js?v=31.97"></script>
+  <script src="public-emploi-du-temps.js?v=33.40"></script>
+  <script src="data/remplacant-eleves.js?v=33.40"></script>
+  <script src="data/remplacant-programme.js?v=33.40"></script>
+  <script src="data/remplacant-cahier-journal.js?v=33.40"></script>
+  <script src="data/remplacant-infos-pratiques.js?v=33.40"></script>
+  <script src="data/devoirs-p1.js?v=33.40"></script>
+  <script src="remplacant.js?v=33.40"></script>
+</body>
+</html>

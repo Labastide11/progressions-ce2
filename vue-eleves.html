@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Vue élèves CE2 dédiée, synchronisée avec Maître Hibou et Google Sheets." name="description"/>
+<title>V34.22 — Vue élèves — CE2 — Ma classe au quotidien</title>
+<link href="vue-eleves.css?v=33.69" rel="stylesheet"/>
+<link href="suivi-rentree.css?v=33.69" rel="stylesheet"/>
+<link href="parcours-outil.css?v=33.01" rel="stylesheet"/>
+<link href="feliciter.css?v=33.27" rel="stylesheet"/><link href="timer.css?v=33.27" rel="stylesheet"/></head>
+<body>
+<header class="page-header">
+<div class="brand">
+<img alt="" class="brand-logo" src="assets/maitre-hibou-logo.svg"/>
+<div class="brand-copy"><strong>Maître Hibou</strong><span>Espace enseignant</span></div>
+<h1>CE2 — Ma classe au quotidien</h1>
+<nav aria-label="Navigation de la page" class="page-context">
+<strong>Vue élèves</strong>
+<a class="back-link" href="index.html">← Retour à l’accueil</a>
+</nav>
+</div>
+</header>
+<main class="students-page">
+<section aria-labelledby="studentsTitle" class="students-toolbar">
+<div class="toolbar-head">
+<div>
+<h2 id="studentsTitle">Vue élèves</h2>
+<p id="syncStatus" role="status">Chargement de la classe…</p>
+</div>
+<button id="refreshBtn" type="button">↻ Actualiser</button>
+</div>
+<div class="toolbar-controls">
+<label class="search-control"><span class="sr-only">Rechercher un élève</span><input autocomplete="off" id="searchInput" placeholder="Rechercher un élève…" type="search"/></label>
+<label class="sort-control"><span class="sr-only">Trier les élèves</span><select id="sortSelect"><option value="recent">Activité récente</option><option value="alpha">Ordre alphabétique</option><option value="needs">À suivre en priorité</option></select></label>
+</div>
+<div aria-label="Filtres rapides" class="quick-filters" id="quickFilters">
+<button class="is-active" data-filter="all" type="button">Tous <b id="allCount">0</b></button>
+<button data-filter="recent" type="button">Actifs récemment <b id="recentCount">0</b></button>
+<button data-filter="inactive" type="button">Sans activité récente</button>
+<button data-filter="ceintures" type="button">Avec ceintures</button>
+</div>
+</section>
+
+<section class="rentree-panel" id="rentreePanel" aria-labelledby="rentreeTitle">
+  <div class="rentree-panel__row">
+    <div class="rentree-panel__icon" aria-hidden="true">📋</div>
+    <div class="rentree-panel__main">
+      <div class="rentree-panel__titleline">
+        <h3 id="rentreeTitle">Suivi de rentrée</h3>
+        <span class="rentree-panel__summary" id="rentreeSummary">Chargement…</span>
+      </div>
+      <div class="rentree-panel__stats">
+        <span class="rentree-stat" id="rentreeCompleteCount">✅ 0/0 complets</span>
+        <span class="rentree-stat" id="rentreeFicheCount">📄 0 fiche</span>
+        <span class="rentree-stat" id="rentreeAssuranceCount">🛡️ 0 assurance</span>
+        <span class="rentree-stat" id="rentreeCoopCount">💶 0 coop</span>
+      </div>
+      <div class="rentree-sync-state" id="rentreeSyncState">⏳ Connexion au Google Sheet…</div>
+    </div>
+    <div class="rentree-panel__actions">
+      <button class="rentree-manage" id="rentreeManageBtn" type="button">✏️ Gérer</button>
+      <button class="rentree-missing" id="rentreeMissingBtn" type="button">🔎 Qui manque quoi ?</button>
+    </div>
+  </div>
+</section>
+
+<section aria-live="polite" class="students-grid" id="studentsGrid"></section>
+<section class="empty-state" hidden="" id="emptyState">
+<strong>Aucun élève à afficher</strong>
+<p id="emptyMessage">La liste de classe n’est pas encore disponible.</p>
+<button id="emptyRefreshBtn" type="button">Actualiser la classe</button>
+</section>
+</main>
+<section aria-hidden="true" aria-labelledby="parcoursOutilTitle" class="po-modal hidden" id="parcoursOutilModal">
+<div aria-modal="true" class="po-panel" role="dialog">
+<header class="po-header">
+<div><span class="po-eyebrow">PARCOURS MODIFIABLE</span><h2 id="parcoursOutilTitle">Parcours de l’élève</h2><p>Objectifs, réussites, besoins, accompagnements, étapes et bilan.</p></div>
+<button aria-label="Fermer" class="po-close no-print" id="closeParcoursOutilBtn" type="button">×</button>
+</header>
+<div class="po-toolbar no-print">
+<label><span>Élève</span><select id="poStudentSelect"></select></label>
+<label><span>Période</span><select id="poPeriodSelect"><option value="p1">Période 1</option><option value="p2">Période 2</option><option value="p3">Période 3</option><option value="p4">Période 4</option><option value="p5">Période 5</option><option value="annuel">Bilan annuel</option></select></label>
+<div class="po-toolbar__actions"><button id="poSaveBtn" type="button">💾 Enregistrer</button><button id="poExportBtn" type="button">⬇ Exporter JSON</button><button id="poPrintBtn" type="button">🖨️ Imprimer / PDF</button></div>
+</div>
+<div aria-live="polite" class="po-status" id="poStatus"></div>
+<form class="po-form" id="poForm">
+<section class="po-identity">
+<div class="po-student-heading"><img alt="" id="poStudentPortrait" src="assets/portraits/portrait_neutre.png"/><div><span>Élève suivi</span><strong id="poStudentNameLabel">—</strong><small id="poStudentMeta">Informations de classe</small></div></div>
+<label><span>Date de mise à jour</span><input id="poUpdatedAt" type="date"/></label>
+</section>
+<section class="po-summary-strip">
+<article><span>✅ Compétences acquises</span><strong id="poMasteredCount">0</strong></article><article><span>🎯 Objectifs prioritaires</span><strong id="poGoalsCount">0</strong></article><article><span>💬 Commentaires datés</span><strong id="poCommentsCount">0</strong></article><article><span>🕒 Dernière modification</span><strong id="poLastSaved">Jamais</strong></article>
+</section>
+<section class="po-card po-card--success"><div class="po-card__title"><span>🌟 Réussites récentes</span><button class="po-mini-btn no-print" id="poAddSuccessBtn" type="button">＋ Ajouter</button></div><div class="po-entry-list" id="poSuccessList"></div><p class="po-empty-hint" id="poSuccessEmpty">Aucune réussite récente renseignée.</p></section>
+<section class="po-card po-card--mastered"><span>✅ Compétences maîtrisées</span><div class="po-skill-list" id="poMasteredSkills"></div><label class="po-inner-field"><span>Compléments ou compétences hors référentiel</span><textarea id="poMasteredNotes" placeholder="Autres acquis observés…" rows="4"></textarea></label></section>
+<div class="po-grid"><label class="po-card po-card--needs"><span>🧩 Besoins actuels</span><textarea id="poNeeds" placeholder="Difficultés observées, conditions de réussite, adaptations nécessaires…" rows="7"></textarea></label><label class="po-card po-card--goals"><span>🎯 Objectifs prioritaires</span><textarea id="poGoals" placeholder="Trois objectifs maximum, formulés de manière concrète et observable…" rows="7"></textarea></label><label class="po-card po-card--support"><span>🤝 Aides et accompagnements</span><textarea id="poSupports" placeholder="Aides internes, RASED, AESH, SESSAD, UPE2A, adaptations…" rows="7"></textarea></label><label class="po-card po-card--steps"><span>🪜 Étapes et prochaines actions</span><textarea id="poNextSteps" placeholder="Ce qui est prévu, par qui, pour quand…" rows="7"></textarea></label></div>
+<section class="po-card po-card--comments"><div class="po-card__title"><span>💬 Commentaires datés</span><button class="po-mini-btn no-print" id="poAddCommentBtn" type="button">＋ Ajouter un commentaire</button></div><div class="po-comments-list" id="poCommentsList"></div><p class="po-empty-hint" id="poCommentsEmpty">Aucun commentaire daté pour cette période.</p></section>
+<section class="po-card po-card--bilan"><span>📝 Bilan de la période</span><textarea id="poBilan" placeholder="Évolution observée, objectifs atteints, points à poursuivre…" rows="8"></textarea></section>
+</form>
+</div>
+</section>
+
+<section class="rentree-modal hidden" id="rentreeManagerModal" aria-hidden="true">
+  <div class="rentree-dialog" role="dialog" aria-modal="true" aria-labelledby="rentreeManagerTitle">
+    <header class="rentree-head">
+      <div>
+        <h2 id="rentreeManagerTitle">📋 Suivi de rentrée</h2>
+        <p id="rentreeYearLabel">Année scolaire</p>
+      </div>
+      <button class="rentree-close" id="rentreeCloseManage" type="button" aria-label="Fermer">×</button>
+    </header>
+    <div class="rentree-toolbar">
+      <div><strong id="rentreeManagerSummary">0/0 dossiers complets</strong><small>Enregistrement dans Google Sheet avec copie locale de secours.</small></div>
+    </div>
+    <div class="rentree-list" id="rentreeStudentsList"></div>
+    <footer class="rentree-footer">
+      <span class="rentree-save-note">📄 Fiche · 🛡️ Assurance · 💶 Coopérative</span>
+      <button class="rentree-btn rentree-manage" id="rentreeDoneBtn" type="button">Fermer</button>
+    </footer>
+  </div>
+</section>
+
+<section class="rentree-modal hidden" id="rentreeMissingModal" aria-hidden="true">
+  <div class="rentree-dialog rentree-dialog--small" role="dialog" aria-modal="true" aria-labelledby="rentreeMissingTitle">
+    <header class="rentree-head">
+      <div>
+        <h2 id="rentreeMissingTitle">🔎 Qui manque quoi ?</h2>
+        <p id="rentreeMissingSummary">Synthèse des documents à suivre</p>
+      </div>
+      <button class="rentree-close" id="rentreeCloseMissing" type="button" aria-label="Fermer">×</button>
+    </header>
+    <div class="rentree-missing-body" id="rentreeMissingBody"></div>
+    <footer class="rentree-footer">
+      <span class="rentree-save-note">Liste prête pour les relances de rentrée.</span>
+      <button class="rentree-btn rentree-copy" id="rentreeCopyBtn" type="button">📋 Copier la liste</button>
+    </footer>
+  </div>
+</section>
+
+<script src="data.js?v=32.97"></script>
+<script src="data/enseignant-eleves-meta.js?v=33.69"></script>
+<script src="vue-eleves.js?v=33.69"></script>
+<script src="suivi-rentree.js?v=33.69"></script>
+<script src="parcours-outil.js?v=33.01"></script>
+<div aria-hidden="true" aria-labelledby="feliciterTitle" aria-modal="true" class="feliciter-modal hidden" id="feliciterModal" role="dialog">
+<section class="feliciter-dialog">
+<header class="feliciter-head">
+<img alt="" class="feliciter-head__icon" src="assets/feliciter/etoile-applaudissements.png"/>
+<div class="feliciter-head__text"><h2 id="feliciterTitle">Féliciter et encourager</h2><p>Un mot positif pour valoriser les efforts, les progrès et l’entraide.</p></div>
+<button aria-label="Fermer" class="feliciter-close" id="closeFeliciterBtn" type="button">×</button>
+</header>
+<div class="feliciter-layout">
+<section class="feliciter-card">
+<div class="feliciter-mode"><button class="is-active" id="feliciterModeStudent" type="button">👤 Un élève</button><button id="feliciterModeClass" type="button">👥 Toute la classe</button></div>
+<div class="feliciter-field" id="feliciterStudentField"><label for="feliciterStudent">Prénom de l’élève</label><select id="feliciterStudent"></select></div>
+<div class="feliciter-field"><label>Motif principal</label><div class="feliciter-motifs">
+<button class="feliciter-motif" data-motif="efforts" type="button"><span>💪</span>Efforts</button>
+<button class="feliciter-motif is-active" data-motif="progres" type="button"><span>📈</span>Progrès</button>
+<button class="feliciter-motif" data-motif="comportement" type="button"><span>🤝</span>Comportement</button>
+<button class="feliciter-motif" data-motif="entraide" type="button"><span>🫶</span>Entraide</button>
+<button class="feliciter-motif" data-motif="perseverance" type="button"><span>⭐</span>Persévérance</button>
+</div></div>
+<div class="feliciter-field"><label>Arrière-plan</label><div class="feliciter-themes"><button class="feliciter-theme is-active" data-background="fete" type="button">🎉 Fête</button><button class="feliciter-theme" data-background="ecole" type="button">🏫 École</button><button class="feliciter-theme" data-background="reussite" type="button">🏆 Réussite</button><button class="feliciter-theme" data-background="aucun" type="button">◻ Aucun</button></div></div>
+<div class="feliciter-field"><label for="feliciterMessage">Votre message</label><textarea id="feliciterMessage" maxlength="420"></textarea></div>
+<div class="feliciter-actions"><button class="feliciter-generate" id="generateFeliciterBtn" type="button">✨ Générer le billet</button><button class="feliciter-print" id="printFeliciterBtn" type="button">📺 Agrandir au TBI</button><button class="feliciter-clear" id="clearFeliciterBtn" type="button">↺ Réinitialiser</button></div>
+<div class="feliciter-history"><h3>Derniers billets créés</h3><div class="feliciter-history-list" id="feliciterHistoryList"></div></div>
+</section>
+<section class="feliciter-card feliciter-preview-card background-fete"><h3 class="feliciter-preview-title">👁 Aperçu du billet</h3>
+<article class="feliciter-ticket" id="feliciterTicket">
+<div class="feliciter-ticket__recipient" id="feliciterPreviewRecipient">Pour un élève</div>
+<div class="feliciter-ticket__message" id="feliciterPreviewMessage">Tu as fait de beaux progrès. Ton travail et ta confiance grandissent chaque jour.</div>
+<div class="feliciter-ticket__bravo">Bravo, continue ainsi !</div>
+<div class="feliciter-ticket__date" aria-label="Date du billet"></div>
+<div class="feliciter-ticket__signature">Le maître</div>
+</article>
+</section>
+</div>
+</section>
+</div><script src="feliciter.js?v=33.27"></script><script src="timer.js?v=33.27"></script></body>
+</html>

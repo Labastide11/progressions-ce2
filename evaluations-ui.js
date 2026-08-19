@@ -7,6 +7,7 @@
   const list=document.getElementById('evaluationsList');
   const subjectFilter=document.getElementById('evaluationSubjectFilter');
   const periodFilter=document.getElementById('evaluationPeriodFilter');
+  const semesterFilter=document.getElementById('evaluationSemesterFilter');
   const STORAGE_KEY='progressions_ce2_evaluation_plan_v1';
   const ACTIVE_KEY='progressions_ce2_active_evaluation_v1';
   let plan={};
@@ -47,6 +48,12 @@
     return exact.length?exact:allSkillsFallback(subject,period);
   }
   function currentKey(subject,period){return subject+'|'+period;}
+  function semesterForPeriod(period){
+    return (period==='p1'||period==='p2')?'s1':(period==='p3'||period==='p4'||period==='p5')?'s2':'';
+  }
+  function semesterLabel(period){
+    return semesterForPeriod(period)==='s1'?'Semestre 1 — LSU S1':'Semestre 2 — LSU S2';
+  }
   const FR_MONTHS={janvier:0,'février':1,fevrier:1,mars:2,avril:3,mai:4,juin:5,juillet:6,'août':7,aout:7,septembre:8,octobre:9,novembre:10,'décembre':11,decembre:11};
   function parseFrenchDay(label){
     const m=String(label||'').toLowerCase().match(/(\d{1,2})(?:er)?\s+(janvier|février|fevrier|mars|avril|mai|juin|juillet|août|aout|septembre|octobre|novembre|décembre|decembre)\s+(20\d{2})/i);
@@ -137,8 +144,9 @@
       const checked=included[skill.code]!==false;
       return `<label class="evaluation-skill"><input type="checkbox" data-eval-skill="${esc(skill.code)}" ${checked?'checked':''}><span class="evaluation-skill__code">${esc(skill.code)}</span><span>${esc(skill.title)}</span></label>`;
     }).join(''):'<p class="evaluation-empty">Les compétences de cette matrice ne sont pas encore arrêtées. Elles seront choisies au moment de finaliser la période.</p>';
-    return `<article class="evaluation-card" data-eval-key="${esc(key)}" data-subject="${esc(subject)}" data-period="${esc(period)}">
-      <header class="evaluation-card__head"><div><span class="evaluation-period">${period.toUpperCase()}</span><h3>${esc(ev.title)}</h3></div><select class="evaluation-status" aria-label="État de l’évaluation"><option value="draft" ${status==='draft'?'selected':''}>Matrice</option><option value="ready" ${status==='ready'?'selected':''}>Prête</option><option value="passed" ${status==='passed'?'selected':''}>Passée</option></select></header>
+    const semester=semesterForPeriod(period);
+    return `<article class="evaluation-card" data-eval-key="${esc(key)}" data-subject="${esc(subject)}" data-period="${esc(period)}" data-semester="${esc(semester)}">
+      <header class="evaluation-card__head"><div><div class="evaluation-card__markers"><span class="evaluation-period">${period.toUpperCase()}</span><span class="evaluation-semester evaluation-semester--${esc(semester)}">🟣 ${esc(semesterLabel(period))}</span></div><h3>${esc(ev.title)}</h3></div><select class="evaluation-status" aria-label="État de l’évaluation"><option value="draft" ${status==='draft'?'selected':''}>Matrice</option><option value="ready" ${status==='ready'?'selected':''}>Prête</option><option value="passed" ${status==='passed'?'selected':''}>Passée</option></select></header>
       <p>${esc(ev.description)}</p>
       ${scheduleBlock(subject,period,ev)}
       <div class="evaluation-docs"><a class="btn btn--outline btn--compact" href="${esc(ev.studentDoc)}" download>📄 Fiche élève</a><a class="btn btn--outline btn--compact" href="${esc(ev.teacherDoc)}" download>👨‍🏫 Grille enseignant</a><button class="btn btn--light btn--compact" type="button" data-open-tracking ${skills.length?'':'disabled'}>👥 ${skills.length?`Renseigner l’évaluation (${selectedCount})`:'Évaluation à finaliser'}</button></div>
@@ -147,11 +155,15 @@
     </article>`;
   }
   function render(){
-    const sf=subjectFilter.value||'francais',pf=periodFilter.value||'all';
+    const sf=subjectFilter.value||'francais',pf=periodFilter.value||'all',semf=semesterFilter?.value||'all';
     const cards=[];
     Object.entries(data).forEach(([subject,info])=>{
       if(sf!=='all'&&sf!==subject)return;
-      Object.entries(info.periods||{}).forEach(([period,ev])=>{if(pf==='all'||pf===period)cards.push(periodCard(subject,period,ev));});
+      Object.entries(info.periods||{}).forEach(([period,ev])=>{
+        if(pf!=='all'&&pf!==period)return;
+        if(semf!=='all'&&semf!==semesterForPeriod(period))return;
+        cards.push(periodCard(subject,period,ev));
+      });
     });
     list.innerHTML=cards.join('')||'<p class="evaluation-empty">Aucune évaluation disponible pour ce filtre.</p>';
     bind();
@@ -244,7 +256,9 @@
   openBtn.addEventListener('click',open);closeBtn.addEventListener('click',close);
   modal.addEventListener('click',e=>{if(e.target===modal)close();});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.classList.contains('hidden'))close();});
-  subjectFilter.addEventListener('change',render);periodFilter.addEventListener('change',render);
+  subjectFilter.addEventListener('change',render);
+  periodFilter.addEventListener('change',render);
+  semesterFilter?.addEventListener('change',render);
 
   // Mise à jour ciblée du navigateur d'évaluation.
   // Ne pas observer tout le DOM : ensureNavigator() modifie lui-même le DOM,
