@@ -1,6 +1,6 @@
-# Progressions CE2 — V34.22 — Ma classe au quotidien
+# Progressions CE2 — V34.23 — Ma classe au quotidien
 
-**Version actuelle : V34.22**
+**Version actuelle : V34.23**
 
 Progressions CE2 est l’environnement de pilotage pédagogique de la classe de CE2. Il centralise la programmation, l’emploi du temps, le suivi des élèves, les évaluations, les outils de classe et les espaces dédiés aux élèves, aux familles et au remplaçant.
 
@@ -64,6 +64,13 @@ Chaque carte d’évaluation affiche désormais la semaine et les dates repéré
 Dans les cartes d’évaluation, le compteur affiche désormais en temps réel le nombre de compétences cochées. Le libellé « Renseigner l’évaluation (X) » et le nombre à droite de « Compétences de cette évaluation » se mettent à jour immédiatement lors d’un cochage ou décochage.
 
 
-## Repère semestriel LSU — V34.22
+## Repère semestriel LSU — V34.23
 
 Chaque carte d’évaluation affiche désormais le semestre auquel elle contribue : **P1 + P2 → Semestre 1** et **P3 + P4 + P5 → Semestre 2**. Un filtre **Tous / Semestre 1 / Semestre 2** permet de préparer plus facilement les synthèses LSU. Règle de planification retenue : janvier doit rester sans évaluation programmée ; le déplacement des évaluations P3 encore positionnées en janvier sera traité dans l’ajustement calendrier suivant.
+
+
+## V34.23 — Janvier sans évaluations programmées
+- P3 reste une période d’apprentissage en janvier, sans évaluation programmée.
+- Les évaluations structurées de Français et Mathématiques P3 sont déplacées sur la semaine du 1er au 5 février 2027.
+- P1 + P2 alimentent le semestre 1 ; P3 + P4 + P5 alimentent le semestre 2.
+- Les entraînements, observations et retours pédagogiques de janvier restent possibles mais ne sont plus repérés comme évaluations.

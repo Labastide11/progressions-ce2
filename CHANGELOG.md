@@ -1,3 +1,10 @@
+## V34.23 — Janvier sans évaluations programmées
+- Retrait des libellés d’évaluation formelle des semaines de janvier en P3.
+- Déplacement des traces principales Français/Maths P3 sur la semaine du 1er au 5 février 2027.
+- Semaine 4 P3 renommée « Consolider et réinvestir ».
+- Semaine 5 P3 renommée « Évaluer puis remédier ».
+- Cache-busting du fichier `emploi-du-temps-data-p3.js`.
+
 ## V34.22 — Repère semestriel des évaluations
 - Affichage automatique sur chaque carte de **Semestre 1 — LSU S1** ou **Semestre 2 — LSU S2**.
 - Règle annuelle verrouillée : **P1 + P2 = S1** ; **P3 + P4 + P5 = S2**.
