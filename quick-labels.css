@@ -1,0 +1,103 @@
+/* V33.22 — libellés violets à écriture blanche sous les raccourcis, visibles au survol, sans infobulle native. */
+.home-panel__headerline,
+.home-panel__deco,
+.home-panel__deco--actions{
+  overflow:visible!important;
+}
+
+.home-panel__deco--actions .quick-label-btn{
+  position:relative!important;
+  overflow:visible!important;
+  isolation:isolate;
+}
+
+.quick-label-btn__icon{
+  width:100%;
+  height:100%;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  border-radius:inherit;
+}
+
+.quick-label-btn__icon img{
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  max-height:none!important;
+  object-fit:cover!important;
+  border-radius:inherit!important;
+}
+
+/* L'icône Féliciter reste volontairement plus grande, mais est découpée dans son bouton. */
+.feliciter-shortcut--home .quick-label-btn__icon img{
+  transform:scale(1.35)!important;
+  transform-origin:center!important;
+}
+
+.home-panel__deco--actions .quick-label-btn::after{
+  content:attr(data-label)!important;
+  position:absolute!important;
+  left:50%!important;
+  top:calc(100% + 7px)!important;
+  transform:translate(-50%,3px)!important;
+  display:block!important;
+  width:max-content!important;
+  max-width:180px!important;
+  padding:6px 10px!important;
+  margin:0!important;
+  border:1px solid #7448c8!important;
+  border-radius:10px!important;
+  background:#7448c8!important;
+  box-shadow:0 5px 14px rgba(70,42,135,.24)!important;
+  color:#fff!important;
+  font:900 .75rem/1.1 system-ui,sans-serif!important;
+  letter-spacing:0!important;
+  text-align:center!important;
+  white-space:nowrap!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  z-index:50!important;
+  transition:opacity .14s ease,transform .14s ease,visibility 0s linear .14s!important;
+}
+
+.home-panel__deco--actions .quick-label-btn:hover::after,
+.home-panel__deco--actions .quick-label-btn:focus-visible::after{
+  opacity:1!important;
+  visibility:visible!important;
+  transform:translate(-50%,0)!important;
+  transition-delay:0s!important;
+}
+
+/* Espace réservé sous les boutons pour que le texte ne chevauche pas la première ligne. */
+.home-panel__deco--pedago,
+.home-panel__deco--actions:has(.feliciter-shortcut--home){
+  padding-bottom:20px;
+}
+
+/* V33.27 — harmonisation stricte des libellés des raccourcis.
+   Même violet que le libellé historique « Programme du jour », texte blanc partout. */
+#openDailyProgramQuickBtn::after,
+#memoQuickBtn::after,
+#timerQuickBtn::after,
+#openFeliciterBtn::after{
+  content:attr(data-label)!important;
+  background:#51327f!important;
+  border-color:#51327f!important;
+  color:#fff!important;
+  box-shadow:0 5px 14px rgba(81,50,127,.26)!important;
+}
+
+#openDailyProgramQuickBtn:hover::after,
+#openDailyProgramQuickBtn:focus-visible::after,
+#memoQuickBtn:hover::after,
+#memoQuickBtn:focus-visible::after,
+#timerQuickBtn:hover::after,
+#timerQuickBtn:focus-visible::after,
+#openFeliciterBtn:hover::after,
+#openFeliciterBtn:focus-visible::after{
+  background:#51327f!important;
+  border-color:#51327f!important;
+  color:#fff!important;
+}

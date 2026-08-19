@@ -1,0 +1,1215 @@
+/* V33.98 — bouton provisoire de test des semaines placé près de « Accueil Parents » */
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:#263238;background:#f7f5ff}*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#f7f5ff,#fffdf8 38%,#fff);min-height:100vh}.parents-header{display:flex;justify-content:space-between;gap:24px;align-items:center;padding:24px clamp(20px,5vw,70px);background:#fff;border-bottom:1px solid #e9e3f4;box-shadow:0 4px 20px #56348d12}.parents-header p{margin:0 0 5px;color:#6941a5;font-weight:800}.parents-header h1{margin:0;font-size:clamp(26px,4vw,42px);color:#3e2567}.parents-header span{display:block;margin-top:6px;color:#666}.parents-header>div:last-child{font-weight:700;color:#6f6282}.parents-main{width:min(1180px,calc(100% - 32px));margin:26px auto 50px;display:grid;gap:24px}.parents-hero,.parents-section{background:#fff;border:1px solid #e8e0f3;border-radius:22px;padding:24px;box-shadow:0 10px 30px #5c3c8610}.parents-hero{display:flex;justify-content:space-between;gap:20px;background:linear-gradient(135deg,#fff,#f4edff)}.parents-hero h2,.parents-section h2{margin:4px 0 8px;color:#3e2567}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#8066a4;font-weight:900}.period-badge,.small-badge{align-self:flex-start;border-radius:999px;background:#7147a7;color:#fff;padding:9px 13px;font-size:12px;font-weight:900;white-space:nowrap}.section-title{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:16px}.section-title>p{max-width:480px;margin:0;color:#746f79;font-size:14px}.learning-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.learning-card{border:1px solid #ece5f5;border-radius:16px;padding:16px;background:#fdfcff}.learning-card h3{margin:0 0 5px;color:#4a3170}.learning-card>p{margin:0 0 10px;color:#746f79;font-size:13px}.learning-card details{border-top:1px solid #eee7f6;padding-top:9px}.learning-card summary{cursor:pointer;font-weight:800;color:#674392}.learning-card ul,.parents-section ul,.parents-hero ul{padding-left:20px;line-height:1.55}.learning-card li{margin:5px 0}.domain-title{font-weight:900;margin-top:10px;color:#51425e}.parents-life{background:linear-gradient(135deg,#fff,#f8fbff)}.together-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}.together-card{background:#fff;border:1px solid #e1eaf4;border-radius:14px;padding:14px}.together-card h3{margin:0 0 8px}.together-card ul{font-size:13px}.parents-two-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px}.document-item{padding:10px 12px;border-radius:12px;background:#f7f4fb;margin:8px 0}.document-item a{color:#5f3894;font-weight:800}.parents-schedule{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.schedule-day{border:1px solid #ece5f5;border-radius:14px;overflow:hidden}.schedule-day h3{margin:0;padding:12px;background:#f3edfb;color:#4b2d76;text-transform:capitalize}.schedule-row{display:grid;grid-template-columns:78px 1fr;gap:8px;padding:9px 10px;border-top:1px solid #f0ebf4;font-size:12px}.schedule-row time{font-weight:800;color:#6d5980}.schedule-row strong{display:block}.schedule-row small{display:block;color:#777;margin-top:2px}footer{text-align:center;padding:22px;color:#81788b;font-size:12px}@media(max-width:850px){.learning-grid,.parents-two-cols{grid-template-columns:1fr}.together-grid{grid-template-columns:1fr}.parents-schedule{grid-template-columns:1fr 1fr}.section-title{display:block}.section-title>p{margin-top:8px}.parents-header{align-items:flex-start;flex-direction:column}}@media(max-width:520px){.parents-main{width:min(100% - 20px,1180px)}.parents-hero{flex-direction:column}.parents-schedule{grid-template-columns:1fr}.parents-section,.parents-hero{padding:18px}.schedule-row{grid-template-columns:70px 1fr}}
+
+.parents-homework{grid-column:1/-1}
+.homework-current{display:grid;gap:14px}.homework-week-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding:2px 2px 8px}
+.homework-week-head span{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#8066a4;font-weight:900}.homework-week-head h3{margin:3px 0 0;color:#3e2567}.homework-week-head small{background:#f0e8fb;color:#5e3a91;border-radius:999px;padding:7px 10px;font-weight:800}
+.homework-card{border:1px solid #e8e0f3;border-radius:18px;padding:16px;background:#fff;box-shadow:0 6px 18px #5c3c860b}.homework-card--compact{margin:10px 0;box-shadow:none}.homework-date{font-weight:900;color:#5d3b8b;margin-bottom:10px;text-transform:capitalize}
+.homework-block{border-radius:13px;padding:11px 12px;margin-top:8px}.homework-block b{color:#3f3151}.homework-block p{margin:5px 0 0;line-height:1.48}.homework-routine{background:#f7f5fb}.homework-challenge{background:#eef8ff;border-left:4px solid #77aee0}.homework-family{background:#fff7df;border-left:4px solid #e8b84e}.homework-family b span{font-size:11px;background:#fff;border-radius:999px;padding:3px 7px;color:#7b641c;margin-left:5px}
+.homework-hibou{font-size:12px;color:#654f79;margin-top:10px}.homework-rule{margin-top:14px;padding:12px 14px;background:#f4effb;border-radius:14px;color:#513975;font-weight:800;text-align:center}
+.homework-theme{margin:4px 0 0;color:#746f79;font-weight:500}.homework-empty,.homework-holiday{padding:13px 14px;border-radius:13px;background:#f7f5fb;line-height:1.5}.homework-holiday{margin-top:10px;background:#eff9f3;color:#315c43;font-weight:800}
+@media(max-width:620px){.homework-week-head{display:block}.homework-week-head small{display:inline-block;margin-top:8px}.homework-card{padding:13px}.homework-rule{text-align:left}}
+
+
+/* V33.62 — accueil mobile par 4 accès rapides */
+.parents-dashboard{background:linear-gradient(145deg,#fff,#faf7ff);border:1px solid #e5dcf2;border-radius:24px;padding:18px;box-shadow:0 12px 30px #4e337014}
+.parents-dashboard__head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:16px}
+.parents-dashboard__head h2{margin:3px 0 6px;color:#41256f;font-size:clamp(22px,5vw,32px)}
+.parents-dashboard__head p{margin:0;color:#706879;line-height:1.45}
+.parents-quick-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.parents-quick-card{min-height:150px;border:1px solid #ded3ee;border-radius:22px;background:#fff;box-shadow:0 8px 20px #563a7914;padding:16px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;color:#42286e;cursor:pointer;font:inherit;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+.parents-quick-card:active{transform:scale(.98)}
+.parents-quick-card:hover{border-color:#a98ccc;box-shadow:0 10px 24px #563a7922}
+.parents-quick-card__icon{font-size:44px;line-height:1}
+.parents-quick-card__label{font-weight:900;font-size:17px;line-height:1.15}
+.parents-quick-card small{font-size:12px;color:#7c7483}
+.parents-quick-card--homework{background:linear-gradient(145deg,#fff,#faf5ff)}
+.parents-quick-card--pending{opacity:.56;cursor:default;background:#f5f3f7}
+.parents-quick-card--pending:hover{border-color:#ded3ee;box-shadow:0 8px 20px #563a7914}
+.parents-view{background:#fff;border:1px solid #e6dff0;border-radius:22px;padding:18px;box-shadow:0 10px 26px #4e337010}
+.parents-view__toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
+.parents-back{border:0;border-radius:999px;padding:9px 13px;background:#f1eafb;color:#51347f;font-weight:900;cursor:pointer;font:inherit}
+.parents-schedule-today{display:grid;gap:12px}
+.schedule-day--today{border:2px solid #8d70bb!important;background:linear-gradient(180deg,#fff,#fbf8ff)}
+.schedule-day--selected{outline:2px solid #d7c9ea;outline-offset:2px}
+.schedule-week-details,.parents-secondary-learning{margin-top:14px;border-top:1px solid #ece6f3;padding-top:12px}
+.schedule-week-details>summary,.parents-secondary-learning>summary{cursor:pointer;color:#5e3a91;font-weight:900}
+.parents-data-reserve{display:none!important}
+[hidden]{display:none!important}
+@media(max-width:620px){
+  .parents-main{padding-top:10px}
+  .parents-header{padding-bottom:12px}
+  .parents-header span{display:none}
+  .parents-dashboard{padding:14px;border-radius:20px}
+  .parents-dashboard__head{margin-bottom:12px}
+  .parents-dashboard__head p{font-size:13px}
+  .parents-dashboard__head .period-badge{font-size:11px;padding:6px 8px}
+  .parents-quick-grid{gap:10px}
+  .parents-quick-card{min-height:128px;padding:13px 8px;border-radius:18px}
+  .parents-quick-card__icon{font-size:38px}
+  .parents-quick-card__label{font-size:15px}
+  .parents-view{padding:14px;border-radius:18px}
+  .parents-view .section-title{display:block}
+  .schedule-day{margin-bottom:10px}
+}
+
+
+/* V33.62 — visuels Parents intégrés */
+.parents-dashboard__hero{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(220px,42%);
+  gap:10px;
+  align-items:center;
+  min-height:210px;
+  margin-bottom:16px;
+  overflow:hidden;
+}
+.parents-dashboard__copy{padding:6px 0 6px 4px;position:relative;z-index:2}
+.parents-dashboard__copy h2{margin:3px 0 3px;color:#41256f;font-size:clamp(30px,6vw,46px);line-height:1}
+.parents-dashboard__subtitle{font-size:16px!important;color:#543b7c!important;font-weight:800;margin:8px 0 14px!important}
+.parents-dashboard__copy>.period-badge{display:inline-flex;margin-top:10px}
+.parents-dashboard__banner{
+  width:100%;
+  max-height:230px;
+  object-fit:contain;
+  object-position:center right;
+  display:block;
+  filter:none;
+}
+.parents-quick-card__icon{
+  width:86px;
+  height:86px;
+  display:grid;
+  place-items:center;
+  line-height:1;
+}
+.parents-quick-card__icon img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+.parents-quick-card--pending .parents-quick-card__icon img{filter:saturate(.72);opacity:.82}
+
+@media(max-width:620px){
+  .parents-dashboard__hero{
+    grid-template-columns:minmax(0,55%) minmax(0,45%);
+    min-height:164px;
+    gap:0;
+    margin-bottom:12px;
+  }
+  .parents-dashboard__copy{padding-left:2px}
+  .parents-dashboard__copy h2{font-size:29px}
+  .parents-dashboard__subtitle{font-size:13px!important;margin:7px 0 8px!important}
+  .parents-dashboard__copy>p:not(.parents-dashboard__subtitle){font-size:12px;line-height:1.35;margin:0}
+  .parents-dashboard__copy>.period-badge{margin-top:7px}
+  .parents-dashboard__banner{width:115%;max-width:none;margin-left:-10%;max-height:170px}
+  .parents-quick-card__icon{width:72px;height:72px}
+}
+@media(max-width:390px){
+  .parents-dashboard__hero{min-height:148px}
+  .parents-dashboard__copy h2{font-size:26px}
+  .parents-dashboard__banner{width:120%;margin-left:-15%}
+  .parents-quick-card__icon{width:64px;height:64px}
+}
+
+
+/* V33.62 — suppression du bandeau supérieur en doublon */
+.parents-main{
+  margin-top:18px;
+}
+.parents-dashboard__title-row{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:14px;
+}
+.parents-dashboard__title-row h1{
+  margin:0;
+  color:#41256f;
+  font-size:clamp(30px,6vw,46px);
+  line-height:1.05;
+}
+.parents-dashboard__date{
+  flex:0 0 auto;
+  margin-top:5px;
+  font-size:13px;
+  font-weight:900;
+  color:#5f467e;
+  white-space:nowrap;
+  background:#f3edfb;
+  border:1px solid #e2d7f1;
+  border-radius:999px;
+  padding:7px 10px;
+}
+@media(max-width:620px){
+  .parents-main{margin-top:10px}
+  .parents-dashboard__title-row{
+    display:block;
+  }
+  .parents-dashboard__title-row h1{
+    font-size:28px;
+  }
+  .parents-dashboard__date{
+    display:inline-block;
+    margin-top:8px;
+    font-size:11px;
+    padding:5px 8px;
+  }
+}
+
+
+/* V33.62 — titre sur une ligne + boutons agrandis */
+.parents-dashboard__title-row h1{
+  white-space:nowrap;
+  letter-spacing:-0.02em;
+}
+.parents-dashboard__copy{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.parents-dashboard__copy p:not(.parents-dashboard__subtitle){
+  display:none;
+}
+
+.parents-quick-grid{
+  gap:16px;
+}
+.parents-quick-card{
+  min-height:188px;
+  padding:20px 14px;
+  border-radius:24px;
+}
+.parents-quick-card__icon{
+  width:104px;
+  height:104px;
+}
+.parents-quick-card__label{
+  font-size:20px;
+}
+.parents-quick-card small{
+  font-size:14px;
+  margin-top:2px;
+}
+
+@media(max-width:900px){
+  .parents-dashboard__title-row h1{
+    font-size:clamp(24px,4vw,34px);
+  }
+}
+
+@media(max-width:620px){
+  .parents-dashboard__copy{
+    padding-left:2px;
+  }
+  .parents-dashboard__title-row h1{
+    white-space:nowrap;
+    font-size:24px;
+  }
+  .parents-quick-grid{
+    gap:12px;
+  }
+  .parents-quick-card{
+    min-height:160px;
+    padding:16px 10px;
+    border-radius:20px;
+  }
+  .parents-quick-card__icon{
+    width:86px;
+    height:86px;
+  }
+  .parents-quick-card__label{
+    font-size:17px;
+    line-height:1.15;
+  }
+  .parents-quick-card small{
+    font-size:12px;
+  }
+}
+
+
+/* V33.62 — compaction maximale des 4 boutons sur mobile */
+.parents-dashboard{padding:14px}
+.parents-dashboard__hero{min-height:0;margin-bottom:10px}
+.parents-dashboard__copy{padding:0}
+.parents-dashboard__subtitle{margin:6px 0 0!important}
+.parents-dashboard__banner{max-height:155px}
+
+.parents-quick-grid{gap:8px}
+.parents-quick-card{
+  min-height:0;
+  height:auto;
+  padding:10px 8px 9px;
+  border-radius:18px;
+  gap:3px;
+  justify-content:flex-start;
+}
+.parents-quick-card__icon{
+  width:78px;
+  height:78px;
+  margin:0 auto 1px;
+  flex:0 0 78px;
+}
+.parents-quick-card__label{
+  font-size:17px;
+  line-height:1.05;
+  margin:0;
+}
+.parents-quick-card small{
+  font-size:12px;
+  line-height:1.1;
+  margin:2px 0 0;
+}
+
+@media(max-width:620px){
+  .parents-main{padding-left:8px;padding-right:8px}
+  .parents-dashboard{padding:10px;border-radius:17px}
+  .parents-dashboard__hero{
+    grid-template-columns:minmax(0,61%) minmax(0,39%);
+    min-height:0;
+    margin-bottom:8px;
+  }
+  .parents-dashboard__title-row h1{font-size:23px;line-height:1}
+  .parents-dashboard__date{margin-top:6px}
+  .parents-dashboard__subtitle{
+    font-size:12px!important;
+    line-height:1.15!important;
+    margin:6px 0 0!important;
+  }
+  .parents-dashboard__banner{
+    width:112%;
+    margin-left:-10%;
+    max-height:118px;
+  }
+  .parents-quick-grid{gap:7px}
+  .parents-quick-card{
+    min-height:0;
+    padding:8px 5px 8px;
+    border-radius:16px;
+    gap:2px;
+  }
+  .parents-quick-card__icon{
+    width:70px;
+    height:70px;
+    flex-basis:70px;
+    margin:0 auto;
+  }
+  .parents-quick-card__label{
+    font-size:16px;
+    line-height:1.02;
+  }
+  .parents-quick-card small{
+    font-size:11px;
+    line-height:1.05;
+    margin-top:2px;
+  }
+}
+@media(max-width:390px){
+  .parents-dashboard{padding:8px}
+  .parents-dashboard__hero{margin-bottom:6px}
+  .parents-dashboard__title-row h1{font-size:21px}
+  .parents-dashboard__banner{max-height:105px}
+  .parents-quick-grid{gap:6px}
+  .parents-quick-card{padding:7px 4px}
+  .parents-quick-card__icon{
+    width:64px;
+    height:64px;
+    flex-basis:64px;
+  }
+  .parents-quick-card__label{font-size:15px}
+}
+
+
+/* V33.62 — agrandir uniquement les icônes des 4 boutons */
+.parents-quick-card__icon{
+  width:92px;
+  height:92px;
+  flex-basis:92px;
+}
+.parents-quick-card__icon img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+@media(max-width:620px){
+  .parents-quick-card__icon{
+    width:84px;
+    height:84px;
+    flex-basis:84px;
+  }
+}
+
+@media(max-width:390px){
+  .parents-quick-card__icon{
+    width:76px;
+    height:76px;
+    flex-basis:76px;
+  }
+}
+
+
+/* V33.62 — forcer nettement l’agrandissement visible des 4 icônes */
+.parents-quick-card__icon{
+  width:108px;
+  height:108px;
+  flex-basis:108px;
+  overflow:visible;
+}
+.parents-quick-card__icon img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  transform:scale(1.42);
+  transform-origin:center;
+}
+
+@media(max-width:620px){
+  .parents-quick-card__icon{
+    width:96px;
+    height:96px;
+    flex-basis:96px;
+  }
+  .parents-quick-card__icon img{
+    transform:scale(1.45);
+  }
+}
+
+@media(max-width:390px){
+  .parents-quick-card__icon{
+    width:88px;
+    height:88px;
+    flex-basis:88px;
+  }
+  .parents-quick-card__icon img{
+    transform:scale(1.42);
+  }
+}
+
+
+/* V33.62 — agrandir le cartable du bandeau et l’icône "Ce que nous apprenons" */
+.parents-dashboard__banner{
+  width:118%;
+  max-width:none;
+  max-height:170px;
+  margin-left:-6%;
+}
+
+button[data-parent-view="learning"] .parents-quick-card__icon{
+  width:112px;
+  height:112px;
+  flex-basis:112px;
+}
+button[data-parent-view="learning"] .parents-quick-card__icon img{
+  transform:scale(1.58);
+}
+
+@media(max-width:620px){
+  .parents-dashboard__banner{
+    width:124%;
+    max-width:none;
+    max-height:132px;
+    margin-left:-18%;
+  }
+  button[data-parent-view="learning"] .parents-quick-card__icon{
+    width:102px;
+    height:102px;
+    flex-basis:102px;
+  }
+  button[data-parent-view="learning"] .parents-quick-card__icon img{
+    transform:scale(1.62);
+  }
+}
+
+@media(max-width:390px){
+  .parents-dashboard__banner{
+    width:128%;
+    max-height:118px;
+    margin-left:-22%;
+  }
+  button[data-parent-view="learning"] .parents-quick-card__icon{
+    width:94px;
+    height:94px;
+    flex-basis:94px;
+  }
+  button[data-parent-view="learning"] .parents-quick-card__icon img{
+    transform:scale(1.58);
+  }
+}
+
+
+/* V33.62 — cartable du bandeau fortement agrandi */
+.parents-dashboard__banner{
+  width:138%;
+  max-width:none;
+  max-height:205px;
+  margin-left:-24%;
+  object-fit:contain;
+  object-position:center right;
+}
+
+@media(max-width:620px){
+  .parents-dashboard__banner{
+    width:152%;
+    max-width:none;
+    max-height:168px;
+    margin-left:-38%;
+  }
+}
+
+@media(max-width:390px){
+  .parents-dashboard__banner{
+    width:158%;
+    max-height:154px;
+    margin-left:-42%;
+  }
+}
+
+
+/* V33.62 — Infos de la classe */
+.parents-quick-card--info{background:linear-gradient(145deg,#fff,#fbf8ff)}
+.parents-info-title{margin-bottom:12px}
+.parents-urgent-info{
+  margin:0 0 14px;
+  padding:14px 15px;
+  border-radius:16px;
+  background:#fff3d7;
+  border:1px solid #f1cf7d;
+  box-shadow:0 6px 16px #72571912;
+}
+.parents-urgent-kicker{
+  color:#825c00;
+  font-size:12px;
+  font-weight:950;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.parents-urgent-info p{margin:5px 0 0;color:#4f3c13;font-weight:800;line-height:1.45}
+.parents-info-grid{display:grid;gap:11px}
+.parents-info-block{
+  border:1px solid #e5dcf0;
+  border-radius:17px;
+  padding:14px;
+  background:#fff;
+}
+.parents-info-block h3{margin:0 0 4px;color:#472b73;font-size:19px}
+.parents-info-help{margin:0 0 10px;color:#7b7382;font-size:13px;line-height:1.35}
+.parents-info-list{margin:0;padding-left:20px;display:grid;gap:8px}
+.parents-info-list li{line-height:1.4;color:#43394d}
+.parents-info-empty{padding:10px 11px;border-radius:11px;background:#f7f4fa;color:#817987;font-size:13px}
+.parents-upcoming-item{
+  display:grid;
+  grid-template-columns:105px minmax(0,1fr);
+  gap:10px;
+  align-items:start;
+  padding:9px 0;
+  border-top:1px solid #eee8f3;
+}
+.parents-upcoming-item:first-child{border-top:0;padding-top:0}
+.parents-upcoming-item time{
+  color:#684795;
+  font-size:12px;
+  font-weight:900;
+  text-transform:capitalize;
+}
+.parents-upcoming-item div{display:grid;gap:2px}
+.parents-upcoming-item strong{font-size:12px;color:#5a4372}
+.parents-upcoming-item span{line-height:1.35;color:#45394e}
+.parents-upcoming-item--manual{grid-template-columns:18px minmax(0,1fr)}
+.parents-upcoming-dot{color:#8056b0;font-size:22px;line-height:1}
+.parents-document-useful{
+  border-top:1px solid #eee8f3;
+  padding:9px 0;
+  color:#4b4053;
+}
+.parents-document-useful:first-child{border-top:0;padding-top:0}
+.parents-document-useful a{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  color:#58388a;font-weight:850;text-decoration:none
+}
+.parents-document-useful a span{font-size:16px}
+@media(max-width:620px){
+  .parents-info-view{padding:12px}
+  .parents-info-block{padding:12px;border-radius:15px}
+  .parents-info-block h3{font-size:18px}
+  .parents-info-help{font-size:12px;margin-bottom:8px}
+  .parents-upcoming-item{grid-template-columns:88px minmax(0,1fr);gap:8px}
+}
+
+
+/* V33.62 — info de dernière minute défilante sur l'accueil Parents */
+.parents-flash-ticker{
+  width:100%;
+  min-height:38px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin:0 0 8px;
+  padding:0;
+  overflow:hidden;
+  border:1px solid #e5c46b;
+  border-radius:12px;
+  background:#fff6d9;
+  box-shadow:0 4px 10px rgba(95,71,19,.08);
+  color:#4b3912;
+  cursor:pointer;
+  font:inherit;
+  text-align:left;
+}
+.parents-flash-ticker[hidden]{display:none!important}
+.parents-flash-ticker__badge{
+  flex:0 0 auto;
+  align-self:stretch;
+  display:flex;
+  align-items:center;
+  padding:0 10px;
+  background:#f3d36e;
+  color:#5c450a;
+  font-size:12px;
+  font-weight:950;
+  white-space:nowrap;
+  position:relative;
+  z-index:2;
+}
+.parents-flash-ticker__viewport{
+  flex:1 1 auto;
+  min-width:0;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.parents-flash-ticker__track{
+  width:max-content;
+  display:inline-flex;
+  align-items:center;
+  gap:28px;
+  padding-right:28px;
+  animation:parentsFlashScroll 18s linear infinite;
+  will-change:transform;
+}
+.parents-flash-ticker__text{
+  font-size:13px;
+  font-weight:850;
+}
+.parents-flash-ticker__separator{color:#a27a19;font-weight:900}
+.parents-flash-ticker:hover .parents-flash-ticker__track,
+.parents-flash-ticker:focus-visible .parents-flash-ticker__track{
+  animation-play-state:paused;
+}
+@keyframes parentsFlashScroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(calc(-50% - 14px))}
+}
+@media(max-width:620px){
+  .parents-flash-ticker{min-height:34px;margin-bottom:7px;border-radius:10px}
+  .parents-flash-ticker__badge{padding:0 8px;font-size:11px}
+  .parents-flash-ticker__text{font-size:12px}
+  .parents-flash-ticker__track{gap:22px;padding-right:22px;animation-duration:15s}
+}
+@media(prefers-reduced-motion:reduce){
+  .parents-flash-ticker__track{animation:none}
+  .parents-flash-ticker__text:nth-of-type(2),
+  .parents-flash-ticker__separator{display:none}
+}
+
+
+/* V33.62 — correction du bandeau défilant qui dépassait */
+.parents-flash-ticker{
+  box-sizing:border-box;
+  max-width:100%;
+  min-width:0;
+}
+.parents-flash-ticker__badge{
+  box-sizing:border-box;
+  flex:0 0 auto;
+}
+.parents-flash-ticker__viewport{
+  box-sizing:border-box;
+  width:100%;
+  max-width:100%;
+  min-width:0;
+}
+.parents-flash-ticker__track{
+  max-width:none;
+}
+.parents-flash-ticker__text{
+  display:inline-block;
+}
+
+@media(max-width:620px){
+  .parents-flash-ticker{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    margin-left:0;
+    margin-right:0;
+  }
+  .parents-flash-ticker__badge{
+    padding:0 7px;
+  }
+  .parents-flash-ticker__viewport{
+    width:calc(100% - 70px);
+  }
+  .parents-flash-ticker__text{
+    font-size:11px;
+  }
+  .parents-flash-ticker__track{
+    gap:18px;
+    padding-right:18px;
+  }
+}
+@media(max-width:390px){
+  .parents-flash-ticker__badge{
+    padding:0 6px;
+    font-size:10px;
+  }
+  .parents-flash-ticker__viewport{
+    width:calc(100% - 62px);
+  }
+  .parents-flash-ticker__text{
+    font-size:10px;
+  }
+}
+
+
+/* V33.62 — correction structurelle du débordement horizontal mobile
+   Le texte nowrap du bandeau pouvait imposer sa largeur minimale au dashboard,
+   lui-même enfant d'une grille. On neutralise ce min-content à tous les niveaux. */
+html,body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+}
+*,*::before,*::after{
+  box-sizing:border-box;
+}
+.parents-main{
+  width:min(1180px,calc(100% - 20px))!important;
+  max-width:calc(100% - 20px)!important;
+  min-width:0!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:0!important;
+  padding-right:0!important;
+  overflow:visible;
+}
+.parents-dashboard,
+.parents-dashboard__hero,
+.parents-dashboard__copy,
+.parents-dashboard__title-row,
+.parents-quick-grid,
+.parents-quick-card{
+  min-width:0!important;
+  max-width:100%;
+}
+.parents-dashboard{
+  width:100%!important;
+  overflow:hidden;
+}
+.parents-flash-ticker{
+  display:grid!important;
+  grid-template-columns:auto minmax(0,1fr)!important;
+  gap:0!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  overflow:hidden!important;
+}
+.parents-flash-ticker__badge{
+  min-width:0!important;
+}
+.parents-flash-ticker__viewport{
+  display:block!important;
+  width:auto!important;
+  max-width:100%!important;
+  min-width:0!important;
+  overflow:hidden!important;
+}
+.parents-flash-ticker__track{
+  width:max-content!important;
+  max-width:none!important;
+  min-width:0!important;
+}
+.parents-quick-grid{
+  width:100%;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+}
+.parents-quick-card{
+  width:100%;
+  overflow:hidden;
+}
+/* Les images restent grandes, mais ne doivent plus agrandir la largeur de la page. */
+.parents-quick-card__icon{
+  max-width:100%;
+}
+.parents-quick-card__icon img{
+  max-width:100%;
+}
+
+@media(max-width:620px){
+  .parents-main{
+    width:calc(100% - 20px)!important;
+    max-width:calc(100% - 20px)!important;
+  }
+  .parents-dashboard{
+    width:100%!important;
+    max-width:100%!important;
+  }
+  .parents-flash-ticker{
+    width:100%!important;
+    max-width:100%!important;
+  }
+  .parents-flash-ticker__viewport{
+    width:auto!important; /* annule le calc précédent */
+  }
+}
+@media(max-width:390px){
+  .parents-main{
+    width:calc(100% - 14px)!important;
+    max-width:calc(100% - 14px)!important;
+  }
+  .parents-flash-ticker__viewport{
+    width:auto!important;
+  }
+}
+
+
+/* V33.62 — coordonnées de l'école au-dessus du pied de page */
+.parents-school-contact{
+  width:min(100%,680px);
+  margin:4px auto 2px;
+  padding:10px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px 14px;
+  flex-wrap:wrap;
+  text-align:center;
+  color:#5f5270;
+  font-size:12px;
+  line-height:1.3;
+}
+.parents-school-contact strong{
+  color:#4b2e75;
+  font-weight:900;
+}
+.parents-school-contact span{
+  font-weight:750;
+}
+.parents-school-contact a{
+  color:#563787;
+  font-weight:900;
+  text-decoration:none;
+  white-space:nowrap;
+}
+.parents-school-contact a:hover,
+.parents-school-contact a:focus-visible{
+  text-decoration:underline;
+}
+@media(max-width:620px){
+  .parents-school-contact{
+    display:grid;
+    gap:3px;
+    padding:8px 8px 2px;
+    font-size:11px;
+  }
+}
+
+
+/* V33.62 — suppression des deux espaces verticaux inutiles signalés */
+.parents-dashboard__hero{
+  margin-bottom:2px!important;
+}
+.parents-flash-ticker{
+  margin-top:0!important;
+  margin-bottom:7px!important;
+}
+.parents-dashboard{
+  padding-bottom:8px!important;
+}
+
+/* Rapprocher les coordonnées de l'école des 4 boutons sans toucher aux cartes */
+.parents-school-contact{
+  margin-top:-10px!important;
+  margin-bottom:0!important;
+  padding-top:4px!important;
+}
+footer{
+  margin-top:0!important;
+  padding-top:8px!important;
+}
+
+@media(max-width:620px){
+  .parents-dashboard__hero{
+    margin-bottom:1px!important;
+  }
+  .parents-flash-ticker{
+    margin-bottom:6px!important;
+  }
+  .parents-dashboard{
+    padding-bottom:7px!important;
+  }
+  .parents-school-contact{
+    margin-top:-16px!important;
+    padding-top:2px!important;
+  }
+  footer{
+    padding-top:6px!important;
+  }
+}
+
+@media(max-width:390px){
+  .parents-school-contact{
+    margin-top:-18px!important;
+  }
+}
+
+
+/* V33.62 — nouvelle icône Emploi du temps */
+.parents-quick-card[data-parent-view="schedule"] .parents-quick-card__icon img{
+  object-fit:contain;
+  max-width:100%;
+}
+
+
+/* V33.62 — nouvelle illustration du bandeau supérieur Parents */
+.parents-dashboard__banner{
+  width:146%!important;
+  max-width:none!important;
+  max-height:230px!important;
+  margin-left:-30%!important;
+  object-fit:contain!important;
+  object-position:center right!important;
+}
+
+@media(max-width:620px){
+  .parents-dashboard__banner{
+    width:154%!important;
+    max-height:182px!important;
+    margin-left:-38%!important;
+  }
+}
+
+@media(max-width:390px){
+  .parents-dashboard__banner{
+    width:158%!important;
+    max-height:170px!important;
+    margin-left:-42%!important;
+  }
+}
+
+
+/* V33.62 — réduction de l’illustration du bandeau supérieur Parents
+   Objectif : présence visuelle proche de celle des 4 icônes des cartes. */
+.parents-dashboard__banner{
+  width:104%!important;
+  max-width:none!important;
+  max-height:156px!important;
+  margin-left:-4%!important;
+  object-fit:contain!important;
+  object-position:center right!important;
+}
+
+@media(max-width:620px){
+  .parents-dashboard__banner{
+    width:108%!important;
+    max-height:132px!important;
+    margin-left:-7%!important;
+  }
+}
+
+@media(max-width:390px){
+  .parents-dashboard__banner{
+    width:110%!important;
+    max-height:124px!important;
+    margin-left:-8%!important;
+  }
+}
+
+
+/* V33.69 — Infos de la classe : matériel scolaire */
+.parents-info-material h4{
+  margin:14px 0 7px;
+  color:#5a4372;
+  font-size:15px;
+}
+.parents-material-note{
+  margin:2px 0 12px;
+  padding:10px 12px;
+  border-radius:12px;
+  background:#f6f1fb;
+  color:#4f376d;
+  line-height:1.4;
+}
+.parents-material-list{
+  margin:0;
+  padding-left:21px;
+  display:grid;
+  gap:6px;
+  color:#43394d;
+  line-height:1.42;
+}
+.parents-material-list--compact{gap:3px}
+.parents-material-reserve{
+  margin-top:14px;
+  padding:11px 12px;
+  border:1px solid #eee6f4;
+  border-radius:13px;
+  background:#fcfafd;
+}
+.parents-material-reserve h4{margin-top:0}
+.parents-material-reserve p{margin:0 0 7px;color:#5d5263;font-size:13px}
+.parents-material-reminder{
+  margin:14px 0 0;
+  padding-top:11px;
+  border-top:1px solid #eee8f3;
+  color:#4b4053;
+  line-height:1.45;
+}
+.parents-material-budget{
+  margin:8px 0 0;
+  color:#756b7b;
+  font-size:13px;
+  line-height:1.4;
+}
+@media(max-width:620px){
+  .parents-info-material h4{font-size:14px}
+  .parents-material-list{font-size:13px}
+}
+
+
+/* V33.72 — Infos de la classe : cartes Écrans & numérique */
+.parents-digital-resources{
+  margin-top:16px;
+  padding-top:15px;
+  border-top:1px solid #eee8f3;
+}
+.parents-digital-resources h4{
+  margin:0 0 6px;
+  color:#342f3b;
+  font-size:17px;
+}
+.parents-digital-intro{
+  margin:0 0 12px;
+  color:#6f6875;
+  font-size:13px;
+  line-height:1.45;
+}
+.parents-digital-links{
+  display:grid;
+  gap:9px;
+}
+.parents-digital-links a.parents-digital-card{
+  display:grid !important;
+  grid-template-columns:38px minmax(0,1fr) 24px;
+  align-items:center;
+  gap:10px;
+  width:100%;
+  box-sizing:border-box;
+  padding:11px 12px;
+  border:1px solid #e5dcef;
+  border-radius:15px;
+  background:#faf8fd;
+  color:#352a43 !important;
+  text-decoration:none !important;
+  -webkit-text-decoration:none !important;
+  line-height:1.25;
+  -webkit-tap-highlight-color:rgba(91,63,128,.08);
+}
+.parents-digital-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:38px;
+  height:38px;
+  border-radius:11px;
+  background:#f1eaf8;
+  font-size:20px;
+}
+.parents-digital-copy{
+  display:grid;
+  min-width:0;
+  gap:3px;
+}
+.parents-digital-copy strong{
+  color:#513479;
+  font-size:14px;
+  font-weight:800;
+  text-decoration:none !important;
+}
+.parents-digital-copy small{
+  color:#736b79;
+  font-size:12px;
+  line-height:1.35;
+  text-decoration:none !important;
+}
+.parents-digital-arrow{
+  color:#8b73a5;
+  font-size:28px;
+  font-weight:400;
+  line-height:1;
+  text-align:right;
+}
+.parents-digital-card:active{transform:translateY(1px);background:#f5effa}
+@media(hover:hover){
+  .parents-digital-links a.parents-digital-card:hover{
+    background:#f5effa;
+    border-color:#d7c8e6;
+  }
+}
+@media(max-width:620px){
+  .parents-digital-resources h4{font-size:16px}
+  .parents-digital-links a.parents-digital-card{
+    grid-template-columns:36px minmax(0,1fr) 20px;
+    gap:9px;
+    padding:10px;
+    border-radius:14px;
+  }
+  .parents-digital-icon{width:36px;height:36px;font-size:19px}
+  .parents-digital-copy strong{font-size:13.5px}
+  .parents-digital-copy small{font-size:11.5px}
+  .parents-digital-arrow{font-size:25px}
+}
+
+/* V33.74 — Infos de la classe : menu d’accès rapide sur 2 lignes, sans défilement horizontal */
+.parents-info-jump{
+  position:sticky;
+  top:0;
+  z-index:12;
+  margin:0 0 12px;
+  padding:9px 10px 10px;
+  border:1px solid #eadff1;
+  border-radius:15px;
+  background:rgba(255,254,251,.97);
+  box-shadow:0 4px 14px rgba(70,44,93,.06);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+.parents-info-jump__help{
+  margin:0 0 8px;
+  color:#6f6578;
+  font-size:12px;
+  line-height:1.35;
+  text-align:center;
+}
+.parents-info-jump__links{
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:7px;
+  padding:1px;
+}
+.parents-info-jump__links a{
+  grid-column:span 2;
+  min-width:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 6px;
+  border:1px solid #e4d8ee;
+  border-radius:999px;
+  background:#f8f4fb;
+  color:#533879;
+  font-size:12px;
+  font-weight:800;
+  line-height:1.1;
+  text-align:center;
+  text-decoration:none;
+  white-space:nowrap;
+  -webkit-tap-highlight-color:rgba(91,63,128,.08);
+}
+.parents-info-jump__links a:nth-child(4),
+.parents-info-jump__links a:nth-child(5){grid-column:span 3}
+.parents-info-jump__links a:active{background:#efe6f6;transform:translateY(1px)}
+@media(hover:hover){.parents-info-jump__links a:hover{background:#f1e9f7;border-color:#d7c8e6}}
+#parentsInfoRappels,#parentsInfoUpcoming,#parentsInfoMaterial,#parentsInfoHelp,#parentsInfoDigital{scroll-margin-top:116px}
+
+.parents-help-child{
+  margin-top:14px;
+  padding:14px 12px;
+  border:1px solid #e8e0ef;
+  border-radius:15px;
+  background:#fcfafc;
+}
+.parents-help-child h4{
+  margin:0 0 7px;
+  color:#342f3b;
+  font-size:17px;
+}
+.parents-help-child__intro{
+  margin:0 0 11px;
+  color:#5e5566;
+  font-size:13px;
+  line-height:1.45;
+}
+.parents-help-child__tips{display:grid;gap:7px}
+.parents-help-child__tips p{
+  display:grid;
+  grid-template-columns:28px minmax(0,1fr);
+  gap:8px;
+  align-items:start;
+  margin:0;
+  padding:8px 9px;
+  border-radius:11px;
+  background:#fff;
+}
+.parents-help-child__tips p>span:first-child{font-size:18px;line-height:1.2;text-align:center}
+.parents-help-child__tips p>span:last-child{display:grid;gap:2px;min-width:0}
+.parents-help-child__tips strong{color:#513479;font-size:13px}
+.parents-help-child__tips small{color:#746b79;font-size:11.5px;line-height:1.35}
+.parents-help-child__contact{
+  margin:11px 0 0;
+  padding-top:10px;
+  border-top:1px solid #ece5f0;
+  color:#5d5263;
+  font-size:12px;
+  font-weight:700;
+  line-height:1.4;
+}
+@media(max-width:620px){
+  .parents-info-jump{margin-left:-2px;margin-right:-2px;padding:8px 8px 9px;border-radius:14px}
+  .parents-info-jump__help{font-size:11.5px;margin-bottom:7px}
+  .parents-info-jump__links{gap:6px}
+  .parents-info-jump__links a{padding:8px 5px;font-size:11.5px}
+  #parentsInfoRappels,#parentsInfoUpcoming,#parentsInfoMaterial,#parentsInfoHelp,#parentsInfoDigital{scroll-margin-top:108px}
+  .parents-help-child h4{font-size:16px}
+  .parents-help-child{padding:12px 10px}
+}
+
+
+/* V33.92 — Infos de la classe : accès direct par cartes, une rubrique à la fois */
+.parents-info-menu{display:block}
+.parents-info-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+.parents-info-card{appearance:none;border:1px solid #e7ddf1;background:linear-gradient(180deg,#fff 0%,#fcfaff 100%);border-radius:18px;min-height:220px;padding:14px 12px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;box-shadow:0 5px 14px rgba(65,41,96,.07);font:inherit;color:#2e1760;text-align:center;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+.parents-info-card img{width:142px;height:118px;object-fit:contain;display:block;margin:-4px auto 2px}
+.parents-info-card strong{font-size:18px;line-height:1.12;color:#28125e}
+.parents-info-card small{font-size:12.5px;color:#776b82;line-height:1.25}
+.parents-info-card:active{transform:translateY(1px)}
+@media(hover:hover){.parents-info-card:hover{transform:translateY(-2px);border-color:#ccb8e3;box-shadow:0 8px 20px rgba(65,41,96,.12)}}
+.parents-info-detail{display:block}
+.parents-info-detail[hidden]{display:none!important}
+.parents-info-detail__toolbar{display:flex;align-items:center;margin-bottom:12px}
+.parents-info-detail .parents-info-block{margin:0}
+.parents-info-detail .parents-help-child,.parents-info-detail .parents-digital-resources{margin:0}
+@media(max-width:850px){.parents-info-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.parents-info-card{min-height:190px}.parents-info-card img{width:120px;height:100px}}
+@media(max-width:520px){.parents-info-card-grid{gap:9px}.parents-info-card{min-height:160px;padding:10px 8px;border-radius:15px}.parents-info-card img{width:96px;height:82px}.parents-info-card strong{font-size:15px}.parents-info-card small{font-size:11px}.parents-info-title p{font-size:12px}}
+
+/* V33.95 — zone de test cachée pour vérifier les semaines de devoirs */
+.homework-toolbar{display:flex;align-items:center;gap:8px;justify-content:flex-start}
+.homework-test-hotspot{width:34px;height:34px;border:1px solid #e7dcf7;background:#f5effd;color:#68419a;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;font-size:16px;line-height:1;cursor:pointer;opacity:.72;padding:0;transition:.15s ease}
+.homework-test-hotspot:hover,.homework-test-hotspot:focus-visible{opacity:1;background:#eadffd;transform:translateY(-1px);outline:none;box-shadow:0 3px 10px rgba(83,49,126,.14)}
+.homework-test-bar{position:fixed;right:14px;bottom:14px;z-index:80;display:flex;align-items:center;gap:8px;max-width:min(92vw,620px);padding:10px 12px;border:1px solid #d9c7f7;border-radius:16px;background:rgba(255,255,255,.98);box-shadow:0 10px 30px rgba(55,30,100,.18);color:#4b267d;font-size:.9rem}
+.homework-test-bar[hidden]{display:none!important}
+.homework-test-bar button{border:1px solid #d9c7f7;background:#f6f0ff;color:#4b267d;border-radius:10px;padding:6px 10px;font-weight:700;cursor:pointer}
+.homework-test-bar button:hover{background:#eee3ff}
+.homework-test-bar span{min-width:170px;text-align:center;color:#5c4a6b}
+@media(max-width:640px){.homework-test-bar{left:8px;right:8px;bottom:8px;flex-wrap:wrap;justify-content:center}.homework-test-bar span{flex:1 1 180px;min-width:0}}
+
+/* V33.96 — Présentation chaleureuse des devoirs */
+.homework-intro{margin:0 0 18px;padding:16px 18px;border:1px solid #e8e0f3;border-radius:16px;background:linear-gradient(135deg,#fff,#fbf8ff);color:#40384a;line-height:1.55}
+.homework-intro p{margin:0 0 10px}.homework-intro p:last-child{margin-bottom:0}.homework-intro .homework-rule{margin:12px 0}.homework-signature{margin-top:14px!important;color:#4b2d76}
+@media(max-width:620px){.homework-intro{padding:14px}.homework-intro .homework-rule{text-align:center}}
+
+/* V34.00 — icône 📚 du titre utilisée comme zone de test cachée (appui long). */
+.homework-test-icon{appearance:none;border:0;background:transparent;padding:0;margin:0;font:inherit;line-height:1;cursor:default;color:inherit;vertical-align:baseline}
+.homework-test-icon:focus{outline:none}
+.homework-test-icon:focus-visible{outline:2px dotted rgba(83,49,126,.25);outline-offset:2px;border-radius:4px}

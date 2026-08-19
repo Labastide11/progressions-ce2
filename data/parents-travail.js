@@ -1,0 +1,5 @@
+// Généré depuis Progressions CE2 — 09/08/2026 13:29:16
+window.PARENTS_TRAVAIL = {
+  "message": "",
+  "items": []
+};

@@ -1,0 +1,332 @@
+
+.btn--timetable{background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff;border-color:#0f766e}
+.timetable-modal{position:fixed;inset:0;z-index:1200;background:rgba(15,23,42,.72);padding:18px;overflow:auto}
+.timetable-modal.hidden{display:none}
+.timetable-panel{max-width:1500px;min-height:calc(100vh - 36px);margin:auto;background:#f8fafc;border-radius:24px;box-shadow:0 24px 70px rgba(0,0,0,.35);overflow:hidden}
+.timetable-header{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;padding:22px 26px;background:linear-gradient(135deg,#0f766e,#0f4c5c);color:#fff}
+.timetable-header h2{margin:.15rem 0;font-size:1.8rem}.timetable-header p{margin:.25rem 0}.timetable-close{border:0;background:rgba(255,255,255,.16);color:#fff;border-radius:999px;width:44px;height:44px;font-size:1.8rem;cursor:pointer}
+.timetable-tabs{display:flex;gap:8px;flex-wrap:wrap;padding:16px 22px;background:#fff;border-bottom:1px solid #dbe3ea;position:sticky;top:0;z-index:2}
+.timetable-tab{border:1px solid #cbd5e1;border-radius:999px;padding:10px 16px;background:#fff;font-weight:800;cursor:pointer}.timetable-tab.is-active{background:#0f766e;color:#fff;border-color:#0f766e}
+.timetable-content{padding:20px}.timetable-note{background:#ecfeff;border-left:5px solid #0891b2;padding:12px 14px;border-radius:10px;margin-bottom:16px}
+.timetable-grid{display:grid;grid-template-columns:repeat(4,minmax(260px,1fr));gap:14px;align-items:start}.timetable-day{background:#fff;border:1px solid #d9e2ea;border-radius:16px;overflow:hidden;box-shadow:0 5px 16px rgba(15,23,42,.06)}
+.timetable-day h3{margin:0;padding:12px 14px;background:#e6fffb;color:#134e4a;text-align:center}.slot{display:grid;grid-template-columns:72px 1fr;gap:10px;padding:9px 12px;border-top:1px solid #edf2f7;font-size:.92rem}.slot time{font-weight:800;color:#475569}.slot strong{display:block;color:#0f172a}.slot small{display:block;color:#64748b;margin-top:2px}.slot{border-left:6px solid transparent}.slot.french{background:#fff1f2;border-left-color:#e11d48}.slot.maths{background:#eff6ff;border-left-color:#2563eb}.slot.english{background:#f5f3ff;border-left-color:#7c3aed}.slot.eps{background:#ecfdf5;border-left-color:#059669}.slot.arts{background:#fff7ed;border-left-color:#ea580c}.slot.science{background:#ecfeff;border-left-color:#0891b2}.slot.history{background:#fefce8;border-left-color:#ca8a04}.slot.emc{background:#f7fee7;border-left-color:#65a30d}.slot.cham{background:#fdf4ff;border-left-color:#c026d3}.slot.break{background:#f1f5f9;border-left-color:#94a3b8;color:#64748b}.slot.common{background:#faf5ff;border-left-color:#9333ea}.slot.mixed{background:linear-gradient(135deg,#fff1f2 0 50%,#fefce8 50% 100%);border-left-color:#64748b}
+.hours-wrap{margin-top:20px;background:#fff;border:1px solid #d9e2ea;border-radius:16px;padding:16px;overflow:auto}.hours-wrap h3{margin-top:0}.hours-table{width:100%;border-collapse:collapse;min-width:760px}.hours-table th,.hours-table td{border:1px solid #dbe3ea;padding:8px 10px;text-align:center}.hours-table th{background:#f1f5f9}.hours-table td:first-child{text-align:left;font-weight:700}.ok{color:#047857;font-weight:900}
+@media(max-width:1050px){.timetable-grid{grid-template-columns:repeat(2,minmax(260px,1fr))}}@media(max-width:650px){.timetable-grid{grid-template-columns:1fr}.timetable-modal{padding:0}.timetable-panel{border-radius:0;min-height:100vh}.timetable-content{padding:12px}.timetable-header{padding:16px}}
+@media print{.timetable-modal{position:static;background:#fff;padding:0}.timetable-panel{box-shadow:none}.timetable-close,.timetable-tabs{display:none}.timetable-grid{grid-template-columns:repeat(2,1fr)}}
+
+.subject-legend{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}.subject-chip{display:inline-flex;align-items:center;gap:5px;padding:6px 10px;border-radius:999px;font-size:.82rem;font-weight:800;border:1px solid transparent}.subject-chip.french{background:#fff1f2;color:#9f1239;border-color:#fecdd3}.subject-chip.maths{background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe}.subject-chip.english{background:#f5f3ff;color:#6d28d9;border-color:#ddd6fe}.subject-chip.eps{background:#ecfdf5;color:#047857;border-color:#a7f3d0}.subject-chip.arts{background:#fff7ed;color:#c2410c;border-color:#fed7aa}.subject-chip.science{background:#ecfeff;color:#0e7490;border-color:#a5f3fc}.subject-chip.history{background:#fefce8;color:#a16207;border-color:#fde68a}.subject-chip.cham{background:#fdf4ff;color:#a21caf;border-color:#f5d0fe}.subject-chip.break{background:#f1f5f9;color:#475569;border-color:#cbd5e1}
+.weights-wrap{margin-top:22px;background:#fff;border:1px solid #d9e2ea;border-radius:16px;padding:18px}.weights-title{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:14px}.weights-title h3{margin:0 0 4px}.weights-title p{margin:0;color:#64748b}.weights-title>strong{background:#0f766e;color:#fff;padding:9px 12px;border-radius:999px;white-space:nowrap}.weights-grid{display:grid;grid-template-columns:repeat(2,minmax(280px,1fr));gap:12px 18px}.weight-row{padding:10px 12px;border-radius:12px;background:#f8fafc;border:1px solid #e2e8f0}.weight-label{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:7px;font-size:.9rem}.weight-label span{font-weight:800}.weight-label strong{font-size:.86rem;white-space:nowrap}.weight-track{height:11px;border-radius:999px;background:#e2e8f0;overflow:hidden}.weight-track span{display:block;height:100%;border-radius:inherit}.weight-row.french .weight-track span{background:#e11d48}.weight-row.maths .weight-track span{background:#2563eb}.weight-row.english .weight-track span{background:#7c3aed}.weight-row.eps .weight-track span{background:#059669}.weight-row.arts .weight-track span{background:#ea580c}.weight-row.science .weight-track span{background:#0891b2}.weight-row.history .weight-track span{background:#ca8a04}.subject-table-row.french td:first-child{border-left:6px solid #e11d48}.subject-table-row.maths td:first-child{border-left:6px solid #2563eb}.subject-table-row.english td:first-child{border-left:6px solid #7c3aed}.subject-table-row.eps td:first-child{border-left:6px solid #059669}.subject-table-row.arts td:first-child{border-left:6px solid #ea580c}.subject-table-row.science td:first-child{border-left:6px solid #0891b2}.subject-table-row.history td:first-child{border-left:6px solid #ca8a04}
+@media(max-width:760px){.weights-grid{grid-template-columns:1fr}.weights-title{display:block}.weights-title>strong{display:inline-block;margin-top:10px}.subject-legend{gap:6px}.subject-chip{font-size:.76rem;padding:5px 8px}}
+
+
+/* V31.22 — second niveau détaillé dans la même fenêtre */
+.detail-entry{margin-top:22px;background:#fff;border:1px solid #d9e2ea;border-radius:16px;padding:18px;display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap}.detail-entry h3{margin:0 0 5px}.detail-entry p{margin:0;color:#64748b}.detail-week-buttons{display:flex;gap:10px;flex-wrap:wrap}.detail-week-buttons button,.detail-disabled,.detail-back{border:1px solid #0f766e;border-radius:12px;padding:11px 14px;background:#0f766e;color:#fff;font-weight:800;cursor:pointer}.detail-week-buttons button:hover,.detail-back:hover{background:#115e59}.detail-disabled{background:#e2e8f0;color:#64748b;border-color:#cbd5e1;cursor:not-allowed}.detail-view{animation:detailFade .18s ease}.detail-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:14px}.detail-top h2{margin:6px 0 3px}.detail-top p{margin:0;color:#64748b}.detail-zone{display:inline-flex;background:#ecfeff;color:#0e7490;border:1px solid #a5f3fc;border-radius:999px;padding:5px 9px;font-size:.82rem;font-weight:800}.detail-back{background:#fff;color:#0f766e}.detail-day{margin:18px 0 24px}.detail-day h3{margin:0 0 9px;color:#134e4a}.detail-table-wrap{overflow-x:auto;border:1px solid #d9e2ea;border-radius:14px;background:#fff}.detail-table{width:100%;min-width:980px;border-collapse:collapse}.detail-table th,.detail-table td{padding:10px;border-bottom:1px solid #e2e8f0;text-align:left;vertical-align:top}.detail-table th{background:#f1f5f9;color:#475569;font-size:.84rem}.detail-table tr:last-child td{border-bottom:0}.detail-time{white-space:nowrap;font-weight:800;color:#475569}.detail-subject{display:inline-block;padding:6px 8px;border-radius:9px;font-weight:900}.detail-subject.french{background:#fff1f2;color:#9f1239}.detail-subject.maths{background:#eff6ff;color:#1d4ed8}.detail-subject.english{background:#f5f3ff;color:#6d28d9}.detail-subject.eps{background:#ecfdf5;color:#047857}.detail-subject.arts{background:#fff7ed;color:#c2410c}.detail-subject.science{background:#ecfeff;color:#0e7490}.detail-subject.history{background:#fefce8;color:#a16207}.detail-subject.emc{background:#f7fee7;color:#4d7c0f}.detail-subject.common{background:#f1f5f9;color:#475569}.detail-status{width:118px;border:1px solid #cbd5e1;border-radius:9px;padding:7px;background:#fff;font-weight:700}@keyframes detailFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}@media(max-width:700px){.detail-week-buttons{width:100%}.detail-week-buttons button,.detail-back{width:100%}.detail-entry{align-items:stretch}}
+
+/* V31.23 — accès détaillé replacé en haut et espace extensible pour toute la P1 */
+.timetable-summary-head{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin:0 0 6px}.timetable-summary-head h2{margin:0}.summary-mode-label{margin:5px 0 0;color:#64748b;font-weight:700}.detail-launch{border:1px solid #0f766e;border-radius:12px;padding:11px 15px;background:#0f766e;color:#fff;font-weight:900;cursor:pointer;white-space:nowrap}.detail-launch:hover{background:#115e59}.detail-launch.is-disabled{background:#e2e8f0;color:#64748b;border-color:#cbd5e1;cursor:not-allowed}.detail-context-line{margin:0 0 14px;color:#64748b;font-size:.9rem}.detail-week-nav{display:grid;grid-template-columns:repeat(2,minmax(230px,1fr));gap:10px;margin:0 0 16px;padding:12px;background:#e6fffb;border:1px solid #99f6e4;border-radius:15px}.detail-week-nav--p1{grid-template-columns:repeat(5,minmax(165px,1fr));overflow-x:auto}.detail-week-nav button{border:1px solid #94a3b8;border-radius:11px;padding:9px 11px;background:#fff;color:#334155;font-weight:900;cursor:pointer;text-align:left}.detail-week-nav button small{font-weight:700;color:#64748b}.detail-week-nav button:hover,.detail-week-nav button.is-active{background:#0f766e;color:#fff;border-color:#0f766e}.detail-week-nav button.is-active small,.detail-week-nav button:hover small{color:#d1fae5}.detail-workspace{min-height:430px;border:2px dashed #94a3b8;border-radius:18px;background:#fff;display:flex;align-items:center;justify-content:center;gap:18px;padding:34px;text-align:left}.detail-workspace__icon{font-size:3rem}.detail-workspace h3{margin:0 0 8px}.detail-workspace p{max-width:720px;margin:0;color:#64748b;line-height:1.55}
+@media(max-width:760px){.timetable-summary-head{align-items:stretch}.detail-launch{width:100%}.detail-week-nav{grid-template-columns:1fr}.detail-week-nav--p1{display:flex}.detail-week-nav--p1 button{min-width:145px}.detail-workspace{min-height:320px;display:block;text-align:center}.detail-workspace__icon{margin-bottom:12px}}
+
+/* V31.24 — période 1 complète et évaluations échelonnées */
+.p1-focus{display:flex;justify-content:space-between;gap:18px;align-items:center;margin:0 0 16px;padding:14px 16px;border-radius:14px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412}
+.p1-focus p{margin:4px 0 0;color:#7c2d12;line-height:1.45}
+.p1-focus>span{flex:0 0 auto;padding:7px 10px;border-radius:999px;background:#fff;color:#9a3412;border:1px solid #fdba74;font-weight:900}
+.detail-table--p1{min-width:1220px}
+.eval-badge,.follow-badge{display:inline-block;padding:5px 7px;border-radius:8px;font-size:.82rem;font-weight:900;line-height:1.3}
+.eval-badge{background:#fee2e2;color:#991b1b;border:1px solid #fecaca}
+.follow-badge{background:#f1f5f9;color:#475569;border:1px solid #cbd5e1}
+@media(max-width:760px){.p1-focus{display:block}.p1-focus>span{display:inline-block;margin-top:10px}}
+
+
+/* V31.25 — harmonisation des couleurs de l'emploi du temps synthétique */
+:root{
+  --edt-teal:#0f766e;
+  --edt-teal-dark:#115e59;
+  --edt-panel:#f7fafc;
+  --edt-border:#d8e2eb;
+  --edt-shadow:0 10px 28px rgba(15,23,42,.08);
+  --edt-french-bg:#ffe7ee; --edt-french-bd:#e85d75; --edt-french-tx:#9f1239;
+  --edt-maths-bg:#e6f0ff; --edt-maths-bd:#3b82f6; --edt-maths-tx:#1d4ed8;
+  --edt-english-bg:#efe9ff; --edt-english-bd:#8b5cf6; --edt-english-tx:#6d28d9;
+  --edt-eps-bg:#e5f8ee; --edt-eps-bd:#22a06b; --edt-eps-tx:#047857;
+  --edt-arts-bg:#fff0df; --edt-arts-bd:#f08a24; --edt-arts-tx:#c2410c;
+  --edt-science-bg:#dff8fb; --edt-science-bd:#06b6d4; --edt-science-tx:#0e7490;
+  --edt-history-bg:#fff6d8; --edt-history-bd:#e0a833; --edt-history-tx:#a16207;
+  --edt-emc-bg:#eef8dc; --edt-emc-bd:#84b63c; --edt-emc-tx:#4d7c0f;
+  --edt-cham-bg:#fdeaff; --edt-cham-bd:#d946ef; --edt-cham-tx:#a21caf;
+  --edt-break-bg:#eef2f7; --edt-break-bd:#94a3b8; --edt-break-tx:#475569;
+  --edt-common-bg:#f3eeff; --edt-common-bd:#8b5cf6; --edt-common-tx:#6d28d9;
+}
+.btn--timetable{background:linear-gradient(135deg,#0f766e,#14b8a6 65%,#5eead4);border-color:#0f766e;box-shadow:0 8px 20px rgba(15,118,110,.22)}
+.timetable-panel{background:var(--edt-panel)}
+.timetable-tabs{background:linear-gradient(180deg,#ffffff 0%,#f8fbfc 100%)}
+.timetable-tab{background:#ffffff;color:#334155;border-color:#cdd8e3;box-shadow:0 2px 5px rgba(15,23,42,.03)}
+.timetable-tab:hover{background:#f0fdfa;border-color:#99f6e4}
+.timetable-tab.is-active{background:linear-gradient(135deg,#0f766e,#14b8a6);border-color:#0f766e;box-shadow:0 8px 18px rgba(15,118,110,.18)}
+.timetable-note{background:#f0fdfa;border:1px solid #99f6e4;border-left:5px solid #14b8a6;color:#134e4a}
+.timetable-day{border:1px solid var(--edt-border);box-shadow:var(--edt-shadow)}
+.timetable-day h3{background:linear-gradient(180deg,#dff8f4 0%,#f0fdfa 100%);color:#115e59;border-bottom:1px solid #c7ebe3;font-weight:900;letter-spacing:.01em}
+.slot{grid-template-columns:78px 1fr;gap:12px;padding:10px 12px;border-top:1px solid #eef3f7}
+.slot:hover{filter:saturate(1.04);transform:translateY(-1px);transition:filter .15s ease, transform .15s ease}
+.slot time{display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:4px 8px;border-radius:10px;background:rgba(255,255,255,.75);border:1px solid rgba(148,163,184,.28);color:#334155;font-size:.88rem;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.slot strong{font-size:.95rem}
+.slot small{line-height:1.35}
+.slot.french{background:var(--edt-french-bg);border-left-color:var(--edt-french-bd)}
+.slot.maths{background:var(--edt-maths-bg);border-left-color:var(--edt-maths-bd)}
+.slot.english{background:var(--edt-english-bg);border-left-color:var(--edt-english-bd)}
+.slot.eps{background:var(--edt-eps-bg);border-left-color:var(--edt-eps-bd)}
+.slot.arts{background:var(--edt-arts-bg);border-left-color:var(--edt-arts-bd)}
+.slot.science{background:var(--edt-science-bg);border-left-color:var(--edt-science-bd)}
+.slot.history{background:var(--edt-history-bg);border-left-color:var(--edt-history-bd)}
+.slot.emc{background:var(--edt-emc-bg);border-left-color:var(--edt-emc-bd)}
+.slot.cham{background:var(--edt-cham-bg);border-left-color:var(--edt-cham-bd)}
+.slot.break{background:var(--edt-break-bg);border-left-color:var(--edt-break-bd);color:var(--edt-break-tx)}
+.slot.common{background:var(--edt-common-bg);border-left-color:var(--edt-common-bd)}
+.slot.mixed{background:linear-gradient(135deg,var(--edt-french-bg) 0 50%,var(--edt-history-bg) 50% 100%);border-left-color:#64748b}
+.hours-wrap,.weights-wrap{border:1px solid var(--edt-border);box-shadow:var(--edt-shadow)}
+.hours-table th,.detail-table th{background:#f4f7fb}
+.hours-table tbody tr:nth-child(even){background:#fafcfe}
+.subject-legend{gap:10px}
+.subject-chip{padding:7px 11px;border-width:1px;box-shadow:0 1px 2px rgba(15,23,42,.03)}
+.subject-chip.french{background:var(--edt-french-bg);color:var(--edt-french-tx);border-color:#f6b0bf}
+.subject-chip.maths{background:var(--edt-maths-bg);color:var(--edt-maths-tx);border-color:#bfd8ff}
+.subject-chip.english{background:var(--edt-english-bg);color:var(--edt-english-tx);border-color:#d9ccff}
+.subject-chip.eps{background:var(--edt-eps-bg);color:var(--edt-eps-tx);border-color:#bae9cb}
+.subject-chip.arts{background:var(--edt-arts-bg);color:var(--edt-arts-tx);border-color:#f8c996}
+.subject-chip.science{background:var(--edt-science-bg);color:var(--edt-science-tx);border-color:#aee8f0}
+.subject-chip.history{background:var(--edt-history-bg);color:var(--edt-history-tx);border-color:#f5d27a}
+.subject-chip.cham{background:var(--edt-cham-bg);color:var(--edt-cham-tx);border-color:#f5c4ff}
+.subject-chip.break{background:var(--edt-break-bg);color:var(--edt-break-tx);border-color:#cdd7e2}
+.weights-title>strong{background:linear-gradient(135deg,#0f766e,#14b8a6)}
+.weight-row{background:#fbfdff}
+.weight-row.french .weight-track span{background:linear-gradient(90deg,var(--edt-french-bd),#fb7185)}
+.weight-row.maths .weight-track span{background:linear-gradient(90deg,var(--edt-maths-bd),#60a5fa)}
+.weight-row.english .weight-track span{background:linear-gradient(90deg,var(--edt-english-bd),#a78bfa)}
+.weight-row.eps .weight-track span{background:linear-gradient(90deg,var(--edt-eps-bd),#34d399)}
+.weight-row.arts .weight-track span{background:linear-gradient(90deg,var(--edt-arts-bd),#fb923c)}
+.weight-row.science .weight-track span{background:linear-gradient(90deg,var(--edt-science-bd),#67e8f9)}
+.weight-row.history .weight-track span{background:linear-gradient(90deg,var(--edt-history-bd),#facc15)}
+.subject-table-row.french td:first-child{border-left-color:var(--edt-french-bd)}
+.subject-table-row.maths td:first-child{border-left-color:var(--edt-maths-bd)}
+.subject-table-row.english td:first-child{border-left-color:var(--edt-english-bd)}
+.subject-table-row.eps td:first-child{border-left-color:var(--edt-eps-bd)}
+.subject-table-row.arts td:first-child{border-left-color:var(--edt-arts-bd)}
+.subject-table-row.science td:first-child{border-left-color:var(--edt-science-bd)}
+.subject-table-row.history td:first-child{border-left-color:var(--edt-history-bd)}
+@media(max-width:650px){.slot{grid-template-columns:1fr}.slot time{justify-content:flex-start;width:max-content}}
+
+/* V31.26 — P2 complète */
+.detail-week-nav--p2{grid-template-columns:repeat(7,minmax(155px,1fr));overflow-x:auto}
+.holiday-note{margin:0 0 14px;padding:12px 14px;border-radius:13px;background:#fff7ed;border:1px solid #fdba74;color:#9a3412;font-weight:900}
+@media(max-width:760px){.detail-week-nav--p2{display:flex}.detail-week-nav--p2 button{min-width:155px}}
+
+/* V31.27 — navigation P3 */
+.detail-week-nav--p3{grid-template-columns:repeat(5,minmax(165px,1fr));overflow-x:auto}
+@media(max-width:760px){.detail-week-nav--p3{display:flex}.detail-week-nav--p3 button{min-width:155px}}
+
+/* V31.28 — navigation P4/P5 */
+.detail-week-nav--p4{grid-template-columns:repeat(6,minmax(155px,1fr));overflow-x:auto}.detail-week-nav--p5{grid-template-columns:repeat(6,minmax(155px,1fr));overflow-x:auto}.holiday-note{margin:0 0 16px;padding:12px 14px;border-radius:13px;background:#fff7ed;border:1px solid #fdba74;color:#9a3412;font-weight:900;line-height:1.45}@media(max-width:760px){.detail-week-nav--p4,.detail-week-nav--p5{display:flex}.detail-week-nav--p4 button,.detail-week-nav--p5 button{min-width:160px}}
+
+/* V31.33 — Séances P1 détaillées */
+.lesson-open{display:block;margin-top:.55rem;padding:.45rem .7rem;border:0;border-radius:.65rem;background:#5b4ab8;color:#fff;font-weight:800;cursor:pointer;box-shadow:0 2px 6px rgba(50,38,120,.2)}
+.lesson-open:hover{filter:brightness(1.06)}
+.lesson-view{padding:.2rem 0 1.5rem}
+.lesson-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1rem}
+.lesson-card{background:#fff;border:1px solid #ddd8f7;border-radius:1rem;padding:1rem;box-shadow:0 5px 16px rgba(40,34,90,.08)}
+.lesson-card--wide{grid-column:1/-1}
+.lesson-card h3{margin:0 0 .65rem;color:#3c327d}
+.lesson-card p,.lesson-card li{line-height:1.5}
+.lesson-steps{list-style:none;padding:0;margin:0;display:grid;gap:.75rem}
+.lesson-steps li{display:grid;grid-template-columns:68px 1fr;gap:.8rem;align-items:start;padding:.75rem;border-radius:.8rem;background:#f7f5ff}
+.lesson-steps time{font-weight:900;color:#5b4ab8}
+.lesson-steps p{margin:.2rem 0 0}
+@media(max-width:760px){.lesson-grid{grid-template-columns:1fr}.lesson-card--wide{grid-column:auto}.lesson-steps li{grid-template-columns:58px 1fr}}
+
+/* V31.35 — fil rouge français visible dans la P1 */
+.p1-french-sequence{margin:14px 0;padding:14px 16px;border:1px solid rgba(92,55,165,.24);border-radius:16px;background:linear-gradient(135deg,rgba(245,240,255,.96),rgba(255,255,255,.98));box-shadow:0 7px 18px rgba(55,34,96,.08)}
+.p1-french-sequence>strong{display:block;margin-bottom:9px;color:#4c2f85;font-size:1rem}
+.p1-french-sequence>div{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.p1-french-sequence span{display:flex;align-items:center;min-height:48px;padding:8px 10px;border-radius:11px;background:#fff;border:1px solid rgba(92,55,165,.15);font-size:.86rem;line-height:1.25}
+@media(max-width:900px){.p1-french-sequence>div{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.p1-french-sequence>div{grid-template-columns:1fr}}
+
+/* V31.42 — corpus Charivari intégré aux séances P1 */
+.charivari-corpus{display:grid;gap:.65rem;margin-top:.7rem}.charivari-line{padding:.75rem .9rem;border:1px solid #d9dce5;border-radius:12px;background:#fff}.charivari-line p{margin:.3rem 0 0;line-height:1.5}.charivari-final{background:#fff8e8;border-color:#efc970}.lesson-note{margin-top:.8rem;padding:.75rem .9rem;border-left:4px solid #7656c9;background:#f5f1ff;border-radius:8px;line-height:1.45}
+
+
+/* V31.45 — programmation annuelle dictée / DRAS / vocabulaire */
+.annual-french-plan{margin:18px 0;padding:18px;border:1px solid #d8c8f0;border-radius:18px;background:#fbf8ff;box-shadow:0 8px 20px rgba(77,47,116,.07)}
+.annual-french-plan h3{margin:0 0 14px;color:#5c2f83;font-size:1.12rem}
+.annual-french-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.annual-french-grid>div{padding:12px;border-radius:14px;background:#fff;border:1px solid #eadff5}
+.annual-french-grid strong{display:block;color:#3f215c}.annual-french-grid span{display:block;font-weight:700;color:#7a4a9e;font-size:.88rem;margin:3px 0 7px}.annual-french-grid p{margin:0;font-size:.88rem;line-height:1.35}
+.annual-french-plan>p{margin:10px 0 0;line-height:1.4}
+@media(max-width:1000px){.annual-french-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.annual-french-grid{grid-template-columns:1fr}}
+
+
+/* V31.46 — distinction fiche enseignant / projection élèves */
+.lesson-mode-bar{display:flex;gap:.65rem;flex-wrap:wrap;margin:1rem 0;padding:.65rem;border:1px solid #d8d2f0;border-radius:14px;background:#f8f7ff}
+.lesson-mode-btn{padding:.7rem 1rem;border:1px solid #b8addf;border-radius:11px;background:#fff;color:#3c327d;font-weight:850;cursor:pointer}
+.lesson-mode-btn.is-active{background:#4f46a5;color:#fff;border-color:#4f46a5;box-shadow:0 4px 12px rgba(79,70,165,.22)}
+.student-projection{max-width:1100px;margin:1rem auto;display:grid;gap:1.2rem}
+.student-objective{padding:1.4rem 1.6rem;border-radius:20px;background:linear-gradient(135deg,#eef6ff,#f9fbff);border:2px solid #9fc7f5;box-shadow:0 10px 26px rgba(39,84,138,.11)}
+.student-objective>span{font-size:1.05rem;font-weight:900;color:#1d4f8a}.student-objective ul{margin:.75rem 0 0;padding-left:1.5rem;font-size:1.35rem;line-height:1.55;font-weight:750}
+.student-phase{min-height:330px;padding:2rem;border-radius:24px;background:#fff;border:3px solid #5b4ab8;box-shadow:0 15px 35px rgba(55,43,128,.16);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.student-phase-count{align-self:flex-end;font-weight:850;color:#6b63a5}.student-phase time{font-size:1.35rem;font-weight:950;color:#5b4ab8;margin:.4rem 0}.student-phase h3{font-size:2.1rem;margin:.4rem 0 .9rem;color:#2f286a}.student-phase p{max-width:900px;font-size:1.55rem;line-height:1.5;margin:0;font-weight:680}
+.student-step-nav{display:flex;justify-content:space-between;gap:1rem}.student-step-nav button{padding:.85rem 1.1rem;border:0;border-radius:12px;background:#5b4ab8;color:#fff;font-weight:900;cursor:pointer}.student-step-nav button:disabled{opacity:.35;cursor:not-allowed}
+@media(max-width:700px){.student-phase{min-height:250px;padding:1.25rem}.student-phase h3{font-size:1.55rem}.student-phase p{font-size:1.15rem}.student-objective ul{font-size:1.05rem}}
+
+/* V31.47 — diaporamas mathématiques avec exercices et corrections */
+.projection-exercises{margin:1.2rem auto 0;max-width:920px;text-align:left;font-size:clamp(1.25rem,2.1vw,2rem);line-height:1.5;padding-left:2rem}.projection-exercises li{margin:.65rem 0}.student-phase--correction{border:4px solid #2e7d32;background:#f2fff3}.student-phase--correction h3{color:#1b5e20}.correction-mark{display:inline-block;margin-top:1rem;padding:.45rem .9rem;border-radius:999px;background:#2e7d32;color:white;font-weight:800}.teacher-slide-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:1rem}.teacher-slide{border:1px solid #cbd5e1;border-radius:14px;padding:1rem;background:#f8fafc}.teacher-slide.is-correction{border-color:#81c784;background:#f1fff3}.teacher-slide strong{display:block;margin-bottom:.55rem}.teacher-slide ol{margin:.3rem 0 0;padding-left:1.25rem}.teacher-slide li{margin:.35rem 0}
+
+/* V31.48 — Maître Hibou intégré aux séances de mathématiques */
+.hibou-lesson-frame{width:100%;height:58vh;min-height:480px;border:2px solid #8a5bca;border-radius:16px;background:#fff}.student-phase--hibou{max-width:1200px}.hibou-reuse-card{border-color:#8a5bca;background:#f7f1ff}.hibou-open-link{display:inline-block;padding:.7rem 1rem;border-radius:12px;background:#6f42c1;color:#fff;text-decoration:none;font-weight:700}.teacher-slide.is-hibou{border-left:6px solid #8a5bca;background:#f7f1ff}.annual-math-plan{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}.annual-math-plan section{padding:12px;border:1px solid #d8c8ef;border-radius:12px;background:#fbf9ff}.annual-math-plan p{margin:.45rem 0 0;line-height:1.45}
+
+/* V31.49 — progression spiralaire détaillée des fractions */
+.fractions-annual-card{margin-top:1rem}
+.fractions-annual-table{display:grid;gap:.35rem;margin-top:.8rem}
+.fractions-row{display:grid;grid-template-columns:.55fr .8fr 1.35fr 2fr 1.25fr;gap:.55rem;align-items:start;padding:.65rem .7rem;border:1px solid rgba(83,65,120,.18);border-radius:.7rem;background:#fff}
+.fractions-head{font-weight:800;background:#f1ebff;position:sticky;top:0}
+@media(max-width:900px){.fractions-row{grid-template-columns:1fr}.fractions-head{display:none}.fractions-row span:before{font-weight:800;color:#5e4d83}.fractions-row span:nth-child(1):before{content:'Période : '}.fractions-row span:nth-child(2):before{content:'Moment : '}.fractions-row span:nth-child(3):before{content:'Compétence : '}.fractions-row span:nth-child(4):before{content:'Séance : '}.fractions-row span:nth-child(5):before{content:'Ressource : '}}
+
+/* V31.50 — résolution de problèmes quotidienne */
+.daily-problems{margin:.55rem 0;padding:.75rem .9rem;border:2px solid #4f86d9;border-radius:14px;background:#f3f8ff;color:#17365d}
+.daily-problems strong{display:block;margin-bottom:.4rem;color:#174f96}
+.daily-problems ol{margin:.25rem 0 0 1.2rem;padding:0}
+.daily-problems li{margin:.35rem 0;line-height:1.42}
+.problem-source{font-size:.86rem;color:#56616f;font-style:italic}
+.math-five-min{display:inline-block;margin:0 0 .45rem;padding:.35rem .65rem;border-radius:999px;background:#fff4ce;color:#6b4e00;font-weight:800}
+
+/* V31.51 — actions rapides de statut par journée */
+.detail-day-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:9px}.detail-day-head h3{margin:0}.day-status-toolbar{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:7px 9px;border:1px solid #cbd5e1;border-radius:12px;background:#f8fafc}.day-status-toolbar span{font-size:.82rem;font-weight:900;color:#475569}.day-status-toolbar button{border:1px solid #cbd5e1;border-radius:9px;padding:7px 10px;background:#fff;color:#334155;font-weight:850;cursor:pointer}.day-status-toolbar button:hover{border-color:#0f766e;color:#0f766e;background:#ecfdf5}.day-status-toolbar button[data-set-day-status="Réalisé"]{border-color:#86efac;background:#f0fdf4;color:#166534}.day-status-toolbar button[data-set-day-status="Reporté"]{border-color:#fdba74;background:#fff7ed;color:#9a3412}.day-status-toolbar button.is-applied{outline:3px solid rgba(15,118,110,.2);transform:translateY(-1px)}
+@media(max-width:700px){.detail-day-head{align-items:stretch}.day-status-toolbar{width:100%}.day-status-toolbar span{width:100%}.day-status-toolbar button{flex:1 1 30%}}
+
+/* V31.52 — progression d’anglais */
+.english-week-plan{margin:14px 0 20px;padding:16px;border:1px solid #b8d8f5;border-radius:18px;background:linear-gradient(135deg,#f4f9ff,#eef7ff)}
+.english-week-plan__head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px;color:#153f68}.english-week-plan__head span{font-weight:800}.english-week-plan__head strong{font-size:1.05rem}
+.english-week-plan__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.english-week-plan__grid>div{background:#fff;border:1px solid #d7e8f7;border-radius:12px;padding:10px}.english-week-plan__grid b{color:#15558a}.english-week-plan__grid p{margin:5px 0 0;line-height:1.35}.english-week-plan__note{margin:12px 0 0;font-size:.92rem;color:#46627a}
+@media(max-width:900px){.english-week-plan__grid{grid-template-columns:1fr 1fr}}@media(max-width:600px){.english-week-plan__grid{grid-template-columns:1fr}.english-week-plan__head{align-items:flex-start;flex-direction:column}}
+
+
+/* V31.55 — ouverture directe P1 à P5 sans grand bandeau */
+.timetable-panel{position:relative}
+.timetable-modal.timetable-modal--direct .timetable-header{padding:0;background:#fff;min-height:0;height:0;overflow:visible}
+.timetable-modal.timetable-modal--direct .timetable-header>div{display:none}
+.timetable-modal.timetable-modal--direct .timetable-close{position:absolute;top:12px;right:18px;z-index:5;background:#0f5f67;color:#fff;box-shadow:0 5px 14px rgba(15,76,92,.22)}
+.timetable-modal.timetable-modal--direct .timetable-tabs{padding-right:82px}
+@media(max-width:650px){.timetable-modal.timetable-modal--direct .timetable-close{top:10px;right:10px}.timetable-modal.timetable-modal--direct .timetable-tabs{padding-right:64px}}
+
+/* V31.60 — guides courts des deux premières semaines */
+.rentree-guide{margin-top:10px;border:1px solid #cddbeb;border-radius:12px;background:#f7fbff;overflow:hidden}
+.rentree-guide summary{cursor:pointer;padding:9px 11px;font-weight:800;color:#21537c;list-style:none}
+.rentree-guide summary::-webkit-details-marker{display:none}
+.rentree-guide[open] summary{background:#eaf4fc;border-bottom:1px solid #cddbeb}
+.rentree-guide__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:10px}
+.rentree-guide__grid>div{background:#fff;border:1px solid #e1e8ef;border-radius:9px;padding:8px 9px}
+.rentree-guide__grid strong{display:block;margin-bottom:3px;color:#28475f}
+.rentree-guide__grid p{margin:0;line-height:1.35}
+.rentree-guide__attention{grid-column:1/-1;background:#fff9e8!important;border-color:#efd790!important}
+@media(max-width:800px){.rentree-guide__grid{grid-template-columns:1fr}}
+
+/* V31.66 — coupure méridienne visible lors de la projection */
+.slot.lunch{background:#fff7df;border-color:#e8c878;min-height:58px}
+.slot.lunch time{font-weight:800}
+.slot.lunch strong{font-size:1.02rem}
+.slot.lunch small{opacity:.78}
+
+/* V31.68 — repères de progression pédagogique */
+.pedagogy-markers{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.35rem;
+  margin:0 0 .45rem;
+}
+.pedagogy-badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:1.55rem;
+  padding:.18rem .52rem;
+  border-radius:999px;
+  font-size:.74rem;
+  font-weight:800;
+  line-height:1.15;
+  border:1px solid rgba(15,23,42,.12);
+  background:#f8fafc;
+  color:#334155;
+}
+.pedagogy-discovery{background:#fef3c7;color:#92400e;border-color:#fcd34d}
+.pedagogy-consolidation{background:#dbeafe;color:#1e40af;border-color:#93c5fd}
+.pedagogy-reinvestment{background:#dcfce7;color:#166534;border-color:#86efac}
+.pedagogy-evaluation{background:#fee2e2;color:#991b1b;border-color:#fca5a5}
+.pedagogy-remediation{background:#f3e8ff;color:#6b21a8;border-color:#d8b4fe}
+.pedagogy-structuration{background:#e0e7ff;color:#3730a3;border-color:#a5b4fc}
+.pedagogy-routine{background:#f1f5f9;color:#475569;border-color:#cbd5e1}
+.pedagogy-practice{background:#ecfeff;color:#155e75;border-color:#a5f3fc}
+.pedagogy-sequence{background:#fff;color:#0f172a;border-style:dashed}
+
+
+/* V31.74 — commandes et projection TBI */
+.timetable-header__actions{display:flex;align-items:center;gap:10px}
+.timetable-project{border:0;border-radius:14px;padding:11px 16px;background:#4b46d8;color:#fff;font-weight:850;cursor:pointer;box-shadow:0 8px 18px rgba(75,70,216,.22)}
+.projection-overlay{position:fixed;inset:0;z-index:5000;background:#f5f8ff;color:#101b38;display:flex;flex-direction:column}
+.projection-overlay.hidden{display:none}
+.projection-toolbar{height:76px;flex:0 0 76px;padding:10px 20px;background:#111d45;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:20px;box-shadow:0 8px 22px rgba(0,0,0,.18)}
+.projection-toolbar>div:first-child{display:flex;flex-direction:column;gap:2px}.projection-kicker{font-size:.78rem;letter-spacing:.12em;color:#b7c8ff}.projection-toolbar strong{font-size:1.42rem}
+.projection-toolbar__actions{display:flex;gap:12px}.projection-toolbar button{border:0;border-radius:12px;padding:11px 16px;font-weight:850;cursor:pointer}.projection-toolbar button:first-child{background:#dce7ff;color:#172a66}.projection-toolbar button:last-child{background:#fff;color:#8c1833}
+.projection-stage{flex:1;overflow:auto;padding:22px 28px;background:linear-gradient(180deg,#f7faff,#eef4ff)}
+.projection-stage .timetable-content{font-size:1.28rem;line-height:1.45;max-width:none;margin:0}
+.projection-stage h1,.projection-stage h2{font-size:2.5rem}.projection-stage h3{font-size:2rem}.projection-stage h4{font-size:1.55rem}
+.projection-stage table{font-size:1.16rem}.projection-stage th,.projection-stage td{padding:14px 16px}
+.projection-stage button{font-size:1.05rem;min-height:48px}
+.projection-stage .is-current-day{outline:5px solid #ffbd2e!important;outline-offset:-4px;background:#fff8d8!important}
+.projection-stage .lesson-mode-tabs,.projection-stage .detail-back{display:none!important}
+body.projection-active{overflow:hidden}
+@media(max-width:1100px){.projection-stage{padding:15px}.projection-stage .timetable-content{font-size:1.12rem}.projection-stage h2{font-size:2rem}}
+@media print{.projection-toolbar{display:none!important}.projection-stage{padding:0}.projection-overlay{position:static}}
+
+
+/* V31.89 — accès Vue TBI depuis l’accueil et menu décalé */
+.timetable-modal--tbi .timetable-tabs{
+  justify-content:center;
+  padding-left:96px;
+  padding-right:96px;
+  gap:12px;
+}
+.timetable-modal--tbi .timetable-tab{min-width:76px;text-align:center}
+@media(max-width:760px){
+  .timetable-modal--tbi .timetable-tabs{justify-content:flex-start;padding-left:76px;padding-right:16px;overflow-x:auto;flex-wrap:nowrap}
+  .timetable-modal--tbi .timetable-tab{min-width:68px}
+}
+
+
+/* V31.91 — croix toujours visible en vue synthétique / TBI */
+.timetable-modal.timetable-modal--direct .timetable-header>div:first-child{display:none}
+.timetable-modal.timetable-modal--direct .timetable-header>.timetable-header__actions{display:flex!important;position:fixed;top:12px;right:18px;z-index:1405}
+.timetable-modal.timetable-modal--direct .timetable-header>.timetable-header__actions .timetable-project{display:none}
+.timetable-modal.timetable-modal--direct .timetable-close,
+.timetable-modal.timetable-modal--tbi .timetable-close{
+  display:grid!important;
+  place-items:center;
+  position:fixed;
+  top:12px;
+  right:18px;
+  z-index:1410;
+  width:46px;
+  height:46px;
+  border:0;
+  border-radius:50%;
+  background:#0f5f67;
+  color:#fff;
+  font-size:1.9rem;
+  line-height:1;
+  box-shadow:0 6px 18px rgba(15,76,92,.28);
+}
+.timetable-modal.timetable-modal--direct .timetable-tabs,
+.timetable-modal.timetable-modal--tbi .timetable-tabs{padding-right:88px}
+@media(max-width:650px){
+  .timetable-modal.timetable-modal--direct .timetable-header>.timetable-header__actions{top:10px;right:10px}
+  .timetable-modal.timetable-modal--direct .timetable-close,
+  .timetable-modal.timetable-modal--tbi .timetable-close{top:10px;right:10px;width:42px;height:42px;font-size:1.7rem}
+  .timetable-modal.timetable-modal--direct .timetable-tabs,
+  .timetable-modal.timetable-modal--tbi .timetable-tabs{padding-right:66px}
+}

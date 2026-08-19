@@ -1,0 +1,46 @@
+:root{
+  --ink:#39237c;
+  --muted:#736a83;
+  --page:#fbfaff;
+  --line:#e7def5;
+  --shadow:0 8px 22px rgba(60,37,115,.08);
+}
+*{box-sizing:border-box}
+html{background:var(--page);-webkit-text-size-adjust:100%}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:#2d2a33;background:
+  radial-gradient(circle at 88% 6%,rgba(255,215,74,.16),transparent 13rem),
+  radial-gradient(circle at 8% 1%,rgba(137,101,255,.10),transparent 16rem),
+  var(--page)}
+a{color:inherit}
+.student-shell{width:min(100%,480px);margin:0 auto;padding:max(18px,env(safe-area-inset-top)) 16px max(26px,env(safe-area-inset-bottom))}
+.student-header{padding:4px 2px 16px}
+.back-link{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;background:#f0e9fb;text-decoration:none;color:#5b3d91;font-size:1rem}
+.eyebrow{margin:24px 0 6px;color:#7d5ead;font-weight:800;letter-spacing:.11em;font-size:.78rem}
+h1{margin:0;color:var(--ink);font-size:clamp(2rem,10vw,3rem);line-height:1.02;letter-spacing:-.03em}
+.badges{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:18px}
+.badges span{display:flex;justify-content:center;align-items:center;min-height:38px;padding:6px 7px;border:1px solid #e9e0f5;border-radius:999px;background:rgba(255,255,255,.8);font-size:.78rem;font-weight:750;color:#5b447f;text-align:center}
+.student-menu{display:grid;gap:12px}
+.student-card{min-height:132px;display:grid;grid-template-columns:112px minmax(0,1fr);align-items:center;gap:12px;padding:10px 20px 10px 10px;border:2px solid var(--line);border-radius:28px;background:rgba(255,255,255,.92);box-shadow:var(--shadow);overflow:hidden}
+.student-card img{display:block;width:112px;height:112px;object-fit:contain}
+.student-card h2{margin:0;font-size:clamp(1.65rem,8vw,2.2rem);line-height:1.06;letter-spacing:-.025em;color:var(--ink)}
+.card-read{border-color:#cdb8ff;background:linear-gradient(90deg,#fff 0%,#fbf8ff 100%)}
+.card-think{border-color:#ffb4d2;background:linear-gradient(90deg,#fff 0%,#fff7fb 100%)}
+.card-think h2{color:#ba2670}
+.card-create{border-color:#ffd38c;background:linear-gradient(90deg,#fff 0%,#fffaf1 100%)}
+.card-create h2{color:#d97b00}
+.card-discover{border-color:#bfe7ca;background:linear-gradient(90deg,#fff 0%,#f6fff8 100%)}
+.card-discover h2{color:#208954}
+.card-challenge{border-color:#ffd36a;background:linear-gradient(90deg,#fffdf6 0%,#fff8df 100%)}
+.card-challenge h2{color:#d78a00}
+@media (max-width:370px){
+  .student-shell{padding-left:12px;padding-right:12px}
+  .student-card{grid-template-columns:92px minmax(0,1fr);min-height:116px;padding-right:14px;border-radius:24px}
+  .student-card img{width:92px;height:92px}
+  .badges{gap:4px}.badges span{font-size:.7rem;padding-inline:4px}
+}
+@media (min-width:650px){
+  .student-shell{width:min(100%,760px)}
+  .student-menu{grid-template-columns:1fr 1fr}
+  .card-challenge{grid-column:1/-1}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}

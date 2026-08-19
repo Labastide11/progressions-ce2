@@ -1,0 +1,35 @@
+/* V33.86 — Questions des élèves / URL API V2.7.5 */
+.qe-trigger{position:relative;border:0;background:transparent;padding:0;margin:0;cursor:pointer;border-radius:22px;display:block}
+.qe-trigger:focus-visible{outline:4px solid rgba(124,58,237,.28);outline-offset:3px}
+.qe-trigger:hover .home-panel__hero{transform:translateY(-2px) scale(1.025)}
+.qe-trigger .home-panel__hero{transition:transform .16s ease}
+.qe-badge{position:absolute;right:-2px;top:-6px;min-width:27px;height:27px;padding:0 7px;border-radius:999px;background:#ef476f;color:#fff;border:3px solid #fff;display:flex;align-items:center;justify-content:center;font:800 13px/1 system-ui,sans-serif;box-shadow:0 4px 10px rgba(111,21,55,.25)}
+.qe-badge.hidden{display:none!important}
+.qe-modal{position:fixed;inset:0;z-index:1800;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(15,36,69,.52);backdrop-filter:blur(4px)}
+.qe-modal.hidden{display:none!important}
+.qe-dialog{width:min(930px,94vw);max-height:min(820px,92vh);display:flex;flex-direction:column;background:#fffdfa;border:1px solid rgba(117,86,54,.14);border-radius:28px;box-shadow:0 28px 80px rgba(10,32,63,.32);overflow:hidden}
+.qe-head{display:flex;align-items:center;gap:14px;padding:20px 24px 14px;border-bottom:1px solid #eee7df}
+.qe-head__img{width:70px;height:60px;object-fit:contain;flex:0 0 auto}
+.qe-head__title{min-width:0;flex:1}.qe-head h2{margin:0;color:#6639b6;font:800 clamp(26px,3vw,38px)/1.05 system-ui,sans-serif;letter-spacing:-.02em}.qe-head p{margin:5px 0 0;color:#6c7280;font:600 14px/1.35 system-ui,sans-serif}
+.qe-count{align-self:center;white-space:nowrap;background:#f2eafe;color:#6738b8;border-radius:999px;padding:8px 12px;font:800 14px/1 system-ui,sans-serif}
+.qe-close{width:44px;height:44px;border-radius:14px;border:1px solid #e8ded4;background:#fff;color:#25375a;font:700 26px/1 system-ui,sans-serif;cursor:pointer;box-shadow:0 3px 8px rgba(50,48,42,.08)}
+.qe-toolbar{display:flex;align-items:center;gap:8px;padding:14px 24px 10px;flex-wrap:wrap}
+.qe-filter{border:1px solid #e7dfd7;background:#fff;color:#4c5771;border-radius:999px;padding:9px 16px;font:750 14px/1 system-ui,sans-serif;cursor:pointer}.qe-filter.is-active{background:#7547d6;color:#fff;border-color:#7547d6;box-shadow:0 6px 14px rgba(117,71,214,.22)}
+.qe-subject{margin-left:auto;border:1px solid #e7dfd7;background:#fff;color:#3d4f6d;border-radius:13px;padding:9px 12px;font:700 14px system-ui,sans-serif}
+.qe-statusbar{padding:0 24px 8px;color:#667085;font:600 13px system-ui,sans-serif;min-height:20px}
+.qe-list{padding:0 24px 20px;overflow:auto;display:grid;gap:12px}
+.qe-card{border:1px solid #e8e1d9;border-radius:20px;padding:15px 16px;background:#fff;box-shadow:0 7px 18px rgba(38,50,74,.07)}
+.qe-card__top{display:flex;align-items:flex-start;gap:10px}.qe-card__identity{min-width:0;flex:1;color:#1769aa;font:800 14px system-ui,sans-serif}.qe-card__tag{flex:0 0 auto;border-radius:10px;padding:6px 10px;background:#eaf5ff;color:#1665a7;font:800 12px system-ui,sans-serif}.qe-card__tag--star{background:#fff0f5;color:#d62f69}
+.qe-question{margin:5px 0 4px;color:#102d57;font:800 19px/1.25 system-ui,sans-serif}.qe-meta{color:#68758c;font:600 13px system-ui,sans-serif}
+.qe-card__body{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:end;margin-top:10px}.qe-state{display:flex;align-items:center;gap:7px;color:#55627a;font:750 13px system-ui,sans-serif}.qe-dot{width:11px;height:11px;border-radius:50%;background:#8b5cf6}.qe-dot--new{background:#ff6b00}.qe-dot--todo{background:#f4b400}.qe-dot--done{background:#2ea85e}
+.qe-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.qe-btn{border:1px solid #d8dfe9;border-radius:10px;background:#fff;color:#25466f;padding:8px 11px;font:800 12px system-ui,sans-serif;cursor:pointer}.qe-btn--ai{background:#edf5ff;border-color:#afd0fb;color:#1263ad}.qe-btn--todo{background:#fff8e8;border-color:#f1c969;color:#a45b00}.qe-btn--done{background:#effaf0;border-color:#adddb2;color:#24763a}.qe-btn--visibility{background:#f7f0ff;border-color:#d7bbff;color:#7038b0}.qe-btn--starstatic{display:inline-flex;align-items:center;background:#fff0f5;border-color:#f7bdd0;color:#c72b62;cursor:default}
+.qe-preview{grid-column:1/-1;margin:2px 0 0;padding:9px 11px;border-radius:11px;background:#f8fafc;color:#617087;font:500 13px/1.45 system-ui,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.qe-detail{grid-column:1/-1;display:none;margin-top:2px;padding:12px;border-radius:13px;background:#faf8f5;border:1px solid #eee6dc;color:#34435d;font:500 13px/1.5 system-ui,sans-serif;white-space:pre-wrap}.qe-card.is-open .qe-detail{display:block}.qe-card.is-open .qe-preview{display:none}
+.qe-empty{padding:44px 18px;text-align:center;border:1px dashed #d8d1c7;border-radius:18px;color:#667085;font:700 15px system-ui,sans-serif}.qe-empty strong{display:block;color:#34435d;font-size:18px;margin-bottom:5px}
+.qe-footer{display:flex;align-items:center;justify-content:flex-end;gap:10px;padding:14px 24px 18px;border-top:1px solid #eee7df;background:#fffdfa}.qe-footer button{border-radius:12px;padding:10px 16px;font:800 14px system-ui,sans-serif;cursor:pointer}.qe-refresh{border:1px solid #ddd5cc;background:#fff;color:#334155}.qe-primary{border:1px solid #7547d6;background:#7547d6;color:#fff;box-shadow:0 6px 14px rgba(117,71,214,.22)}
+@media(max-width:720px){.qe-modal{padding:10px}.qe-dialog{width:100%;max-height:95vh;border-radius:22px}.qe-head{padding:15px}.qe-head__img{width:54px;height:48px}.qe-head h2{font-size:25px}.qe-count{font-size:12px}.qe-toolbar,.qe-statusbar,.qe-list{padding-left:14px;padding-right:14px}.qe-subject{margin-left:0;width:100%}.qe-card__body{grid-template-columns:1fr}.qe-actions{justify-content:flex-start}.qe-preview,.qe-detail{grid-column:1}.qe-footer{padding:12px 14px}}
+
+/* V33.83 — état de diagnostic explicite */
+.qe-empty--error{border-color:#f2b6b6;background:#fff7f7;color:#8a2430;}
+.qe-empty--error strong{color:#a61f2d;}
+.qe-empty--error small{display:inline-block;margin-top:8px;color:#6c4b50;line-height:1.45;}
+

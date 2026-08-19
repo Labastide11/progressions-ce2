@@ -1,0 +1,20 @@
+
+/* V32.94 — pages réellement dédiées : aucun mélange entre Élèves, Mon suivi et Référentiel */
+body.dedicated-page .home-hub,
+body.dedicated-page .header-view,
+body.dedicated-page .header-actions,
+body.dedicated-page footer { display:none !important; }
+body.dedicated-page .teacher-workspace { display:block !important; opacity:1 !important; visibility:visible !important; transform:none !important; }
+body.dedicated-page .workspace-toolbar { position:sticky; top:0; z-index:20; }
+body.dedicated-page .workspace-label { display:none !important; }
+body.dedicated-page .app-header { min-height:auto; }
+body.dedicated-page .brandbar__main { min-height:58px; padding-block:6px; }
+body.page-eleves .compact-controlbar,
+body.page-eleves .navigation-strip,
+body.page-eleves #filtersPanel,
+body.page-eleves .statusbar,
+body.page-eleves #dashboard,
+body.page-eleves .routines { display:none !important; }
+body.page-eleves #progressionGrid { margin-top:12px; }
+body.page-suivi .header-view,
+body.page-reference .header-view { display:none !important; }

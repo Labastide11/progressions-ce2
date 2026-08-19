@@ -1,0 +1,53 @@
+
+.memo-bell{position:fixed;top:16px;left:18px;z-index:1300;width:52px;height:52px;border-radius:50%;border:1px solid #d9e4f4;background:#fff;display:grid;place-items:center;font-size:1.55rem;box-shadow:0 8px 22px rgba(30,55,96,.18);cursor:pointer;transition:.15s transform,.15s box-shadow}
+.memo-bell:hover{transform:translateY(-1px);box-shadow:0 11px 26px rgba(30,55,96,.22)}
+.memo-badge{position:absolute;top:-4px;right:-4px;min-width:23px;height:23px;padding:0 6px;border-radius:999px;background:#e53935;color:#fff;font:800 .75rem/23px system-ui;text-align:center;border:2px solid #fff}
+.memo-panel{position:fixed;inset:0;z-index:2000}
+.memo-panel.hidden,.memo-badge.hidden{display:none!important}
+.memo-panel__backdrop{position:absolute;inset:0;background:rgba(18,31,56,.42);backdrop-filter:blur(2px)}
+.memo-panel__sheet{position:absolute;left:18px;top:18px;bottom:18px;width:min(520px,calc(100vw - 36px));background:#f8fbff;border:1px solid #d9e5f6;border-radius:28px;box-shadow:0 24px 70px rgba(18,39,77,.28);overflow:hidden;display:flex;flex-direction:column}
+.memo-panel__header{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;background:linear-gradient(135deg,#eef4ff,#fff);border-bottom:1px solid #dbe6f5}
+.memo-kicker{font-size:.75rem;letter-spacing:.12em;font-weight:900;color:#5572a1}
+.memo-panel__header h2{margin:.25rem 0 0;color:#183b75;font-size:1.55rem}
+.memo-close{width:42px;height:42px;border-radius:14px;border:1px solid #d4e0f2;background:#fff;font-size:1.7rem;color:#38547f;cursor:pointer}
+.memo-panel__content{padding:18px;overflow:auto;display:flex;flex-direction:column;gap:14px}
+.memo-section{background:#fff;border:1px solid #dce7f5;border-radius:20px;padding:15px;box-shadow:0 6px 16px rgba(36,57,94,.05)}
+.memo-section__head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.memo-section h3{margin:0;color:#1d3d72;font-size:1.05rem}
+.memo-section__head>span{font-size:.78rem;font-weight:800;color:#657b9f;background:#eef4ff;padding:4px 9px;border-radius:999px}
+.memo-items{display:flex;flex-direction:column;gap:8px}
+.memo-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:14px;background:#f8fbff;border:1px solid #e3ebf7}
+.memo-item__main{min-width:0;flex:1}
+.memo-item strong{display:block;color:#203d6d;font-size:.94rem}
+.memo-item small{display:block;color:#7183a0;margin-top:2px}
+.memo-empty{padding:10px 12px;border-radius:14px;background:#fafcff;color:#7a8ba6;font-size:.9rem;text-align:center}
+.memo-note-form{display:grid;grid-template-columns:1fr 142px auto;gap:8px;margin-bottom:10px}
+.memo-note-form input,.memo-note-form button{min-height:40px;border-radius:12px;border:1px solid #d6e1f1;padding:0 11px;font:inherit}
+.memo-note-form button{background:#2459c4;color:#fff;font-weight:800;cursor:pointer}
+.memo-note-delete{border:0;background:transparent;color:#bd3b49;font-size:1.15rem;cursor:pointer;padding:2px 5px}
+.memo-note-done{border:0;background:transparent;color:#258850;font-size:1.15rem;cursor:pointer;padding:2px 5px}
+.memo-item.is-done{opacity:.6}.memo-item.is-done strong{text-decoration:line-through}
+.memo-tools{display:flex;gap:8px;margin-top:10px}
+.memo-tools button,.memo-import{border:1px solid #d4e0f0;background:#fff;color:#35547f;border-radius:12px;padding:9px 12px;font-weight:800;cursor:pointer;font-size:.88rem}
+.memo-import input{display:none}
+@media(max-width:700px){.memo-bell{top:10px;left:10px}.memo-panel__sheet{left:8px;right:8px;top:8px;bottom:8px;width:auto}.memo-note-form{grid-template-columns:1fr}.memo-note-form input[type=date]{width:100%}}
+
+
+/* V31.87 — bouton Vu pour les notifications */
+.memo-seen-btn{flex:0 0 auto;align-self:center;border:1px solid #bcd2ef;background:#fff;color:#2459a7;border-radius:999px;padding:6px 10px;font-size:.78rem;font-weight:900;cursor:pointer;white-space:nowrap}
+.memo-seen-btn:hover{background:#eef5ff}
+.memo-item.is-seen{opacity:.58;background:#f5f7fa}
+.memo-item.is-seen strong{text-decoration:none}
+.memo-item.is-seen .memo-seen-btn{color:#65758f;border-color:#d5deea}
+
+
+/* V31.95 — action globale sur les nouvelles réussites */
+.memo-section__tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.memo-head-btn{border:1px solid #bcd2ef;background:#fff;color:#2459a7;border-radius:999px;padding:6px 10px;font-size:.78rem;font-weight:900;cursor:pointer;white-space:nowrap}
+.memo-head-btn:hover{background:#eef5ff}
+.memo-head-btn:disabled{opacity:.55;cursor:default;background:#f7f9fc;color:#7b8aa3}
+
+
+/* V33.12 — raccourci Mémo dans Organisation pédagogique */
+.memo-quick-badge{position:absolute;top:-7px;right:-7px;z-index:6;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:#e53935;color:#fff;border:2px solid #fff;font:900 .72rem/18px system-ui;text-align:center;box-shadow:0 3px 8px rgba(120,30,40,.25)}
+.memo-quick-badge.hidden{display:none!important}

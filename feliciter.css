@@ -1,0 +1,125 @@
+
+/* V33.06 — module Féliciter */
+.feliciter-shortcut img{width:100%;height:100%;object-fit:contain;border-radius:14px;background:transparent}
+.feliciter-modal{position:fixed;inset:0;z-index:10050;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(16,36,68,.58);backdrop-filter:blur(4px)}
+.feliciter-modal.hidden{display:none}
+.feliciter-dialog{width:min(1480px,97vw);max-height:94vh;overflow:auto;background:#fffaf7;border:1px solid #f1d9ca;border-radius:28px;box-shadow:0 26px 80px rgba(15,38,77,.28)}
+.feliciter-head{position:sticky;top:0;z-index:4;display:flex;align-items:center;gap:16px;padding:16px 20px;background:rgba(255,250,247,.97);border-bottom:1px solid #f1dfd4;border-radius:28px 28px 0 0}
+.feliciter-head__icon{width:58px;height:58px;border-radius:18px;object-fit:contain;background:transparent;box-shadow:0 8px 20px rgba(204,107,84,.18)}
+.feliciter-head__text{min-width:0;flex:1}.feliciter-head h2{margin:0;color:#173d75;font-size:clamp(1.35rem,2vw,2rem)}
+.feliciter-head p{margin:3px 0 0;color:#64748b}
+.feliciter-close{border:0;background:#fff;width:44px;height:44px;border-radius:50%;font-size:1.6rem;color:#173d75;cursor:pointer;box-shadow:0 4px 14px rgba(15,38,77,.12)}
+.feliciter-layout{display:grid;grid-template-columns:minmax(360px,42%) minmax(460px,58%);gap:18px;padding:18px}
+.feliciter-card{background:#fff;border:1px solid #eadfd8;border-radius:22px;padding:18px;box-shadow:0 8px 22px rgba(43,65,102,.07)}
+.feliciter-mode{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}.feliciter-mode button{border:1px solid #d8dee9;background:#fff;border-radius:14px;padding:12px;font-weight:800;color:#27364f;cursor:pointer}.feliciter-mode button.is-active{background:#fff0ec;border-color:#f27868;color:#9e362f;box-shadow:inset 0 0 0 1px #f27868}
+.feliciter-field{display:grid;gap:6px;margin:12px 0}.feliciter-field label{font-weight:800;color:#23395d}.feliciter-field select,.feliciter-field textarea,.feliciter-field input{width:100%;box-sizing:border-box;border:1px solid #ccd7e6;border-radius:12px;padding:11px 12px;font:inherit;background:#fff}.feliciter-field textarea{min-height:112px;resize:vertical}
+.feliciter-motifs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}.feliciter-motif{border:1px solid #dde2ec;background:#fff;border-radius:12px;padding:10px 5px;font-size:.82rem;font-weight:700;cursor:pointer}.feliciter-motif span{display:block;font-size:1.35rem;margin-bottom:3px}.feliciter-motif.is-active{border-color:#f27868;background:#fff1ee;color:#9e362f}
+.feliciter-themes{display:flex;gap:8px;flex-wrap:wrap}.feliciter-theme{border:1px solid #d9dfeb;border-radius:999px;background:#fff;padding:8px 12px;font-weight:700;cursor:pointer}.feliciter-theme.is-active{background:#173d75;color:#fff;border-color:#173d75}
+.feliciter-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.feliciter-actions button{border:0;border-radius:13px;padding:12px 16px;font-weight:900;cursor:pointer}.feliciter-generate{background:#f36f61;color:#fff;box-shadow:0 8px 18px rgba(243,111,97,.25)}.feliciter-print{background:#edf3ff;color:#173d75}.feliciter-clear{background:#f5f5f5;color:#475569}
+.feliciter-preview-title{display:flex;align-items:center;gap:8px;margin:0 0 12px;color:#23395d}.feliciter-ticket{aspect-ratio:1.48/1;min-height:430px;border:2px solid #e4b66e;border-radius:22px;padding:34px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;background:#fffdf8;color:#1b3157;box-shadow:inset 0 0 0 8px rgba(255,255,255,.7)}
+.feliciter-ticket::before,.feliciter-ticket::after{content:'🍂  ✦  🌿';position:absolute;font-size:2rem;letter-spacing:.5rem;opacity:.85}.feliciter-ticket::before{left:18px;top:14px}.feliciter-ticket::after{right:14px;bottom:14px;transform:rotate(180deg)}
+.feliciter-ticket.theme-nature{background:linear-gradient(135deg,#f8fff8,#fffaf3);border-color:#8eb69b}.feliciter-ticket.theme-nature::before,.feliciter-ticket.theme-nature::after{content:'🌿  ✦  🍃'}
+.feliciter-ticket.theme-etoiles{background:linear-gradient(135deg,#f8fbff,#fff8df);border-color:#e6b94d}.feliciter-ticket.theme-etoiles::before,.feliciter-ticket.theme-etoiles::after{content:'⭐  ✦  🌟'}
+.feliciter-ticket.theme-fleurs{background:linear-gradient(135deg,#fff5fb,#fffdf7);border-color:#d79ac3}.feliciter-ticket.theme-fleurs::before,.feliciter-ticket.theme-fleurs::after{content:'🌸  ✦  🌼'}
+.feliciter-ticket__recipient{font-size:1.2rem;font-weight:900;color:#9e362f;margin-bottom:15px}.feliciter-ticket__message{max-width:82%;font-size:clamp(1.25rem,2vw,2rem);line-height:1.45;font-weight:800;white-space:pre-line}.feliciter-ticket__bravo{margin:18px 0 24px;font-family:cursive;font-size:clamp(1.8rem,3vw,3rem);color:#ef6b58}.feliciter-ticket__signature{font-size:1.15rem;align-self:center}.feliciter-ticket__date{position:absolute;right:26px;bottom:20px;font-size:.82rem;color:#64748b}
+.feliciter-history{margin-top:14px;padding-top:12px;border-top:1px dashed #e4d8d0}.feliciter-history h3{font-size:1rem;margin:0 0 8px;color:#23395d}.feliciter-history-list{display:grid;gap:6px;max-height:120px;overflow:auto}.feliciter-history-item{font-size:.84rem;color:#5b6578;background:#faf7f5;border-radius:8px;padding:7px 9px}
+@media(max-width:980px){.feliciter-layout{grid-template-columns:1fr}.feliciter-ticket{min-height:360px}.feliciter-motifs{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.feliciter-modal{padding:0}.feliciter-dialog{width:100vw;max-height:100vh;border-radius:0}.feliciter-head{border-radius:0}.feliciter-layout{padding:10px}.feliciter-motifs{grid-template-columns:repeat(2,1fr)}}
+@media print{body *{visibility:hidden!important}.feliciter-modal,.feliciter-modal *{visibility:visible!important}.feliciter-modal{position:absolute;inset:0;background:#fff;padding:0}.feliciter-dialog{width:100%;max-height:none;box-shadow:none;border:0}.feliciter-head,.feliciter-card:first-child,.feliciter-preview-title{display:none!important}.feliciter-layout{display:block;padding:0}.feliciter-card{border:0;box-shadow:none;padding:0}.feliciter-ticket{width:267mm;height:180mm;box-sizing:border-box;margin:5mm auto;page-break-inside:avoid}.feliciter-ticket__message{font-size:22pt}.feliciter-ticket__bravo{font-size:32pt}}
+
+/* V33.10 — accès commun et explicite */
+.feliciter-shortcut{position:relative;cursor:pointer;overflow:visible}
+.feliciter-shortcut--home{box-shadow:0 0 0 2px #ff8b78,0 6px 14px rgba(220,85,63,.22)!important}
+.feliciter-shortcut--home::after{content:"Féliciter";position:absolute;left:50%;top:calc(100% + 8px);transform:translateX(-50%);padding:5px 9px;border-radius:999px;background:#8d2d25;color:#fff;font-size:.72rem;font-weight:900;white-space:nowrap;opacity:0;pointer-events:none;transition:.18s}
+.feliciter-shortcut--home:hover::after,.feliciter-shortcut--home:focus-visible::after{opacity:1}
+.feliciter-page-button{position:fixed;right:20px;bottom:20px;z-index:9000;display:flex;align-items:center;gap:9px;border:1px solid #f2b5a6;border-radius:18px;padding:8px 14px 8px 8px;background:#fff6f2;color:#8f3027;font:800 1rem/1 system-ui,sans-serif;box-shadow:0 10px 28px rgba(87,37,30,.2);cursor:pointer}
+.feliciter-page-button img{width:42px;height:42px;border-radius:12px;object-fit:contain;background:transparent}
+.feliciter-page-button:hover{transform:translateY(-2px);background:#ffede7}
+.feliciter-page-button:focus-visible{outline:3px solid #f27868;outline-offset:3px}
+@media(max-width:720px){.feliciter-page-button{right:10px;bottom:10px;padding-right:10px}.feliciter-page-button span{display:none}}
+@media print{.feliciter-page-button{display:none!important}}
+
+/* V33.15 — meilleure lisibilité du bouton Féliciter */
+.feliciter-shortcut--home img{width:135%!important;height:135%!important;max-width:none!important;max-height:none!important;object-fit:contain!important;transform:translateZ(0)}
+.feliciter-shortcut--home{overflow:hidden!important;padding:1px!important}
+
+/* V33.18 — l'enveloppe du bouton reste ouverte pour afficher le libellé ; l'image est découpée par .quick-label-btn__icon. */
+.feliciter-shortcut--home{overflow:visible!important}
+.feliciter-shortcut--home::after{content:attr(data-label)!important}
+
+/* V33.21 — projection TBI du billet de félicitations */
+.feliciter-tbi{position:fixed;inset:0;z-index:12000;display:flex;flex-direction:column;background:rgba(12,27,55,.96);padding:18px;box-sizing:border-box}
+.feliciter-tbi.hidden{display:none}
+.feliciter-tbi__toolbar{display:flex;justify-content:flex-end;gap:12px;margin-bottom:14px}
+.feliciter-tbi__toolbar button,.feliciter-print{border:0;border-radius:13px;padding:12px 18px;background:#7448c8!important;color:#fff!important;font-weight:900;cursor:pointer;box-shadow:0 8px 20px rgba(62,36,120,.28)}
+.feliciter-tbi__toolbar button:hover,.feliciter-tbi__toolbar button:focus-visible,.feliciter-print:hover,.feliciter-print:focus-visible{background:#6238b6!important;color:#fff!important}
+.feliciter-tbi__stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:10px;overflow:auto}
+.feliciter-tbi__ticket{width:min(1320px,92vw);height:min(780px,78vh);aspect-ratio:auto;min-height:0;box-sizing:border-box;box-shadow:0 22px 70px rgba(0,0,0,.38)}
+.feliciter-tbi__ticket .feliciter-ticket__recipient{font-size:clamp(1.7rem,2.6vw,3rem)}
+.feliciter-tbi__ticket .feliciter-ticket__message{font-size:clamp(2rem,4vw,5rem);line-height:1.28;max-width:88%}
+.feliciter-tbi__ticket .feliciter-ticket__bravo{font-size:clamp(2.8rem,5vw,6rem)}
+.feliciter-tbi__ticket .feliciter-ticket__signature{display:none}
+@media(max-width:800px){.feliciter-tbi{padding:8px}.feliciter-tbi__toolbar{margin-bottom:6px}.feliciter-tbi__ticket{width:96vw;height:80vh;padding:22px}}
+
+/* V33.25 — arrière-plans illustrés derrière le billet */
+.feliciter-preview-card{position:relative;overflow:hidden;background-color:#f7f4ef;background-position:center;background-size:cover;background-repeat:no-repeat;padding:18px}
+.feliciter-preview-card::before{content:"";position:absolute;inset:0;background:rgba(255,255,255,.18);pointer-events:none}
+.feliciter-preview-card>*{position:relative;z-index:1}
+.feliciter-preview-card .feliciter-ticket{background:rgba(255,253,248,.94);backdrop-filter:blur(1px);box-shadow:0 16px 42px rgba(18,35,64,.22),inset 0 0 0 8px rgba(255,255,255,.76)}
+.background-fete{background-image:url("backgrounds/feliciter_fete.jpg")}
+.background-ecole{background-image:url("backgrounds/feliciter_ecole.jpg")}
+.background-reussite{background-image:url("backgrounds/feliciter_reussite.jpg")}
+.background-aucun{background-image:none!important;background-color:#f7f4ef!important}
+.feliciter-tbi__stage{background-position:center;background-size:cover;background-repeat:no-repeat;border-radius:20px;transition:background-image .2s ease}
+.feliciter-tbi__stage::before{content:"";position:absolute;inset:0;background:rgba(10,20,42,.08);pointer-events:none}
+.feliciter-tbi__stage{position:relative}
+.feliciter-tbi__stage>.feliciter-tbi__ticket{position:relative;z-index:1;background:rgba(255,253,248,.94);backdrop-filter:blur(2px)}
+@media(max-width:600px){.feliciter-preview-card{padding:10px}.feliciter-preview-card .feliciter-ticket{min-height:330px}}
+
+/* V33.26 — billet épuré : date utile, signature enseignant et décor mieux visible */
+.feliciter-ticket::before,
+.feliciter-ticket::after,
+.feliciter-ticket.theme-nature::before,
+.feliciter-ticket.theme-nature::after,
+.feliciter-ticket.theme-etoiles::before,
+.feliciter-ticket.theme-etoiles::after,
+.feliciter-ticket.theme-fleurs::before,
+.feliciter-ticket.theme-fleurs::after{
+  content:none!important;
+  display:none!important;
+}
+.feliciter-preview-card .feliciter-ticket,
+.feliciter-tbi__stage>.feliciter-tbi__ticket{
+  background:rgba(255,253,248,.84)!important;
+  backdrop-filter:blur(.6px)!important;
+  -webkit-backdrop-filter:blur(.6px)!important;
+}
+.feliciter-ticket__date{
+  position:absolute!important;
+  top:22px!important;
+  left:26px!important;
+  right:auto!important;
+  bottom:auto!important;
+  max-width:48%;
+  color:#28466f!important;
+  font-size:.92rem!important;
+  font-weight:800!important;
+  text-align:left;
+}
+.feliciter-ticket__signature{
+  position:absolute!important;
+  right:30px!important;
+  bottom:24px!important;
+  align-self:auto!important;
+  color:#1b3157!important;
+  font-size:1.12rem!important;
+  font-weight:800!important;
+  font-style:italic;
+}
+.feliciter-tbi__ticket .feliciter-ticket__signature{display:block!important;font-size:clamp(1.25rem,1.8vw,2rem)!important}
+.feliciter-tbi__ticket .feliciter-ticket__date{font-size:clamp(1rem,1.4vw,1.5rem)!important}
+@media(max-width:600px){
+  .feliciter-ticket{padding:58px 18px 54px!important}
+  .feliciter-ticket__date{top:16px!important;left:18px!important;max-width:70%;font-size:.76rem!important}
+  .feliciter-ticket__signature{right:18px!important;bottom:16px!important;font-size:.95rem!important}
+}

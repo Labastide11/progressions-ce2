@@ -1,0 +1,128 @@
+/* V32.82 — fiche individuelle Parcours de l’élève */
+.po-modal{position:fixed;inset:0;z-index:2400;background:rgba(15,23,42,.66);display:grid;place-items:center;padding:18px}.po-modal.hidden{display:none}.po-panel{width:min(1380px,97vw);max-height:96vh;overflow:auto;background:#f5f8fd;border-radius:26px;box-shadow:0 30px 90px rgba(15,23,42,.38);padding:22px}.po-header{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;padding:4px 4px 16px}.po-header h2{margin:4px 0;color:#173b83;font-size:2rem}.po-header p{margin:0;color:#64748b}.po-close{width:46px;height:46px;border:0;border-radius:50%;background:#fff;color:#334155;font-size:2rem;cursor:pointer;box-shadow:0 6px 16px rgba(15,23,42,.12)}
+.po-toolbar{display:grid;grid-template-columns:minmax(220px,1fr) 180px auto;gap:14px;align-items:end;padding:16px;border:1px solid #dbe7f7;border-radius:18px;background:#fff}.po-toolbar label,.po-identity label{display:grid;gap:6px}.po-toolbar label span,.po-identity label span{font-weight:850;color:#334155}.po-toolbar select,.po-identity input{width:100%;padding:11px 12px;border:1px solid #cbd5e1;border-radius:11px;background:#fff;font:inherit}.po-toolbar__actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.po-toolbar button{border:0;border-radius:11px;padding:11px 13px;font-weight:900;cursor:pointer}.po-toolbar button:nth-child(1){background:#166534;color:#fff}.po-toolbar button:nth-child(2){background:#e0e7ff;color:#3730a3}.po-toolbar button:nth-child(3){background:#dbeafe;color:#1d4ed8}.po-status{min-height:28px;padding:7px 4px;color:#166534;font-weight:800}.po-form{display:grid;gap:14px}
+.po-identity{display:grid;grid-template-columns:1fr 220px;gap:14px;padding:14px;border:1px solid #dbe7f7;border-radius:16px;background:#fff;align-items:center}.po-student-heading{display:flex;align-items:center;gap:14px}.po-student-heading img{width:64px;height:64px;object-fit:contain;border-radius:18px;background:#eef4ff}.po-student-heading div{display:grid;gap:3px}.po-student-heading span{font-size:.8rem;font-weight:900;color:#64748b;text-transform:uppercase;letter-spacing:.08em}.po-student-heading strong{font-size:1.5rem;color:#173b83}.po-student-heading small{color:#64748b}
+.po-summary-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.po-summary-strip article{padding:12px 14px;background:#fff;border:1px solid #dbe7f7;border-radius:14px;display:flex;justify-content:space-between;align-items:center;gap:10px}.po-summary-strip span{font-weight:800;color:#475569}.po-summary-strip strong{font-size:1.15rem;color:#173b83;text-align:right}
+.po-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.po-grid--top{grid-template-columns:1fr 1fr}.po-card{display:grid;gap:9px;padding:15px;border-radius:18px;border:1px solid #dbe7f7;background:#fff;box-shadow:0 7px 18px rgba(38,58,100,.05)}.po-card>span,.po-card__title>span{font-weight:950;font-size:1.05rem}.po-card__title{display:flex;justify-content:space-between;align-items:center;gap:12px}.po-card__title small{font-weight:700;color:#64748b}.po-card textarea{width:100%;resize:vertical;border:1px solid #dbe3ea;border-radius:12px;padding:12px;font:inherit;line-height:1.45;background:#fff;box-sizing:border-box}.po-card--goals{background:#f3f8ff}.po-card--goals>span{color:#1d4ed8}.po-card--success{background:#f1fbf4}.po-card--success .po-card__title>span{color:#15803d}.po-card--mastered{background:#f0fdf4}.po-card--mastered .po-card__title>span{color:#166534}.po-card--needs{background:#fff9ed}.po-card--needs>span{color:#b45309}.po-card--support{background:#f7f3ff}.po-card--support>span{color:#6d28d9}.po-card--steps{background:#f5f3ff}.po-card--steps>span{color:#5b21b6}.po-card--comments{background:#fff}.po-card--comments .po-card__title>span{color:#334155}.po-card--bilan{background:#eefcfb}.po-card--bilan>span{color:#0f766e}
+.po-mini-btn{border:0;border-radius:10px;padding:8px 10px;background:#e0e7ff;color:#3730a3;font-weight:900;cursor:pointer}.po-entry-list,.po-comments-list{display:grid;gap:9px}.po-entry{display:grid;grid-template-columns:145px 1fr 34px;gap:8px;align-items:start}.po-entry input,.po-entry textarea{border:1px solid #cbd5e1;border-radius:10px;padding:9px;font:inherit;background:#fff;box-sizing:border-box;width:100%}.po-entry-delete{border:0;border-radius:9px;width:34px;height:34px;background:#fee2e2;color:#991b1b;font-size:1.2rem;cursor:pointer}.po-empty-hint{margin:4px 0;color:#64748b;font-style:italic}.po-skill-list{display:grid;gap:7px;max-height:210px;overflow:auto}.po-skill{display:grid;grid-template-columns:90px 1fr;gap:8px;align-items:center;padding:8px 10px;border-radius:10px;background:#fff;border:1px solid #dcfce7}.po-skill span{font-size:.78rem;font-weight:900;color:#166534}.po-skill strong{font-size:.92rem;color:#334155}.po-inner-field{display:grid;gap:6px;margin-top:4px}.po-inner-field span{font-weight:800;color:#475569}.po-privacy{margin:15px 0 0;padding:11px 13px;border-radius:12px;background:#fff7ed;color:#9a3412;border:1px solid #fdba74}
+@media(max-width:1000px){.po-toolbar{grid-template-columns:1fr 1fr}.po-toolbar__actions{grid-column:1/-1;justify-content:flex-start}.po-summary-strip{grid-template-columns:1fr 1fr}.po-grid,.po-grid--top{grid-template-columns:1fr}.po-identity{grid-template-columns:1fr}}
+@media(max-width:620px){.po-modal{padding:0}.po-panel{width:100vw;max-height:100vh;border-radius:0;padding:14px}.po-toolbar{grid-template-columns:1fr}.po-toolbar__actions{grid-column:auto}.po-summary-strip{grid-template-columns:1fr}.po-entry{grid-template-columns:1fr 34px}.po-entry input{grid-column:1}.po-entry textarea{grid-column:1}.po-entry-delete{grid-column:2;grid-row:1/3}}
+@media print{body.po-printing *{visibility:hidden!important}body.po-printing #parcoursOutilModal,body.po-printing #parcoursOutilModal *{visibility:visible!important}body.po-printing #parcoursOutilModal{position:absolute;inset:0;background:#fff;padding:0;display:block}body.po-printing .po-panel{width:100%;max-height:none;overflow:visible;border-radius:0;box-shadow:none;padding:8mm}body.po-printing .no-print,.po-close,.po-status{display:none!important}body.po-printing .po-header{padding-bottom:8px}body.po-printing .po-grid,.po-grid--top{grid-template-columns:1fr 1fr}body.po-printing textarea{border:0;background:transparent;overflow:visible;resize:none}body.po-printing .po-card{break-inside:avoid;box-shadow:none}body.po-printing .po-summary-strip{grid-template-columns:repeat(4,1fr)}@page{size:A4 portrait;margin:0}}
+
+
+/* V32.83 — provenance des compétences du parcours élève */
+.po-skill{display:grid;grid-template-columns:minmax(72px,auto) 1fr;align-items:start;gap:10px}
+.po-skill>div{display:grid;gap:3px}
+.po-skill small{display:block;font-size:.76rem;color:#64748b;line-height:1.35}
+.po-skill--hibou{border-color:#c4b5fd;background:linear-gradient(135deg,#faf5ff,#eef2ff)}
+.po-skill--hibou>span{background:#6d28d9;color:#fff;border-radius:999px;padding:4px 8px;text-align:center}
+
+/* V32.84 — trois dernières réussites, toutes catégories confondues */
+.po-entry--remote{display:grid;grid-template-columns:132px 1fr;gap:12px;align-items:start;padding:12px 14px;border:1px solid #bbf7d0;border-radius:14px;background:#f0fdf4}
+.po-entry--remote .po-entry__date{font-weight:800;color:#166534;font-size:.84rem}
+.po-entry--remote .po-entry__body{display:flex;flex-direction:column;gap:4px}
+.po-entry--remote .po-entry__body strong{color:#14532d}
+.po-entry--remote .po-entry__body small{color:#64748b;line-height:1.35}
+@media(max-width:760px){.po-entry--remote{grid-template-columns:1fr}}
+
+
+/* V33.01 — parcours élève plus lisible, compact et coloré */
+.po-identity{
+  grid-template-columns:minmax(0,1fr) minmax(210px,260px);
+  gap:22px;
+  padding:18px 20px;
+  background:linear-gradient(135deg,#ffffff 0%,#f3f7ff 100%);
+  border-color:#cfe0f7;
+  box-shadow:0 8px 22px rgba(30,64,175,.06);
+}
+.po-student-heading{
+  display:grid;
+  grid-template-columns:132px minmax(0,1fr);
+  gap:22px;
+  align-items:center;
+  min-width:0;
+}
+.po-student-heading img{
+  width:132px;
+  height:132px;
+  padding:5px;
+  border-radius:28px;
+  object-fit:contain;
+  background:linear-gradient(145deg,#eff6ff,#dbeafe);
+  border:4px solid #3b82f6;
+  box-shadow:0 10px 24px rgba(37,99,235,.16);
+}
+.po-student-heading>div{
+  display:grid;
+  gap:8px;
+  align-content:center;
+  min-width:0;
+}
+.po-student-heading span{
+  width:max-content;
+  padding:5px 10px;
+  border-radius:999px;
+  background:#e0e7ff;
+  color:#3730a3;
+  font-size:.78rem;
+  font-weight:950;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.po-student-heading strong{
+  font-size:clamp(1.65rem,2.4vw,2.25rem);
+  line-height:1.05;
+  color:#173b83;
+  overflow-wrap:anywhere;
+}
+.po-student-heading small{
+  width:max-content;
+  max-width:100%;
+  padding:8px 11px;
+  border-radius:10px;
+  background:#fff;
+  border:1px solid #dbe7f7;
+  color:#475569;
+  font-size:.98rem;
+  font-weight:750;
+  line-height:1.35;
+}
+.po-identity label{
+  align-self:center;
+  padding:14px;
+  border-radius:14px;
+  background:#fff;
+  border:1px solid #dbe7f7;
+}
+.po-identity label span{color:#173b83}
+.po-summary-strip{gap:12px}
+.po-summary-strip article{
+  min-height:72px;
+  padding:13px 15px;
+  border-width:1px;
+  box-shadow:0 5px 14px rgba(15,23,42,.04);
+}
+.po-summary-strip article:nth-child(1){background:#ecfdf3;border-color:#bbf7d0}
+.po-summary-strip article:nth-child(2){background:#eff6ff;border-color:#bfdbfe}
+.po-summary-strip article:nth-child(3){background:#faf5ff;border-color:#ddd6fe}
+.po-summary-strip article:nth-child(4){background:#fff7ed;border-color:#fed7aa}
+.po-summary-strip article:nth-child(1) strong{color:#15803d}
+.po-summary-strip article:nth-child(2) strong{color:#1d4ed8}
+.po-summary-strip article:nth-child(3) strong{color:#7e22ce}
+.po-summary-strip article:nth-child(4) strong{color:#c2410c}
+.po-summary-strip span{line-height:1.25}
+.po-summary-strip strong{margin-left:8px;white-space:normal}
+.po-card{transition:box-shadow .15s ease,border-color .15s ease}
+.po-card:focus-within{border-color:#93c5fd;box-shadow:0 0 0 3px rgba(59,130,246,.10)}
+@media(max-width:900px){
+  .po-identity{grid-template-columns:1fr}
+  .po-student-heading{grid-template-columns:104px minmax(0,1fr)}
+  .po-student-heading img{width:104px;height:104px;border-radius:22px}
+  .po-identity label{width:100%;box-sizing:border-box}
+}
+@media(max-width:560px){
+  .po-student-heading{grid-template-columns:82px minmax(0,1fr);gap:14px}
+  .po-student-heading img{width:82px;height:82px;border-width:3px}
+  .po-student-heading strong{font-size:1.45rem}
+  .po-student-heading small{font-size:.86rem}
+}

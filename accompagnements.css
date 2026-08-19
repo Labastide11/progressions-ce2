@@ -1,0 +1,25 @@
+/* V31.71 — Accompagnements et inclusions */
+.supports-modal{position:fixed;inset:0;z-index:1100;background:rgba(15,27,52,.58);display:grid;place-items:center;padding:22px}
+.supports-modal.hidden{display:none}
+.supports-panel{width:min(1500px,96vw);max-height:94vh;overflow:auto;background:#f8fbff;border-radius:28px;box-shadow:0 30px 80px rgba(15,27,52,.3);padding:24px}
+.supports-header{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;padding:6px 4px 18px;border-bottom:1px solid #dfe8f4}
+.supports-header h2{margin:.2rem 0 .35rem;color:#153a75;font-size:2rem}.supports-header p{margin:0;color:#5d6c87}
+.supports-close{width:48px;height:48px;border:0;border-radius:16px;background:#e9f0fb;color:#153a75;font-size:2rem;cursor:pointer}
+.supports-privacy{margin:16px 0;padding:14px 16px;border:1px solid #f1d394;border-radius:16px;background:#fff9e8;display:flex;gap:12px;align-items:center;color:#785900}
+.supports-layout{display:grid;grid-template-columns:minmax(0,2.4fr) minmax(250px,.8fr);gap:18px}
+.supports-form,.supports-summary{background:#fff;border:1px solid #dce7f5;border-radius:22px;padding:18px;box-shadow:0 8px 20px rgba(30,55,100,.05)}
+.supports-form h3,.supports-summary h3{margin:0 0 15px;color:#183e7c}
+.supports-fields{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.supports-form label,.supports-tools label{display:flex;flex-direction:column;gap:6px;font-weight:700;color:#28415f}
+.supports-form input,.supports-form select,.supports-form textarea,.supports-tools input,.supports-tools select{border:1px solid #cbd9ec;border-radius:12px;padding:10px 12px;font:inherit;background:#fff;color:#17283e}
+.supports-wide{margin-top:12px}.supports-form-actions{display:flex;gap:10px;margin-top:14px}.supports-save,.supports-export{border:0;border-radius:13px;padding:11px 16px;background:#176d45;color:#fff;font-weight:800;cursor:pointer}.supports-cancel{border:1px solid #ced9e7;border-radius:13px;padding:11px 16px;background:#fff;color:#3b4b62;font-weight:700}.supports-cancel.hidden{display:none}
+.supports-stats{display:grid;gap:10px}.supports-stat{padding:13px;border-radius:15px;background:#eef5ff;color:#183e7c}.supports-stat strong{display:block;font-size:1.7rem}.supports-export{margin-top:16px;width:100%;background:#2259b8}
+.supports-tools{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin:18px 0}
+.supports-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.support-card{background:#fff;border:1px solid #dce7f5;border-left:7px solid #3d7bdd;border-radius:19px;padding:16px;box-shadow:0 8px 18px rgba(25,50,95,.05)}
+.support-card[data-category="interne"]{border-left-color:#2ca66f}.support-card[data-category="exterieur"]{border-left-color:#8456cf}.support-card[data-category="inclusion"]{border-left-color:#e69b21}
+.support-card__head{display:flex;justify-content:space-between;gap:12px}.support-card h4{margin:0;color:#14386e;font-size:1.25rem}.support-card__badge{display:inline-block;margin-top:5px;padding:4px 9px;border-radius:999px;background:#eef4ff;color:#2459a7;font-weight:800;font-size:.82rem}
+.support-card dl{display:grid;grid-template-columns:auto 1fr;gap:7px 10px;margin:14px 0 0}.support-card dt{font-weight:800;color:#56657a}.support-card dd{margin:0;color:#22334a}.support-card__actions{display:flex;gap:8px}.support-card__actions button{border:0;border-radius:10px;padding:7px 10px;cursor:pointer}.support-edit{background:#eaf2ff;color:#174e9e}.support-delete{background:#fff0f0;color:#a52e2e}.supports-empty{grid-column:1/-1;text-align:center;padding:35px;border:2px dashed #cfdbeb;border-radius:20px;color:#687a92;background:#fff}
+.home-tile--support{background:linear-gradient(180deg,#fff8e8,#fffdf7);border-color:#f0d48b}.home-tile--support .home-tile__icon{background:#fff0bd;color:#a36b00}
+@media(max-width:1000px){.supports-layout{grid-template-columns:1fr}.supports-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.supports-list{grid-template-columns:1fr}}
+@media(max-width:650px){.supports-panel{padding:14px}.supports-fields,.supports-tools{grid-template-columns:1fr}.supports-privacy{align-items:flex-start;flex-direction:column}}

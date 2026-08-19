@@ -1,0 +1,31 @@
+/* V33.34 — publication des espaces externes */
+.spaces-publish-btn .quick-label-btn__icon{font-size:28px;line-height:1;display:grid;place-items:center}
+.spaces-publish-modal{position:fixed;inset:0;z-index:12000;display:grid;place-items:center;padding:24px;background:rgba(25,20,45,.42);backdrop-filter:blur(4px)}
+.spaces-publish-modal.hidden{display:none}
+.spaces-publish-panel{width:min(720px,96vw);max-height:92vh;overflow:auto;background:#fffefb;border:2px solid #dbcdf7;border-radius:26px;box-shadow:0 24px 70px rgba(47,31,91,.28);padding:22px}
+.spaces-publish-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;border-bottom:1px solid #eadff8;padding-bottom:14px;margin-bottom:16px}
+.spaces-publish-head h2{margin:0;color:#4d238d;font-size:25px}.spaces-publish-head p{margin:5px 0 0;color:#6d6477}
+.spaces-publish-close{border:0;background:#f4eefb;border-radius:50%;width:38px;height:38px;font-size:24px;cursor:pointer}
+.spaces-publish-card{border:1.5px solid #dfd5ec;border-radius:18px;padding:16px;margin:12px 0;background:#fff}
+.spaces-publish-card h3{margin:0 0 7px;font-size:18px;color:#25203a}.spaces-publish-card p{margin:0 0 12px;color:#655d70}
+.spaces-publish-card--future{opacity:.62}.spaces-publish-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.spaces-publish-status{font-size:13px;color:#655d70}.spaces-publish-action{border:0;border-radius:14px;padding:10px 16px;background:#6d3ed7;color:#fff;font-weight:800;cursor:pointer}
+.spaces-publish-action:hover{filter:brightness(.96)}.spaces-publish-action:disabled{opacity:.55;cursor:default}
+.spaces-publish-form{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.spaces-publish-form label{display:grid;gap:5px;font-weight:700;font-size:13px;color:#4d4656}
+.spaces-publish-form textarea{resize:vertical;min-height:58px;border:1px solid #d9cce9;border-radius:10px;padding:9px;font:inherit;background:#fff}
+.spaces-publish-form label:last-child{grid-column:1/-1}
+@media(max-width:700px){.spaces-publish-form{grid-template-columns:1fr}.spaces-publish-form label:last-child{grid-column:auto}}
+
+#spacesParentsForm textarea{min-height:64px}.spaces-publish-panel{max-height:92vh;overflow:auto}.spaces-publish-card+ .spaces-publish-card{margin-top:16px}
+
+/* V33.62 — champ urgent Parents */
+.spaces-publish-form .spaces-publish-urgent{
+  background:#fff6dd;
+  border:1px solid #e6c36b;
+  border-radius:12px;
+  padding:10px;
+}
+.spaces-publish-form .spaces-publish-urgent textarea{
+  min-height:76px;
+  background:#fffdf7;
+}

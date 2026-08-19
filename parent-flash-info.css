@@ -1,0 +1,89 @@
+/* V33.62 — administration rapide de l'info Parents */
+#parentFlashQuickBtn .quick-label-btn__icon img{
+  object-fit:contain!important;
+  transform:scale(1.18)!important;
+  background:#fff!important;
+}
+#parentFlashQuickBtn::after{
+  content:attr(data-label)!important;
+  background:#51327f!important;
+  border-color:#51327f!important;
+  color:#fff!important;
+}
+.parent-flash-admin{
+  position:fixed;inset:0;z-index:12500;display:grid;place-items:center;
+  padding:20px;background:rgba(25,20,45,.43);backdrop-filter:blur(4px)
+}
+.parent-flash-admin.hidden{display:none}
+.parent-flash-admin__panel{
+  width:min(620px,96vw);max-height:92vh;overflow:auto;background:#fffefb;
+  border:2px solid #dbcdf7;border-radius:24px;box-shadow:0 24px 70px rgba(47,31,91,.28)
+}
+.parent-flash-admin__head{
+  display:flex;justify-content:space-between;gap:14px;align-items:flex-start;
+  padding:20px;border-bottom:1px solid #eadff8
+}
+.parent-flash-admin__kicker{
+  display:block;margin-bottom:3px;color:#7650ad;font-size:11px;font-weight:950;
+  text-transform:uppercase;letter-spacing:.08em
+}
+.parent-flash-admin__head h2{margin:0;color:#4d238d;font-size:24px}
+.parent-flash-admin__head p{margin:5px 0 0;color:#6e6578;line-height:1.4}
+.parent-flash-admin__close{
+  border:0;background:#f4eefb;border-radius:50%;width:38px;height:38px;
+  font-size:24px;cursor:pointer;color:#5a3e84
+}
+.parent-flash-admin__body{padding:18px 20px 20px}
+.parent-flash-admin__body label{display:block;font-weight:900;color:#44394d;margin-bottom:7px}
+.parent-flash-admin__body textarea{
+  width:100%;min-height:105px;resize:vertical;box-sizing:border-box;
+  border:1.5px solid #d9cdea;border-radius:14px;padding:12px 13px;
+  font:600 15px/1.45 system-ui,sans-serif;color:#332b3a;background:#fff
+}
+.parent-flash-admin__body textarea:focus{outline:3px solid #eadcff;border-color:#8c66c5}
+.parent-flash-admin__meta{
+  display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  margin-top:6px;color:#7b7381;font-size:12px
+}
+.parent-flash-admin__preview{
+  margin-top:13px;padding:10px 12px;border-radius:12px;background:#fff4d0;
+  border:1px solid #edcf7c;color:#4f3a0d;display:grid;gap:4px
+}
+.parent-flash-admin__preview[hidden]{display:none}
+.parent-flash-admin__preview strong{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#815d08}
+.parent-flash-admin__actions{
+  display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-top:15px
+}
+.parent-flash-admin__btn{
+  border:0;border-radius:12px;padding:9px 13px;background:#6d3ed7;color:#fff;
+  font-weight:850;cursor:pointer
+}
+.parent-flash-admin__btn--ghost{background:#eee8f5;color:#5b4772}
+.parent-flash-admin__btn--publish{background:#51327f}
+.parent-flash-admin__note{
+  margin:12px 0 0;padding:9px 10px;border-radius:10px;background:#f7f4fa;
+  color:#766e7d;font-size:12px;line-height:1.4
+}
+.parent-flash-admin__status{margin-top:9px;min-height:18px;font-size:12px;font-weight:800;color:#665d70}
+.parent-flash-admin__status[data-kind="ok"]{color:#2f7446}
+.parent-flash-admin__status[data-kind="error"]{color:#a33b3b}
+@media(max-width:620px){
+  .parent-flash-admin{padding:8px}
+  .parent-flash-admin__panel{border-radius:18px}
+  .parent-flash-admin__head{padding:16px}
+  .parent-flash-admin__head h2{font-size:21px}
+  .parent-flash-admin__body{padding:15px 16px 17px}
+  .parent-flash-admin__actions{justify-content:stretch}
+  .parent-flash-admin__btn{flex:1 1 100%}
+}
+
+/* V33.62 — nouvelle icône Info Parents fournie par l'utilisateur */
+#parentFlashQuickBtn .quick-label-btn__icon{
+  overflow:visible;
+}
+#parentFlashQuickBtn .quick-label-btn__icon img{
+  object-fit:contain!important;
+  transform:scale(1.24)!important;
+  transform-origin:center!important;
+  background:transparent!important;
+}
