@@ -118,3 +118,8 @@ Le détail complet des anciennes versions est conservé dans `docs/historique/`.
 ## V32 et antérieures
 - Construction progressive du référentiel CE2, du suivi des compétences et des premières briques du tableau de bord.
 - Voir `docs/historique/` pour le détail version par version.
+
+
+## V34.25
+- Affinage des filtres de la fenêtre Évaluations : le choix du semestre limite dynamiquement les périodes disponibles (S1 = P1/P2 ; S2 = P3/P4/P5).
+- Réinitialisation automatique à « Toutes les périodes du semestre » si la période courante n’est plus compatible.

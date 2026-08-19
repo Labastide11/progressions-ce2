@@ -54,6 +54,21 @@
   function semesterLabel(period){
     return semesterForPeriod(period)==='s1'?'Semestre 1 — LSU S1':'Semestre 2 — LSU S2';
   }
+  const PERIOD_LABELS={p1:'Période 1',p2:'Période 2',p3:'Période 3',p4:'Période 4',p5:'Période 5'};
+  function allowedPeriodsForSemester(semester){
+    if(semester==='s1')return ['p1','p2'];
+    if(semester==='s2')return ['p3','p4','p5'];
+    return ['p1','p2','p3','p4','p5'];
+  }
+  function syncPeriodFilterWithSemester(){
+    if(!periodFilter)return;
+    const semester=semesterFilter?.value||'all';
+    const previous=periodFilter.value||'all';
+    const allowed=allowedPeriodsForSemester(semester);
+    const allLabel=semester==='s1'?'Toutes les périodes du S1':semester==='s2'?'Toutes les périodes du S2':'Toutes les périodes';
+    periodFilter.innerHTML=`<option value="all">${allLabel}</option>`+allowed.map(period=>`<option value="${period}">${PERIOD_LABELS[period]}</option>`).join('');
+    periodFilter.value=allowed.includes(previous)?previous:'all';
+  }
   const FR_MONTHS={janvier:0,'février':1,fevrier:1,mars:2,avril:3,mai:4,juin:5,juillet:6,'août':7,aout:7,septembre:8,octobre:9,novembre:10,'décembre':11,decembre:11};
   function parseFrenchDay(label){
     const m=String(label||'').toLowerCase().match(/(\d{1,2})(?:er)?\s+(janvier|février|fevrier|mars|avril|mai|juin|juillet|août|aout|septembre|octobre|novembre|décembre|decembre)\s+(20\d{2})/i);
@@ -269,7 +284,8 @@
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.classList.contains('hidden'))close();});
   subjectFilter.addEventListener('change',render);
   periodFilter.addEventListener('change',render);
-  semesterFilter?.addEventListener('change',render);
+  syncPeriodFilterWithSemester();
+  semesterFilter?.addEventListener('change',()=>{syncPeriodFilterWithSemester();render();});
 
   // Mise à jour ciblée du navigateur d'évaluation.
   // Ne pas observer tout le DOM : ensureNavigator() modifie lui-même le DOM,

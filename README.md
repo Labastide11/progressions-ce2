@@ -81,3 +81,10 @@ Chaque carte d’évaluation affiche désormais le semestre auquel elle contribu
 - Les évaluations structurées de Français et Mathématiques P3 sont déplacées sur la semaine du 1er au 5 février 2027.
 - P1 + P2 alimentent le semestre 1 ; P3 + P4 + P5 alimentent le semestre 2.
 - Les entraînements, observations et retours pédagogiques de janvier restent possibles mais ne sont plus repérés comme évaluations.
+
+
+## V34.25 — Filtres semestre / période cohérents
+- Le filtre **Période** dépend maintenant du **Semestre LSU** sélectionné.
+- Semestre 1 : seules P1 et P2 sont proposées.
+- Semestre 2 : seules P3, P4 et P5 sont proposées.
+- Si une période sélectionnée devient incompatible lors d’un changement de semestre, le filtre revient automatiquement à « Toutes les périodes du semestre ».
