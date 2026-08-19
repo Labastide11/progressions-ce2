@@ -1,3 +1,11 @@
+## V34.07 — Alignement emploi du temps P3–P5 / évaluations
+
+- Audit des compétences évaluées en P3, P4 et P5.
+- P3 : couverture déjà complète, aucune compétence évaluée manquante.
+- P4 : ajout explicite des masses (`MAS-P4-01`), monnaie (`MON-P4-01`), durées (`TEM-P4-01`) et programme de construction (`GEO-P4-03`) dans les créneaux de mathématiques.
+- P5 : ajout explicite des mesures à plusieurs étapes (`MES-P5-02`), durées (`TEM-P5-01`) et symétrie (`SYM-P5-01`) dans les créneaux de mathématiques.
+- Les évaluations Français P3–P5 étaient déjà couvertes par la programmation via les plages de codes existantes.
+
 # Progressions CE2
 
 ## V34.06 — Français P2 à P5 : codes canoniques finalisés

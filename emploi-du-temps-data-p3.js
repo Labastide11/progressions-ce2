@@ -1,4 +1,4 @@
-/* V31.97 — Données détaillées P3 */
+/* V34.07 — Données détaillées P3 — audit LSU : toutes les compétences évaluées P3 sont programmées */
 (function(global){
   'use strict';
   const data=global.PROGRESSIONS_EDT_DATA=global.PROGRESSIONS_EDT_DATA||{};

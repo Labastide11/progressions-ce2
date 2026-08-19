@@ -1,3 +1,7 @@
+## V34.07
+- Alignement des emplois du temps P3–P5 avec toutes les compétences évaluées en français et mathématiques.
+- P3 vérifiée complète. P4 et P5 complétées sur les compétences de mesures/durées/géométrie/symétrie manquantes.
+
 ## V34.06 — Français P2 à P5 verrouillé sur les codes canoniques
 
 - Finalisation des listes `skillCodes` pour les évaluations de français P2, P3, P4 et P5.
