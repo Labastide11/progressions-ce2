@@ -1,3 +1,9 @@
+## V34.19 — Compteur dynamique des compétences évaluées
+
+- Le nombre affiché dans « Compétences de cette évaluation » correspond désormais au nombre de cases cochées.
+- « Renseigner l’évaluation (X) » est mis à jour immédiatement lors d’un cochage/décochage.
+- Aucun changement sur les fiches élève DOCX : cette sélection concerne uniquement les compétences prises en compte pour la saisie.
+
 ## V34.18 — Repères automatiques des évaluations
 - Ajout sur chaque carte d’évaluation d’un repère **semaine + dates** calculé depuis l’emploi du temps détaillé.
 - Ajout du statut automatique **À venir / Cette semaine / Passée** selon la date courante.

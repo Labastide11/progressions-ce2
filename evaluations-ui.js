@@ -127,6 +127,7 @@
     const byCode=new Map(allSkills.map(skill=>[skill.code,skill]));
     const skills=configured.length?configured.map(code=>byCode.get(code)).filter(Boolean):[];
     const included=saved.included||{};
+    const selectedCount=skills.filter(skill=>included[skill.code]!==false).length;
     const skillRows=skills.length?skills.map(skill=>{
       const checked=included[skill.code]!==false;
       return `<label class="evaluation-skill"><input type="checkbox" data-eval-skill="${esc(skill.code)}" ${checked?'checked':''}><span class="evaluation-skill__code">${esc(skill.code)}</span><span>${esc(skill.title)}</span></label>`;
@@ -135,8 +136,8 @@
       <header class="evaluation-card__head"><div><span class="evaluation-period">${period.toUpperCase()}</span><h3>${esc(ev.title)}</h3></div><select class="evaluation-status" aria-label="État de l’évaluation"><option value="draft" ${status==='draft'?'selected':''}>Matrice</option><option value="ready" ${status==='ready'?'selected':''}>Prête</option><option value="passed" ${status==='passed'?'selected':''}>Passée</option></select></header>
       <p>${esc(ev.description)}</p>
       ${scheduleBlock(subject,period,ev)}
-      <div class="evaluation-docs"><a class="btn btn--outline btn--compact" href="${esc(ev.studentDoc)}" download>📄 Fiche élève</a><a class="btn btn--outline btn--compact" href="${esc(ev.teacherDoc)}" download>👨‍🏫 Grille enseignant</a><button class="btn btn--light btn--compact" type="button" data-open-tracking ${skills.length?'':'disabled'}>👥 ${skills.length?`Renseigner l’évaluation (${skills.length})`:'Évaluation à finaliser'}</button></div>
-      <details class="evaluation-skills"><summary>Compétences de cette évaluation <span>${skills.length||'à définir'}</span></summary><div class="evaluation-skill-list">${skillRows}</div></details>
+      <div class="evaluation-docs"><a class="btn btn--outline btn--compact" href="${esc(ev.studentDoc)}" download>📄 Fiche élève</a><a class="btn btn--outline btn--compact" href="${esc(ev.teacherDoc)}" download>👨‍🏫 Grille enseignant</a><button class="btn btn--light btn--compact" type="button" data-open-tracking ${skills.length?'':'disabled'}>👥 ${skills.length?`Renseigner l’évaluation (${selectedCount})`:'Évaluation à finaliser'}</button></div>
+      <details class="evaluation-skills"><summary>Compétences de cette évaluation <span>${skills.length?selectedCount:'à définir'}</span></summary><div class="evaluation-skill-list">${skillRows}</div></details>
       <label class="evaluation-note"><span>Note de préparation</span><textarea rows="2" placeholder="Adaptations, corpus réellement travaillé, notions reportées…">${esc(saved.note||'')}</textarea></label>
     </article>`;
   }
@@ -208,7 +209,15 @@
       const ensure=()=>plan[key]||(plan[key]={});
       card.querySelector('.evaluation-status').addEventListener('change',e=>{ensure().status=e.target.value;save();});
       card.querySelector('.evaluation-note textarea').addEventListener('input',e=>{ensure().note=e.target.value;save();});
-      card.querySelectorAll('[data-eval-skill]').forEach(box=>box.addEventListener('change',()=>{const p=ensure();p.included=p.included||{};p.included[box.dataset.evalSkill]=box.checked;save();}));
+      const refreshSkillCount=()=>{
+        const total=card.querySelectorAll('[data-eval-skill]').length;
+        const selected=card.querySelectorAll('[data-eval-skill]:checked').length;
+        const count=card.querySelector('.evaluation-skills summary span');
+        const tracking=card.querySelector('[data-open-tracking]');
+        if(count)count.textContent=total?String(selected):'à définir';
+        if(tracking&&total)tracking.textContent=`👥 Renseigner l’évaluation (${selected})`;
+      };
+      card.querySelectorAll('[data-eval-skill]').forEach(box=>box.addEventListener('change',()=>{const p=ensure();p.included=p.included||{};p.included[box.dataset.evalSkill]=box.checked;save();refreshSkillCount();}));
       const edtBtn=card.querySelector('[data-open-eval-week]');
       if(edtBtn)edtBtn.addEventListener('click',()=>{
         const targetPeriod=edtBtn.dataset.evalPeriod||period;

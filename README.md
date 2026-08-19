@@ -1,4 +1,4 @@
-# Progressions CE2 — V34.18 — Ma classe au quotidien
+# Progressions CE2 — V34.19 — Ma classe au quotidien
 
 **Version actuelle : V34.17**
 
@@ -57,3 +57,8 @@ Chaque modification du projet crée une nouvelle version et les pages principale
 ## Repères automatiques des évaluations — V34.18
 
 Chaque carte d’évaluation affiche désormais la semaine et les dates repérées automatiquement dans l’emploi du temps détaillé, un statut temporel (À venir / Cette semaine / Passée) et un accès direct à la semaine correspondante. La programmation n’est pas saisie une seconde fois : elle est déduite des compétences canoniques et des temps de validation présents dans l’emploi du temps.
+
+
+## Compteur dynamique des compétences — V34.19
+
+Dans les cartes d’évaluation, le compteur affiche désormais en temps réel le nombre de compétences cochées. Le libellé « Renseigner l’évaluation (X) » et le nombre à droite de « Compétences de cette évaluation » se mettent à jour immédiatement lors d’un cochage ou décochage.
