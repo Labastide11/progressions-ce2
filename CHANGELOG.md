@@ -1,3 +1,11 @@
+# V34.02 — Mathématiques P2 verrouillées
+
+- P2 alignée sur la règle « 1 ligne d’évaluation = 1 compétence = 1 code canonique ».
+- 16 compétences P2 évaluées par 16 tâches distinctes.
+- Remplacement des anciens items non concordants (différences mentales, problèmes de comparaison/additifs, diagramme en barres) par les tâches correspondant exactement au référentiel P2.
+- Documents dédiés : `Maths_P2_eleve_verrouillee.docx` et `Maths_P2_grille_enseignant_verrouillee.docx`.
+- `evaluations-data.js` pointe désormais vers les documents P2 verrouillés.
+
 # V34.01 — Mathématiques P1 verrouillées
 
 - Règle officielle du projet : 1 ligne d’évaluation = 1 compétence = 1 code canonique.

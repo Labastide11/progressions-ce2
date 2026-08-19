@@ -73,9 +73,9 @@ window.EVALUATIONS_CE2 = {
       p2: {
         title: 'Période 2 — Nombres à 4 chiffres, fractions, soustraction et géométrie',
         status: 'ready',
-        description: 'Évaluation finalisée sans note ni point : écritures et valeur des nombres, fractions simples, calcul mental, soustraction, problèmes, polygones et périmètre.',
-        studentDoc: 'assets/evaluations/maths/Maths_P1_P5_eleve_finalise.docx',
-        teacherDoc: 'assets/evaluations/maths/Maths_P1_P5_grilles_enseignant_finalisees.docx',
+        description: 'Évaluation P2 verrouillée sans note ni point : 16 compétences canoniques, une tâche par compétence — numération, fractions, doubles/moitiés, addition mentale, soustraction avec échange, trois structures de problèmes, périmètre, polygones, quadrillage et tableau à double entrée.',
+        studentDoc: 'assets/evaluations/maths/Maths_P2_eleve_verrouillee.docx',
+        teacherDoc: 'assets/evaluations/maths/Maths_P2_grille_enseignant_verrouillee.docx',
         skillCodes: [
           'NUM-P2-01','NUM-P2-02','NUM-P2-03','NUM-P2-04',
           'FRA-P2-01','FRA-P2-02',

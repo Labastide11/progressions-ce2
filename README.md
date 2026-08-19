@@ -1,6 +1,6 @@
 # Progressions CE2 — Ma classe au quotidien
 
-**Version : V34.01 — Mathématiques P1 verrouillées**
+**Version : V34.02 — Mathématiques P2 verrouillées**
 
 Progressions CE2 est l’environnement numérique de la classe. Il regroupe les outils de pilotage enseignant et plusieurs espaces dédiés : élèves, parents, remplaçant et projection TBI.
 
