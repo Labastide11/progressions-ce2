@@ -1,3 +1,11 @@
+## V34.21 — Ajustement pédagogique des bilans d’anglais
+- Maintien du format très léger : 3 situations par semestre.
+- S1 : formulation légèrement simplifiée, toujours centrée sur compréhension, interaction et repères culturels.
+- S2 : retrait de la copie d’une formule comme situation de bilan semestriel.
+- S2 : remplacement par la compréhension d’une histoire courte (`ANG-P5-04`), plus représentative des apprentissages en langue vivante.
+- `ANG-P5-06` reste dans le référentiel et peut être validée lors des activités ordinaires, sans peser comme un tiers du bilan.
+- Emploi du temps P5 et liste des compétences évaluées mis en cohérence.
+
 ## V34.20 — Bilans semestriels d’anglais
 - Ajout de deux bilans d’anglais (S1 et S2), chacun limité à 3 situations : comprendre, parler/interagir, culture.
 - Ajout des supports élève et grilles enseignant.

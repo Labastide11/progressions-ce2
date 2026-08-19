@@ -1,6 +1,6 @@
-# Progressions CE2 — V34.20 — Ma classe au quotidien
+# Progressions CE2 — V34.21 — Ma classe au quotidien
 
-**Version actuelle : V34.17**
+**Version actuelle : V34.21**
 
 Progressions CE2 est l’environnement de pilotage pédagogique de la classe de CE2. Il centralise la programmation, l’emploi du temps, le suivi des élèves, les évaluations, les outils de classe et les espaces dédiés aux élèves, aux familles et au remplaçant.
 

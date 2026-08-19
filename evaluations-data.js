@@ -211,10 +211,10 @@ window.EVALUATIONS_CE2 = {
       p5: {
         title: 'Semestre 2 — Bilan oral en 3 situations',
         status: 'ready',
-        description: 'Bilan très court : comprendre, parler/interagir et réinvestir un repère culturel. Il complète les observations orales de P3 à P5.',
+        description: 'Bilan très court : comprendre, parler/interagir et suivre une histoire courte. Les repères culturels restent observés sans donner un poids excessif à l’écrit.',
         studentDoc: 'assets/evaluations/anglais/Anglais_S2_support_eleve.docx',
         teacherDoc: 'assets/evaluations/anglais/Anglais_S2_grille_enseignant.docx',
-        skillCodes: ['ANG-P3-04','ANG-P5-02','ANG-P4-05','ANG-P5-01','ANG-P5-03','ANG-P5-06']
+        skillCodes: ['ANG-P3-04','ANG-P5-02','ANG-P4-05','ANG-P5-01','ANG-P5-03','ANG-P5-04']
       }
     }
   }
