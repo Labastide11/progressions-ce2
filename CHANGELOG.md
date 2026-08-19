@@ -115,3 +115,10 @@ Pour l’historique détaillé des versions V32 et V33, consulter `docs/historiq
 - Le bouton « Renseigner l’évaluation » ouvre désormais Mon suivi, où se trouve la grille de compétences.
 - La matière, la période et la première compétence de l’évaluation sont sélectionnées automatiquement.
 - Suppression de l’erreur « Le suivi des élèves n’a pas pu être ouvert » liée à l’ancien chemin Vue élèves.
+
+## V34.12 — Correction du passage Évaluation → Mon suivi
+- « Renseigner l’évaluation » ouvre désormais réellement `mon-suivi.html` au lieu de basculer un mode caché sur la page d’accueil.
+- Le contexte de l’évaluation (matière, période, liste des codes, compétence courante) est conservé dans la session et repris automatiquement dans Mon suivi.
+- En mode évaluation, la saisie affiche le vocabulaire verrouillé : Excellent / Réussi / En progrès / À revoir.
+- Les traces saisies depuis Mon suivi sont enregistrées comme `evaluation_papier`, avec leur équivalent LSU et les références de l’évaluation.
+- Les traces sont mises en file puis synchronisées vers l’onglet Google Sheets `traces_evaluations` via l’API V2.8.0.

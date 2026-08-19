@@ -106,3 +106,6 @@ Chaque nouvelle version doit mettre à jour le numéro affiché dans la balise H
 
 ### V34.11
 Correction du raccordement Évaluations → Mon suivi pour la saisie des résultats.
+
+### V34.12 — Saisie des évaluations
+Le bouton « Renseigner l’évaluation » ouvre la page Mon suivi sur la matière, la période et la première compétence concernée. La navigation Précédente/Suivante permet de parcourir les compétences de l’évaluation. En contexte d’évaluation, les niveaux affichés sont : Excellent, Réussi, En progrès, À revoir ; ils sont enregistrés avec leur équivalent LSU dans l’historique et synchronisés vers Google Sheets.

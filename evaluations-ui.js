@@ -100,26 +100,13 @@
   async function openTracking(subject,period,title,codes){
     const unique=[...new Set(codes.filter(Boolean))];
     if(!unique.length){alert('Aucune compétence n’est cochée pour cette évaluation.');return;}
-    const stamp=new Date();saveActive({id:'eval-'+subject+'-'+period+'-'+stamp.getTime(),subject,period,title,codes:unique,index:0,startedAt:stamp.toISOString(),date:stamp.toISOString().slice(0,10)});
-    close();
-    const subjectBtn=document.querySelector(`.tab[data-subject="${subject}"]`);if(subjectBtn)subjectBtn.click();
-    const periodBtn=document.querySelector(`.filter[data-period="${period}"]`);if(periodBtn)periodBtn.click();
-    // V34.11 — la saisie détaillée des compétences vit désormais dans « Mon suivi ».
-    // L'ancien raccordement ouvrait « Vue élèves », où #classSkillSelect n'existe plus.
-    const followupBtn=document.querySelector('.mode-btn[data-mode="suivi"]');
-    if(followupBtn)followupBtn.click();
-    const select=await waitFor('#classSkillSelect',4000);
-    if(!select){alert('Le suivi des élèves n’a pas pu être ouvert.');return;}
-    const first=unique.find(code=>[...select.options].some(o=>o.value===code));
-    if(!first){
-      alert('Les compétences cochées ne sont pas disponibles dans le référentiel de cette période.');
-      return;
-    }
-    const active=loadActive();active.index=unique.indexOf(first);saveActive(active);
-    selectSkill(first);
-    ensureNavigator();
-    window.scrollTo({top:0,behavior:'smooth'});
+    const stamp=new Date();
+    saveActive({id:'eval-'+subject+'-'+period+'-'+stamp.getTime(),subject,period,title,codes:unique,index:0,startedAt:stamp.toISOString(),date:stamp.toISOString().slice(0,10)});
+    // V34.12 — la saisie d’évaluation vit réellement dans mon-suivi.html.
+    // On conserve le contexte en sessionStorage puis on ouvre la page dédiée.
+    location.href='mon-suivi.html';
   }
+
 
   function ensureNavigator(){
     const active=loadActive();
