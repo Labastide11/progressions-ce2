@@ -1,3 +1,20 @@
+# Progressions CE2
+
+## V34.05 — Maths P4 verrouillée
+
+- P4 mathématiques : 19 compétences canoniques.
+- Règle : 1 ligne d’évaluation = 1 compétence = 1 code canonique.
+- Nouvelle fiche élève et nouvelle grille enseignant dédiées à P4.
+- Alignement strict sur les codes déclarés dans `evaluations-data.js`.
+- Les tâches de l’ancienne P4 non raccordées à ces codes ne sont plus utilisées dans cette évaluation verrouillée.
+
+
+## V34.03 — Maths P3 verrouillée
+- Période 3 : 18 compétences canoniques.
+- Règle appliquée : 1 ligne d’évaluation = 1 compétence = 1 code canonique.
+- Documents élève et enseignant dédiés à P3.
+- Raccordement explicite aux codes NUM/FRA/CAL/OPE/PRO/TEM/GEO/DON du référentiel.
+
 # Progressions CE2 — Ma classe au quotidien
 
 **Version : V34.02 — Mathématiques P2 verrouillées**

@@ -1,0 +1,14 @@
+PATCH V34.05 — MATHS P5 VERROUILLÉE
+
+Copier le contenu de ce ZIP à la racine de Progressions CE2 en conservant les dossiers, puis accepter le remplacement des fichiers existants.
+
+Fichiers ajoutés :
+- assets/evaluations/maths/Maths_P5_eleve_verrouillee.docx
+- assets/evaluations/maths/Maths_P5_grille_enseignant_verrouillee.docx
+
+Fichiers modifiés :
+- evaluations-data.js
+- index.html, mon-suivi.html, vue-eleves.html, referentiel.html, eleves.html, parents.html, remplacant.html, timer-projector.html
+- README.md, CHANGELOG.md
+
+Ne pas supprimer les autres fichiers du projet.

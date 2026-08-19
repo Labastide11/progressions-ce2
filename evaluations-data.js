@@ -88,9 +88,9 @@ window.EVALUATIONS_CE2 = {
       p3: {
         title: 'Période 3 — Multiplication, fractions, données, figures et durées',
         status: 'ready',
-        description: 'Évaluation finalisée sans note ni point : numération, fractions et longueurs, tables et multiplication posée, problèmes, données, triangles, constructions et temps.',
-        studentDoc: 'assets/evaluations/maths/Maths_P1_P5_eleve_finalise.docx',
-        teacherDoc: 'assets/evaluations/maths/Maths_P1_P5_grilles_enseignant_finalisees.docx',
+        description: 'Évaluation P3 verrouillée sans note ni point : 18 compétences canoniques, une tâche par compétence — numération, fractions-longueurs, tables, quotient, multiplication posée, vocabulaire multiplicatif, problèmes, heures, triangles, construction et diagrammes en barres.',
+        studentDoc: 'assets/evaluations/maths/Maths_P3_eleve_verrouillee.docx',
+        teacherDoc: 'assets/evaluations/maths/Maths_P3_grille_enseignant_verrouillee.docx',
         skillCodes: [
           'NUM-P3-01','NUM-P3-02','NUM-P3-03',
           'FRA-P3-01','FRA-P3-02',
@@ -102,11 +102,11 @@ window.EVALUATIONS_CE2 = {
         ]
       },
       p4: {
-        title: 'Période 4 — Fractions, multiplication, problèmes, solides et masses',
+        title: 'Période 4 — Fractions, calcul, problèmes, mesures, constructions et données',
         status: 'ready',
-        description: 'Évaluation finalisée sans note ni point : ordre de grandeur, fractions, stratégies de calcul, multiplication, problèmes de mesures et de données, masses, monnaie et géométrie.',
-        studentDoc: 'assets/evaluations/maths/Maths_P1_P5_eleve_finalise.docx',
-        teacherDoc: 'assets/evaluations/maths/Maths_P1_P5_grilles_enseignant_finalisees.docx',
+        description: 'Évaluation P4 verrouillée sans note ni point : 19 compétences canoniques, une tâche par compétence — numération, fractions, calcul mental et posé, division, problèmes, périmètres, masses, monnaie, durées, cercle, constructions et données.',
+        studentDoc: 'assets/evaluations/maths/Maths_P4_eleve_verrouillee.docx',
+        teacherDoc: 'assets/evaluations/maths/Maths_P4_grille_enseignant_verrouillee.docx',
         skillCodes: [
           'NUM-P4-01','NUM-P4-02',
           'FRA-P4-01','FRA-P4-02',
@@ -118,11 +118,11 @@ window.EVALUATIONS_CE2 = {
         ]
       },
       p5: {
-        title: 'Période 5 — Bilan : nombres, division, mesures, symétrie et données',
+        title: 'Période 5 — Bilan : nombres, fractions, calcul, problèmes, mesures, géométrie et données',
         status: 'ready',
-        description: 'Évaluation finalisée sans note ni point : synthèse de numération et calcul, choix des opérations, problèmes complexes, mesures, durées, constructions, symétrie, solides et données.',
-        studentDoc: 'assets/evaluations/maths/Maths_P1_P5_eleve_finalise.docx',
-        teacherDoc: 'assets/evaluations/maths/Maths_P1_P5_grilles_enseignant_finalisees.docx',
+        description: 'Évaluation P5 verrouillée sans note ni point : 20 compétences canoniques, une tâche par compétence — synthèse de numération, fractions, calcul mental, choix et contrôle des opérations, problèmes complexes, mesures, durées, constructions, symétrie, patrons de solides et données.',
+        studentDoc: 'assets/evaluations/maths/Maths_P5_eleve_verrouillee.docx',
+        teacherDoc: 'assets/evaluations/maths/Maths_P5_grille_enseignant_verrouillee.docx',
         skillCodes: [
           'NUM-P5-01','NUM-P5-02',
           'FRA-P5-01','FRA-P5-02',

@@ -1,3 +1,24 @@
+
+## V34.05 — Maths P5 verrouillée
+- P5 : 20 compétences canoniques, une tâche par compétence.
+- Nouveaux fichiers : `Maths_P5_eleve_verrouillee.docx` et `Maths_P5_grille_enseignant_verrouillee.docx`.
+- `evaluations-data.js` pointe désormais vers les documents P5 verrouillés.
+- Balises `<title>` mises à jour en V34.05.
+
+# CHANGELOG
+
+## V34.05
+- Verrouillage de l’évaluation de mathématiques P4.
+- 19 tâches distinctes reliées à 19 codes canoniques du référentiel.
+- Documents élève/enseignant dédiés à P4.
+- Mise à jour des titres HTML en V34.05.
+
+
+## V34.03
+- Verrouillage de l’évaluation Mathématiques P3.
+- 18 tâches distinctes reliées à 18 codes canoniques du référentiel.
+- Nouveaux fichiers `Maths_P3_eleve_verrouillee.docx` et `Maths_P3_grille_enseignant_verrouillee.docx`.
+
 # V34.02 — Mathématiques P2 verrouillées
 
 - P2 alignée sur la règle « 1 ligne d’évaluation = 1 compétence = 1 code canonique ».
