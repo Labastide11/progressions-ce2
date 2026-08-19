@@ -102,3 +102,7 @@ Le projet échange certaines données avec Google Sheet via Apps Script et avec 
 ## Règle de version
 
 Chaque nouvelle version doit mettre à jour le numéro affiché dans la balise HTML `<title>` des pages principales concernées.
+
+
+### V34.11
+Correction du raccordement Évaluations → Mon suivi pour la saisie des résultats.

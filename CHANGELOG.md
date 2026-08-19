@@ -109,3 +109,9 @@ Ce fichier présente les grandes évolutions du projet. Le détail historique co
 - Construction progressive du référentiel CE2 et du suivi des compétences.
 
 Pour l’historique détaillé des versions V32 et V33, consulter `docs/historique/`.
+
+
+## V34.11 — Correction ouverture saisie des évaluations
+- Le bouton « Renseigner l’évaluation » ouvre désormais Mon suivi, où se trouve la grille de compétences.
+- La matière, la période et la première compétence de l’évaluation sont sélectionnées automatiquement.
+- Suppression de l’erreur « Le suivi des élèves n’a pas pu être ouvert » liée à l’ancien chemin Vue élèves.

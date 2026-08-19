@@ -104,8 +104,11 @@
     close();
     const subjectBtn=document.querySelector(`.tab[data-subject="${subject}"]`);if(subjectBtn)subjectBtn.click();
     const periodBtn=document.querySelector(`.filter[data-period="${period}"]`);if(periodBtn)periodBtn.click();
-    const classBtn=document.querySelector('.mode-btn[data-mode="classe"]');if(classBtn)classBtn.click();
-    const select=await waitFor('#classSkillSelect');
+    // V34.11 — la saisie détaillée des compétences vit désormais dans « Mon suivi ».
+    // L'ancien raccordement ouvrait « Vue élèves », où #classSkillSelect n'existe plus.
+    const followupBtn=document.querySelector('.mode-btn[data-mode="suivi"]');
+    if(followupBtn)followupBtn.click();
+    const select=await waitFor('#classSkillSelect',4000);
     if(!select){alert('Le suivi des élèves n’a pas pu être ouvert.');return;}
     const first=unique.find(code=>[...select.options].some(o=>o.value===code));
     if(!first){
