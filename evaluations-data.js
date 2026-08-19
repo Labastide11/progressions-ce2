@@ -195,5 +195,28 @@ window.EVALUATIONS_CE2 = {
         ]
       }
     }
+  },
+  anglais: {
+    label: 'Anglais',
+    icon: '🇬🇧',
+    periods: {
+      p2: {
+        title: 'Semestre 1 — Bilan oral en 3 situations',
+        status: 'ready',
+        description: 'Bilan très court : comprendre, parler/interagir et reconnaître quelques repères culturels. Il complète les observations orales de P1 et P2.',
+        studentDoc: 'assets/evaluations/anglais/Anglais_S1_support_eleve.docx',
+        teacherDoc: 'assets/evaluations/anglais/Anglais_S1_grille_enseignant.docx',
+        skillCodes: ['ANG-P1-01','ANG-P2-01','ANG-P1-03','ANG-P2-05','ANG-P1-06','ANG-P2-06']
+      },
+      p5: {
+        title: 'Semestre 2 — Bilan oral en 3 situations',
+        status: 'ready',
+        description: 'Bilan très court : comprendre, parler/interagir et réinvestir un repère culturel. Il complète les observations orales de P3 à P5.',
+        studentDoc: 'assets/evaluations/anglais/Anglais_S2_support_eleve.docx',
+        teacherDoc: 'assets/evaluations/anglais/Anglais_S2_grille_enseignant.docx',
+        skillCodes: ['ANG-P3-04','ANG-P5-02','ANG-P4-05','ANG-P5-01','ANG-P5-03','ANG-P5-06']
+      }
+    }
   }
+
 };

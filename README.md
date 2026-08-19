@@ -1,4 +1,4 @@
-# Progressions CE2 — V34.19 — Ma classe au quotidien
+# Progressions CE2 — V34.20 — Ma classe au quotidien
 
 **Version actuelle : V34.17**
 

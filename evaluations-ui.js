@@ -78,7 +78,10 @@
   }
   function subjectMatchesRow(subject,row){
     const kind=String(row?.[4]||'').toLowerCase(), name=String(row?.[1]||'').toLowerCase();
-    return subject==='francais' ? (kind==='french'||name.includes('français')) : (kind==='maths'||name.includes('math'));
+    if(subject==='francais')return kind==='french'||name.includes('français');
+    if(subject==='maths')return kind==='maths'||name.includes('math');
+    if(subject==='anglais')return kind==='english'||name.includes('anglais');
+    return false;
   }
   function findEvaluationSchedule(subject,period,codes){
     const weeks=window.PROGRESSIONS_EDT_DATA?.[period+'DetailedWeeks'];
@@ -124,7 +127,9 @@
     const status=saved.status||ev.status||'draft';
     const allSkills=periodSkills(subject,period);
     const configured=Array.isArray(ev.skillCodes)?ev.skillCodes:[];
-    const byCode=new Map(allSkills.map(skill=>[skill.code,skill]));
+    const everySubjectSkill=[];
+    ['p1','p2','p3','p4','p5'].forEach(p=>periodSkills(subject,p).forEach(s=>everySubjectSkill.push(s)));
+    const byCode=new Map([...allSkills,...everySubjectSkill].map(skill=>[skill.code,skill]));
     const skills=configured.length?configured.map(code=>byCode.get(code)).filter(Boolean):[];
     const included=saved.included||{};
     const selectedCount=skills.filter(skill=>included[skill.code]!==false).length;

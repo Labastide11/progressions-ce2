@@ -1,3 +1,9 @@
+## V34.20 — Bilans semestriels d’anglais
+- Ajout de deux bilans d’anglais (S1 et S2), chacun limité à 3 situations : comprendre, parler/interagir, culture.
+- Ajout des supports élève et grilles enseignant.
+- Raccordement aux validations orales de P2 semaine 6 et P5 semaine 9.
+- Ajout d’Anglais dans le filtre de la fenêtre Évaluations et prise en charge du repère calendrier.
+
 ## V34.19 — Compteur dynamique des compétences évaluées
 
 - Le nombre affiché dans « Compétences de cette évaluation » correspond désormais au nombre de cases cochées.
