@@ -9,3 +9,6 @@
 .evaluation-card__markers{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
 .evaluation-semester{display:inline-flex;align-items:center;min-height:24px;padding:3px 8px;border-radius:999px;background:#f1ecff;border:1px solid #d7caff;color:#4d3784;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
 .evaluation-semester--s2{background:#eef2ff;border-color:#ced8f5;color:#354f88}
+
+/* V34.24 — les évaluations peuvent être des traces authentiques, pas seulement des fiches papier. */
+.evaluation-trace-type{display:inline-flex;align-items:center;gap:.35rem;margin:.15rem 0 .55rem;padding:.35rem .65rem;border:1px solid var(--line,#d9e4ec);border-radius:999px;background:#fff;font-size:.84rem;font-weight:800;color:var(--ink,#243447)}

@@ -1,6 +1,13 @@
-# Progressions CE2 — V34.23 — Ma classe au quotidien
+## V34.24 — EMC : traces authentiques de réussite
+- Référentiel EMC rééquilibré : P1 cadre commun, P2 message clair, P3 bien commun et conseil d’élèves.
+- Ajout de l’EMC dans la fenêtre Évaluations avec 5 situations de référence, sans imposer de fiche papier.
+- Les cartes indiquent le type de trace : observation, mise en situation, conseil d’élèves, débat réglé ou oral.
+- Les saisies lancées depuis ces cartes sont enregistrées comme `observation_classe`, pas comme `evaluation_papier`.
+- Repères EMC ajoutés/clarifiés dans l’emploi du temps P1 à P5.
 
-**Version actuelle : V34.23**
+# Progressions CE2 — V34.24 — Ma classe au quotidien
+
+**Version actuelle : V34.24**
 
 Progressions CE2 est l’environnement de pilotage pédagogique de la classe de CE2. Il centralise la programmation, l’emploi du temps, le suivi des élèves, les évaluations, les outils de classe et les espaces dédiés aux élèves, aux familles et au remplaçant.
 

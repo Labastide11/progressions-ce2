@@ -1,3 +1,10 @@
+## V34.24 — EMC : traces authentiques de réussite
+- Rééquilibre P1/P2/P3 selon la progression validée : cadre commun → message clair → bien commun/conseil d’élèves.
+- Ajoute 5 cartes EMC à la fenêtre Évaluations, chacune avec un type de trace explicite.
+- Rend les documents élève/enseignant optionnels : une observation n’exige plus artificiellement une fiche papier.
+- Les traces EMC saisies via Mon suivi sont enregistrées avec la source `observation_classe`.
+- Ajoute des repères de trace EMC dans l’emploi du temps : observation P1, message clair P2, conseil P3, débat des 4 coins P4, repères citoyens P5.
+
 ## V34.23 — Janvier sans évaluations programmées
 - Retrait des libellés d’évaluation formelle des semaines de janvier en P3.
 - Déplacement des traces principales Français/Maths P3 sur la semaine du 1er au 5 février 2027.

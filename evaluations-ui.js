@@ -88,6 +88,7 @@
     if(subject==='francais')return kind==='french'||name.includes('français');
     if(subject==='maths')return kind==='maths'||name.includes('math');
     if(subject==='anglais')return kind==='english'||name.includes('anglais');
+    if(subject==='emc')return kind==='emc'||name.includes('emc');
     return false;
   }
   function findEvaluationSchedule(subject,period,codes){
@@ -99,7 +100,8 @@
       (week.days||[]).forEach(([day,dayRows])=>(dayRows||[]).forEach(row=>{
         if(!subjectMatchesRow(subject,row))return;
         const text=`${row?.[2]||''} ${row?.[5]||''}`.toLowerCase();
-        if(/sans nouvelle évaluation/.test(text)||!/évaluation|évaluer|validation|valider|mini-test|test|bilan/.test(text))return;
+        const tracePattern=subject==='emc'?/évaluation|évaluer|validation|valider|mini-test|test|bilan|observation|mise en situation|débat|conseil/:/évaluation|évaluer|validation|valider|mini-test|test|bilan/;
+        if(/sans nouvelle évaluation/.test(text)||!tracePattern.test(text))return;
         const rowCodes=codeSetFromText(row?.[3]);
         let hit=0;wanted.forEach(code=>{if(rowCodes.has(code))hit++;});
         if(!hit)return;
@@ -127,7 +129,8 @@
     const schedule=findEvaluationSchedule(subject,period,ev.skillCodes||[]);
     if(!schedule)return `<div class="evaluation-schedule evaluation-schedule--missing"><div><span class="evaluation-schedule__label">📅 Programmation</span><strong>Repère non trouvé automatiquement</strong></div><button class="evaluation-schedule__link" type="button" data-open-eval-week data-eval-period="${esc(period)}" data-eval-week="1">Voir la période →</button></div>`;
     const first=schedule.first?`<small>Premier créneau repéré : ${esc(schedule.first.day)} · ${esc(schedule.first.time)}</small>`:'';
-    return `<div class="evaluation-schedule evaluation-schedule--${schedule.state}"><div class="evaluation-schedule__main"><span class="evaluation-schedule__label">📅 Évaluation prévue</span><strong>Semaine ${schedule.weekNumber} · ${esc(schedule.week.dates||'')}</strong>${first}</div><span class="evaluation-auto-status evaluation-auto-status--${schedule.state}">${schedule.icon} ${schedule.label}</span><button class="evaluation-schedule__link" type="button" data-open-eval-week data-eval-period="${esc(period)}" data-eval-week="${schedule.weekIndex+1}">Voir dans l’emploi du temps →</button></div>`;
+    const scheduleTitle=ev.traceType?'📅 Trace prévue':'📅 Évaluation prévue';
+    return `<div class="evaluation-schedule evaluation-schedule--${schedule.state}"><div class="evaluation-schedule__main"><span class="evaluation-schedule__label">${scheduleTitle}</span><strong>Semaine ${schedule.weekNumber} · ${esc(schedule.week.dates||'')}</strong>${first}</div><span class="evaluation-auto-status evaluation-auto-status--${schedule.state}">${schedule.icon} ${schedule.label}</span><button class="evaluation-schedule__link" type="button" data-open-eval-week data-eval-period="${esc(period)}" data-eval-week="${schedule.weekIndex+1}">Voir dans l’emploi du temps →</button></div>`;
   }
   function periodCard(subject,period,ev){
     const key=currentKey(subject,period),saved=plan[key]||{};
@@ -145,12 +148,19 @@
       return `<label class="evaluation-skill"><input type="checkbox" data-eval-skill="${esc(skill.code)}" ${checked?'checked':''}><span class="evaluation-skill__code">${esc(skill.code)}</span><span>${esc(skill.title)}</span></label>`;
     }).join(''):'<p class="evaluation-empty">Les compétences de cette matrice ne sont pas encore arrêtées. Elles seront choisies au moment de finaliser la période.</p>';
     const semester=semesterForPeriod(period);
+    const traceBadge=ev.traceType?`<span class="evaluation-trace-type">🎯 ${esc(ev.traceType)}</span>`:'';
+    const docs=[];
+    if(ev.studentDoc)docs.push(`<a class="btn btn--outline btn--compact" href="${esc(ev.studentDoc)}" download>📄 Fiche élève</a>`);
+    if(ev.teacherDoc)docs.push(`<a class="btn btn--outline btn--compact" href="${esc(ev.teacherDoc)}" download>👨‍🏫 Grille enseignant</a>`);
+    const actionLabel=ev.traceType?'Renseigner la trace':'Renseigner l’évaluation';
+    docs.push(`<button class="btn btn--light btn--compact" type="button" data-open-tracking ${skills.length?'':'disabled'}>👥 ${skills.length?`${actionLabel} (${selectedCount})`:'Évaluation à finaliser'}</button>`);
     return `<article class="evaluation-card" data-eval-key="${esc(key)}" data-subject="${esc(subject)}" data-period="${esc(period)}" data-semester="${esc(semester)}">
       <header class="evaluation-card__head"><div><div class="evaluation-card__markers"><span class="evaluation-period">${period.toUpperCase()}</span><span class="evaluation-semester evaluation-semester--${esc(semester)}">🟣 ${esc(semesterLabel(period))}</span></div><h3>${esc(ev.title)}</h3></div><select class="evaluation-status" aria-label="État de l’évaluation"><option value="draft" ${status==='draft'?'selected':''}>Matrice</option><option value="ready" ${status==='ready'?'selected':''}>Prête</option><option value="passed" ${status==='passed'?'selected':''}>Passée</option></select></header>
       <p>${esc(ev.description)}</p>
+      ${traceBadge}
       ${scheduleBlock(subject,period,ev)}
-      <div class="evaluation-docs"><a class="btn btn--outline btn--compact" href="${esc(ev.studentDoc)}" download>📄 Fiche élève</a><a class="btn btn--outline btn--compact" href="${esc(ev.teacherDoc)}" download>👨‍🏫 Grille enseignant</a><button class="btn btn--light btn--compact" type="button" data-open-tracking ${skills.length?'':'disabled'}>👥 ${skills.length?`Renseigner l’évaluation (${selectedCount})`:'Évaluation à finaliser'}</button></div>
-      <details class="evaluation-skills"><summary>Compétences de cette évaluation <span>${skills.length?selectedCount:'à définir'}</span></summary><div class="evaluation-skill-list">${skillRows}</div></details>
+      <div class="evaluation-docs">${docs.join('')}</div>
+      <details class="evaluation-skills"><summary>${ev.traceType?'Compétences visées par cette trace':'Compétences de cette évaluation'} <span>${skills.length?selectedCount:'à définir'}</span></summary><div class="evaluation-skill-list">${skillRows}</div></details>
       <label class="evaluation-note"><span>Note de préparation</span><textarea rows="2" placeholder="Adaptations, corpus réellement travaillé, notions reportées…">${esc(saved.note||'')}</textarea></label>
     </article>`;
   }
@@ -192,7 +202,8 @@
     const unique=[...new Set(codes.filter(Boolean))];
     if(!unique.length){alert('Aucune compétence n’est cochée pour cette évaluation.');return;}
     const stamp=new Date();
-    saveActive({id:'eval-'+subject+'-'+period+'-'+stamp.getTime(),subject,period,title,codes:unique,index:0,startedAt:stamp.toISOString(),date:stamp.toISOString().slice(0,10)});
+    const ev=data?.[subject]?.periods?.[period]||{};
+    saveActive({id:'eval-'+subject+'-'+period+'-'+stamp.getTime(),subject,period,title,codes:unique,index:0,startedAt:stamp.toISOString(),date:stamp.toISOString().slice(0,10),source:ev.traceSource||'evaluation_papier',traceType:ev.traceType||''});
     // V34.12 — la saisie d’évaluation vit réellement dans mon-suivi.html.
     // On conserve le contexte en sessionStorage puis on ouvre la page dédiée.
     location.href='mon-suivi.html';
@@ -232,7 +243,7 @@
         const count=card.querySelector('.evaluation-skills summary span');
         const tracking=card.querySelector('[data-open-tracking]');
         if(count)count.textContent=total?String(selected):'à définir';
-        if(tracking&&total)tracking.textContent=`👥 Renseigner l’évaluation (${selected})`;
+        if(tracking&&total){const action=card.querySelector('.evaluation-trace-type')?'Renseigner la trace':'Renseigner l’évaluation';tracking.textContent=`👥 ${action} (${selected})`;}
       };
       card.querySelectorAll('[data-eval-skill]').forEach(box=>box.addEventListener('change',()=>{const p=ensure();p.included=p.included||{};p.included[box.dataset.evalSkill]=box.checked;save();refreshSkillCount();}));
       const edtBtn=card.querySelector('[data-open-eval-week]');

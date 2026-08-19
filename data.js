@@ -5099,288 +5099,289 @@ window.PROGRESSIONS = {
       ]
     ],
     "p1Competencies": [
-      {
-        "code": "EMC-P1-01",
-        "domain": "Règles et vie collective",
-        "title": "Comprendre l’utilité d’une règle commune",
-        "jeSais": "Je sais expliquer pourquoi une règle est utile à la vie du groupe.",
-        "checklist": [
-          "Identifier la règle concernée.",
-          "Décrire ce qu’elle permet ou protège.",
-          "Distinguer une règle d’une préférence personnelle.",
-          "Donner un exemple de conséquence si elle n’est pas respectée.",
-          "Relier la règle au bien-être ou à la sécurité de tous."
-        ],
-        "proofs": [
-          "Analyse orale d’une situation de classe.",
-          "Classement de règles selon leur fonction."
-        ],
-        "lsu": "Respecter les règles de la vie collective."
-      },
-      {
-        "code": "EMC-P1-02",
-        "domain": "Règles et vie collective",
-        "title": "Distinguer un droit et un devoir",
-        "jeSais": "Je sais reconnaître ce que j’ai le droit de faire et ce que je dois respecter.",
-        "checklist": [
-          "Identifier le droit présenté.",
-          "Identifier le devoir associé.",
-          "Expliquer le lien entre les deux.",
-          "Classer des situations simples.",
-          "Employer correctement les mots droit et devoir."
-        ],
-        "proofs": [
-          "Classement de situations scolaires.",
-          "Explication orale d’un droit et du devoir correspondant."
-        ],
-        "lsu": "Connaître ses droits et ses devoirs dans la collectivité."
-      },
-      {
-        "code": "EMC-P1-03",
-        "domain": "Responsabilité",
-        "title": "Assumer une responsabilité dans la classe",
-        "jeSais": "Je sais accomplir la responsabilité qui m’a été confiée.",
-        "checklist": [
-          "Comprendre la tâche attendue.",
-          "Se souvenir de la responsabilité.",
-          "Agir au moment prévu.",
-          "Respecter le matériel et les personnes.",
-          "Signaler une difficulté.",
-          "Aller jusqu’au bout de la tâche."
-        ],
-        "proofs": [
-          "Observation pendant une responsabilité de classe.",
-          "Bilan oral après une semaine de responsabilité."
-        ],
-        "lsu": "S’engager et prendre des responsabilités."
-      },
-      {
-        "code": "EMC-P1-04",
-        "domain": "Coopération",
-        "title": "Coopérer dans un travail collectif",
-        "jeSais": "Je sais travailler avec les autres pour réaliser une tâche commune.",
-        "checklist": [
-          "Comprendre le but commun.",
-          "Accepter la répartition des rôles.",
-          "Écouter les propositions.",
-          "Exprimer son idée sans l’imposer.",
-          "Réaliser sa part du travail.",
-          "Aider le groupe à terminer."
-        ],
-        "proofs": [
-          "Observation lors d’un travail de groupe.",
-          "Bilan collectif d’un projet court."
-        ],
-        "lsu": "Coopérer et prendre sa place dans un groupe."
-      },
-      {
-        "code": "EMC-P1-05",
-        "domain": "Bien commun",
-        "title": "Prendre soin du matériel et des espaces communs",
-        "jeSais": "Je sais utiliser et ranger ce qui appartient à tous.",
-        "checklist": [
-          "Identifier ce qui est collectif.",
-          "Utiliser le matériel avec soin.",
-          "Respecter les espaces communs.",
-          "Ranger après utilisation.",
-          "Signaler une dégradation.",
-          "Proposer une amélioration simple."
-        ],
-        "proofs": [
-          "Observation dans les temps de classe.",
-          "Participation à une action d’entretien ou de rangement."
-        ],
-        "lsu": "Agir pour le bien commun."
-      }
+          {
+                "code": "EMC-P1-01",
+                "domain": "Règles et vie collective",
+                "title": "Comprendre et respecter les règles de la classe et de l’école",
+                "jeSais": "Je sais expliquer à quoi servent les règles de la classe et de l’école et je m’efforce de les respecter.",
+                "checklist": [
+                      "Identifier une règle de la classe ou de l’école.",
+                      "Expliquer ce qu’elle permet ou protège.",
+                      "Distinguer une règle commune d’une préférence personnelle.",
+                      "Adapter son comportement au lieu et au moment.",
+                      "Comprendre qu’une règle aide chacun à apprendre et à vivre ensemble."
+                ],
+                "proofs": [
+                      "Observation dans les temps ordinaires de classe et d’école.",
+                      "Analyse orale d’une situation concrète."
+                ],
+                "lsu": "Respecter les règles de la vie collective."
+          },
+          {
+                "code": "EMC-P1-02",
+                "domain": "Droits et devoirs",
+                "title": "Distinguer droits et devoirs à l’école",
+                "jeSais": "Je sais reconnaître mes droits et les devoirs qui permettent à chacun d’apprendre et d’être respecté.",
+                "checklist": [
+                      "Identifier un droit dans une situation scolaire.",
+                      "Identifier le devoir qui lui correspond.",
+                      "Expliquer simplement le lien entre les deux.",
+                      "Classer des situations simples.",
+                      "Employer correctement les mots droit et devoir."
+                ],
+                "proofs": [
+                      "Classement de situations scolaires.",
+                      "Explication orale à partir d’un exemple vécu ou fictif."
+                ],
+                "lsu": "Connaître ses droits et ses devoirs dans la collectivité."
+          },
+          {
+                "code": "EMC-P1-03",
+                "domain": "Responsabilité",
+                "title": "Assumer une petite responsabilité dans la classe",
+                "jeSais": "Je sais accomplir une responsabilité qui m’a été confiée.",
+                "checklist": [
+                      "Comprendre la tâche attendue.",
+                      "Se souvenir de sa responsabilité.",
+                      "Agir au moment prévu.",
+                      "Respecter le matériel et les personnes.",
+                      "Signaler une difficulté.",
+                      "Aller jusqu’au bout de la tâche."
+                ],
+                "proofs": [
+                      "Observation pendant une responsabilité de classe.",
+                      "Bref bilan oral en fin de semaine."
+                ],
+                "lsu": "S’engager et prendre des responsabilités."
+          },
+          {
+                "code": "EMC-P1-04",
+                "domain": "Coopération",
+                "title": "Coopérer pour réaliser une tâche commune",
+                "jeSais": "Je sais travailler avec les autres pour atteindre un but commun.",
+                "checklist": [
+                      "Comprendre le but commun.",
+                      "Accepter une répartition simple des rôles.",
+                      "Écouter une proposition.",
+                      "Exprimer son idée sans l’imposer.",
+                      "Réaliser sa part du travail.",
+                      "Aider le groupe à terminer."
+                ],
+                "proofs": [
+                      "Observation lors d’un travail de groupe.",
+                      "Bilan collectif d’un projet court."
+                ],
+                "lsu": "Coopérer et prendre sa place dans un groupe."
+          },
+          {
+                "code": "EMC-P1-05",
+                "domain": "Bien commun",
+                "title": "Prendre soin du matériel et des espaces communs",
+                "jeSais": "Je sais utiliser, respecter et ranger ce qui appartient à tous.",
+                "checklist": [
+                      "Identifier ce qui est collectif.",
+                      "Utiliser le matériel avec soin.",
+                      "Respecter les espaces communs.",
+                      "Ranger après utilisation.",
+                      "Signaler une dégradation.",
+                      "Participer à une amélioration simple."
+                ],
+                "proofs": [
+                      "Observation dans les temps de classe et d’école.",
+                      "Participation à une action de rangement ou d’entretien."
+                ],
+                "lsu": "Agir pour le bien commun."
+          }
     ],
     "p2Competencies": [
-      {
-        "code": "EMC-P2-01",
-        "domain": "Respect d’autrui",
-        "title": "Reconnaître une parole ou un geste irrespectueux",
-        "jeSais": "Je sais reconnaître une parole ou un geste qui porte atteinte à une personne.",
-        "checklist": [
-          "Décrire les faits sans exagérer.",
-          "Identifier la personne touchée.",
-          "Distinguer maladresse et volonté de blesser.",
-          "Repérer l’effet produit sur l’autre.",
-          "Proposer une manière respectueuse d’agir."
-        ],
-        "proofs": [
-          "Analyse d’une situation fictive.",
-          "Reformulation d’un comportement respectueux."
-        ],
-        "lsu": "Respecter autrui et la dignité de chacun."
-      },
-      {
-        "code": "EMC-P2-02",
-        "domain": "Conflits et violence",
-        "title": "Distinguer conflit, violence et harcèlement",
-        "jeSais": "Je sais faire la différence entre un désaccord, une violence et un harcèlement.",
-        "checklist": [
-          "Identifier un désaccord ponctuel.",
-          "Repérer une violence physique ou verbale.",
-          "Repérer la répétition des faits.",
-          "Identifier un déséquilibre entre les personnes.",
-          "Ne pas minimiser une situation inquiétante.",
-          "Employer le vocabulaire adapté."
-        ],
-        "proofs": [
-          "Classement de situations.",
-          "Justification orale d’un classement."
-        ],
-        "lsu": "Identifier les situations de violence et de harcèlement."
-      },
-      {
-        "code": "EMC-P2-03",
-        "domain": "Protection",
-        "title": "Demander de l’aide face à une situation inquiétante",
-        "jeSais": "Je sais à qui parler et comment demander de l’aide.",
-        "checklist": [
-          "Reconnaître qu’une situation nécessite de l’aide.",
-          "Nommer un adulte de confiance.",
-          "Raconter des faits précis.",
-          "Distinguer demander de l’aide et dénoncer pour nuire.",
-          "Persévérer si la première réponse ne suffit pas.",
-          "Aider un camarade à chercher un adulte."
-        ],
-        "proofs": [
-          "Mise en situation orale.",
-          "Écriture d’un message de demande d’aide."
-        ],
-        "lsu": "Savoir se protéger et protéger autrui."
-      },
-      {
-        "code": "EMC-P2-04",
-        "domain": "Empathie et entraide",
-        "title": "Prendre en compte les émotions d’autrui",
-        "jeSais": "Je sais observer et écouter pour comprendre ce qu’une autre personne peut ressentir.",
-        "checklist": [
-          "Écouter sans se moquer.",
-          "Repérer des indices dans les paroles et les attitudes.",
-          "Nommer une émotion possible.",
-          "Accepter que l’autre ressente autrement.",
-          "Proposer une aide adaptée.",
-          "Respecter le refus d’aide."
-        ],
-        "proofs": [
-          "Analyse d’un récit ou d’une image.",
-          "Observation lors d’un échange entre élèves."
-        ],
-        "lsu": "Faire preuve d’empathie et d’attention aux autres."
-      },
-      {
-        "code": "EMC-P2-05",
-        "domain": "Résolution des conflits",
-        "title": "Chercher une solution pacifique à un désaccord",
-        "jeSais": "Je sais expliquer mon désaccord et chercher une solution sans violence.",
-        "checklist": [
-          "Dire les faits calmement.",
-          "Exprimer son besoin.",
-          "Écouter le point de vue de l’autre.",
-          "Éviter l’insulte et la menace.",
-          "Proposer une solution équitable.",
-          "Accepter une médiation."
-        ],
-        "proofs": [
-          "Jeu de rôle.",
-          "Observation d’une résolution de conflit accompagnée."
-        ],
-        "lsu": "Participer au dialogue pour résoudre un conflit."
-      }
+          {
+                "code": "EMC-P2-01",
+                "domain": "Conflits et respect",
+                "title": "Décrire un désaccord sans accuser ni insulter",
+                "jeSais": "Je sais raconter calmement ce qui s’est passé en parlant des faits.",
+                "checklist": [
+                      "Distinguer les faits des jugements.",
+                      "Dire ce qui s’est passé avec des mots précis.",
+                      "Éviter l’insulte, la menace et la moquerie.",
+                      "Laisser l’autre expliquer sa version.",
+                      "Reconnaître qu’un désaccord n’est pas forcément une violence."
+                ],
+                "proofs": [
+                      "Jeu de rôle à partir d’un conflit ordinaire.",
+                      "Observation lors d’un désaccord réel accompagné."
+                ],
+                "lsu": "Dialoguer avec respect pour résoudre un désaccord."
+          },
+          {
+                "code": "EMC-P2-02",
+                "domain": "Conflits et protection",
+                "title": "Distinguer conflit, violence et harcèlement",
+                "jeSais": "Je sais faire la différence entre un désaccord, une violence et une situation de harcèlement.",
+                "checklist": [
+                      "Identifier un désaccord ponctuel.",
+                      "Repérer une violence physique ou verbale.",
+                      "Repérer la répétition des faits.",
+                      "Identifier un déséquilibre entre les personnes.",
+                      "Ne pas minimiser une situation inquiétante.",
+                      "Employer le vocabulaire adapté."
+                ],
+                "proofs": [
+                      "Classement de situations.",
+                      "Justification orale d’un classement."
+                ],
+                "lsu": "Identifier les situations de violence et de harcèlement."
+          },
+          {
+                "code": "EMC-P2-03",
+                "domain": "Protection",
+                "title": "Savoir demander l’aide d’un adulte",
+                "jeSais": "Je sais reconnaître quand un conflit ne peut pas être réglé seul et demander de l’aide.",
+                "checklist": [
+                      "Reconnaître qu’une situation nécessite de l’aide.",
+                      "Nommer un adulte de confiance.",
+                      "Raconter des faits précis.",
+                      "Distinguer demander de l’aide et dénoncer pour nuire.",
+                      "Persévérer si la première réponse ne suffit pas.",
+                      "Aider un camarade à chercher un adulte."
+                ],
+                "proofs": [
+                      "Mise en situation orale.",
+                      "Observation dans la vie de classe ou de cour."
+                ],
+                "lsu": "Savoir se protéger et protéger autrui."
+          },
+          {
+                "code": "EMC-P2-04",
+                "domain": "Empathie et écoute",
+                "title": "Exprimer son ressenti et écouter celui de l’autre",
+                "jeSais": "Je sais dire ce que j’ai ressenti et écouter ce que l’autre a ressenti.",
+                "checklist": [
+                      "Nommer une émotion ou un ressenti.",
+                      "Parler de soi sans attaquer l’autre.",
+                      "Écouter sans se moquer ni interrompre.",
+                      "Accepter que l’autre puisse ressentir autrement.",
+                      "Reformuler si nécessaire."
+                ],
+                "proofs": [
+                      "Jeu de rôle avec formulation du ressenti.",
+                      "Observation d’un échange entre élèves."
+                ],
+                "lsu": "Exprimer ses émotions et prendre en compte celles d’autrui."
+          },
+          {
+                "code": "EMC-P2-05",
+                "domain": "Résolution des conflits",
+                "title": "Utiliser le message clair pour chercher une solution",
+                "jeSais": "Je sais utiliser un message clair pour régler un petit conflit par la parole.",
+                "checklist": [
+                      "Dire les faits calmement.",
+                      "Dire ce que j’ai ressenti.",
+                      "Dire ce que j’attends ou ce dont j’ai besoin.",
+                      "Écouter la réponse de l’autre.",
+                      "Chercher une solution acceptable.",
+                      "Demander l’aide d’un adulte si le conflit ne se règle pas."
+                ],
+                "proofs": [
+                      "Jeu de rôle avec message clair.",
+                      "Observation d’une utilisation réelle du message clair."
+                ],
+                "lsu": "Participer au dialogue pour résoudre un conflit de manière pacifique."
+          }
     ],
     "p3Competencies": [
-      {
-        "code": "EMC-P3-01",
-        "domain": "Information",
-        "title": "Distinguer un fait d’un avis",
-        "jeSais": "Je sais reconnaître ce qui peut être vérifié et ce qui exprime une opinion.",
-        "checklist": [
-          "Repérer une information vérifiable.",
-          "Repérer les marques d’un avis.",
-          "Comparer deux formulations.",
-          "Expliquer pourquoi une phrase est un fait ou un avis.",
-          "Reformuler sans confondre les deux."
-        ],
-        "proofs": [
-          "Classement de phrases.",
-          "Analyse d’un court message."
-        ],
-        "lsu": "Exercer son discernement face à l’information."
-      },
-      {
-        "code": "EMC-P3-02",
-        "domain": "Information",
-        "title": "Identifier l’auteur ou la source d’une information",
-        "jeSais": "Je sais chercher qui a produit une information.",
-        "checklist": [
-          "Repérer le nom de l’auteur ou du média.",
-          "Identifier la date lorsqu’elle est indiquée.",
-          "Distinguer auteur, personne citée et personne qui partage.",
-          "Repérer une information sans source claire.",
-          "Comprendre qu’une source peut être vérifiée."
-        ],
-        "proofs": [
-          "Lecture d’un document simple.",
-          "Recherche de l’auteur sur une page ou une affiche."
-        ],
-        "lsu": "Identifier l’origine d’une information."
-      },
-      {
-        "code": "EMC-P3-03",
-        "domain": "Images et médias",
-        "title": "Comprendre qu’une image peut orienter notre regard",
-        "jeSais": "Je sais qu’une image est choisie, cadrée et peut ne montrer qu’une partie de la réalité.",
-        "checklist": [
-          "Décrire uniquement ce qui est visible.",
-          "Repérer ce qui est hors du cadre.",
-          "Comparer deux cadrages.",
-          "Distinguer observation et interprétation.",
-          "Questionner la légende ou le contexte."
-        ],
-        "proofs": [
-          "Comparaison de deux images d’une même scène.",
-          "Analyse guidée d’une photographie."
-        ],
-        "lsu": "Lire les images avec discernement."
-      },
-      {
-        "code": "EMC-P3-04",
-        "domain": "Responsabilité numérique",
-        "title": "Réfléchir avant de transmettre une information",
-        "jeSais": "Je sais vérifier une information avant de la partager.",
-        "checklist": [
-          "Lire le message en entier.",
-          "Chercher la source.",
-          "Vérifier la date.",
-          "Se demander si l’information est utile ou blessante.",
-          "Demander l’avis d’un adulte en cas de doute.",
-          "Renoncer à partager une information incertaine."
-        ],
-        "proofs": [
-          "Étude de messages fictifs.",
-          "Choix argumenté : partager ou ne pas partager."
-        ],
-        "lsu": "Adopter un comportement responsable face à l’information."
-      },
-      {
-        "code": "EMC-P3-05",
-        "domain": "Intérêt général",
-        "title": "Comprendre que l’information peut servir le bien commun",
-        "jeSais": "Je sais expliquer comment une information utile peut aider la collectivité.",
-        "checklist": [
-          "Identifier le public concerné.",
-          "Repérer l’utilité de l’information.",
-          "Distinguer information utile et rumeur.",
-          "Donner un exemple lié à la sécurité, la santé ou l’environnement.",
-          "Proposer une manière claire de transmettre l’information."
-        ],
-        "proofs": [
-          "Création d’une affiche d’information.",
-          "Analyse d’un message de service public."
-        ],
-        "lsu": "Comprendre le rôle de l’information dans l’intérêt général."
-      }
+          {
+                "code": "EMC-P3-01",
+                "domain": "Bien commun",
+                "title": "Distinguer intérêt personnel et intérêt général",
+                "jeSais": "Je sais comprendre qu’une décision pour le groupe ne correspond pas toujours à ce que je préfère.",
+                "checklist": [
+                      "Identifier ce que souhaite une personne.",
+                      "Identifier ce qui est utile au groupe.",
+                      "Comparer plusieurs solutions.",
+                      "Expliquer simplement pourquoi une solution peut servir davantage le collectif.",
+                      "Accepter qu’une décision collective puisse être différente de son choix personnel."
+                ],
+                "proofs": [
+                      "Discussion à partir d’une situation de classe.",
+                      "Conseil d’élèves ou choix collectif."
+                ],
+                "lsu": "Comprendre la notion d’intérêt général."
+          },
+          {
+                "code": "EMC-P3-02",
+                "domain": "Décision collective",
+                "title": "Participer à une décision collective",
+                "jeSais": "Je sais donner mon avis, écouter les autres et participer à une décision prise par le groupe.",
+                "checklist": [
+                      "Comprendre la question posée.",
+                      "Exprimer un choix.",
+                      "Écouter plusieurs propositions.",
+                      "Respecter les règles de prise de parole.",
+                      "Comprendre le principe de décision à la majorité.",
+                      "Respecter la décision prise."
+                ],
+                "proofs": [
+                      "Conseil d’élèves.",
+                      "Vote ou prise de décision à la majorité."
+                ],
+                "lsu": "Participer à la vie démocratique de la classe."
+          },
+          {
+                "code": "EMC-P3-03",
+                "domain": "Engagement",
+                "title": "Proposer ou réaliser une action utile au groupe",
+                "jeSais": "Je sais participer à une action qui améliore la vie de la classe ou de l’école.",
+                "checklist": [
+                      "Identifier un besoin collectif.",
+                      "Proposer une idée réaliste.",
+                      "Écouter les autres propositions.",
+                      "Participer à la réalisation de l’action.",
+                      "Aller au bout de son rôle.",
+                      "Faire un bilan simple de l’action."
+                ],
+                "proofs": [
+                      "Participation à un projet de classe ou d’école.",
+                      "Observation d’une responsabilité collective."
+                ],
+                "lsu": "S’engager dans un projet au service du collectif."
+          },
+          {
+                "code": "EMC-P3-04",
+                "domain": "Conseil d’élèves",
+                "title": "Prendre la parole et écouter dans un conseil d’élèves",
+                "jeSais": "Je sais participer à un conseil en respectant son cadre et la parole de chacun.",
+                "checklist": [
+                      "Attendre son tour de parole.",
+                      "Parler du problème ou de la proposition sans attaquer une personne.",
+                      "Écouter jusqu’au bout.",
+                      "Reformuler une idée si nécessaire.",
+                      "Chercher une solution constructive.",
+                      "Respecter le rôle du président ou du distributeur de parole."
+                ],
+                "proofs": [
+                      "Observation lors d’un conseil d’élèves.",
+                      "Participation à une discussion collective réglée."
+                ],
+                "lsu": "Participer de manière constructive aux échanges collectifs."
+          },
+          {
+                "code": "EMC-P3-05",
+                "domain": "Responsabilité collective",
+                "title": "Comprendre qu’une action individuelle peut avoir des conséquences pour tous",
+                "jeSais": "Je sais expliquer comment mes choix peuvent aider ou gêner le groupe.",
+                "checklist": [
+                      "Repérer une conséquence pour soi.",
+                      "Repérer une conséquence pour les autres.",
+                      "Relier une action à la sécurité, au matériel ou à l’environnement.",
+                      "Proposer un comportement plus responsable.",
+                      "Mettre en pratique un geste utile au collectif."
+                ],
+                "proofs": [
+                      "Analyse d’une situation concrète.",
+                      "Observation dans un projet ou une action collective."
+                ],
+                "lsu": "Agir de manière responsable dans l’intérêt collectif."
+          }
     ],
     "p4Competencies": [
       {
