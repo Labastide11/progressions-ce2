@@ -1,3 +1,12 @@
+## V34.09
+
+- Synchronisation durable de l’historique des évaluations vers Google Sheets.
+- Ajout du stockage `traces_evaluations` côté Apps Script.
+- Envoi par lots depuis Progressions CE2 afin de limiter le nombre d’exécutions Apps Script.
+- Réconciliation par identifiant unique `trace_id` et reprise automatique des traces locales V34.08.
+- Lecture des traces depuis Google Sheets et ajout au `student_snapshot`.
+- API Apps Script portée en V2.8.0.
+
 ## V34.08
 - Historisation des niveaux par élève et compétence.
 - Ajout du niveau interne `depasse` pour les évaluations.

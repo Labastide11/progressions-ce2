@@ -1,5 +1,9 @@
-PATCH Progressions CE2 V34.08 — Historique des évaluations
+PATCH V34.09 — Historique des évaluations ↔ Google Sheets
 
-Décompresser à la racine du projet et accepter le remplacement des fichiers.
-Aucune donnée locale existante n'est supprimée.
-La nouvelle clé localStorage progressions_ce2_traces_competences_v1 conserve les traces datées.
+1. Décompresser les fichiers Progressions à la racine du projet V34.08.
+2. Dans Apps Script, remplacer le code actuel par Code_Apps_Script_V2_8_0.js.
+3. Enregistrer puis Déployer > Gérer les déploiements > Modifier > Nouvelle version > Déployer.
+4. Conserver la même TABLET_DEVICE_KEY.
+5. Recharger Progressions CE2. L'onglet traces_evaluations se crée automatiquement.
+
+La sauvegarde locale reste active comme secours. Les traces sont envoyées par lots pour limiter les exécutions Apps Script.

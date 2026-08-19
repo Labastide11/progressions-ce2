@@ -21,6 +21,7 @@
   const CLASS_ROSTER_KEY='progressions_ce2_classe_v1';
   const CLASS_TRACKING_KEY='progressions_ce2_suivi_eleves_v1';
   const CLASS_TRACES_KEY='progressions_ce2_traces_competences_v1';
+  const TRACE_SYNC_LAST_KEY='progressions_ce2_traces_sync_last_v1';
   const ACTIVE_EVALUATION_KEY='progressions_ce2_active_evaluation_v1';
   const HIBOU_PROOFS_KEY='progressions_ce2_hibou_preuves_v1';
   const HIBOU_RECENT_KEY='progressions_ce2_hibou_reussites_v1';
@@ -404,12 +405,105 @@
   function saveClassTracking(){try{localStorage.setItem(CLASS_TRACKING_KEY,JSON.stringify(classTracking));}catch(e){alert('Le suivi des élèves ne peut pas être enregistré dans ce navigateur.');}}
   function loadClassTraces(){try{const rows=JSON.parse(localStorage.getItem(CLASS_TRACES_KEY)||'[]');return Array.isArray(rows)?rows:[];}catch(e){return [];}}
   let classTraces=loadClassTraces();
+  let traceSyncTimer=null;
+  let traceSyncRunning=false;
   function saveClassTraces(){try{localStorage.setItem(CLASS_TRACES_KEY,JSON.stringify(classTraces));}catch(e){alert('L’historique des évaluations ne peut pas être enregistré dans ce navigateur.');}}
+  function traceIdSet(){return new Set(classTraces.map(t=>String(t&&t.trace_id||'').trim()).filter(Boolean));}
+  function normalizeRemoteTrace(row){
+    const trace=Object.assign({},row||{});
+    trace.trace_id=String(trace.trace_id||trace.id||'').trim();
+    trace.date=String(trace.date||'').trim();
+    trace.prenom=String(trace.prenom||trace.eleve||'').trim();
+    trace.matiere=String(trace.matiere||'').trim();
+    trace.periode=String(trace.periode||'').trim();
+    trace.competence_code=String(trace.competence_code||trace.code_competence||'').trim();
+    trace.competence_label=String(trace.competence_label||trace.competence||'').trim();
+    trace.domaine=String(trace.domaine||'').trim();
+    trace.niveau_suivi=String(trace.niveau_suivi||'').trim();
+    trace.libelle_eleve=String(trace.libelle_eleve||'').trim();
+    trace.niveau_lsu=String(trace.niveau_lsu||'').trim();
+    trace.source=String(trace.source||'').trim();
+    trace.evaluation_id=String(trace.evaluation_id||'').trim();
+    trace.evaluation_titre=String(trace.evaluation_titre||'').trim();
+    trace.note=String(trace.note||'').trim();
+    trace.sync_status='synced';
+    return trace;
+  }
+  function mergeRemoteEvaluationTraces(rows){
+    if(!Array.isArray(rows))return 0;
+    const byId=new Map(classTraces.map((t,i)=>[String(t&&t.trace_id||''),i]).filter(([id])=>id));
+    let added=0,confirmed=0;
+    rows.forEach(raw=>{
+      const trace=normalizeRemoteTrace(raw);
+      if(!trace.trace_id)return;
+      if(byId.has(trace.trace_id)){
+        const index=byId.get(trace.trace_id);
+        classTraces[index]=Object.assign({},classTraces[index],trace,{sync_status:'synced',sync_error:''});
+        confirmed++;
+      }else{
+        byId.set(trace.trace_id,classTraces.length);
+        classTraces.push(trace);added++;
+      }
+    });
+    if(classTraces.length>20000)classTraces=classTraces.slice(-20000);
+    saveClassTraces();
+    return added+confirmed;
+  }
+  function pendingEvaluationTraces(limit=100){return classTraces.filter(t=>t&&t.trace_id&&t.sync_status!=='synced').slice(0,limit);}
+  async function readEvaluationTracesFromSheet(showFeedback=false){
+    if(!syncConfigured())return false;
+    try{
+      const data=await elevesJsonp({action:'evaluation_traces',limit:5000});
+      const rows=Array.isArray(data)?data:(data&&Array.isArray(data.traces)?data.traces:[]);
+      mergeRemoteEvaluationTraces(rows);
+      writeSyncValue(TRACE_SYNC_LAST_KEY,new Date().toISOString());
+      if(showFeedback)alert(`${rows.length} trace${rows.length>1?'s':''} relue${rows.length>1?'s':''} depuis Google Sheets.`);
+      if(state.mode==='classe')renderClassTracking();
+      return true;
+    }catch(error){
+      console.warn('Lecture des traces d’évaluation :',error);
+      return false;
+    }
+  }
+  async function flushEvaluationTraceSync(){
+    if(traceSyncRunning||!syncConfigured())return false;
+    const batch=pendingEvaluationTraces(100);
+    if(!batch.length)return true;
+    traceSyncRunning=true;
+    const cfg=syncConfig();
+    try{
+      const payload={device_key:cfg.key,tablet_key:cfg.key,source:'progressions_ce2',appareil:location.hostname||'local',traces_evaluations:batch.map(t=>({
+        trace_id:t.trace_id,date:t.date,prenom:t.prenom,matiere:t.matiere,periode:t.periode,
+        competence_code:t.competence_code,competence_label:t.competence_label,domaine:t.domaine,
+        niveau_suivi:t.niveau_suivi,libelle_eleve:t.libelle_eleve,niveau_lsu:t.niveau_lsu,
+        source:t.source,evaluation_id:t.evaluation_id,evaluation_titre:t.evaluation_titre,note:t.note
+      }))};
+      await fetch(cfg.url,{method:'POST',mode:'no-cors',cache:'no-store',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(payload)});
+      const sentIds=new Set(batch.map(t=>t.trace_id));
+      classTraces.forEach(t=>{if(sentIds.has(t.trace_id)&&t.sync_status!=='synced'){t.sync_status='sent';t.sync_error='';}});
+      saveClassTraces();
+      setTimeout(()=>readEvaluationTracesFromSheet(false),1600);
+      return true;
+    }catch(error){
+      const ids=new Set(batch.map(t=>t.trace_id));
+      classTraces.forEach(t=>{if(ids.has(t.trace_id)){t.sync_status='pending';t.sync_error=String(error&&error.message||error);}});
+      saveClassTraces();
+      console.warn('Synchronisation des traces d’évaluation :',error);
+      return false;
+    }finally{traceSyncRunning=false;}
+  }
+  function queueEvaluationTraceSync(){clearTimeout(traceSyncTimer);traceSyncTimer=setTimeout(()=>flushEvaluationTraceSync(),700);}
+  async function syncEvaluationTracesWithSheet(){
+    if(!syncConfigured())return false;
+    await readEvaluationTracesFromSheet(false);
+    if(pendingEvaluationTraces(1).length)queueEvaluationTraceSync();
+    return true;
+  }
   function classEntry(student,code){const k=`${student}|${code}`;if(!classTracking[k])classTracking[k]={level:'none',note:'',date:''};if(classTracking[k].level==='maitrisee')classTracking[k].level='depasse';return classTracking[k];}
   function activeEvaluationContext(code){try{const ctx=JSON.parse(sessionStorage.getItem(ACTIVE_EVALUATION_KEY)||'null');if(!ctx||!Array.isArray(ctx.codes)||!ctx.codes.includes(code))return null;if(ctx.subject&&ctx.subject!==state.subject)return null;if(ctx.period&&ctx.period!==state.period)return null;return ctx;}catch(e){return null;}}
   function skillByCode(code){const skills=preciseSkillsFor(state.subject,state.period);return skills.find(x=>x.code===code)||{code,title:code,domain:'',_period:periodFromCode(code)};}
   function tracesFor(student,code){const sn=hibouNorm(student);return classTraces.filter(t=>hibouNorm(t.prenom)===sn&&t.competence_code===code).sort((a,b)=>String(b.date||'').localeCompare(String(a.date||'')));}
-  function recordClassTrace(student,skill,level,meta={}){if(!student||!skill||!skill.code||level==='none')return null;const ctx=meta.evaluation===false?null:(meta.evaluation||activeEvaluationContext(skill.code));const source=meta.source||(ctx?'evaluation_papier':'observation_classe');const now=meta.date||new Date().toISOString();const trace={trace_id:'trace-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),date:now,prenom:student,matiere:state.subject,periode:skill._period||state.period,competence_code:skill.code,competence_label:skill.title||skill.label||skill.code,domaine:skill.domain||'',niveau_suivi:level,libelle_eleve:evaluationStudentLabels[level]||classLevelText[level]||level,niveau_lsu:lsuLevelLabels[level]||'',source,evaluation_id:ctx&&ctx.id||'',evaluation_titre:ctx&&ctx.title||'',note:meta.note||''};classTraces.push(trace);if(classTraces.length>20000)classTraces=classTraces.slice(-20000);saveClassTraces();window.dispatchEvent(new CustomEvent('progressions-competence-trace-added',{detail:trace}));return trace;}
+  function recordClassTrace(student,skill,level,meta={}){if(!student||!skill||!skill.code||level==='none')return null;const ctx=meta.evaluation===false?null:(meta.evaluation||activeEvaluationContext(skill.code));const source=meta.source||(ctx?'evaluation_papier':'observation_classe');const now=meta.date||new Date().toISOString();const trace={trace_id:'trace-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),date:now,prenom:student,matiere:state.subject,periode:skill._period||state.period,competence_code:skill.code,competence_label:skill.title||skill.label||skill.code,domaine:skill.domain||'',niveau_suivi:level,libelle_eleve:evaluationStudentLabels[level]||classLevelText[level]||level,niveau_lsu:lsuLevelLabels[level]||'',source,evaluation_id:ctx&&ctx.id||'',evaluation_titre:ctx&&ctx.title||'',note:meta.note||'',sync_status:'pending',sync_error:''};classTraces.push(trace);if(classTraces.length>20000)classTraces=classTraces.slice(-20000);saveClassTraces();queueEvaluationTraceSync();window.dispatchEvent(new CustomEvent('progressions-competence-trace-added',{detail:trace}));return trace;}
   function setClassLevel(student,skill,level,meta={}){const e=classEntry(student,skill.code),previous=e.level||'none';e.level=level;e.date=meta.date||new Date().toISOString();if(previous!==level)recordClassTrace(student,skill,level,meta);return e;}
   function preciseSkillsFor(subject,period){const data=window.PROGRESSIONS[subject]||{};const periods=period==='all'?['p1','p2','p3','p4','p5']:[period];const map={p1:'p1Competencies',p2:'p2Competencies',p3:'p3Competencies',p4:'p4Competencies',p5:'p5Competencies'};let result=[];periods.forEach((p,pi)=>{const list=data[map[p]]||[];if(list.length){result=result.concat(list.map(s=>Object.assign({_period:p},s)));return;}const rowPeriod=classes.indexOf(p);(data.rows||[]).forEach((row,ri)=>{const description=row[rowPeriod+1]||'';if(!description)return;result.push({code:`${subject.toUpperCase()}-${p.toUpperCase()}-${String(ri+1).padStart(2,'0')}`,domain:row[0],title:description.length>110?description.slice(0,107)+'…':description,jeSais:defaultRetention(row[0],description),proofs:[],lsu:row[0],_period:p});});});return result;}
   function selectedClassSkill(){const skills=preciseSkillsFor(state.subject,state.period);if(!skills.length)return null;if(!skills.some(s=>s.code===state.selectedSkill))state.selectedSkill=skills[0].code;return skills.find(s=>s.code===state.selectedSkill)||skills[0];}
@@ -632,6 +726,8 @@
     getLastSync:()=>readSyncValue(PROGRESSIONS_LAST_ROSTER_KEY),
     storageKey:CLASS_ROSTER_META_KEY,
     getTracking:()=>JSON.parse(JSON.stringify(classTracking||{})),
+    getEvaluationTraces:()=>JSON.parse(JSON.stringify(classTraces||[])),
+    syncEvaluationTraces:()=>syncEvaluationTracesWithSheet(),
     getSelectedSkill:()=>{const skill=selectedClassSkill();return skill?{code:skill.code,title:skill.title,domain:skill.domain,period:skill._period,subject:state.subject}:null;},
     getEntry:(student,code)=>{const entry=classEntry(student,code);const proof=hibouProofFor(student,code);return {student,code,level:entry.level,note:entry.note||'',date:entry.date||'',hibouProof:proof||null,effectiveLevel:(entry.level==='none'&&proof)?'acquis':entry.level};},
     setLevel:(student,code,level)=>{if(!classRoster.includes(student)||!classLevelOrder.includes(level))return false;const entry=classEntry(student,code);entry.level=level;entry.date=new Date().toISOString();saveClassTracking();renderClassTracking();return true;},
@@ -647,6 +743,7 @@
   }
   render();
   maybeLoadRosterFromSheet();
+  syncEvaluationTracesWithSheet();
   loadHibouProofs();
   loadRecentAchievements();
   if(PAGE_KIND==='eleves') loadRosterFromSheet(false);
