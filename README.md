@@ -1,4 +1,4 @@
-## V34.09 — Historique des évaluations synchronisé avec Google Sheets
+## V34.10 — Historique des évaluations synchronisé avec Google Sheets
 
 - Nouvel onglet Google Sheet : `traces_evaluations`.
 - Chaque trace créée dans Progressions reste sauvegardée localement puis est envoyée par lot à l’API Apps Script.
@@ -8,7 +8,7 @@
 - `student_snapshot` de l’API inclut désormais les traces d’évaluation, en préparation du futur bilan LSU.
 
 ### Installation
-1. Remplacer les fichiers Progressions fournis par le patch V34.09.
+1. Remplacer les fichiers Progressions fournis par le patch V34.10.
 2. Remplacer le code Apps Script par `Code_Apps_Script_V2_8_0.js`.
 3. Enregistrer puis **déployer une nouvelle version** de l’application Web Apps Script.
 4. Conserver la même `TABLET_DEVICE_KEY` : aucune nouvelle clé n’est nécessaire.

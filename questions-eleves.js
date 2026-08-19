@@ -1,7 +1,8 @@
 (function(){
   'use strict';
   const API_URL_KEY='hibou_sync_api_url_v25754';
-  const API_URL_V275='https://script.google.com/macros/s/AKfycbwGcErZ0he06Dg_bpPDaHtPHa6fAcDQ-31tB7Rlr9w2JZcNaQnP9YIABJYf-CKpFfpF/exec';
+  const API_URL_V280='https://script.google.com/macros/s/AKfycbydzPTQ9ZLEPYezHou2-O4IK24ip51sLTpe9qdi2xREuQvDBKRlVqsYYDiKLrzAODc/exec';
+  const API_URL_LEGACY_V275='https://script.google.com/macros/s/AKfycbwGcErZ0he06Dg_bpPDaHtPHa6fAcDQ-31tB7Rlr9w2JZcNaQnP9YIABJYf-CKpFfpF/exec';
   const DEVICE_KEY='hibou_sync_device_key_v25754';
   const CACHE_KEY='progressions_ce2_questions_cache_v3388';
   const CACHE_MAX_AGE=5*60*1000;
@@ -11,15 +12,19 @@
   function norm(v){return String(v??'').trim();}
   function lower(v){return norm(v).toLocaleLowerCase('fr-FR');}
   function escapeHtml(v){return norm(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
-  function ensureApiV275_(){
+  function ensureCurrentApi_(){
     const current=norm(localStorage.getItem(API_URL_KEY));
-    if(current!==API_URL_V275){
-      if(current) localStorage.setItem(API_URL_KEY+'_backup_v3388', current);
-      localStorage.setItem(API_URL_KEY, API_URL_V275);
+    // V34.10 : ne plus écraser une URL configurée par l'enseignant.
+    // Migration automatique uniquement si l'ancien déploiement V2.7.5 est encore mémorisé
+    // (ou si aucune URL n'a encore été enregistrée sur cet appareil).
+    if(!current || current===API_URL_LEGACY_V275){
+      if(current) localStorage.setItem(API_URL_KEY+'_backup_v3410', current);
+      localStorage.setItem(API_URL_KEY, API_URL_V280);
+      return API_URL_V280;
     }
-    return API_URL_V275;
+    return current;
   }
-  function apiConfig(){return {url:ensureApiV275_(),key:norm(localStorage.getItem(DEVICE_KEY))};}
+  function apiConfig(){return {url:ensureCurrentApi_(),key:norm(localStorage.getItem(DEVICE_KEY))};}
   function pick(o,names){for(const n of names){if(o && o[n]!==undefined && o[n]!==null && norm(o[n])!=='') return o[n];}return '';}
   function normalizeRow(row,index){
     const visibility=norm(pick(row,['visibilite','Visibilité','visibility','Visibilite']));

@@ -1,3 +1,10 @@
+
+## V34.10 — Correction connexion API partagée
+- Corrige `questions-eleves.js` qui forçait encore l'ancien déploiement Apps Script V2.7.5 dans `localStorage`.
+- L'URL Apps Script V2.8.0 devient la valeur de migration par défaut.
+- Une URL personnalisée déjà configurée n'est plus écrasée.
+- Migration automatique des navigateurs encore configurés sur l'ancien déploiement V2.7.5.
+- Balises `<title>` mises à jour en V34.10.
 ## V34.09
 
 - Synchronisation durable de l’historique des évaluations vers Google Sheets.

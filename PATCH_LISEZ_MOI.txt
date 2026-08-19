@@ -1,9 +1,10 @@
-PATCH V34.09 — Historique des évaluations ↔ Google Sheets
+PATCH Progressions CE2 V34.10 — correction connexion API partagée
 
-1. Décompresser les fichiers Progressions à la racine du projet V34.08.
-2. Dans Apps Script, remplacer le code actuel par Code_Apps_Script_V2_8_0.js.
-3. Enregistrer puis Déployer > Gérer les déploiements > Modifier > Nouvelle version > Déployer.
-4. Conserver la même TABLET_DEVICE_KEY.
-5. Recharger Progressions CE2. L'onglet traces_evaluations se crée automatiquement.
+Cause corrigée : questions-eleves.js forçait encore l'ancien URL Apps Script V2.7.5 dans la clé localStorage partagée hibou_sync_api_url_v25754. Cela pouvait remplacer l'URL V2.8.0 puis rendre Vue élèves indisponible.
 
-La sauvegarde locale reste active comme secours. Les traces sont envoyées par lots pour limiter les exécutions Apps Script.
+Installation :
+1. Décompresser ce patch à la racine de Progressions CE2 V34.09.
+2. Accepter le remplacement des fichiers.
+3. Recharger la page d'accueil une fois, puis ouvrir Vue élèves.
+
+Aucune modification Apps Script supplémentaire n'est nécessaire pour ce correctif si V2.8.0 est déjà déployée.
