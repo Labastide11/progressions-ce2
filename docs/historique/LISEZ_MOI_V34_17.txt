@@ -1,0 +1,6 @@
+V34.17 — Consolidation de la documentation
+
+1. Décompresser CE ZIP à la racine de Progressions CE2 V34.16.
+2. Double-cliquer sur APPLIQUER_CONSOLIDATION_README.bat.
+3. Le script archive les anciens README dans docs/historique, nettoie README.md et CHANGELOG.md et met les titres HTML en V34.17.
+4. Les anciens documents ne sont pas perdus : ils restent dans docs/historique.
