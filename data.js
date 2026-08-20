@@ -742,6 +742,8 @@ window.PROGRESSIONS = {
       },
       {
             "code": "LEC-P2-01",
+            "lsuCore": true,
+            "lsuCoreGroup": "lecture",
             "domain": "Lecture et fluence",
             "title": "Lire avec exactitude",
             "jeSais": "Je sais lire un texte en faisant peu d’erreurs.",
@@ -873,6 +875,8 @@ window.PROGRESSIONS = {
       },
       {
             "code": "COM-P2-05",
+            "lsuCore": true,
+            "lsuCoreGroup": "comprehension",
             "domain": "Compréhension de l’écrit",
             "title": "Reformuler l’essentiel",
             "jeSais": "Je sais redire avec mes mots ce que j’ai compris.",
@@ -979,6 +983,8 @@ window.PROGRESSIONS = {
       },
       {
             "code": "ECR-P2-04",
+            "lsuCore": true,
+            "lsuCoreGroup": "ecriture",
             "domain": "Écriture et copie",
             "title": "Raconter des événements dans l’ordre",
             "jeSais": "Je sais écrire plusieurs phrases pour raconter des événements dans l’ordre.",
@@ -2095,6 +2101,8 @@ window.PROGRESSIONS = {
       },
       {
             "code": "COM-P4-01",
+            "lsuCore": true,
+            "lsuCoreGroup": "comprehension",
             "domain": "Compréhension de l’écrit",
             "title": "Comprendre une information implicite",
             "jeSais": "Je sais comprendre ce que le texte fait comprendre sans le dire directement.",
@@ -2366,6 +2374,8 @@ window.PROGRESSIONS = {
       },
       {
             "code": "GRA-P4-02",
+            "lsuCore": true,
+            "lsuCoreGroup": "langue",
             "domain": "Grammaire",
             "title": "Manipuler les groupes dans la phrase",
             "jeSais": "Je sais déplacer, supprimer ou ajouter un groupe pour transformer une phrase.",
@@ -2577,6 +2587,8 @@ window.PROGRESSIONS = {
       },
       {
             "code": "LEC-P5-01",
+            "lsuCore": true,
+            "lsuCoreGroup": "lecture",
             "domain": "Lecture et fluence",
             "title": "Lire seul avec exactitude et fluidité",
             "jeSais": "Je sais découvrir seul un nouveau texte adapté au CE2 et le lire avec fluidité.",
@@ -2771,6 +2783,8 @@ window.PROGRESSIONS = {
       },
       {
             "code": "ECR-P5-04",
+            "lsuCore": true,
+            "lsuCoreGroup": "ecriture",
             "domain": "Écriture et copie",
             "title": "Réviser puis publier un texte",
             "jeSais": "Je sais améliorer le contenu et la forme avant de présenter une version finale.",
@@ -2980,6 +2994,8 @@ window.PROGRESSIONS = {
       },
       {
             "code": "ORT-P5-02",
+            "lsuCore": true,
+            "lsuCoreGroup": "langue",
             "domain": "Orthographe",
             "title": "Réaliser les accords dans la phrase",
             "jeSais": "Je sais contrôler les accords dans le groupe nominal et entre le sujet et le verbe.",
@@ -3292,6 +3308,8 @@ window.PROGRESSIONS = {
           },
           {
                 "code": "PRO-P1-01",
+            "lsuCore": true,
+            "lsuCoreGroup": "problemes",
                 "domain": "Résolution de problèmes",
                 "title": "Comprendre la question d’un problème",
                 "jeSais": "Je sais expliquer ce que je cherche dans un problème.",
@@ -3510,6 +3528,8 @@ window.PROGRESSIONS = {
           },
           {
                 "code": "NUM-P2-02",
+            "lsuCore": true,
+            "lsuCoreGroup": "nombres",
                 "domain": "Nombres entiers",
                 "title": "Repérer la valeur d’un chiffre",
                 "jeSais": "Je sais donner la valeur d’un chiffre selon sa position.",
@@ -3998,6 +4018,8 @@ window.PROGRESSIONS = {
           },
           {
                 "code": "CAL-P3-01",
+            "lsuCore": true,
+            "lsuCoreGroup": "calcul",
                 "domain": "Calcul mental",
                 "title": "Connaître les tables de multiplication",
                 "jeSais": "Je sais restituer progressivement les produits des tables étudiées.",
@@ -4396,6 +4418,8 @@ window.PROGRESSIONS = {
           },
           {
                 "code": "CAL-P4-02",
+            "lsuCore": true,
+            "lsuCoreGroup": "calcul",
                 "domain": "Calcul mental",
                 "title": "Choisir une stratégie efficace",
                 "jeSais": "Je sais choisir entre calcul mémorisé, décomposition ou compensation.",
@@ -4686,6 +4710,8 @@ window.PROGRESSIONS = {
     p5Competencies: [
           {
                 "code": "NUM-P5-01",
+            "lsuCore": true,
+            "lsuCoreGroup": "nombres",
                 "domain": "Nombres entiers",
                 "title": "Mobiliser toutes les représentations des nombres",
                 "jeSais": "Je sais passer rapidement d’une représentation d’un nombre à une autre.",
@@ -4848,6 +4874,8 @@ window.PROGRESSIONS = {
           },
           {
                 "code": "PRO-P5-02",
+            "lsuCore": true,
+            "lsuCoreGroup": "problemes",
                 "domain": "Résolution de problèmes",
                 "title": "Résoudre un problème complexe ou atypique",
                 "jeSais": "Je sais essayer, réguler et expliquer une démarche pour un problème nouveau.",
@@ -5788,6 +5816,8 @@ window.PROGRESSIONS = {
       },
       {
         "code": "HIS-P3-03",
+            "lsuCore": true,
+            "lsuCoreGroup": "lecture_documents",
         "domain": "Démarche historique",
         "title": "Prélever des informations dans des documents historiques",
         "jeSais": "Je sais chercher dans un texte, une image, une carte ou un objet des informations sur le passé.",
@@ -6664,6 +6694,8 @@ window.PROGRESSIONS = {
       },
       {
         "code": "ANG-P2-05",
+            "lsuCore": true,
+            "lsuCoreGroup": "expression_orale",
         "domain": "Interaction orale",
         "title": "Dire ce que l’on souhaite manger au petit-déjeuner",
         "jeSais": "Je sais demander ou dire ce que je veux pour le petit-déjeuner.",
@@ -6976,6 +7008,8 @@ window.PROGRESSIONS = {
       },
       {
         "code": "ANG-P5-04",
+            "lsuCore": true,
+            "lsuCoreGroup": "comprehension_orale",
         "domain": "Comprendre l’oral",
         "title": "Suivre le fil d’une histoire courte",
         "jeSais": "Je sais comprendre l’essentiel d’une histoire courte en anglais.",
@@ -7149,6 +7183,8 @@ window.PROGRESSIONS = {
 },
 {
         "code": "SCI-P1-05",
+            "lsuCore": true,
+            "lsuCoreGroup": "raisonnement_scientifique",
         "domain": "Conclusion",
         "title": "Tirer une conclusion à partir de résultats",
         "jeSais": "Je sais utiliser les résultats d’une expérience pour répondre à la question de départ.",

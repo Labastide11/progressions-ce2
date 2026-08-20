@@ -233,3 +233,10 @@ Le détail complet des anciennes versions est conservé dans `docs/historique/`.
 - `Dépassé` matière exige des preuves explicites de transfert.
 - Ajout de 8 scénarios automatisés dans `tools/test_lsu_engine.js`.
 - Aucun écran, bouton ou flux de navigation LSU ajouté à cette version.
+
+## V34.38 — 20 août 2026 — Compétences structurantes LSU
+- Sélection de 18 codes canoniques réels dans `data.js`.
+- Ajout de `lsuCore: true` et `lsuCoreGroup` sur ces seules compétences.
+- Répartition : Français 8, Mathématiques 6, Anglais 2, QLM 2.
+- Aucun écran ni branchement d’interface ajouté.
+- Une compétence structurante sert à la vigilance et à la synthèse ; elle ne reçoit pas de poids chiffré supplémentaire.

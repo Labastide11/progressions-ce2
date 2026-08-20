@@ -197,3 +197,8 @@ Correction du filtre de la fenêtre Évaluations : le rendu de plusieurs matièr
 
 ### V34.37 — moteur LSU V1
 Le fichier `lsu-synthesis-engine.js` contient désormais le premier moteur de synthèse semestrielle, volontairement déconnecté de l'interface. Il exploite les traces A/B/C/D, respecte la priorité des preuves enseignantes, sait signaler les progressions à réexaminer et prépare les vigilances sur compétences structurantes. Voir `docs/MOTEUR_LSU_V1_V34_37.md`. Aucun écran LSU n'est activé en V34.37.
+
+
+## V34.38 — Compétences structurantes LSU
+
+18 compétences canoniques du référentiel réel sont marquées `lsuCore: true` et regroupées avec `lsuCoreGroup`. Elles servent uniquement à faire ressortir une fragilité persistante dans la synthèse LSU et à déclencher une vigilance pédagogique documentée. Elles ne valent aucun point supplémentaire et ne modifient pas à elles seules un niveau LSU.
