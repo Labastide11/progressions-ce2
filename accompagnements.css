@@ -23,3 +23,11 @@
 .home-tile--support{background:linear-gradient(180deg,#fff8e8,#fffdf7);border-color:#f0d48b}.home-tile--support .home-tile__icon{background:#fff0bd;color:#a36b00}
 @media(max-width:1000px){.supports-layout{grid-template-columns:1fr}.supports-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.supports-list{grid-template-columns:1fr}}
 @media(max-width:650px){.supports-panel{padding:14px}.supports-fields,.supports-tools{grid-template-columns:1fr}.supports-privacy{align-items:flex-start;flex-direction:column}}
+
+/* V34.43 — Accompagnements : deux espaces clairement séparés */
+.supports-hub{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:16px 0}
+.supports-hub-card{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:17px 18px;border:1px solid #d8e3f0;border-radius:18px;background:#fff}
+.supports-hub-card--priority{background:#f4fbef;border-color:#bfe4ad}.supports-hub-card--inclusion{background:#fff7ee;border-color:#f2c894}
+.supports-hub-card h3{margin:.2rem 0 .35rem;color:#183d75}.supports-hub-card p{margin:0;color:#5e7088}.supports-hub-card__eyebrow{font-size:.72rem;letter-spacing:.07em;font-weight:900;color:#5f748d}
+.supports-hub-card__action{flex:0 0 auto;text-decoration:none;padding:11px 14px;border-radius:12px;background:#2d7a43;color:#fff;font-weight:850}.supports-hub-card__current{flex:0 0 auto;padding:9px 12px;border-radius:999px;background:#fff0dd;color:#986019;font-weight:850}
+@media(max-width:900px){.supports-hub{grid-template-columns:1fr}.supports-hub-card{align-items:flex-start;flex-direction:column}}

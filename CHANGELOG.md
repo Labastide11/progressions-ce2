@@ -1,3 +1,16 @@
+## V34.43 — 20 août 2026 — Refonte du suivi des élèves et préparation de la synthèse LSU
+
+- Accueil : `Priorités et suivi pédagogique` devient **Suivi des élèves**.
+- Le raccourci `Évaluations et bilans des élèves` est conservé sur l’accueil comme accès direct ; les mêmes évaluations sont désormais aussi rangées logiquement dans **Suivi des élèves**.
+- `mon-suivi.html` devient un hub volontairement simple en 2 blocs : **Évaluations et traces** puis **Synthèse LSU**.
+- L’ancien tableau de bord de priorités est conservé intégralement dans `priorites-pedagogiques.html` : aucune fonction de groupes de besoin, KPI ou suivi détaillé n’est perdue.
+- `Accompagnements et inclusions` est organisé en 2 blocs : **Priorités pédagogiques** et **Inclusions et accompagnements** ; le formulaire existant reste inchangé.
+- Première interface `lsu.html` en lecture seule : choix élève / semestre, sources A-B-C-D, niveau suggéré, couverture, tendance, confiance, vigilances et phrase produite par le moteur.
+- Aucun mécanisme d’écriture LSU n’est ajouté : la validation finale reste enseignante.
+- Accès direct `index.html?open=evaluations` et `index.html?open=supports` pour conserver les outils existants sans duplication.
+- Lien Maître Hibou actualisé vers `https://labastide11.github.io/Maitre-Hibou/`.
+- Tous les titres HTML actifs passent en V34.43.
+
 ## V34.42 — 20 août 2026 — Connecteur LSU robuste aux réponses Apps Script lentes
 
 - `student_snapshot` : délai JSONP par défaut porté de 20 s à 60 s pour tolérer les démarrages lents d’Apps Script.

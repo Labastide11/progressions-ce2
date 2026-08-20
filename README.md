@@ -1,3 +1,9 @@
+## V34.43 — Nouvelle organisation du suivi des élèves
+
+La zone **Suivi des élèves** est désormais organisée en deux étapes : **Évaluations et traces**, puis **Synthèse LSU**. Les anciennes priorités pédagogiques ne sont pas supprimées : elles sont déplacées dans l’espace **Accompagnements et inclusions**, qui distingue maintenant les priorités de classe des inclusions et accompagnements spécifiques.
+
+Une première page `lsu.html` exploite le moteur LSU réel en lecture seule. Elle n’écrit aucune donnée et affiche uniquement les propositions issues des traces existantes.
+
 ## V34.42 — Correctif de robustesse du diagnostic LSU réel
 
 Cette version corrige les échecs intermittents du diagnostic `student_snapshot` lorsque Google Apps Script répond après le timeout de 20 secondes. Le connecteur attend désormais jusqu’à 60 secondes et conserve temporairement un callback JSONP inoffensif si une réponse arrive encore plus tard. Cela évite l’erreur globale `progressionsLSU_... is not defined`.

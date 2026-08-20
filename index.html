@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période." name="description"/>
-<title>V34.42 — Progressions CE2 — Ma classe au quotidien</title>
+<title>V34.43 — Progressions CE2 — Ma classe au quotidien</title>
 <link href="styles.css?v=33.27" rel="stylesheet"/>
 <link href="groupes-besoin.css?v=32.92" rel="stylesheet"/>
 <link href="home-tablet.css?v=33.27" rel="stylesheet"/>
@@ -13,7 +13,7 @@
 <link href="emploi-du-temps.css?v=31.91" rel="stylesheet"/>
 <link href="parcours-eleve.css?v=31.73" rel="stylesheet"/>
 <link href="parcours-outil.css?v=32.84" rel="stylesheet"/>
-<link href="accompagnements.css?v=31.71" rel="stylesheet"/>
+<link href="accompagnements.css?v=34.43" rel="stylesheet"/>
 <link href="programme-du-jour.css?v=32.8" rel="stylesheet"/>
 <link href="cahier-journal.css?v=32.29" rel="stylesheet"/>
 <link href="pense-bete.css?v=33.18" rel="stylesheet"/>
@@ -49,7 +49,7 @@
 <span class="notif-badge hidden" id="hibouNotifBadge">0</span>
 </button>
 <button class="btn btn--library btn--compact" id="openLibraryBtn" type="button">📚 Bibliothèque</button>
-<a class="btn btn--hibou btn--compact" href="https://labastide11.github.io/Prof_virtuel/" rel="noopener noreferrer" target="_blank">🦉 Maître Hibou</a>
+<a class="btn btn--hibou btn--compact" href="https://labastide11.github.io/Maitre-Hibou/" rel="noopener noreferrer" target="_blank">🦉 Maître Hibou</a>
 <button class="btn btn--evaluations btn--compact" id="openEvaluationsBtn" type="button">📝 Évaluations</button>
 <div aria-label="Accès direct aux emplois du temps synthétiques par période" class="timetable-quickperiods">
 <button class="btn btn--period-quick btn--period-quick-p1 btn--compact" data-open-summary-period="p1" type="button">P1</button>
@@ -174,7 +174,7 @@
 </button>
 <button class="home-row home-row--green" data-page-link="mon-suivi.html" type="button">
 <span class="home-row__icon"><img alt="" src="assets/home-v32-43/mon-suivi.png"/></span>
-<span class="home-row__text"><span class="home-row__title">Priorités et suivi pédagogique</span><span class="home-row__desc">Vue d’ensemble des acquis et compétences.</span></span>
+<span class="home-row__text"><span class="home-row__title">Suivi des élèves</span><span class="home-row__desc">Évaluations, traces et synthèse LSU semestrielle.</span></span>
 <span class="home-row__arrow">›</span>
 </button>
 <button class="home-row home-row--indigo" data-page-link="referentiel.html" type="button">
@@ -184,12 +184,12 @@
 </button>
 <button class="home-row home-row--gold" data-home-action="evaluations" type="button">
 <span class="home-row__icon"><img alt="" src="assets/home-v32-43/evaluations-bilans.png"/></span>
-<span class="home-row__text"><span class="home-row__title">Évaluations et bilans des élèves</span><span class="home-row__desc">Consultez les résultats et bilans par période.</span></span>
+<span class="home-row__text"><span class="home-row__title">Évaluations et bilans des élèves</span><span class="home-row__desc">Accès direct aux évaluations par compétences.</span></span>
 <span class="home-row__arrow">›</span>
 </button>
 <button class="home-row home-row--sand" data-home-action="supports" type="button">
 <span class="home-row__icon"><img alt="" src="assets/home-v32-43/accompagnements-inclusions.jpg"/></span>
-<span class="home-row__text"><span class="home-row__title">Accompagnements et inclusions</span><span class="home-row__desc">RASED, ULIS et suivis coordonnés.</span></span>
+<span class="home-row__text"><span class="home-row__title">Accompagnements et inclusions</span><span class="home-row__desc">Priorités pédagogiques, inclusions et suivis coordonnés.</span></span>
 <span class="home-row__arrow">›</span>
 </button>
 <button class="home-row home-row--rose" data-home-action="parcours" type="button">
@@ -343,6 +343,16 @@
 </div>
 <button aria-label="Fermer" class="supports-close" id="closeSupportsBtn" type="button">×</button>
 </header>
+<div class="supports-hub" aria-label="Deux espaces d’accompagnement">
+<article class="supports-hub-card supports-hub-card--priority">
+<div><span class="supports-hub-card__eyebrow">1 · PRIORITÉS PÉDAGOGIQUES</span><h3>Qui aider et quoi reprendre ?</h3><p>Compétences fragiles, élèves à suivre et groupes de besoin à préparer.</p></div>
+<a class="supports-hub-card__action" href="priorites-pedagogiques.html">📈 Ouvrir les priorités pédagogiques</a>
+</article>
+<article class="supports-hub-card supports-hub-card--inclusion is-active">
+<div><span class="supports-hub-card__eyebrow">2 · INCLUSIONS ET ACCOMPAGNEMENTS</span><h3>Organiser les suivis spécifiques</h3><p>RASED, APC, UPE2A, SESSAD, ULIS, accompagnements extérieurs et temps d’inclusion.</p></div>
+<span class="supports-hub-card__current">Vous êtes ici</span>
+</article>
+</div>
 <div class="supports-privacy">
 <strong>🔒 Informations sensibles</strong>
 <span>Conserver uniquement les données utiles à l’organisation pédagogique. Ne pas saisir de diagnostic médical détaillé.</span>
@@ -791,7 +801,7 @@
 <script src="data.js?v=34.38"></script>
 <script src="hibou-progression-map.js?v=31.55"></script>
 <script src="data/enseignant-eleves-meta.js?v=33.38"></script>
-<script src="app.js?v=34.09"></script>
+<script src="app.js?v=34.43"></script>
 <script src="groupes-besoin.js?v=32.96"></script>
 <script src="liste-eleves-popup.js?v=33.38"></script>
 <script src="random-student.js?v=32.63"></script>
@@ -811,7 +821,7 @@
 <script src="emploi-du-temps-data-p5.js?v=34.33"></script>
 <script src="emploi-du-temps-ui.js?v=34.18"></script>
 <script src="programme-du-jour.js?v=32.17"></script>
-<script src="accompagnements.js?v=31.71"></script>
+<script src="accompagnements.js?v=34.43"></script>
 <div aria-hidden="true" aria-labelledby="feliciterTitle" aria-modal="true" class="feliciter-modal hidden" id="feliciterModal" role="dialog">
 <section class="feliciter-dialog">
 <header class="feliciter-head">
