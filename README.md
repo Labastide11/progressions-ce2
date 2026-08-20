@@ -120,3 +120,13 @@ Chaque carte d’évaluation affiche désormais le semestre auquel elle contribu
 - Fenêtre Évaluations élargie sur PC.
 - Deux cartes larges par ligne lorsqu'il y en a plusieurs ; une carte unique utilise toute la largeur.
 - Retour automatique à une colonne sur tablette et écran étroit.
+
+### V34.29 — Consolidation du référentiel Géographie CE2
+- Référentiel Géographie allégé de **35 à 25 compétences structurantes**.
+- P1 : 5 compétences — population et repères en France.
+- P2 : 6 compétences — habiter la ville.
+- P3 : 5 compétences — habiter différents espaces en France.
+- P4 : 4 compétences — travailler en France : activités, paysages, transports et aménagements.
+- P5 : 5 compétences — activités, services, territoires et environnement.
+- Formulations recentrées sur des actions observables : localiser, lire, comparer, décrire, utiliser, identifier, expliquer.
+- Références aux anciens codes fusionnés réalignées dans l’emploi du temps afin d’éviter les compétences orphelines.

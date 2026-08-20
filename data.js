@@ -6007,126 +6007,90 @@ window.PROGRESSIONS = {
         "title": "Localiser la France à différentes échelles",
         "jeSais": "Je sais localiser la France sur un globe, un planisphère et une carte d’Europe.",
         "checklist": [
-          "Reconnaître globe et planisphère.",
-          "Localiser l’Europe.",
-          "Localiser la France hexagonale.",
-          "Repérer les territoires ultramarins sur une carte adaptée.",
-          "Employer continent, pays et territoire."
+                "Reconnaître un globe, un planisphère et une carte.",
+                "Localiser l’Europe.",
+                "Localiser la France hexagonale.",
+                "Repérer les territoires ultramarins sur une carte adaptée.",
+                "Employer continent, pays et territoire."
         ],
         "proofs": [
-          "Localisation sur différents supports.",
-          "Phrase de situation."
+                "Localisation sur plusieurs supports.",
+                "Phrase de situation."
         ],
-        "lsu": "Se repérer dans l’espace."
-      },
+        "lsu": "Se repérer dans l’espace et mémoriser des repères géographiques."
+},
       {
         "code": "GEOG-P1-02",
         "domain": "Population",
-        "title": "Lire une carte de densité de population",
-        "jeSais": "Je sais lire une carte qui montre où la population est nombreuse ou peu nombreuse.",
+        "title": "Lire une carte simple de répartition de la population",
+        "jeSais": "Je sais utiliser le titre et la légende d’une carte pour repérer où la population est plus ou moins nombreuse.",
         "checklist": [
-          "Lire le titre.",
-          "Comprendre la légende.",
-          "Associer couleur et densité.",
-          "Localiser une zone dense.",
-          "Localiser une zone peu dense."
+                "Lire le titre de la carte.",
+                "Utiliser la légende.",
+                "Associer une couleur ou un figuré à une information.",
+                "Repérer un espace très peuplé.",
+                "Repérer un espace peu peuplé."
         ],
         "proofs": [
-          "Questionnaire cartographique.",
-          "Carte à légender."
+                "Lecture d’une carte thématique simple.",
+                "Carte ou questionnaire de localisation."
         ],
-        "lsu": "Lire une carte thématique."
-      },
+        "lsu": "Lire et comprendre une carte thématique simple."
+},
       {
         "code": "GEOG-P1-03",
         "domain": "Villes",
         "title": "Localiser Paris et quelques grandes villes françaises",
-        "jeSais": "Je sais localiser Paris et plusieurs grandes villes de France.",
+        "jeSais": "Je sais localiser Paris et quelques grandes villes de France sur une carte.",
         "checklist": [
-          "Localiser Paris.",
-          "Repérer quelques métropoles régionales.",
-          "Utiliser les points cardinaux.",
-          "Associer une ville à sa position.",
-          "Mémoriser des repères."
+                "Localiser Paris.",
+                "Repérer quelques grandes villes étudiées.",
+                "Utiliser les points cardinaux pour préciser une position.",
+                "Associer une ville à sa position sur la carte.",
+                "Réutiliser les principaux repères étudiés."
         ],
         "proofs": [
-          "Carte muette.",
-          "Jeu de localisation."
+                "Carte muette.",
+                "Jeu ou oral de localisation."
         ],
-        "lsu": "Mémoriser des repères géographiques."
-      },
+        "lsu": "Mémoriser et utiliser quelques repères géographiques."
+},
       {
         "code": "GEOG-P1-04",
-        "domain": "Espaces peuplés",
-        "title": "Identifier les espaces densément peuplés",
-        "jeSais": "Je sais reconnaître les espaces français où vivent beaucoup d’habitants.",
+        "domain": "Peuplement",
+        "title": "Identifier et comparer des espaces plus ou moins peuplés",
+        "jeSais": "Je sais repérer et comparer des espaces où la population est nombreuse ou peu nombreuse.",
         "checklist": [
-          "Repérer les grandes agglomérations.",
-          "Identifier certains littoraux.",
-          "Identifier les grandes vallées.",
-          "Observer les axes de transport.",
-          "Formuler une caractéristique commune."
+                "Repérer des espaces densément peuplés.",
+                "Repérer des espaces faiblement peuplés.",
+                "Comparer bâtiments, routes, activités ou relief.",
+                "Employer plus peuplé et moins peuplé.",
+                "Relier une observation de paysage à la carte de population."
         ],
         "proofs": [
-          "Lecture de carte.",
-          "Comparaison de documents."
+                "Comparaison de cartes et de paysages.",
+                "Tableau comparatif ou courte description."
         ],
-        "lsu": "Comprendre la répartition de la population."
-      },
+        "lsu": "Identifier et comparer des contrastes de peuplement."
+},
       {
         "code": "GEOG-P1-05",
-        "domain": "Espaces peu peuplés",
-        "title": "Identifier les espaces faiblement peuplés",
-        "jeSais": "Je sais reconnaître des espaces français où vivent peu d’habitants.",
-        "checklist": [
-          "Repérer des zones rurales.",
-          "Identifier certains massifs montagneux.",
-          "Lire une carte de densité.",
-          "Décrire un paysage peu peuplé.",
-          "Éviter de confondre peu peuplé et inhabité."
-        ],
-        "proofs": [
-          "Localisation sur carte.",
-          "Description de paysage."
-        ],
-        "lsu": "Comprendre les contrastes de peuplement."
-      },
-      {
-        "code": "GEOG-P1-06",
-        "domain": "Comparaison",
-        "title": "Comparer deux espaces de peuplement",
-        "jeSais": "Je sais comparer un espace très peuplé et un espace peu peuplé.",
-        "checklist": [
-          "Choisir des critères.",
-          "Comparer bâtiments, routes et activités.",
-          "Utiliser plus/moins.",
-          "Relier paysage et population.",
-          "Rédiger une conclusion."
-        ],
-        "proofs": [
-          "Tableau comparatif.",
-          "Court texte géographique."
-        ],
-        "lsu": "Comparer des territoires."
-      },
-      {
-        "code": "GEOG-P1-07",
         "domain": "Explication",
-        "title": "Expliquer simplement une différence de peuplement",
-        "jeSais": "Je sais proposer une explication simple à la répartition de la population.",
+        "title": "Proposer une explication simple à une différence de peuplement",
+        "jeSais": "Je sais utiliser des documents pour proposer une explication simple à une différence de peuplement.",
         "checklist": [
-          "Mobiliser emplois et services.",
-          "Prendre en compte relief et accessibilité.",
-          "Repérer le rôle des transports.",
-          "Distinguer constat et explication.",
-          "Appuyer l’explication sur un document."
+                "Distinguer ce que j’observe de ce que j’explique.",
+                "Repérer le rôle possible des emplois et services.",
+                "Prendre en compte le relief ou l’accessibilité.",
+                "Repérer le rôle possible des transports.",
+                "Appuyer mon explication sur un document."
         ],
         "proofs": [
-          "Réponse argumentée.",
-          "Schéma causes-conséquences."
+                "Réponse orale ou écrite appuyée sur des documents.",
+                "Schéma simple constat-explication."
         ],
-        "lsu": "Expliquer une organisation spatiale."
-      }
+        "lsu": "Expliquer simplement une organisation spatiale à partir de documents."
+}
     ],
     "p2Competencies": [
       {
@@ -6135,510 +6099,366 @@ window.PROGRESSIONS = {
         "title": "Reconnaître et décrire un paysage urbain",
         "jeSais": "Je sais reconnaître une ville et décrire ses principaux éléments.",
         "checklist": [
-          "Identifier bâtiments et rues.",
-          "Repérer la densité des constructions.",
-          "Nommer des équipements.",
-          "Décrire les déplacements.",
-          "Employer paysage urbain."
+                "Identifier bâtiments et rues.",
+                "Repérer la densité des constructions.",
+                "Nommer quelques équipements.",
+                "Décrire les déplacements visibles.",
+                "Employer l’expression paysage urbain."
         ],
         "proofs": [
-          "Description de photographie.",
-          "Croquis simple."
+                "Description de photographie.",
+                "Croquis simple."
         ],
-        "lsu": "Décrire un espace urbain."
-      },
+        "lsu": "Observer et décrire un espace urbain."
+},
       {
         "code": "GEOG-P2-02",
         "domain": "Habitat",
-        "title": "Distinguer habitat individuel et habitat collectif",
-        "jeSais": "Je sais distinguer une maison individuelle d’un immeuble collectif.",
+        "title": "Distinguer différentes formes d’habitat",
+        "jeSais": "Je sais distinguer plusieurs formes d’habitat, notamment la maison individuelle et l’habitat collectif.",
         "checklist": [
-          "Observer la forme des bâtiments.",
-          "Identifier le nombre de logements.",
-          "Comparer l’usage du sol.",
-          "Repérer les espaces partagés.",
-          "Employer individuel et collectif."
+                "Observer la forme des bâtiments.",
+                "Distinguer maison et immeuble.",
+                "Repérer les espaces privés et partagés.",
+                "Comparer l’occupation de l’espace.",
+                "Employer habitat individuel et habitat collectif."
         ],
         "proofs": [
-          "Classement de photographies.",
-          "Tableau comparatif."
+                "Classement de photographies.",
+                "Tableau comparatif."
         ],
-        "lsu": "Identifier des formes d’habitat."
-      },
+        "lsu": "Identifier et comparer des formes d’habitat."
+},
       {
         "code": "GEOG-P2-03",
         "domain": "Organisation urbaine",
-        "title": "Identifier les fonctions d’un quartier",
-        "jeSais": "Je sais repérer où l’on habite, travaille, achète, se soigne ou se divertit.",
+        "title": "Identifier les principales fonctions d’un quartier",
+        "jeSais": "Je sais repérer où l’on habite, travaille, achète, se soigne, apprend ou se divertit dans un quartier.",
         "checklist": [
-          "Observer bâtiments et équipements.",
-          "Associer lieu et fonction.",
-          "Distinguer habitat et activité.",
-          "Repérer des services.",
-          "Comprendre qu’un quartier peut avoir plusieurs fonctions."
+                "Observer bâtiments et équipements.",
+                "Associer un lieu à une fonction.",
+                "Distinguer habitat et activité.",
+                "Repérer des commerces et services.",
+                "Comprendre qu’un quartier peut avoir plusieurs fonctions."
         ],
         "proofs": [
-          "Plan ou photographie annotée.",
-          "Classement de lieux."
+                "Plan ou photographie annotée.",
+                "Classement de lieux par fonction."
         ],
-        "lsu": "Comprendre l’organisation d’un espace urbain."
-      },
+        "lsu": "Identifier l’organisation et les fonctions d’un espace urbain."
+},
       {
         "code": "GEOG-P2-04",
         "domain": "Plan",
-        "title": "Lire un plan de ville ou de quartier",
-        "jeSais": "Je sais utiliser un plan pour localiser un lieu et préparer un trajet.",
+        "title": "Utiliser un plan pour localiser un lieu et suivre un trajet",
+        "jeSais": "Je sais utiliser un plan de ville ou de quartier pour trouver un lieu et décrire un trajet.",
         "checklist": [
-          "Lire le titre et la légende.",
-          "Repérer les rues.",
-          "Utiliser un quadrillage ou des repères.",
-          "Localiser départ et arrivée.",
-          "Décrire un itinéraire."
+                "Lire le titre et la légende.",
+                "Repérer rues, bâtiments et équipements.",
+                "Utiliser un quadrillage ou des repères.",
+                "Localiser un départ et une arrivée.",
+                "Décrire ou suivre un itinéraire."
         ],
         "proofs": [
-          "Trajet sur plan.",
-          "Questions de localisation."
+                "Trajet sur plan.",
+                "Questions de localisation."
         ],
-        "lsu": "Se repérer sur un plan."
-      },
+        "lsu": "Se repérer et se déplacer à l’aide d’un plan."
+},
       {
         "code": "GEOG-P2-05",
         "domain": "Centre et périphérie",
-        "title": "Comparer centre-ville et périphérie",
-        "jeSais": "Je sais comparer un centre-ville et un quartier périphérique.",
+        "title": "Comparer un centre-ville et un espace périphérique",
+        "jeSais": "Je sais comparer un centre-ville et un espace périphérique à partir de paysages ou de plans.",
         "checklist": [
-          "Observer densité et hauteur des bâtiments.",
-          "Comparer types de logements.",
-          "Repérer commerces et services.",
-          "Comparer circulation et espaces verts.",
-          "Formuler une conclusion."
+                "Comparer la densité et la hauteur des bâtiments.",
+                "Comparer les formes d’habitat.",
+                "Repérer commerces et services.",
+                "Comparer circulation et espaces ouverts.",
+                "Formuler une conclusion simple."
         ],
         "proofs": [
-          "Tableau comparatif.",
-          "Description croisée de photographies."
+                "Tableau comparatif.",
+                "Description croisée de documents."
         ],
-        "lsu": "Comparer des espaces urbains."
-      },
+        "lsu": "Comparer deux espaces urbains."
+},
       {
         "code": "GEOG-P2-06",
-        "domain": "Mobilités",
-        "title": "Comprendre les déplacements liés au logement",
-        "jeSais": "Je sais expliquer pourquoi les habitants se déplacent chaque jour.",
+        "domain": "Mobilités et aménagement",
+        "title": "Relier les déplacements et les aménagements aux besoins des habitants",
+        "jeSais": "Je sais expliquer pourquoi les habitants se déplacent et à quel besoin répond un aménagement urbain.",
         "checklist": [
-          "Identifier domicile, travail et école.",
-          "Repérer différents moyens de transport.",
-          "Comprendre les trajets quotidiens.",
-          "Lire une carte simple de réseau.",
-          "Relier logement et accessibilité."
+                "Identifier quelques déplacements quotidiens.",
+                "Repérer différents moyens de transport.",
+                "Relier un trajet à un besoin.",
+                "Identifier un aménagement et son usage.",
+                "Expliquer simplement à quels habitants il peut être utile."
         ],
         "proofs": [
-          "Schéma de mobilités.",
-          "Étude d’un trajet quotidien."
+                "Étude d’un trajet quotidien.",
+                "Étude d’un aménagement ou présentation orale."
         ],
-        "lsu": "Comprendre les mobilités quotidiennes."
-      },
-      {
-        "code": "GEOG-P2-07",
-        "domain": "Aménagement",
-        "title": "Identifier un aménagement qui améliore la vie des habitants",
-        "jeSais": "Je sais expliquer à quoi sert un aménagement urbain.",
-        "checklist": [
-          "Identifier l’aménagement.",
-          "Décrire son usage.",
-          "Nommer les habitants concernés.",
-          "Repérer avantages et contraintes.",
-          "Relier l’aménagement à un besoin."
-        ],
-        "proofs": [
-          "Étude d’un parc, tramway ou équipement.",
-          "Présentation orale."
-        ],
-        "lsu": "Comprendre l’aménagement d’un territoire."
-      }
+        "lsu": "Comprendre les déplacements quotidiens et le rôle des aménagements."
+}
     ],
     "p3Competencies": [
       {
         "code": "GEOG-P3-01",
         "domain": "Espace rural",
         "title": "Reconnaître et décrire un espace rural",
-        "jeSais": "Je sais reconnaître un espace rural et décrire son habitat.",
+        "jeSais": "Je sais reconnaître un espace rural et décrire son habitat, qu’il soit groupé ou dispersé.",
         "checklist": [
-          "Repérer faible densité de bâtiments.",
-          "Identifier champs, routes et villages.",
-          "Distinguer rural et agricole.",
-          "Décrire les services présents.",
-          "Employer espace rural."
+                "Repérer une faible densité de bâtiments.",
+                "Identifier champs, routes, villages ou hameaux.",
+                "Distinguer habitat groupé et dispersé.",
+                "Repérer quelques services présents.",
+                "Employer l’expression espace rural."
         ],
         "proofs": [
-          "Description de paysage.",
-          "Croquis légendé."
+                "Description de paysage.",
+                "Croquis ou classement de photographies."
         ],
-        "lsu": "Décrire un espace rural."
-      },
+        "lsu": "Observer et décrire un espace rural."
+},
       {
         "code": "GEOG-P3-02",
-        "domain": "Habitat rural",
-        "title": "Comparer habitat groupé et habitat dispersé",
-        "jeSais": "Je sais distinguer un village groupé de maisons dispersées.",
+        "domain": "Littoral et montagne",
+        "title": "Décrire différentes façons d’habiter un littoral ou la montagne",
+        "jeSais": "Je sais décrire comment le relief, les activités et les déplacements influencent les façons d’habiter un littoral ou la montagne.",
         "checklist": [
-          "Observer la disposition des bâtiments.",
-          "Repérer le centre du village.",
-          "Identifier hameaux et fermes isolées.",
-          "Comparer les distances.",
-          "Relier habitat et déplacements."
+                "Repérer les principales formes d’habitat.",
+                "Observer le rôle du relief.",
+                "Identifier routes et accès.",
+                "Repérer l’influence du tourisme lorsque c’est pertinent.",
+                "Relier une forme d’habitat aux caractéristiques du lieu."
         ],
         "proofs": [
-          "Classement de photographies.",
-          "Comparaison écrite."
+                "Étude de paysages littoraux ou montagnards.",
+                "Plan ou schéma annoté."
         ],
-        "lsu": "Identifier des formes d’habitat rural."
-      },
+        "lsu": "Décrire différentes façons d’habiter selon le milieu."
+},
       {
         "code": "GEOG-P3-03",
-        "domain": "Littoral",
-        "title": "Décrire comment on se loge sur un littoral",
-        "jeSais": "Je sais décrire différentes formes de logement dans un espace littoral.",
+        "domain": "Comparaison",
+        "title": "Comparer plusieurs façons de se loger en France",
+        "jeSais": "Je sais comparer les façons de se loger dans plusieurs espaces français.",
         "checklist": [
-          "Repérer ville, village ou station.",
-          "Identifier résidences principales et touristiques.",
-          "Observer contraintes du relief et du risque.",
-          "Décrire les accès.",
-          "Relier habitat et tourisme."
+                "Choisir des critères communs.",
+                "Comparer densité, habitat et services.",
+                "Repérer quelques contraintes liées au lieu.",
+                "Comparer les déplacements nécessaires.",
+                "Formuler une synthèse simple."
         ],
         "proofs": [
-          "Étude de paysage littoral.",
-          "Plan annoté."
+                "Tableau comparatif.",
+                "Courte synthèse orale ou écrite."
         ],
-        "lsu": "Comprendre les façons d’habiter un littoral."
-      },
+        "lsu": "Comparer différentes façons d’habiter en France."
+},
       {
         "code": "GEOG-P3-04",
-        "domain": "Montagne",
-        "title": "Décrire comment on se loge en montagne",
-        "jeSais": "Je sais expliquer comment le relief influence les logements et les déplacements.",
+        "domain": "Services",
+        "title": "Comparer l’accès aux services selon le lieu de vie",
+        "jeSais": "Je sais comparer l’accès à l’école, aux commerces, aux soins ou aux transports dans différents lieux de vie.",
         "checklist": [
-          "Repérer vallée et versant.",
-          "Observer la concentration des habitations.",
-          "Identifier routes et contraintes.",
-          "Comparer habitat permanent et touristique.",
-          "Relier relief et aménagement."
+                "Identifier plusieurs services utiles.",
+                "Comparer les distances ou temps de trajet.",
+                "Repérer concentration et dispersion des services.",
+                "Relier l’accès aux services aux déplacements.",
+                "Proposer une amélioration simple à partir du cas étudié."
         ],
         "proofs": [
-          "Description de paysage montagnard.",
-          "Schéma vallée-versant."
+                "Étude de cas.",
+                "Schéma ou tableau d’accès aux services."
         ],
-        "lsu": "Comprendre les façons d’habiter la montagne."
-      },
+        "lsu": "Comparer l’accès aux services selon les territoires."
+},
       {
         "code": "GEOG-P3-05",
-        "domain": "Comparaison",
-        "title": "Comparer trois façons de se loger en France",
-        "jeSais": "Je sais comparer un espace urbain, rural et montagnard ou littoral.",
-        "checklist": [
-          "Choisir des critères communs.",
-          "Comparer densité, habitat et services.",
-          "Repérer les contraintes.",
-          "Identifier les mobilités.",
-          "Rédiger une synthèse."
-        ],
-        "proofs": [
-          "Tableau comparatif.",
-          "Texte de synthèse."
-        ],
-        "lsu": "Comparer des territoires français."
-      },
-      {
-        "code": "GEOG-P3-06",
-        "domain": "Services",
-        "title": "Comprendre l’accès aux services selon le lieu de vie",
-        "jeSais": "Je sais expliquer pourquoi l’accès aux services varie selon les territoires.",
-        "checklist": [
-          "Identifier école, santé, commerces et transports.",
-          "Comparer distances.",
-          "Repérer concentration et dispersion.",
-          "Comprendre le rôle des mobilités.",
-          "Proposer une solution d’aménagement."
-        ],
-        "proofs": [
-          "Étude de cas.",
-          "Schéma d’accès aux services."
-        ],
-        "lsu": "Comprendre les inégalités d’accès aux services."
-      },
-      {
-        "code": "GEOG-P3-07",
         "domain": "Carte de France",
-        "title": "Localiser les grands types d’espaces étudiés",
-        "jeSais": "Je sais localiser des espaces urbains, ruraux, littoraux et montagnards en France.",
+        "title": "Localiser les principaux types d’espaces étudiés en France",
+        "jeSais": "Je sais localiser sur une carte des espaces urbains, ruraux, littoraux et montagnards étudiés.",
         "checklist": [
-          "Repérer de grandes villes.",
-          "Localiser quelques littoraux.",
-          "Localiser Alpes, Pyrénées ou Massif central.",
-          "Identifier des espaces ruraux.",
-          "Utiliser une légende."
+                "Repérer quelques grandes villes.",
+                "Localiser quelques littoraux.",
+                "Localiser quelques massifs montagneux.",
+                "Identifier des espaces ruraux étudiés.",
+                "Utiliser une légende."
         ],
         "proofs": [
-          "Carte à compléter.",
-          "Questions de localisation."
+                "Carte à compléter.",
+                "Questions de localisation."
         ],
-        "lsu": "Mémoriser des repères géographiques."
-      }
+        "lsu": "Mémoriser et utiliser des repères géographiques."
+}
     ],
     "p4Competencies": [
       {
         "code": "GEOG-P4-01",
-        "domain": "Activités urbaines",
-        "title": "Identifier les principaux lieux de travail en ville",
-        "jeSais": "Je sais repérer où les habitants travaillent dans un espace urbain.",
+        "domain": "Activités et lieux de travail",
+        "title": "Identifier différents lieux et types d’activités professionnelles",
+        "jeSais": "Je sais identifier différents lieux de travail et relier une activité à l’espace où elle se déroule.",
         "checklist": [
-          "Identifier commerces, bureaux, hôpitaux et écoles.",
-          "Repérer zones industrielles ou artisanales.",
-          "Associer métier et lieu.",
-          "Distinguer habitat et activité.",
-          "Employer activité économique."
+                "Repérer commerces, bureaux, écoles, hôpitaux, ateliers ou usines.",
+                "Associer un métier à un lieu de travail.",
+                "Distinguer habitat et activité.",
+                "Identifier quelques activités urbaines ou industrielles.",
+                "Employer un vocabulaire géographique simple."
         ],
         "proofs": [
-          "Carte ou photographie annotée.",
-          "Classement métiers-lieux."
+                "Carte ou photographie annotée.",
+                "Classement métiers-lieux."
         ],
-        "lsu": "Comprendre les espaces de travail urbains."
-      },
+        "lsu": "Identifier des activités et des lieux de travail."
+},
       {
         "code": "GEOG-P4-02",
-        "domain": "Secteurs d’activité",
+        "domain": "Production et services",
         "title": "Distinguer produire un bien et rendre un service",
-        "jeSais": "Je sais distinguer une activité de production d’une activité de service.",
+        "jeSais": "Je sais distinguer une activité qui produit un bien d’une activité qui rend un service.",
         "checklist": [
-          "Observer le résultat de l’activité.",
-          "Identifier bien matériel et service.",
-          "Classer des métiers.",
-          "Justifier un classement.",
-          "Relier activité et territoire."
+                "Identifier ce que produit ou apporte une activité.",
+                "Distinguer bien matériel et service.",
+                "Classer quelques métiers ou activités.",
+                "Justifier un classement.",
+                "Relier l’activité à un besoin."
         ],
         "proofs": [
-          "Classement de métiers.",
-          "Étude de documents."
+                "Classement d’activités.",
+                "Étude de documents."
         ],
-        "lsu": "Identifier différentes activités économiques."
-      },
+        "lsu": "Distinguer différents types d’activités économiques."
+},
       {
         "code": "GEOG-P4-03",
-        "domain": "Industrie",
-        "title": "Décrire un espace industriel ou logistique",
-        "jeSais": "Je sais décrire comment est organisé un espace industriel ou logistique.",
+        "domain": "Paysage de travail",
+        "title": "Lire un paysage pour identifier comment un espace est utilisé pour travailler",
+        "jeSais": "Je sais prélever des indices dans un paysage pour identifier une activité et décrire l’organisation de l’espace de travail.",
         "checklist": [
-          "Repérer bâtiments et entrepôts.",
-          "Identifier voies de transport.",
-          "Observer machines et stockage.",
-          "Comprendre les flux de marchandises.",
-          "Employer industrie ou logistique."
+                "Observer bâtiments, parcelles, entrepôts ou équipements.",
+                "Repérer véhicules, machines ou voies de transport.",
+                "Formuler une hypothèse sur l’activité.",
+                "Identifier quelques éléments d’organisation de l’espace.",
+                "Vérifier l’hypothèse avec les informations du document."
         ],
         "proofs": [
-          "Description de photographie aérienne.",
-          "Schéma d’organisation."
+                "Analyse d’un paysage ou d’une photographie aérienne.",
+                "Justification orale ou croquis simple."
         ],
-        "lsu": "Comprendre un espace productif."
-      },
+        "lsu": "Lire et interpréter un paysage de travail."
+},
       {
         "code": "GEOG-P4-04",
-        "domain": "Transports",
-        "title": "Expliquer le rôle des transports dans le travail",
-        "jeSais": "Je sais expliquer pourquoi les activités se situent près des routes, gares ou ports.",
+        "domain": "Transports et aménagement",
+        "title": "Expliquer le rôle des transports et des aménagements dans une activité",
+        "jeSais": "Je sais expliquer simplement comment les transports et les aménagements permettent à une activité de fonctionner et transforment un territoire.",
         "checklist": [
-          "Identifier les infrastructures.",
-          "Repérer les déplacements de personnes et marchandises.",
-          "Relier accessibilité et implantation.",
-          "Comparer deux localisations.",
-          "Formuler une explication."
+                "Identifier routes, gares, ports ou autres infrastructures.",
+                "Repérer les déplacements de personnes ou de marchandises.",
+                "Relier l’accessibilité à l’implantation d’une activité.",
+                "Repérer un aménagement réalisé pour travailler.",
+                "Observer un effet de cet aménagement sur le territoire."
         ],
         "proofs": [
-          "Étude de carte.",
-          "Réponse argumentée."
+                "Étude de carte ou de documents.",
+                "Comparaison ou courte explication."
         ],
-        "lsu": "Comprendre les réseaux et les flux."
-      },
-      {
-        "code": "GEOG-P4-05",
-        "domain": "Métropole",
-        "title": "Comprendre la concentration des emplois dans une grande ville",
-        "jeSais": "Je sais expliquer pourquoi une grande ville rassemble de nombreux emplois.",
-        "checklist": [
-          "Identifier population et services.",
-          "Repérer administrations et entreprises.",
-          "Comprendre l’attractivité.",
-          "Relier emplois et transports.",
-          "Nuancer avec les contraintes."
-        ],
-        "proofs": [
-          "Étude de cas métropolitaine.",
-          "Carte mentale."
-        ],
-        "lsu": "Comprendre l’attractivité urbaine."
-      },
-      {
-        "code": "GEOG-P4-06",
-        "domain": "Paysage",
-        "title": "Lire un paysage de travail",
-        "jeSais": "Je sais prélever des indices pour identifier l’activité dominante d’un paysage.",
-        "checklist": [
-          "Observer bâtiments et parcelles.",
-          "Repérer véhicules et machines.",
-          "Identifier travailleurs ou usagers.",
-          "Formuler une hypothèse.",
-          "Vérifier avec la légende."
-        ],
-        "proofs": [
-          "Analyse de paysage.",
-          "Justification orale."
-        ],
-        "lsu": "Lire et interpréter un paysage."
-      },
-      {
-        "code": "GEOG-P4-07",
-        "domain": "Aménagement",
-        "title": "Comprendre qu’une activité transforme le territoire",
-        "jeSais": "Je sais expliquer comment un espace est aménagé pour travailler.",
-        "checklist": [
-          "Identifier l’état initial si disponible.",
-          "Repérer constructions et réseaux.",
-          "Nommer les besoins de l’activité.",
-          "Observer les effets sur le paysage.",
-          "Évoquer une contrainte environnementale."
-        ],
-        "proofs": [
-          "Comparaison avant/après.",
-          "Texte explicatif."
-        ],
-        "lsu": "Comprendre la transformation des territoires."
-      }
+        "lsu": "Comprendre le rôle des réseaux et des aménagements dans les activités."
+}
     ],
     "p5Competencies": [
       {
         "code": "GEOG-P5-01",
-        "domain": "Agriculture",
-        "title": "Décrire un espace agricole",
-        "jeSais": "Je sais reconnaître et décrire un paysage agricole français.",
+        "domain": "Espaces agricoles et touristiques",
+        "title": "Décrire un espace agricole ou touristique",
+        "jeSais": "Je sais reconnaître et décrire un espace agricole ou touristique à partir de paysages et de documents.",
         "checklist": [
-          "Identifier cultures ou élevage.",
-          "Observer parcelles et bâtiments.",
-          "Repérer machines et voies d’accès.",
-          "Distinguer type de production.",
-          "Employer espace agricole."
+                "Identifier les activités visibles.",
+                "Repérer bâtiments, équipements ou aménagements.",
+                "Observer les voies d’accès et déplacements.",
+                "Relier le paysage à l’activité dominante.",
+                "Employer le vocabulaire adapté au territoire étudié."
         ],
         "proofs": [
-          "Description de photographie.",
-          "Croquis légendé."
+                "Description de photographie.",
+                "Croquis ou document annoté."
         ],
-        "lsu": "Comprendre un espace productif agricole."
-      },
+        "lsu": "Décrire un espace organisé par une activité."
+},
       {
         "code": "GEOG-P5-02",
-        "domain": "Chaîne de production",
-        "title": "Suivre le parcours d’un produit",
-        "jeSais": "Je sais expliquer les étapes entre la production d’une ressource et sa vente.",
+        "domain": "Parcours d’un produit",
+        "title": "Reconstituer le parcours simple d’un produit",
+        "jeSais": "Je sais ordonner les principales étapes entre la production d’une ressource et l’utilisation ou la vente d’un produit.",
         "checklist": [
-          "Identifier matière première.",
-          "Repérer transformation.",
-          "Comprendre transport et stockage.",
-          "Identifier lieu de vente.",
-          "Ordonner les étapes."
+                "Identifier une matière première ou une ressource.",
+                "Repérer une étape de transformation.",
+                "Identifier le transport ou le stockage.",
+                "Repérer le lieu de vente ou d’utilisation.",
+                "Ordonner les étapes."
         ],
         "proofs": [
-          "Schéma de filière.",
-          "Remise en ordre de documents."
+                "Schéma de parcours d’un produit.",
+                "Remise en ordre de documents."
         ],
-        "lsu": "Comprendre une chaîne de production."
-      },
+        "lsu": "Comprendre le parcours d’un produit et les espaces mobilisés."
+},
       {
         "code": "GEOG-P5-03",
-        "domain": "Tourisme",
-        "title": "Identifier les activités touristiques d’un territoire",
-        "jeSais": "Je sais expliquer comment le tourisme crée des emplois et transforme les lieux.",
+        "domain": "Activités et services",
+        "title": "Identifier différentes activités et services d’un territoire",
+        "jeSais": "Je sais identifier les activités et les services présents dans un territoire et expliquer à quels besoins ils répondent.",
         "checklist": [
-          "Repérer hébergements et loisirs.",
-          "Identifier emplois directs.",
-          "Observer les transports.",
-          "Comparer saison et hors saison.",
-          "Repérer effets positifs et contraintes."
+                "Repérer activités agricoles, touristiques, commerciales ou de service selon le cas.",
+                "Identifier quelques emplois liés à ces activités.",
+                "Associer un service à un besoin des habitants.",
+                "Localiser quelques équipements.",
+                "Distinguer activité de production, commerce et service dans des exemples simples."
         ],
         "proofs": [
-          "Étude d’une station.",
-          "Carte mentale du tourisme."
+                "Enquête ou étude de cas.",
+                "Plan, carte mentale ou classement."
         ],
-        "lsu": "Comprendre un espace touristique."
-      },
+        "lsu": "Identifier les activités et services qui organisent un territoire."
+},
       {
         "code": "GEOG-P5-04",
-        "domain": "Services publics",
-        "title": "Identifier des emplois au service des habitants",
-        "jeSais": "Je sais reconnaître des activités de service dans une commune ou un territoire.",
+        "domain": "Environnement",
+        "title": "Repérer les effets d’une activité sur un territoire et son environnement",
+        "jeSais": "Je sais observer les effets d’une activité sur un territoire et proposer une amélioration simple lorsque c’est possible.",
         "checklist": [
-          "Identifier école, santé, mairie et sécurité.",
-          "Associer métiers et besoins.",
-          "Distinguer service public et commerce.",
-          "Localiser les équipements.",
-          "Expliquer leur utilité."
+                "Repérer une transformation du paysage.",
+                "Identifier un effet positif ou négatif.",
+                "Distinguer une observation d’un jugement.",
+                "Repérer quelques acteurs concernés.",
+                "Proposer une amélioration réaliste."
         ],
         "proofs": [
-          "Enquête locale.",
-          "Plan des services."
+                "Étude de documents.",
+                "Tableau effets-solutions ou oral."
         ],
-        "lsu": "Comprendre le rôle des services."
-      },
+        "lsu": "Identifier les effets des activités humaines sur les territoires et l’environnement."
+},
       {
         "code": "GEOG-P5-05",
-        "domain": "Environnement",
-        "title": "Repérer les effets d’une activité sur l’environnement",
-        "jeSais": "Je sais identifier des effets positifs ou négatifs d’une activité sur un territoire.",
-        "checklist": [
-          "Observer consommation d’espace.",
-          "Repérer pollution ou protection.",
-          "Distinguer constat et jugement.",
-          "Identifier des acteurs.",
-          "Proposer une amélioration réaliste."
-        ],
-        "proofs": [
-          "Étude de documents contradictoires.",
-          "Tableau effets-solutions."
-        ],
-        "lsu": "Comprendre les enjeux d’aménagement durable."
-      },
-      {
-        "code": "GEOG-P5-06",
         "domain": "Comparaison",
         "title": "Comparer plusieurs espaces de travail en France",
-        "jeSais": "Je sais comparer un espace agricole, industriel, urbain ou touristique.",
+        "jeSais": "Je sais comparer plusieurs territoires français à partir des activités, des paysages, des emplois et des aménagements.",
         "checklist": [
-          "Choisir des critères.",
-          "Comparer activités et paysages.",
-          "Repérer réseaux et emplois.",
-          "Identifier contraintes.",
-          "Formuler une synthèse."
+                "Choisir des critères de comparaison.",
+                "Comparer les activités dominantes.",
+                "Comparer paysages, équipements et réseaux.",
+                "Localiser les exemples étudiés.",
+                "Formuler une synthèse simple sur les différences entre territoires."
         ],
         "proofs": [
-          "Tableau comparatif.",
-          "Présentation orale."
+                "Tableau comparatif.",
+                "Carte commentée ou présentation orale."
         ],
-        "lsu": "Comparer des espaces productifs."
-      },
-      {
-        "code": "GEOG-P5-07",
-        "domain": "Synthèse annuelle",
-        "title": "Expliquer comment les habitants vivent et travaillent en France",
-        "jeSais": "Je sais utiliser des cartes et des paysages pour présenter les contrastes du territoire français.",
-        "checklist": [
-          "Mobiliser population, habitat et travail.",
-          "Choisir des exemples variés.",
-          "Localiser les exemples.",
-          "Employer un vocabulaire précis.",
-          "Organiser une réponse en plusieurs idées."
-        ],
-        "proofs": [
-          "Carte commentée.",
-          "Synthèse écrite ou orale."
-        ],
-        "lsu": "Décrire et expliquer l’organisation du territoire français."
-      }
+        "lsu": "Comparer des territoires et expliquer simplement leur organisation."
+}
     ]
   },
   anglais: {

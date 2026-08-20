@@ -1,3 +1,11 @@
+## V34.29 — Consolidation du référentiel Géographie CE2
+
+- 35 compétences Géographie ramenées à 25 compétences structurantes et observables.
+- Conservation de l’architecture P1→P5 validée.
+- Fusion des micro-compétences redondantes et suppression des formulations trop conceptuelles pour le CE2.
+- Réalignement des codes Géographie utilisés dans les données d’emploi du temps.
+- Cache `data.js` et balises `<title>` mis à jour en V34.29.
+
 # V34.28 — 20/08/2026
 
 ## Évaluations Histoire P1→P5
