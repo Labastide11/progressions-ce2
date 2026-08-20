@@ -213,17 +213,19 @@
   }
 
   function buildSubjectPhrase(subjectTitle,level,trend,profiles,vigilances){
-    if(!level)return'Données insuffisantes pour proposer une synthèse fiable.';
-    let start=level==='non_atteint'?'Les acquis restent très fragiles dans cette matière.':level==='partiellement_atteint'?'Plusieurs acquis sont en cours de consolidation.':'Les acquis sont solides dans l’ensemble.';
-    if(level==='depasse')start='Les acquis sont très solides et dépassent régulièrement les attendus dans plusieurs situations.';
+    if(!level)return'Pas encore assez de preuves de classe pour proposer une appréciation LSU fiable.';
+    let start=level==='non_atteint'?'Les acquis restent fragiles dans l’ensemble et nécessitent encore un accompagnement régulier.':level==='partiellement_atteint'?'Plusieurs acquis sont en cours de consolidation et les réussites demandent encore à être stabilisées.':'Les acquis sont solides dans l’ensemble.';
+    if(level==='depasse')start='Les compétences travaillées sont maîtrisées avec assurance et sont réinvesties avec une grande autonomie.';
     const strong=profiles.filter(p=>p.total>=2&&p.solidRatio>=0.75).sort((a,b)=>b.solidRatio-a.solidRatio)[0];
     const weak=profiles.filter(p=>p.fragile>0).sort((a,b)=>b.fragileRatio-a.fragileRatio)[0];
+    const cleanDomain=d=>String(d||'').replace(/^Le\s+/i,'').replace(/^La\s+/i,'').replace(/^Les\s+/i,'').trim();
     const parts=[start];
     if(trend==='progression'||trend==='progression_nette'||trend==='progression_irreguliere')parts.push('Les progrès sont réguliers au cours du semestre.');
-    else if(trend==='fragilisation'||trend==='difficulte_recente')parts.push('Certaines réussites récentes demandent encore à être stabilisées.');
-    if(strong&&(!weak||strong.domain!==weak.domain))parts.push('Le domaine « '+strong.domain+' » constitue un point d’appui.');
-    if(vigilances.length)parts.push('Une vigilance reste nécessaire dans le domaine « '+(vigilances[0].group||vigilances[0].domain||'prioritaire')+' ».');
-    else if(weak&&weak.fragileRatio>=0.34)parts.push('Le domaine « '+weak.domain+' » reste à consolider.');
+    else if(trend==='fragilisation'||trend==='difficulte_recente')parts.push('Certaines compétences récemment travaillées restent à stabiliser.');
+    else if(trend==='stable'&&level==='atteint')parts.push('Les réussites sont régulières et suffisamment stables.');
+    if(strong&&(!weak||strong.domain!==weak.domain))parts.push('Les compétences en '+cleanDomain(strong.domain)+' sont bien installées.');
+    if(vigilances.length)parts.push('Le domaine '+cleanDomain(vigilances[0].group||vigilances[0].domain||'prioritaire')+' reste à consolider.');
+    else if(weak&&weak.fragileRatio>=0.34)parts.push('Les compétences en '+cleanDomain(weak.domain)+' restent à consolider.');
     return parts.join(' ');
   }
 

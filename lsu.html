@@ -1,17 +1,42 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="Synthèse LSU semestrielle CE2 en lecture seule à partir des traces de classe et de Maître Hibou." name="description"/>
-<title>V34.43 — Synthèse LSU — CE2 — Ma classe au quotidien</title>
-<link href="lsu.css?v=34.43" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Préparation des appréciations LSU CE2 à partir des traces de classe et de Maître Hibou." name="description"/>
+<title>V34.44 — Synthèse LSU — CE2 — Ma classe au quotidien</title>
+<link href="lsu.css?v=34.44" rel="stylesheet"/>
 </head><body>
 <header class="page-header"><div class="brand"><img alt="" class="brand-logo" src="assets/maitre-hibou-logo.svg"/><div class="brand-copy"><strong>Maître Hibou</strong><span>Espace enseignant</span></div><h1>CE2 — Ma classe au quotidien</h1><nav class="page-context"><strong>Synthèse LSU</strong><a class="back-link" href="mon-suivi.html">← Suivi des élèves</a></nav></div></header>
 <main class="lsu-page">
-<section class="lsu-head"><span class="eyebrow">SYNTHÈSE SEMESTRIELLE</span><h2>Préparer le LSU à partir des traces recueillies</h2><p>Niveau suggéré, couverture, tendance, confiance, vigilances et phrase de synthèse. La validation finale reste toujours celle de l’enseignant.</p><div class="readonly">🔒 Lecture seule : cet écran ne modifie ni Google Sheets ni les traces enregistrées.</div></section>
-<section class="lsu-toolbar"><label><span>Élève</span><select id="lsuStudent"><option value="">Chargement…</option></select></label><label><span>Semestre</span><select id="lsuSemester"><option value="S1">Semestre 1 — P1 + P2</option><option value="S2">Semestre 2 — P3 + P4 + P5</option></select></label><button class="lsu-run" id="lsuRun" type="button">Analyser</button><p class="lsu-status" id="lsuStatus">Initialisation…</p></section>
-<section class="source-grid" id="lsuSources" aria-label="Sources utilisées"></section>
-<section class="subjects" id="lsuSubjects"><div class="empty">Choisis un élève et un semestre pour afficher la synthèse.</div></section>
+<section class="lsu-head"><span class="eyebrow">SYNTHÈSE SEMESTRIELLE</span><h2>Préparer les appréciations LSU à partir des traces recueillies</h2><p>Le moteur propose une appréciation à partir des acquis, des progrès et des points à consolider. Le positionnement et les traces servent à l’expliquer ; la validation finale reste celle de l’enseignant.</p><div class="readonly">🔒 Lecture seule : cet écran ne modifie ni Google Sheets ni les traces enregistrées.</div></section>
+
+<section class="lsu-toolbar lsu-toolbar--class">
+<label><span>Semestre</span><select id="lsuSemester"><option value="S1">Semestre 1 — P1 + P2</option><option value="S2">Semestre 2 — P3 + P4 + P5</option></select></label>
+<label><span>Matière</span><select id="lsuSubject"><option value="francais">Français</option><option value="maths">Mathématiques</option><option value="anglais">Anglais</option><option value="histoire">Histoire</option><option value="geographie">Géographie</option><option value="sciences">Sciences</option><option value="emc">EMC</option><option value="eps">EPS</option><option value="arts">Arts / Musique</option></select></label>
+<button class="lsu-run" id="lsuRunClass" type="button">Analyser la classe</button>
+<p class="lsu-status" id="lsuStatus">Initialisation…</p>
+</section>
+
+<section class="source-explainer" aria-label="Sources utilisées par le moteur">
+<article><div class="source-icon">🏫</div><div><strong>Évaluations de référence</strong><p>Évaluations prévues ou observations ciblées utilisées comme preuves principales pour le LSU.</p></div></article>
+<article><div class="source-icon">📝</div><div><strong>Observations de classe</strong><p>Cahier du jour, exercices, productions courtes et autres traces formatives observées en classe.</p></div></article>
+<article><div class="source-icon">🦉</div><div><strong>Compétences réussies dans Maître Hibou</strong><p>Compétences codées et réellement réussies dans Maître Hibou. Elles complètent les preuves de classe mais ne décident pas seules du LSU.</p></div></article>
+<article><div class="source-icon">🏅</div><div><strong>Autres réussites enregistrées</strong><p>Médailles, records, anciennes ceintures ou autres informations conservées, mais qui ne servent pas directement au positionnement LSU.</p></div></article>
+</section>
+
+<section class="class-summary" aria-labelledby="classTitle">
+<div class="section-title"><div><span class="eyebrow">VUE CLASSE</span><h2 id="classTitle">Appréciations proposées</h2></div><div class="class-kpis" id="classKpis"></div></div>
+<div class="table-wrap"><table class="lsu-table"><thead><tr><th>Élève</th><th>Appréciation LSU proposée</th><th>Positionnement</th><th>Confiance</th><th>Actions</th></tr></thead><tbody id="lsuClassBody"><tr><td colspan="5" class="table-empty">Clique sur « Analyser la classe » pour générer les propositions.</td></tr></tbody></table></div>
+</section>
+
+<section class="student-detail" id="studentDetail" hidden>
+<div class="section-title"><div><span class="eyebrow">DÉTAIL ÉLÈVE</span><h2 id="detailTitle">—</h2></div><button class="ghost-btn" id="closeDetail" type="button">Fermer le détail</button></div>
+<div class="detail-top"><section class="appreciation-card"><div class="appreciation-head"><h3>Appréciation proposée</h3><button class="copy-btn" id="copyDetail" type="button">📋 Copier</button></div><textarea id="detailAppreciation" rows="5"></textarea><p class="microcopy">Tu peux modifier le texte avant de le copier. Aucun changement n’est enregistré automatiquement.</p></section><section class="position-card" id="detailPosition"></section></div>
+<section class="source-grid" id="lsuSources" aria-label="Sources de l’élève"></section>
+<section class="semester-proof" id="semesterProof"></section>
+<section class="history-card"><div class="history-head"><div><h3>Compétences enregistrées</h3><p>Toutes les traces codées sont visibles, même si elles appartiennent à l’autre semestre.</p></div></div><div id="competenceHistory"></div></section>
+</section>
 </main>
-<script src="data.js?v=34.43"></script><script src="lsu-synthesis-engine.js?v=34.43"></script><script src="lsu-real-connector.js?v=34.43"></script><script src="lsu-ui.js?v=34.43"></script>
+<script src="data.js?v=34.44"></script><script src="lsu-synthesis-engine.js?v=34.44"></script><script src="lsu-real-connector.js?v=34.44"></script><script src="lsu-ui.js?v=34.44"></script>
 </body></html>

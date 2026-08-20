@@ -10,7 +10,7 @@
 
   if(!LSU) throw new Error('LSUSynthesisEngine est requis avant LSURealConnector.');
 
-  const VERSION='1.0.2';
+  const VERSION='1.0.3';
   const API_URL_KEY='hibou_sync_api_url_v25754';
   const DEVICE_KEY='hibou_sync_device_key_v25754';
   const DEFAULT_API_URL='https://script.google.com/macros/s/AKfycbydzPTQ9ZLEPYezHou2-O4IK24ip51sLTpe9qdi2xREuQvDBKRlVqsYYDiKLrzAODc/exec';

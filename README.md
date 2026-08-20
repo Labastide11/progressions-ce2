@@ -1,3 +1,7 @@
+## V34.44 — Synthèse LSU centrée sur les appréciations
+
+La vue LSU est désormais conçue comme un outil de rédaction : tableau de classe, appréciations modifiables/copiables, détail des preuves et historique daté de toutes les compétences.
+
 ## V34.43 — Nouvelle organisation du suivi des élèves
 
 La zone **Suivi des élèves** est désormais organisée en deux étapes : **Évaluations et traces**, puis **Synthèse LSU**. Les anciennes priorités pédagogiques ne sont pas supprimées : elles sont déplacées dans l’espace **Accompagnements et inclusions**, qui distingue maintenant les priorités de classe des inclusions et accompagnements spécifiques.

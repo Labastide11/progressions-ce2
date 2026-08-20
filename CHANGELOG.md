@@ -1,3 +1,13 @@
+## V34.44 — 20 août 2026 — Synthèse LSU centrée sur les appréciations
+
+- Refonte de `lsu.html` en vue classe sous forme de tableau.
+- L’appréciation LSU proposée devient l’élément principal, modifiable et copiable.
+- Positionnement et confiance deviennent des informations secondaires de justification.
+- Les quatre sources sont affichées avec des intitulés et descriptions explicites.
+- Détail élève : toutes les compétences datées restent visibles, y compris celles de l’autre semestre avec « Bravo — à reporter ».
+- Les anciennes traces non codées restent visibles mais sont signalées comme non exploitables directement pour le LSU.
+- Aucune écriture de données : écran toujours en lecture seule.
+
 ## V34.43 — 20 août 2026 — Refonte du suivi des élèves et préparation de la synthèse LSU
 
 - Accueil : `Priorités et suivi pédagogique` devient **Suivi des élèves**.
