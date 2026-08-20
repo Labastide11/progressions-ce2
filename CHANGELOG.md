@@ -1,3 +1,12 @@
+## V34.33 — Nettoyage des références de compétences
+
+- Référentiel canonique contrôlé : 507 codes uniques.
+- Suppression des 4 dernières références actives non canoniques dans P4/P5 : `ORT-P4-05`, `EMI-P4-06`, `ECR-P5-05`, `OR-P5-03`.
+- Ancien `emploi-du-temps.js` neutralisé et archivé dans `docs/historique/emploi-du-temps-legacy-v34-32.js`.
+- EMC : couverture des évaluations de référence portée à 25/25 compétences (`EMC-P2-02` et `EMC-P4-02` ajoutées aux situations P2/P4).
+- Audit final des fichiers actifs : 0 code P1→P5 utilisé hors `data.js`.
+- Version visible et cache des pages : V34.33.
+
 ## V34.32 — Rééquilibrage du calendrier des évaluations
 - Programmation des évaluations de référence à la fin effective des séquences.
 - Nettoyage des libellés : référence / formative / observation / remédiation.

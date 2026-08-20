@@ -1,4 +1,16 @@
-# Progressions CE2 — V34.32
+# Progressions CE2 — V34.33
+
+## V34.33 — Nettoyage des références de compétences
+
+- Audit automatique du référentiel canonique : 507 codes uniques dans `data.js`.
+- Correction des dernières références actives hors référentiel dans l'emploi du temps :
+  - P4 : `ORT-P4-05` → borne canonique `ORT-P4-04` ; `EMI-P4-06` → borne canonique `EMI-P4-05`.
+  - P5 : `ECR-P5-05` → borne canonique `ECR-P5-04` ; `OR-P5-03` → borne canonique `OR-P5-02`.
+- L'ancien fichier monolithique `emploi-du-temps.js` est neutralisé ; sa version V34.32 est conservée dans `docs/historique/emploi-du-temps-legacy-v34-32.js`.
+- Couverture EMC des situations de référence complétée : `EMC-P2-02` et `EMC-P4-02` sont désormais rattachées aux situations authentiques P2 et P4.
+- Contrôle final : 0 code utilisé hors référentiel dans les fichiers actifs HTML/JS (hors archive historique).
+- Balises `<title>` et cache-busting des pages principales mis à jour en V34.33.
+
 
 ## V34.32 — Rééquilibrage du calendrier des évaluations
 - Les évaluations de référence sont positionnées en fin de séquence plutôt qu’accumulées en fin de période.

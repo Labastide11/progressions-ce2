@@ -213,8 +213,8 @@ window.EVALUATIONS_CE2 = {
         status: 'ready',
         traceType: 'Mise en situation + observation',
         traceSource: 'observation_classe',
-        description: 'Jeu de rôle puis observation en situation réelle : décrire les faits, exprimer son ressenti, écouter, chercher une solution et demander de l’aide si nécessaire.',
-        skillCodes: ['EMC-P2-01','EMC-P2-03','EMC-P2-04','EMC-P2-05']
+        description: 'Jeu de rôle puis observation en situation réelle : distinguer désaccord, violence et harcèlement, décrire les faits, exprimer son ressenti, écouter, chercher une solution et demander de l’aide si nécessaire.',
+        skillCodes: ['EMC-P2-01','EMC-P2-02','EMC-P2-03','EMC-P2-04','EMC-P2-05']
       },
       p3: {
         title: 'Période 3 — Conseil d’élèves et bien commun',
@@ -229,8 +229,8 @@ window.EVALUATIONS_CE2 = {
         status: 'ready',
         traceType: 'Débat réglé',
         traceSource: 'observation_classe',
-        description: 'Situation d’observation authentique : prendre position, donner un argument, écouter un avis différent, reformuler et faire évoluer sa réflexion.',
-        skillCodes: ['EMC-P4-01','EMC-P4-03','EMC-P4-04','EMC-P4-05']
+        description: 'Situation d’observation authentique : prendre position, repérer un stéréotype lorsqu’il apparaît dans le thème étudié, donner un argument, écouter un avis différent, reformuler et faire évoluer sa réflexion.',
+        skillCodes: ['EMC-P4-01','EMC-P4-02','EMC-P4-03','EMC-P4-04','EMC-P4-05']
       },
       p5: {
         title: 'Période 5 — Repères citoyens et engagement',
