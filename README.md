@@ -1,3 +1,7 @@
+## V34.46 — Correctifs liaison Google Sheet / évaluations
+
+La page « Compétences validées dans Maître Hibou » lit le `student_snapshot` réel en lecture seule et affiche un état de synchronisation explicite. Le raccourci « Évaluations en classe » ouvre désormais correctement la fenêtre d’évaluations.
+
 ## V34.45 — Synthèse LSU centrée sur les appréciations
 
 La vue LSU est désormais conçue comme un outil de rédaction : tableau de classe, appréciations modifiables/copiables, détail des preuves et historique daté de toutes les compétences.

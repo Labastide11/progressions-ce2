@@ -710,14 +710,23 @@
     if(action==='synthetic'){const target=document.querySelector('.home-row__periods [data-open-summary-period="p1"]')||document.querySelector('[data-open-summary-period="p1"]');if(target)target.click();return;}
     if(action==='parcours'){window.ParcoursOutil?.open();return;}
   }));
-  // V34.43 — accès direct aux outils déplacés dans le nouveau hub « Suivi des élèves ».
+  // V34.46 — accès direct robuste aux outils déplacés dans le hub « Suivi des élèves ».
+  // Ne dépend plus de l'événement window.load : si app.js s'exécute après load,
+  // on réessaie brièvement jusqu'à ce que le bouton / module cible soit disponible.
   if(PAGE_KIND==='home'){
     const requestedOpen=new URLSearchParams(location.search).get('open');
     if(requestedOpen){
-      window.addEventListener('load',()=>{
-        if(requestedOpen==='evaluations') document.getElementById('openEvaluationsBtn')?.click();
-        if(requestedOpen==='supports') window.openSupportsModal?.();
-      },{once:true});
+      const openRequestedTool=(attempt=0)=>{
+        let opened=false;
+        if(requestedOpen==='evaluations'){
+          const btn=document.getElementById('openEvaluationsBtn');
+          if(btn){ btn.click(); opened=true; }
+        }else if(requestedOpen==='supports' && typeof window.openSupportsModal==='function'){
+          window.openSupportsModal(); opened=true;
+        }
+        if(!opened && attempt<30) setTimeout(()=>openRequestedTool(attempt+1),100);
+      };
+      setTimeout(()=>openRequestedTool(0),0);
     }
   }
   showCategory(subjectCategory(state.subject));

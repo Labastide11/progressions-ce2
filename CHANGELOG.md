@@ -1,3 +1,11 @@
+## V34.46 — 20 août 2026 — Correctifs Suivi des élèves
+
+- Correction de l'accès `index.html?open=evaluations` : ouverture robuste de la fenêtre « Évaluations en classe » même si `window.load` a déjà eu lieu.
+- `competences-hibou.html` est explicitement reliée au `student_snapshot` réel du Google Sheet en lecture seule.
+- Chargement jusqu'à 1000 traces, cache-busting JSONP conservé et statut visible : nombre de traces Maître Hibou lues, nombre de compétences codées et heure d'actualisation.
+- Tolérance ajoutée pour les alias de champs (`competence_code`, `competenceCode`, etc.) afin d'éviter qu'une trace réelle soit masquée par une variation de nommage.
+- Aucun changement du moteur LSU ni aucune écriture dans Google Sheets.
+
 ## V34.45 — 20 août 2026 — Suivi des élèves en 3 étapes
 
 - Réorganisation de `mon-suivi.html` autour de 3 cartes : Compétences validées dans Maître Hibou, Évaluations en classe (orales ou écrites), Aide à la rédaction du LSU.
