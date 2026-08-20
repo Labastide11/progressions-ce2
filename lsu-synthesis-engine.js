@@ -6,7 +6,7 @@
 })(typeof globalThis!=='undefined'?globalThis:this,function(){
   'use strict';
 
-  const VERSION='1.0.0';
+  const VERSION='1.1.0';
   const LEVELS=['non_atteint','partiellement_atteint','atteint','depasse'];
   const LEVEL_LABELS={
     non_atteint:'Non atteint',
@@ -171,7 +171,8 @@
     const fragile=anchor&&(LEVEL_RANK[anchor]<=1);
     const hasStrong=a.length>0, enoughTeaching=teachingForVigilance.length>=opts.vigilanceMinTeachingTraces;
     const span=enoughTeaching?daysBetween(teachingForVigilance[0].date,teachingForVigilance[teachingForVigilance.length-1].date):0;
-    const persistent=!!(core&&fragile&&enoughTeaching&&span>=opts.vigilanceMinSpanDays&&(hasStrong||b.length>=3));
+    const recentTeachingFragile=teachingForVigilance.length>=2&&teachingForVigilance.slice(-2).every(x=>x.rank<=1);
+    const persistent=!!(core&&fragile&&enoughTeaching&&span>=opts.vigilanceMinSpanDays&&(hasStrong||b.length>=3)&&recentTeachingFragile);
 
     return{
       code,
@@ -252,11 +253,24 @@
       if(suggested==='atteint'&&counts.depasse/n>=opts.subjectExceededMinRatio&&solid>=opts.subjectSolidMinRatioForExceeded&&!counts.non_atteint&&!vigilances.length&&transferCount>=opts.subjectTransferMinCount){suggested='depasse';qualifier='autonomie_et_transfert_confirmes';}
     }
     if(suggested==='atteint'&&vigilances.length)qualifier=qualifier||'vigilance_structurante';
-    const allTeaching=results.flatMap(r=>{
-      const c=(input&&input.traces||[]).filter(t=>String(t.competence_code||'')===r.code&&sameSemester(t,semester)).map(normalizeTeachingTrace).filter(Boolean).filter(x=>x.strength==='A'||x.strength==='B');
-      return c;
+    const trendRows=results.filter(r=>r.documented&&r.trend&&r.trend!=='insuffisante');
+    const trendCounts={positive:0,negative:0,stable:0,fluctuant:0};
+    trendRows.forEach(r=>{
+      if(['progression','progression_nette','progression_irreguliere'].includes(r.trend))trendCounts.positive++;
+      else if(['fragilisation','difficulte_recente'].includes(r.trend))trendCounts.negative++;
+      else if(r.trend==='stable')trendCounts.stable++;
+      else trendCounts.fluctuant++;
     });
-    const trend=detectTrend(allTeaching);
+    const trendTotal=trendRows.length;
+    let trend='insuffisante';
+    if(trendTotal>=3){
+      const pos=trendCounts.positive/trendTotal,neg=trendCounts.negative/trendTotal,fl=trendCounts.fluctuant/trendTotal,st=trendCounts.stable/trendTotal;
+      if(trendCounts.positive>=2&&pos>=0.35&&trendCounts.positive>=trendCounts.negative*2)trend='progression';
+      else if(trendCounts.negative>=2&&neg>=0.35&&trendCounts.negative>=trendCounts.positive*2)trend='fragilisation';
+      else if((trendCounts.positive&&trendCounts.negative)||(fl+neg>=0.35))trend='fluctuant';
+      else if(st>=0.50)trend='stable';
+      else trend='a_confirmer';
+    }
     const confidence=coverage<opts.minCoverageForSuggestion?'insuffisante':coverage<opts.mediumCoverageThreshold?'faible':documented.every(r=>r.confidence==='elevee')?'elevee':'moyenne';
     const profiles=domainProfiles(results);
     const phrase=buildSubjectPhrase(String(input&&input.subjectTitle||input&&input.subject||'La matière'),suggested,trend,profiles,vigilances);

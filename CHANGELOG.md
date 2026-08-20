@@ -1,3 +1,10 @@
+## V34.39 — Simulation LSU S1 réaliste, sans interface
+- Branchement du moteur LSU V1 sur un élève entièrement fictif du semestre 1.
+- Test de Français, Mathématiques, Anglais, Histoire, Géographie, Sciences, EMC, EPS et Arts/Musique.
+- Validation des priorités A > B > C > D, du réexamen après progrès formatifs, des vigilances structurantes persistantes et du refus de conclure quand les traces sont insuffisantes.
+- Moteur LSU passé en 1.1.0 : tendance matière calculée par agrégation des tendances de compétences ; vigilance persistante supprimée lorsque les deux dernières traces enseignantes sont redevenues solides.
+- Aucun ajout d’interface.
+
 ## V34.36 — Correction des filtres Évaluations
 
 - Correction du moteur de détection des semaines d’évaluation : suppression d’une référence hors portée qui pouvait interrompre le rendu des cartes.

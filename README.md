@@ -1,3 +1,14 @@
+
+## V34.39 — Simulation LSU S1 sur élève fictif
+
+- Ajout d’un scénario de bout en bout S1 utilisant uniquement des données fictives et les compétences réelles de `data.js`.
+- Le scénario mélange preuves A, traces formatives B (dont cahier du jour), événements Maître Hibou C, compétences non documentées et compétences structurantes.
+- Correction moteur LSU V1.1 : la tendance d’une matière est désormais agrégée à partir des tendances par compétence, sans comparer artificiellement deux compétences différentes dans une même chronologie.
+- Correction vigilance : une compétence structurante montrant deux réussites enseignantes récentes n’est plus simultanément classée en difficulté persistante.
+- Aucun branchement d’interface.
+- Rapport : `docs/SIMULATION_LSU_S1_V34_39.md`.
+- Sortie brute : `docs/SIMULATION_LSU_S1_V34_39.json`.
+
 # Progressions CE2 — V34.33
 
 ## V34.33 — Nettoyage des références de compétences

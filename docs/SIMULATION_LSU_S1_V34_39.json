@@ -1,0 +1,434 @@
+{
+  "scenario": {
+    "student": "Élève fictif — Camille",
+    "semester": "S1",
+    "description": "Simulation S1 réaliste sans interface — traces A/B/C, compétences non documentées et vigilances structurantes."
+  },
+  "subjects": {
+    "francais": {
+      "title": "Français",
+      "suggestedLevel": "atteint",
+      "suggestedLabel": "Atteint",
+      "qualifier": "vigilance_structurante",
+      "coverage": {
+        "documented": 56,
+        "total": 77,
+        "ratio": 0.7272727272727273
+      },
+      "profile": {
+        "solid": 48,
+        "consolidation": 7,
+        "priority": 1,
+        "undocumented": 21
+      },
+      "trend": "stable",
+      "confidence": "moyenne",
+      "vigilances": [
+        {
+          "code": "COM-P2-05",
+          "label": "Reformuler l’essentiel",
+          "domain": "Compréhension de l’écrit",
+          "group": "comprehension",
+          "level": "partiellement_atteint",
+          "spanDays": 35
+        }
+      ],
+      "phrase": "Les acquis sont solides dans l’ensemble. Le domaine « Lecture et fluence » constitue un point d’appui. Une vigilance reste nécessaire dans le domaine « comprehension »."
+    },
+    "maths": {
+      "title": "Mathématiques",
+      "suggestedLevel": "atteint",
+      "suggestedLabel": "Atteint",
+      "qualifier": "vigilance_structurante",
+      "coverage": {
+        "documented": 35,
+        "total": 46,
+        "ratio": 0.7608695652173914
+      },
+      "profile": {
+        "solid": 30,
+        "consolidation": 4,
+        "priority": 1,
+        "undocumented": 11
+      },
+      "trend": "stable",
+      "confidence": "moyenne",
+      "vigilances": [
+        {
+          "code": "PRO-P1-01",
+          "label": "Comprendre la question d’un problème",
+          "domain": "Résolution de problèmes",
+          "group": "problemes",
+          "level": "partiellement_atteint",
+          "spanDays": 49
+        }
+      ],
+      "phrase": "Les acquis sont solides dans l’ensemble. Le domaine « Nombres entiers » constitue un point d’appui. Une vigilance reste nécessaire dans le domaine « problemes »."
+    },
+    "anglais": {
+      "title": "Anglais",
+      "suggestedLevel": "atteint",
+      "suggestedLabel": "Atteint",
+      "qualifier": "",
+      "coverage": {
+        "documented": 9,
+        "total": 12,
+        "ratio": 0.75
+      },
+      "profile": {
+        "solid": 8,
+        "consolidation": 1,
+        "priority": 0,
+        "undocumented": 3
+      },
+      "trend": "stable",
+      "confidence": "moyenne",
+      "vigilances": [],
+      "phrase": "Les acquis sont solides dans l’ensemble. Le domaine « Comprendre l’oral » constitue un point d’appui. Le domaine « Culture » reste à consolider."
+    },
+    "histoire": {
+      "title": "Histoire",
+      "suggestedLevel": "atteint",
+      "suggestedLabel": "Atteint",
+      "qualifier": "",
+      "coverage": {
+        "documented": 7,
+        "total": 8,
+        "ratio": 0.875
+      },
+      "profile": {
+        "solid": 7,
+        "consolidation": 0,
+        "priority": 0,
+        "undocumented": 1
+      },
+      "trend": "insuffisante",
+      "confidence": "moyenne",
+      "vigilances": [],
+      "phrase": "Les acquis sont solides dans l’ensemble."
+    },
+    "geographie": {
+      "title": "Géographie",
+      "suggestedLevel": "atteint",
+      "suggestedLabel": "Atteint",
+      "qualifier": "",
+      "coverage": {
+        "documented": 8,
+        "total": 11,
+        "ratio": 0.7272727272727273
+      },
+      "profile": {
+        "solid": 8,
+        "consolidation": 0,
+        "priority": 0,
+        "undocumented": 3
+      },
+      "trend": "insuffisante",
+      "confidence": "moyenne",
+      "vigilances": [],
+      "phrase": "Les acquis sont solides dans l’ensemble."
+    },
+    "sciences": {
+      "title": "Sciences",
+      "suggestedLevel": "atteint",
+      "suggestedLabel": "Atteint",
+      "qualifier": "vigilance_structurante",
+      "coverage": {
+        "documented": 8,
+        "total": 10,
+        "ratio": 0.8
+      },
+      "profile": {
+        "solid": 7,
+        "consolidation": 1,
+        "priority": 0,
+        "undocumented": 2
+      },
+      "trend": "stable",
+      "confidence": "moyenne",
+      "vigilances": [
+        {
+          "code": "SCI-P1-05",
+          "label": "Tirer une conclusion à partir de résultats",
+          "domain": "Conclusion",
+          "group": "raisonnement_scientifique",
+          "level": "partiellement_atteint",
+          "spanDays": 42
+        }
+      ],
+      "phrase": "Les acquis sont solides dans l’ensemble. Une vigilance reste nécessaire dans le domaine « raisonnement_scientifique »."
+    },
+    "emc": {
+      "title": "Enseignement moral et civique",
+      "suggestedLevel": "atteint",
+      "suggestedLabel": "Atteint",
+      "qualifier": "",
+      "coverage": {
+        "documented": 7,
+        "total": 10,
+        "ratio": 0.7
+      },
+      "profile": {
+        "solid": 6,
+        "consolidation": 1,
+        "priority": 0,
+        "undocumented": 3
+      },
+      "trend": "insuffisante",
+      "confidence": "moyenne",
+      "vigilances": [],
+      "phrase": "Les acquis sont solides dans l’ensemble. Le domaine « Conflits et respect » reste à consolider."
+    },
+    "eps": {
+      "title": "EPS",
+      "suggestedLevel": "atteint",
+      "suggestedLabel": "Atteint",
+      "qualifier": "",
+      "coverage": {
+        "documented": 3,
+        "total": 5,
+        "ratio": 0.6
+      },
+      "profile": {
+        "solid": 3,
+        "consolidation": 0,
+        "priority": 0,
+        "undocumented": 2
+      },
+      "trend": "insuffisante",
+      "confidence": "moyenne",
+      "vigilances": [],
+      "phrase": "Les acquis sont solides dans l’ensemble. Le domaine « Natation » constitue un point d’appui."
+    },
+    "arts": {
+      "title": "Arts / Éducation musicale",
+      "suggestedLevel": null,
+      "suggestedLabel": null,
+      "qualifier": "",
+      "coverage": {
+        "documented": 0,
+        "total": 6,
+        "ratio": 0
+      },
+      "profile": {
+        "solid": 0,
+        "consolidation": 0,
+        "priority": 0,
+        "undocumented": 6
+      },
+      "trend": "insuffisante",
+      "confidence": "insuffisante",
+      "vigilances": [],
+      "phrase": "Données insuffisantes pour proposer une synthèse fiable."
+    }
+  },
+  "focusCompetences": [
+    {
+      "subject": "francais",
+      "code": "COM-P2-05",
+      "label": "Reformuler l’essentiel",
+      "domain": "Compréhension de l’écrit",
+      "semester": "S1",
+      "suggestedLevel": "partiellement_atteint",
+      "suggestedLabel": "Partiellement atteint",
+      "confidence": "elevee",
+      "decisionPattern": "preuve_forte_unique",
+      "trend": "stable",
+      "review": "aucun",
+      "evidence": {
+        "A": 1,
+        "B": 2,
+        "C": 0,
+        "D": 0,
+        "totalTeaching": 3
+      },
+      "hibou": {
+        "status": "absent",
+        "count": 0
+      },
+      "core": {
+        "isCore": true,
+        "group": "comprehension",
+        "persistentVigilance": true,
+        "spanDays": 35
+      },
+      "documented": true,
+      "transferEvidence": 0
+    },
+    {
+      "subject": "francais",
+      "code": "ECR-P2-04",
+      "label": "Raconter des événements dans l’ordre",
+      "domain": "Écriture et copie",
+      "semester": "S1",
+      "suggestedLevel": "partiellement_atteint",
+      "suggestedLabel": "Partiellement atteint",
+      "confidence": "moyenne",
+      "decisionPattern": "preuve_forte_unique",
+      "trend": "progression",
+      "review": "a_reexaminer_progression",
+      "evidence": {
+        "A": 1,
+        "B": 2,
+        "C": 2,
+        "D": 0,
+        "totalTeaching": 3
+      },
+      "hibou": {
+        "status": "progression_autonome",
+        "count": 2,
+        "lastLevel": "depasse",
+        "autonomousCount": 2,
+        "repeatedMasteryCount": 1
+      },
+      "core": {
+        "isCore": true,
+        "group": "ecriture",
+        "persistentVigilance": false,
+        "spanDays": 28
+      },
+      "documented": true,
+      "transferEvidence": 0
+    },
+    {
+      "subject": "maths",
+      "code": "PRO-P1-01",
+      "label": "Comprendre la question d’un problème",
+      "domain": "Résolution de problèmes",
+      "semester": "S1",
+      "suggestedLevel": "partiellement_atteint",
+      "suggestedLabel": "Partiellement atteint",
+      "confidence": "moyenne",
+      "decisionPattern": "preuve_forte_unique",
+      "trend": "progression",
+      "review": "aucun",
+      "evidence": {
+        "A": 1,
+        "B": 2,
+        "C": 1,
+        "D": 0,
+        "totalTeaching": 3
+      },
+      "hibou": {
+        "status": "confirme",
+        "count": 1,
+        "lastLevel": "partiellement_atteint",
+        "autonomousCount": 0,
+        "repeatedMasteryCount": 0
+      },
+      "core": {
+        "isCore": true,
+        "group": "problemes",
+        "persistentVigilance": true,
+        "spanDays": 49
+      },
+      "documented": true,
+      "transferEvidence": 0
+    },
+    {
+      "subject": "maths",
+      "code": "NUM-P2-02",
+      "label": "Repérer la valeur d’un chiffre",
+      "domain": "Nombres entiers",
+      "semester": "S1",
+      "suggestedLevel": "atteint",
+      "suggestedLabel": "Atteint",
+      "confidence": "moyenne",
+      "decisionPattern": "preuve_forte_unique",
+      "trend": "stable",
+      "review": "aucun",
+      "evidence": {
+        "A": 1,
+        "B": 1,
+        "C": 2,
+        "D": 0,
+        "totalTeaching": 2
+      },
+      "hibou": {
+        "status": "progression_autonome",
+        "count": 2,
+        "lastLevel": "depasse",
+        "autonomousCount": 2,
+        "repeatedMasteryCount": 1
+      },
+      "core": {
+        "isCore": true,
+        "group": "nombres",
+        "persistentVigilance": false,
+        "spanDays": 14
+      },
+      "documented": true,
+      "transferEvidence": 0
+    },
+    {
+      "subject": "anglais",
+      "code": "ANG-P2-05",
+      "label": "Dire ce que l’on souhaite manger au petit-déjeuner",
+      "domain": "Interaction orale",
+      "semester": "S1",
+      "suggestedLevel": "atteint",
+      "suggestedLabel": "Atteint",
+      "confidence": "moyenne",
+      "decisionPattern": "preuve_forte_unique",
+      "trend": "stable",
+      "review": "aucun",
+      "evidence": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 0,
+        "totalTeaching": 2
+      },
+      "hibou": {
+        "status": "absent",
+        "count": 0
+      },
+      "core": {
+        "isCore": true,
+        "group": "expression_orale",
+        "persistentVigilance": false,
+        "spanDays": 14
+      },
+      "documented": true,
+      "transferEvidence": 0
+    },
+    {
+      "subject": "sciences",
+      "code": "SCI-P1-05",
+      "label": "Tirer une conclusion à partir de résultats",
+      "domain": "Conclusion",
+      "semester": "S1",
+      "suggestedLevel": "partiellement_atteint",
+      "suggestedLabel": "Partiellement atteint",
+      "confidence": "elevee",
+      "decisionPattern": "preuve_forte_unique",
+      "trend": "stable",
+      "review": "aucun",
+      "evidence": {
+        "A": 1,
+        "B": 2,
+        "C": 0,
+        "D": 0,
+        "totalTeaching": 3
+      },
+      "hibou": {
+        "status": "absent",
+        "count": 0
+      },
+      "core": {
+        "isCore": true,
+        "group": "raisonnement_scientifique",
+        "persistentVigilance": true,
+        "spanDays": 42
+      },
+      "documented": true,
+      "transferEvidence": 0
+    }
+  ],
+  "rulesChecked": {
+    "noArithmeticAverage": true,
+    "teacherEvidencePriority": true,
+    "hibouNeverOverridesA": true,
+    "noLevelWhenInsufficientCoverage": true
+  }
+}
