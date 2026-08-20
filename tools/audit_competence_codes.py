@@ -2,7 +2,7 @@
 from pathlib import Path
 import re, sys
 root=Path(__file__).resolve().parents[1]
-pat=re.compile(r'\b[A-Z]{2,8}-P[1-5]-\d{2}\b')
+pat=re.compile(r'\b[A-Z]{2,8}-(?:P[1-5]|ANN)-\d{2}\b')
 canon=set(pat.findall((root/'data.js').read_text(encoding='utf-8',errors='ignore')))
 problems=[]
 for p in list(root.glob('*.js'))+list(root.glob('*.html')):

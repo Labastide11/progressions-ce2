@@ -32,6 +32,8 @@
   function rowsFor(data){ return Array.isArray(data.rows) ? data.rows.filter(row=>Array.isArray(row) && row.length) : []; }
 
   function competencyCount(data){
+    const annual = Array.isArray(data.annualCompetencies) ? data.annualCompetencies.length : 0;
+    if(annual) return annual;
     if(state.period === 'all'){
       return periodClasses.reduce((sum,p,index)=>sum + (Array.isArray(data[`p${index+1}Competencies`]) ? data[`p${index+1}Competencies`].length : 0),0);
     }

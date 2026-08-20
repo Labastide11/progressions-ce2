@@ -8248,601 +8248,127 @@ window.PROGRESSIONS = {
     ]
   },
   arts: {
-    "title": "Arts",
+    "title": "Arts et éducation musicale",
     "icon": "🎨",
-    "subtitle": "Arts plastiques, éducation musicale, création, culture et expression",
+    "subtitle": "6 repères annuels transversaux — arts plastiques et chant, sans évaluation obligatoire",
     "routines": [
-      "Observer une œuvre avant de la commenter ou de créer",
-      "Expérimenter plusieurs outils, gestes, matériaux ou sons",
-      "Faire des choix personnels et pouvoir les expliquer",
+      "Expérimenter, créer et faire des choix personnels",
+      "Observer des œuvres et mettre des mots sur ce que l'on perçoit",
+      "Chanter et écouter en groupe dans un cadre bienveillant",
       "Respecter les productions, les goûts et les interprétations des autres",
-      "Conserver des traces des œuvres rencontrées et du vocabulaire appris",
-      "Présenter une production individuelle ou collective avec bienveillance"
+      "Utiliser ces compétences comme repères de programmation, sans obligation de validation individuelle"
     ],
     "rows": [
       [
         "Arts plastiques",
-        "Forêt, animaux, lignes, matières et composition.",
-        "Image, message, illustration et émotions.",
-        "Paysages d’hiver, lumière, couleurs et volume.",
-        "Corps, mouvement, silhouette et sculpture.",
-        "Photographie, narration en images et création numérique."
+        "Expérimenter des outils, gestes et matériaux ; créer et observer des œuvres.",
+        "Réinvestir les mêmes repères dans les productions de la période.",
+        "Réinvestir les mêmes repères dans les productions de la période.",
+        "Réinvestir les mêmes repères dans les productions de la période.",
+        "Réinvestir les mêmes repères dans les productions de la période."
       ],
       [
-        "Éducation musicale",
-        "Chanter ensemble, tenir une pulsation et écouter.",
-        "Jouer avec la voix, le rythme et les émotions.",
-        "Comparer des paysages sonores et des familles d’instruments.",
-        "Créer une courte organisation sonore et la présenter.",
-        "Interpréter, enregistrer et partager une production collective."
+        "Éducation musicale / chant",
+        "Mémoriser et interpréter des chants ; respecter pulsation, tempo et départs collectifs ; écouter.",
+        "Réinvestir les mêmes repères dans les chants et écoutes de la période.",
+        "Réinvestir les mêmes repères dans les chants et écoutes de la période.",
+        "Réinvestir les mêmes repères dans les chants et écoutes de la période.",
+        "Réinvestir les mêmes repères dans les chants et écoutes de la période."
       ],
       [
-        "Rencontrer des œuvres",
-        "Cézanne, Klimt, Mondrian et représentations de la nature.",
-        "Illustration, Munch, Picasso et images porteuses de sens.",
-        "Paysages d’hiver et variations de lumière.",
-        "Haring, Matisse, Calder et représentation du mouvement.",
-        "Photographie, light painting et bande dessinée."
-      ],
-      [
-        "S’exprimer et analyser",
-        "Nommer outils, gestes, couleurs et matières.",
-        "Expliquer une intention et écouter un avis.",
-        "Comparer plusieurs solutions plastiques ou sonores.",
-        "Observer les effets produits et améliorer une création.",
-        "Présenter une production et construire une appréciation argumentée."
+        "Organisation",
+        "Repères annuels transversaux : pas d'évaluation commune obligatoire.",
+        "Le mardi, les élèves non-CHAM peuvent travailler ces compétences selon les activités prévues.",
+        "Le mardi, les élèves non-CHAM peuvent travailler ces compétences selon les activités prévues.",
+        "Le mardi, les élèves non-CHAM peuvent travailler ces compétences selon les activités prévues.",
+        "Le mardi, les élèves non-CHAM peuvent travailler ces compétences selon les activités prévues."
       ]
     ],
-    "p1Competencies": [
+    "annualCompetencies": [
       {
-        "code": "ART-P1-01",
+        "code": "ART-ANN-01",
         "domain": "Arts plastiques",
-        "title": "Expérimenter plusieurs outils",
-        "jeSais": "Je sais essayer plusieurs outils pour obtenir des traces différentes.",
+        "title": "Expérimenter des outils, gestes et matériaux",
+        "jeSais": "Je sais essayer différents outils, gestes ou matériaux pour produire des effets variés.",
         "checklist": [
-          "Choisir au moins deux outils.",
-          "Observer les effets produits.",
-          "Varier pression, direction ou vitesse.",
-          "Comparer les traces.",
-          "Choisir un effet adapté au projet."
+          "Essayer plusieurs façons de faire.",
+          "Observer les effets obtenus.",
+          "Choisir un outil, un geste ou un matériau adapté à mon idée."
         ],
-        "proofs": [
-          "Planche d’expérimentation.",
-          "Production finale."
-        ],
+        "proofs": ["Production ou expérimentation réalisée en classe."],
         "lsu": "Expérimenter, produire et créer."
       },
       {
-        "code": "ART-P1-02",
+        "code": "ART-ANN-02",
         "domain": "Arts plastiques",
-        "title": "Composer avec lignes, formes et couleurs",
-        "jeSais": "Je sais organiser des lignes, des formes et des couleurs dans un espace.",
+        "title": "Réaliser une production en faisant des choix personnels",
+        "jeSais": "Je sais réaliser une production et faire quelques choix personnels pour exprimer une idée ou une intention.",
         "checklist": [
-          "Occuper l’espace de la feuille.",
-          "Varier tailles et positions.",
-          "Créer des contrastes.",
-          "Éviter de remplir sans intention.",
-          "Faire un choix de composition."
+          "M'engager dans une réalisation.",
+          "Faire des choix de formes, couleurs, matières ou organisation.",
+          "Modifier ma production si nécessaire."
         ],
-        "proofs": [
-          "Composition individuelle.",
-          "Observation avec critères."
-        ],
-        "lsu": "Organiser une production plastique."
+        "proofs": ["Production individuelle ou collective."],
+        "lsu": "Mettre en œuvre un projet artistique."
       },
       {
-        "code": "ART-P1-03",
+        "code": "ART-ANN-03",
         "domain": "Arts plastiques",
-        "title": "Utiliser des matières naturelles",
-        "jeSais": "Je sais intégrer des feuilles, textures ou matériaux naturels dans une production.",
+        "title": "Observer une œuvre et parler de sa production",
+        "jeSais": "Je sais décrire quelques éléments d'une œuvre et expliquer simplement un choix dans ma propre production.",
         "checklist": [
-          "Choisir des éléments adaptés.",
-          "Observer formes et textures.",
-          "Assembler sans dégrader inutilement.",
-          "Fixer solidement.",
-          "Créer un lien entre matériau et intention."
+          "Dire ce que j'observe sans confondre description et opinion.",
+          "Employer quelques mots adaptés.",
+          "Expliquer simplement un de mes choix."
         ],
-        "proofs": [
-          "Production sur la forêt.",
-          "Œuvre collective."
-        ],
-        "lsu": "Explorer les qualités physiques des matériaux."
+        "proofs": ["Échange oral autour d'une œuvre ou d'une production."],
+        "lsu": "S'exprimer et analyser sa pratique et celle de ses pairs."
       },
       {
-        "code": "ART-P1-04",
-        "domain": "Culture artistique",
-        "title": "Observer une œuvre représentant la nature",
-        "jeSais": "Je sais décrire ce que je vois dans une œuvre représentant la forêt ou un arbre.",
+        "code": "MUS-ANN-01",
+        "domain": "Éducation musicale / chant",
+        "title": "Mémoriser et interpréter un chant avec le groupe",
+        "jeSais": "Je sais mémoriser et chanter un chant avec les autres.",
         "checklist": [
-          "Nommer les éléments visibles.",
-          "Repérer couleurs et formes.",
-          "Distinguer description et opinion.",
-          "Comparer deux représentations.",
-          "Employer quelques mots précis."
+          "Mémoriser progressivement paroles et mélodie.",
+          "Écouter le groupe.",
+          "Commencer et terminer avec les autres."
         ],
-        "proofs": [
-          "Échange oral devant une œuvre.",
-          "Trace dans le cahier d’arts."
-        ],
-        "lsu": "Se repérer dans les domaines liés aux arts plastiques."
-      },
-      {
-        "code": "ART-P1-05",
-        "domain": "Éducation musicale",
-        "title": "Chanter avec le groupe",
-        "jeSais": "Je sais mémoriser et chanter une mélodie simple avec les autres.",
-        "checklist": [
-          "Écouter le départ.",
-          "Reproduire la mélodie.",
-          "Articuler les paroles.",
-          "Garder une posture adaptée.",
-          "Terminer avec le groupe."
-        ],
-        "proofs": [
-          "Chant collectif.",
-          "Enregistrement court."
-        ],
+        "proofs": ["Participation à un chant collectif."],
         "lsu": "Chanter et interpréter."
       },
       {
-        "code": "ART-P1-06",
-        "domain": "Éducation musicale",
-        "title": "Maintenir une pulsation",
-        "jeSais": "Je sais marquer une pulsation régulière avec mon corps ou un instrument.",
+        "code": "MUS-ANN-02",
+        "domain": "Éducation musicale / chant",
+        "title": "Respecter le rythme, le tempo et les départs collectifs",
+        "jeSais": "Je sais rester avec le groupe en respectant le rythme, le tempo et les départs.",
         "checklist": [
-          "Écouter le tempo.",
-          "Commencer au signal.",
-          "Rester régulier.",
-          "S’arrêter ensemble.",
-          "Reprendre après une interruption."
+          "Écouter le signal de départ.",
+          "Maintenir une pulsation ou un tempo commun.",
+          "M'arrêter avec le groupe."
         ],
-        "proofs": [
-          "Accompagnement d’un chant.",
-          "Jeu rythmique collectif."
+        "proofs": ["Chant, jeu vocal ou accompagnement rythmique collectif."],
+        "lsu": "Explorer, imaginer et interpréter collectivement."
+      },
+      {
+        "code": "MUS-ANN-03",
+        "domain": "Éducation musicale / écoute",
+        "title": "Écouter une musique et repérer quelques éléments simples",
+        "jeSais": "Je sais écouter un extrait et repérer quelques éléments simples comme les instruments, le rythme, l'intensité ou l'ambiance.",
+        "checklist": [
+          "Écouter attentivement un extrait court.",
+          "Repérer au moins un élément sonore identifiable.",
+          "Exprimer simplement ce que j'ai entendu ou ressenti."
         ],
-        "lsu": "Explorer les paramètres du son."
+        "proofs": ["Échange oral ou petite carte d'écoute."],
+        "lsu": "Écouter, comparer et commenter."
       }
     ],
-    "p2Competencies": [
-      {
-        "code": "ART-P2-01",
-        "domain": "Arts plastiques",
-        "title": "Créer une image qui transmet un message",
-        "jeSais": "Je sais choisir des formes, des couleurs ou des mots pour faire passer un message.",
-        "checklist": [
-          "Identifier le message.",
-          "Choisir des signes compréhensibles.",
-          "Organiser texte et image.",
-          "Créer un contraste visuel.",
-          "Vérifier que le message est lisible."
-        ],
-        "proofs": [
-          "Affiche ou pièce de puzzle.",
-          "Présentation orale."
-        ],
-        "lsu": "Utiliser l’image pour communiquer."
-      },
-      {
-        "code": "ART-P2-02",
-        "domain": "Arts plastiques",
-        "title": "Illustrer un texte",
-        "jeSais": "Je sais créer une image qui éclaire un passage d’un récit, d’un poème ou d’une fable.",
-        "checklist": [
-          "Choisir un moment important.",
-          "Identifier personnages et lieu.",
-          "Composer la scène.",
-          "Ajouter des détails utiles.",
-          "Éviter de recopier uniquement le texte."
-        ],
-        "proofs": [
-          "Illustration d’une fable.",
-          "Comparaison de plusieurs illustrations."
-        ],
-        "lsu": "Représenter le monde et donner forme à un récit."
-      },
-      {
-        "code": "ART-P2-03",
-        "domain": "Arts plastiques",
-        "title": "Représenter une émotion",
-        "jeSais": "Je sais utiliser le visage, les couleurs et les formes pour représenter une émotion.",
-        "checklist": [
-          "Observer les traits du visage.",
-          "Modifier yeux, bouche et posture.",
-          "Choisir des couleurs expressives.",
-          "Créer deux émotions différentes.",
-          "Expliquer les choix."
-        ],
-        "proofs": [
-          "Portrait à deux émotions.",
-          "Analyse d’œuvres."
-        ],
-        "lsu": "Exprimer des émotions par les arts."
-      },
-      {
-        "code": "ART-P2-04",
-        "domain": "Culture artistique",
-        "title": "Comparer plusieurs illustrations",
-        "jeSais": "Je sais comparer deux artistes qui représentent la même histoire ou le même personnage.",
-        "checklist": [
-          "Repérer ressemblances et différences.",
-          "Comparer cadrage et détails.",
-          "Observer les techniques.",
-          "Exprimer une préférence argumentée.",
-          "Respecter les interprétations."
-        ],
-        "proofs": [
-          "Comparaison d’illustrations.",
-          "Trace écrite courte."
-        ],
-        "lsu": "Rencontrer et comparer des œuvres."
-      },
-      {
-        "code": "ART-P2-05",
-        "domain": "Éducation musicale",
-        "title": "Jouer avec les nuances",
-        "jeSais": "Je sais chanter ou jouer plus fort, moins fort et avec des changements progressifs.",
-        "checklist": [
-          "Reconnaître fort et doux.",
-          "Suivre un geste de direction.",
-          "Produire un crescendo simple.",
-          "Contrôler le volume.",
-          "Rester avec le groupe."
-        ],
-        "proofs": [
-          "Jeu vocal.",
-          "Interprétation d’un chant."
-        ],
-        "lsu": "Explorer et maîtriser l’intensité sonore."
-      },
-      {
-        "code": "ART-P2-06",
-        "domain": "Éducation musicale",
-        "title": "Exprimer une émotion avec la voix",
-        "jeSais": "Je sais modifier ma voix pour exprimer une émotion ou un personnage.",
-        "checklist": [
-          "Changer le timbre.",
-          "Adapter hauteur et intensité.",
-          "Articuler clairement.",
-          "Éviter de crier.",
-          "Faire reconnaître une intention."
-        ],
-        "proofs": [
-          "Jeu vocal.",
-          "Mise en voix d’un texte."
-        ],
-        "lsu": "Explorer, imaginer et interpréter."
-      }
-    ],
-    "p3Competencies": [
-      {
-        "code": "ART-P3-01",
-        "domain": "Arts plastiques",
-        "title": "Créer des nuances de couleur",
-        "jeSais": "Je sais fabriquer et utiliser plusieurs nuances d’une même couleur.",
-        "checklist": [
-          "Mélanger progressivement.",
-          "Nommer clair et foncé.",
-          "Préparer assez de matière.",
-          "Organiser les nuances.",
-          "Choisir selon l’ambiance recherchée."
-        ],
-        "proofs": [
-          "Nuancier.",
-          "Paysage d’hiver."
-        ],
-        "lsu": "Expérimenter les effets de la couleur."
-      },
-      {
-        "code": "ART-P3-02",
-        "domain": "Arts plastiques",
-        "title": "Représenter la profondeur",
-        "jeSais": "Je sais donner une impression de profondeur dans un paysage.",
-        "checklist": [
-          "Placer des éléments au premier et à l’arrière-plan.",
-          "Varier les tailles.",
-          "Utiliser le chevauchement.",
-          "Organiser une ligne d’horizon.",
-          "Adapter les détails selon la distance."
-        ],
-        "proofs": [
-          "Paysage d’hiver.",
-          "Explication de la composition."
-        ],
-        "lsu": "Représenter l’espace."
-      },
-      {
-        "code": "ART-P3-03",
-        "domain": "Arts plastiques",
-        "title": "Créer un volume par assemblage",
-        "jeSais": "Je sais transformer et assembler des matériaux pour produire un objet en volume.",
-        "checklist": [
-          "Choisir une structure stable.",
-          "Découper ou plier avec soin.",
-          "Assembler solidement.",
-          "Observer sous plusieurs angles.",
-          "Modifier si l’objet ne tient pas."
-        ],
-        "proofs": [
-          "Sculpture ou bonhomme en volume.",
-          "Photographie de la réalisation."
-        ],
-        "lsu": "Concevoir une production en volume."
-      },
-      {
-        "code": "ART-P3-04",
-        "domain": "Culture artistique",
-        "title": "Comparer des paysages d’hiver",
-        "jeSais": "Je sais comparer la lumière, les couleurs et l’atmosphère de plusieurs paysages.",
-        "checklist": [
-          "Décrire le ciel et la lumière.",
-          "Repérer couleurs chaudes et froides.",
-          "Observer les traces de pinceau.",
-          "Identifier une ambiance.",
-          "Justifier une comparaison."
-        ],
-        "proofs": [
-          "Échange autour de plusieurs œuvres.",
-          "Trace dans le cahier d’arts."
-        ],
-        "lsu": "Décrire et comparer des œuvres."
-      },
-      {
-        "code": "ART-P3-05",
-        "domain": "Éducation musicale",
-        "title": "Reconnaître des familles d’instruments",
-        "jeSais": "Je sais reconnaître quelques instruments et les classer par famille.",
-        "checklist": [
-          "Écouter le timbre.",
-          "Identifier cordes, vents ou percussions.",
-          "Justifier avec un indice sonore.",
-          "Associer son et image.",
-          "Comparer deux instruments."
-        ],
-        "proofs": [
-          "Écoute à l’aveugle.",
-          "Classement d’extraits."
-        ],
-        "lsu": "Écouter, comparer et construire une culture musicale."
-      },
-      {
-        "code": "ART-P3-06",
-        "domain": "Éducation musicale",
-        "title": "Décrire un paysage sonore",
-        "jeSais": "Je sais repérer et nommer plusieurs sons dans un extrait musical ou un environnement.",
-        "checklist": [
-          "Écouter en silence.",
-          "Identifier des sources.",
-          "Distinguer sons continus et brefs.",
-          "Repérer des plans sonores.",
-          "Organiser une description."
-        ],
-        "proofs": [
-          "Carte d’écoute.",
-          "Collecte de sons."
-        ],
-        "lsu": "Écouter et décrire un environnement sonore."
-      }
-    ],
-    "p4Competencies": [
-      {
-        "code": "ART-P4-01",
-        "domain": "Arts plastiques",
-        "title": "Représenter un corps en mouvement",
-        "jeSais": "Je sais utiliser une silhouette ou des lignes pour montrer un mouvement.",
-        "checklist": [
-          "Observer la position des membres.",
-          "Incliner le corps.",
-          "Repérer les articulations.",
-          "Éviter la posture trop figée.",
-          "Accentuer un mouvement choisi."
-        ],
-        "proofs": [
-          "Silhouettes dessinées.",
-          "Production inspirée de Haring."
-        ],
-        "lsu": "Représenter le corps et le mouvement."
-      },
-      {
-        "code": "ART-P4-02",
-        "domain": "Arts plastiques",
-        "title": "Créer une sculpture en mouvement",
-        "jeSais": "Je sais construire un personnage en volume qui semble bouger.",
-        "checklist": [
-          "Créer une structure.",
-          "Choisir une posture lisible.",
-          "Équilibrer la sculpture.",
-          "Fixer les articulations.",
-          "Observer sous plusieurs angles."
-        ],
-        "proofs": [
-          "Sculpture en fil ou aluminium.",
-          "Présentation collective."
-        ],
-        "lsu": "Concevoir une production en volume."
-      },
-      {
-        "code": "ART-P4-03",
-        "domain": "Arts plastiques",
-        "title": "Travailler à l’échelle du corps",
-        "jeSais": "Je sais utiliser une silhouette grandeur nature dans une création collective.",
-        "checklist": [
-          "Choisir une posture.",
-          "Tracer avec précision.",
-          "Respecter le corps du camarade.",
-          "Transformer la silhouette.",
-          "Participer à la composition commune."
-        ],
-        "proofs": [
-          "Silhouettes à la craie.",
-          "Photographie de l’installation."
-        ],
-        "lsu": "Mettre en œuvre un projet artistique collectif."
-      },
-      {
-        "code": "ART-P4-04",
-        "domain": "Culture artistique",
-        "title": "Comparer des artistes du mouvement",
-        "jeSais": "Je sais expliquer comment plusieurs artistes donnent une impression de mouvement.",
-        "checklist": [
-          "Observer lignes et répétitions.",
-          "Repérer posture et déséquilibre.",
-          "Comparer peinture, dessin et sculpture.",
-          "Employer le mot mouvement.",
-          "Justifier avec un détail."
-        ],
-        "proofs": [
-          "Comparaison Haring, Matisse, Picasso ou Calder.",
-          "Trace orale ou écrite."
-        ],
-        "lsu": "Établir des liens entre des œuvres."
-      },
-      {
-        "code": "ART-P4-05",
-        "domain": "Éducation musicale",
-        "title": "Inventer une courte organisation sonore",
-        "jeSais": "Je sais organiser plusieurs sons pour créer un début, un développement et une fin.",
-        "checklist": [
-          "Choisir des sons.",
-          "Définir un ordre.",
-          "Utiliser répétition ou contraste.",
-          "Respecter les silences.",
-          "Mémoriser la structure."
-        ],
-        "proofs": [
-          "Création en groupe.",
-          "Partition codée simple."
-        ],
-        "lsu": "Explorer, imaginer et créer."
-      },
-      {
-        "code": "ART-P4-06",
-        "domain": "Éducation musicale",
-        "title": "Diriger une production sonore",
-        "jeSais": "Je sais donner des gestes simples pour faire commencer, arrêter ou varier un groupe.",
-        "checklist": [
-          "Se placer face au groupe.",
-          "Donner un départ clair.",
-          "Indiquer fort ou doux.",
-          "Maintenir une pulsation.",
-          "Faire terminer ensemble."
-        ],
-        "proofs": [
-          "Rôle de chef.",
-          "Production collective."
-        ],
-        "lsu": "Échanger, partager et interpréter."
-      }
-    ],
-    "p5Competencies": [
-      {
-        "code": "ART-P5-01",
-        "domain": "Photographie",
-        "title": "Choisir un cadrage",
-        "jeSais": "Je sais choisir un cadrage adapté à ce que je veux montrer.",
-        "checklist": [
-          "Identifier le sujet.",
-          "Choisir plan large ou rapproché.",
-          "Éviter les éléments gênants.",
-          "Tenir l’appareil de façon stable.",
-          "Comparer plusieurs prises."
-        ],
-        "proofs": [
-          "Série de photographies.",
-          "Choix argumenté d’une image."
-        ],
-        "lsu": "Utiliser la photographie comme moyen d’expression."
-      },
-      {
-        "code": "ART-P5-02",
-        "domain": "Photographie",
-        "title": "Représenter le mouvement par la lumière",
-        "jeSais": "Je sais créer une trace lumineuse dans une photographie.",
-        "checklist": [
-          "Préparer un espace sombre.",
-          "Choisir un geste.",
-          "Coordonner mouvement et prise de vue.",
-          "Respecter les règles de sécurité.",
-          "Sélectionner une image réussie."
-        ],
-        "proofs": [
-          "Séance de light painting.",
-          "Présentation de la démarche."
-        ],
-        "lsu": "Expérimenter les effets de la lumière."
-      },
-      {
-        "code": "ART-P5-03",
-        "domain": "Narration en images",
-        "title": "Construire une courte bande dessinée",
-        "jeSais": "Je sais organiser des images et des textes pour raconter une histoire.",
-        "checklist": [
-          "Prévoir un début et une fin.",
-          "Ordonner les cases.",
-          "Varier les cadrages.",
-          "Utiliser bulles ou légendes.",
-          "Vérifier la compréhension."
-        ],
-        "proofs": [
-          "Bande dessinée photographique.",
-          "Lecture par un autre groupe."
-        ],
-        "lsu": "Raconter par les images."
-      },
-      {
-        "code": "ART-P5-04",
-        "domain": "Culture artistique",
-        "title": "Analyser une photographie",
-        "jeSais": "Je sais décrire une photographie et proposer une interprétation.",
-        "checklist": [
-          "Distinguer ce qui est visible et ce qui est supposé.",
-          "Repérer cadrage et point de vue.",
-          "Observer lumière et couleurs.",
-          "Identifier une intention possible.",
-          "Écouter d’autres interprétations."
-        ],
-        "proofs": [
-          "Analyse collective.",
-          "Trace dans le cahier d’arts."
-        ],
-        "lsu": "S’exprimer sur une œuvre."
-      },
-      {
-        "code": "ART-P5-05",
-        "domain": "Éducation musicale",
-        "title": "Interpréter un chant avec précision",
-        "jeSais": "Je sais chanter en respectant mélodie, rythme, nuances et départs collectifs.",
-        "checklist": [
-          "Mémoriser les paroles.",
-          "Chanter juste autant que possible.",
-          "Respecter la pulsation.",
-          "Suivre les nuances.",
-          "Écouter les autres voix."
-        ],
-        "proofs": [
-          "Interprétation finale.",
-          "Enregistrement collectif."
-        ],
-        "lsu": "Chanter et interpréter."
-      },
-      {
-        "code": "ART-P5-06",
-        "domain": "Éducation musicale",
-        "title": "Présenter une création musicale",
-        "jeSais": "Je sais présenter une production sonore et expliquer les choix du groupe.",
-        "checklist": [
-          "Nommer l’intention.",
-          "Décrire les sons utilisés.",
-          "Expliquer l’organisation.",
-          "Écouter les retours.",
-          "Identifier une amélioration possible."
-        ],
-        "proofs": [
-          "Présentation devant la classe.",
-          "Bilan oral ou enregistré."
-        ],
-        "lsu": "Échanger et partager autour d’une création."
-      }
-    ]
+    "p1Competencies": [],
+    "p2Competencies": [],
+    "p3Competencies": [],
+    "p4Competencies": [],
+    "p5Competencies": []
   },
   emi: {
     "title": "Éducation aux médias et à l’information",

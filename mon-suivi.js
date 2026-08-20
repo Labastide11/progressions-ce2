@@ -27,11 +27,13 @@ async function refresh(showAlert=false){setBusy(true);try{if(!configured()){sync
 async function loadRecent(){try{const data=await jsonp({action:'reussites',limit:300});recent=rowsFrom(data,['reussites','réussites','achievements','rows','results','data']);writeJson(KEYS.recent,recent)}catch(e){}}
 async function loadProofs(){for(const action of ['ceintures','competences']){try{const data=await jsonp({action});const rows=rowsFrom(data,['ceintures','competences','rows','results','data']);if(rows.length){proofs=rows;writeJson(KEYS.proofs,proofs);break}}catch(e){}}}
 function setBusy(v){const b=document.getElementById('refreshBtn');b.disabled=v;b.textContent=v?'⏳ Connexion…':'↻ Actualiser'}
-function hasCompetencies(obj){if(!obj||!obj.title)return false;if(Array.isArray(obj.domains))return true;return ['p1','p2','p3','p4','p5'].some(p=>Array.isArray(obj[p+'Competencies']))}
+function hasCompetencies(obj){if(!obj||!obj.title)return false;if(Array.isArray(obj.domains))return true;if(Array.isArray(obj.annualCompetencies)&&obj.annualCompetencies.length)return true;return ['p1','p2','p3','p4','p5'].some(p=>Array.isArray(obj[p+'Competencies']))}
 function subjects(){const p=window.PROGRESSIONS||{};return Object.entries(p).filter(([,v])=>hasCompetencies(v))}
 function normalizeSkill(i,domainFallback=''){return{code:i&&String(i.code||i.id||'').trim(),label:i&&String(i.label||i.title||i.competence||i.text||i.code||'Compétence').trim(),domain:i&&String(i.domain||domainFallback||'').trim()}}
 function allSkills(subject=state.subject){const obj=(window.PROGRESSIONS||{})[subject];if(!obj)return[];const out=[];const wanted=state.period;
-  // Structure actuelle du référentiel : p1Competencies ... p5Competencies.
+  // Les repères annuels transversaux restent visibles quelle que soit la période.
+  if(Array.isArray(obj.annualCompetencies))obj.annualCompetencies.forEach(i=>out.push(normalizeSkill(i)));
+  // Structure habituelle du référentiel : p1Competencies ... p5Competencies.
   const periods=wanted==='all'?['p1','p2','p3','p4','p5']:[wanted];
   periods.forEach(p=>{const arr=obj[p+'Competencies'];if(Array.isArray(arr))arr.forEach(i=>out.push(normalizeSkill(i))) });
   // Compatibilité avec l'ancienne structure domains/items.

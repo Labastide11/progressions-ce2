@@ -51,6 +51,9 @@ function skillCatalog(){
   const catalog={};
   const all=window.PROGRESSIONS||{};
   Object.values(all).forEach(subject=>{
+    (subject&&Array.isArray(subject.annualCompetencies)?subject.annualCompetencies:[]).forEach(skill=>{
+      if(skill&&skill.code)catalog[String(skill.code)]={title:skill.title||skill.competence||skill.code,domain:skill.domain||skill.domaine||''};
+    });
     ['p1Competencies','p2Competencies','p3Competencies','p4Competencies','p5Competencies'].forEach(key=>{
       (subject&&Array.isArray(subject[key])?subject[key]:[]).forEach(skill=>{
         if(skill&&skill.code)catalog[String(skill.code)]={title:skill.title||skill.competence||skill.code,domain:skill.domain||skill.domaine||''};

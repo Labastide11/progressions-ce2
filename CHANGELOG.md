@@ -1,3 +1,11 @@
+## V34.35 — Arts / chant compacts et optionnels
+- 30 anciennes micro-compétences Arts remplacées par 6 repères annuels transversaux.
+- 3 repères Arts plastiques : expérimenter ; réaliser avec des choix ; observer/parler.
+- 3 repères Musique/chant : mémoriser/interpréter ; rythme/tempo/départs ; écouter/repérer.
+- Références de l'emploi du temps réalignées sur les nouveaux codes annuels.
+- Pas d'évaluation obligatoire ; usage prioritaire comme repères de programmation/observation, notamment pour les non-CHAM le mardi.
+- Support `annualCompetencies` ajouté au référentiel, au suivi et au parcours élève.
+
 
 ## V34.34 — EPS compact et optionnel
 - Réduction du référentiel EPS de 30 à 14 compétences.
