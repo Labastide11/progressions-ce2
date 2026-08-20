@@ -5576,679 +5576,389 @@ window.PROGRESSIONS = {
   histoire: {
     "title": "Histoire",
     "icon": "🏺",
-    "subtitle": "Préhistoire, Antiquité et construction du royaume de France",
+    "subtitle": "Se repérer, comparer les modes de vie et rencontrer quelques grandes figures et événements du passé",
     "routines": [
       "Utiliser une frise chronologique tout au long de l’année",
-      "Localiser les lieux étudiés sur une carte",
-      "Observer des traces et des documents de natures variées",
-      "Distinguer récit historique et fiction",
-      "Employer un vocabulaire historique précis",
-      "Décrire, comparer, raconter et expliquer"
+      "Observer et comparer des documents de natures variées",
+      "Situer les personnages et événements étudiés dans leur époque",
+      "Distinguer ce que montre un document de ce que l’on en déduit",
+      "Employer un vocabulaire historique adapté",
+      "Ordonner, situer, comparer, prélever, raconter et expliquer"
     ],
     "rows": [
       [
-        "Préhistoire",
-        "Paléolithique et Néolithique : nomadisme, chasseurs-cueilleurs, art pariétal, agriculture et sédentarisation.",
-        "Réactivation des repères de la Préhistoire et transition vers l’Antiquité.",
-        "Réinvestissement des démarches historiques à partir des traces.",
-        "Réactivation des repères chronologiques avant le Moyen Âge.",
-        "Bilan annuel et mise en relation des grandes évolutions."
+        "Se repérer dans le temps historique",
+        "Ordonner des événements, utiliser une frise, identifier les grandes périodes et associer quelques repères à leur époque.",
+        "Réinvestir les repères chronologiques à travers la comparaison des modes de vie.",
+        "Utiliser la frise pour situer les premières grandes figures et événements étudiés.",
+        "Situer des figures et événements du Moyen Âge.",
+        "Situer des figures et événements des Temps modernes et relire la chronologie annuelle."
       ],
       [
-        "Rome et Gaule romaine",
-        "Premiers repères sur la fin de la Préhistoire et l’entrée dans l’Antiquité.",
-        "Vie quotidienne à Rome, société romaine, monuments et aménagements.",
-        "Empire romain, conquête de la Gaule et culture gallo-romaine.",
-        "Réactivation par comparaison avec le royaume médiéval.",
-        "Bilan et mémorisation des repères antiques."
+        "Comparer les modes de vie",
+        "Premiers repères sur l’évolution des sociétés et le temps long.",
+        "Comparer habitats, alimentation, objets et vêtements à différentes époques ; repérer changements et permanences.",
+        "Réinvestir la comparaison pour comprendre les sociétés de l’Antiquité et du début du Moyen Âge.",
+        "Décrire quelques aspects de la vie au Moyen Âge à partir de documents.",
+        "Comparer des documents pour identifier des transformations entre Moyen Âge et Temps modernes."
       ],
       [
-        "Royaume de France",
-        "Premiers repères sur le temps long.",
-        "Premiers jalons vers le Moyen Âge.",
-        "Transition de l’Antiquité au Moyen Âge.",
-        "Capétiens, sacre, domaine royal et affirmation du pouvoir.",
-        "Valois, guerre de Cent Ans, figures historiques et bilan."
+        "Grandes figures, événements et documents",
+        "Apprendre à associer un repère historique à une période.",
+        "Prélever des informations dans des documents simples pour comparer les époques.",
+        "Antiquité et débuts du Moyen Âge : situer, documenter et raconter quelques figures ou événements étudiés.",
+        "Moyen Âge et construction du royaume : expliquer à partir de plusieurs documents.",
+        "Temps modernes : croiser des informations sur une grande figure et expliquer une évolution historique étudiée."
       ]
     ],
     "p1Competencies": [
       {
         "code": "HIS-P1-01",
-        "domain": "Repères chronologiques",
-        "title": "Situer le Paléolithique et le Néolithique",
-        "jeSais": "Je sais placer le Paléolithique et le Néolithique sur une frise.",
+        "domain": "Chronologie",
+        "title": "Ordonner des événements dans le temps",
+        "jeSais": "Je sais ranger des événements du plus ancien au plus récent.",
         "checklist": [
-          "Identifier le sens de lecture d’une frise.",
-          "Repérer le Paléolithique.",
-          "Repérer le Néolithique.",
-          "Respecter leur ordre chronologique.",
-          "Comprendre qu’ils appartiennent à la Préhistoire."
+          "Repérer les indices de temps utiles.",
+          "Distinguer ce qui est plus ancien et plus récent.",
+          "Classer plusieurs événements dans l’ordre chronologique.",
+          "Vérifier la cohérence de l’ordre obtenu."
         ],
         "proofs": [
-          "Placement de repères sur une frise.",
-          "Lecture commentée d’une frise."
+          "Cartes ou événements à ordonner.",
+          "Courte justification orale de l’ordre choisi."
         ],
-        "lsu": "Se repérer dans le temps historique."
+        "lsu": "Ordonner des événements dans le temps."
       },
       {
         "code": "HIS-P1-02",
-        "domain": "Paléolithique",
-        "title": "Décrire le mode de vie des chasseurs-cueilleurs",
-        "jeSais": "Je sais décrire comment vivaient les femmes et les hommes au Paléolithique.",
+        "domain": "Frise chronologique",
+        "title": "Utiliser une frise chronologique",
+        "jeSais": "Je sais placer un événement ou une période sur une frise.",
         "checklist": [
-          "Identifier les activités de chasse, pêche et cueillette.",
-          "Décrire un habitat temporaire.",
-          "Comprendre le nomadisme.",
-          "Repérer quelques outils.",
-          "Employer le vocabulaire adapté."
+          "Identifier le sens de lecture de la frise.",
+          "Lire les repères déjà présents.",
+          "Placer un événement au bon endroit.",
+          "Placer une période entre des repères adaptés."
         ],
         "proofs": [
-          "Description d’une scène reconstituée.",
-          "Réponse organisée à partir de documents."
+          "Frise à compléter.",
+          "Placement commenté d’un repère."
         ],
-        "lsu": "Connaître le mode de vie au Paléolithique."
+        "lsu": "Utiliser une frise pour se repérer dans le temps historique."
       },
       {
         "code": "HIS-P1-03",
-        "domain": "Traces du passé",
-        "title": "Décrire une œuvre d’art pariétal",
-        "jeSais": "Je sais observer et décrire une peinture ou une gravure préhistorique.",
+        "domain": "Grandes périodes",
+        "title": "Identifier les grandes périodes historiques",
+        "jeSais": "Je sais reconnaître et remettre dans l’ordre les grandes périodes de l’Histoire.",
         "checklist": [
-          "Identifier le support.",
-          "Décrire les formes représentées.",
-          "Distinguer observation et interprétation.",
-          "Utiliser le mot pariétal ou rupestre.",
-          "Expliquer ce que cette trace nous apprend."
+          "Reconnaître les noms des grandes périodes étudiées.",
+          "Les remettre dans l’ordre chronologique.",
+          "Les repérer sur une frise simple.",
+          "Associer quelques indices caractéristiques à une période."
         ],
         "proofs": [
-          "Description d’une peinture pariétale.",
-          "Analyse guidée d’un document archéologique."
+          "Classement de périodes.",
+          "Frise historique simple à compléter."
         ],
-        "lsu": "Observer et comprendre une trace du passé."
+        "lsu": "Identifier les grandes périodes de l’Histoire."
       },
       {
         "code": "HIS-P1-04",
-        "domain": "Néolithique",
-        "title": "Expliquer la naissance de l’agriculture",
-        "jeSais": "Je sais expliquer pourquoi l’agriculture transforme le mode de vie.",
-        "checklist": [
-          "Identifier culture et élevage.",
-          "Comprendre la production de nourriture.",
-          "Relier agriculture et installation durable.",
-          "Repérer le développement des villages.",
-          "Employer le vocabulaire sédentarité et agriculture."
-        ],
-        "proofs": [
-          "Schéma explicatif.",
-          "Court texte de comparaison."
-        ],
-        "lsu": "Comprendre la révolution néolithique."
-      },
-      {
-        "code": "HIS-P1-05",
-        "domain": "Comparaison",
-        "title": "Comparer nomadisme et sédentarité",
-        "jeSais": "Je sais comparer un mode de vie nomade et un mode de vie sédentaire.",
-        "checklist": [
-          "Choisir des critères de comparaison.",
-          "Comparer habitat, alimentation et déplacements.",
-          "Repérer ressemblances et différences.",
-          "Organiser les informations dans un tableau.",
-          "Formuler une conclusion."
-        ],
-        "proofs": [
-          "Tableau comparatif.",
-          "Explication orale structurée."
-        ],
-        "lsu": "Comparer des modes de vie du passé."
-      },
-      {
-        "code": "HIS-P1-06",
         "domain": "Repères historiques",
-        "title": "Connaître quelques repères de la fin de la Préhistoire",
-        "jeSais": "Je sais mémoriser et expliquer quelques repères de la Préhistoire.",
+        "title": "Associer un repère historique à une période",
+        "jeSais": "Je sais relier une date, un personnage ou un événement étudié à la bonne période.",
         "checklist": [
-          "Connaître la naissance de l’agriculture vers 10 000/9 000 av. J.-C.",
-          "Situer Ötzi vers 3200 av. J.-C.",
-          "Situer l’apparition de l’écriture vers 3000 av. J.-C.",
-          "Comprendre le rôle conventionnel de l’écriture.",
-          "Associer date et événement."
+          "Identifier le repère proposé.",
+          "Chercher des indices permettant de le situer.",
+          "Choisir la période correspondante.",
+          "Expliquer simplement son choix."
         ],
         "proofs": [
-          "Association dates-événements.",
-          "Placement sur une frise."
+          "Association repère-période.",
+          "Réponse orale à partir de cartes ou d’images."
         ],
-        "lsu": "Mémoriser des repères historiques."
-      },
-      {
-        "code": "HIS-P1-07",
-        "domain": "Démarche historique",
-        "title": "Prélever des informations dans plusieurs documents",
-        "jeSais": "Je sais utiliser des documents pour répondre à une question d’histoire.",
-        "checklist": [
-          "Identifier la nature du document.",
-          "Lire une légende.",
-          "Prélever une information utile.",
-          "Comparer deux documents.",
-          "Formuler une réponse appuyée sur les documents."
-        ],
-        "proofs": [
-          "Questionnaire documentaire.",
-          "Réponse justifiée par un document."
-        ],
-        "lsu": "S’initier à la démarche historique."
+        "lsu": "Associer quelques repères historiques à leur période."
       }
     ],
     "p2Competencies": [
       {
         "code": "HIS-P2-01",
-        "domain": "Repères chronologiques",
-        "title": "Situer Rome dans l’Antiquité",
-        "jeSais": "Je sais situer Rome et le règne d’Auguste dans l’Antiquité.",
+        "domain": "Habitat",
+        "title": "Comparer des habitats de différentes époques",
+        "jeSais": "Je sais observer des habitats de différentes époques et dire ce qui change.",
         "checklist": [
-          "Repérer l’Antiquité sur une frise.",
-          "Situer le Ier siècle av. J.-C.",
-          "Situer le Ier siècle ap. J.-C.",
-          "Placer le règne d’Auguste.",
-          "Lire les abréviations av. J.-C. et ap. J.-C."
+          "Observer plusieurs documents.",
+          "Identifier des éléments comparables.",
+          "Repérer ressemblances et différences.",
+          "Formuler une évolution simple."
         ],
         "proofs": [
-          "Placement sur une frise.",
-          "Lecture de repères chronologiques."
+          "Comparaison de documents.",
+          "Tableau ou oral comparatif."
         ],
-        "lsu": "Se repérer dans l’Antiquité."
+        "lsu": "Comparer des habitats de différentes époques."
       },
       {
         "code": "HIS-P2-02",
-        "domain": "Vie quotidienne",
-        "title": "Décrire la vie quotidienne à Rome",
-        "jeSais": "Je sais décrire comment les habitants de Rome se logeaient, se nourrissaient et se déplaçaient.",
+        "domain": "Alimentation",
+        "title": "Comparer l’alimentation à différentes époques",
+        "jeSais": "Je sais comparer ce que les hommes mangeaient à différentes époques.",
         "checklist": [
-          "Observer plusieurs documents.",
-          "Identifier différents types d’habitats.",
-          "Décrire des aliments courants.",
-          "Repérer des moyens de déplacement.",
-          "Organiser une description."
+          "Prélever des informations dans des documents.",
+          "Identifier des aliments ou façons de se nourrir.",
+          "Comparer au moins deux époques.",
+          "Expliquer une différence observée."
         ],
         "proofs": [
-          "Texte descriptif court.",
-          "Tableau sur la vie quotidienne."
+          "Documents à comparer.",
+          "Explication orale ou courte trace écrite."
         ],
-        "lsu": "Connaître la vie quotidienne à Rome."
+        "lsu": "Comparer l’alimentation à différentes époques."
       },
       {
         "code": "HIS-P2-03",
-        "domain": "Société romaine",
-        "title": "Comprendre que la société romaine est hiérarchisée",
-        "jeSais": "Je sais expliquer que tous les habitants de Rome n’avaient pas la même place.",
+        "domain": "Vie quotidienne",
+        "title": "Comparer des objets et vêtements de différentes époques",
+        "jeSais": "Je sais repérer des différences entre des objets ou vêtements anciens et actuels.",
         "checklist": [
-          "Identifier citoyens, femmes, étrangers et esclaves.",
-          "Comparer leurs droits et conditions.",
-          "Éviter les jugements anachroniques.",
-          "Employer le mot hiérarchisée.",
-          "Appuyer une réponse sur un document."
+          "Observer précisément les objets ou vêtements.",
+          "Identifier leur usage.",
+          "Les classer ou les associer à une époque.",
+          "Justifier une différence observée."
         ],
         "proofs": [
-          "Classement argumenté.",
-          "Réponse à une question documentaire."
+          "Classement d’images ou d’objets.",
+          "Comparaison argumentée."
         ],
-        "lsu": "Comprendre l’organisation de la société romaine."
+        "lsu": "Comparer des objets et vêtements de différentes époques."
       },
       {
         "code": "HIS-P2-04",
-        "domain": "Ville romaine",
-        "title": "Identifier la fonction d’un monument romain",
-        "jeSais": "Je sais expliquer à quoi servait un monument ou un aménagement romain.",
+        "domain": "Évolution des modes de vie",
+        "title": "Repérer changements et permanences dans les modes de vie",
+        "jeSais": "Je sais dire ce qui a changé et ce qui est resté semblable entre deux époques.",
         "checklist": [
-          "Reconnaître forum, thermes, amphithéâtre, temple et aqueduc.",
-          "Associer monument et fonction.",
-          "Décrire un élément architectural.",
-          "Employer un vocabulaire précis.",
-          "Comparer avec un équipement actuel."
+          "Choisir un critère de comparaison.",
+          "Identifier un changement.",
+          "Identifier éventuellement une permanence.",
+          "Formuler une conclusion simple à partir des documents."
         ],
         "proofs": [
-          "Association monument-fonction.",
-          "Présentation d’un monument."
+          "Tableau changements / permanences.",
+          "Explication orale à partir de documents."
         ],
-        "lsu": "Connaître les monuments de la ville romaine."
-      },
-      {
-        "code": "HIS-P2-05",
-        "domain": "Techniques",
-        "title": "Expliquer le rôle d’un aqueduc",
-        "jeSais": "Je sais expliquer comment un aqueduc apportait de l’eau à la ville.",
-        "checklist": [
-          "Identifier le point de départ et d’arrivée de l’eau.",
-          "Comprendre la pente.",
-          "Repérer arches et conduites.",
-          "Relier l’aqueduc aux besoins de la ville.",
-          "Produire un schéma simple."
-        ],
-        "proofs": [
-          "Schéma légendé.",
-          "Explication orale."
-        ],
-        "lsu": "Comprendre un aménagement romain."
-      },
-      {
-        "code": "HIS-P2-06",
-        "domain": "Carte historique",
-        "title": "Localiser Rome et les principaux espaces de l’Empire",
-        "jeSais": "Je sais utiliser une carte pour localiser Rome et les espaces autour de la Méditerranée.",
-        "checklist": [
-          "Lire le titre et la légende.",
-          "Localiser Rome.",
-          "Repérer la mer Méditerranée.",
-          "Identifier quelques provinces.",
-          "Utiliser des points cardinaux simples."
-        ],
-        "proofs": [
-          "Localisation sur carte.",
-          "Lecture d’une carte historique."
-        ],
-        "lsu": "Se repérer dans l’espace historique."
-      },
-      {
-        "code": "HIS-P2-07",
-        "domain": "Démarche historique",
-        "title": "Croiser texte, image et vestige",
-        "jeSais": "Je sais comparer plusieurs documents pour comprendre la vie à Rome.",
-        "checklist": [
-          "Identifier la nature des documents.",
-          "Prélever une information dans chacun.",
-          "Repérer accords et différences.",
-          "Distinguer reconstitution et vestige.",
-          "Rédiger une synthèse courte."
-        ],
-        "proofs": [
-          "Étude documentaire.",
-          "Synthèse de deux ou trois documents."
-        ],
-        "lsu": "S’initier à la démarche historique."
+        "lsu": "Repérer des changements et des permanences dans les modes de vie."
       }
     ],
     "p3Competencies": [
       {
         "code": "HIS-P3-01",
-        "domain": "Empire romain",
-        "title": "Repérer l’étendue de l’Empire romain",
-        "jeSais": "Je sais repérer l’Empire romain à son apogée sur une carte.",
+        "domain": "Repères historiques",
+        "title": "Situer quelques figures et événements de l’Antiquité et du début du Moyen Âge",
+        "jeSais": "Je sais placer sur une frise les personnages et événements étudiés.",
         "checklist": [
-          "Lire la légende.",
-          "Repérer les limites de l’Empire.",
-          "Identifier la Méditerranée au centre.",
-          "Localiser Rome.",
-          "Employer le mot empire."
+          "Identifier le personnage ou l’événement étudié.",
+          "Repérer son époque.",
+          "Le placer correctement sur une frise.",
+          "Respecter l’ordre des différents repères étudiés."
         ],
         "proofs": [
-          "Carte à compléter.",
-          "Questionnaire cartographique."
+          "Frise à compléter.",
+          "Placement de personnages ou événements étudiés."
         ],
-        "lsu": "Connaître l’étendue de l’Empire romain."
+        "lsu": "Situer quelques figures et événements de l’Antiquité et du début du Moyen Âge."
       },
       {
         "code": "HIS-P3-02",
-        "domain": "Gaule",
-        "title": "Localiser la Gaule dans l’Empire romain",
-        "jeSais": "Je sais localiser la Gaule et la situer par rapport à Rome.",
+        "domain": "Figures historiques",
+        "title": "Associer un personnage historique à son époque",
+        "jeSais": "Je sais reconnaître l’époque d’un personnage étudié grâce à plusieurs indices.",
         "checklist": [
-          "Repérer la Gaule sur une carte.",
-          "Localiser Rome.",
-          "Utiliser nord, sud, est et ouest.",
-          "Relier Gaule et Empire.",
-          "Comparer avec la France actuelle sans les confondre."
+          "Observer un portrait ou une représentation.",
+          "Prélever des indices dans les documents.",
+          "Associer le personnage à la bonne époque.",
+          "Justifier l’association avec un indice pertinent."
         ],
         "proofs": [
-          "Localisation sur carte.",
-          "Phrase de situation géographique."
+          "Portrait accompagné de documents.",
+          "Association personnage-époque justifiée."
         ],
-        "lsu": "Se repérer dans l’espace historique."
+        "lsu": "Associer un personnage historique étudié à son époque."
       },
       {
         "code": "HIS-P3-03",
-        "domain": "Repères historiques",
-        "title": "Situer Alésia et Vercingétorix",
-        "jeSais": "Je sais situer la défaite de Vercingétorix à Alésia en 52 av. J.-C.",
+        "domain": "Démarche historique",
+        "title": "Prélever des informations dans des documents historiques",
+        "jeSais": "Je sais chercher dans un texte, une image, une carte ou un objet des informations sur le passé.",
         "checklist": [
-          "Identifier César et Vercingétorix.",
-          "Situer 52 av. J.-C.",
-          "Comprendre qu’Alésia marque la défaite gauloise.",
-          "Distinguer événement et légende.",
-          "Associer personnage, lieu et date."
+          "Identifier la nature du document.",
+          "Repérer l’information utile à la question.",
+          "Prélever une information sans recopier inutilement.",
+          "Appuyer sa réponse sur le document."
         ],
         "proofs": [
-          "Frise et légendes à compléter.",
-          "Court récit historique."
+          "Petit dossier documentaire.",
+          "Réponse justifiée par un ou plusieurs documents."
         ],
-        "lsu": "Mémoriser un repère de l’Antiquité."
+        "lsu": "Prélever des informations dans des documents historiques."
       },
       {
         "code": "HIS-P3-04",
-        "domain": "Gaule romaine",
-        "title": "Expliquer la romanisation de la Gaule",
-        "jeSais": "Je sais expliquer comment les modes de vie gaulois et romains se sont mélangés.",
+        "domain": "Récit historique",
+        "title": "Présenter un personnage ou raconter un événement étudié",
+        "jeSais": "Je sais raconter avec mes mots l’essentiel d’un personnage ou d’un événement historique étudié.",
         "checklist": [
-          "Identifier des apports romains.",
-          "Repérer la permanence de pratiques gauloises.",
-          "Observer villes, routes et langue.",
-          "Employer le mot gallo-romain.",
-          "Donner un exemple de mélange culturel."
+          "Nommer le personnage ou l’événement.",
+          "Le situer dans son époque.",
+          "Choisir deux ou trois informations importantes.",
+          "Les présenter dans un ordre compréhensible."
         ],
         "proofs": [
-          "Tableau avant/après.",
-          "Explication à partir de documents."
+          "Présentation orale courte.",
+          "Quelques phrases organisées."
         ],
-        "lsu": "Comprendre la culture gallo-romaine."
-      },
-      {
-        "code": "HIS-P3-05",
-        "domain": "Vie quotidienne",
-        "title": "Décrire une ville ou une villa gallo-romaine",
-        "jeSais": "Je sais décrire un lieu de vie en Gaule romaine.",
-        "checklist": [
-          "Identifier les espaces principaux.",
-          "Associer espace et fonction.",
-          "Observer les techniques de construction.",
-          "Décrire les activités des habitants.",
-          "Utiliser un vocabulaire historique."
-        ],
-        "proofs": [
-          "Description d’un plan ou d’une reconstitution.",
-          "Présentation d’un site gallo-romain."
-        ],
-        "lsu": "Connaître la vie quotidienne en Gaule romaine."
-      },
-      {
-        "code": "HIS-P3-06",
-        "domain": "Patrimoine",
-        "title": "Interpréter un vestige gallo-romain",
-        "jeSais": "Je sais expliquer ce qu’un vestige nous apprend sur la Gaule romaine.",
-        "checklist": [
-          "Identifier le vestige.",
-          "Décrire sa matière et sa forme.",
-          "Proposer sa fonction.",
-          "Vérifier avec une légende.",
-          "Relier le vestige au mode de vie."
-        ],
-        "proofs": [
-          "Fiche d’analyse d’un vestige.",
-          "Étude d’un site local ou national."
-        ],
-        "lsu": "Utiliser les traces du passé."
-      },
-      {
-        "code": "HIS-P3-07",
-        "domain": "Synthèse",
-        "title": "Comparer Rome et la Gaule romaine",
-        "jeSais": "Je sais comparer la vie à Rome et en Gaule romaine.",
-        "checklist": [
-          "Choisir des critères.",
-          "Comparer habitat, équipements et activités.",
-          "Repérer des éléments communs.",
-          "Identifier des différences locales.",
-          "Rédiger une conclusion."
-        ],
-        "proofs": [
-          "Tableau comparatif.",
-          "Texte de synthèse."
-        ],
-        "lsu": "Comparer des sociétés de l’Antiquité."
+        "lsu": "Présenter un personnage ou raconter un événement historique étudié."
       }
     ],
     "p4Competencies": [
       {
         "code": "HIS-P4-01",
-        "domain": "Repères chronologiques",
-        "title": "Situer le Moyen Âge et l’an 987",
-        "jeSais": "Je sais situer le Moyen Âge et l’élection d’Hugues Capet en 987.",
+        "domain": "Repères historiques",
+        "title": "Situer quelques figures et événements du Moyen Âge",
+        "jeSais": "Je sais placer sur une frise des personnages et événements importants étudiés au Moyen Âge.",
         "checklist": [
-          "Repérer le Moyen Âge sur une frise.",
-          "Placer 987.",
-          "Identifier Hugues Capet.",
-          "Comprendre le début de la dynastie capétienne.",
-          "Relier date et événement."
+          "Identifier les repères étudiés.",
+          "Les associer au Moyen Âge.",
+          "Les placer sur une frise.",
+          "Respecter leur ordre chronologique."
         ],
         "proofs": [
-          "Frise à compléter.",
-          "Association repère-personnage."
+          "Frise ou cartes de repères.",
+          "Placement commenté."
         ],
-        "lsu": "Se repérer dans le Moyen Âge."
+        "lsu": "Situer quelques figures et événements du Moyen Âge."
       },
       {
         "code": "HIS-P4-02",
-        "domain": "Royaume de France",
-        "title": "Comprendre la notion de domaine royal",
-        "jeSais": "Je sais expliquer la différence entre le domaine royal et le royaume.",
+        "domain": "Modes de vie",
+        "title": "Décrire quelques aspects de la vie au Moyen Âge",
+        "jeSais": "Je sais utiliser des documents pour expliquer comment vivaient différentes personnes au Moyen Âge.",
         "checklist": [
-          "Observer une carte du royaume.",
-          "Identifier le domaine directement contrôlé par le roi.",
-          "Repérer les grands fiefs.",
-          "Comprendre l’évolution du domaine royal.",
-          "Employer domaine royal et royaume."
+          "Observer des documents sur la vie quotidienne.",
+          "Identifier plusieurs groupes ou activités.",
+          "Prélever des informations pertinentes.",
+          "Comparer au moins deux situations de vie."
         ],
         "proofs": [
-          "Lecture de cartes successives.",
-          "Explication orale."
+          "Images ou textes à comparer.",
+          "Description ou tableau comparatif."
         ],
-        "lsu": "Comprendre la construction territoriale du royaume."
+        "lsu": "Décrire quelques aspects de la vie au Moyen Âge."
       },
       {
         "code": "HIS-P4-03",
         "domain": "Pouvoir royal",
-        "title": "Décrire la cérémonie du sacre",
-        "jeSais": "Je sais décrire les principales étapes du sacre d’un roi.",
+        "title": "Expliquer simplement l’affirmation du pouvoir royal",
+        "jeSais": "Je sais utiliser des exemples étudiés pour expliquer comment le pouvoir du roi s’est renforcé.",
         "checklist": [
-          "Identifier le lieu et les acteurs.",
-          "Repérer les objets symboliques.",
-          "Décrire l’onction et le couronnement.",
-          "Comprendre la dimension religieuse.",
-          "Expliquer ce que le sacre affirme."
+          "Identifier un exemple étudié lié au pouvoir royal.",
+          "Repérer ce qui montre le renforcement du pouvoir.",
+          "Relier un personnage ou un événement à cette évolution.",
+          "Formuler une explication simple."
         ],
         "proofs": [
-          "Description d’une miniature.",
-          "Remise en ordre des étapes du sacre."
+          "Documents accompagnés d’une explication orale.",
+          "Courte réponse organisée."
         ],
-        "lsu": "Comprendre l’affirmation de l’autorité royale."
+        "lsu": "Expliquer simplement l’affirmation du pouvoir royal."
       },
       {
         "code": "HIS-P4-04",
-        "domain": "Dynasties",
-        "title": "Comprendre ce qu’est une dynastie",
-        "jeSais": "Je sais expliquer ce qu’est une dynastie royale.",
+        "domain": "Démarche historique",
+        "title": "Mettre en relation plusieurs documents pour expliquer un événement",
+        "jeSais": "Je sais utiliser plusieurs indices pour expliquer simplement un événement historique étudié.",
         "checklist": [
-          "Comprendre la succession au sein d’une famille.",
-          "Identifier les Capétiens.",
-          "Distinguer roi et dynastie.",
-          "Lire un arbre généalogique simple.",
-          "Employer le mot dynastie."
+          "Prélever une information dans chaque document.",
+          "Repérer les informations qui se complètent.",
+          "Écarter les informations qui ne répondent pas à la question.",
+          "Construire une explication à partir de plusieurs indices."
         ],
         "proofs": [
-          "Lecture d’un arbre généalogique.",
-          "Définition illustrée."
+          "Petit dossier documentaire.",
+          "Réponse expliquée à partir de plusieurs sources."
         ],
-        "lsu": "Connaître l’organisation de la monarchie."
-      },
-      {
-        "code": "HIS-P4-05",
-        "domain": "Cartes historiques",
-        "title": "Lire l’agrandissement du royaume sur plusieurs cartes",
-        "jeSais": "Je sais comparer des cartes pour voir comment le royaume de France s’agrandit.",
-        "checklist": [
-          "Lire dates, titres et légendes.",
-          "Repérer les territoires ajoutés.",
-          "Comparer deux cartes.",
-          "Décrire une évolution.",
-          "Formuler une conclusion chronologique."
-        ],
-        "proofs": [
-          "Comparaison de cartes.",
-          "Texte d’évolution."
-        ],
-        "lsu": "Lire une évolution territoriale."
-      },
-      {
-        "code": "HIS-P4-06",
-        "domain": "Figures historiques",
-        "title": "Connaître une figure de la construction du royaume",
-        "jeSais": "Je sais présenter le rôle d’une figure historique comme Philippe Auguste, Aliénor d’Aquitaine ou Blanche de Castille.",
-        "checklist": [
-          "Identifier la personne.",
-          "La situer dans le temps.",
-          "Décrire une action importante.",
-          "Utiliser des sources adaptées.",
-          "Éviter de réduire son rôle à une anecdote."
-        ],
-        "proofs": [
-          "Portrait historique.",
-          "Présentation orale courte."
-        ],
-        "lsu": "Connaître des acteurs et actrices de l’histoire."
-      },
-      {
-        "code": "HIS-P4-07",
-        "domain": "Pouvoir royal",
-        "title": "Identifier des moyens d’affirmer l’autorité du roi",
-        "jeSais": "Je sais citer des moyens utilisés par les rois pour renforcer leur pouvoir.",
-        "checklist": [
-          "Repérer armée, justice, impôt et monnaie.",
-          "Comprendre le rôle des agents du roi.",
-          "Relier château et contrôle du territoire.",
-          "Donner plusieurs exemples.",
-          "Organiser une réponse."
-        ],
-        "proofs": [
-          "Carte mentale.",
-          "Question de synthèse."
-        ],
-        "lsu": "Comprendre l’affirmation du pouvoir royal."
+        "lsu": "Mettre en relation plusieurs documents pour expliquer un événement historique."
       }
     ],
     "p5Competencies": [
       {
         "code": "HIS-P5-01",
-        "domain": "Repères chronologiques",
-        "title": "Situer les Capétiens, les Valois et la guerre de Cent Ans",
-        "jeSais": "Je sais placer les dynasties et la guerre de Cent Ans sur une frise.",
+        "domain": "Repères historiques",
+        "title": "Situer quelques figures et événements des Temps modernes",
+        "jeSais": "Je sais placer sur une frise des personnages et événements étudiés des Temps modernes.",
         "checklist": [
-          "Repérer Capétiens et Valois.",
-          "Situer les XIVe et XVe siècles.",
-          "Placer la guerre de Cent Ans.",
-          "Respecter l’ordre chronologique.",
-          "Relier dynastie et période."
+          "Identifier les repères étudiés.",
+          "Les associer aux Temps modernes.",
+          "Les placer sur une frise.",
+          "Respecter leur ordre chronologique."
         ],
         "proofs": [
-          "Frise de synthèse.",
-          "Questions de repérage."
+          "Frise à compléter.",
+          "Placement de figures ou événements étudiés."
         ],
-        "lsu": "Mémoriser des repères du Moyen Âge."
+        "lsu": "Situer quelques figures et événements des Temps modernes."
       },
       {
         "code": "HIS-P5-02",
-        "domain": "Guerre de Cent Ans",
-        "title": "Expliquer simplement l’origine d’un conflit dynastique",
-        "jeSais": "Je sais expliquer pourquoi plusieurs souverains revendiquent le royaume de France.",
+        "domain": "Évolutions historiques",
+        "title": "Identifier des transformations importantes entre Moyen Âge et Temps modernes",
+        "jeSais": "Je sais comparer des documents pour montrer ce qui change entre deux époques.",
         "checklist": [
-          "Identifier le problème de succession.",
-          "Comprendre une revendication dynastique simple.",
-          "Distinguer causes et déroulement.",
-          "Employer le mot guerre.",
-          "Formuler une explication adaptée."
+          "Observer des documents appartenant à deux époques.",
+          "Choisir des éléments comparables.",
+          "Identifier une ou plusieurs transformations.",
+          "Formuler une conclusion chronologique."
         ],
         "proofs": [
-          "Schéma de succession simplifié.",
-          "Court paragraphe explicatif."
+          "Comparaison de documents.",
+          "Tableau avant / après ou courte explication."
         ],
-        "lsu": "Comprendre une cause historique."
+        "lsu": "Identifier des transformations entre Moyen Âge et Temps modernes."
       },
       {
         "code": "HIS-P5-03",
         "domain": "Figures historiques",
-        "title": "Présenter une figure de la guerre de Cent Ans",
-        "jeSais": "Je sais présenter le rôle d’une personne importante de la guerre de Cent Ans.",
+        "title": "Prélever et croiser des informations sur une grande figure historique",
+        "jeSais": "Je sais utiliser plusieurs documents pour présenter une grande figure étudiée.",
         "checklist": [
-          "Identifier la personne.",
-          "La situer dans le temps.",
-          "Décrire une action.",
-          "Distinguer faits et légendes.",
-          "Expliquer son importance."
+          "Identifier la figure étudiée et son époque.",
+          "Prélever des informations dans plusieurs documents.",
+          "Comparer ou compléter les informations recueillies.",
+          "Présenter l’essentiel sans ajouter d’informations non justifiées."
         ],
         "proofs": [
-          "Portrait historique.",
-          "Présentation orale."
+          "Petit dossier documentaire.",
+          "Présentation orale ou écrite d’une grande figure."
         ],
-        "lsu": "Connaître des acteurs et actrices de l’histoire."
+        "lsu": "Croiser des informations pour présenter une grande figure historique."
       },
       {
         "code": "HIS-P5-04",
-        "domain": "Monarchie",
-        "title": "Expliquer comment le roi affirme son autorité",
-        "jeSais": "Je sais expliquer comment la monarchie renforce son pouvoir sur le royaume.",
+        "domain": "Synthèse historique",
+        "title": "Expliquer une évolution historique étudiée",
+        "jeSais": "Je sais raconter avec mes mots une évolution importante et la replacer dans le temps.",
         "checklist": [
-          "Mobiliser sacre, armée, justice, impôt et monnaie.",
-          "Relier pouvoir et territoire.",
-          "Donner des exemples précis.",
-          "Comparer début et fin de période.",
-          "Rédiger une conclusion."
+          "Identifier l’évolution choisie.",
+          "Sélectionner quelques repères utiles.",
+          "Respecter l’ordre chronologique.",
+          "Expliquer ce qui change entre le début et la fin."
         ],
         "proofs": [
-          "Réponse organisée.",
-          "Carte mentale de synthèse."
+          "Présentation orale.",
+          "Frise commentée ou court récit historique."
         ],
-        "lsu": "Comprendre la construction de l’État royal."
-      },
-      {
-        "code": "HIS-P5-05",
-        "domain": "Cartes historiques",
-        "title": "Décrire l’évolution du royaume de France",
-        "jeSais": "Je sais utiliser des cartes pour raconter l’agrandissement du royaume.",
-        "checklist": [
-          "Classer les cartes chronologiquement.",
-          "Repérer les changements.",
-          "Employer des connecteurs temporels.",
-          "Identifier des territoires.",
-          "Expliquer une évolution générale."
-        ],
-        "proofs": [
-          "Récit à partir de cartes.",
-          "Carte commentée."
-        ],
-        "lsu": "Maîtriser la lecture de cartes historiques."
-      },
-      {
-        "code": "HIS-P5-06",
-        "domain": "Vocabulaire",
-        "title": "Employer le vocabulaire du royaume médiéval",
-        "jeSais": "Je sais utiliser correctement les mots monarchie, royaume, dynastie, sacre, impôt et guerre.",
-        "checklist": [
-          "Définir chaque mot simplement.",
-          "Associer mot et exemple.",
-          "Réutiliser dans une phrase.",
-          "Distinguer royaume et domaine royal.",
-          "Corriger un emploi imprécis."
-        ],
-        "proofs": [
-          "Lexique illustré.",
-          "Texte utilisant plusieurs mots-clés."
-        ],
-        "lsu": "Maîtriser le vocabulaire historique."
-      },
-      {
-        "code": "HIS-P5-07",
-        "domain": "Synthèse annuelle",
-        "title": "Raconter une grande évolution historique étudiée",
-        "jeSais": "Je sais raconter une évolution de la Préhistoire au royaume de France en utilisant des repères.",
-        "checklist": [
-          "Choisir une évolution.",
-          "Sélectionner des repères utiles.",
-          "Respecter la chronologie.",
-          "Employer des connecteurs temporels.",
-          "Conclure sans anachronisme."
-        ],
-        "proofs": [
-          "Récit historique court.",
-          "Frise commentée."
-        ],
-        "lsu": "Décrire et expliquer le passé."
+        "lsu": "Expliquer une évolution historique étudiée en utilisant des repères chronologiques."
       }
     ]
   },

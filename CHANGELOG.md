@@ -1,3 +1,12 @@
+# V34.27 — 20/08/2026
+
+- Refonte du référentiel Histoire CE2 : 20 compétences structurantes, 4 par période.
+- Nouvelle progression P1→P5 validée : repères temporels, modes de vie, grandes figures/événements de P3 à P5.
+- Réécriture de `title`, `jeSais`, `checklist`, `proofs` et `lsu` avec des compétences observables.
+- Suppression des anciennes compétences Histoire `05`, `06` et `07`.
+- Alignement des références Histoire dans les données d’emploi du temps afin d’éviter les codes orphelins.
+- Balises `<title>` et cache-busting de `data.js` mis à jour en V34.27.
+
 ## V34.24 — EMC : traces authentiques de réussite
 - Rééquilibre P1/P2/P3 selon la progression validée : cadre commun → message clair → bien commun/conseil d’élèves.
 - Ajoute 5 cartes EMC à la fenêtre Évaluations, chacune avec un type de trace explicite.

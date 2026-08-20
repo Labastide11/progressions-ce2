@@ -1,3 +1,14 @@
+
+## V34.27 — Référentiel Histoire CE2 recentré
+
+- Référentiel Histoire ramené de 35 à 20 compétences structurantes : 4 par période.
+- P1 : se repérer dans le temps historique.
+- P2 : comparer les modes de vie à différentes époques.
+- P3 : Antiquité et débuts du Moyen Âge — premières grandes figures et événements.
+- P4 : Moyen Âge et construction du royaume.
+- P5 : Temps modernes et ouverture vers l’époque contemporaine.
+- Tous les intitulés sont formulés avec des actions observables : ordonner, situer, comparer, prélever, raconter, expliquer.
+- Références Histoire de l’emploi du temps alignées sur les nouveaux codes `HIS-Px-01` à `HIS-Px-04`.
 ## V34.24 — EMC : traces authentiques de réussite
 - Référentiel EMC rééquilibré : P1 cadre commun, P2 message clair, P3 bien commun et conseil d’élèves.
 - Ajout de l’EMC dans la fenêtre Évaluations avec 5 situations de référence, sans imposer de fiche papier.
