@@ -1,3 +1,9 @@
+## V34.30 — Évaluations Géographie P1→P5
+- 5 cartes d’évaluation Géographie ajoutées dans `evaluations-data.js`.
+- Filtre Géographie et détection des créneaux ajoutés dans `evaluations-ui.js`.
+- Repères EDT : P1 16/10/2026 ; P2 17/12/2026 ; P3 05/02/2027 ; P4 26/03/2027 ; P5 18/06/2027.
+- Respect de la règle : aucune évaluation programmée en janvier.
+
 ## V34.29 — Consolidation du référentiel Géographie CE2
 
 - 35 compétences Géographie ramenées à 25 compétences structurantes et observables.

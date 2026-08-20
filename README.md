@@ -1,3 +1,12 @@
+# Progressions CE2 — V34.30
+
+## Évaluations Géographie P1→P5
+- Ajout de 5 situations de référence en Géographie, une par période.
+- P1 : carte de population ; P2 : paysage urbain + plan ; P3 : comparaison campagne/littoral/montagne ; P4 : territoire de travail ; P5 : activités, territoires et environnement.
+- Chaque carte est reliée aux compétences canoniques GEOG de sa période.
+- Ajout de Géographie au filtre Matière de la fenêtre Évaluations.
+- Créneaux de référence repérés dans l’emploi du temps ; P3 reste hors janvier (trace en février).
+
 # Progressions CE2
 ## V34.28 — Évaluations Histoire P1→P5
 

@@ -288,6 +288,52 @@ window.EVALUATIONS_CE2 = {
       }
     }
   },
+  geographie: {
+    label: 'Géographie',
+    icon: '🗺️',
+    periods: {
+      p1: {
+        title: 'Période 1 — Se repérer en France et lire une carte de population',
+        status: 'ready',
+        traceType: 'Carte + réponses courtes',
+        traceSource: 'evaluation_papier',
+        description: 'Situation de référence : localiser la France, Paris et quelques grandes villes, lire une carte de population, comparer des espaces plus ou moins peuplés et proposer une explication simple à partir des documents.',
+        skillCodes: ['GEOG-P1-01','GEOG-P1-02','GEOG-P1-03','GEOG-P1-04','GEOG-P1-05']
+      },
+      p2: {
+        title: 'Période 2 — Habiter la ville : lire un paysage et utiliser un plan',
+        status: 'ready',
+        traceType: 'Photographie + plan',
+        traceSource: 'evaluation_papier',
+        description: 'Situation de référence : observer un paysage urbain, distinguer des formes d’habitat, identifier les fonctions d’un quartier, utiliser un plan, comparer des espaces urbains et relier un aménagement aux besoins des habitants.',
+        skillCodes: ['GEOG-P2-01','GEOG-P2-02','GEOG-P2-03','GEOG-P2-04','GEOG-P2-05','GEOG-P2-06']
+      },
+      p3: {
+        title: 'Période 3 — Habiter la France : campagne, littoral et montagne',
+        status: 'ready',
+        traceType: 'Photographies + carte + comparaison',
+        traceSource: 'evaluation_papier',
+        description: 'Situation de référence à partir de février : identifier plusieurs types d’espaces, comparer les façons d’y habiter et l’accès aux services, puis localiser les principaux espaces étudiés.',
+        skillCodes: ['GEOG-P3-01','GEOG-P3-02','GEOG-P3-03','GEOG-P3-04','GEOG-P3-05']
+      },
+      p4: {
+        title: 'Période 4 — Travailler en France : observer un territoire',
+        status: 'ready',
+        traceType: 'Paysage + documents courts',
+        traceSource: 'evaluation_papier',
+        description: 'Situation de référence : identifier des activités et lieux de travail, distinguer bien et service, lire un paysage de travail et expliquer simplement le rôle des transports ou des aménagements.',
+        skillCodes: ['GEOG-P4-01','GEOG-P4-02','GEOG-P4-03','GEOG-P4-04']
+      },
+      p5: {
+        title: 'Période 5 — Activités, territoires et environnement',
+        status: 'ready',
+        traceType: 'Dossier documentaire + explication',
+        traceSource: 'evaluation_papier',
+        description: 'Situation de référence : décrire un espace agricole ou touristique, reconstituer le parcours d’un produit, identifier des activités et services, repérer leurs effets sur le territoire et comparer plusieurs espaces de travail.',
+        skillCodes: ['GEOG-P5-01','GEOG-P5-02','GEOG-P5-03','GEOG-P5-04','GEOG-P5-05']
+      }
+    }
+  },
   anglais: {
     label: 'Anglais',
     icon: '🇬🇧',
