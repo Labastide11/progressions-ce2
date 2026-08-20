@@ -1,4 +1,16 @@
-# Progressions CE2 — V34.31
+# Progressions CE2 — V34.32
+
+## V34.32 — Rééquilibrage du calendrier des évaluations
+- Les évaluations de référence sont positionnées en fin de séquence plutôt qu’accumulées en fin de période.
+- Distinction explicite dans l’emploi du temps : **Évaluation de référence**, **Petite trace formative**, **Observation formative**, **Remédiation / validation différée**.
+- P1 : Histoire avancée au 5 octobre ; Sciences et Géographie restent les 15–16 octobre.
+- P2 : Histoire au 30 novembre ; Sciences au 10 décembre ; deux séances de Géographie les 7 et 14 décembre avant l’évaluation du 17 décembre.
+- P3 : aucune évaluation en janvier ; les trois traces QLM de février sont différenciées, dont Sciences en observation pratique VTT.
+- P4 : Histoire au 15 mars ; Sciences le 25 mars ; Géographie reportée au 2 avril après consolidation.
+- P5 : Sciences déplacée au 3 juin après la fin réelle de la séquence ; Histoire enseignée les 24/31 mai et 7 juin avant l’évaluation du 14 juin ; Géographie le 18 juin.
+- Le détecteur automatique des cartes Évaluations privilégie désormais les lignes explicitement marquées **Évaluation de référence** et pénalise les traces formatives/remédiations.
+- Objectif : réduire la surcharge cognitive et la charge de correction, tout en conservant des traces fiables pour le LSU.
+- Français et Mathématiques : les nombreuses micro-vérifications sont reclassées en **petites traces formatives** ; une seule entrée de **référence** par matière et par période sert de repère calendrier, avec passation possible en plusieurs tâches courtes.
 
 ## Sciences consolidées : 25 compétences + évaluations authentiques
 - Référentiel Sciences ramené de 40 à 25 compétences structurantes, 5 par période.

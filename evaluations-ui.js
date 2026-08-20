@@ -142,7 +142,9 @@
       const title=String(week.title||'').toLowerCase();
       const intentBonus=/valider|validation|évaluer|évaluation/.test(title)?12:/bilan/.test(title)?8:0;
       const lateBonus=weekIndex*.35;
-      candidates.push({week,weekIndex,weekNumber:evaluationWeekNumber(week),overlap,rows,matchingDays,score:overlap*4+rows*2+intentBonus+lateBonus});
+      const referenceBonus=/évaluation de référence|trace de référence/.test(text)?60:0;
+      const formativePenalty=/observation formative|petite trace formative|suivi des automatismes|remédiation|retour réflexif/.test(text)?-40:0;
+      candidates.push({week,weekIndex,weekNumber:evaluationWeekNumber(week),overlap,rows,matchingDays,score:overlap*4+rows*2+intentBonus+lateBonus+referenceBonus+formativePenalty});
     });
     if(!candidates.length)return null;
     candidates.sort((a,b)=>b.score-a.score||b.weekIndex-a.weekIndex);

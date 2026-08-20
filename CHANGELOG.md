@@ -1,3 +1,14 @@
+## V34.32 — Rééquilibrage du calendrier des évaluations
+- Programmation des évaluations de référence à la fin effective des séquences.
+- Nettoyage des libellés : référence / formative / observation / remédiation.
+- Rééquilibrage P1→P5 pour limiter les semaines de surcharge ; Géographie P4 reportée au 2 avril après consolidation.
+- Géographie P2 : ajout de deux séances d’apprentissage avant l’évaluation.
+- Histoire P5 : ajout d’une séquence courte avant l’évaluation finale.
+- Sciences P5 : évaluation déplacée après chaîne alimentaire et étude du milieu.
+- Janvier P3 reste sans aucune évaluation programmée.
+- Détection automatique des dates d’évaluation renforcée pour privilégier les vraies traces de référence.
+- Français/Mathématiques : micro-évaluations reclassées en traces formatives et création d’un repère de référence unique par période dans l’emploi du temps.
+
 ## V34.31 — Sciences : référentiel + évaluations P1→P5
 - 40 compétences Sciences remplacées par 25 compétences observables (5 par période).
 - P2 croisé avec la piscine : eau, changements d’état, expérimentation et flottabilité.
