@@ -194,3 +194,6 @@ Chaque carte d’évaluation affiche désormais le semestre auquel elle contribu
 
 ### V34.36
 Correction du filtre de la fenêtre Évaluations : le rendu de plusieurs matières n’est plus interrompu par la détection automatique de programmation.
+
+### V34.37 — moteur LSU V1
+Le fichier `lsu-synthesis-engine.js` contient désormais le premier moteur de synthèse semestrielle, volontairement déconnecté de l'interface. Il exploite les traces A/B/C/D, respecte la priorité des preuves enseignantes, sait signaler les progressions à réexaminer et prépare les vigilances sur compétences structurantes. Voir `docs/MOTEUR_LSU_V1_V34_37.md`. Aucun écran LSU n'est activé en V34.37.

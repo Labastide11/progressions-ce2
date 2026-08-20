@@ -222,3 +222,14 @@ Le détail complet des anciennes versions est conservé dans `docs/historique/`.
 - Ordre des cartes : Français → Mathématiques → Anglais → EMC.
 - Badge matière ajouté à chaque carte.
 - Grille de 2 cartes larges par ligne sur PC ; carte unique pleine largeur ; responsive 1 colonne.
+
+## V34.37 — Moteur de synthèse LSU V1 (sans interface)
+- Ajout de `lsu-synthesis-engine.js`, module indépendant et non chargé par les pages HTML.
+- Synthèse par compétence : priorité A, traces formatives B, Maître Hibou C, indicateurs D.
+- Maître Hibou peut confirmer ou nuancer, mais ne remplace jamais une preuve enseignante forte.
+- Gestion de la progression, de la consolidation récente, des fluctuations et des données insuffisantes.
+- Synthèse matière sans moyenne arithmétique : niveau dominant, profil solide/consolidation/priorité, couverture, tendance et confiance.
+- Détection de vigilance pédagogique sur compétences structurantes persistantes (`lsuCore`, `lsuCoreGroup`).
+- `Dépassé` matière exige des preuves explicites de transfert.
+- Ajout de 8 scénarios automatisés dans `tools/test_lsu_engine.js`.
+- Aucun écran, bouton ou flux de navigation LSU ajouté à cette version.
