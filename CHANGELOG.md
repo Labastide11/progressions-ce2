@@ -1,3 +1,12 @@
+
+## V34.34 — EPS compact et optionnel
+- Réduction du référentiel EPS de 30 à 14 compétences.
+- Piscine P2 : immersion, déplacement, équilibre/flottaison, enchaînement aquatique.
+- VTT P3 : maîtrise du vélo, trajectoire, vitesse, sécurité/organisation.
+- Gym/Lutte P4 : enchaînement, présentation, opposition, respect/sécurité.
+- Deux repères transversaux en P1/P5.
+- Pas de carte d'évaluation EPS imposée ; validation au fil des observations si possible.
+- Réalignement des codes EPS présents dans l'emploi du temps.
 ## V34.33 — Nettoyage des références de compétences
 
 - Référentiel canonique contrôlé : 507 codes uniques.

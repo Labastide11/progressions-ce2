@@ -173,3 +173,12 @@ Chaque carte d’évaluation affiche désormais le semestre auquel elle contribu
 - P5 : 5 compétences — activités, services, territoires et environnement.
 - Formulations recentrées sur des actions observables : localiser, lire, comparer, décrire, utiliser, identifier, expliquer.
 - Références aux anciens codes fusionnés réalignées dans l’emploi du temps afin d’éviter les compétences orphelines.
+
+## V34.34 — EPS compact et optionnel
+- Référentiel EPS allégé de 30 à 14 compétences observables.
+- P2 : 4 compétences Natation / Piscine.
+- P3 : 4 compétences VTT reliées aux sorties à la Cavayère.
+- P4 : 4 compétences Gymnastique / Lutte.
+- P1 et P5 : 2 repères transversaux (engagement/sécurité puis progrès/performance).
+- Aucune évaluation EPS obligatoire n'est ajoutée : les compétences peuvent être renseignées uniquement lorsqu'une trace fiable est disponible.
+- Références EPS de l'emploi du temps réalignées sur les nouveaux codes canoniques.
