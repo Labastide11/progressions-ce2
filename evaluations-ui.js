@@ -61,7 +61,8 @@
     anglais:{label:'Anglais',icon:'🇬🇧',order:3},
     histoire:{label:'Histoire',icon:'🏺',order:4},
     geographie:{label:'Géographie',icon:'🗺️',order:5},
-    emc:{label:'EMC',icon:'🤝',order:6}
+    sciences:{label:'Sciences',icon:'🔬',order:6},
+    emc:{label:'EMC',icon:'🤝',order:7}
   };
   function subjectBadge(subject){
     const meta=SUBJECT_META[subject]||{label:subject,icon:'📚'};
@@ -117,6 +118,7 @@
     if(subject==='anglais')return kind==='english'||name.includes('anglais');
     if(subject==='histoire')return kind==='history'||name.includes('histoire');
     if(subject==='geographie')return name.includes('géographie')||name.includes('geographie')||kind==='geography';
+    if(subject==='sciences')return kind==='science'||name.includes('sciences')||name.includes('science');
     if(subject==='emc')return kind==='emc'||name.includes('emc');
     return false;
   }

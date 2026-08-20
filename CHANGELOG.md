@@ -1,3 +1,12 @@
+## V34.31 — Sciences : référentiel + évaluations P1→P5
+- 40 compétences Sciences remplacées par 25 compétences observables (5 par période).
+- P2 croisé avec la piscine : eau, changements d’état, expérimentation et flottabilité.
+- P3 croisé avec la Cavayère : VTT, fonctions techniques, transmission, sécurité, test et réglage.
+- P4 : corps, effort, pouls, respiration et santé.
+- P5 : cycles de vie, besoins, chaînes alimentaires et milieux ; mini-trace électricité complémentaire.
+- 5 cartes Sciences ajoutées dans `evaluations-data.js` et filtre Sciences activé.
+- EDT P1→P5 réaligné ; aucune trace formelle P3 en janvier.
+
 ## V34.30 — Évaluations Géographie P1→P5
 - 5 cartes d’évaluation Géographie ajoutées dans `evaluations-data.js`.
 - Filtre Géographie et détection des créneaux ajoutés dans `evaluations-ui.js`.

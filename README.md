@@ -1,3 +1,13 @@
+# Progressions CE2 — V34.31
+
+## Sciences consolidées : 25 compétences + évaluations authentiques
+- Référentiel Sciences ramené de 40 à 25 compétences structurantes, 5 par période.
+- P1 : démarche scientifique et vivant ; P2 : eau/matière en lien avec la piscine ; P3 : objets techniques à partir du VTT à la Cavayère ; P4 : corps, effort et santé ; P5 : cycles de vie, besoins et milieux.
+- 5 situations de référence ajoutées à la fenêtre Évaluations, principalement en observation/manipulation.
+- P3 : aucune évaluation programmée en janvier ; trace de référence le 4 février 2027.
+- Électricité conservée en P5 sous forme de mini-situation pratique, sans créer une 26e compétence structurante.
+- Emploi du temps Sciences réaligné sur les nouveaux codes ; sorties Cavayère P3 indiquées en VTT.
+
 # Progressions CE2 — V34.30
 
 ## Évaluations Géographie P1→P5

@@ -334,6 +334,52 @@ window.EVALUATIONS_CE2 = {
       }
     }
   },
+  sciences: {
+    label: 'Sciences',
+    icon: '🔬',
+    periods: {
+      p1: {
+        title: 'Période 1 — Mener une petite investigation scientifique',
+        status: 'ready',
+        traceType: 'Manipulation + observations + conclusion',
+        traceSource: 'observation_classe',
+        description: 'Situation de référence à partir de graines ou de plantes : formuler une question, mettre en œuvre une expérience simple, observer, comparer les résultats puis conclure.',
+        skillCodes: ['SCI-P1-01','SCI-P1-02','SCI-P1-03','SCI-P1-04','SCI-P1-05']
+      },
+      p2: {
+        title: 'Période 2 — Expérimenter avec l’eau',
+        status: 'ready',
+        traceType: 'Expérience + schéma/tableau',
+        traceSource: 'observation_classe',
+        description: 'Situation de référence articulée avec la période piscine : identifier les états de l’eau, observer un changement d’état, expérimenter, comparer le comportement d’objets dans l’eau puis tirer une conclusion.',
+        skillCodes: ['SCI-P2-01','SCI-P2-02','SCI-P2-03','SCI-P2-04','SCI-P2-05']
+      },
+      p3: {
+        title: 'Période 3 — Comprendre comment fonctionne un VTT',
+        status: 'ready',
+        traceType: 'VTT réel + oral pratique',
+        traceSource: 'observation_classe',
+        description: 'Situation de référence à partir de février, en lien avec les sorties à la Cavayère : identifier le besoin, les parties et fonctions du vélo, expliquer la transmission du mouvement, vérifier la sécurité et proposer un réglage simple.',
+        skillCodes: ['SCI-P3-01','SCI-P3-02','SCI-P3-03','SCI-P3-04','SCI-P3-05']
+      },
+      p4: {
+        title: 'Période 4 — Observer les effets de l’effort sur mon corps',
+        status: 'ready',
+        traceType: 'Mesures avant/après + oral',
+        traceSource: 'observation_classe',
+        description: 'Situation de référence : observer un mouvement, mesurer ou comparer pouls et respiration avant/après effort, identifier les réactions du corps puis justifier quelques habitudes favorables à la santé.',
+        skillCodes: ['SCI-P4-01','SCI-P4-02','SCI-P4-03','SCI-P4-04','SCI-P4-05']
+      },
+      p5: {
+        title: 'Période 5 — Comprendre la vie dans un milieu',
+        status: 'ready',
+        traceType: 'Cartes + observation/document + oral',
+        traceSource: 'observation_classe',
+        description: 'Situation de référence : ordonner un cycle de vie, comparer des développements, identifier des besoins, construire une chaîne alimentaire et expliquer une relation entre êtres vivants et milieu. Une mini-situation électricité est menée séparément comme réinvestissement technique.',
+        skillCodes: ['SCI-P5-01','SCI-P5-02','SCI-P5-03','SCI-P5-04','SCI-P5-05']
+      }
+    }
+  },
   anglais: {
     label: 'Anglais',
     icon: '🇬🇧',
