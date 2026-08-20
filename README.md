@@ -1,3 +1,7 @@
+## V34.41 — Correctif diagnostic LSU réel
+
+Correctif ciblé de V34.40 : le callback JSONP du `student_snapshot` utilisait `root` à l'intérieur de la factory, alors que cette variable n'y était pas accessible dans le navigateur. Le connecteur utilise désormais `globalThis`, ce qui conserve le mode lecture seule et permet le diagnostic réel depuis la console.
+
 # Progressions CE2
 ## V34.40 — Connecteur LSU réel en lecture seule
 

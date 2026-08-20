@@ -10,7 +10,7 @@
 
   if(!LSU) throw new Error('LSUSynthesisEngine est requis avant LSURealConnector.');
 
-  const VERSION='1.0.0';
+  const VERSION='1.0.1';
   const API_URL_KEY='hibou_sync_api_url_v25754';
   const DEVICE_KEY='hibou_sync_device_key_v25754';
   const DEFAULT_API_URL='https://script.google.com/macros/s/AKfycbydzPTQ9ZLEPYezHou2-O4IK24ip51sLTpe9qdi2xREuQvDBKRlVqsYYDiKLrzAODc/exec';
@@ -49,9 +49,9 @@
       const cb='progressionsLSU_'+Date.now()+'_'+Math.random().toString(36).slice(2);
       const script=document.createElement('script');
       let done=false;
-      const finish=(err,data)=>{if(done)return;done=true;clearTimeout(timer);try{delete root[cb]}catch(e){};script.remove();err?reject(err):resolve(data)};
+      const finish=(err,data)=>{if(done)return;done=true;clearTimeout(timer);try{delete globalThis[cb]}catch(e){};script.remove();err?reject(err):resolve(data)};
       const timer=setTimeout(()=>finish(new Error('Délai de connexion au student_snapshot dépassé.')),Number(options.timeoutMs)||20000);
-      root[cb]=data=>{
+      globalThis[cb]=data=>{
         if(!data||data.ok===false)return finish(new Error(data&&data.error||'Réponse student_snapshot invalide.'));
         finish(null,data);
       };

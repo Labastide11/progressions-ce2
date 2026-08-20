@@ -1,3 +1,10 @@
+## V34.41 — 20 août 2026 — Correctif JSONP du diagnostic LSU réel
+
+- Correction de `lsu-real-connector.js` : le callback JSONP est maintenant enregistré sur `globalThis` au lieu d'une variable `root` hors portée.
+- Le diagnostic `LSURealConnector.diagnosticStudent(...)` peut désormais démarrer réellement dans le navigateur.
+- Cache-busting du moteur/connecteur LSU passé à `v=34.41`.
+- Aucun changement d'interface et aucune écriture de données.
+
 ## V34.40 — 20 août 2026 — Connecteur LSU réel en lecture seule
 
 - Branchement du moteur LSU sur la structure réelle `student_snapshot`.

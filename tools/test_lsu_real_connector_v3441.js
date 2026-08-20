@@ -1,0 +1,10 @@
+const fs=require('fs'), vm=require('vm'), path=require('path');
+const root=path.resolve(__dirname,'..');
+let appended=null;
+const head={appendChild(el){appended=el; const u=new URL(el.src); const cb=u.searchParams.get('callback'); if(!cb) throw new Error('callback absent'); setTimeout(()=>ctx[cb]({ok:true,snapshot:{eleve:{prenom:'Test'},competences:[],reussites:[],records:[],evaluation_traces:[]}}),0);}};
+const ctx={console,setTimeout,clearTimeout,URLSearchParams,URL,globalThis:null,localStorage:{getItem(k){return k.includes('device_key')?'TEST_KEY':'';}},document:{createElement(){return {remove(){},async:false,src:'',onerror:null};},head}};
+ctx.globalThis=ctx; ctx.window=ctx;
+vm.createContext(ctx);
+vm.runInContext(fs.readFileSync(path.join(root,'lsu-synthesis-engine.js'),'utf8'),ctx);
+vm.runInContext(fs.readFileSync(path.join(root,'lsu-real-connector.js'),'utf8'),ctx);
+(async()=>{const r=await ctx.LSURealConnector.jsonpSnapshot('Test',{timeoutMs:1000}); if(!r||!r.ok) throw new Error('JSONP non résolu'); if(!appended) throw new Error('script JSONP non ajouté'); console.log('OK — V34.41 : callback JSONP globalThis fonctionnel.');})().catch(e=>{console.error(e);process.exit(1)});
