@@ -1,3 +1,14 @@
+# Progressions CE2
+## V34.40 — Connecteur LSU réel en lecture seule
+
+- Ajout de `lsu-real-connector.js`, adaptateur entre `student_snapshot` et le moteur LSU V1.
+- Aucune interface nouvelle et aucun diagnostic automatique au chargement.
+- Lecture seule stricte : uniquement `student_snapshot`, aucun POST ni action d’écriture.
+- Filtrage S1/P1-P2 et S2/P3-P5 ; les compétences annuelles sont rattachées au semestre par la date de leur trace.
+- Sources A/B/C/D comptabilisées séparément ; D reste informatif et n’influence pas le niveau LSU.
+- Rapport de diagnostic par élève disponible en mémoire et au format Markdown.
+- Test automatisé : `tools/test_lsu_real_connector_v3440.js`.
+
 
 ## V34.39 — Simulation LSU S1 sur élève fictif
 

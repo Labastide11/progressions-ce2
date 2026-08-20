@@ -1,3 +1,15 @@
+## V34.40 — 20 août 2026 — Connecteur LSU réel en lecture seule
+
+- Branchement du moteur LSU sur la structure réelle `student_snapshot`.
+- Nouveau module `lsu-real-connector.js`, chargé dans `mon-suivi.html` sans élément visuel.
+- Aucun appel API au chargement : diagnostic uniquement à la demande.
+- Aucune écriture : pas de POST, pas de `save_*`, pas de mutation Google Sheet ou localStorage.
+- Conversion des `evaluation_traces` en preuves A/B et du `parcours` Maître Hibou en source C.
+- Médailles / records comptés en D à titre informatif uniquement.
+- Filtrage semestriel robuste, y compris pour les compétences annuelles.
+- Génération d’un rapport diagnostic par élève, objet + Markdown.
+- Test automatisé du connecteur réel sur un snapshot de forme API.
+
 ## V34.39 — Simulation LSU S1 réaliste, sans interface
 - Branchement du moteur LSU V1 sur un élève entièrement fictif du semestre 1.
 - Test de Français, Mathématiques, Anglais, Histoire, Géographie, Sciences, EMC, EPS et Arts/Musique.
