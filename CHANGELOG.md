@@ -1,3 +1,10 @@
+## V34.45 — 20 août 2026 — Suivi des élèves en 3 étapes
+
+- Réorganisation de `mon-suivi.html` autour de 3 cartes : Compétences validées dans Maître Hibou, Évaluations en classe (orales ou écrites), Aide à la rédaction du LSU.
+- Nouvelle page `competences-hibou.html` en lecture seule : résumé, compétences datées, résultat, semestre et anciennes traces non codées.
+- `lsu.html` renommé visuellement « Aide à la rédaction du LSU » ; moteur LSU inchangé.
+- Les autres blocs de l'accueil, Accompagnements/Inclusions, Référentiel, Vue élèves et Parcours individuel restent inchangés hors mise à jour de version.
+
 ## V34.44 — 20 août 2026 — Synthèse LSU centrée sur les appréciations
 
 - Refonte de `lsu.html` en vue classe sous forme de tableau.

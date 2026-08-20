@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="Suivi des élèves CE2 : évaluations et traces, puis synthèse LSU semestrielle." name="description"/>
-<title>V34.44 — Suivi des élèves — CE2 — Ma classe au quotidien</title>
-<link href="suivi-eleves.css?v=34.44" rel="stylesheet"/>
+<meta content="Suivi des élèves CE2 : compétences Maître Hibou, évaluations en classe et aide à la rédaction du LSU." name="description"/>
+<title>V34.45 — Suivi des élèves — CE2 — Ma classe au quotidien</title>
+<link href="suivi-eleves.css?v=34.45" rel="stylesheet"/>
 </head>
 <body>
 <header class="page-header">
@@ -19,29 +19,37 @@
 <main class="followup-page">
 <section class="intro-card" aria-labelledby="suiviTitle">
 <span class="eyebrow">SUIVI DES ÉLÈVES</span>
-<h2 id="suiviTitle">Apprentissages, traces et synthèse semestrielle</h2>
-<p>Deux espaces seulement : d’abord les preuves recueillies au fil des apprentissages, puis leur synthèse pour préparer le LSU.</p>
+<h2 id="suiviTitle">Des compétences observées à l’aide à la rédaction du LSU</h2>
+<p>Trois étapes lisibles : voir ce que l’élève réussit dans Maître Hibou, retrouver les évaluations de classe, puis préparer une appréciation LSU à partir de l’ensemble des traces.</p>
 </section>
-<section class="hub-grid" aria-label="Deux espaces de suivi">
-<article class="hub-card hub-card--traces">
-<div class="hub-card__head"><div class="hub-card__icon" aria-hidden="true">📊</div><div><h3>Évaluations et traces</h3><p class="hub-card__subtitle">Ce que l’élève montre réellement au quotidien.</p></div></div>
+<section class="hub-grid hub-grid--three" aria-label="Trois espaces de suivi">
+<article class="hub-card hub-card--hibou">
+<div class="hub-card__head"><div class="hub-card__icon" aria-hidden="true">🦉</div><div><span class="hub-card__step">1</span><h3>Compétences validées dans Maître Hibou</h3><p class="hub-card__subtitle">Voir clairement les compétences codées déjà enregistrées.</p></div></div>
 <ul class="feature-list">
-<li><strong>Évaluations de référence</strong> — traces principales liées aux compétences.</li>
-<li><strong>Cahier du jour et observations</strong> — traces formatives utiles pour suivre l’évolution.</li>
-<li><strong>Historique des compétences</strong> — conserver la chronologie sans transformer le suivi en moyenne.</li>
+<li><strong>Compétences datées</strong> — code canonique et intitulé précis.</li>
+<li><strong>Résultat</strong> — réussi seul, réussi avec aide, score obtenu.</li>
+<li><strong>Semestre</strong> — S1 ou S2, sans masquer les compétences déjà acquises pour la suite.</li>
 </ul>
-<div class="source-row" aria-label="Sources de traces"><span class="source-chip">A · preuve forte</span><span class="source-chip">B · trace formative</span><span class="source-chip">C · Maître Hibou</span><span class="source-chip">D · information</span></div>
-<div class="hub-actions"><a class="hub-action hub-action--primary" href="index.html?open=evaluations">📝 Ouvrir les évaluations</a><a class="hub-action hub-action--ghost" href="vue-eleves.html">👥 Voir les élèves</a></div>
+<div class="hub-actions"><a class="hub-action hub-action--primary" href="competences-hibou.html">🦉 Voir les compétences Maître Hibou</a></div>
+</article>
+<article class="hub-card hub-card--traces">
+<div class="hub-card__head"><div class="hub-card__icon" aria-hidden="true">📝</div><div><span class="hub-card__step">2</span><h3>Évaluations en classe</h3><p class="hub-card__subtitle">Orales ou écrites : les preuves recueillies en classe.</p></div></div>
+<ul class="feature-list">
+<li><strong>Évaluations de référence</strong> — situations prévues pour vérifier une compétence.</li>
+<li><strong>Observations orales</strong> — lecture, manipulation, explication, mise en situation.</li>
+<li><strong>Traces écrites</strong> — cahier du jour, productions, exercices et bilans.</li>
+</ul>
+<div class="hub-actions"><a class="hub-action hub-action--primary" href="index.html?open=evaluations">📝 Ouvrir les évaluations en classe</a><a class="hub-action hub-action--ghost" href="vue-eleves.html">👥 Voir les élèves</a></div>
 </article>
 <article class="hub-card hub-card--lsu">
-<div class="hub-card__head"><div class="hub-card__icon" aria-hidden="true">🧾</div><div><h3>Synthèse LSU</h3><p class="hub-card__subtitle">Transformer les traces en proposition explicable, jamais en verdict automatique.</p></div></div>
+<div class="hub-card__head"><div class="hub-card__icon" aria-hidden="true">📘</div><div><span class="hub-card__step">3</span><h3>Aide à la rédaction du LSU</h3><p class="hub-card__subtitle">Transformer les traces en appréciation pédagogique directement exploitable.</p></div></div>
 <ul class="feature-list">
-<li><strong>Semestre 1 / Semestre 2</strong> — S1 = P1 + P2 ; S2 = P3 + P4 + P5.</li>
-<li><strong>Niveau suggéré et couverture</strong> — avec tendance, confiance et compétences non documentées.</li>
-<li><strong>Vigilances et phrase de synthèse</strong> — avec validation finale de l’enseignant.</li>
+<li><strong>Acquis</strong> — ce qui est réellement installé.</li>
+<li><strong>Progrès</strong> — ce qui évolue favorablement au cours du semestre.</li>
+<li><strong>À consolider</strong> — les difficultés qui doivent apparaître dans l’appréciation.</li>
 </ul>
-<div class="architecture-note"><strong>Principe verrouillé :</strong> Maître Hibou peut confirmer ou nuancer une preuve de classe, mais ne l’écrase jamais.</div>
-<div class="hub-actions"><a class="hub-action hub-action--primary" href="lsu.html">📘 Ouvrir la synthèse LSU</a></div>
+<div class="architecture-note"><strong>Principe :</strong> Maître Hibou complète les preuves de classe, mais ne les remplace jamais. L’appréciation finale reste modifiable et validée par l’enseignant.</div>
+<div class="hub-actions"><a class="hub-action hub-action--primary" href="lsu.html">📘 Préparer les appréciations LSU</a></div>
 </article>
 </section>
 </main>

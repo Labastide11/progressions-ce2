@@ -1,4 +1,4 @@
-## V34.44 — Synthèse LSU centrée sur les appréciations
+## V34.45 — Synthèse LSU centrée sur les appréciations
 
 La vue LSU est désormais conçue comme un outil de rédaction : tableau de classe, appréciations modifiables/copiables, détail des preuves et historique daté de toutes les compétences.
 
@@ -249,3 +249,7 @@ Le fichier `lsu-synthesis-engine.js` contient désormais le premier moteur de sy
 ## V34.38 — Compétences structurantes LSU
 
 18 compétences canoniques du référentiel réel sont marquées `lsuCore: true` et regroupées avec `lsuCoreGroup`. Elles servent uniquement à faire ressortir une fragilité persistante dans la synthèse LSU et à déclencher une vigilance pédagogique documentée. Elles ne valent aucun point supplémentaire et ne modifient pas à elles seules un niveau LSU.
+
+
+### V34.45
+Suivi des élèves : Maître Hibou → évaluations de classe → aide à la rédaction du LSU.
