@@ -19,6 +19,7 @@
 .evaluation-subject--francais{background:#eef5ff;border-color:#cfe0f5}
 .evaluation-subject--maths{background:#f0f8f3;border-color:#cfe5d6}
 .evaluation-subject--anglais{background:#fff7e8;border-color:#ead7ac}
+.evaluation-subject--histoire{background:#f7f1e8;border-color:#dfcfb5}
 .evaluation-subject--emc{background:#fff0f4;border-color:#ebccd5}
 @media(max-width:1100px){.evaluations-panel{width:min(96vw,1100px)}.evaluations-list,.evaluations-list--multiple{grid-template-columns:1fr}}
 @media(max-width:820px){.evaluations-panel{width:100%;height:auto;max-height:calc(100vh - 20px)}.evaluations-list,.evaluations-list--multiple,.evaluations-list--single{grid-template-columns:1fr}}

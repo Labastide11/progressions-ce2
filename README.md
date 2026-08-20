@@ -1,3 +1,14 @@
+# Progressions CE2
+## V34.28 — Évaluations Histoire P1→P5
+
+- Ajout de la matière **🏺 Histoire** dans la fenêtre Évaluations.
+- 5 situations de référence, une par période, couvrant les 20 compétences canoniques `HIS-P1-01` à `HIS-P5-04`.
+- P1 : frise chronologique ; P2 : comparaison des modes de vie ; P3 : personnage/événement à partir de documents ; P4 : enquête sur le Moyen Âge ; P5 : présentation d’une grande figure ou d’une évolution.
+- Chaque situation conserve **4 compétences séparées** pour la saisie des niveaux de maîtrise.
+- P3 respecte la règle **janvier sans évaluation programmée** : trace formelle placée la semaine du 1er au 5 février 2027.
+- Emploi du temps relié aux 5 situations pour afficher automatiquement semaine, date, statut et lien direct.
+- P5 est enregistrée par défaut comme `observation_classe` (présentation principalement orale) ; P1 à P4 comme `evaluation_papier`.
+
 
 ## V34.27 — Référentiel Histoire CE2 recentré
 

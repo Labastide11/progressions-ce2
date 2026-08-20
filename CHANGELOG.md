@@ -1,3 +1,18 @@
+# V34.28 — 20/08/2026
+
+## Évaluations Histoire P1→P5
+- Ajout de `histoire` dans `evaluations-data.js` et dans le filtre matière.
+- 5 cartes prêtes, une par période, chacune reliée aux 4 compétences Histoire canoniques.
+- P1 : « Construire et lire une frise chronologique ».
+- P2 : « Comparer la vie quotidienne à différentes époques ».
+- P3 : « Découvrir un personnage ou un événement du passé » ; évaluation formelle en février uniquement.
+- P4 : « Enquêter sur le Moyen Âge ».
+- P5 : « Présenter une grande figure ou une évolution historique », principalement à l’oral.
+- Ajout de la détection Histoire dans le repérage automatique des évaluations de l’emploi du temps.
+- Alignement de 5 créneaux de référence dans les emplois du temps P1→P5.
+- Cache-busting des fichiers Évaluations et des données d’emploi du temps en V34.28.
+- Balises `<title>` mises à jour en V34.28.
+
 # V34.27 — 20/08/2026
 
 - Refonte du référentiel Histoire CE2 : 20 compétences structurantes, 4 par période.

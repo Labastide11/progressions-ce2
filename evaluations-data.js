@@ -242,6 +242,52 @@ window.EVALUATIONS_CE2 = {
       }
     }
   },
+  histoire: {
+    label: 'Histoire',
+    icon: '🏺',
+    periods: {
+      p1: {
+        title: 'Période 1 — Construire et lire une frise chronologique',
+        status: 'ready',
+        traceType: 'Frise + cartes à ordonner',
+        traceSource: 'evaluation_papier',
+        description: 'Situation de référence : ordonner des événements, utiliser une frise, reconnaître les grandes périodes historiques et associer quelques repères étudiés à leur période.',
+        skillCodes: ['HIS-P1-01','HIS-P1-02','HIS-P1-03','HIS-P1-04']
+      },
+      p2: {
+        title: 'Période 2 — Comparer la vie quotidienne à différentes époques',
+        status: 'ready',
+        traceType: 'Documents + tableau comparatif',
+        traceSource: 'evaluation_papier',
+        description: 'Situation de référence : comparer habitats, alimentation, objets ou vêtements, puis expliquer ce qui a changé et ce qui est resté semblable entre plusieurs époques.',
+        skillCodes: ['HIS-P2-01','HIS-P2-02','HIS-P2-03','HIS-P2-04']
+      },
+      p3: {
+        title: 'Période 3 — Découvrir un personnage ou un événement du passé',
+        status: 'ready',
+        traceType: 'Dossier documentaire + frise',
+        traceSource: 'evaluation_papier',
+        description: 'Situation de référence à partir de février : situer une figure ou un événement de l’Antiquité ou du début du Moyen Âge, prélever des informations puis raconter l’essentiel avec ses mots.',
+        skillCodes: ['HIS-P3-01','HIS-P3-02','HIS-P3-03','HIS-P3-04']
+      },
+      p4: {
+        title: 'Période 4 — Enquêter sur le Moyen Âge',
+        status: 'ready',
+        traceType: 'Dossier documentaire + explication',
+        traceSource: 'evaluation_papier',
+        description: 'Situation de référence : utiliser plusieurs documents pour situer des repères, décrire quelques aspects de la vie au Moyen Âge et expliquer simplement un événement ou l’affirmation du pouvoir royal.',
+        skillCodes: ['HIS-P4-01','HIS-P4-02','HIS-P4-03','HIS-P4-04']
+      },
+      p5: {
+        title: 'Période 5 — Présenter une grande figure ou une évolution historique',
+        status: 'ready',
+        traceType: 'Présentation courte + frise',
+        traceSource: 'observation_classe',
+        description: 'Situation de référence principalement orale : situer une figure ou un événement des Temps modernes, comparer des transformations, croiser plusieurs informations et expliquer une évolution historique étudiée.',
+        skillCodes: ['HIS-P5-01','HIS-P5-02','HIS-P5-03','HIS-P5-04']
+      }
+    }
+  },
   anglais: {
     label: 'Anglais',
     icon: '🇬🇧',
