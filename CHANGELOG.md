@@ -1,3 +1,12 @@
+## V34.42 — 20 août 2026 — Connecteur LSU robuste aux réponses Apps Script lentes
+
+- `student_snapshot` : délai JSONP par défaut porté de 20 s à 60 s pour tolérer les démarrages lents d’Apps Script.
+- Après un timeout, le callback JSONP n’est plus supprimé immédiatement : un garde-fou temporaire absorbe une éventuelle réponse tardive et évite `ReferenceError: progressionsLSU_... is not defined`.
+- Nettoyage différé du callback après 120 s afin d’éviter toute fuite durable.
+- Ajout de l’alias public `LSURealConnector.getStudentSnapshot(prenom)` pour les diagnostics manuels.
+- Connecteur toujours strictement en lecture seule : aucun POST, aucun `save_*`, aucune mutation de Google Sheets ou du stockage local.
+- Cache-busting du moteur/connecteur LSU passé à `v=34.42`.
+
 ## V34.41 — 20 août 2026 — Correctif JSONP du diagnostic LSU réel
 
 - Correction de `lsu-real-connector.js` : le callback JSONP est maintenant enregistré sur `globalThis` au lieu d'une variable `root` hors portée.

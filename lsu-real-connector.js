@@ -10,7 +10,7 @@
 
   if(!LSU) throw new Error('LSUSynthesisEngine est requis avant LSURealConnector.');
 
-  const VERSION='1.0.1';
+  const VERSION='1.0.2';
   const API_URL_KEY='hibou_sync_api_url_v25754';
   const DEVICE_KEY='hibou_sync_device_key_v25754';
   const DEFAULT_API_URL='https://script.google.com/macros/s/AKfycbydzPTQ9ZLEPYezHou2-O4IK24ip51sLTpe9qdi2xREuQvDBKRlVqsYYDiKLrzAODc/exec';
@@ -48,12 +48,30 @@
     return new Promise((resolve,reject)=>{
       const cb='progressionsLSU_'+Date.now()+'_'+Math.random().toString(36).slice(2);
       const script=document.createElement('script');
-      let done=false;
-      const finish=(err,data)=>{if(done)return;done=true;clearTimeout(timer);try{delete globalThis[cb]}catch(e){};script.remove();err?reject(err):resolve(data)};
-      const timer=setTimeout(()=>finish(new Error('Délai de connexion au student_snapshot dépassé.')),Number(options.timeoutMs)||20000);
+      const timeoutMs=Math.max(10000,Number(options.timeoutMs)||60000);
+      const lateGraceMs=Math.max(30000,Number(options.lateGraceMs)||120000);
+      let done=false,lateCleanupTimer=null;
+      const removeScript=()=>{try{script.remove()}catch(e){}};
+      const clearCallback=()=>{try{delete globalThis[cb]}catch(e){globalThis[cb]=undefined}};
+      const guardLateResponse=()=>{
+        // Une réponse Apps Script peut arriver après le timeout (cold start / réseau lent).
+        // On garde temporairement un callback inoffensif pour éviter un ReferenceError global.
+        globalThis[cb]=()=>{};
+        lateCleanupTimer=setTimeout(clearCallback,lateGraceMs);
+      };
+      const finish=(err,data,reason)=>{
+        if(done)return;
+        done=true;
+        clearTimeout(timer);
+        removeScript();
+        if(reason==='timeout')guardLateResponse();
+        else { if(lateCleanupTimer)clearTimeout(lateCleanupTimer); clearCallback(); }
+        err?reject(err):resolve(data);
+      };
+      const timer=setTimeout(()=>finish(new Error('Délai de connexion au student_snapshot dépassé après '+Math.round(timeoutMs/1000)+' s.'),null,'timeout'),timeoutMs);
       globalThis[cb]=data=>{
         if(!data||data.ok===false)return finish(new Error(data&&data.error||'Réponse student_snapshot invalide.'));
-        finish(null,data);
+        finish(null,data,'response');
       };
       const q=new URLSearchParams({
         action:'student_snapshot',prenom:text(prenom),limit:String(Number(options.limit)||500),
@@ -61,7 +79,7 @@
       });
       script.async=true;
       script.src=cfg.url+'?'+q.toString();
-      script.onerror=()=>finish(new Error('API Maître Hibou indisponible.'));
+      script.onerror=()=>finish(new Error('API Maître Hibou indisponible.'),null,'error');
       document.head.appendChild(script);
     });
   }
@@ -188,6 +206,6 @@
   return{
     VERSION,API_URL_KEY,DEVICE_KEY,DEFAULT_SUBJECTS,getBrowserConfig,semesterOfRow,rowInSemester,
     buildCompetencesFromProgressions,normalizeSnapshotForSemester,sourceStats,summarizeSnapshot,
-    formatDiagnosticMarkdown,jsonpSnapshot,diagnosticStudent,consoleDiagnostic
+    formatDiagnosticMarkdown,jsonpSnapshot,getStudentSnapshot:jsonpSnapshot,diagnosticStudent,consoleDiagnostic
   };
 });

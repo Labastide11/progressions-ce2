@@ -1,4 +1,15 @@
-## V34.41 — Correctif diagnostic LSU réel
+## V34.42 — Correctif de robustesse du diagnostic LSU réel
+
+Cette version corrige les échecs intermittents du diagnostic `student_snapshot` lorsque Google Apps Script répond après le timeout de 20 secondes. Le connecteur attend désormais jusqu’à 60 secondes et conserve temporairement un callback JSONP inoffensif si une réponse arrive encore plus tard. Cela évite l’erreur globale `progressionsLSU_... is not defined`.
+
+Pour vérifier Adam en lecture seule :
+
+```js
+window.snapAdam = await LSURealConnector.getStudentSnapshot('Adam');
+console.table(window.snapAdam.snapshot.reussites.slice(0, 15));
+```
+
+## Historique V34.41 — Correctif diagnostic LSU réel
 
 Correctif ciblé de V34.40 : le callback JSONP du `student_snapshot` utilisait `root` à l'intérieur de la factory, alors que cette variable n'y était pas accessible dans le navigateur. Le connecteur utilise désormais `globalThis`, ce qui conserve le mode lecture seule et permet le diagnostic réel depuis la console.
 
