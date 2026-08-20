@@ -183,10 +183,14 @@ Chaque carte d’évaluation affiche désormais le semestre auquel elle contribu
 - Aucune évaluation EPS obligatoire n'est ajoutée : les compétences peuvent être renseignées uniquement lorsqu'une trace fiable est disponible.
 - Références EPS de l'emploi du temps réalignées sur les nouveaux codes canoniques.
 
-## V34.35 — Arts et chant : 6 repères annuels transversaux
+## V34.36 — Arts et chant : 6 repères annuels transversaux
 
 - Référentiel Arts allégé à 6 compétences annuelles : 3 arts plastiques + 3 éducation musicale/chant.
 - Codes : `ART-ANN-01` à `ART-ANN-03` et `MUS-ANN-01` à `MUS-ANN-03`.
 - Repères utilisables toute l'année, notamment dans les créneaux du mardi pour les élèves non-CHAM.
 - Aucune carte d'évaluation obligatoire : ces compétences servent d'abord à programmer et observer.
 - Les interfaces de suivi reconnaissent désormais les `annualCompetencies`.
+
+
+### V34.36
+Correction du filtre de la fenêtre Évaluations : le rendu de plusieurs matières n’est plus interrompu par la détection automatique de programmation.

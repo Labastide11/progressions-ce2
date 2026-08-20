@@ -128,6 +128,7 @@
     const wanted=new Set(codes||[]), candidates=[];
     weeks.forEach((week,weekIndex)=>{
       let overlap=0, rows=0;const matchingDays=[];
+      let hasReferenceTrace=false, hasFormativeTrace=false;
       (week.days||[]).forEach(([day,dayRows])=>(dayRows||[]).forEach(row=>{
         if(!subjectMatchesRow(subject,row))return;
         const text=`${row?.[2]||''} ${row?.[5]||''}`.toLowerCase();
@@ -136,14 +137,16 @@
         const rowCodes=codeSetFromText(row?.[3]);
         let hit=0;wanted.forEach(code=>{if(rowCodes.has(code))hit++;});
         if(!hit)return;
+        if(/évaluation de référence|trace de référence/.test(text))hasReferenceTrace=true;
+        if(/observation formative|petite trace formative|suivi des automatismes|remédiation|retour réflexif/.test(text))hasFormativeTrace=true;
         overlap+=hit;rows++;matchingDays.push({day,time:row?.[0]||'',activity:row?.[2]||'',hit});
       }));
       if(!rows)return;
       const title=String(week.title||'').toLowerCase();
       const intentBonus=/valider|validation|évaluer|évaluation/.test(title)?12:/bilan/.test(title)?8:0;
       const lateBonus=weekIndex*.35;
-      const referenceBonus=/évaluation de référence|trace de référence/.test(text)?60:0;
-      const formativePenalty=/observation formative|petite trace formative|suivi des automatismes|remédiation|retour réflexif/.test(text)?-40:0;
+      const referenceBonus=hasReferenceTrace?60:0;
+      const formativePenalty=hasFormativeTrace?-40:0;
       candidates.push({week,weekIndex,weekNumber:evaluationWeekNumber(week),overlap,rows,matchingDays,score:overlap*4+rows*2+intentBonus+lateBonus+referenceBonus+formativePenalty});
     });
     if(!candidates.length)return null;

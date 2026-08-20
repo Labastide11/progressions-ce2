@@ -1,3 +1,10 @@
+## V34.36 — Correction des filtres Évaluations
+
+- Correction du moteur de détection des semaines d’évaluation : suppression d’une référence hors portée qui pouvait interrompre le rendu des cartes.
+- Le filtre « Toutes les matières » affiche de nouveau toutes les cartes correspondant à la période/au semestre.
+- Vérification attendue : P2 + Toutes les matières = 7 cartes (Français, Mathématiques, Anglais, Histoire, Géographie, Sciences, EMC).
+- Cache de `evaluations-ui.js` porté à V34.36.
+
 ## V34.35 — Arts / chant compacts et optionnels
 - 30 anciennes micro-compétences Arts remplacées par 6 repères annuels transversaux.
 - 3 repères Arts plastiques : expérimenter ; réaliser avec des choix ; observer/parler.
