@@ -284,7 +284,7 @@ window.DEVOIRS_P1 = {
               "preparation": "Un problème très court et une addition posée suffisent.",
               "hibou": [
                 {
-                  "label": "Résoudre un problème additif",
+                  "label": "Résoudre un problème de parties et de tout",
                   "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/problemes-additifs.html"
                 },
                 {
@@ -314,7 +314,7 @@ window.DEVOIRS_P1 = {
           "notion": "Petit rappel avant évaluation",
           "hibou": [
             {
-              "label": "Résoudre un problème additif",
+              "label": "Résoudre un problème de parties et de tout",
               "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/problemes-additifs.html"
             },
             {

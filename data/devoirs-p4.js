@@ -53,11 +53,7 @@ window.DEVOIRS_P4 = {
           "routineTitle": "Les groupes dans la phrase",
           "routine": "Dans deux phrases simples, repère oralement le groupe sujet et le groupe verbal, puis déplace si possible un groupe complément.",
           "challenge": "Explique ce qui peut être déplacé ou supprimé.",
-          "family": "Deux phrases suffisent.",
-          "hibou": {
-            "label": "Sujet et verbe",
-            "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-sujet-verbe.html"
-          }
+          "family": "Deux phrases suffisent."
         },
         {
           "due": "2027-03-04",
