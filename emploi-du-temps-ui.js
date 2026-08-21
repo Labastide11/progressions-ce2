@@ -634,6 +634,50 @@
   const p3DetailedWeeks=window.PROGRESSIONS_EDT_DATA.p3DetailedWeeks;
   const p4DetailedWeeks=window.PROGRESSIONS_EDT_DATA.p4DetailedWeeks;
   const p5DetailedWeeks=window.PROGRESSIONS_EDT_DATA.p5DetailedWeeks;
+
+  // V34.64 — Verrou calendrier : une date sans classe ne peut jamais afficher de créneau pédagogique.
+  const schoolCalendar=window.CALENDRIER_SCOLAIRE_2026_2027||{daysOff:[]};
+  const daysOffByDate=new Map((schoolCalendar.daysOff||[]).map(item=>[item.date,item]));
+  const frenchMonths={janvier:1,fevrier:2,'février':2,mars:3,avril:4,mai:5,juin:6,juillet:7,aout:8,'août':8,septembre:9,octobre:10,novembre:11,decembre:12,'décembre':12};
+  function isoFromFrenchDayLabel(label){
+    const txt=String(label||'').toLowerCase().replace(/1er/g,'1').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    const m=txt.match(/(?:lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche)\s+(\d{1,2})\s+([a-z]+)\s+(\d{4})/);
+    if(!m)return null;
+    const month=frenchMonths[m[2]]||frenchMonths[m[2].normalize('NFD').replace(/[\u0300-\u036f]/g,'')];
+    if(!month)return null;
+    return `${m[3]}-${String(month).padStart(2,'0')}-${String(Number(m[1])).padStart(2,'0')}`;
+  }
+  function calendarDayOff(dateOrLabel){
+    const iso=/^\d{4}-\d{2}-\d{2}$/.test(String(dateOrLabel||''))?String(dateOrLabel):isoFromFrenchDayLabel(dateOrLabel);
+    return iso?daysOffByDate.get(iso)||null:null;
+  }
+  function lockCalendarWeeks(period,weeks){
+    (weeks||[]).forEach(week=>{
+      const removed=[];
+      week.days=(week.days||[]).filter(([dayLabel])=>{
+        const off=calendarDayOff(dayLabel);
+        if(!off)return true;
+        removed.push(`${off.icon||'📅'} ${dayLabel} — ${off.label} : pas de classe, aucun créneau pédagogique.`);
+        console.warn(`[Calendrier scolaire] ${period} ${week.key||''} : créneaux supprimés pour ${dayLabel} (${off.label}).`);
+        return false;
+      });
+      week.calendarLockNote=removed.join(' · ');
+    });
+  }
+  lockCalendarWeeks('p1',p1DetailedWeeks);
+  lockCalendarWeeks('p2',p2DetailedWeeks);
+  lockCalendarWeeks('p3',p3DetailedWeeks);
+  lockCalendarWeeks('p4',p4DetailedWeeks);
+  lockCalendarWeeks('p5',p5DetailedWeeks);
+  window.ProgressionsSchoolCalendarGuard={
+    isDayOff(dateOrLabel){return !!calendarDayOff(dateOrLabel);},
+    canSchedule(dateOrLabel){return !calendarDayOff(dateOrLabel);},
+    getDayOff(dateOrLabel){return calendarDayOff(dateOrLabel);}
+  };
+  function calendarNotice(data){
+    const notes=[data&&data.holiday,data&&data.calendarLockNote].filter(Boolean);
+    return notes.length?`<div class="holiday-note">📅 ${notes.join(' · ')}</div>`:'';
+  }
   const labels=['Français','Mathématiques','Langue vivante','EPS','Arts','Sciences','Histoire-géographie-EMC'];
   const annual=['330 h','165 h','49 h 30','99 h','66 h','36 h 40','45 h 50'];
   const subjectClasses=['french','maths','english','eps','arts','science','history'];
@@ -1169,7 +1213,7 @@
     const data=p1DetailedWeeks[week-1]||p1DetailedWeeks[0];
     const content=document.getElementById('timetableContent');
     const evalCount=data.days.reduce((n,[,rows])=>n+rows.filter(r=>/Évaluation|Mini-test|validation|Mesure (initiale|intermédiaire)|Dictée évaluée/i.test(r[5]||'')).length,0);
-    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('p1',data.key)}${p1FrenchWeekPlan(week)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Séance proposée</th><th>Compétence reliée à Progressions CE2</th><th>Suivi / évaluation</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${p1ActivityLabel(r)}</span></td><td>${pedagogyMarkers('p1',data.key,day,r)}${r[2]}${p1LessonButton(r[6])}</td><td>${r[3]}</td><td><span class="${/Évaluation|Mini-test|Dictée évaluée/i.test(r[5])?'eval-badge':'follow-badge'}">${r[5]}</span></td><td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('p1',data.key)}${calendarNotice(data)}${p1FrenchWeekPlan(week)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Séance proposée</th><th>Compétence reliée à Progressions CE2</th><th>Suivi / évaluation</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${p1ActivityLabel(r)}</span></td><td>${pedagogyMarkers('p1',data.key,day,r)}${r[2]}${p1LessonButton(r[6])}</td><td>${r[3]}</td><td><span class="${/Évaluation|Mini-test|Dictée évaluée/i.test(r[5])?'eval-badge':'follow-badge'}">${r[5]}</span></td><td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
     bindStatusControls(content);
   }
 
@@ -1283,7 +1327,7 @@
     const data=p3DetailedWeeks[week-1]||p3DetailedWeeks[0];
     const content=document.getElementById('timetableContent');
     const evalCount=data.days.reduce((n,[,rows])=>n+rows.filter(r=>/Évaluation|Mini-test|Dictée évaluée|Validation/i.test(r[5]||'')).length,0);
-    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('p3',data.key)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Séance proposée</th><th>Compétence reliée à Progressions CE2</th><th>Suivi / évaluation</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td><td>${pedagogyMarkers('p3',data.key,day,r)}${r[2]}${annualMathLessonButton(r[6])}</td><td>${r[3]}</td><td><span class="${/Évaluation|Mini-test|Dictée évaluée/i.test(r[5])?'eval-badge':'follow-badge'}">${r[5]}</span></td><td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('p3',data.key)}${calendarNotice(data)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Séance proposée</th><th>Compétence reliée à Progressions CE2</th><th>Suivi / évaluation</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td><td>${pedagogyMarkers('p3',data.key,day,r)}${r[2]}${annualMathLessonButton(r[6])}</td><td>${r[3]}</td><td><span class="${/Évaluation|Mini-test|Dictée évaluée/i.test(r[5])?'eval-badge':'follow-badge'}">${r[5]}</span></td><td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
     bindStatusControls(content);
   }
   function renderLaterPeriodWeek(period,week){
@@ -1291,7 +1335,7 @@
     const data=source[week-1]||source[0];
     const content=document.getElementById('timetableContent');
     const evalCount=data.days.reduce((n,[,rows])=>n+rows.filter(r=>/Évaluation|Mini-test|Dictée évaluée|Validation/i.test(r[5]||'')).length,0);
-    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector(period,data.key)}${data.holiday?`<div class="holiday-note">📅 ${data.holiday}</div>`:''}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Séance proposée</th><th>Compétence reliée à Progressions CE2</th><th>Suivi / évaluation</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td><td>${pedagogyMarkers(period,data.key,day,r)}${r[2]}${annualMathLessonButton(r[6])}</td><td>${r[3]}</td><td><span class="${/Évaluation|Mini-test|Dictée évaluée/i.test(r[5])?'eval-badge':'follow-badge'}">${r[5]}</span></td><td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector(period,data.key)}${calendarNotice(data)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Séance proposée</th><th>Compétence reliée à Progressions CE2</th><th>Suivi / évaluation</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td><td>${pedagogyMarkers(period,data.key,day,r)}${r[2]}${annualMathLessonButton(r[6])}</td><td>${r[3]}</td><td><span class="${/Évaluation|Mini-test|Dictée évaluée/i.test(r[5])?'eval-badge':'follow-badge'}">${r[5]}</span></td><td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
     bindStatusControls(content);
   }
   function render(p){

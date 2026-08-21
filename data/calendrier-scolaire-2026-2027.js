@@ -1,4 +1,4 @@
-// V34.63 — Calendrier scolaire 2026-2027 — Zone C (académie de Montpellier).
+// V34.64 — Calendrier scolaire 2026-2027 — Zone C (académie de Montpellier).
 // Source de référence : ministère de l'Éducation nationale, calendrier scolaire 2026-2027.
 window.CALENDRIER_SCOLAIRE_2026_2027 = {
   zone: "C",
@@ -42,29 +42,14 @@ window.CALENDRIER_SCOLAIRE_2026_2027 = {
     }
   ],
   daysOff: [
-    {
-      date: "2026-11-11",
-      label: "Armistice du 11 novembre",
-      icon: "🇫🇷",
-      kind: "publicHoliday"
-    },
-    {
-      date: "2027-05-06",
-      label: "Ascension",
-      icon: "📅",
-      kind: "publicHoliday"
-    },
-    {
-      date: "2027-05-07",
-      label: "Pas de classe — pont de l’Ascension",
-      icon: "🌉",
-      kind: "schoolClosure"
-    },
-    {
-      date: "2027-05-17",
-      label: "Lundi de Pentecôte",
-      icon: "📅",
-      kind: "publicHoliday"
-    }
-  ]
-};
+    { date: "2026-11-01", label: "Toussaint", icon: "📅", kind: "publicHoliday" },
+    { date: "2026-11-11", label: "Armistice du 11 novembre", icon: "🇫🇷", kind: "publicHoliday" },
+    { date: "2026-12-25", label: "Noël", icon: "🎄", kind: "publicHoliday" },
+    { date: "2027-01-01", label: "Jour de l’An", icon: "📅", kind: "publicHoliday" },
+    { date: "2027-03-29", label: "Lundi de Pâques", icon: "📅", kind: "publicHoliday" },
+    { date: "2027-05-01", label: "Fête du Travail", icon: "📅", kind: "publicHoliday" },
+    { date: "2027-05-06", label: "Ascension", icon: "📅", kind: "publicHoliday" },
+    { date: "2027-05-07", label: "Pas de classe — pont de l’Ascension", icon: "🌉", kind: "schoolClosure" },
+    { date: "2027-05-08", label: "Victoire 1945", icon: "🇫🇷", kind: "publicHoliday" },
+    { date: "2027-05-17", label: "Lundi de Pentecôte", icon: "📅", kind: "publicHoliday" }
+  ]};
