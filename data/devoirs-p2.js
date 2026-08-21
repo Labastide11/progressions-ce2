@@ -1,5 +1,5 @@
 window.DEVOIRS_P2 = {
-  "version": "34.53",
+  "version": "34.68",
   "period": "p2",
   "schoolYear": "2026-2027",
   "principles": {
@@ -222,14 +222,15 @@ window.DEVOIRS_P2 = {
             {
               "date": "2026-11-23",
               "subject": "Anglais",
-              "title": "Bilan oral — passage échelonné à partir du lundi 23 novembre",
-              "scope": [
-                "comprendre quelques consignes et formulations déjà travaillées",
-                "dire ou demander le jour et la date avec les formulations connues",
-                "réutiliser quelques mots et expressions étudiés en classe",
-                "mobiliser un petit repère culturel travaillé"
+              "title": "Bilan oral — 2 nouvelles compétences + 1 déjà vue",
+              "newSkills": [
+                "dire et demander le jour de la semaine",
+                "dire ce que l’on souhaite au petit-déjeuner"
               ],
-              "preparation": "Reprendre oralement quelques formulations connues pendant quelques minutes seulement. Le bilan se fait progressivement en classe."
+              "reviewSkills": [
+                "demander et dire son prénom"
+              ],
+              "preparation": "Quelques minutes d’oral suffisent. Le prénom est une compétence déjà travaillée en P1."
             }
           ]
         },
@@ -291,59 +292,49 @@ window.DEVOIRS_P2 = {
             {
               "date": "2026-11-30",
               "subject": "Anglais",
-              "title": "Bilan oral — poursuite des passages échelonnés",
-              "scope": [
-                "comprendre et répondre avec les formulations déjà apprises",
-                "réutiliser le vocabulaire oral étudié",
-                "mobiliser un petit repère culturel"
+              "title": "Bilan oral — 2 nouvelles compétences + 1 déjà vue",
+              "newSkills": [
+                "dire et demander le jour de la semaine",
+                "dire ce que l’on souhaite au petit-déjeuner"
               ],
-              "preparation": "Seulement pour les élèves qui ne sont pas encore passés : reprendre oralement quelques formulations connues pendant quelques minutes."
+              "reviewSkills": [
+                "demander et dire son prénom"
+              ],
+              "preparation": "Seulement pour les élèves qui ne sont pas encore passés : quelques minutes d’oral suffisent. Le prénom est déjà connu depuis la P1."
             },
             {
               "date": "2026-11-30",
               "subject": "Histoire",
-              "title": "Comparer la vie quotidienne à différentes époques",
-              "scope": [
+              "title": "2 nouvelles compétences + 1 déjà vue",
+              "newSkills": [
                 "comparer des habitats de différentes époques",
-                "comparer l’alimentation à différentes époques",
-                "observer des objets et des vêtements anciens et actuels",
-                "repérer ce qui change et ce qui reste semblable"
+                "repérer ce qui a changé et ce qui est resté semblable"
               ],
-              "preparation": "Revoir les documents et traces de la classe et être capable d’expliquer deux ou trois différences avec ses propres mots."
+              "reviewSkills": [
+                "utiliser une frise chronologique"
+              ],
+              "preparation": "Revoir surtout deux habitats étudiés. La frise est déjà connue depuis la P1 : un simple rappel suffit."
             },
             {
               "date": "2026-12-01",
               "subject": "Français",
-              "title": "Bilan de français — période 2",
-              "scope": [
-                "reconnaître un nom commun et un pronom personnel sujet",
-                "remplacer un groupe sujet par un pronom",
-                "conjuguer au présent les verbes en -er ainsi que être et avoir",
-                "accorder le déterminant et le nom en nombre",
-                "reconnaître familles de mots, radical, préfixe ou suffixe, synonymes et contraires",
-                "raconter des événements dans l’ordre et écrire un court dialogue"
+              "title": "2 nouvelles compétences + 1 déjà vue",
+              "newSkills": [
+                "conjuguer un verbe en -er au présent",
+                "raconter des événements dans l’ordre"
               ],
-              "preparation": "Relire les leçons déjà étudiées et revoir en priorité une ou deux notions encore difficiles.",
+              "reviewSkills": [
+                "repérer le verbe conjugué"
+              ],
+              "preparation": "Revoir surtout le présent des verbes en -er et l’ordre chronologique d’un petit récit. Repérer le verbe est déjà connu depuis la P1.",
               "hibou": [
-                {
-                  "label": "Les classes de mots",
-                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-classe-des-mots.html"
-                },
                 {
                   "label": "Le présent",
                   "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/conjugaison-present.html"
                 },
                 {
-                  "label": "Le groupe nominal",
-                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-groupe-nominal.html"
-                },
-                {
-                  "label": "Familles de mots, préfixes et suffixes",
-                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/vocabulaire-familles-prefixes-suffixes.html"
-                },
-                {
-                  "label": "Synonymes et antonymes",
-                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/vocabulaire-synonymes-antonymes.html"
+                  "label": "Le verbe",
+                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-verbe.html"
                 }
               ]
             }
@@ -353,14 +344,14 @@ window.DEVOIRS_P2 = {
           "due": "2026-12-01",
           "routineIcon": "⭐",
           "routineTitle": "Petit rappel — français",
-          "routine": "Relis seulement une ou deux notions choisies. Pas de nouvel apprentissage ni de longue révision ce soir.",
-          "challenge": "Explique oralement une règle que tu connais bien : c’est déjà une bonne façon de vérifier que tu l’as comprise.",
-          "family": "Arrêtez après quelques minutes : l’objectif est simplement de remettre une règle en mémoire.",
-          "notion": "Rappel léger avant le bilan de français",
+          "routine": "Revois seulement le présent des verbes en -er et l’ordre d’un petit récit. Repérer le verbe est déjà connu depuis la P1.",
+          "challenge": "Conjugue « jouer » au présent puis raconte trois actions dans l’ordre.",
+          "family": "Quelques minutes suffisent. Le repérage du verbe est du rebrassage, pas une nouvelle notion.",
+          "notion": "Présent · ordre chronologique · rebrassage verbe",
           "hibou": {
             "label": "Le présent",
             "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/conjugaison-present.html",
-            "intro": "Seulement si cette notion a été choisie :"
+            "intro": "Besoin d’un rappel ?"
           }
         },
         {
@@ -407,61 +398,49 @@ window.DEVOIRS_P2 = {
             {
               "date": "2026-12-07",
               "subject": "Anglais",
-              "title": "Bilan oral — poursuite des passages échelonnés",
-              "scope": [
-                "comprendre et répondre avec les formulations déjà apprises",
-                "réutiliser le vocabulaire oral étudié",
-                "mobiliser un petit repère culturel"
+              "title": "Bilan oral — 2 nouvelles compétences + 1 déjà vue",
+              "newSkills": [
+                "dire et demander le jour de la semaine",
+                "dire ce que l’on souhaite au petit-déjeuner"
               ],
-              "preparation": "Seulement pour les élèves qui ne sont pas encore passés : quelques minutes de réactivation orale suffisent."
+              "reviewSkills": [
+                "demander et dire son prénom"
+              ],
+              "preparation": "Seulement pour les élèves qui ne sont pas encore passés : quelques minutes d’oral suffisent. Le prénom est déjà connu depuis la P1."
             },
             {
               "date": "2026-12-10",
               "subject": "Sciences",
-              "title": "Expérimenter avec l’eau, observer et conclure",
-              "scope": [
-                "reconnaître différents états de l’eau",
-                "observer quelques changements d’état travaillés en classe",
-                "mettre en œuvre ou comprendre une expérience simple",
-                "comparer des résultats",
-                "formuler une conclusion simple à partir des observations"
+              "title": "Observation — 2 nouvelles compétences + 1 déjà vue",
+              "newSkills": [
+                "identifier les différents états de l’eau",
+                "décrire un changement d’état observé"
               ],
-              "preparation": "Revoir les expériences et traces réalisées en classe et savoir expliquer ce qui a été observé."
+              "reviewSkills": [
+                "tirer une conclusion à partir d’une observation"
+              ],
+              "preparation": "Revoir surtout un exemple d’état et de changement d’état. Tirer une conclusion est déjà travaillé depuis la P1."
             },
             {
               "date": "2026-12-11",
               "subject": "Mathématiques",
-              "title": "Bilan de mathématiques — période 2",
-              "scope": [
-                "associer différentes écritures d’un nombre, repérer la valeur des chiffres, placer et ranger des nombres",
-                "comparer des fractions de même dénominateur et reconnaître quelques fractions égales",
-                "connaître doubles et moitiés et additionner en décomposant",
-                "effectuer une soustraction avec échange",
-                "résoudre des problèmes multiplicatifs, de groupement et de partage",
-                "déterminer un périmètre",
-                "reconnaître des polygones, reproduire sur quadrillage et compléter un tableau à double entrée"
+              "title": "2 nouvelles compétences + 1 déjà vue",
+              "newSkills": [
+                "repérer la valeur d’un chiffre selon sa position",
+                "effectuer une soustraction avec échange"
               ],
-              "preparation": "Revoir les automatismes et choisir une ou deux notions qui demandent encore un petit entraînement. Inutile de tout reprendre.",
+              "reviewSkills": [
+                "comprendre ce que l’on cherche dans un problème"
+              ],
+              "preparation": "Revoir surtout la valeur des chiffres et la soustraction avec échange. Comprendre la question d’un problème est déjà connu depuis la P1.",
               "hibou": [
                 {
                   "label": "Valeur des chiffres",
                   "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/valeur-position-chiffres.html"
                 },
                 {
-                  "label": "Doubles et moitiés",
-                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/doubles-moitie.html"
-                },
-                {
                   "label": "Soustraction posée",
                   "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/soustraction-posee.html"
-                },
-                {
-                  "label": "Problèmes multiplicatifs",
-                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/problemes-multiplicatifs.html"
-                },
-                {
-                  "label": "Périmètre",
-                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/perimetre.html"
                 }
               ]
             }
@@ -525,26 +504,28 @@ window.DEVOIRS_P2 = {
             {
               "date": "2026-12-14",
               "subject": "Anglais",
-              "title": "Bilan oral — dernière plage de passages échelonnés",
-              "scope": [
-                "comprendre et répondre avec les formulations déjà apprises",
-                "réutiliser le vocabulaire oral étudié",
-                "mobiliser un petit repère culturel"
+              "title": "Bilan oral — 2 nouvelles compétences + 1 déjà vue",
+              "newSkills": [
+                "dire et demander le jour de la semaine",
+                "dire ce que l’on souhaite au petit-déjeuner"
               ],
-              "preparation": "Seulement pour les élèves qui ne sont pas encore passés : quelques minutes de réactivation orale."
+              "reviewSkills": [
+                "demander et dire son prénom"
+              ],
+              "preparation": "Seulement pour les élèves qui ne sont pas encore passés : quelques minutes d’oral suffisent. Le prénom est déjà connu depuis la P1."
             },
             {
               "date": "2026-12-17",
               "subject": "Géographie",
-              "title": "Habiter la ville — lire un paysage et utiliser un plan",
-              "scope": [
-                "observer et décrire un paysage urbain",
-                "distinguer quelques formes d’habitat et fonctions d’un quartier",
-                "utiliser un plan simple pour se repérer",
-                "comparer centre-ville et périphérie",
-                "relier quelques aménagements aux besoins des habitants"
+              "title": "2 nouvelles compétences + 1 déjà vue",
+              "newSkills": [
+                "reconnaître et décrire un paysage urbain",
+                "utiliser un plan simple pour se repérer"
               ],
-              "preparation": "Revoir les paysages, plans et traces utilisés en classe et expliquer quelques repères avec ses propres mots."
+              "reviewSkills": [
+                "localiser la France"
+              ],
+              "preparation": "Revoir surtout un paysage urbain et un plan simple. Localiser la France est déjà connu depuis la P1."
             }
           ]
         },
@@ -566,10 +547,10 @@ window.DEVOIRS_P2 = {
           "due": "2026-12-17",
           "routineIcon": "⭐",
           "routineTitle": "Petit rappel — géographie",
-          "routine": "Reprends un paysage ou un plan étudié en classe et explique ce que tu reconnais : habitat, voies de circulation, services ou équipements.",
-          "challenge": "Explique une différence entre le centre et la périphérie d’une ville.",
-          "family": "Un échange oral de quelques minutes suffit. Pas de fiche supplémentaire à apprendre.",
-          "notion": "Rappel léger avant l’évaluation de géographie"
+          "routine": "Reprends un paysage urbain et un plan simple : décris le paysage puis montre comment tu te repères sur le plan. Localiser la France est seulement du rebrassage.",
+          "challenge": "Deux petites situations suffisent : décrire un paysage urbain et retrouver un lieu sur un plan.",
+          "family": "Un échange oral de quelques minutes suffit. La localisation de la France est déjà connue : ce n’est pas une nouvelle notion à apprendre.",
+          "notion": "Paysage urbain · plan · rebrassage France"
         }
       ],
       "holiday": "Vacances de Noël : lire pour le plaisir et profiter des vacances. Rien à rendre."
