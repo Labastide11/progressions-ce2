@@ -710,7 +710,7 @@
     if(action==='synthetic'){const target=document.querySelector('.home-row__periods [data-open-summary-period="p1"]')||document.querySelector('[data-open-summary-period="p1"]');if(target)target.click();return;}
     if(action==='parcours'){window.ParcoursOutil?.open();return;}
   }));
-  // V34.46 — accès direct robuste aux outils déplacés dans le hub « Suivi des élèves ».
+  // V34.47 — accès direct robuste aux outils déplacés dans le hub « Suivi des élèves ».
   // Ne dépend plus de l'événement window.load : si app.js s'exécute après load,
   // on réessaie brièvement jusqu'à ce que le bouton / module cible soit disponible.
   if(PAGE_KIND==='home'){

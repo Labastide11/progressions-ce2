@@ -1,4 +1,12 @@
-## V34.46 — 20 août 2026 — Correctifs Suivi des élèves
+# V34.47 — Nettoyage des traces Maître Hibou et continuité S1/S2
+
+- Masque dans le LSU les anciennes traces non codées : elles restent conservées dans `parcours_eleves` mais ne sont plus affichées dans la vue pédagogique.
+- Affiche les traces canoniques migrées sans doublon visuel avec leur ancienne trace brute.
+- Conserve séparément les compétences issues d’une même ancienne ceinture (ex. `GRA-P1-02` et `GRA-P1-03`).
+- Le filtre S1/S2 ne masque plus l’historique Maître Hibou : il indique « utilisée pour ce semestre », « 👏 À reporter au S2/S1 » ou « À prendre en compte au S2/S1 ».
+- Mise à jour des balises `<title>` et des références de version en V34.47.
+
+## V34.47 — 20 août 2026 — Correctifs Suivi des élèves
 
 - Correction de l'accès `index.html?open=evaluations` : ouverture robuste de la fenêtre « Évaluations en classe » même si `window.load` a déjà eu lieu.
 - `competences-hibou.html` est explicitement reliée au `student_snapshot` réel du Google Sheet en lecture seule.

@@ -1,4 +1,4 @@
-## V34.46 — Correctifs liaison Google Sheet / évaluations
+# V34.47 — Progressions CE2
 
 La page « Compétences validées dans Maître Hibou » lit le `student_snapshot` réel en lecture seule et affiche un état de synchronisation explicite. Le raccourci « Évaluations en classe » ouvre désormais correctement la fenêtre d’évaluations.
 
@@ -257,3 +257,7 @@ Le fichier `lsu-synthesis-engine.js` contient désormais le premier moteur de sy
 
 ### V34.45
 Suivi des élèves : Maître Hibou → évaluations de classe → aide à la rédaction du LSU.
+
+## V34.47 — nettoyage post-migration Maître Hibou
+
+Les anciennes traces sans `competence_code` restent archivées dans Google Sheets mais sont masquées des écrans pédagogiques LSU. Les traces canoniques migrées deviennent la seule représentation visible de ces réussites. Le choix S1/S2 sert à déterminer l’usage de la trace sans masquer l’historique.
