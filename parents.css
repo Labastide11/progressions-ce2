@@ -1232,3 +1232,10 @@ footer{
   line-height:1.3;
 }
 @media(max-width:620px){.homework-evaluations-title--count{padding:9px 10px;font-size:.95rem}}
+
+
+/* V34.63 — repères calendrier scolaire dans la chronologie des devoirs */
+.homework-calendar-events{display:grid;gap:8px;margin:2px 0 12px}
+.homework-calendar-event{display:flex;align-items:center;gap:10px;padding:11px 13px;border-radius:13px;font-weight:850;line-height:1.4;border:1px solid #dfeee5;background:#f1faf4;color:#315c43}
+.homework-calendar-event--dayoff{background:#f7f3ff;border-color:#e6dcf5;color:#563b7d}
+.homework-calendar-event__icon{font-size:19px;line-height:1;flex:0 0 auto}

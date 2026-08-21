@@ -1,4 +1,5 @@
-// V34.62 — Espace Parents : devoirs P1 à P5, évaluations ciblées, rebrassage et fin d’année sans surcharge.
+// V34.63 — Espace Parents : calendrier scolaire Zone C intégré aux devoirs P1 à P5.
+// Jours sans classe filtrés automatiquement ; vacances et jours fériés affichés dans la chronologie.
 (function(){
 'use strict';
 const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -14,6 +15,30 @@ function renderPublished(){$('weekMessage').textContent=W.message||'Aucune infor
 function isoLocal(d){const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');return `${y}-${m}-${day}`}
 function dateFromIso(s){const [y,m,d]=String(s).split('-').map(Number);return new Date(y,m-1,d)}
 function dueLabel(s){return frDate(dateFromIso(s),{weekday:'long',day:'numeric',month:'long'})}
+function noSchoolDateSet(){return new Set((CAL.daysOff||[]).map(x=>String(x&&x.date||'')).filter(Boolean))}
+function schoolCalendarEventsForWeek(week){
+  if(!week)return [];
+  const events=[];
+  (CAL.daysOff||[]).forEach(ev=>{
+    const date=String(ev&&ev.date||'');
+    if(date&&date>=week.start&&date<=week.end){
+      events.push({kind:'dayoff',date,icon:ev.icon||'📅',label:ev.label||'Jour sans classe'});
+    }
+  });
+  (CAL.breaks||[]).forEach(br=>{
+    const date=String(br&&br.lastSchoolDay||'');
+    if(date&&date>=week.start&&date<=week.end){
+      const resume=br.resume?` · reprise ${dueLabel(br.resume)}`:'';
+      events.push({kind:'break',date,icon:'🏖️',label:`${br.label} — après la classe du ${dueLabel(date)}${resume}`});
+    }
+  });
+  return events.sort((a,b)=>a.date.localeCompare(b.date));
+}
+function schoolCalendarHtml(week){
+  const events=schoolCalendarEventsForWeek(week);
+  if(!events.length)return '';
+  return `<div class="homework-calendar-events">${events.map(ev=>`<div class="homework-calendar-event homework-calendar-event--${esc(ev.kind)}"><span class="homework-calendar-event__icon">${esc(ev.icon)}</span><span>${esc(ev.label)}</span></div>`).join('')}</div>`;
+}
 function evaluationWeekLabel(it){
   const evaluations=Array.isArray(it&&it.evaluations)?it.evaluations:[];
   const dates=[...new Set(evaluations.map(ev=>String(ev&&ev.date||'')).filter(Boolean))].sort();
@@ -64,8 +89,7 @@ function homeworkEvaluationsHtml(list,periodTag=''){
 }
 function homeworkItemCard(it,compact=false,periodTag='',lightWeek=false){const evaluations=homeworkEvaluationsHtml(it.evaluations,periodTag);const challenge=(!lightWeek&&it.challenge)?`<div class="homework-block homework-challenge"><b>🎯 Défi du jour</b><p>${esc(it.challenge)}</p></div>`:'';const family=(!lightWeek&&it.family)?`<div class="homework-block homework-family"><b>👨‍👩‍👧 Défi famille <span>facultatif</span></b><p>${esc(it.family)}</p></div>`:'';const hibou=homeworkHibouHtml(it.hibou);const dateTitle=evaluationWeekLabel(it);return `<article class="homework-card${compact?' homework-card--compact':''}"><div class="homework-date">${esc(dateTitle)}</div>${evaluations}<div class="homework-block homework-routine"><b>${esc(it.routineIcon||'📚')} ${esc(it.routineTitle||'Je revois')}</b><p>${esc(it.routine||'')}</p></div>${challenge}${family}${hibou}</article>`}
 function allEvaluationDates(){const out=[];(D.weeks||[]).forEach(w=>(w.items||[]).forEach(it=>(it.evaluations||[]).forEach(ev=>{if(ev&&ev.date)out.push(String(ev.date))})));return [...new Set(out)]}
-function renderHomework(){const now=new Date(),week=homeworkWeekFor(now),cur=$('homeworkCurrent');if(!cur)return;if(!week){cur.innerHTML='<div class="homework-empty">Aucun devoir programmé.</div>';return}let items=Array.isArray(week.items)?week.items:[];const periodTag=week.__period||'';const evalDates=allEvaluationDates();const weekEvalDates=evalDates.filter(d=>d>=week.start&&d<=week.end);const lightWeek=['p1','p2','p3','p4','p5'].includes(periodTag)&&weekEvalDates.length>0;if(lightWeek){items=items.filter(it=>{const hasOwnEvaluations=Array.isArray(it.evaluations)&&it.evaluations.length>0;return hasOwnEvaluations||!weekEvalDates.includes(String(it.due||''))})}const dates=`${esc(frDate(dateFromIso(week.start),{day:'numeric',month:'long'}))} au ${esc(frDate(dateFromIso(week.end),{day:'numeric',month:'long'}))}`;const head=`<div class="homework-week-head"><div><span>${esc(week.label||'Semaine en cours')}</span><h3>${dates}</h3>${week.theme?`<p class="homework-theme">${esc(week.theme)}</p>`:''}</div></div>`;if(!items.length){cur.innerHTML=`${head}<div class="homework-empty">🌱 ${esc(week.note||'Aucun devoir cette semaine.')}</div>${week.holiday?`<div class="homework-holiday">🏖️ ${esc(week.holiday)}</div>`:''}`;return}cur.innerHTML=`${head}${week.note?`<div class="homework-empty">${esc(week.note)}</div>`:''}${items.map(x=>homeworkItemCard(x,false,periodTag,lightWeek)).join('')}${week.holiday?`<div class="homework-holiday">🏖️ ${esc(week.holiday)}</div>`:''}`}
-
+function renderHomework(){const now=new Date(),week=homeworkWeekFor(now),cur=$('homeworkCurrent');if(!cur)return;if(!week){cur.innerHTML='<div class="homework-empty">Aucun devoir programmé.</div>';return}let items=Array.isArray(week.items)?week.items:[];const periodTag=week.__period||'';const noSchool=noSchoolDateSet();items=items.filter(it=>!noSchool.has(String(it&&it.due||'')));const evalDates=allEvaluationDates();const weekEvalDates=evalDates.filter(d=>d>=week.start&&d<=week.end);const lightWeek=['p1','p2','p3','p4','p5'].includes(periodTag)&&weekEvalDates.length>0;if(lightWeek){items=items.filter(it=>{const hasOwnEvaluations=Array.isArray(it.evaluations)&&it.evaluations.length>0;return hasOwnEvaluations||!weekEvalDates.includes(String(it.due||''))})}const dates=`${esc(frDate(dateFromIso(week.start),{day:'numeric',month:'long'}))} au ${esc(frDate(dateFromIso(week.end),{day:'numeric',month:'long'}))}`;const head=`<div class="homework-week-head"><div><span>${esc(week.label||'Semaine en cours')}</span><h3>${dates}</h3>${week.theme?`<p class="homework-theme">${esc(week.theme)}</p>`:''}</div></div>`;const calendar=schoolCalendarHtml(week);if(!items.length){cur.innerHTML=`${head}${calendar}<div class="homework-empty">🌱 ${esc(week.note||'Aucun devoir cette semaine.')}</div>${week.holiday?`<div class="homework-holiday">🏖️ ${esc(week.holiday)}</div>`:''}`;return}cur.innerHTML=`${head}${calendar}${week.note?`<div class="homework-empty">${esc(week.note)}</div>`:''}${items.map(x=>homeworkItemCard(x,false,periodTag,lightWeek)).join('')}${week.holiday?`<div class="homework-holiday">🏖️ ${esc(week.holiday)}</div>`:''}`}
 
 function setupHomeworkTest(){
   const btn=$('homeworkTestHotspot'),bar=$('homeworkTestBar'),label=$('homeworkTestLabel'),prev=$('homeworkTestPrev'),next=$('homeworkTestNext'),reset=$('homeworkTestReset');
