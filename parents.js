@@ -1,4 +1,4 @@
-// V34.70 — Espace Parents : rappels anticipés harmonisés et Jour J informatif uniquement.
+// V34.72 — Espace Parents : période active et dates explicites dans « Ce que nous apprenons ».
 // Les repères annuels transversaux Arts / éducation musicale sont affichés pour chaque période.
 (function(){
 'use strict';
@@ -7,6 +7,13 @@ const EDT=window.PUBLIC_EDT,PROG=window.PROGRESSIONS||{},W=window.PARENTS_SEMAIN
 const CAL=window.CALENDRIER_SCOLAIRE_2026_2027||{daysOff:[],breaks:[]};
 const subjectOrder=['francais','maths','anglais','sciences','histoire','geographie','eps','arts'];
 const togetherOrder=['emc','evar','emi'];
+const LEARNING_PERIOD_DATES={
+  p1:{label:'Période 1',start:'2026-09-01',end:'2026-10-16'},
+  p2:{label:'Période 2',start:'2026-11-02',end:'2026-12-18'},
+  p3:{label:'Période 3',start:'2027-01-04',end:'2027-02-05'},
+  p4:{label:'Période 4',start:'2027-02-22',end:'2027-04-02'},
+  p5:{label:'Période 5',start:'2027-04-19',end:'2027-07-02'}
+};
 function period(){return EDT.periodForDate(new Date())}
 function periodKey(){const p=period();return p==='rentree'?'p1':p}
 function comps(key){const s=PROG[key]||{},arr=s[periodKey()+'Competencies'];if(Array.isArray(arr)&&arr.length)return arr;if(key==='arts'&&Array.isArray(s.annualCompetencies))return s.annualCompetencies;return[]}
@@ -162,7 +169,22 @@ function setupHomeworkTest(){
 
 function grouped(arr){const m=new Map();arr.forEach(c=>{const d=c.domain||'Objectifs de la période';if(!m.has(d))m.set(d,[]);m.get(d).push(c)});return m}
 function learningCard(key){const s=PROG[key]||{},arr=comps(key);if(!arr.length)return'';const groups=grouped(arr);const inside=[...groups.entries()].map(([d,list])=>`<div class="domain-title">${esc(d)}</div><ul>${list.map(c=>`<li>${esc(c.title||c.jeSais||c.code)}</li>`).join('')}</ul>`).join('');return `<article class="learning-card"><h3>${esc(s.icon||'📘')} ${esc(s.title||key)}</h3><p>${arr.length} objectif${arr.length>1?'s':''} travaillé${arr.length>1?'s':''} pendant la période.</p><details><summary>Voir ce que les élèves apprennent</summary>${inside}</details></article>`}
-function renderLearning(){$('learningGrid').innerHTML=subjectOrder.map(learningCard).join('')}
+function learningPeriodDateText(){
+  const meta=LEARNING_PERIOD_DATES[periodKey()]||LEARNING_PERIOD_DATES.p1;
+  const a=dateFromIso(meta.start),b=dateFromIso(meta.end);
+  const day=d=>d.getDate()===1?'1er':String(d.getDate());
+  const month=d=>new Intl.DateTimeFormat('fr-FR',{month:'long'}).format(d);
+  const startYear=a.getFullYear(),endYear=b.getFullYear();
+  const range=startYear===endYear
+    ? `du ${day(a)} ${month(a)} au ${day(b)} ${month(b)} ${endYear}`
+    : `du ${day(a)} ${month(a)} ${startYear} au ${day(b)} ${month(b)} ${endYear}`;
+  return `${meta.label} — ${range}`;
+}
+function renderLearning(){
+  const periodDates=$('learningPeriodDates');
+  if(periodDates)periodDates.textContent=learningPeriodDateText();
+  $('learningGrid').innerHTML=subjectOrder.map(learningCard).join('');
+}
 function renderTogether(){$('togetherLearning').innerHTML=togetherOrder.map(key=>{const s=PROG[key]||{},arr=comps(key);if(!arr.length)return'';return `<article class="together-card"><h3>${esc(s.icon||'🤝')} ${esc(s.title||key)}</h3><ul>${arr.map(c=>`<li>${esc(c.title||c.jeSais||c.code)}</li>`).join('')}</ul></article>`}).join('')}
 
 function frenchDateFromLabel(label){

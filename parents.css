@@ -1260,3 +1260,15 @@ footer{
 .homework-today{border-radius:13px;padding:11px 12px;background:#f4effa;border-left:4px solid #a98ac9;color:#49355f}
 .homework-today b{color:#533779}
 .homework-today p{margin:5px 0 0;line-height:1.45;color:#62536e}
+
+/* V34.72 — période active explicitée sous « Ce que nous apprenons ». */
+.learning-period-dates{
+  margin:2px 0 0;
+  color:#6941a5;
+  font-size:14px;
+  font-weight:850;
+  line-height:1.35;
+}
+@media(max-width:620px){
+  .learning-period-dates{font-size:13px;margin-top:3px}
+}
