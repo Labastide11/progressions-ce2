@@ -1,4 +1,4 @@
-// V34.75 — Espace Parents : révisions facultatives Toussaint + Noël intégrées aux devoirs vacances.
+// V34.76 — Espace Parents : message de vacances chaleureux ajouté aux révisions facultatives.
 // Les repères annuels transversaux Arts / éducation musicale sont affichés pour chaque période.
 (function(){
 'use strict';
@@ -61,13 +61,15 @@ function holidayRevisionHtml(week){
     name:'Noël',
     revision:'assets/revisions-vacances/noel-revisions.png',
     games:'assets/revisions-vacances/noel-jeux.png',
-    gamesDetail:'Labyrinthe de calcul · code secret · intrus · défi logique'
+    gamesDetail:'Labyrinthe de calcul · code secret · intrus · défi logique',
+    wish:'🎄 Je vous souhaite de très belles vacances et un joyeux Noël en famille !'
   }:{
     icon:'🍂',
     name:'Toussaint',
     revision:'assets/revisions-vacances/toussaint-revisions.png',
     games:'assets/revisions-vacances/toussaint-jeux.png',
-    gamesDetail:'Coloriages · code secret · défi logique'
+    gamesDetail:'Coloriages · code secret · défi logique',
+    wish:'🍂 Je vous souhaite de très belles vacances de la Toussaint !'
   };
   return `<section class="holiday-revisions" aria-label="Petites révisions facultatives des vacances de ${esc(theme.name)}">
     <div class="holiday-revisions__head">
@@ -80,6 +82,7 @@ function holidayRevisionHtml(week){
       <p><strong>Deux fiches sont proposées pour réactiver tranquillement quelques notions travaillées en classe :</strong> une page de révisions et une page de jeux.</p>
       <p><strong>Il n’est pas nécessaire de tout faire.</strong> Votre enfant peut choisir quelques activités, à son rythme et selon ses envies. L’objectif est simplement de garder quelques acquis en mémoire, <strong>sans transformer les vacances en temps scolaire</strong>.</p>
       <p>Lire, jouer, sortir, découvrir et se reposer restent essentiels pendant les vacances.</p>
+      <p class="holiday-revisions__wish"><strong>${esc(theme.wish)}</strong></p>
     </div>
     <div class="holiday-revisions__pages">
       <a class="holiday-revisions__page" href="${theme.revision}" target="_blank" rel="noopener">
