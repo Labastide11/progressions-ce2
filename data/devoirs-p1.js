@@ -1,12 +1,14 @@
+// V34.70 — Rappels d’évaluation harmonisés : rappel anticipé, Jour J informatif uniquement.
 window.DEVOIRS_P1 = {
-  "version": "34.68",
+  "version": "34.70",
   "period": "p1",
   "schoolYear": "2026-2027",
   "principles": {
     "start": "2026-09-07",
     "maxMinutes": 10,
     "writtenWork": false,
-    "formula": "📚 Je revois → 🎯 Je m’entraîne → 👨‍👩‍👧 Je partage"
+    "formula": "📚 Je revois → 🎯 Je m’entraîne → 👨‍👩‍👧 Je partage",
+    "evaluationRule": "Évaluation lundi/mardi : petit rappel pendant le week-end précédent. Évaluation jeudi/vendredi : petit rappel à partir du mardi ou du mercredi. Jour J : information seulement, aucun devoir ajouté."
   },
   "weeks": [
     {
@@ -233,13 +235,13 @@ window.DEVOIRS_P1 = {
           }
         },
         {
-          "due": "2026-10-05",
-          "routineIcon": "⭐",
-          "routineTitle": "Évaluations prévues cette semaine",
-          "routine": "Regarde simplement les évaluations prévues. Tu peux revoir une notion tranquillement pendant le week-end ou attendre la veille de l’évaluation pour faire un petit rappel.",
-          "challenge": "Pas de travail supplémentaire : il n’est pas nécessaire de tout réviser. Quelques minutes de rappel suffisent.",
-          "family": "Pour accompagner votre enfant : choisissez le moment qui lui convient le mieux, pendant le week-end ou la veille, sans chercher à tout reprendre.",
-          "notion": "Annonce anticipée des évaluations de la semaine",
+          "due": "2026-10-03",
+          "routineIcon": "📅",
+          "routineTitle": "Évaluations prévues — information aux familles",
+          "routine": "Les évaluations sont annoncées à l’avance. Pour une évaluation le lundi ou le mardi, le petit rappel peut se faire tranquillement pendant ce week-end. Pour une évaluation le jeudi ou le vendredi, un rappel très court sera proposé à partir du mardi ou du mercredi.",
+          "challenge": "",
+          "family": "",
+          "notion": "Annonce anticipée des évaluations",
           "evaluations": [
             {
               "date": "2026-10-05",
@@ -303,37 +305,21 @@ window.DEVOIRS_P1 = {
       "theme": "Consolider et préparer les petites évaluations",
       "items": [
         {
-          "due": "2026-10-06",
-          "routineIcon": "⭐",
-          "routineTitle": "Petit rappel — évaluation de français mardi",
-          "routine": "Relis seulement les deux compétences annoncées : repérer le verbe conjugué et le groupe sujet. Pas de nouvelle notion ce soir.",
-          "challenge": "Dans « Les petits chats jouent dans le jardin. », trouve seulement le verbe conjugué et le groupe sujet.",
-          "family": "Un dernier rappel suffit : valorisez ce qui est déjà acquis et arrêtez la révision au bout de quelques minutes.",
-          "notion": "Verbe conjugué · groupe sujet",
+          "due": "2026-10-07",
+          "routineIcon": "📌",
+          "routineTitle": "Petit rappel — mathématiques vendredi",
+          "routine": "Quelques minutes seulement : explique ce que l’on cherche dans un petit problème, puis pose une addition. Rien de nouveau à apprendre.",
+          "challenge": "",
+          "family": "",
+          "notion": "Petit rappel avant évaluation",
           "hibou": [
             {
-              "label": "La phrase et la ponctuation",
-              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-phrase-ponctuation.html"
+              "label": "Résoudre un problème additif",
+              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/problemes-additifs.html"
             },
             {
-              "label": "Le verbe",
-              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-verbe.html"
-            },
-            {
-              "label": "Le sujet du verbe",
-              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-sujet-verbe.html"
-            }
-          ],
-          "evaluations": [
-            {
-              "date": "2026-10-06",
-              "subject": "Français",
-              "title": "Évaluation demain — 2 nouvelles compétences",
-              "newSkills": [
-                "repérer le verbe conjugué dans une phrase simple",
-                "repérer le groupe sujet"
-              ],
-              "preparation": "Dernière relecture très courte : seulement le verbe et le sujet."
+              "label": "Poser une addition",
+              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/addition-posee.html"
             }
           ]
         },
@@ -352,44 +338,13 @@ window.DEVOIRS_P1 = {
           }
         },
         {
-          "due": "2026-10-09",
-          "routineIcon": "🔢",
-          "routineTitle": "Petit rappel — évaluation de mathématiques vendredi",
-          "routine": "Explique ce que l’on cherche dans un petit problème, puis pose une addition. Pas de nouvelle notion ce soir.",
-          "challenge": "Un problème oral très court et une addition posée suffisent.",
-          "family": "Quelques minutes suffisent. L’objectif est de remettre les procédures en mémoire, pas de refaire une séance de classe.",
-          "notion": "Comprendre un problème · addition posée",
-          "hibou": [
-            {
-              "label": "Résoudre un problème additif",
-              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/problemes-additifs.html"
-            },
-            {
-              "label": "Poser une addition",
-              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/addition-posee.html"
-            }
-          ],
-          "evaluations": [
-            {
-              "date": "2026-10-09",
-              "subject": "Mathématiques",
-              "title": "Évaluation demain — 2 nouvelles compétences",
-              "newSkills": [
-                "comprendre ce que l’on cherche dans un problème",
-                "poser correctement une addition"
-              ],
-              "preparation": "Un problème très court et une addition posée suffisent."
-            }
-          ]
-        },
-        {
-          "due": "2026-10-12",
-          "routineIcon": "⭐",
-          "routineTitle": "Évaluations prévues cette semaine",
-          "routine": "Regarde simplement les deux évaluations prévues. Tu peux faire un petit rappel pendant le week-end ou attendre la veille de chacune d’elles.",
-          "challenge": "Pas besoin de tout revoir : une notion de sciences ou un repère de géographie à expliquer avec ses propres mots suffit.",
-          "family": "Choisissez le moment le plus confortable pour votre enfant. L’objectif est de rappeler ce qui a été appris, pas d’ajouter du travail.",
-          "notion": "Annonce anticipée des évaluations de sciences et géographie",
+          "due": "2026-10-10",
+          "routineIcon": "📅",
+          "routineTitle": "Évaluations prévues — information aux familles",
+          "routine": "Les évaluations sont annoncées à l’avance. Pour une évaluation le lundi ou le mardi, le petit rappel peut se faire tranquillement pendant ce week-end. Pour une évaluation le jeudi ou le vendredi, un rappel très court sera proposé à partir du mardi ou du mercredi.",
+          "challenge": "",
+          "family": "",
+          "notion": "Annonce anticipée des évaluations",
           "evaluations": [
             {
               "date": "2026-10-15",
@@ -432,46 +387,22 @@ window.DEVOIRS_P1 = {
           "notion": "Calcul mental · explicitation"
         },
         {
-          "due": "2026-10-15",
-          "routineIcon": "⭐",
-          "routineTitle": "Petit rappel — évaluation de sciences jeudi",
-          "routine": "Reprends une expérience faite en classe : qu’a-t-on observé et quelle conclusion peut-on tirer ?",
-          "challenge": "Explique uniquement l’observation et la conclusion avec tes propres mots.",
-          "family": "Posez simplement les questions : « Qu’avez-vous testé ? Qu’avez-vous observé ? Qu’est-ce que cela montre ? »",
-          "notion": "Observation · conclusion",
-          "evaluations": [
-            {
-              "date": "2026-10-15",
-              "subject": "Sciences",
-              "title": "Observation en situation — 2 nouvelles compétences",
-              "newSkills": [
-                "observer précisément les résultats d’une expérience",
-                "tirer une conclusion à partir des résultats"
-              ],
-              "preparation": "Réexpliquer une expérience réellement menée en classe suffit."
-            }
-          ]
+          "due": "2026-10-13",
+          "routineIcon": "📌",
+          "routineTitle": "Petit rappel — sciences jeudi",
+          "routine": "Réexplique simplement une expérience faite en classe : ce que tu as observé et la conclusion que tu peux en tirer. Quelques minutes suffisent.",
+          "challenge": "",
+          "family": "",
+          "notion": "Petit rappel avant évaluation"
         },
         {
-          "due": "2026-10-16",
-          "routineIcon": "⭐",
-          "routineTitle": "Petit rappel — évaluation de géographie vendredi",
-          "routine": "Relis seulement une carte étudiée en classe : retrouve la France et explique ce qu’une carte de population permet de comprendre.",
-          "challenge": "Montre la France puis décris simplement ce que représentent les zones plus ou moins peuplées.",
-          "family": "Un échange oral de quelques minutes suffit : laissez votre enfant montrer les repères qu’il connaît déjà.",
-          "notion": "Localiser la France · lire une carte de population",
-          "evaluations": [
-            {
-              "date": "2026-10-16",
-              "subject": "Géographie",
-              "title": "Évaluation demain — 2 nouvelles compétences",
-              "newSkills": [
-                "localiser la France à différentes échelles",
-                "lire une carte simple de répartition de la population"
-              ],
-              "preparation": "Revoir seulement les cartes utilisées en classe."
-            }
-          ]
+          "due": "2026-10-14",
+          "routineIcon": "📌",
+          "routineTitle": "Petit rappel — géographie vendredi",
+          "routine": "Regarde une carte utilisée en classe : localise la France puis prélève une information simple. Quelques minutes suffisent.",
+          "challenge": "",
+          "family": "",
+          "notion": "Petit rappel avant évaluation"
         }
       ],
       "holiday": "Vacances : lire pour le plaisir. Rien à rendre."

@@ -1254,3 +1254,9 @@ footer{
 .homework-calendar-event--dayoff{background:#eafafa;border-color:#9edede;color:#176b72}
 @media(max-width:760px){.homework-week-calendar__grid{grid-template-columns:repeat(2,minmax(0,1fr))}.homework-week-calendar__day:last-child{grid-column:1/-1}}
 @media(max-width:420px){.homework-week-calendar__grid{grid-template-columns:1fr}.homework-week-calendar__day:last-child{grid-column:auto}.homework-week-calendar__day{grid-template-columns:95px 1fr;align-items:center}.homework-week-calendar__status{align-items:center}}
+
+/* V34.70 — Jour J : information uniquement, sans devoir ajouté */
+.homework-card--today{border-color:#ddd1ee;background:#fcfaff;box-shadow:0 4px 14px rgba(76,48,112,.05)}
+.homework-today{border-radius:13px;padding:11px 12px;background:#f4effa;border-left:4px solid #a98ac9;color:#49355f}
+.homework-today b{color:#533779}
+.homework-today p{margin:5px 0 0;line-height:1.45;color:#62536e}

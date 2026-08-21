@@ -1,5 +1,6 @@
+// V34.70 — Rappels d’évaluation harmonisés : rappel anticipé, Jour J informatif uniquement.
 window.DEVOIRS_P2 = {
-  "version": "34.68",
+  "version": "34.70",
   "period": "p2",
   "schoolYear": "2026-2027",
   "principles": {
@@ -8,7 +9,7 @@ window.DEVOIRS_P2 = {
     "writtenWork": false,
     "formula": "📚 Je revois → 🎯 Je m’entraîne → 👨‍👩‍👧 Je partage",
     "hibouRule": "Une leçon Maître Hibou ne crée jamais un devoir : elle n'est proposée que lorsqu'un devoir pédagogiquement pertinent la justifie.",
-    "evaluationRule": "Toute évaluation de la semaine est annoncée au plus tard pendant le week-end précédent ; la veille, seulement un rappel léger."
+    "evaluationRule": "Évaluation lundi/mardi : petit rappel pendant le week-end précédent. Évaluation jeudi/vendredi : petit rappel à partir du mardi ou du mercredi. Jour J : information seulement, aucun devoir ajouté."
   },
   "weeks": [
     {
@@ -200,24 +201,15 @@ window.DEVOIRS_P2 = {
             "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/calcul-mental-addition.html",
             "intro": "Besoin d’une stratégie ?"
           }
-        }
-      ]
-    },
-    {
-      "id": "p2s4",
-      "label": "P2 · Semaine 4",
-      "start": "2026-11-23",
-      "end": "2026-11-27",
-      "theme": "Écrire, soustraire et résoudre des problèmes",
-      "items": [
+        },
         {
-          "due": "2026-11-23",
-          "routineIcon": "⭐",
-          "routineTitle": "Évaluation prévue cette semaine",
-          "routine": "Le bilan oral d’anglais commence cette semaine et sera réalisé progressivement en classe. Il n’est pas nécessaire de préparer une longue révision.",
-          "challenge": "Un petit rappel oral suffit.",
-          "family": "Les passages sont échelonnés : si votre enfant ne passe pas cette semaine, aucune préparation supplémentaire n’est demandée.",
-          "notion": "Annonce anticipée du bilan oral d’anglais",
+          "due": "2026-11-21",
+          "routineIcon": "📅",
+          "routineTitle": "Évaluations prévues — information aux familles",
+          "routine": "Les évaluations sont annoncées à l’avance. Pour une évaluation le lundi ou le mardi, le petit rappel peut se faire tranquillement pendant ce week-end. Pour une évaluation le jeudi ou le vendredi, un rappel très court sera proposé à partir du mardi ou du mercredi.",
+          "challenge": "",
+          "family": "",
+          "notion": "Annonce anticipée des évaluations",
           "evaluations": [
             {
               "date": "2026-11-23",
@@ -233,7 +225,16 @@ window.DEVOIRS_P2 = {
               "preparation": "Quelques minutes d’oral suffisent. Le prénom est une compétence déjà travaillée en P1."
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "id": "p2s4",
+      "label": "P2 · Semaine 4",
+      "start": "2026-11-23",
+      "end": "2026-11-27",
+      "theme": "Écrire, soustraire et résoudre des problèmes",
+      "items": [
         {
           "due": "2026-11-24",
           "routineIcon": "🧠",
@@ -270,24 +271,15 @@ window.DEVOIRS_P2 = {
             "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/problemes-multiplicatifs.html",
             "intro": "Besoin d’un exemple ?"
           }
-        }
-      ]
-    },
-    {
-      "id": "p2s5",
-      "label": "P2 · Semaine 5",
-      "start": "2026-11-30",
-      "end": "2026-12-04",
-      "theme": "Premiers bilans de la période, sans surcharge",
-      "items": [
+        },
         {
-          "due": "2026-11-30",
-          "routineIcon": "⭐",
-          "routineTitle": "Évaluations prévues cette semaine",
-          "routine": "Voici les évaluations programmées cette semaine. Il n’est pas nécessaire de tout réviser pendant le week-end : choisissez seulement un petit rappel utile ou attendez la veille.",
-          "challenge": "Pas de travail supplémentaire : quelques minutes suffisent.",
-          "family": "Le bilan oral d’anglais se poursuit seulement pour les élèves concernés. Pour l’Histoire et le Français, privilégiez ce qui reste un peu fragile plutôt que de tout reprendre.",
-          "notion": "Annonce anticipée des évaluations de la semaine",
+          "due": "2026-11-28",
+          "routineIcon": "📅",
+          "routineTitle": "Évaluations prévues — information aux familles",
+          "routine": "Les évaluations sont annoncées à l’avance. Pour une évaluation le lundi ou le mardi, le petit rappel peut se faire tranquillement pendant ce week-end. Pour une évaluation le jeudi ou le vendredi, un rappel très court sera proposé à partir du mardi ou du mercredi.",
+          "challenge": "",
+          "family": "",
+          "notion": "Annonce anticipée des évaluations",
           "evaluations": [
             {
               "date": "2026-11-30",
@@ -339,21 +331,16 @@ window.DEVOIRS_P2 = {
               ]
             }
           ]
-        },
-        {
-          "due": "2026-12-01",
-          "routineIcon": "⭐",
-          "routineTitle": "Petit rappel — français",
-          "routine": "Revois seulement le présent des verbes en -er et l’ordre d’un petit récit. Repérer le verbe est déjà connu depuis la P1.",
-          "challenge": "Conjugue « jouer » au présent puis raconte trois actions dans l’ordre.",
-          "family": "Quelques minutes suffisent. Le repérage du verbe est du rebrassage, pas une nouvelle notion.",
-          "notion": "Présent · ordre chronologique · rebrassage verbe",
-          "hibou": {
-            "label": "Le présent",
-            "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/conjugaison-present.html",
-            "intro": "Besoin d’un rappel ?"
-          }
-        },
+        }
+      ]
+    },
+    {
+      "id": "p2s5",
+      "label": "P2 · Semaine 5",
+      "start": "2026-11-30",
+      "end": "2026-12-04",
+      "theme": "Premiers bilans de la période, sans surcharge",
+      "items": [
         {
           "due": "2026-12-03",
           "routineIcon": "🔢",
@@ -376,24 +363,15 @@ window.DEVOIRS_P2 = {
               "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/perimetre.html"
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": "p2s6",
-      "label": "P2 · Semaine 6",
-      "start": "2026-12-07",
-      "end": "2026-12-11",
-      "theme": "Sciences et mathématiques : bilans annoncés à l’avance",
-      "items": [
+        },
         {
-          "due": "2026-12-07",
-          "routineIcon": "⭐",
-          "routineTitle": "Évaluations prévues cette semaine",
-          "routine": "Voici les évaluations de la semaine. Il n’est pas demandé de tout revoir pendant le week-end : une courte révision peut être faite maintenant ou simplement la veille.",
-          "challenge": "Pas de surcharge : choisissez au maximum une ou deux notions à rappeler.",
-          "family": "Le bilan oral d’anglais se poursuit pour les élèves concernés. Pour Sciences et Mathématiques, quelques minutes de rappel suffisent.",
-          "notion": "Annonce anticipée des évaluations d’anglais, sciences et mathématiques",
+          "due": "2026-12-05",
+          "routineIcon": "📅",
+          "routineTitle": "Évaluations prévues — information aux familles",
+          "routine": "Les évaluations sont annoncées à l’avance. Pour une évaluation le lundi ou le mardi, le petit rappel peut se faire tranquillement pendant ce week-end. Pour une évaluation le jeudi ou le vendredi, un rappel très court sera proposé à partir du mardi ou du mercredi.",
+          "challenge": "",
+          "family": "",
+          "notion": "Annonce anticipée des évaluations",
           "evaluations": [
             {
               "date": "2026-12-07",
@@ -445,61 +423,52 @@ window.DEVOIRS_P2 = {
               ]
             }
           ]
-        },
-        {
-          "due": "2026-12-08",
-          "routineIcon": "📚",
-          "routineTitle": "Présent de être et avoir",
-          "routine": "Relis la conjugaison de être et avoir au présent. Récite oralement un seul des deux verbes puis vérifie dans ta leçon.",
-          "challenge": "Complète oralement : Nous … contents. · Ils … un vélo. · Tu … en avance.",
-          "family": "",
-          "notion": "Présent de être et avoir",
-          "hibou": {
-            "label": "Le présent de quelques verbes irréguliers",
-            "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/conjugaison-present-irreguliers.html",
-            "intro": "Besoin d’un rappel ?"
-          }
-        },
-        {
-          "due": "2026-12-10",
-          "routineIcon": "⭐",
-          "routineTitle": "Petit rappel — sciences",
-          "routine": "Choisis une seule expérience sur l’eau faite en classe et explique : ce que l’on voulait savoir, ce que l’on a observé et ce que l’on peut conclure.",
-          "challenge": "Pas besoin d’apprendre un texte par cœur : explique avec tes propres mots.",
-          "family": "Posez seulement trois questions : « Qu’avez-vous testé ? Qu’avez-vous observé ? Qu’est-ce que cela montre ? »",
-          "notion": "Rappel léger avant l’évaluation de sciences"
-        },
-        {
-          "due": "2026-12-11",
-          "routineIcon": "⭐",
-          "routineTitle": "Petit rappel — mathématiques",
-          "routine": "Revois seulement les automatismes et une notion que tu as choisie. Pas de nouvel exercice long ce soir.",
-          "challenge": "4 rappels maximum : double de 35 · moitié de 80 · 6 × 100 · 48 + 27.",
-          "family": "Quelques minutes suffisent. On s’arrête même si tout n’a pas été revu.",
-          "notion": "Rappel léger avant le bilan de mathématiques",
-          "hibou": {
-            "label": "Doubles et moitiés",
-            "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/doubles-moitie.html",
-            "intro": "Seulement si cette notion a été choisie :"
-          }
         }
       ]
     },
     {
-      "id": "p2s7",
-      "label": "P2 · Semaine 7",
-      "start": "2026-12-14",
-      "end": "2026-12-18",
-      "theme": "Terminer la période tranquillement",
+      "id": "p2s6",
+      "label": "P2 · Semaine 6",
+      "start": "2026-12-07",
+      "end": "2026-12-11",
+      "theme": "Sciences et mathématiques : bilans annoncés à l’avance",
       "items": [
         {
-          "due": "2026-12-14",
-          "routineIcon": "⭐",
-          "routineTitle": "Évaluations prévues cette semaine",
-          "routine": "Deux informations seulement cette semaine : le bilan oral d’anglais se termine pour les élèves concernés et l’évaluation de géographie aura lieu jeudi. Un petit rappel suffit.",
-          "challenge": "Pas besoin de tout revoir pendant le week-end.",
-          "family": "Pour la géographie, privilégiez une explication orale à partir des traces et plans étudiés en classe.",
-          "notion": "Annonce anticipée des évaluations de la semaine",
+          "due": "2026-12-08",
+          "routineIcon": "📌",
+          "routineTitle": "Petit rappel — sciences jeudi",
+          "routine": "Reprends une expérience sur l’eau : nomme l’état observé et explique simplement le changement d’état. La conclusion scientifique est déjà connue.",
+          "challenge": "",
+          "family": "",
+          "notion": "Petit rappel avant évaluation"
+        },
+        {
+          "due": "2026-12-09",
+          "routineIcon": "📌",
+          "routineTitle": "Petit rappel — mathématiques vendredi",
+          "routine": "Revois seulement la valeur d’un chiffre selon sa position et une soustraction avec échange. Le problème est du rebrassage.",
+          "challenge": "",
+          "family": "",
+          "notion": "Petit rappel avant évaluation",
+          "hibou": [
+            {
+              "label": "Valeur des chiffres",
+              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/valeur-position-chiffres.html"
+            },
+            {
+              "label": "Soustraction posée",
+              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/soustraction-posee.html"
+            }
+          ]
+        },
+        {
+          "due": "2026-12-12",
+          "routineIcon": "📅",
+          "routineTitle": "Évaluations prévues — information aux familles",
+          "routine": "Les évaluations sont annoncées à l’avance. Pour une évaluation le lundi ou le mardi, le petit rappel peut se faire tranquillement pendant ce week-end. Pour une évaluation le jeudi ou le vendredi, un rappel très court sera proposé à partir du mardi ou du mercredi.",
+          "challenge": "",
+          "family": "",
+          "notion": "Annonce anticipée des évaluations",
           "evaluations": [
             {
               "date": "2026-12-14",
@@ -528,29 +497,24 @@ window.DEVOIRS_P2 = {
               "preparation": "Revoir surtout un paysage urbain et un plan simple. Localiser la France est déjà connu depuis la P1."
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "id": "p2s7",
+      "label": "P2 · Semaine 7",
+      "start": "2026-12-14",
+      "end": "2026-12-18",
+      "theme": "Terminer la période tranquillement",
+      "items": [
         {
           "due": "2026-12-15",
-          "routineIcon": "🧠",
-          "routineTitle": "Vocabulaire — jouer avec les mots",
-          "routine": "Trouve oralement un synonyme de « content » et de « joli », puis un contraire de « rapide » et de « commencer ».",
-          "challenge": "Choisis un mot et demande à quelqu’un de trouver son contraire.",
+          "routineIcon": "📌",
+          "routineTitle": "Petit rappel — géographie jeudi",
+          "routine": "Observe un paysage urbain puis repère un lieu sur un plan simple. Localiser la France est seulement du rebrassage.",
+          "challenge": "",
           "family": "",
-          "notion": "Synonymes · contraires",
-          "hibou": {
-            "label": "Synonymes et antonymes",
-            "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/vocabulaire-synonymes-antonymes.html",
-            "intro": "Envie de revoir la leçon ?"
-          }
-        },
-        {
-          "due": "2026-12-17",
-          "routineIcon": "⭐",
-          "routineTitle": "Petit rappel — géographie",
-          "routine": "Reprends un paysage urbain et un plan simple : décris le paysage puis montre comment tu te repères sur le plan. Localiser la France est seulement du rebrassage.",
-          "challenge": "Deux petites situations suffisent : décrire un paysage urbain et retrouver un lieu sur un plan.",
-          "family": "Un échange oral de quelques minutes suffit. La localisation de la France est déjà connue : ce n’est pas une nouvelle notion à apprendre.",
-          "notion": "Paysage urbain · plan · rebrassage France"
+          "notion": "Petit rappel avant évaluation"
         }
       ],
       "holiday": "Vacances de Noël : lire pour le plaisir et profiter des vacances. Rien à rendre."
