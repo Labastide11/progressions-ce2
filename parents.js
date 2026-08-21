@@ -1,5 +1,5 @@
-// V34.65 — Correctif mode test devoirs : déclaration robuste du calendrier scolaire.
-// Jours sans classe filtrés automatiquement ; vacances et jours fériés affichés dans la chronologie.
+// V34.66 — Consolidation Espace Parents : Arts visibles dans « Ce que nous apprenons ».
+// Les repères annuels transversaux Arts / éducation musicale sont affichés pour chaque période.
 (function(){
 'use strict';
 const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -9,7 +9,7 @@ const subjectOrder=['francais','maths','anglais','sciences','histoire','geograph
 const togetherOrder=['emc','evar','emi'];
 function period(){return EDT.periodForDate(new Date())}
 function periodKey(){const p=period();return p==='rentree'?'p1':p}
-function comps(key){const s=PROG[key]||{},arr=s[periodKey()+'Competencies'];return Array.isArray(arr)?arr:[]}
+function comps(key){const s=PROG[key]||{},arr=s[periodKey()+'Competencies'];if(Array.isArray(arr)&&arr.length)return arr;if(key==='arts'&&Array.isArray(s.annualCompetencies))return s.annualCompetencies;return[]}
 function renderList(id,items){const el=$(id),a=Array.isArray(items)?items.filter(Boolean):[];el.innerHTML=a.map(x=>`<li>${esc(x)}</li>`).join('');el.style.display=a.length?'block':'none'}
 function renderPublished(){$('weekMessage').textContent=W.message||'Aucune information particulière publiée pour cette semaine.';renderList('weekItems',W.items);$('lifeMessage').textContent=L.message||'Les projets et moments de vie de classe seront ajoutés ici.';renderList('lifeItems',L.items);$('infoMessage').textContent=I.message||'Retrouvez ici les informations utiles.';const docs=Array.isArray(I.documents)?I.documents:[];$('documentsList').innerHTML=docs.length?docs.map(d=>{if(typeof d==='string')return `<div class="document-item">${esc(d)}</div>`;const label=esc(d.label||d.title||'Document'),url=String(d.url||'').trim();return `<div class="document-item">${url?`<a href="${esc(url)}" target="_blank" rel="noopener">${label} ↗</a>`:label}</div>`}).join(''):'<div class="document-item">Aucun document particulier publié.</div>'}
 
