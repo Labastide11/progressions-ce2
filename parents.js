@@ -1,9 +1,10 @@
-// V34.63 — Espace Parents : calendrier scolaire Zone C intégré aux devoirs P1 à P5.
+// V34.65 — Correctif mode test devoirs : déclaration robuste du calendrier scolaire.
 // Jours sans classe filtrés automatiquement ; vacances et jours fériés affichés dans la chronologie.
 (function(){
 'use strict';
 const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const EDT=window.PUBLIC_EDT,PROG=window.PROGRESSIONS||{},W=window.PARENTS_SEMAINE||{},H=window.PARENTS_TRAVAIL||{},L=window.PARENTS_VIE_CLASSE||{},I=window.PARENTS_INFOS||{},D1=window.DEVOIRS_P1||{weeks:[]},D2=window.DEVOIRS_P2||{weeks:[]},D3=window.DEVOIRS_P3||{weeks:[]},D4=window.DEVOIRS_P4||{weeks:[]},D5=window.DEVOIRS_P5||{weeks:[]},D={weeks:[...(D1.weeks||[]).map(w=>({...w,__period:'p1'})),...(D2.weeks||[]).map(w=>({...w,__period:'p2'})),...(D3.weeks||[]).map(w=>({...w,__period:'p3'})),...(D4.weeks||[]).map(w=>({...w,__period:'p4'})),...(D5.weeks||[]).map(w=>({...w,__period:'p5'}))].sort((a,b)=>String(a.start||'').localeCompare(String(b.start||'')))};
+const CAL=window.CALENDRIER_SCOLAIRE_2026_2027||{daysOff:[],breaks:[]};
 const subjectOrder=['francais','maths','anglais','sciences','histoire','geographie','eps','arts'];
 const togetherOrder=['emc','evar','emi'];
 function period(){return EDT.periodForDate(new Date())}
