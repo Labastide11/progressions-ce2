@@ -1272,3 +1272,18 @@ footer{
 @media(max-width:620px){
   .learning-period-dates{font-size:13px;margin-top:3px}
 }
+
+
+/* V34.74 — Révisions de vacances facultatives */
+.holiday-revisions{margin-top:14px;padding:15px;border:1px solid #efcf9f;border-radius:18px;background:linear-gradient(180deg,#fffaf2,#fffdf9);box-shadow:0 8px 22px rgba(92,61,132,.06)}
+.holiday-revisions__head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+.holiday-revisions__eyebrow{display:inline-flex;padding:4px 9px;border-radius:999px;background:#fff0cf;color:#8a5714;font-size:.8rem;font-weight:900;text-transform:uppercase;letter-spacing:.03em}
+.holiday-revisions h4{margin:5px 0 0;color:#563b7d;font-size:1.08rem}
+.holiday-revisions__message{padding:12px 13px;border-radius:14px;background:#fff;color:#554e5d;line-height:1.5;border:1px solid #f2e4ca}
+.holiday-revisions__message p{margin:0 0 7px}.holiday-revisions__message p:last-child{margin-bottom:0}
+.holiday-revisions__pages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+.holiday-revisions__page{display:grid;grid-template-columns:92px 1fr;align-items:center;gap:12px;padding:9px;border:1px solid #ded1ef;border-radius:15px;background:#fff;text-decoration:none;color:#4c356f;transition:transform .15s ease,box-shadow .15s ease}
+.holiday-revisions__page:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(79,51,113,.10)}
+.holiday-revisions__page img{width:92px;aspect-ratio:1054/1493;object-fit:cover;object-position:top;border-radius:10px;border:1px solid #eadff3;background:#fff}
+.holiday-revisions__page b{display:block;line-height:1.25}.holiday-revisions__page small{display:block;margin-top:5px;color:#776c7e;line-height:1.35}
+@media(max-width:700px){.holiday-revisions__pages{grid-template-columns:1fr}.holiday-revisions__page{grid-template-columns:76px 1fr}.holiday-revisions__page img{width:76px}}
