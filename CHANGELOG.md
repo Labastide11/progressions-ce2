@@ -1,3 +1,12 @@
+# V34.52 — Espace Parents : évaluations annoncées sans surcharge
+
+- Le titre anxiogène « Évaluations à préparer » devient « Évaluations prévues cette semaine ».
+- Ajout d’un message rassurant : les évaluations sont annoncées à l’avance pour aider les familles à s’organiser, pas pour imposer des révisions pendant tout le week-end.
+- Les familles peuvent choisir une courte révision pendant le week-end ou un simple rappel la veille de l’évaluation.
+- Rappel explicite que quelques minutes suffisent et qu’il n’est pas nécessaire de tout revoir.
+- Présentation visuelle adoucie tout en conservant la priorité du bloc.
+- Mode secret enseignant, icônes saisonnières/périodiques et liens Maître Hibou inchangés.
+
 # V34.51 — Annonce anticipée des évaluations P1
 
 - Règle annuelle verrouillée : toute évaluation programmée est annoncée au plus tard le week-end précédent.
@@ -361,3 +370,24 @@ Le détail complet des anciennes versions est conservé dans `docs/historique/`.
 - Répartition : Français 8, Mathématiques 6, Anglais 2, QLM 2.
 - Aucun écran ni branchement d’interface ajouté.
 - Une compétence structurante sert à la vigilance et à la synthèse ; elle ne reçoit pas de poids chiffré supplémentaire.
+
+
+## V34.54 — Refonte P1 : évaluations courtes et devoirs réalignés
+- Application de la règle d’or : 2 nouvelles compétences essentielles par évaluation ; 1 ou 2 anciennes seulement en rebrassage lorsque cela a du sens.
+- P1 volontairement sans rebrassage artificiel : les évaluations de début d’année restent très courtes.
+- Français P1 : GRA-P1-04 (verbe conjugué) + GRA-P1-06 (groupe sujet).
+- Mathématiques P1 : PRO-P1-01 (comprendre la question d’un problème, fondamental LSU) + OPE-P1-01 (poser une addition).
+- Histoire P1 : HIS-P1-02 + HIS-P1-03.
+- Sciences P1 : SCI-P1-03 + SCI-P1-05 (fondamental LSU), par observation en situation.
+- Géographie P1 : GEOG-P1-01 + GEOG-P1-02.
+- Espace Parents : nouvelles compétences mises en avant ; support du futur bloc « Déjà vu — rebrassage ».
+- Devoirs et rappels P1 réalignés sur les seuls objectifs réellement évalués.
+- Nouvelles fiches élève et grilles enseignant P1 en Français et Mathématiques.
+
+## V34.53 — Espace Parents : devoirs P2 après audit
+- Création de `data/devoirs-p2.js` pour les 7 semaines de la période 2.
+- Alignement des devoirs sur la progression et l’emploi du temps P2.
+- Annonce anticipée et rassurante de toutes les évaluations programmées.
+- Rappels légers uniquement la veille des évaluations.
+- Liens Maître Hibou réservés aux leçons réellement disponibles et utiles ; aucun lien inventé en Histoire, Sciences ou Géographie.
+- Mode secret enseignant et icônes périodiques conservés.

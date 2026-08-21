@@ -1,12 +1,13 @@
 window.DEVOIRS_P1 = {
-  "version": "34.51",
+  "version": "34.54",
   "period": "p1",
   "schoolYear": "2026-2027",
   "principles": {
     "start": "2026-09-07",
     "maxMinutes": 10,
     "writtenWork": false,
-    "formula": "📚 Je revois → 🎯 Je m’entraîne → 👨‍👩‍👧 Je partage"
+    "formula": "📚 Je revois → 🎯 Je m’entraîne → 👨‍👩‍👧 Je partage",
+    "evaluationRule": "2 nouvelles compétences essentielles ; 1 ou 2 anciennes seulement en rebrassage ponctuel. En P1, évaluations très courtes."
   },
   "weeks": [
     {
@@ -235,41 +236,32 @@ window.DEVOIRS_P1 = {
         {
           "due": "2026-10-05",
           "routineIcon": "⭐",
-          "routineTitle": "Évaluations à venir cette semaine",
-          "routine": "Ce week-end, prends connaissance des évaluations prévues. Révise tranquillement les leçons déjà travaillées et commence par une ou deux notions qui te semblent encore difficiles.",
-          "challenge": "Pas de travail supplémentaire à faire : l’objectif est de relire et de se remettre les notions en mémoire.",
-          "family": "Pour accompagner votre enfant : choisissez avec lui une ou deux notions à revoir, sans chercher à tout reprendre en une seule fois.",
-          "notion": "Annonce anticipée des évaluations de la semaine",
+          "routineTitle": "Évaluations prévues cette semaine",
+          "routine": "Voici les trois petites évaluations prévues dans la semaine. En P1, elles sont volontairement très courtes : seulement 2 nouvelles compétences essentielles par matière.",
+          "challenge": "Il n’est pas nécessaire de tout réviser. Choisis quelques minutes pendant le week-end ou fais simplement un rappel la veille.",
+          "family": "Les compétences indiquées ci-dessous sont les seules nouvelles compétences ciblées par ces évaluations. Les autres notions vues en classe ne font pas systématiquement l’objet d’un contrôle.",
+          "notion": "Annonce anticipée — évaluations P1 courtes et ciblées",
           "evaluations": [
             {
               "date": "2026-10-05",
               "subject": "Histoire",
-              "title": "Frise chronologique et repères historiques",
-              "scope": [
-                "remettre des événements dans l’ordre",
-                "lire et utiliser une frise chronologique",
-                "reconnaître les grandes périodes de l’Histoire",
-                "associer un repère historique à une période"
+              "title": "Petite évaluation — 2 nouvelles compétences",
+              "newSkills": [
+                "utiliser une frise chronologique",
+                "reconnaître les grandes périodes historiques"
               ],
-              "preparation": "Revoir la frise et les grands repères étudiés en classe."
+              "preparation": "Revoir simplement la frise et le nom des grandes périodes. Quelques minutes suffisent."
             },
             {
               "date": "2026-10-06",
               "subject": "Français",
-              "title": "Bilan de français — période 1",
-              "scope": [
-                "reconnaître une phrase correcte",
-                "repérer le verbe conjugué et donner son infinitif",
-                "repérer le sujet et le remplacer par un pronom",
-                "orthographe et mots étudiés",
-                "écrire des phrases correctes et cohérentes"
+              "title": "Petite évaluation — 2 nouvelles compétences",
+              "newSkills": [
+                "repérer le verbe conjugué dans une phrase simple",
+                "repérer le groupe sujet"
               ],
-              "preparation": "Relire les leçons de grammaire et les mots étudiés. Revoir en priorité ce qui reste difficile.",
+              "preparation": "Relire seulement les leçons « Le verbe » et « Le sujet du verbe », pendant le week-end ou la veille.",
               "hibou": [
-                {
-                  "label": "La phrase et la ponctuation",
-                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-phrase-ponctuation.html"
-                },
                 {
                   "label": "Le verbe",
                   "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-verbe.html"
@@ -283,25 +275,20 @@ window.DEVOIRS_P1 = {
             {
               "date": "2026-10-09",
               "subject": "Mathématiques",
-              "title": "Bilan de mathématiques — période 1",
-              "scope": [
-                "lire, écrire, décomposer, comparer et encadrer des nombres jusqu’à 10 000",
-                "représenter et nommer des fractions simples",
-                "calcul mental : compléments et +9 / −9",
-                "poser une addition",
-                "résoudre un problème additif simple",
-                "mesurer et tracer des segments",
-                "reconnaître les premiers objets géométriques travaillés"
+              "title": "Petite évaluation — 2 nouvelles compétences",
+              "newSkills": [
+                "comprendre ce que l’on cherche dans un problème",
+                "poser correctement une addition"
               ],
-              "preparation": "Revoir les automatismes et une ou deux notions qui demandent encore de l’entraînement.",
+              "preparation": "Un petit problème expliqué oralement et une addition posée suffisent pour se remettre les procédures en mémoire.",
               "hibou": [
                 {
-                  "label": "Trouver des compléments",
-                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/complements.html"
+                  "label": "Résoudre un problème additif",
+                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/problemes-additifs.html"
                 },
                 {
-                  "label": "Les longueurs",
-                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/longueurs.html"
+                  "label": "Poser une addition",
+                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/addition-posee.html"
                 }
               ]
             }
@@ -314,21 +301,17 @@ window.DEVOIRS_P1 = {
       "label": "Semaine 6",
       "start": "2026-10-05",
       "end": "2026-10-09",
-      "theme": "Consolider et préparer les petites évaluations",
+      "theme": "Deux petites évaluations, puis consolidation",
       "items": [
         {
           "due": "2026-10-06",
           "routineIcon": "⭐",
-          "routineTitle": "Petit rappel — évaluation de français mardi",
-          "routine": "Relis seulement les notions que tu as choisies ce week-end. Il n’est pas nécessaire de tout revoir ce soir.",
-          "challenge": "Dans « Les petits chats jouent dans le jardin. », trouve le verbe, le sujet et l’infinitif du verbe.",
-          "family": "Un dernier rappel suffit : valorisez ce qui est déjà acquis et arrêtez la révision au bout de quelques minutes.",
-          "notion": "Phrase · verbe · sujet · infinitif",
+          "routineTitle": "Petit rappel — français mardi",
+          "routine": "Relis seulement « Le verbe » et « Le sujet du verbe ». Rien d’autre n’est à préparer pour cette évaluation.",
+          "challenge": "Dans « Les petits chats jouent dans le jardin. », trouve le verbe puis le groupe sujet.",
+          "family": "Deux phrases suffisent. L’objectif est seulement de remettre en mémoire les deux compétences nouvelles annoncées.",
+          "notion": "Verbe conjugué · groupe sujet",
           "hibou": [
-            {
-              "label": "La phrase et la ponctuation",
-              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-phrase-ponctuation.html"
-            },
             {
               "label": "Le verbe",
               "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-verbe.html"
@@ -342,15 +325,12 @@ window.DEVOIRS_P1 = {
             {
               "date": "2026-10-06",
               "subject": "Français",
-              "title": "Évaluation demain",
-              "scope": [
-                "phrase",
-                "verbe et infinitif",
-                "sujet",
-                "orthographe et mots étudiés",
-                "écriture de phrases"
+              "title": "Évaluation demain — 2 nouvelles compétences",
+              "newSkills": [
+                "repérer le verbe conjugué",
+                "repérer le groupe sujet"
               ],
-              "preparation": "Dernière relecture courte des leçons déjà travaillées."
+              "preparation": "Un rappel de quelques minutes suffit."
             }
           ]
         },
@@ -371,67 +351,62 @@ window.DEVOIRS_P1 = {
         {
           "due": "2026-10-09",
           "routineIcon": "🔢",
-          "routineTitle": "Petit rappel — évaluation de mathématiques vendredi",
-          "routine": "Revois tranquillement les automatismes et la notion de mathématiques que tu as choisie ce week-end. Pas de nouvel apprentissage ce soir.",
-          "challenge": "4 rappels maximum : 7 + ? = 10 · 65 + ? = 100 · 43 + 9 · 61 − 9.",
-          "family": "Quelques minutes suffisent. L’objectif est de remettre les procédures en mémoire, pas de refaire une séance de classe.",
-          "notion": "Automatismes de calcul · préparation de l’évaluation de mathématiques",
-          "hibou": {
-            "label": "Trouver des compléments",
-            "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/complements.html",
-            "intro": "Besoin d’un rappel ?"
-          },
+          "routineTitle": "Petit rappel — mathématiques vendredi",
+          "routine": "Explique ce que l’on cherche dans un petit problème, puis pose une addition. Pas de nouvelle notion ce soir.",
+          "challenge": "Exemple : « Léa a 27 billes et en gagne 16. Que cherche-t-on ? » Puis pose 27 + 16.",
+          "family": "Une situation suffit. On vérifie surtout que l’enfant comprend la question et sait organiser correctement l’addition.",
+          "notion": "Comprendre la question d’un problème · addition posée",
+          "hibou": [
+            {
+              "label": "Résoudre un problème additif",
+              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/problemes-additifs.html"
+            },
+            {
+              "label": "Poser une addition",
+              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/addition-posee.html"
+            }
+          ],
           "evaluations": [
             {
               "date": "2026-10-09",
               "subject": "Mathématiques",
-              "title": "Évaluation demain",
-              "scope": [
-                "nombres jusqu’à 10 000",
-                "fractions simples",
-                "calcul mental",
-                "addition posée",
-                "problèmes",
-                "mesures et géométrie"
+              "title": "Évaluation demain — 2 nouvelles compétences",
+              "newSkills": [
+                "comprendre ce que l’on cherche dans un problème",
+                "poser correctement une addition"
               ],
-              "preparation": "Revoir une ou deux notions encore fragiles et les automatismes déjà connus."
+              "preparation": "Un problème très court et une addition posée suffisent."
             }
           ]
         },
         {
           "due": "2026-10-12",
           "routineIcon": "⭐",
-          "routineTitle": "Évaluations à venir cette semaine",
-          "routine": "Ce week-end, regarde les deux évaluations prévues en fin de semaine. Relis seulement les traces et leçons déjà travaillées en classe.",
-          "challenge": "Choisis une notion de sciences et un repère de géographie que tu veux pouvoir expliquer avec tes propres mots.",
-          "family": "Demandez surtout à votre enfant d’expliquer ce qu’il a compris. Il n’est pas nécessaire de lui faire apprendre de nouvelles informations.",
-          "notion": "Annonce anticipée des évaluations de sciences et géographie",
+          "routineTitle": "Évaluations prévues cette semaine",
+          "routine": "Deux situations courtes sont prévues en Sciences et en Géographie. Là encore, seules 2 nouvelles compétences essentielles sont ciblées dans chaque matière.",
+          "challenge": "Pas de révision longue : une explication orale ou quelques repères sur une carte suffisent.",
+          "family": "Ces situations vérifient surtout ce que votre enfant sait déjà faire en classe. Vous pouvez en parler pendant le week-end ou attendre la veille.",
+          "notion": "Annonce anticipée — Sciences et Géographie P1",
           "evaluations": [
             {
               "date": "2026-10-15",
               "subject": "Sciences",
-              "title": "Petite investigation scientifique",
-              "scope": [
-                "formuler une question que l’on peut étudier",
-                "mettre en œuvre une expérience simple",
-                "observer et garder une trace des résultats",
-                "comparer des résultats",
+              "title": "Observation en situation — 2 nouvelles compétences",
+              "newSkills": [
+                "observer précisément les résultats d’une expérience",
                 "tirer une conclusion à partir des résultats"
               ],
-              "preparation": "Revoir les expériences réalisées en classe et être capable d’expliquer ce qu’elles ont montré."
+              "preparation": "Aucune leçon à apprendre par cœur. Réexpliquer une expérience faite en classe suffit."
             },
             {
               "date": "2026-10-16",
               "subject": "Géographie",
-              "title": "Se repérer en France et lire une carte de population",
-              "scope": [
+              "title": "Petite évaluation — 2 nouvelles compétences",
+              "newSkills": [
                 "localiser la France à différentes échelles",
-                "lire une carte simple de population",
-                "localiser Paris et quelques grandes villes",
-                "comparer des espaces plus ou moins peuplés",
-                "proposer une explication simple à une différence de peuplement"
+                "lire une carte simple de répartition de la population"
               ],
-              "preparation": "Revoir les cartes et les repères utilisés en classe."
+              "preparation": "Revoir simplement les cartes utilisées en classe et leur légende."
             }
           ]
         }
@@ -442,7 +417,7 @@ window.DEVOIRS_P1 = {
       "label": "Semaine 7",
       "start": "2026-10-12",
       "end": "2026-10-16",
-      "theme": "Consolider et valoriser les progrès",
+      "theme": "Deux situations courtes et valorisation des progrès",
       "items": [
         {
           "due": "2026-10-13",
@@ -456,47 +431,42 @@ window.DEVOIRS_P1 = {
         {
           "due": "2026-10-15",
           "routineIcon": "⭐",
-          "routineTitle": "Petit rappel — évaluation de sciences jeudi",
-          "routine": "Reprends une expérience faite en classe : quelle question cherchait-on à résoudre, qu’a-t-on observé et quelle conclusion peut-on tirer ?",
-          "challenge": "Explique l’expérience à quelqu’un avec tes propres mots, sans apprendre un texte par cœur.",
-          "family": "Posez simplement les questions : « Qu’avez-vous testé ? Qu’avez-vous observé ? Qu’est-ce que cela montre ? »",
-          "notion": "Investigation scientifique · conclusion",
+          "routineTitle": "Petit rappel — sciences jeudi",
+          "routine": "Choisis une expérience faite en classe : qu’as-tu observé et quelle conclusion peux-tu en tirer ?",
+          "challenge": "Explique-la avec tes propres mots. Aucun texte à apprendre.",
+          "family": "Deux questions suffisent : « Qu’as-tu observé ? » puis « Qu’est-ce que cela montre ? »",
+          "notion": "Observer · tirer une conclusion",
           "evaluations": [
             {
               "date": "2026-10-15",
               "subject": "Sciences",
-              "title": "Évaluation demain",
-              "scope": [
-                "question scientifique",
-                "expérience",
-                "observation",
-                "comparaison des résultats",
-                "conclusion"
+              "title": "Observation demain — 2 nouvelles compétences",
+              "newSkills": [
+                "observer les résultats d’une expérience",
+                "tirer une conclusion à partir des résultats"
               ],
-              "preparation": "Réexpliquer une expérience réellement menée en classe."
+              "preparation": "Aucune préparation particulière au-delà de ce court rappel oral."
             }
           ]
         },
         {
           "due": "2026-10-16",
           "routineIcon": "⭐",
-          "routineTitle": "Petit rappel — évaluation de géographie vendredi",
-          "routine": "Relis les cartes étudiées en classe et retrouve les principaux repères : France, Paris, grandes villes, espaces plus ou moins peuplés.",
-          "challenge": "Explique oralement ce qu’une carte de population permet de comprendre.",
-          "family": "Un échange oral de quelques minutes suffit : laissez votre enfant montrer les repères qu’il connaît déjà.",
-          "notion": "France · carte de population · repères",
+          "routineTitle": "Petit rappel — géographie vendredi",
+          "routine": "Sur une carte, retrouve la France puis observe une carte de population : que t’indiquent son titre et sa légende ?",
+          "challenge": "Explique oralement où la population paraît plus ou moins nombreuse.",
+          "family": "Quelques minutes avec une carte suffisent. Il n’y a que deux compétences nouvelles ciblées.",
+          "notion": "Localiser la France · lire une carte de population",
           "evaluations": [
             {
               "date": "2026-10-16",
               "subject": "Géographie",
-              "title": "Évaluation demain",
-              "scope": [
-                "se repérer en France",
-                "lire une carte de population",
-                "localiser Paris et quelques grandes villes",
-                "comparer des espaces plus ou moins peuplés"
+              "title": "Évaluation demain — 2 nouvelles compétences",
+              "newSkills": [
+                "localiser la France à différentes échelles",
+                "lire une carte simple de répartition de la population"
               ],
-              "preparation": "Revoir les cartes et les repères déjà étudiés."
+              "preparation": "Revoir une carte et sa légende, sans apprentissage supplémentaire."
             }
           ]
         }

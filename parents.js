@@ -1,8 +1,8 @@
-// V34.48 — Espace Parents : calendrier fiable + affichage explicite des jours sans classe.
+// V34.53 — Espace Parents : devoirs P1 + P2, évaluations anticipées sans surcharge.
 (function(){
 'use strict';
 const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const EDT=window.PUBLIC_EDT,PROG=window.PROGRESSIONS||{},W=window.PARENTS_SEMAINE||{},H=window.PARENTS_TRAVAIL||{},L=window.PARENTS_VIE_CLASSE||{},I=window.PARENTS_INFOS||{},D=window.DEVOIRS_P1||{weeks:[]};
+const EDT=window.PUBLIC_EDT,PROG=window.PROGRESSIONS||{},W=window.PARENTS_SEMAINE||{},H=window.PARENTS_TRAVAIL||{},L=window.PARENTS_VIE_CLASSE||{},I=window.PARENTS_INFOS||{},D1=window.DEVOIRS_P1||{weeks:[]},D2=window.DEVOIRS_P2||{weeks:[]},D={weeks:[...(D1.weeks||[]),...(D2.weeks||[])].sort((a,b)=>String(a.start||'').localeCompare(String(b.start||'')))};
 const subjectOrder=['francais','maths','anglais','sciences','histoire','geographie','eps','arts'];
 const togetherOrder=['emc','evar','emi'];
 function period(){return EDT.periodForDate(new Date())}
@@ -31,11 +31,13 @@ function homeworkHibouHtml(value){
 function homeworkEvaluationsHtml(list){
   const evaluations=Array.isArray(list)?list:[];
   if(!evaluations.length)return '';
-  return `<div class="homework-evaluations"><div class="homework-evaluations-title">⭐ Évaluation${evaluations.length>1?'s':''} à préparer</div>${evaluations.map(ev=>{
-    const scope=Array.isArray(ev.scope)&&ev.scope.length?`<ul>${ev.scope.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:'';
+  return `<div class="homework-evaluations"><div class="homework-evaluations-title">📅 Évaluation${evaluations.length>1?'s':''} prévue${evaluations.length>1?'s':''} cette semaine</div><p class="homework-evaluations-note">Ces évaluations sont annoncées à l’avance pour vous aider à vous organiser. Il n’est pas nécessaire de tout réviser pendant le week-end : une courte révision peut être faite soit pendant le week-end, soit la veille de chaque évaluation. Quelques minutes suffisent ; l’objectif est d’anticiper sans surcharger le travail à la maison.</p>${evaluations.map(ev=>{
+    const newSkills=Array.isArray(ev.newSkills)&&ev.newSkills.length?`<div class="homework-evaluation-skills homework-evaluation-skills--new"><b>🎯 Nouvelles compétences évaluées</b><ul>${ev.newSkills.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:'';
+    const reviewSkills=Array.isArray(ev.reviewSkills)&&ev.reviewSkills.length?`<div class="homework-evaluation-skills homework-evaluation-skills--review"><b>🔁 Déjà vu — rebrassage</b><p>Cette partie a déjà été travaillée : elle sert seulement à vérifier que l’acquis est bien consolidé.</p><ul>${ev.reviewSkills.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:'';
+    const scope=(!newSkills&&!reviewSkills&&Array.isArray(ev.scope)&&ev.scope.length)?`<ul>${ev.scope.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:'';
     const prep=ev.preparation?`<p class="homework-evaluation-prep"><b>Pour se préparer :</b> ${esc(ev.preparation)}</p>`:'';
     const hibou=homeworkHibouHtml(ev.hibou);
-    return `<section class="homework-evaluation"><div class="homework-evaluation-head"><strong>${esc(ev.subject||'Évaluation')}</strong><span>${esc(dueLabel(ev.date))}</span></div>${ev.title?`<h4>${esc(ev.title)}</h4>`:''}${scope}${prep}${hibou}</section>`;
+    return `<section class="homework-evaluation"><div class="homework-evaluation-head"><strong>${esc(ev.subject||'Évaluation')}</strong><span>${esc(dueLabel(ev.date))}</span></div>${ev.title?`<h4>${esc(ev.title)}</h4>`:''}${newSkills}${reviewSkills}${scope}${prep}${hibou}</section>`;
   }).join('')}</div>`;
 }
 function homeworkItemCard(it,compact=false){const evaluations=homeworkEvaluationsHtml(it.evaluations);const challenge=it.challenge?`<div class="homework-block homework-challenge"><b>🎯 Défi du jour</b><p>${esc(it.challenge)}</p></div>`:'';const family=it.family?`<div class="homework-block homework-family"><b>👨‍👩‍👧 Défi famille <span>facultatif</span></b><p>${esc(it.family)}</p></div>`:'';const hibou=homeworkHibouHtml(it.hibou);return `<article class="homework-card${compact?' homework-card--compact':''}"><div class="homework-date">Pour ${esc(dueLabel(it.due))}</div>${evaluations}<div class="homework-block homework-routine"><b>${esc(it.routineIcon||'📚')} ${esc(it.routineTitle||'Je revois')}</b><p>${esc(it.routine||'')}</p></div>${challenge}${family}${hibou}</article>`}

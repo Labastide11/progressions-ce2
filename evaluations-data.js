@@ -4,17 +4,12 @@ window.EVALUATIONS_CE2 = {
     icon: '✏️',
     periods: {
       p1: {
-        title: 'Période 1 — Corpus forêt et maîtrise de la langue avec le DRAS',
+        title: 'Période 1 — Verbe et groupe sujet',
         status: 'ready',
-        description: 'Évaluation P1 verrouillée sur un corpus commun : grammaire, orthographe, vocabulaire et écriture manipulés avec le DRAS. 1 compétence = 1 code ; la conjugaison systématique au présent relève de P2.',
+        description: 'Évaluation P1 volontairement courte : 2 nouvelles compétences essentielles seulement. Les autres apprentissages de la période restent suivis au fil des séances et ne donnent pas lieu à un contrôle systématique.',
         studentDoc: 'assets/evaluations/francais/Francais_P1_eleve_DRAS_verrouillee.docx',
         teacherDoc: 'assets/evaluations/francais/Francais_P1_grille_enseignant_DRAS_verrouillee.docx',
-        skillCodes: [
-          'GRA-P1-01','GRA-P1-04','GRA-P1-05','GRA-P1-06','GRA-P1-07',
-          'ORT-P1-01','ORT-P1-02','ORT-P1-03',
-          'VOC-P1-02','VOC-P1-04','VOC-P1-05',
-          'ECR-P1-05','ECR-P1-06'
-        ]
+        skillCodes: ['GRA-P1-04','GRA-P1-06']
       },
       p2: {
         title: 'Période 2 — Présent, familles de mots et écrit court',
@@ -115,20 +110,12 @@ window.EVALUATIONS_CE2 = {
     icon: '📐',
     periods: {
       p1: {
-        title: 'Période 1 — Nombres, calcul, problèmes, fractions et géométrie',
+        title: 'Période 1 — Comprendre un problème et poser une addition',
         status: 'ready',
-        description: 'Évaluation P1 verrouillée sans note ni point : 16 compétences canoniques, une ligne par compétence, nombres jusqu’à 10 000, calcul mental, addition posée, problème additif, fractions simples, géométrie et longueurs.',
+        description: 'Évaluation P1 volontairement courte : 2 nouvelles compétences essentielles seulement, dont le fondamental LSU « comprendre la question d’un problème ». Les autres notions travaillées sont suivies en classe sans contrôle systématique.',
         studentDoc: 'assets/evaluations/maths/Maths_P1_eleve_verrouillee.docx',
         teacherDoc: 'assets/evaluations/maths/Maths_P1_grille_enseignant_verrouillee.docx',
-        skillCodes: [
-          'NUM-P1-01','NUM-P1-02','NUM-P1-03','NUM-P1-04','NUM-P1-05',
-          'FRA-P1-01','FRA-P1-02',
-          'CAL-P1-01','CAL-P1-02','CAL-P1-03',
-          'OPE-P1-01',
-          'PRO-P1-02',
-          'MES-P1-01','MES-P1-02',
-          'GEO-P1-01','GEO-P1-02'
-        ]
+        skillCodes: ['PRO-P1-01','OPE-P1-01']
       },
       p2: {
         title: 'Période 2 — Nombres à 4 chiffres, fractions, soustraction et géométrie',
@@ -251,8 +238,8 @@ window.EVALUATIONS_CE2 = {
         status: 'ready',
         traceType: 'Frise + cartes à ordonner',
         traceSource: 'evaluation_papier',
-        description: 'Situation de référence : ordonner des événements, utiliser une frise, reconnaître les grandes périodes historiques et associer quelques repères étudiés à leur période.',
-        skillCodes: ['HIS-P1-01','HIS-P1-02','HIS-P1-03','HIS-P1-04']
+        description: 'Évaluation P1 courte : utiliser une frise chronologique et reconnaître les grandes périodes historiques. Les autres repères sont observés dans le travail quotidien.',
+        skillCodes: ['HIS-P1-02','HIS-P1-03']
       },
       p2: {
         title: 'Période 2 — Comparer la vie quotidienne à différentes époques',
@@ -297,8 +284,8 @@ window.EVALUATIONS_CE2 = {
         status: 'ready',
         traceType: 'Carte + réponses courtes',
         traceSource: 'evaluation_papier',
-        description: 'Situation de référence : localiser la France, Paris et quelques grandes villes, lire une carte de population, comparer des espaces plus ou moins peuplés et proposer une explication simple à partir des documents.',
-        skillCodes: ['GEOG-P1-01','GEOG-P1-02','GEOG-P1-03','GEOG-P1-04','GEOG-P1-05']
+        description: 'Évaluation P1 courte : localiser la France à différentes échelles et lire une carte simple de répartition de la population. Les autres repères sont observés au fil des activités.',
+        skillCodes: ['GEOG-P1-01','GEOG-P1-02']
       },
       p2: {
         title: 'Période 2 — Habiter la ville : lire un paysage et utiliser un plan',
@@ -343,8 +330,8 @@ window.EVALUATIONS_CE2 = {
         status: 'ready',
         traceType: 'Manipulation + observations + conclusion',
         traceSource: 'observation_classe',
-        description: 'Situation de référence à partir de graines ou de plantes : formuler une question, mettre en œuvre une expérience simple, observer, comparer les résultats puis conclure.',
-        skillCodes: ['SCI-P1-01','SCI-P1-02','SCI-P1-03','SCI-P1-04','SCI-P1-05']
+        description: 'Observation P1 courte en situation réelle : observer précisément les résultats d’une expérience et tirer une conclusion. SCI-P1-05 est un fondamental LSU.',
+        skillCodes: ['SCI-P1-03','SCI-P1-05']
       },
       p2: {
         title: 'Période 2 — Expérimenter avec l’eau',
