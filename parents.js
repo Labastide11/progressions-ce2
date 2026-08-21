@@ -1,4 +1,5 @@
-// V34.76 — Espace Parents : message de vacances chaleureux ajouté aux révisions facultatives.
+// V34.77 — Espace Parents : synthèse des apprentissages par période, 5 essentiels maximum par matière.
+// Le référentiel enseignant reste inchangé : seule la présentation destinée aux familles est simplifiée.
 // Les repères annuels transversaux Arts / éducation musicale sont affichés pour chaque période.
 (function(){
 'use strict';
@@ -14,9 +15,302 @@ const LEARNING_PERIOD_DATES={
   p4:{label:'Période 4',start:'2027-02-22',end:'2027-04-02'},
   p5:{label:'Période 5',start:'2027-04-19',end:'2027-07-02'}
 };
+const PARENT_LEARNING_SUMMARIES={
+  p1:{
+    francais:[
+      'Comprendre un texte court et retrouver les informations importantes.',
+      'Lire à voix haute avec de plus en plus de fluidité.',
+      'Écrire et copier quelques phrases correctes, puis se relire.',
+      'Repérer le verbe et le sujet dans une phrase simple.',
+      'Commencer à conjuguer au présent et enrichir son vocabulaire.'
+    ],
+    maths:[
+      'Lire, écrire, décomposer et comparer les nombres.',
+      'Calculer mentalement avec des stratégies simples.',
+      'Poser et calculer des additions et des soustractions.',
+      'Résoudre un problème simple et expliquer sa démarche.',
+      'Utiliser les premiers outils et repères de géométrie.'
+    ],
+    anglais:[
+      'Comprendre et utiliser quelques salutations courantes.',
+      'Demander et dire son prénom.',
+      'Comprendre et dire le temps qu’il fait.',
+      'Oser prendre la parole avec des expressions très simples.',
+      'Découvrir quelques repères culturels liés à l’Angleterre et à Halloween.'
+    ],
+    sciences:[
+      'Se poser une question que l’on peut étudier.',
+      'Réaliser une expérience simple en respectant les consignes.',
+      'Observer et garder une trace des résultats.',
+      'Comparer ce que l’on observe.',
+      'Tirer une conclusion simple à partir des résultats.'
+    ],
+    histoire:[
+      'Ordonner des événements dans le temps.',
+      'Utiliser une frise chronologique.',
+      'Reconnaître les grandes périodes historiques.',
+      'Associer quelques repères historiques à la bonne période.'
+    ],
+    geographie:[
+      'Localiser la France à différentes échelles.',
+      'Lire une carte simple de la population.',
+      'Localiser Paris et quelques grandes villes françaises.',
+      'Comparer des espaces plus ou moins peuplés.',
+      'Comprendre simplement pourquoi la population est inégalement répartie.'
+    ],
+    eps:[
+      'Coopérer et respecter les règles dans les jeux collectifs.',
+      'Courir longtemps en apprenant à gérer son allure.',
+      'Agir en sécurité et tenir un rôle simple dans une activité.',
+      'Observer ses résultats et repérer ses progrès.'
+    ],
+    arts:[
+      'Expérimenter différents outils, gestes et matériaux.',
+      'Réaliser une production en faisant des choix personnels.',
+      'Observer une œuvre et parler de sa propre production.',
+      'Mémoriser et interpréter un chant avec le groupe.',
+      'Écouter une musique et en repérer quelques éléments simples.'
+    ]
+  },
+  p2:{
+    francais:[
+      'Lire avec exactitude et comprendre l’essentiel d’un texte.',
+      'Comprendre à qui renvoient les pronoms et les reprises dans un texte.',
+      'Raconter des événements dans l’ordre et écrire de courts textes.',
+      'Reconnaître les noms, les pronoms et le groupe sujet.',
+      'Conjuguer au présent les verbes étudiés et consolider les premiers accords.'
+    ],
+    maths:[
+      'Comprendre la valeur des chiffres et utiliser différentes écritures d’un nombre.',
+      'Calculer mentalement avec doubles, moitiés et multiplication par 10 ou 100.',
+      'Effectuer additions et soustractions posées, notamment avec retenue ou échange.',
+      'Résoudre des problèmes de multiplication, de groupement ou de partage.',
+      'Mesurer, lire l’heure et reconnaître les principales figures, solides et symétries.'
+    ],
+    anglais:[
+      'Comprendre et dire les jours de la semaine.',
+      'Comprendre les mois de l’année et dire une date avec un modèle.',
+      'Exprimer simplement ce que l’on souhaite au petit-déjeuner.',
+      'Prendre part à de très courts échanges oraux.',
+      'Découvrir quelques traditions de Thanksgiving et de Christmas.'
+    ],
+    sciences:[
+      'Reconnaître l’eau sous différents états.',
+      'Observer et décrire un changement d’état de l’eau.',
+      'Réaliser une expérience simple sur l’eau.',
+      'Comparer le comportement d’objets dans l’eau.',
+      'Tirer une conclusion à partir d’une expérience.'
+    ],
+    histoire:[
+      'Comparer les habitats de différentes époques.',
+      'Comparer l’alimentation et les objets de la vie quotidienne selon les époques.',
+      'Repérer ce qui change dans les façons de vivre.',
+      'Repérer aussi ce qui reste stable au fil du temps.'
+    ],
+    geographie:[
+      'Reconnaître et décrire un paysage urbain.',
+      'Comprendre les principales fonctions d’un quartier.',
+      'Utiliser un plan pour localiser un lieu ou suivre un trajet.',
+      'Comparer centre-ville et périphérie.',
+      'Comprendre comment déplacements et aménagements répondent aux besoins des habitants.'
+    ],
+    eps:[
+      'À la piscine : entrer dans l’eau et s’immerger avec davantage d’aisance.',
+      'À la piscine : se déplacer sur une distance adaptée.',
+      'À la piscine : apprendre à s’équilibrer et à flotter.',
+      'À la piscine : enchaîner plusieurs actions aquatiques.',
+      'Lors des sorties piscine du vendredi : respecter les règles de sécurité et gagner en autonomie.'
+    ],
+    arts:[
+      'Expérimenter différents outils, gestes et matériaux.',
+      'Réaliser une production en faisant des choix personnels.',
+      'Observer une œuvre et parler de sa propre production.',
+      'Mémoriser et interpréter un chant avec le groupe.',
+      'Écouter une musique et en repérer quelques éléments simples.'
+    ]
+  },
+  p3:{
+    francais:[
+      'Lire avec plus de fluidité et comprendre l’essentiel, y compris quelques informations implicites.',
+      'Décrire un personnage ou un lieu dans un texte organisé.',
+      'Repérer le groupe nominal, le déterminant, le nom et l’adjectif.',
+      'Conjuguer au futur les verbes étudiés.',
+      'Enrichir son vocabulaire et consolider les accords dans le groupe nominal.'
+    ],
+    maths:[
+      'Approfondir la numération et commencer à placer des fractions sur une longueur.',
+      'Mémoriser les tables de multiplication et trouver des quotients simples.',
+      'Poser une multiplication par un chiffre.',
+      'Résoudre des problèmes à plusieurs étapes, notamment multiplicatifs.',
+      'Utiliser mesures, géométrie, symétrie et représentations de données.'
+    ],
+    anglais:[
+      'Demander et dire son âge.',
+      'Comprendre une question simple sur l’état ou l’émotion.',
+      'Dire comment on se sent.',
+      'Comprendre et donner une consigne simple liée au corps.',
+      'Découvrir quelques repères culturels de Pancake Day.'
+    ],
+    sciences:[
+      'Comprendre à quel besoin répond un objet technique.',
+      'Identifier les principales parties d’un vélo et leur fonction.',
+      'Comprendre simplement comment le mouvement est transmis sur un vélo.',
+      'Repérer les éléments indispensables à la sécurité à vélo.',
+      'Tester, régler et améliorer un objet simple.'
+    ],
+    histoire:[
+      'Situer quelques figures et événements de l’Antiquité et du début du Moyen Âge.',
+      'Associer un personnage historique à son époque.',
+      'Prélever des informations dans des documents historiques.',
+      'Présenter simplement un personnage ou raconter un événement étudié.'
+    ],
+    geographie:[
+      'Reconnaître et décrire un espace rural.',
+      'Découvrir différentes façons d’habiter le littoral et la montagne.',
+      'Comparer plusieurs façons de se loger en France.',
+      'Comparer l’accès aux services selon le lieu de vie.',
+      'Localiser sur la carte de France les principaux espaces étudiés.'
+    ],
+    eps:[
+      'Lors des sorties VTT à la Cavayère : maîtriser son vélo dans des situations variées.',
+      'Adapter sa trajectoire au terrain.',
+      'Adapter sa vitesse aux contraintes rencontrées.',
+      'Respecter les règles de sécurité et d’organisation pendant les sorties.',
+      'Gagner en autonomie et en confiance à vélo.'
+    ],
+    arts:[
+      'Expérimenter différents outils, gestes et matériaux.',
+      'Réaliser une production en faisant des choix personnels.',
+      'Observer une œuvre et parler de sa propre production.',
+      'Mémoriser et interpréter un chant avec le groupe.',
+      'Écouter une musique et en repérer quelques éléments simples.'
+    ]
+  },
+  p4:{
+    francais:[
+      'Comprendre l’implicite, les intentions des personnages et les liens de cause à conséquence.',
+      'Lire avec expressivité des textes variés, notamment poésie et théâtre.',
+      'Écrire puis améliorer un texte court en utilisant une grille de relecture.',
+      'Manipuler les groupes dans la phrase et repérer certains compléments.',
+      'Conjuguer à l’imparfait et consolider les accords déjà étudiés.'
+    ],
+    maths:[
+      'Comparer et utiliser des fractions simples.',
+      'Choisir une stratégie de calcul efficace et comprendre le sens de la division.',
+      'Résoudre des problèmes de périmètre, de durée ou à partir de données.',
+      'Utiliser monnaie, masses et durées dans des situations concrètes.',
+      'Construire des figures avec règle et compas et poursuivre le travail sur la symétrie.'
+    ],
+    anglais:[
+      'Comprendre et nommer des objets familiers.',
+      'Demander et dire une quantité simple.',
+      'Localiser un objet avec une expression connue.',
+      'Participer à un court échange oral guidé.',
+      'Associer quelques expressions écrites connues à des images.'
+    ],
+    sciences:[
+      'Comprendre le rôle des articulations et des muscles dans le mouvement.',
+      'Observer les effets d’un effort sur le pouls et la respiration.',
+      'Identifier les réactions du corps pendant et après l’effort.',
+      'Reconnaître des habitudes favorables à la santé.',
+      'Expliquer simplement pourquoi une habitude est favorable ou défavorable à la santé.'
+    ],
+    histoire:[
+      'Situer quelques figures et événements du Moyen Âge.',
+      'Décrire quelques aspects de la vie au Moyen Âge.',
+      'Comprendre simplement l’affirmation du pouvoir royal.',
+      'Mettre en relation plusieurs documents historiques.'
+    ],
+    geographie:[
+      'Identifier différents lieux et types d’activités professionnelles.',
+      'Distinguer produire un bien et rendre un service.',
+      'Lire un paysage pour comprendre comment on y travaille.',
+      'Comprendre le rôle des transports et des aménagements dans une activité.'
+    ],
+    eps:[
+      'Lors des séances à Domec : réaliser et enchaîner plusieurs actions gymniques.',
+      'Présenter un petit enchaînement maîtrisé.',
+      'En lutte : agir efficacement dans une opposition.',
+      'Respecter les règles de sécurité, les rôles et son adversaire.',
+      'Coopérer et gagner en maîtrise de soi pendant les séances.'
+    ],
+    arts:[
+      'Expérimenter différents outils, gestes et matériaux.',
+      'Réaliser une production en faisant des choix personnels.',
+      'Observer une œuvre et parler de sa propre production.',
+      'Mémoriser et interpréter un chant avec le groupe.',
+      'Écouter une musique et en repérer quelques éléments simples.'
+    ]
+  },
+  p5:{
+    francais:[
+      'Lire de façon autonome, fluide et adaptée au type de texte.',
+      'Synthétiser plusieurs informations et vérifier sa compréhension.',
+      'Planifier, écrire et réviser un texte plus long et organisé.',
+      'Analyser une phrase simple en réutilisant les classes de mots étudiées.',
+      'Consolider la conjugaison et les accords, notamment entre le sujet et le verbe.'
+    ],
+    maths:[
+      'Mobiliser avec autonomie les nombres et les fractions étudiés.',
+      'Choisir une opération, calculer efficacement et vérifier son résultat.',
+      'Résoudre un problème complexe et expliquer clairement sa démarche.',
+      'Convertir et utiliser les mesures et les durées.',
+      'Réinvestir géométrie, symétrie, solides et organisation de données.'
+    ],
+    anglais:[
+      'Demander et dire ce que l’on aime.',
+      'Comprendre et décrire très simplement un animal.',
+      'Suivre le fil d’une histoire courte.',
+      'Raconter un court passage avec l’aide d’un modèle.',
+      'Réutiliser quelques mots écrits et repères culturels connus.'
+    ],
+    sciences:[
+      'Ordonner les étapes du cycle de vie d’un être vivant.',
+      'Comparer le développement d’un végétal et d’un animal.',
+      'Identifier les besoins essentiels des êtres vivants.',
+      'Construire et comprendre une chaîne alimentaire simple.',
+      'Comprendre quelques relations entre les êtres vivants et leur milieu.'
+    ],
+    histoire:[
+      'Situer quelques figures et événements des Temps modernes.',
+      'Repérer des transformations importantes entre Moyen Âge et Temps modernes.',
+      'Croiser des informations sur une grande figure historique.',
+      'Expliquer simplement une évolution historique étudiée.'
+    ],
+    geographie:[
+      'Décrire un espace agricole ou touristique.',
+      'Reconstituer le parcours simple d’un produit.',
+      'Identifier les activités et services d’un territoire.',
+      'Repérer les effets d’une activité sur le territoire et l’environnement.',
+      'Comparer plusieurs espaces de travail en France.'
+    ],
+    eps:[
+      'Réinvestir les habiletés motrices travaillées pendant l’année.',
+      'Participer à des jeux collectifs en respectant règles, partenaires et adversaires.',
+      'Mesurer ses progrès et chercher à améliorer sa performance.',
+      'Choisir des stratégies adaptées à l’activité proposée.'
+    ],
+    arts:[
+      'Expérimenter différents outils, gestes et matériaux.',
+      'Réaliser une production en faisant des choix personnels.',
+      'Observer une œuvre et parler de sa propre production.',
+      'Mémoriser et interpréter un chant avec le groupe.',
+      'Écouter une musique et en repérer quelques éléments simples.'
+    ]
+  }
+};
+const PARENT_TOGETHER_SUMMARIES={
+  p1:{emc:['Respecter les règles de la classe et de l’école.','Comprendre ses droits et ses devoirs.','Prendre une petite responsabilité.','Coopérer et prendre soin du bien commun.']},
+  p2:{emc:['Exprimer un désaccord sans blesser.','Distinguer conflit, violence et harcèlement.','Savoir demander l’aide d’un adulte.','Exprimer son ressenti et écouter celui des autres.','Utiliser le message clair pour chercher une solution.']},
+  p3:{emc:['Comprendre la différence entre intérêt personnel et intérêt général.','Participer à une décision collective.','Proposer une action utile au groupe.','Prendre la parole et écouter lors d’un conseil.','Comprendre les conséquences de ses actes sur les autres.']},
+  p4:{emc:['Comprendre que chacun a la même dignité.','Repérer quelques stéréotypes et respecter les différences.','Comprendre le sens de la devise républicaine.','Exprimer un point de vue et écouter celui des autres.']},
+  p5:{emc:['Comprendre le rôle de quelques services rendus à la collectivité.','Connaître quelques missions de la commune.','Savoir alerter un adulte ou un service de secours.','Relier un écogeste à l’intérêt général.','Participer à un projet pour le bien commun.']}
+};
 function period(){return EDT.periodForDate(new Date())}
 function periodKey(){const p=period();return p==='rentree'?'p1':p}
 function comps(key){const s=PROG[key]||{},arr=s[periodKey()+'Competencies'];if(Array.isArray(arr)&&arr.length)return arr;if(key==='arts'&&Array.isArray(s.annualCompetencies))return s.annualCompetencies;return[]}
+function parentLearningComps(key){const items=PARENT_LEARNING_SUMMARIES[periodKey()]?.[key];return Array.isArray(items)?items.slice(0,5).map(title=>({title})):comps(key).slice(0,5)}
+function parentTogetherComps(key){const items=PARENT_TOGETHER_SUMMARIES[periodKey()]?.[key];return Array.isArray(items)?items.slice(0,5).map(title=>({title})):comps(key).slice(0,5)}
 function renderList(id,items){const el=$(id),a=Array.isArray(items)?items.filter(Boolean):[];el.innerHTML=a.map(x=>`<li>${esc(x)}</li>`).join('');el.style.display=a.length?'block':'none'}
 function renderPublished(){$('weekMessage').textContent=W.message||'Aucune information particulière publiée pour cette semaine.';renderList('weekItems',W.items);$('lifeMessage').textContent=L.message||'Les projets et moments de vie de classe seront ajoutés ici.';renderList('lifeItems',L.items);$('infoMessage').textContent=I.message||'Retrouvez ici les informations utiles.';const docs=Array.isArray(I.documents)?I.documents:[];$('documentsList').innerHTML=docs.length?docs.map(d=>{if(typeof d==='string')return `<div class="document-item">${esc(d)}</div>`;const label=esc(d.label||d.title||'Document'),url=String(d.url||'').trim();return `<div class="document-item">${url?`<a href="${esc(url)}" target="_blank" rel="noopener">${label} ↗</a>`:label}</div>`}).join(''):'<div class="document-item">Aucun document particulier publié.</div>'}
 
@@ -217,7 +511,7 @@ function setupHomeworkTest(){
 }
 
 function grouped(arr){const m=new Map();arr.forEach(c=>{const d=c.domain||'Objectifs de la période';if(!m.has(d))m.set(d,[]);m.get(d).push(c)});return m}
-function learningCard(key){const s=PROG[key]||{},arr=comps(key);if(!arr.length)return'';const groups=grouped(arr);const inside=[...groups.entries()].map(([d,list])=>`<div class="domain-title">${esc(d)}</div><ul>${list.map(c=>`<li>${esc(c.title||c.jeSais||c.code)}</li>`).join('')}</ul>`).join('');return `<article class="learning-card"><h3>${esc(s.icon||'📘')} ${esc(s.title||key)}</h3><p>${arr.length} objectif${arr.length>1?'s':''} travaillé${arr.length>1?'s':''} pendant la période.</p><details><summary>Voir ce que les élèves apprennent</summary>${inside}</details></article>`}
+function learningCard(key){const s=PROG[key]||{},arr=parentLearningComps(key);if(!arr.length)return'';const inside=`<ul>${arr.map(c=>`<li>${esc(c.title||c.jeSais||c.code)}</li>`).join('')}</ul>`;return `<article class="learning-card"><h3>${esc(s.icon||'📘')} ${esc(s.title||key)}</h3><p>${arr.length} grand${arr.length>1?'s':''} apprentissage${arr.length>1?'s':''} à retenir pendant cette période.</p><details><summary>Voir l’essentiel</summary><p class="learning-parent-note">Voici les principaux apprentissages travaillés en classe. D’autres compétences sont également exercées au quotidien.</p>${inside}</details></article>`}
 function learningPeriodDateText(){
   const meta=LEARNING_PERIOD_DATES[periodKey()]||LEARNING_PERIOD_DATES.p1;
   const a=dateFromIso(meta.start),b=dateFromIso(meta.end);
@@ -234,7 +528,7 @@ function renderLearning(){
   if(periodDates)periodDates.textContent=learningPeriodDateText();
   $('learningGrid').innerHTML=subjectOrder.map(learningCard).join('');
 }
-function renderTogether(){$('togetherLearning').innerHTML=togetherOrder.map(key=>{const s=PROG[key]||{},arr=comps(key);if(!arr.length)return'';return `<article class="together-card"><h3>${esc(s.icon||'🤝')} ${esc(s.title||key)}</h3><ul>${arr.map(c=>`<li>${esc(c.title||c.jeSais||c.code)}</li>`).join('')}</ul></article>`}).join('')}
+function renderTogether(){$('togetherLearning').innerHTML=togetherOrder.map(key=>{const s=PROG[key]||{},arr=parentTogetherComps(key);if(!arr.length)return'';return `<article class="together-card"><h3>${esc(s.icon||'🤝')} ${esc(s.title||key)}</h3><ul>${arr.map(c=>`<li>${esc(c.title||c.jeSais||c.code)}</li>`).join('')}</ul></article>`}).join('')}
 
 function frenchDateFromLabel(label){
   const months={janvier:0,fevrier:1,février:1,mars:2,avril:3,mai:4,juin:5,juillet:6,aout:7,août:7,septembre:8,octobre:9,novembre:10,decembre:11,décembre:11};
