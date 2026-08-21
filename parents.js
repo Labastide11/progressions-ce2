@@ -1,4 +1,4 @@
-// V34.53 — Espace Parents : devoirs P1 + P2, évaluations anticipées sans surcharge.
+// V34.56 — Espace Parents : titres hebdomadaires pour les blocs d’évaluations P1 + P2.
 (function(){
 'use strict';
 const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -14,6 +14,19 @@ function renderPublished(){$('weekMessage').textContent=W.message||'Aucune infor
 function isoLocal(d){const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');return `${y}-${m}-${day}`}
 function dateFromIso(s){const [y,m,d]=String(s).split('-').map(Number);return new Date(y,m-1,d)}
 function dueLabel(s){return frDate(dateFromIso(s),{weekday:'long',day:'numeric',month:'long'})}
+function evaluationWeekLabel(it){
+  const evaluations=Array.isArray(it&&it.evaluations)?it.evaluations:[];
+  const dates=[...new Set(evaluations.map(ev=>String(ev&&ev.date||'')).filter(Boolean))].sort();
+  if(dates.length<2)return `Pour ${dueLabel(it.due)}`;
+  const first=dateFromIso(dates[0]);
+  const day=(first.getDay()+6)%7; // lundi = 0
+  const monday=new Date(first);monday.setDate(first.getDate()-day);
+  const friday=new Date(monday);friday.setDate(monday.getDate()+4);
+  const sameMonth=monday.getMonth()===friday.getMonth()&&monday.getFullYear()===friday.getFullYear();
+  const start=frDate(monday,sameMonth?{day:'numeric'}:{day:'numeric',month:'long'});
+  const end=frDate(friday,{day:'numeric',month:'long'});
+  return `Semaine du ${start} au ${end}`;
+}
 let homeworkTestWeekIndex=null;
 function homeworkWeekFor(date){const iso=isoLocal(date),weeks=Array.isArray(D.weeks)?D.weeks:[];if(!weeks.length)return null;if(Number.isInteger(homeworkTestWeekIndex)&&weeks[homeworkTestWeekIndex])return weeks[homeworkTestWeekIndex];const current=weeks.find(w=>iso>=w.start&&iso<=w.end);if(current)return current;const next=weeks.find(w=>w.start>iso);if(next)return next;return weeks[weeks.length-1]}
 function homeworkHibouHtml(value){
@@ -40,7 +53,7 @@ function homeworkEvaluationsHtml(list){
     return `<section class="homework-evaluation"><div class="homework-evaluation-head"><strong>${esc(ev.subject||'Évaluation')}</strong><span>${esc(dueLabel(ev.date))}</span></div>${ev.title?`<h4>${esc(ev.title)}</h4>`:''}${newSkills}${reviewSkills}${scope}${prep}${hibou}</section>`;
   }).join('')}</div>`;
 }
-function homeworkItemCard(it,compact=false){const evaluations=homeworkEvaluationsHtml(it.evaluations);const challenge=it.challenge?`<div class="homework-block homework-challenge"><b>🎯 Défi du jour</b><p>${esc(it.challenge)}</p></div>`:'';const family=it.family?`<div class="homework-block homework-family"><b>👨‍👩‍👧 Défi famille <span>facultatif</span></b><p>${esc(it.family)}</p></div>`:'';const hibou=homeworkHibouHtml(it.hibou);return `<article class="homework-card${compact?' homework-card--compact':''}"><div class="homework-date">Pour ${esc(dueLabel(it.due))}</div>${evaluations}<div class="homework-block homework-routine"><b>${esc(it.routineIcon||'📚')} ${esc(it.routineTitle||'Je revois')}</b><p>${esc(it.routine||'')}</p></div>${challenge}${family}${hibou}</article>`}
+function homeworkItemCard(it,compact=false){const evaluations=homeworkEvaluationsHtml(it.evaluations);const challenge=it.challenge?`<div class="homework-block homework-challenge"><b>🎯 Défi du jour</b><p>${esc(it.challenge)}</p></div>`:'';const family=it.family?`<div class="homework-block homework-family"><b>👨‍👩‍👧 Défi famille <span>facultatif</span></b><p>${esc(it.family)}</p></div>`:'';const hibou=homeworkHibouHtml(it.hibou);const dateTitle=evaluationWeekLabel(it);return `<article class="homework-card${compact?' homework-card--compact':''}"><div class="homework-date">${esc(dateTitle)}</div>${evaluations}<div class="homework-block homework-routine"><b>${esc(it.routineIcon||'📚')} ${esc(it.routineTitle||'Je revois')}</b><p>${esc(it.routine||'')}</p></div>${challenge}${family}${hibou}</article>`}
 function renderHomework(){const now=new Date(),week=homeworkWeekFor(now),cur=$('homeworkCurrent');if(!cur)return;if(!week){cur.innerHTML='<div class="homework-empty">Aucun devoir programmé.</div>';return}const items=Array.isArray(week.items)?week.items:[];const dates=`${esc(frDate(dateFromIso(week.start),{day:'numeric',month:'long'}))} au ${esc(frDate(dateFromIso(week.end),{day:'numeric',month:'long'}))}`;const head=`<div class="homework-week-head"><div><span>${esc(week.label||'Semaine en cours')}</span><h3>${dates}</h3>${week.theme?`<p class="homework-theme">${esc(week.theme)}</p>`:''}</div></div>`;if(!items.length){cur.innerHTML=`${head}<div class="homework-empty">🌱 ${esc(week.note||'Aucun devoir cette semaine.')}</div>${week.holiday?`<div class="homework-holiday">🏖️ ${esc(week.holiday)}</div>`:''}`;return}cur.innerHTML=`${head}${week.note?`<div class="homework-empty">${esc(week.note)}</div>`:''}${items.map(x=>homeworkItemCard(x)).join('')}${week.holiday?`<div class="homework-holiday">🏖️ ${esc(week.holiday)}</div>`:''}`}
 
 
