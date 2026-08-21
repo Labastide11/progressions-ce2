@@ -1,4 +1,4 @@
-// V34.74 — Espace Parents : révisions facultatives de la Toussaint intégrées aux devoirs vacances.
+// V34.75 — Espace Parents : révisions facultatives Toussaint + Noël intégrées aux devoirs vacances.
 // Les repères annuels transversaux Arts / éducation musicale sont affichés pour chaque période.
 (function(){
 'use strict';
@@ -51,13 +51,28 @@ function holidayRevisionHtml(week){
   if(!week)return '';
   const breakEvent=(CAL.breaks||[]).find(br=>{
     const last=String(br&&br.lastSchoolDay||'');
-    return last&&last>=week.start&&last<=week.end&&/toussaint/i.test(String(br.label||''));
+    return last&&last>=week.start&&last<=week.end&&/(toussaint|no[eë]l)/i.test(String(br.label||''));
   });
   if(!breakEvent)return '';
-  return `<section class="holiday-revisions" aria-label="Petites révisions facultatives de la Toussaint">
+  const label=String(breakEvent.label||'');
+  const isNoel=/no[eë]l/i.test(label);
+  const theme=isNoel?{
+    icon:'🎄',
+    name:'Noël',
+    revision:'assets/revisions-vacances/noel-revisions.png',
+    games:'assets/revisions-vacances/noel-jeux.png',
+    gamesDetail:'Labyrinthe de calcul · code secret · intrus · défi logique'
+  }:{
+    icon:'🍂',
+    name:'Toussaint',
+    revision:'assets/revisions-vacances/toussaint-revisions.png',
+    games:'assets/revisions-vacances/toussaint-jeux.png',
+    gamesDetail:'Coloriages · code secret · défi logique'
+  };
+  return `<section class="holiday-revisions" aria-label="Petites révisions facultatives des vacances de ${esc(theme.name)}">
     <div class="holiday-revisions__head">
       <div>
-        <span class="holiday-revisions__eyebrow">🍂 Facultatif</span>
+        <span class="holiday-revisions__eyebrow">${theme.icon} Facultatif</span>
         <h4>Mes petites révisions — si j’en ai envie</h4>
       </div>
     </div>
@@ -67,13 +82,13 @@ function holidayRevisionHtml(week){
       <p>Lire, jouer, sortir, découvrir et se reposer restent essentiels pendant les vacances.</p>
     </div>
     <div class="holiday-revisions__pages">
-      <a class="holiday-revisions__page" href="assets/revisions-vacances/toussaint-revisions.png" target="_blank" rel="noopener">
-        <img src="assets/revisions-vacances/toussaint-revisions.png" alt="Aperçu de la page 1 de révisions de la Toussaint">
+      <a class="holiday-revisions__page" href="${theme.revision}" target="_blank" rel="noopener">
+        <img src="${theme.revision}" alt="Aperçu de la page 1 de révisions des vacances de ${esc(theme.name)}">
         <span><b>📘 Page 1 — Je révise tranquillement</b><small>Lecture · Français · Mathématiques</small></span>
       </a>
-      <a class="holiday-revisions__page" href="assets/revisions-vacances/toussaint-jeux.png" target="_blank" rel="noopener">
-        <img src="assets/revisions-vacances/toussaint-jeux.png" alt="Aperçu de la page 2 de jeux de la Toussaint">
-        <span><b>🎨 Page 2 — Je joue et je réfléchis</b><small>Coloriages · code secret · défi logique</small></span>
+      <a class="holiday-revisions__page" href="${theme.games}" target="_blank" rel="noopener">
+        <img src="${theme.games}" alt="Aperçu de la page 2 de jeux des vacances de ${esc(theme.name)}">
+        <span><b>🎨 Page 2 — Je joue et je réfléchis</b><small>${theme.gamesDetail}</small></span>
       </a>
     </div>
   </section>`;
