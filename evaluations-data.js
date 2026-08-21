@@ -12,96 +12,44 @@ window.EVALUATIONS_CE2 = {
         skillCodes: ['GRA-P1-04','GRA-P1-06']
       },
       p2: {
-        title: 'Période 2 — Présent, familles de mots et écrit court',
+        title: 'Période 2 — Présent et récit chronologique',
         status: 'ready',
-        description: 'Évaluation P2 codée et verrouillée : présent, nom/pronom, accord déterminant-nom, familles de mots, morphologie, synonymes/contraires et écriture courte avec le DRAS.',
+        description: 'Évaluation P2 courte et progressive : 2 nouvelles compétences essentielles, accompagnées d’une compétence P1 en rebrassage. Les autres apprentissages de la période restent suivis au fil des séances.',
         studentDoc: 'assets/evaluations/francais/Francais_P2_eleve_DRAS_verrouillee.docx',
         teacherDoc: 'assets/evaluations/francais/Francais_P2_grille_enseignant_DRAS_verrouillee.docx',
-        skillCodes: [
-          'GRA-P2-01',
-          'GRA-P2-03',
-          'GRA-P2-04',
-          'CONJ-P2-02',
-          'CONJ-P2-03',
-          'CONJ-P2-04',
-          'ORT-P2-01',
-          'VOC-P2-01',
-          'VOC-P2-02',
-          'VOC-P2-03',
-          'VOC-P2-04',
-          'VOC-P2-05',
-          'ECR-P2-04',
-          'ECR-P2-06'
-        ]
+        newSkillCodes: ['CONJ-P2-02','ECR-P2-04'],
+        reviewSkillCodes: ['GRA-P1-04'],
+        skillCodes: ['CONJ-P2-02','ECR-P2-04','GRA-P1-04']
       },
       p3: {
-        title: 'Période 3 — Groupe nominal, futur et précision lexicale',
+        title: 'Période 3 — Groupe nominal et futur',
         status: 'ready',
-        description: 'Évaluation P3 codée et verrouillée : groupe nominal, futur, accords de l’adjectif, polysémie, niveaux de langue, réseau lexical, intensité et connecteurs temporels.',
+        description: 'Évaluation P3 courte et progressive : 2 nouvelles compétences essentielles — identifier le groupe nominal et conjuguer les verbes en -er au futur — plus un rebrassage P2 du présent des verbes en -er.',
         studentDoc: 'assets/evaluations/francais/Francais_P3_eleve_DRAS_verrouillee.docx',
         teacherDoc: 'assets/evaluations/francais/Francais_P3_grille_enseignant_DRAS_verrouillee.docx',
-        skillCodes: [
-          'GRA-P3-01',
-          'GRA-P3-02',
-          'GRA-P3-03',
-          'CONJ-P3-01',
-          'CONJ-P3-02',
-          'CONJ-P3-03',
-          'ORT-P3-01',
-          'ORT-P3-02',
-          'ORT-P3-03',
-          'VOC-P3-01',
-          'VOC-P3-02',
-          'VOC-P3-03',
-          'VOC-P3-04',
-          'ECR-P3-04'
-        ]
+        newSkillCodes: ['GRA-P3-03','CONJ-P3-02'],
+        reviewSkillCodes: ['CONJ-P2-02'],
+        skillCodes: ['GRA-P3-03','CONJ-P3-02','CONJ-P2-02']
       },
       p4: {
-        title: 'Période 4 — Groupes de phrase, imparfait et sens figuré',
+        title: 'Période 4 — Groupes dans la phrase et imparfait',
         status: 'ready',
-        description: 'Évaluation P4 codée et verrouillée : groupes de phrase, imparfait, accords, -er/-é, pluriels particuliers, sens propre/figuré, expressions et révision d’un écrit.',
+        description: 'Évaluation P4 ciblée : 2 nouvelles compétences essentielles — manipuler les groupes dans la phrase (fondamental LSU) et conjuguer les verbes en -er à l’imparfait — plus 2 rebrassages P3 sur le futur et le groupe nominal.',
         studentDoc: 'assets/evaluations/francais/Francais_P4_eleve_DRAS_verrouillee.docx',
         teacherDoc: 'assets/evaluations/francais/Francais_P4_grille_enseignant_DRAS_verrouillee.docx',
-        skillCodes: [
-          'GRA-P4-01',
-          'GRA-P4-02',
-          'GRA-P4-03',
-          'CONJ-P4-01',
-          'CONJ-P4-02',
-          'CONJ-P4-03',
-          'ORT-P4-01',
-          'ORT-P4-03',
-          'ORT-P4-04',
-          'VOC-P4-01',
-          'VOC-P4-02',
-          'VOC-P4-03',
-          'ECR-P4-02',
-          'ECR-P4-05'
-        ]
+        newSkillCodes: ['GRA-P4-02','CONJ-P4-02'],
+        reviewSkillCodes: ['CONJ-P3-02','GRA-P3-03'],
+        skillCodes: ['GRA-P4-02','CONJ-P4-02','CONJ-P3-02','GRA-P3-03']
       },
       p5: {
-        title: 'Période 5 — Réinvestissement, temps du passé et révision autonome',
+        title: 'Période 5 — Accord sujet-verbe et révision autonome',
         status: 'ready',
-        description: 'Évaluation P5 codée et verrouillée : analyse de phrase, passé composé, articulation imparfait/passé composé, accords, relecture, morphologie lexicale et révision autonome d’un texte.',
+        description: 'Évaluation P5 ciblée : 2 nouvelles compétences essentielles — accorder le sujet et le verbe, puis réviser/améliorer un texte (fondamental LSU) — plus 2 rebrassages P4 sur l’imparfait et la manipulation des groupes dans la phrase.',
         studentDoc: 'assets/evaluations/francais/Francais_P5_eleve_DRAS_verrouillee.docx',
         teacherDoc: 'assets/evaluations/francais/Francais_P5_grille_enseignant_DRAS_verrouillee.docx',
-        skillCodes: [
-          'GRA-P5-01',
-          'GRA-P5-02',
-          'GRA-P5-03',
-          'CONJ-P5-01',
-          'CONJ-P5-02',
-          'CONJ-P5-03',
-          'ORT-P5-01',
-          'ORT-P5-02',
-          'ORT-P5-05',
-          'VOC-P5-01',
-          'VOC-P5-02',
-          'VOC-P5-03',
-          'ECR-P5-03',
-          'ECR-P5-04'
-        ]
+        newSkillCodes: ['ORT-P5-01','ECR-P5-04'],
+        reviewSkillCodes: ['CONJ-P4-02','GRA-P4-02'],
+        skillCodes: ['ORT-P5-01','ECR-P5-04','CONJ-P4-02','GRA-P4-02']
       },
     }
   },
@@ -118,68 +66,44 @@ window.EVALUATIONS_CE2 = {
         skillCodes: ['PRO-P1-01','OPE-P1-01']
       },
       p2: {
-        title: 'Période 2 — Nombres à 4 chiffres, fractions, soustraction et géométrie',
+        title: 'Période 2 — Valeur des chiffres et soustraction',
         status: 'ready',
-        description: 'Évaluation P2 verrouillée sans note ni point : 16 compétences canoniques, une tâche par compétence — numération, fractions, doubles/moitiés, addition mentale, soustraction avec échange, trois structures de problèmes, périmètre, polygones, quadrillage et tableau à double entrée.',
+        description: 'Évaluation P2 courte et progressive : 2 nouvelles compétences essentielles, dont le fondamental LSU « repérer la valeur d’un chiffre », plus un rebrassage P1 sur la compréhension de la question d’un problème.',
         studentDoc: 'assets/evaluations/maths/Maths_P2_eleve_verrouillee.docx',
         teacherDoc: 'assets/evaluations/maths/Maths_P2_grille_enseignant_verrouillee.docx',
-        skillCodes: [
-          'NUM-P2-01','NUM-P2-02','NUM-P2-03','NUM-P2-04',
-          'FRA-P2-01','FRA-P2-02',
-          'CAL-P2-01','CAL-P2-03',
-          'OPE-P2-02',
-          'PRO-P2-01','PRO-P2-02','PRO-P2-03',
-          'MES-P2-02','GEO-P2-01','GEO-P2-02','DON-P2-01'
-        ]
+        newSkillCodes: ['NUM-P2-02','OPE-P2-02'],
+        reviewSkillCodes: ['PRO-P1-01'],
+        skillCodes: ['NUM-P2-02','OPE-P2-02','PRO-P1-01']
       },
       p3: {
-        title: 'Période 3 — Multiplication, fractions, données, figures et durées',
+        title: 'Période 3 — Tables et multiplication posée',
         status: 'ready',
-        description: 'Évaluation P3 verrouillée sans note ni point : 18 compétences canoniques, une tâche par compétence — numération, fractions-longueurs, tables, quotient, multiplication posée, vocabulaire multiplicatif, problèmes, heures, triangles, construction et diagrammes en barres.',
+        description: 'Évaluation P3 courte et progressive : 2 nouvelles compétences essentielles — connaître les tables de multiplication (fondamental LSU) et poser une multiplication par un chiffre — plus un rebrassage P2 sur la valeur d’un chiffre.',
         studentDoc: 'assets/evaluations/maths/Maths_P3_eleve_verrouillee.docx',
         teacherDoc: 'assets/evaluations/maths/Maths_P3_grille_enseignant_verrouillee.docx',
-        skillCodes: [
-          'NUM-P3-01','NUM-P3-02','NUM-P3-03',
-          'FRA-P3-01','FRA-P3-02',
-          'CAL-P3-01','CAL-P3-02','CAL-P3-03',
-          'OPE-P3-01','OPE-P3-02',
-          'PRO-P3-01','PRO-P3-02','PRO-P3-03',
-          'TEM-P3-01','GEO-P3-01','GEO-P3-02',
-          'DON-P3-01','DON-P3-02'
-        ]
+        newSkillCodes: ['CAL-P3-01','OPE-P3-01'],
+        reviewSkillCodes: ['NUM-P2-02'],
+        skillCodes: ['CAL-P3-01','OPE-P3-01','NUM-P2-02']
       },
       p4: {
-        title: 'Période 4 — Fractions, calcul, problèmes, mesures, constructions et données',
+        title: 'Période 4 — Stratégies de calcul et sens de la division',
         status: 'ready',
-        description: 'Évaluation P4 verrouillée sans note ni point : 19 compétences canoniques, une tâche par compétence — numération, fractions, calcul mental et posé, division, problèmes, périmètres, masses, monnaie, durées, cercle, constructions et données.',
+        description: 'Évaluation P4 ciblée : 2 nouvelles compétences essentielles — choisir une stratégie de calcul efficace (fondamental LSU) et comprendre le sens de la division — plus 2 rebrassages P3 sur la multiplication posée et les tables.',
         studentDoc: 'assets/evaluations/maths/Maths_P4_eleve_verrouillee.docx',
         teacherDoc: 'assets/evaluations/maths/Maths_P4_grille_enseignant_verrouillee.docx',
-        skillCodes: [
-          'NUM-P4-01','NUM-P4-02',
-          'FRA-P4-01','FRA-P4-02',
-          'CAL-P4-01','CAL-P4-02',
-          'OPE-P4-01','OPE-P4-02',
-          'PRO-P4-01','PRO-P4-02','PRO-P4-03',
-          'MES-P4-01','MAS-P4-01','MON-P4-01','TEM-P4-01',
-          'GEO-P4-01','GEO-P4-02','GEO-P4-03','DON-P4-01'
-        ]
+        newSkillCodes: ['CAL-P4-02','OPE-P4-02'],
+        reviewSkillCodes: ['OPE-P3-01','CAL-P3-01'],
+        skillCodes: ['CAL-P4-02','OPE-P4-02','OPE-P3-01','CAL-P3-01']
       },
       p5: {
-        title: 'Période 5 — Bilan : nombres, fractions, calcul, problèmes, mesures, géométrie et données',
+        title: 'Période 5 — Représentations des nombres et problème complexe',
         status: 'ready',
-        description: 'Évaluation P5 verrouillée sans note ni point : 20 compétences canoniques, une tâche par compétence — synthèse de numération, fractions, calcul mental, choix et contrôle des opérations, problèmes complexes, mesures, durées, constructions, symétrie, patrons de solides et données.',
+        description: 'Évaluation P5 ciblée : 2 nouvelles compétences essentielles et fondamentales LSU — mobiliser différentes représentations des nombres et résoudre un problème complexe ou atypique — plus 2 rebrassages sur le sens de la division et la multiplication posée.',
         studentDoc: 'assets/evaluations/maths/Maths_P5_eleve_verrouillee.docx',
         teacherDoc: 'assets/evaluations/maths/Maths_P5_grille_enseignant_verrouillee.docx',
-        skillCodes: [
-          'NUM-P5-01','NUM-P5-02',
-          'FRA-P5-01','FRA-P5-02',
-          'CAL-P5-01','CAL-P5-02',
-          'OPE-P5-01','OPE-P5-02',
-          'PRO-P5-01','PRO-P5-02','PRO-P5-03',
-          'MES-P5-01','MES-P5-02','TEM-P5-01',
-          'GEO-P5-01','GEO-P5-02','SYM-P5-01','SOL-P5-01',
-          'DON-P5-01','DON-P5-02'
-        ]
+        newSkillCodes: ['NUM-P5-01','PRO-P5-02'],
+        reviewSkillCodes: ['OPE-P4-02','OPE-P3-01'],
+        skillCodes: ['NUM-P5-01','PRO-P5-02','OPE-P4-02','OPE-P3-01']
       }
     }
   },
@@ -200,32 +124,40 @@ window.EVALUATIONS_CE2 = {
         status: 'ready',
         traceType: 'Mise en situation + observation',
         traceSource: 'observation_classe',
-        description: 'Jeu de rôle puis observation en situation réelle : distinguer désaccord, violence et harcèlement, décrire les faits, exprimer son ressenti, écouter, chercher une solution et demander de l’aide si nécessaire.',
-        skillCodes: ['EMC-P2-01','EMC-P2-02','EMC-P2-03','EMC-P2-04','EMC-P2-05']
+        description: 'Observation ciblée, sans contrôle papier : 2 compétences essentielles seulement — exprimer son ressenti et écouter l’autre, puis utiliser le message clair pour chercher une solution.',
+        newSkillCodes: ['EMC-P2-04','EMC-P2-05'],
+        reviewSkillCodes: [],
+        skillCodes: ['EMC-P2-04','EMC-P2-05']
       },
       p3: {
         title: 'Période 3 — Conseil d’élèves et bien commun',
         status: 'ready',
         traceType: 'Conseil d’élèves',
         traceSource: 'observation_classe',
-        description: 'Trace recueillie pendant une décision collective : intérêt général, écoute, vote, proposition et engagement dans une action utile au groupe.',
-        skillCodes: ['EMC-P3-01','EMC-P3-02','EMC-P3-03','EMC-P3-04','EMC-P3-05']
+        description: 'Observation ciblée, sans contrôle papier : 2 nouvelles compétences essentielles — participer à une décision collective et prendre la parole en écoutant les autres — avec un bref rebrassage P2 sur l’expression du ressenti et l’écoute.',
+        newSkillCodes: ['EMC-P3-03','EMC-P3-04'],
+        reviewSkillCodes: ['EMC-P2-04'],
+        skillCodes: ['EMC-P3-03','EMC-P3-04','EMC-P2-04']
       },
       p4: {
         title: 'Période 4 — Débat réglé : les 4 coins',
         status: 'ready',
         traceType: 'Débat réglé',
         traceSource: 'observation_classe',
-        description: 'Situation d’observation authentique : prendre position, repérer un stéréotype lorsqu’il apparaît dans le thème étudié, donner un argument, écouter un avis différent, reformuler et faire évoluer sa réflexion.',
-        skillCodes: ['EMC-P4-01','EMC-P4-02','EMC-P4-03','EMC-P4-04','EMC-P4-05']
+        description: 'Observation ciblée pendant un débat réglé : respecter les différences et l’égalité, puis exprimer un point de vue argumenté en écoutant les autres. Une compétence de décision collective P3 peut être reprise en rebrassage.',
+        newSkillCodes: ['EMC-P4-01','EMC-P4-03'],
+        reviewSkillCodes: ['EMC-P3-04'],
+        skillCodes: ['EMC-P4-01','EMC-P4-03','EMC-P3-04']
       },
       p5: {
-        title: 'Période 5 — Repères citoyens et engagement',
+        title: 'Période 5 — Secours et engagement',
         status: 'ready',
         traceType: 'Oral + observation',
         traceSource: 'observation_classe',
-        description: 'Validation courte, principalement orale : services publics, commune et maire, secours, environnement et engagement dans un projet collectif.',
-        skillCodes: ['EMC-P5-01','EMC-P5-02','EMC-P5-03','EMC-P5-04','EMC-P5-05']
+        description: 'Observation ciblée, sans contrôle papier : alerter correctement un adulte ou un service de secours, puis relier un écogeste à l’intérêt général. La participation orale déjà travaillée revient ponctuellement en rebrassage.',
+        newSkillCodes: ['EMC-P5-03', 'EMC-P5-04'],
+        reviewSkillCodes: ['EMC-P3-04'],
+        skillCodes: ['EMC-P5-03', 'EMC-P5-04', 'EMC-P3-04']
       }
     }
   },
@@ -246,32 +178,40 @@ window.EVALUATIONS_CE2 = {
         status: 'ready',
         traceType: 'Documents + tableau comparatif',
         traceSource: 'evaluation_papier',
-        description: 'Situation de référence : comparer habitats, alimentation, objets ou vêtements, puis expliquer ce qui a changé et ce qui est resté semblable entre plusieurs époques.',
-        skillCodes: ['HIS-P2-01','HIS-P2-02','HIS-P2-03','HIS-P2-04']
+        description: 'Évaluation courte : comparer des habitats de différentes époques et repérer changements/permanences. Une frise P1 revient en rebrassage pour vérifier la consolidation.',
+        newSkillCodes: ['HIS-P2-01','HIS-P2-04'],
+        reviewSkillCodes: ['HIS-P1-02'],
+        skillCodes: ['HIS-P2-01','HIS-P2-04','HIS-P1-02']
       },
       p3: {
-        title: 'Période 3 — Découvrir un personnage ou un événement du passé',
+        title: 'Période 3 — Lire des documents et raconter l’essentiel',
         status: 'ready',
         traceType: 'Dossier documentaire + frise',
         traceSource: 'evaluation_papier',
-        description: 'Situation de référence à partir de février : situer une figure ou un événement de l’Antiquité ou du début du Moyen Âge, prélever des informations puis raconter l’essentiel avec ses mots.',
-        skillCodes: ['HIS-P3-01','HIS-P3-02','HIS-P3-03','HIS-P3-04']
+        description: 'Évaluation courte : prélever des informations dans des documents historiques (fondamental LSU) et présenter avec ses mots un personnage ou un événement étudié. La frise, déjà vue en P1, revient brièvement en rebrassage.',
+        newSkillCodes: ['HIS-P3-03','HIS-P3-04'],
+        reviewSkillCodes: ['HIS-P1-02'],
+        skillCodes: ['HIS-P3-03','HIS-P3-04','HIS-P1-02']
       },
       p4: {
         title: 'Période 4 — Enquêter sur le Moyen Âge',
         status: 'ready',
         traceType: 'Dossier documentaire + explication',
         traceSource: 'evaluation_papier',
-        description: 'Situation de référence : utiliser plusieurs documents pour situer des repères, décrire quelques aspects de la vie au Moyen Âge et expliquer simplement un événement ou l’affirmation du pouvoir royal.',
-        skillCodes: ['HIS-P4-01','HIS-P4-02','HIS-P4-03','HIS-P4-04']
+        description: 'Évaluation ciblée : mettre en relation plusieurs documents et expliquer simplement l’affirmation du pouvoir royal. Le prélèvement d’informations dans un document historique, déjà travaillé en P3, revient en rebrassage.',
+        newSkillCodes: ['HIS-P4-04','HIS-P4-03'],
+        reviewSkillCodes: ['HIS-P3-03'],
+        skillCodes: ['HIS-P4-04','HIS-P4-03','HIS-P3-03']
       },
       p5: {
-        title: 'Période 5 — Présenter une grande figure ou une évolution historique',
+        title: 'Période 5 — Transformations et grande figure historique',
         status: 'ready',
-        traceType: 'Présentation courte + frise',
+        traceType: 'Présentation courte + documents',
         traceSource: 'observation_classe',
-        description: 'Situation de référence principalement orale : situer une figure ou un événement des Temps modernes, comparer des transformations, croiser plusieurs informations et expliquer une évolution historique étudiée.',
-        skillCodes: ['HIS-P5-01','HIS-P5-02','HIS-P5-03','HIS-P5-04']
+        description: 'Situation courte : identifier une transformation importante entre Moyen Âge et Temps modernes et croiser des informations sur une grande figure historique. Le prélèvement d’informations dans un document, déjà travaillé en P3, revient en rebrassage.',
+        newSkillCodes: ['HIS-P5-02', 'HIS-P5-03'],
+        reviewSkillCodes: ['HIS-P3-03'],
+        skillCodes: ['HIS-P5-02', 'HIS-P5-03', 'HIS-P3-03']
       }
     }
   },
@@ -288,36 +228,44 @@ window.EVALUATIONS_CE2 = {
         skillCodes: ['GEOG-P1-01','GEOG-P1-02']
       },
       p2: {
-        title: 'Période 2 — Habiter la ville : lire un paysage et utiliser un plan',
+        title: 'Période 2 — Habiter la ville : paysage et plan',
         status: 'ready',
         traceType: 'Photographie + plan',
         traceSource: 'evaluation_papier',
-        description: 'Situation de référence : observer un paysage urbain, distinguer des formes d’habitat, identifier les fonctions d’un quartier, utiliser un plan, comparer des espaces urbains et relier un aménagement aux besoins des habitants.',
-        skillCodes: ['GEOG-P2-01','GEOG-P2-02','GEOG-P2-03','GEOG-P2-04','GEOG-P2-05','GEOG-P2-06']
+        description: 'Évaluation courte : reconnaître/décrire un paysage urbain et utiliser un plan pour se repérer. La localisation de la France, vue en P1, revient brièvement en rebrassage.',
+        newSkillCodes: ['GEOG-P2-01','GEOG-P2-04'],
+        reviewSkillCodes: ['GEOG-P1-01'],
+        skillCodes: ['GEOG-P2-01','GEOG-P2-04','GEOG-P1-01']
       },
       p3: {
-        title: 'Période 3 — Habiter la France : campagne, littoral et montagne',
+        title: 'Période 3 — Habiter la campagne, le littoral et la montagne',
         status: 'ready',
-        traceType: 'Photographies + carte + comparaison',
+        traceType: 'Photographies + carte',
         traceSource: 'evaluation_papier',
-        description: 'Situation de référence à partir de février : identifier plusieurs types d’espaces, comparer les façons d’y habiter et l’accès aux services, puis localiser les principaux espaces étudiés.',
-        skillCodes: ['GEOG-P3-01','GEOG-P3-02','GEOG-P3-03','GEOG-P3-04','GEOG-P3-05']
+        description: 'Évaluation courte : reconnaître/décrire un espace rural et décrire différentes façons d’habiter un littoral ou la montagne. La localisation de la France, vue en P1, revient brièvement en rebrassage.',
+        newSkillCodes: ['GEOG-P3-01','GEOG-P3-02'],
+        reviewSkillCodes: ['GEOG-P1-01'],
+        skillCodes: ['GEOG-P3-01','GEOG-P3-02','GEOG-P1-01']
       },
       p4: {
         title: 'Période 4 — Travailler en France : observer un territoire',
         status: 'ready',
         traceType: 'Paysage + documents courts',
         traceSource: 'evaluation_papier',
-        description: 'Situation de référence : identifier des activités et lieux de travail, distinguer bien et service, lire un paysage de travail et expliquer simplement le rôle des transports ou des aménagements.',
-        skillCodes: ['GEOG-P4-01','GEOG-P4-02','GEOG-P4-03','GEOG-P4-04']
+        description: 'Évaluation ciblée : lire un paysage pour comprendre comment un espace est utilisé pour travailler, puis expliquer le rôle des transports et des aménagements. La description d’un espace rural P3 revient brièvement en rebrassage.',
+        newSkillCodes: ['GEOG-P4-03','GEOG-P4-04'],
+        reviewSkillCodes: ['GEOG-P3-01'],
+        skillCodes: ['GEOG-P4-03','GEOG-P4-04','GEOG-P3-01']
       },
       p5: {
-        title: 'Période 5 — Activités, territoires et environnement',
+        title: 'Période 5 — Parcours d’un produit et effets sur le territoire',
         status: 'ready',
         traceType: 'Dossier documentaire + explication',
         traceSource: 'evaluation_papier',
-        description: 'Situation de référence : décrire un espace agricole ou touristique, reconstituer le parcours d’un produit, identifier des activités et services, repérer leurs effets sur le territoire et comparer plusieurs espaces de travail.',
-        skillCodes: ['GEOG-P5-01','GEOG-P5-02','GEOG-P5-03','GEOG-P5-04','GEOG-P5-05']
+        description: 'Évaluation ciblée : reconstituer le parcours simple d’un produit et repérer les effets d’une activité sur un territoire et son environnement. La lecture d’un paysage de travail P4 revient en rebrassage.',
+        newSkillCodes: ['GEOG-P5-02', 'GEOG-P5-04'],
+        reviewSkillCodes: ['GEOG-P4-03'],
+        skillCodes: ['GEOG-P5-02', 'GEOG-P5-04', 'GEOG-P4-03']
       }
     }
   },
@@ -334,36 +282,44 @@ window.EVALUATIONS_CE2 = {
         skillCodes: ['SCI-P1-03','SCI-P1-05']
       },
       p2: {
-        title: 'Période 2 — Expérimenter avec l’eau',
+        title: 'Période 2 — Les états et changements d’état de l’eau',
         status: 'ready',
-        traceType: 'Expérience + schéma/tableau',
+        traceType: 'Expérience + observation',
         traceSource: 'observation_classe',
-        description: 'Situation de référence articulée avec la période piscine : identifier les états de l’eau, observer un changement d’état, expérimenter, comparer le comportement d’objets dans l’eau puis tirer une conclusion.',
-        skillCodes: ['SCI-P2-01','SCI-P2-02','SCI-P2-03','SCI-P2-04','SCI-P2-05']
+        description: 'Observation ciblée : identifier les états de l’eau et décrire un changement d’état. La capacité à tirer une conclusion, travaillée en P1, est reprise en rebrassage.',
+        newSkillCodes: ['SCI-P2-01','SCI-P2-02'],
+        reviewSkillCodes: ['SCI-P1-05'],
+        skillCodes: ['SCI-P2-01','SCI-P2-02','SCI-P1-05']
       },
       p3: {
         title: 'Période 3 — Comprendre comment fonctionne un VTT',
         status: 'ready',
         traceType: 'VTT réel + oral pratique',
         traceSource: 'observation_classe',
-        description: 'Situation de référence à partir de février, en lien avec les sorties à la Cavayère : identifier le besoin, les parties et fonctions du vélo, expliquer la transmission du mouvement, vérifier la sécurité et proposer un réglage simple.',
-        skillCodes: ['SCI-P3-01','SCI-P3-02','SCI-P3-03','SCI-P3-04','SCI-P3-05']
+        description: 'Observation pratique ciblée : identifier les principales parties du vélo et leur fonction, puis expliquer simplement la transmission du mouvement. Tirer une conclusion à partir d’une observation, déjà travaillé en P1, revient en rebrassage.',
+        newSkillCodes: ['SCI-P3-02','SCI-P3-03'],
+        reviewSkillCodes: ['SCI-P1-05'],
+        skillCodes: ['SCI-P3-02','SCI-P3-03','SCI-P1-05']
       },
       p4: {
         title: 'Période 4 — Observer les effets de l’effort sur mon corps',
         status: 'ready',
         traceType: 'Mesures avant/après + oral',
         traceSource: 'observation_classe',
-        description: 'Situation de référence : observer un mouvement, mesurer ou comparer pouls et respiration avant/après effort, identifier les réactions du corps puis justifier quelques habitudes favorables à la santé.',
-        skillCodes: ['SCI-P4-01','SCI-P4-02','SCI-P4-03','SCI-P4-04','SCI-P4-05']
+        description: 'Observation pratique ciblée : mesurer les effets d’un effort sur le pouls et la respiration, puis justifier une habitude favorable à la santé. La capacité à tirer une conclusion à partir de résultats revient en rebrassage.',
+        newSkillCodes: ['SCI-P4-02','SCI-P4-05'],
+        reviewSkillCodes: ['SCI-P1-05'],
+        skillCodes: ['SCI-P4-02','SCI-P4-05','SCI-P1-05']
       },
       p5: {
-        title: 'Période 5 — Comprendre la vie dans un milieu',
+        title: 'Période 5 — Besoins du vivant et chaîne alimentaire',
         status: 'ready',
         traceType: 'Cartes + observation/document + oral',
         traceSource: 'observation_classe',
-        description: 'Situation de référence : ordonner un cycle de vie, comparer des développements, identifier des besoins, construire une chaîne alimentaire et expliquer une relation entre êtres vivants et milieu. Une mini-situation électricité est menée séparément comme réinvestissement technique.',
-        skillCodes: ['SCI-P5-01','SCI-P5-02','SCI-P5-03','SCI-P5-04','SCI-P5-05']
+        description: 'Observation/document ciblé : identifier les besoins d’un être vivant à partir d’observations et construire une chaîne alimentaire simple. Tirer une conclusion à partir d’observations, déjà travaillé auparavant, revient en rebrassage.',
+        newSkillCodes: ['SCI-P5-03', 'SCI-P5-04'],
+        reviewSkillCodes: ['SCI-P1-05'],
+        skillCodes: ['SCI-P5-03', 'SCI-P5-04', 'SCI-P1-05']
       }
     }
   },
@@ -372,20 +328,22 @@ window.EVALUATIONS_CE2 = {
     icon: '🇬🇧',
     periods: {
       p2: {
-        title: 'Semestre 1 — Bilan oral en 3 situations',
+        title: 'Semestre 1 — Petit bilan oral',
         status: 'ready',
-        description: 'Bilan très court : comprendre, parler/interagir et reconnaître quelques repères culturels. Il complète les observations orales de P1 et P2.',
-        studentDoc: 'assets/evaluations/anglais/Anglais_S1_support_eleve.docx',
-        teacherDoc: 'assets/evaluations/anglais/Anglais_S1_grille_enseignant.docx',
-        skillCodes: ['ANG-P1-01','ANG-P2-01','ANG-P1-03','ANG-P2-05','ANG-P1-06','ANG-P2-06']
+        description: 'Bilan oral très court : 2 nouvelles compétences de P2 et un mini-rebrassage P1. Le reste de l’anglais est observé naturellement pendant les rituels et activités.',
+        newSkillCodes: ['ANG-P2-01','ANG-P2-05'],
+        reviewSkillCodes: ['ANG-P1-03'],
+        skillCodes: ['ANG-P2-01','ANG-P2-05','ANG-P1-03']
       },
       p5: {
-        title: 'Semestre 2 — Bilan oral en 3 situations',
+        title: 'Semestre 2 — Bilan oral ciblé',
         status: 'ready',
-        description: 'Bilan très court : comprendre, parler/interagir et suivre une histoire courte. Les repères culturels restent observés sans donner un poids excessif à l’écrit.',
+        description: 'Bilan oral court : 2 nouvelles compétences — décrire brièvement un animal et suivre le fil d’une histoire courte (fondamental LSU) — avec un bref rebrassage d’une formulation orale déjà connue. Les autres acquis restent observés pendant les activités.',
         studentDoc: 'assets/evaluations/anglais/Anglais_S2_support_eleve.docx',
         teacherDoc: 'assets/evaluations/anglais/Anglais_S2_grille_enseignant.docx',
-        skillCodes: ['ANG-P3-04','ANG-P5-02','ANG-P4-05','ANG-P5-01','ANG-P5-03','ANG-P5-04']
+        newSkillCodes: ['ANG-P5-03','ANG-P5-04'],
+        reviewSkillCodes: ['ANG-P3-04'],
+        skillCodes: ['ANG-P5-03','ANG-P5-04','ANG-P3-04']
       }
     }
   }
