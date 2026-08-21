@@ -1,3 +1,14 @@
+# V34.51 — Annonce anticipée des évaluations P1
+
+- Règle annuelle verrouillée : toute évaluation programmée est annoncée au plus tard le week-end précédent.
+- P1 : annonce dès le week-end avant S6 des évaluations Histoire, Français et Mathématiques.
+- P1 : annonce dès le week-end avant S7 des évaluations Sciences et Géographie.
+- Chaque annonce précise la date, la matière, ce qui sera évalué et comment se préparer.
+- La veille : rappel court uniquement, sans nouvel apprentissage.
+- Les évaluations passent avant les devoirs ordinaires.
+- Liens Maître Hibou uniquement lorsque la leçon est pertinente.
+- Mode secret de test des devoirs et icônes saisonnières inchangés.
+
 # V34.50 — Espace Parents : audit devoirs P1 semaines 3 à 7
 
 - devoirs réalignés sur les apprentissages réellement enseignés ;

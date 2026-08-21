@@ -1,5 +1,5 @@
 window.DEVOIRS_P1 = {
-  "version": "34.50",
+  "version": "34.51",
   "period": "p1",
   "schoolYear": "2026-2027",
   "principles": {
@@ -234,12 +234,78 @@ window.DEVOIRS_P1 = {
         },
         {
           "due": "2026-10-05",
-          "routineIcon": "🎤",
-          "routineTitle": "Lecture à voix haute",
-          "routine": "Prépare le passage indiqué, puis raconte en deux ou trois phrases ce que tu as compris.",
-          "challenge": "",
-          "family": "Résumé express : tu as 30 secondes pour raconter l’essentiel de ce que tu viens de lire. L’adulte peut seulement demander : « Et ensuite ? »",
-          "notion": "Fluence · reformulation"
+          "routineIcon": "⭐",
+          "routineTitle": "Évaluations à venir cette semaine",
+          "routine": "Ce week-end, prends connaissance des évaluations prévues. Révise tranquillement les leçons déjà travaillées et commence par une ou deux notions qui te semblent encore difficiles.",
+          "challenge": "Pas de travail supplémentaire à faire : l’objectif est de relire et de se remettre les notions en mémoire.",
+          "family": "Pour accompagner votre enfant : choisissez avec lui une ou deux notions à revoir, sans chercher à tout reprendre en une seule fois.",
+          "notion": "Annonce anticipée des évaluations de la semaine",
+          "evaluations": [
+            {
+              "date": "2026-10-05",
+              "subject": "Histoire",
+              "title": "Frise chronologique et repères historiques",
+              "scope": [
+                "remettre des événements dans l’ordre",
+                "lire et utiliser une frise chronologique",
+                "reconnaître les grandes périodes de l’Histoire",
+                "associer un repère historique à une période"
+              ],
+              "preparation": "Revoir la frise et les grands repères étudiés en classe."
+            },
+            {
+              "date": "2026-10-06",
+              "subject": "Français",
+              "title": "Bilan de français — période 1",
+              "scope": [
+                "reconnaître une phrase correcte",
+                "repérer le verbe conjugué et donner son infinitif",
+                "repérer le sujet et le remplacer par un pronom",
+                "orthographe et mots étudiés",
+                "écrire des phrases correctes et cohérentes"
+              ],
+              "preparation": "Relire les leçons de grammaire et les mots étudiés. Revoir en priorité ce qui reste difficile.",
+              "hibou": [
+                {
+                  "label": "La phrase et la ponctuation",
+                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-phrase-ponctuation.html"
+                },
+                {
+                  "label": "Le verbe",
+                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-verbe.html"
+                },
+                {
+                  "label": "Le sujet du verbe",
+                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-sujet-verbe.html"
+                }
+              ]
+            },
+            {
+              "date": "2026-10-09",
+              "subject": "Mathématiques",
+              "title": "Bilan de mathématiques — période 1",
+              "scope": [
+                "lire, écrire, décomposer, comparer et encadrer des nombres jusqu’à 10 000",
+                "représenter et nommer des fractions simples",
+                "calcul mental : compléments et +9 / −9",
+                "poser une addition",
+                "résoudre un problème additif simple",
+                "mesurer et tracer des segments",
+                "reconnaître les premiers objets géométriques travaillés"
+              ],
+              "preparation": "Revoir les automatismes et une ou deux notions qui demandent encore de l’entraînement.",
+              "hibou": [
+                {
+                  "label": "Trouver des compléments",
+                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/complements.html"
+                },
+                {
+                  "label": "Les longueurs",
+                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/longueurs.html"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -253,10 +319,10 @@ window.DEVOIRS_P1 = {
         {
           "due": "2026-10-06",
           "routineIcon": "⭐",
-          "routineTitle": "Préparer une petite évaluation",
-          "routine": "Relis tranquillement les leçons déjà travaillées : phrase, verbe, sujet et infinitif. Pas besoin de tout réapprendre.",
-          "challenge": "Dans « Les petits chats jouent dans le jardin. », quel est le verbe ? Quel est le sujet ? Quel est l’infinitif du verbe ?",
-          "family": "Piège le parent ! Invente une phrase et demande à l’adulte de trouver le verbe et le sujet. Cette fois, c’est toi qui corriges.",
+          "routineTitle": "Petit rappel — évaluation de français mardi",
+          "routine": "Relis seulement les notions que tu as choisies ce week-end. Il n’est pas nécessaire de tout revoir ce soir.",
+          "challenge": "Dans « Les petits chats jouent dans le jardin. », trouve le verbe, le sujet et l’infinitif du verbe.",
+          "family": "Un dernier rappel suffit : valorisez ce qui est déjà acquis et arrêtez la révision au bout de quelques minutes.",
           "notion": "Phrase · verbe · sujet · infinitif",
           "hibou": [
             {
@@ -270,6 +336,21 @@ window.DEVOIRS_P1 = {
             {
               "label": "Le sujet du verbe",
               "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-sujet-verbe.html"
+            }
+          ],
+          "evaluations": [
+            {
+              "date": "2026-10-06",
+              "subject": "Français",
+              "title": "Évaluation demain",
+              "scope": [
+                "phrase",
+                "verbe et infinitif",
+                "sujet",
+                "orthographe et mots étudiés",
+                "écriture de phrases"
+              ],
+              "preparation": "Dernière relecture courte des leçons déjà travaillées."
             }
           ]
         },
@@ -290,25 +371,69 @@ window.DEVOIRS_P1 = {
         {
           "due": "2026-10-09",
           "routineIcon": "🔢",
-          "routineTitle": "Réviser sans se surcharger",
-          "routine": "Revois tranquillement les automatismes déjà connus : compléments à 10 et à 100, +9 et −9.",
-          "challenge": "Calcule oralement : 7 + ? = 10 · 65 + ? = 100 · 43 + 9 · 61 − 9.",
-          "family": "Si vous avez envie : 4 calculs chacun, puis on s’arrête.",
+          "routineTitle": "Petit rappel — évaluation de mathématiques vendredi",
+          "routine": "Revois tranquillement les automatismes et la notion de mathématiques que tu as choisie ce week-end. Pas de nouvel apprentissage ce soir.",
+          "challenge": "4 rappels maximum : 7 + ? = 10 · 65 + ? = 100 · 43 + 9 · 61 − 9.",
+          "family": "Quelques minutes suffisent. L’objectif est de remettre les procédures en mémoire, pas de refaire une séance de classe.",
           "notion": "Automatismes de calcul · préparation de l’évaluation de mathématiques",
           "hibou": {
             "label": "Trouver des compléments",
             "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/complements.html",
             "intro": "Besoin d’un rappel ?"
-          }
+          },
+          "evaluations": [
+            {
+              "date": "2026-10-09",
+              "subject": "Mathématiques",
+              "title": "Évaluation demain",
+              "scope": [
+                "nombres jusqu’à 10 000",
+                "fractions simples",
+                "calcul mental",
+                "addition posée",
+                "problèmes",
+                "mesures et géométrie"
+              ],
+              "preparation": "Revoir une ou deux notions encore fragiles et les automatismes déjà connus."
+            }
+          ]
         },
         {
           "due": "2026-10-12",
-          "routineIcon": "🎭",
-          "routineTitle": "Poésie",
-          "routine": "Revois la poésie entière et prépare sa récitation. Pas de deuxième apprentissage.",
-          "challenge": "",
-          "family": "Le public : récite devant quelqu’un. Le parent donne seulement un compliment précis sur la voix, les pauses ou la mémorisation.",
-          "notion": "Mémorisation · récitation"
+          "routineIcon": "⭐",
+          "routineTitle": "Évaluations à venir cette semaine",
+          "routine": "Ce week-end, regarde les deux évaluations prévues en fin de semaine. Relis seulement les traces et leçons déjà travaillées en classe.",
+          "challenge": "Choisis une notion de sciences et un repère de géographie que tu veux pouvoir expliquer avec tes propres mots.",
+          "family": "Demandez surtout à votre enfant d’expliquer ce qu’il a compris. Il n’est pas nécessaire de lui faire apprendre de nouvelles informations.",
+          "notion": "Annonce anticipée des évaluations de sciences et géographie",
+          "evaluations": [
+            {
+              "date": "2026-10-15",
+              "subject": "Sciences",
+              "title": "Petite investigation scientifique",
+              "scope": [
+                "formuler une question que l’on peut étudier",
+                "mettre en œuvre une expérience simple",
+                "observer et garder une trace des résultats",
+                "comparer des résultats",
+                "tirer une conclusion à partir des résultats"
+              ],
+              "preparation": "Revoir les expériences réalisées en classe et être capable d’expliquer ce qu’elles ont montré."
+            },
+            {
+              "date": "2026-10-16",
+              "subject": "Géographie",
+              "title": "Se repérer en France et lire une carte de population",
+              "scope": [
+                "localiser la France à différentes échelles",
+                "lire une carte simple de population",
+                "localiser Paris et quelques grandes villes",
+                "comparer des espaces plus ou moins peuplés",
+                "proposer une explication simple à une différence de peuplement"
+              ],
+              "preparation": "Revoir les cartes et les repères utilisés en classe."
+            }
+          ]
         }
       ]
     },
@@ -330,21 +455,50 @@ window.DEVOIRS_P1 = {
         },
         {
           "due": "2026-10-15",
-          "routineIcon": "📝",
-          "routineTitle": "Relire et expliquer",
-          "routine": "Choisis une seule notion travaillée pendant la période que tu trouves encore difficile : phrase, verbe, sujet ou nombres.",
-          "challenge": "Donne oralement un exemple que tu sais maintenant réussir.",
-          "family": "Cette période, j’ai appris… Termine cette phrase puis montre un exemple à quelqu’un.",
-          "notion": "Bilan personnel · une seule réactivation ciblée"
+          "routineIcon": "⭐",
+          "routineTitle": "Petit rappel — évaluation de sciences jeudi",
+          "routine": "Reprends une expérience faite en classe : quelle question cherchait-on à résoudre, qu’a-t-on observé et quelle conclusion peut-on tirer ?",
+          "challenge": "Explique l’expérience à quelqu’un avec tes propres mots, sans apprendre un texte par cœur.",
+          "family": "Posez simplement les questions : « Qu’avez-vous testé ? Qu’avez-vous observé ? Qu’est-ce que cela montre ? »",
+          "notion": "Investigation scientifique · conclusion",
+          "evaluations": [
+            {
+              "date": "2026-10-15",
+              "subject": "Sciences",
+              "title": "Évaluation demain",
+              "scope": [
+                "question scientifique",
+                "expérience",
+                "observation",
+                "comparaison des résultats",
+                "conclusion"
+              ],
+              "preparation": "Réexpliquer une expérience réellement menée en classe."
+            }
+          ]
         },
         {
           "due": "2026-10-16",
-          "routineIcon": "📖",
-          "routineTitle": "Lecture plaisir",
-          "routine": "Choisis un livre, un album, une BD ou un documentaire et lis quelques minutes.",
-          "challenge": "",
-          "family": "Fais-moi découvrir ton livre : explique simplement « Je l’aime parce que… »",
-          "notion": "Lecture plaisir"
+          "routineIcon": "⭐",
+          "routineTitle": "Petit rappel — évaluation de géographie vendredi",
+          "routine": "Relis les cartes étudiées en classe et retrouve les principaux repères : France, Paris, grandes villes, espaces plus ou moins peuplés.",
+          "challenge": "Explique oralement ce qu’une carte de population permet de comprendre.",
+          "family": "Un échange oral de quelques minutes suffit : laissez votre enfant montrer les repères qu’il connaît déjà.",
+          "notion": "France · carte de population · repères",
+          "evaluations": [
+            {
+              "date": "2026-10-16",
+              "subject": "Géographie",
+              "title": "Évaluation demain",
+              "scope": [
+                "se repérer en France",
+                "lire une carte de population",
+                "localiser Paris et quelques grandes villes",
+                "comparer des espaces plus ou moins peuplés"
+              ],
+              "preparation": "Revoir les cartes et les repères déjà étudiés."
+            }
+          ]
         }
       ],
       "holiday": "Vacances : lire pour le plaisir. Rien à rendre."

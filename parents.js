@@ -28,7 +28,17 @@ function homeworkHibouHtml(value){
   }).join(' <span aria-hidden="true">·</span> ');
   return `<div class="homework-hibou">🦉 ${esc(intro)} ${links}</div>`;
 }
-function homeworkItemCard(it,compact=false){const challenge=it.challenge?`<div class="homework-block homework-challenge"><b>🎯 Défi du jour</b><p>${esc(it.challenge)}</p></div>`:'';const family=it.family?`<div class="homework-block homework-family"><b>👨‍👩‍👧 Défi famille <span>facultatif</span></b><p>${esc(it.family)}</p></div>`:'';const hibou=homeworkHibouHtml(it.hibou);return `<article class="homework-card${compact?' homework-card--compact':''}"><div class="homework-date">Pour ${esc(dueLabel(it.due))}</div><div class="homework-block homework-routine"><b>${esc(it.routineIcon||'📚')} ${esc(it.routineTitle||'Je revois')}</b><p>${esc(it.routine||'')}</p></div>${challenge}${family}${hibou}</article>`}
+function homeworkEvaluationsHtml(list){
+  const evaluations=Array.isArray(list)?list:[];
+  if(!evaluations.length)return '';
+  return `<div class="homework-evaluations"><div class="homework-evaluations-title">⭐ Évaluation${evaluations.length>1?'s':''} à préparer</div>${evaluations.map(ev=>{
+    const scope=Array.isArray(ev.scope)&&ev.scope.length?`<ul>${ev.scope.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:'';
+    const prep=ev.preparation?`<p class="homework-evaluation-prep"><b>Pour se préparer :</b> ${esc(ev.preparation)}</p>`:'';
+    const hibou=homeworkHibouHtml(ev.hibou);
+    return `<section class="homework-evaluation"><div class="homework-evaluation-head"><strong>${esc(ev.subject||'Évaluation')}</strong><span>${esc(dueLabel(ev.date))}</span></div>${ev.title?`<h4>${esc(ev.title)}</h4>`:''}${scope}${prep}${hibou}</section>`;
+  }).join('')}</div>`;
+}
+function homeworkItemCard(it,compact=false){const evaluations=homeworkEvaluationsHtml(it.evaluations);const challenge=it.challenge?`<div class="homework-block homework-challenge"><b>🎯 Défi du jour</b><p>${esc(it.challenge)}</p></div>`:'';const family=it.family?`<div class="homework-block homework-family"><b>👨‍👩‍👧 Défi famille <span>facultatif</span></b><p>${esc(it.family)}</p></div>`:'';const hibou=homeworkHibouHtml(it.hibou);return `<article class="homework-card${compact?' homework-card--compact':''}"><div class="homework-date">Pour ${esc(dueLabel(it.due))}</div>${evaluations}<div class="homework-block homework-routine"><b>${esc(it.routineIcon||'📚')} ${esc(it.routineTitle||'Je revois')}</b><p>${esc(it.routine||'')}</p></div>${challenge}${family}${hibou}</article>`}
 function renderHomework(){const now=new Date(),week=homeworkWeekFor(now),cur=$('homeworkCurrent');if(!cur)return;if(!week){cur.innerHTML='<div class="homework-empty">Aucun devoir programmé.</div>';return}const items=Array.isArray(week.items)?week.items:[];const dates=`${esc(frDate(dateFromIso(week.start),{day:'numeric',month:'long'}))} au ${esc(frDate(dateFromIso(week.end),{day:'numeric',month:'long'}))}`;const head=`<div class="homework-week-head"><div><span>${esc(week.label||'Semaine en cours')}</span><h3>${dates}</h3>${week.theme?`<p class="homework-theme">${esc(week.theme)}</p>`:''}</div></div>`;if(!items.length){cur.innerHTML=`${head}<div class="homework-empty">🌱 ${esc(week.note||'Aucun devoir cette semaine.')}</div>${week.holiday?`<div class="homework-holiday">🏖️ ${esc(week.holiday)}</div>`:''}`;return}cur.innerHTML=`${head}${week.note?`<div class="homework-empty">${esc(week.note)}</div>`:''}${items.map(x=>homeworkItemCard(x)).join('')}${week.holiday?`<div class="homework-holiday">🏖️ ${esc(week.holiday)}</div>`:''}`}
 
 
