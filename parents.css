@@ -1239,3 +1239,18 @@ footer{
 .homework-calendar-event{display:flex;align-items:center;gap:10px;padding:11px 13px;border-radius:13px;font-weight:850;line-height:1.4;border:1px solid #dfeee5;background:#f1faf4;color:#315c43}
 .homework-calendar-event--dayoff{background:#f7f3ff;border-color:#e6dcf5;color:#563b7d}
 .homework-calendar-event__icon{font-size:19px;line-height:1;flex:0 0 auto}
+
+/* V34.67 — calendrier hebdomadaire complet dans les devoirs */
+.homework-week-calendar{margin:2px 0 14px;padding:13px;border:1px solid #e3deee;border-radius:18px;background:#fbfaff}
+.homework-week-calendar__title{font-weight:950;color:#4f3678;margin:0 0 10px;font-size:14px}
+.homework-week-calendar__grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}
+.homework-week-calendar__day{min-width:0;border-radius:13px;border:1px solid #e9e4f1;background:#fff;padding:9px 7px;display:grid;gap:8px;align-content:start}
+.homework-week-calendar__date{display:grid;gap:2px;text-transform:capitalize}.homework-week-calendar__date strong{font-size:12px;color:#43325e;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.homework-week-calendar__date span{font-size:11px;color:#796d89;font-weight:750}
+.homework-week-calendar__status{display:flex;gap:5px;align-items:flex-start}.homework-week-calendar__status>span{font-size:15px;line-height:1}.homework-week-calendar__status small{font-size:10.5px;line-height:1.25;color:#5d5369;font-weight:800}
+.homework-week-calendar__day--homework{background:#fffaf0;border-color:#f0dfb7}.homework-week-calendar__day--evaluation{background:#f6f1ff;border-color:#dacbed}.homework-week-calendar__day--evaluation .homework-week-calendar__status small{color:#583b83}
+.homework-week-calendar__day--noclass,.homework-week-calendar__day--weekend{background:#f5f6f8;border-color:#e4e7eb}.homework-week-calendar__day--noclass .homework-week-calendar__status small,.homework-week-calendar__day--weekend .homework-week-calendar__status small{color:#6b7280}
+.homework-week-calendar__day--holiday,.homework-week-calendar__day--dayoff{background:#eafafa;border-color:#9edede}.homework-week-calendar__day--holiday .homework-week-calendar__status small,.homework-week-calendar__day--dayoff .homework-week-calendar__status small{color:#176b72}
+.homework-calendar-event--break{background:#eafafa;border-color:#9edede;color:#176b72}
+.homework-calendar-event--dayoff{background:#eafafa;border-color:#9edede;color:#176b72}
+@media(max-width:760px){.homework-week-calendar__grid{grid-template-columns:repeat(2,minmax(0,1fr))}.homework-week-calendar__day:last-child{grid-column:1/-1}}
+@media(max-width:420px){.homework-week-calendar__grid{grid-template-columns:1fr}.homework-week-calendar__day:last-child{grid-column:auto}.homework-week-calendar__day{grid-template-columns:95px 1fr;align-items:center}.homework-week-calendar__status{align-items:center}}
