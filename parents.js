@@ -130,7 +130,7 @@ function homeworkEvaluationsHtml(list,periodTag=''){
       ? `📅 Cette semaine : ${count} évaluation${count>1?'s':''} prévue${count>1?'s':''}`
       : `📅 Évaluation${count>1?'s':''} prévue${count>1?'s':''} cette semaine`;
   const titleClass=`homework-evaluations-title${showCountBanner?' homework-evaluations-title--count':''}`;
-  return `<div class="homework-evaluations"><div class="${titleClass}">${title}</div><p class="homework-evaluations-note">Ces évaluations sont annoncées à l’avance pour vous aider à vous organiser. Pour une évaluation le lundi ou le mardi, le petit rappel se fait tranquillement pendant le week-end précédent. Pour une évaluation le jeudi ou le vendredi, un rappel très court est proposé à partir du mardi ou du mercredi. Le jour J, aucun devoir supplémentaire n’est demandé.</p>${evaluations.map(ev=>{
+  return `<div class="homework-evaluations"><div class="${titleClass}">${title}</div>${evaluations.map(ev=>{
     const newSkills=Array.isArray(ev.newSkills)&&ev.newSkills.length?`<div class="homework-evaluation-skills homework-evaluation-skills--new"><b>🎯 Nouvelles compétences évaluées</b><ul>${ev.newSkills.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:'';
     const reviewSkills=Array.isArray(ev.reviewSkills)&&ev.reviewSkills.length?`<div class="homework-evaluation-skills homework-evaluation-skills--review"><b>🔁 Déjà vu — rebrassage</b><p>Cette partie a déjà été travaillée : elle sert seulement à vérifier que l’acquis est bien consolidé.</p><ul>${ev.reviewSkills.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:'';
     const scope=(!newSkills&&!reviewSkills&&Array.isArray(ev.scope)&&ev.scope.length)?`<ul>${ev.scope.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:'';
