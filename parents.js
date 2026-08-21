@@ -16,7 +16,19 @@ function dateFromIso(s){const [y,m,d]=String(s).split('-').map(Number);return ne
 function dueLabel(s){return frDate(dateFromIso(s),{weekday:'long',day:'numeric',month:'long'})}
 let homeworkTestWeekIndex=null;
 function homeworkWeekFor(date){const iso=isoLocal(date),weeks=Array.isArray(D.weeks)?D.weeks:[];if(!weeks.length)return null;if(Number.isInteger(homeworkTestWeekIndex)&&weeks[homeworkTestWeekIndex])return weeks[homeworkTestWeekIndex];const current=weeks.find(w=>iso>=w.start&&iso<=w.end);if(current)return current;const next=weeks.find(w=>w.start>iso);if(next)return next;return weeks[weeks.length-1]}
-function homeworkItemCard(it,compact=false){const challenge=it.challenge?`<div class="homework-block homework-challenge"><b>🎯 Défi du jour</b><p>${esc(it.challenge)}</p></div>`:'';const family=it.family?`<div class="homework-block homework-family"><b>👨‍👩‍👧 Défi famille <span>facultatif</span></b><p>${esc(it.family)}</p></div>`:'';const hibou=it.hibou?`<div class="homework-hibou">🦉 Pour aller plus loin : <b>${esc(it.hibou)}</b> dans Maître Hibou.</div>`:'';return `<article class="homework-card${compact?' homework-card--compact':''}"><div class="homework-date">Pour ${esc(dueLabel(it.due))}</div><div class="homework-block homework-routine"><b>${esc(it.routineIcon||'📚')} ${esc(it.routineTitle||'Je revois')}</b><p>${esc(it.routine||'')}</p></div>${challenge}${family}${hibou}</article>`}
+function homeworkHibouHtml(value){
+  if(!value)return'';
+  const list=Array.isArray(value)?value:[value];
+  const valid=list.filter(x=>x&&(typeof x==='string'||x.url));
+  if(!valid.length)return'';
+  const intro=(!Array.isArray(value)&&typeof value==='object'&&value.intro)?value.intro:'Leçons utiles dans Maître Hibou :';
+  const links=valid.map(x=>{
+    if(typeof x==='string')return `<span><b>${esc(x)}</b></span>`;
+    return `<a class="homework-hibou-link" href="${esc(x.url)}" target="_blank" rel="noopener noreferrer"><b>${esc(x.label||'Ouvrir la leçon')}</b> ↗</a>`;
+  }).join(' <span aria-hidden="true">·</span> ');
+  return `<div class="homework-hibou">🦉 ${esc(intro)} ${links}</div>`;
+}
+function homeworkItemCard(it,compact=false){const challenge=it.challenge?`<div class="homework-block homework-challenge"><b>🎯 Défi du jour</b><p>${esc(it.challenge)}</p></div>`:'';const family=it.family?`<div class="homework-block homework-family"><b>👨‍👩‍👧 Défi famille <span>facultatif</span></b><p>${esc(it.family)}</p></div>`:'';const hibou=homeworkHibouHtml(it.hibou);return `<article class="homework-card${compact?' homework-card--compact':''}"><div class="homework-date">Pour ${esc(dueLabel(it.due))}</div><div class="homework-block homework-routine"><b>${esc(it.routineIcon||'📚')} ${esc(it.routineTitle||'Je revois')}</b><p>${esc(it.routine||'')}</p></div>${challenge}${family}${hibou}</article>`}
 function renderHomework(){const now=new Date(),week=homeworkWeekFor(now),cur=$('homeworkCurrent');if(!cur)return;if(!week){cur.innerHTML='<div class="homework-empty">Aucun devoir programmé.</div>';return}const items=Array.isArray(week.items)?week.items:[];const dates=`${esc(frDate(dateFromIso(week.start),{day:'numeric',month:'long'}))} au ${esc(frDate(dateFromIso(week.end),{day:'numeric',month:'long'}))}`;const head=`<div class="homework-week-head"><div><span>${esc(week.label||'Semaine en cours')}</span><h3>${dates}</h3>${week.theme?`<p class="homework-theme">${esc(week.theme)}</p>`:''}</div></div>`;if(!items.length){cur.innerHTML=`${head}<div class="homework-empty">🌱 ${esc(week.note||'Aucun devoir cette semaine.')}</div>${week.holiday?`<div class="homework-holiday">🏖️ ${esc(week.holiday)}</div>`:''}`;return}cur.innerHTML=`${head}${week.note?`<div class="homework-empty">${esc(week.note)}</div>`:''}${items.map(x=>homeworkItemCard(x)).join('')}${week.holiday?`<div class="homework-holiday">🏖️ ${esc(week.holiday)}</div>`:''}`}
 
 

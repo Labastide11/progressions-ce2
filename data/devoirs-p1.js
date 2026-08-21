@@ -1,5 +1,5 @@
 window.DEVOIRS_P1 = {
-  "version": "33.40",
+  "version": "34.50",
   "period": "p1",
   "schoolYear": "2026-2027",
   "principles": {
@@ -28,38 +28,47 @@ window.DEVOIRS_P1 = {
         {
           "due": "2026-09-08",
           "routineIcon": "📖",
-          "routineTitle": "Lire — 5 min",
-          "routine": "Relis à voix haute le texte travaillé en classe. Fais attention aux points et aux virgules.",
-          "challenge": "Dans chaque phrase, dis si elle te semble correcte : « Le chat dort dans son panier. » · « Dans la cour les enfants. » · « Nous rentrons en classe. »",
-          "family": "Ponctuation mystère : un adulte dit une phrase avec une intonation particulière. Tu devines si elle se termine par . ? ou ! Puis inversez les rôles.",
-          "notion": "Phrase correcte · ponctuation · lecture orale"
+          "routineTitle": "Je revois — lecture",
+          "routine": "Relis à voix haute le petit texte travaillé lundi en classe.",
+          "challenge": "Complète oralement : 7 + ? = 10 · 6 + ? = 10 · 9 + ? = 10.",
+          "family": "",
+          "notion": "Lecture à voix haute · compléments à 10"
         },
         {
           "due": "2026-09-10",
           "routineIcon": "🧠",
-          "routineTitle": "Revoir",
-          "routine": "Relis les premiers mots fréquents travaillés en classe. Essaie de les épeler sans regarder.",
+          "routineTitle": "Je revois — mots fréquents",
+          "routine": "Relis les premiers mots fréquents travaillés en classe.",
           "challenge": "Complète oralement : 7 + ? = 10 · 6 + ? = 10 · 9 + ? = 10 · 3 + ? = 10.",
-          "family": "Fais 10 ! Un adulte annonce un nombre entre 1 et 9 ; tu donnes son complément à 10. Puis échangez les rôles.",
+          "family": "Si vous avez envie : « Fais 10 ! » Un adulte annonce un nombre entre 1 et 9 ; l'enfant donne son complément à 10, puis on échange les rôles.",
           "notion": "Mots fréquents · compléments à 10",
-          "hibou": "Calcul mental"
+          "hibou": {
+            "label": "Trouver des compléments",
+            "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/complements.html",
+            "intro": "Besoin d’aide ou cahier non disponible ?"
+          }
         },
         {
           "due": "2026-09-11",
-          "routineIcon": "📝",
-          "routineTitle": "Relire et expliquer",
-          "routine": "Relis la leçon sur la phrase et la ponctuation. Explique à quelqu’un comment reconnaître une phrase.",
-          "challenge": "Quelle ponctuation choisirais-tu à la fin ? « Quel âge as-tu… » · « Je vais à l’école… » · « Attention… »",
-          "family": "Phrase ou pas phrase ? Chacun invente à tour de rôle une vraie phrase puis une suite de mots. À l’autre de décider.",
-          "notion": "Phrase · ponctuation"
+          "routineIcon": "📚",
+          "routineTitle": "Je revois — la phrase et la ponctuation",
+          "routine": "Relis dans ton cahier la leçon « La phrase et la ponctuation ». Explique à quelqu’un comment reconnaître une phrase.",
+          "challenge": "Choisis oralement la bonne ponctuation : « Quel âge as-tu… » · « Je vais à l’école… » · « Attention… »",
+          "family": "",
+          "notion": "Phrase · ponctuation",
+          "hibou": {
+            "label": "La phrase et la ponctuation",
+            "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-phrase-ponctuation.html",
+            "intro": "Cahier oublié ?"
+          }
         },
         {
           "due": "2026-09-14",
           "routineIcon": "🎤",
-          "routineTitle": "Préparer une lecture",
-          "routine": "Lis 2 ou 3 fois le petit passage indiqué en classe. Cherche à lire sans hésiter et en respectant la ponctuation.",
+          "routineTitle": "Je m’entraîne — lecture à voix haute",
+          "routine": "Prépare pendant environ 5 minutes le petit passage indiqué en classe. Cherche à lire sans hésiter et en respectant la ponctuation.",
           "challenge": "",
-          "family": "Lecture duo : l’adulte lit une phrase, puis tu lis la suivante. Le but est de lire agréablement, pas de battre un record.",
+          "family": "Si vous avez envie : lecture duo. L’adulte lit une phrase, puis l’enfant lit la suivante.",
           "notion": "Fluence · groupes de sens"
         }
       ]
@@ -76,9 +85,9 @@ window.DEVOIRS_P1 = {
           "routineIcon": "📖",
           "routineTitle": "Lire et comprendre",
           "routine": "Relis le texte travaillé en classe. Dis qui sont les personnages, où se passe l’histoire et ce qui se passe principalement.",
-          "challenge": "Dis le nombre juste avant et juste après : 2 500 · 4 999 · 7 200.",
+          "challenge": "Lis à voix haute ces nombres, puis décompose-les oralement : 2 500 · 4 999 · 7 200.",
           "family": "Le nombre mystère : un adulte choisit un nombre entre 1 000 et 10 000 et donne trois indices. Essaie de le trouver, puis invente ton propre nombre mystère.",
-          "notion": "Compréhension explicite · nombre précédent/suivant"
+          "notion": "Compréhension explicite · lire et décomposer des nombres jusqu’à 10 000"
         },
         {
           "due": "2026-09-17",
@@ -88,7 +97,11 @@ window.DEVOIRS_P1 = {
           "challenge": "Complète oralement : 70 + ? = 100 · 40 + ? = 100 · 90 + ? = 100 · 65 + ? = 100.",
           "family": "Objectif 100 : un adulte annonce un nombre, tu donnes ce qu’il faut ajouter pour faire 100. Faites 5 nombres puis échangez les rôles.",
           "notion": "Mots fréquents · compléments à 100",
-          "hibou": "Calcul mental"
+          "hibou": {
+            "label": "Trouver des compléments",
+            "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/complements.html",
+            "intro": "Besoin d’aide ou cahier non disponible ?"
+          }
         },
         {
           "due": "2026-09-18",
@@ -97,7 +110,12 @@ window.DEVOIRS_P1 = {
           "routine": "Relis la leçon sur la phrase affirmative et la phrase négative. Explique comment passer de l’une à l’autre.",
           "challenge": "Transforme oralement : « Lina aime les pommes. » · « Nous jouons dehors. » · « Il regarde la télévision. »",
           "family": "Dis le contraire : un adulte donne une phrase affirmative ; transforme-la à la forme négative. Puis inversez les rôles.",
-          "notion": "Formes affirmative et négative"
+          "notion": "Formes affirmative et négative",
+          "hibou": {
+            "label": "Les formes de phrases",
+            "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-formes-phrases.html",
+            "intro": "Cahier oublié ?"
+          }
         },
         {
           "due": "2026-09-21",
@@ -120,31 +138,39 @@ window.DEVOIRS_P1 = {
         {
           "due": "2026-09-22",
           "routineIcon": "🧠",
-          "routineTitle": "Mémoriser",
+          "routineTitle": "Je revois — mots fréquents",
           "routine": "Revois les mots fréquents de la semaine.",
-          "challenge": "Trouve oralement le verbe : « Le chien aboie. » · « Les élèves rangent leurs affaires. » · « Mon frère joue au ballon. »",
-          "family": "Mime le verbe : quelqu’un mime une action (courir, manger, dormir, sauter…). Donne le verbe à l’infinitif, puis inversez les rôles.",
-          "notion": "Identifier le verbe",
-          "hibou": "Le verbe"
+          "challenge": "Calcule oralement : 24 + 9 · 31 + 9 · 52 − 9.",
+          "family": "Calcul éclair : un adulte propose 3 calculs avec +9 ou −9, puis vous échangez les rôles.",
+          "notion": "Mots fréquents · ajouter / retrancher 9"
         },
         {
           "due": "2026-09-24",
-          "routineIcon": "🔢",
-          "routineTitle": "S’entraîner oralement",
-          "routine": "Calcule sans poser l’opération : 24 + 9 · 31 + 9 · 45 + 9 · 62 − 9.",
-          "challenge": "Explique à quelqu’un ton astuce pour ajouter 9.",
-          "family": "Calcul éclair : un adulte propose 5 calculs avec +9. Ensuite, propose-lui un calcul à ton tour.",
-          "notion": "Ajouter / retrancher 9 · verbaliser une stratégie",
-          "hibou": "Calcul mental"
+          "routineIcon": "📚",
+          "routineTitle": "Je revois — le verbe",
+          "routine": "Relis dans ton cahier la leçon « Le verbe ».",
+          "challenge": "Trouve oralement le verbe : « Le chien aboie. » · « Les élèves rangent leurs affaires. » · « Mon frère joue au ballon. » Puis calcule 34 + 9.",
+          "family": "Mime le verbe : quelqu’un mime une action ; donne le verbe, puis inversez les rôles.",
+          "notion": "Identifier le verbe · ajouter 9",
+          "hibou": {
+            "label": "Le verbe",
+            "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-verbe.html",
+            "intro": "Cahier oublié ?"
+          }
         },
         {
           "due": "2026-09-25",
           "routineIcon": "📝",
           "routineTitle": "Relire et expliquer",
-          "routine": "Relis la leçon : « Comment trouver le verbe dans une phrase ? » Puis donne deux exemples de verbes à l’oral.",
-          "challenge": "Quel nombre est le plus grand ? 3 405 ou 3 450 · 6 099 ou 6 100 · 8 750 ou 8 705.",
-          "family": "Plus grand ou plus petit ? Chacun choisit un nombre à 4 chiffres. Comparez-les et expliquez pourquoi l’un est plus grand.",
-          "notion": "Verbe · comparaison de nombres"
+          "routine": "Relis la leçon « Le verbe » et rappelle-toi la différence entre un verbe conjugué et son infinitif.",
+          "challenge": "Donne oralement l’infinitif de : il chante · nous regardons · elles jouent.",
+          "family": "La machine à verbes : un adulte dit « nous chantons », tu réponds « chanter ». Puis échangez les rôles.",
+          "notion": "Verbe conjugué · infinitif",
+          "hibou": {
+            "label": "Le verbe",
+            "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-verbe.html",
+            "intro": "Besoin de revoir la leçon ?"
+          }
         },
         {
           "due": "2026-09-28",
@@ -168,10 +194,15 @@ window.DEVOIRS_P1 = {
           "due": "2026-09-29",
           "routineIcon": "📝",
           "routineTitle": "Relire et expliquer",
-          "routine": "Relis verbe conjugué / infinitif. Donne l’infinitif de : je chante · nous regardons · ils jouent.",
-          "challenge": "Encadre oralement entre deux centaines : 3 450 · 6 720 · 2 080.",
-          "family": "La machine à verbes : un adulte dit « nous chantons », tu réponds « chanter ». Puis échangez les rôles.",
-          "notion": "Infinitif · encadrement"
+          "routine": "Relis la leçon « Le verbe ». Donne l’infinitif de : je chante · nous regardons · ils jouent.",
+          "challenge": "",
+          "family": "La machine à verbes : un adulte dit une forme conjuguée, tu donnes l’infinitif. Puis échangez les rôles.",
+          "notion": "Verbe conjugué · infinitif",
+          "hibou": {
+            "label": "Le verbe",
+            "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-verbe.html",
+            "intro": "Cahier oublié ?"
+          }
         },
         {
           "due": "2026-10-01",
@@ -180,7 +211,12 @@ window.DEVOIRS_P1 = {
           "routine": "Revois la première partie et apprends la partie suivante.",
           "challenge": "Réponds oralement : 1 cm = combien de mm ? · 2 cm = combien de mm ? · Pour mesurer un crayon, choisirais-tu cm ou m ?",
           "family": "Combien ça mesure ? Choisissez un objet de la maison, estimez sa longueur puis vérifiez avec une règle si vous en avez une.",
-          "notion": "Mémorisation · longueurs cm/mm"
+          "notion": "Mémorisation · longueurs cm/mm",
+          "hibou": {
+            "label": "Les longueurs",
+            "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/longueurs.html",
+            "intro": "Pour revoir cm et mm si besoin :"
+          }
         },
         {
           "due": "2026-10-02",
@@ -190,7 +226,11 @@ window.DEVOIRS_P1 = {
           "challenge": "Trouve le sujet : « Le petit chien court. » · « Les enfants chantent. » · « Ma sœur et moi préparons le repas. »",
           "family": "Change le sujet : quelqu’un dit « Le chien court. » Remplace le sujet et redis la phrase. Écoutez ce qui change.",
           "notion": "Compléments à 100 · groupe sujet",
-          "hibou": "Calcul mental"
+          "hibou": {
+            "label": "Le sujet du verbe",
+            "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-sujet-verbe.html",
+            "intro": "Cahier oublié ?"
+          }
         },
         {
           "due": "2026-10-05",
@@ -214,11 +254,24 @@ window.DEVOIRS_P1 = {
           "due": "2026-10-06",
           "routineIcon": "⭐",
           "routineTitle": "Préparer une petite évaluation",
-          "routine": "Relis : phrase · verbe · sujet · infinitif. Explique comment tu trouves le verbe et le sujet.",
-          "challenge": "Dans « Les petits chats jouent dans le jardin. », quel est le verbe ? Quel est le sujet ?",
+          "routine": "Relis tranquillement les leçons déjà travaillées : phrase, verbe, sujet et infinitif. Pas besoin de tout réapprendre.",
+          "challenge": "Dans « Les petits chats jouent dans le jardin. », quel est le verbe ? Quel est le sujet ? Quel est l’infinitif du verbe ?",
           "family": "Piège le parent ! Invente une phrase et demande à l’adulte de trouver le verbe et le sujet. Cette fois, c’est toi qui corriges.",
           "notion": "Phrase · verbe · sujet · infinitif",
-          "hibou": "Le verbe"
+          "hibou": [
+            {
+              "label": "La phrase et la ponctuation",
+              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-phrase-ponctuation.html"
+            },
+            {
+              "label": "Le verbe",
+              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-verbe.html"
+            },
+            {
+              "label": "Le sujet du verbe",
+              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-sujet-verbe.html"
+            }
+          ]
         },
         {
           "due": "2026-10-08",
@@ -228,16 +281,25 @@ window.DEVOIRS_P1 = {
           "challenge": "8 + ? = 10 · 60 + ? = 100 · 34 + 9 · 52 − 9.",
           "family": "5 calculs chacun : un adulte te pose 5 calculs, puis tu lui en poses 5. Pas de calculatrice pour les grands !",
           "notion": "Automatismes de calcul",
-          "hibou": "Calcul mental"
+          "hibou": {
+            "label": "Trouver des compléments",
+            "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/complements.html",
+            "intro": "Besoin d’une aide pour réviser ?"
+          }
         },
         {
           "due": "2026-10-09",
-          "routineIcon": "📝",
-          "routineTitle": "Relire une leçon",
-          "routine": "Relis l’ordre alphabétique et le vocabulaire travaillé en classe.",
-          "challenge": "Range oralement dans l’ordre alphabétique : chat · arbre · maison · ballon.",
-          "family": "Les prénoms : choisissez 3 ou 4 prénoms de la famille, rangez-les dans l’ordre alphabétique puis ajoutez-en un à la bonne place.",
-          "notion": "Ordre alphabétique · vocabulaire"
+          "routineIcon": "🔢",
+          "routineTitle": "Réviser sans se surcharger",
+          "routine": "Revois tranquillement les automatismes déjà connus : compléments à 10 et à 100, +9 et −9.",
+          "challenge": "Calcule oralement : 7 + ? = 10 · 65 + ? = 100 · 43 + 9 · 61 − 9.",
+          "family": "Si vous avez envie : 4 calculs chacun, puis on s’arrête.",
+          "notion": "Automatismes de calcul · préparation de l’évaluation de mathématiques",
+          "hibou": {
+            "label": "Trouver des compléments",
+            "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/complements.html",
+            "intro": "Besoin d’un rappel ?"
+          }
         },
         {
           "due": "2026-10-12",
@@ -270,10 +332,10 @@ window.DEVOIRS_P1 = {
           "due": "2026-10-15",
           "routineIcon": "📝",
           "routineTitle": "Relire et expliquer",
-          "routine": "Choisis une notion travaillée pendant la période que tu trouves encore difficile : phrase, verbe, sujet ou nombres.",
+          "routine": "Choisis une seule notion travaillée pendant la période que tu trouves encore difficile : phrase, verbe, sujet ou nombres.",
           "challenge": "Donne oralement un exemple que tu sais maintenant réussir.",
           "family": "Cette période, j’ai appris… Termine cette phrase puis montre un exemple à quelqu’un.",
-          "notion": "Bilan personnel · réactivation"
+          "notion": "Bilan personnel · une seule réactivation ciblée"
         },
         {
           "due": "2026-10-16",

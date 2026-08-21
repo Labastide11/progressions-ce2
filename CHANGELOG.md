@@ -1,3 +1,22 @@
+# V34.50 — Espace Parents : audit devoirs P1 semaines 3 à 7
+
+- devoirs réalignés sur les apprentissages réellement enseignés ;
+- suppression des anticipations de notions non encore étudiées ;
+- liens directs vers les leçons Maître Hibou utiles ;
+- S6 allégée autour des évaluations de référence ;
+- S7 centrée sur une seule remédiation ciblée ;
+- mode secret de test et icônes saisonnières préservés.
+
+# V34.49 — Espace Parents : devoirs semaine 2 raccordés aux apprentissages
+
+- Semaine 2 recalée sur l’emploi du temps réel du 7 au 11 septembre 2026.
+- Mardi : lecture du texte travaillé lundi + compléments à 10.
+- Jeudi : mots fréquents + compléments à 10, avec lien direct vers la leçon Maître Hibou « Trouver des compléments ».
+- Vendredi : relecture « La phrase et la ponctuation », avec lien direct de secours vers Maître Hibou.
+- Lundi suivant : préparation courte de lecture à voix haute.
+- Le mode secret de test des devoirs et les icônes saisonnières sont conservés.
+- Le calendrier Parents fiable de V34.48 est conservé.
+
 # V34.48 — 21 août 2026 — Calendrier Parents fiable
 
 - suppression du fallback qui inventait un emploi du temps lorsqu’aucune journée détaillée n’existait ;
