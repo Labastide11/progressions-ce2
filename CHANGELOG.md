@@ -1,3 +1,13 @@
+# V34.48 — 21 août 2026 — Calendrier Parents fiable
+
+- suppression du fallback qui inventait un emploi du temps lorsqu’aucune journée détaillée n’existait ;
+- ajout des semaines réelles de rentrée (1er–4 septembre et 7–11 septembre 2026) dans P1 ;
+- affichage explicite et nommé des vacances scolaires ;
+- affichage explicite des jours fériés : Lundi de Pâques, Ascension, Lundi de Pentecôte ;
+- affichage spécifique du vendredi 7 mai 2027 : « Pont de l’Ascension — pas de classe » ;
+- recherche du prochain vrai jour de classe dans les données détaillées ;
+- mise à jour de l’Espace Parents et des balises `<title>` en V34.48.
+
 # V34.47 — Nettoyage des traces Maître Hibou et continuité S1/S2
 
 - Masque dans le LSU les anciennes traces non codées : elles restent conservées dans `parcours_eleves` mais ne sont plus affichées dans la vue pédagogique.

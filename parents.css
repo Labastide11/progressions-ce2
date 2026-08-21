@@ -1213,3 +1213,6 @@ footer{
 .homework-test-icon{appearance:none;border:0;background:transparent;padding:0;margin:0;font:inherit;line-height:1;cursor:default;color:inherit;vertical-align:baseline}
 .homework-test-icon:focus{outline:none}
 .homework-test-icon:focus-visible{outline:2px dotted rgba(83,49,126,.25);outline-offset:2px;border-radius:4px}
+
+/* V34.48 — Calendrier Parents : jours sans classe explicites */
+.schedule-no-class{display:flex;gap:12px;align-items:flex-start;margin:10px 0;padding:14px 16px;border:1px solid #d9dce8;border-radius:14px;background:#f8f9fc}.schedule-no-class>span{font-size:24px;line-height:1}.schedule-no-class strong{display:block;font-size:15px}.schedule-no-class small{display:block;margin-top:4px;color:#666b7a}.schedule-no-class--ferie,.schedule-no-class--pont{background:#fff9ef}.schedule-no-class--vacances{background:#f3f8ff}.schedule-no-class--avant-rentree{background:#f7f4ff}

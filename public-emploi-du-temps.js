@@ -1,33 +1,63 @@
+/* V34.48 — Espace Parents : calendrier scolaire fiable, sans emploi du temps inventé */
 (function(global){
 'use strict';
 const DATA=global.PROGRESSIONS_EDT_DATA||{};
-const DAYS=['lundi','mardi','jeudi','vendredi'];
-const base={
- lundi:[['9h–9h15','Quoi de neuf ?','Oral structuré','french'],['9h15–10h','Lecture-compréhension','','french'],['10h–10h45','Dictée de mots + dictée flash 1','Orthographe et vocabulaire','french'],['10h45–11h','Récréation','','break'],['11h–11h15','Problèmes du jour','2 problèmes courts — oral / ardoise','maths'],['11h15–12h','Mathématiques','Calcul mental (5 min) + nouvel apprentissage','maths'],['12h–14h','Cantine ou repas à la maison','Pause méridienne','lunch'],['14h–14h15','Quart d’heure de lecture','Lecture offerte ou lecture autonome','french'],['14h15–15h45','EPS / QLM selon période','','eps'],['15h45–16h','Récréation','','break'],['16h–16h25','Anglais','','english'],['16h25–17h','QLM / EMC','','history']],
- mardi:[['9h–9h15','Copie','','french'],['9h15–10h','Lecture-compréhension','','french'],['10h–10h45','Dictée flash 2 + étude de la langue','10 min de dictée puis DRAS','french'],['10h45–11h','Récréation','','break'],['11h–11h15','Problèmes du jour','2 problèmes courts — oral / ardoise','maths'],['11h15–12h','Mathématiques','Calcul mental (5 min) + nouvel apprentissage','maths'],['12h–14h','Cantine ou repas à la maison','Pause méridienne','lunch'],['14h–14h15','Quart d’heure de lecture','Lecture offerte ou lecture autonome','french'],['14h15–14h30','Anglais','Rituel oral court avant le départ CHAM','english'],['14h30–15h45','CHAM au conservatoire','Non-CHAM : arts, plan de travail, consolidation','cham'],['15h45–16h','Récréation','','break'],['16h–16h30','CHAM au conservatoire','Poursuite des ateliers non-CHAM','cham'],['16h30–16h45','Anglais','Réactivation orale en classe entière','english'],['16h45–17h','Bilan de journée','Parole aux élèves et préparation du lendemain','emc']],
- jeudi:[['9h–9h15','Devinette','','french'],['9h15–10h','Lecture-compréhension','','french'],['10h–10h45','Dictée flash 3 + production d’écrit court','10 min de dictée puis DRAS et écriture','french'],['10h45–11h','Récréation','','break'],['11h–11h15','Problèmes du jour','2 problèmes courts — oral / ardoise','maths'],['11h15–12h','Mathématiques','Calcul mental (5 min) + nouvel apprentissage','maths'],['12h–14h','Cantine ou repas à la maison','Pause méridienne','lunch'],['14h–14h15','Quart d’heure de lecture','Lecture offerte ou lecture autonome','french'],['14h15–15h','Sciences / QLM','Classe entière','science'],['15h–16h','Chant choral CHAM','Non-CHAM : arts ou consolidation','cham'],['16h–16h15','Récréation adaptée','','break'],['16h15–16h40','Anglais','Classe entière','english'],['16h40–17h','Vocabulaire / production écrite','','french']],
- vendredi:[['9h–9h30','Un jour, une actu','Oral, compréhension, EMC','french'],['9h30–10h','Lecture et vocabulaire','','french'],['10h–10h45','Dictée bilan + correction raisonnée','Réemploi en production d’écrit court','french'],['10h45–11h','Récréation','','break'],['11h–11h15','Problèmes du jour','2 problèmes courts — oral / ardoise','maths'],['11h15–12h','Résolution de problèmes','2 problèmes + recherche, procédures et correction','maths'],['12h–14h','Cantine ou repas à la maison','Pause méridienne','lunch'],['14h–14h15','Quart d’heure de lecture','Lecture offerte ou lecture autonome','french'],['14h15–14h45','Mathématiques','Calcul mental, grandeurs, géométrie ou données','maths'],['14h45–15h45','EPS / projet selon période','','eps'],['15h45–16h','Récréation','','break'],['16h–16h40','Production écrite / QLM','','mixed'],['16h40–17h','Conseil et bilan de semaine','','emc']]
-};
 const periodLabels={rentree:'Rentrée',p1:'Période 1',p2:'Période 2',p3:'Période 3',p4:'Période 4',p5:'Période 5'};
 const monthMap={janvier:0,fevrier:1,mars:2,avril:3,mai:4,juin:5,juillet:6,aout:7,septembre:8,octobre:9,novembre:10,decembre:11};
 const norm=s=>String(s||'').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-function iso(d){const x=new Date(d);return new Date(x.getTime()-x.getTimezoneOffset()*60000).toISOString().slice(0,10)}
+function atNoon(d){const x=new Date(d);x.setHours(12,0,0,0);return x}
+function iso(d){const x=atNoon(d);return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`}
+function fromIso(s){const m=String(s||'').match(/^(\d{4})-(\d{2})-(\d{2})$/);return m?new Date(+m[1],+m[2]-1,+m[3],12):null}
 function dateFromFrenchLabel(label){const t=norm(label),m=t.match(/(\d{1,2})\s+(janvier|fevrier|mars|avril|mai|juin|juillet|aout|septembre|octobre|novembre|decembre)\s+(\d{4})/);return m?new Date(+m[3],monthMap[m[2]],+m[1],12):null}
 function weeksFor(period){return Array.isArray(DATA[period+'DetailedWeeks'])?DATA[period+'DetailedWeeks']:[]}
 function exactDay(date){const target=iso(date);for(const p of ['p1','p2','p3','p4','p5'])for(const w of weeksFor(p))for(const pair of (w.days||[])){const d=dateFromFrenchLabel(pair[0]);if(d&&iso(d)===target)return{period:p,week:w,label:pair[0],rows:pair[1]||[]}}return null}
-function periodForDate(date){const exact=exactDay(date);if(exact)return exact.period;const d=new Date(date),m=d.getMonth()+1,n=d.getDate();if(m===8)return'rentree';if(m===9&&n<=13)return'rentree';if((m===9&&n>=14)||m===10)return'p1';if(m===11||m===12)return'p2';if(m===1||m===2&&n<=21)return'p3';if((m===2&&n>=22)||m===3||m===4&&n<=18)return'p4';if((m===4&&n>=19)||m===5||m===6||m===7)return'p5';return'rentree'}
-function dayName(date){return ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'][new Date(date).getDay()]}
-function genericRows(date,period){const day=dayName(date);if(!DAYS.includes(day))return[];let rows=(base[day]||[]).map(r=>[...r]);if(period==='rentree'&&day==='mardi')return [...rows.slice(0,8),['14h15–14h30','Anglais','Rituel oral court en classe entière','english'],['14h30–15h45','Arts et projets de rentrée','Classe entière : coopération, création, règles de vie','arts'],['15h45–16h','Récréation','','break'],['16h–16h30','Ateliers de rentrée','Lecture, jeux mathématiques, découverte des outils','common'],['16h30–17h','Bilan de journée','Parole aux élèves et préparation du lendemain','emc']];
-if(period==='rentree'&&day==='jeudi')return [...rows.slice(0,8),['14h15–15h','Sciences / découverte de l’école','Classe entière','science'],['15h–16h','Éducation musicale / arts','Classe entière','arts'],['16h–16h15','Récréation','','break'],['16h15–16h40','Anglais','Classe entière','english'],['16h40–17h','Vocabulaire / production écrite','','french']];
-if(period==='p2'&&day==='vendredi')return rows.slice(0,7).concat([['14h–17h','Piscine de Grazailles','Trajet, vestiaires, séance et retour','eps']]);
-if(period==='p3'&&day==='lundi')return [['9h–12h','Cavayère','Course d’orientation et sandball','eps'],['12h–14h','Cantine ou repas à la maison','Pause méridienne','lunch'],['14h–14h15','Quart d’heure de lecture','Retour au calme','french'],['14h15–14h45','Lecture-compréhension','Rattrapage classe entière','french'],['14h45–15h30','Dictée / DRAS','Classe entière','french'],['15h30–15h45','Retour au calme','','eps'],['15h45–16h','Récréation','','break'],['16h–16h35','Mathématiques','Entraînement / complément','maths'],['16h35–17h','QLM / bilan','','history']];
-if(period==='p4'&&day==='lundi')return rows.slice(0,8).concat([['14h15–17h','Domec','Gymnastique et lutte','eps']]);
-if(['p2','p3','p4','p5'].includes(period)&&day==='jeudi'){const r=rows.find(x=>x[0]==='9h15–10h');if(r){r[1]='Lecture — œuvre complète';r[2]='Étude suivie d’une œuvre complète';}}
-return rows}
+function between(date,start,end){const k=iso(date);return k>=start&&k<=end}
+const SPECIAL_DAYS={
+  '2027-03-29':{type:'ferie',label:'Lundi de Pâques',icon:'🎉',period:'p4'},
+  '2027-05-06':{type:'ferie',label:'Ascension',icon:'🎉',period:'p5'},
+  '2027-05-07':{type:'pont',label:'Pont de l’Ascension',icon:'🌉',period:'p5'},
+  '2027-05-17':{type:'ferie',label:'Lundi de Pentecôte',icon:'🎉',period:'p5'}
+};
+const VACATIONS=[
+  {start:'2026-07-04',end:'2026-08-31',type:'vacances',label:'Vacances d’été',icon:'☀️',period:'rentree'},
+  {start:'2026-10-17',end:'2026-11-01',type:'vacances',label:'Vacances de la Toussaint',icon:'🍂',period:'p1'},
+  {start:'2026-12-19',end:'2027-01-03',type:'vacances',label:'Vacances de Noël',icon:'🎄',period:'p2'},
+  {start:'2027-02-06',end:'2027-02-21',type:'vacances',label:'Vacances d’hiver',icon:'❄️',period:'p3'},
+  {start:'2027-04-03',end:'2027-04-18',type:'vacances',label:'Vacances de printemps',icon:'🌷',period:'p4'},
+  {start:'2027-07-03',end:'2027-08-31',type:'vacances',label:'Vacances d’été',icon:'☀️',period:'p5'}
+];
+function noClassInfo(date){
+  const k=iso(date),special=SPECIAL_DAYS[k];if(special)return{...special,date:k,message:`${special.label} — pas de classe`};
+  const vac=VACATIONS.find(v=>between(date,v.start,v.end));if(vac)return{...vac,date:k,message:vac.label};
+  const day=atNoon(date).getDay();
+  if(day===3)return{type:'hors-classe',label:'Mercredi — pas de classe',icon:'📅',date:k,message:'Mercredi — pas de classe'};
+  if(day===0||day===6)return{type:'hors-classe',label:'Week-end',icon:'📅',date:k,message:'Week-end — pas de classe'};
+  if(k<'2026-09-01')return{type:'avant-rentree',label:'La rentrée approche',icon:'🎒',date:k,message:'La rentrée approche — rentrée des élèves mardi 1er septembre 2026'};
+  if(k>'2027-07-02')return{type:'vacances',label:'Vacances d’été',icon:'☀️',date:k,message:'Vacances d’été'};
+  return{type:'non-programme',label:'Aucune classe programmée',icon:'📅',date:k,message:'Aucune journée de classe n’est programmée à cette date.'};
+}
+function periodForDate(date){
+  const exact=exactDay(date);if(exact)return exact.period;
+  const info=noClassInfo(date);if(info&&info.period)return info.period;
+  const k=iso(date);
+  if(k<'2026-09-14')return'rentree';
+  if(k<='2026-11-01')return'p1';
+  if(k<='2027-01-03')return'p2';
+  if(k<='2027-02-21')return'p3';
+  if(k<='2027-04-18')return'p4';
+  return'p5';
+}
+function dayName(date){return ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'][atNoon(date).getDay()]}
 function localProgram(date,programmes){const raw=(programmes||{})[iso(date)];if(!Array.isArray(raw))return null;return raw.filter(x=>!x.hidden).map(x=>[x.time||'',x.title||'Activité',x.detail||x.objective||'',x.kind||'common',x.competence||'',x.status||''])}
-function rowsForDate(date,opts={}){const lp=localProgram(date,opts.programmes);if(lp&&lp.length)return{source:'Programme du jour',period:periodForDate(date),rows:lp};const exact=exactDay(date);if(exact)return{source:exact.week?.title||'Emploi du temps détaillé',period:exact.period,rows:exact.rows};const p=periodForDate(date),rows=genericRows(date,p);return{source:rows.length?'Emploi du temps de la période':'Pas de classe prévue',period:p,rows}}
-function mondayOf(d){const x=new Date(d);x.setHours(12,0,0,0);const day=x.getDay()||7;x.setDate(x.getDate()-day+1);return x}
-function addDays(d,n){const x=new Date(d);x.setDate(x.getDate()+n);return x}
+function rowsForDate(date,opts={}){
+  const lp=localProgram(date,opts.programmes);if(lp&&lp.length)return{source:'Programme du jour',period:periodForDate(date),rows:lp,noClass:null};
+  const exact=exactDay(date);if(exact)return{source:exact.week?.title||'Emploi du temps détaillé',period:exact.period,rows:exact.rows,noClass:null};
+  const info=noClassInfo(date);return{source:info.label,period:periodForDate(date),rows:[],noClass:info};
+}
+function mondayOf(d){const x=atNoon(d),day=x.getDay()||7;x.setDate(x.getDate()-day+1);return x}
+function addDays(d,n){const x=atNoon(d);x.setDate(x.getDate()+n);return x}
+function nextClassDate(from,maxDays=370){const d=atNoon(from);for(let i=0;i<=maxDays;i++){const candidate=addDays(d,i);if(exactDay(candidate))return candidate}return null}
+function previousClassDate(from,maxDays=370){const d=atNoon(from);for(let i=0;i<=maxDays;i++){const candidate=addDays(d,-i);if(exactDay(candidate))return candidate}return null}
 function week(date,opts={}){const monday=mondayOf(date);return[0,1,3,4].map(n=>{const d=addDays(monday,n);return{date:d,...rowsForDate(d,opts)}})}
-global.PUBLIC_EDT={periodForDate,periodLabel:p=>periodLabels[p]||p,rowsForDate,week,iso,mondayOf,addDays,dayName};
+global.PUBLIC_EDT={periodForDate,periodLabel:p=>periodLabels[p]||p,rowsForDate,week,iso,mondayOf,addDays,dayName,noClassInfo,nextClassDate,previousClassDate,exactDay};
 })(window);

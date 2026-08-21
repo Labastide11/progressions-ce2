@@ -1,4 +1,4 @@
-// V34.00 — test provisoire des devoirs déclenché par appui long sur l’icône 📚 du titre.
+// V34.48 — Espace Parents : calendrier fiable + affichage explicite des jours sans classe.
 (function(){
 'use strict';
 const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -117,31 +117,48 @@ function renderClassInfo(){
 }
 
 function frDate(d,opts={weekday:'long',day:'numeric',month:'long',year:'numeric'}){return new Intl.DateTimeFormat('fr-FR',opts).format(d).replace(/^./,c=>c.toUpperCase())}
-function nextClassDate(from){
-  const d=new Date(from);d.setHours(12,0,0,0);
-  for(let i=0;i<8;i++){
-    const candidate=EDT.addDays(d,i);
-    if([1,2,4,5].includes(candidate.getDay()))return candidate;
-  }
-  return d;
-}
 function scheduleTargetDate(){
-  const now=new Date();
-  return [1,2,4,5].includes(now.getDay())?now:nextClassDate(EDT.addDays(now,1));
+  const now=new Date();now.setHours(12,0,0,0);
+  const todayData=EDT.rowsForDate(now);
+  if(todayData.rows.length)return now;
+  return EDT.nextClassDate(now);
+}
+function noClassHtml(d){
+  const data=EDT.rowsForDate(d),info=data.noClass||EDT.noClassInfo?.(d);
+  if(!info)return '<div class="homework-empty">Pas de classe prévue ce jour-là.</div>';
+  const detail=info.type==='ferie'||info.type==='pont' ? `${info.label} — pas de classe` : (info.message||info.label);
+  return `<div class="schedule-no-class schedule-no-class--${esc(info.type||'none')}"><span>${esc(info.icon||'📅')}</span><div><strong>${esc(detail)}</strong>${info.type==='vacances'?'<small>Les élèves ne sont pas attendus à l’école.</small>':''}</div></div>`;
 }
 function scheduleRowsHtml(d){
   const data=EDT.rowsForDate(d);
-  if(!data.rows.length)return '<div class="homework-empty">Pas de classe prévue ce jour-là.</div>';
+  if(!data.rows.length)return noClassHtml(d);
   return data.rows.map(r=>`<div class="schedule-row"><time>${esc(r[0])}</time><div><strong>${esc(r[1])}</strong>${r[2]?`<small>${esc(r[2])}</small>`:''}</div></div>`).join('');
 }
 function renderSchedule(){
-  const p=period(),target=scheduleTargetDate(),today=new Date(),isToday=isoLocal(target)===isoLocal(today);
-  $('schedulePeriod').textContent=EDT.periodLabel(EDT.periodForDate(target));
+  const today=new Date();today.setHours(12,0,0,0);
+  const todayData=EDT.rowsForDate(today),todayInfo=todayData.noClass||null;
+  const target=scheduleTargetDate();
+  const periodTarget=target||today;
+  $('schedulePeriod').textContent=EDT.periodLabel(EDT.periodForDate(periodTarget));
+  if(!target){
+    $('scheduleEyebrow').textContent='Calendrier scolaire';
+    $('scheduleQuickHint').textContent=todayInfo?.label||'Pas de classe';
+    $('scheduleViewMessage').textContent=todayInfo?.message||'Aucune prochaine journée de classe n’est encore programmée.';
+    $('parentsScheduleToday').innerHTML=`<article class="schedule-day schedule-day--today"><h3>${esc(frDate(today,{weekday:'long',day:'numeric',month:'long'}))}</h3>${noClassHtml(today)}</article>`;
+    $('parentsScheduleWeek').innerHTML='';
+    return;
+  }
+  const isToday=isoLocal(target)===isoLocal(today);
   $('scheduleEyebrow').textContent=isToday?'Aujourd’hui':'Prochain jour de classe';
-  $('scheduleQuickHint').textContent=isToday?frDate(target,{weekday:'long'}):`Prochain : ${frDate(target,{weekday:'long'})}`;
-  $('scheduleViewMessage').textContent=isToday
-    ? `Voici directement l’emploi du temps de ${frDate(target,{weekday:'long',day:'numeric',month:'long'})}.`
-    : `Pas de classe aujourd’hui : voici directement le prochain jour de classe, ${frDate(target,{weekday:'long',day:'numeric',month:'long'})}.`;
+  $('scheduleQuickHint').textContent=isToday?frDate(target,{weekday:'long'}):`Prochain : ${frDate(target,{weekday:'long',day:'numeric',month:'long'})}`;
+  if(isToday){
+    $('scheduleViewMessage').textContent=`Voici l’emploi du temps réel de ${frDate(target,{weekday:'long',day:'numeric',month:'long'})}.`;
+  }else if(todayInfo){
+    const reason=todayInfo.type==='ferie'||todayInfo.type==='pont'?`${todayInfo.label} — pas de classe`:todayInfo.label;
+    $('scheduleViewMessage').textContent=`${reason}. Prochain jour de classe : ${frDate(target,{weekday:'long',day:'numeric',month:'long'})}.`;
+  }else{
+    $('scheduleViewMessage').textContent=`Pas de classe aujourd’hui. Prochain jour de classe : ${frDate(target,{weekday:'long',day:'numeric',month:'long'})}.`;
+  }
   $('parentsScheduleToday').innerHTML=`<article class="schedule-day schedule-day--today"><h3>${esc(frDate(target,{weekday:'long',day:'numeric',month:'long'}))}</h3>${scheduleRowsHtml(target)}</article>`;
   const monday=EDT.mondayOf(target),days=[0,1,3,4].map(n=>EDT.addDays(monday,n));
   $('parentsScheduleWeek').innerHTML=days.map(d=>`<article class="schedule-day${isoLocal(d)===isoLocal(target)?' schedule-day--selected':''}"><h3>${esc(frDate(d,{weekday:'long',day:'numeric',month:'long'}))}</h3>${scheduleRowsHtml(d)}</article>`).join('');
