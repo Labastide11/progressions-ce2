@@ -135,7 +135,7 @@ Progressions CE2 est l’environnement de pilotage pédagogique de la classe de 
 - `referentiel.html` — référentiel CE2 et compétences canoniques.
 - `eleves.html` — espace Élèves.
 - `parents.html` — espace Parents.
-- `remplacant.html` — espace Remplaçant.
+- Espace Remplaçant externalisé : `https://labastide11.github.io/espace-remplacant-ce2/` (interface dans un dépôt séparé ; données de fonctionnement synchronisées depuis ce projet).
 - `emploi-du-temps-data-p1.js` à `p5.js` — programmation détaillée par période.
 - `evaluations-data.js` — évaluations reliées aux codes du référentiel.
 - `docs/historique/` — documentation détaillée des anciennes versions.

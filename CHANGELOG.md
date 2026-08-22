@@ -391,3 +391,12 @@ Le détail complet des anciennes versions est conservé dans `docs/historique/`.
 - Rappels légers uniquement la veille des évaluations.
 - Liens Maître Hibou réservés aux leçons réellement disponibles et utiles ; aucun lien inventé en Histoire, Sciences ou Géographie.
 - Mode secret enseignant et icônes périodiques conservés.
+
+
+## V34.78 — 22 août 2026 — Externalisation de l’Espace Remplaçant
+- Suppression de l’ancienne interface Remplaçant intégrée (`remplacant.html`, `remplacant.css`, `remplacant.js`, `QR_remplacant.png`).
+- Suppression de `data/remplacant-eleves.js` : la liste nominative n’est plus publiée dans le dépôt principal.
+- Retrait du chargement de cette liste dans `index.html`.
+- `espace-publication.js` ne génère plus de ZIP Remplaçant et ne conserve que la publication Parents.
+- Conservation de `data/remplacant-programme.js`, `data/remplacant-cahier-journal.js` et `data/remplacant-infos-pratiques.js`, encore lus par le nouveau site `espace-remplacant-ce2`.
+- Mise à jour de la balise `<title>` vers V34.78.
