@@ -1,0 +1,8 @@
+V34.79 — ACTION MANUELLE OBLIGATOIRE SI VOUS UTILISEZ LE PATCH
+
+Après avoir copié les fichiers de ce patch dans le dépôt local progressions-ce2,
+supprimez ce fichier du dépôt :
+
+  data/enseignant-eleves-meta.js
+
+Le ZIP complet V34.79 fourni séparément ne contient déjà plus ce fichier.

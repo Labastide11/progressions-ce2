@@ -1,3 +1,10 @@
+# V34.79 — Sécurisation des métadonnées élèves
+
+- Retrait de `data/enseignant-eleves-meta.js` du dépôt public.
+- Les dates de naissance, sexe, CHAM et autres métadonnées sont désormais fournis à Progressions CE2 par l’API V2.8.2 authentifiée.
+- Suppression des fallbacks statiques dans l’accueil, Vue élèves et Suivi de rentrée.
+- Aucun changement du Google Sheet ni de Maître Hibou.
+
 # V34.52 — Espace Parents : évaluations annoncées sans surcharge
 
 - Le titre anxiogène « Évaluations à préparer » devient « Évaluations prévues cette semaine ».

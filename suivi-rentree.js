@@ -67,10 +67,6 @@ function jsonp(params){
 }
 function roster(){
   let r=readJson(ROSTER_KEY,[]);
-  if(!Array.isArray(r)||!r.length){
-    const meta=window.ENSEIGNANT_ELEVES_META||{};
-    r=Object.values(meta).map(x=>x&&x.prenom).filter(Boolean);
-  }
   return [...new Set((Array.isArray(r)?r:[]).map(x=>String(x||'').trim()).filter(Boolean))]
     .sort((a,b)=>a.localeCompare(b,'fr',{sensitivity:'base'}));
 }

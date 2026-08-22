@@ -72,11 +72,7 @@
   function hibouMedalLabel(value){const v=String(value||'').trim();return v||'Ceinture validée';}
   function rosterMetaFor(student){
     const key=hibouNorm(student);
-    const source=window.ENSEIGNANT_ELEVES_META||{};
-    let fallback=source[key]||{};
-    if(!fallback.prenom){
-      fallback=Object.values(source).find(row=>row&&hibouNorm(row.prenom)===key)||{};
-    }
+    const fallback={};
     const live=classRosterMeta[key]||{};
     const pick=(a,b)=>{if(a===false||a===0)return a;if(a!==undefined&&a!==null&&String(a).trim()!=='')return a;return b;};
     return {
@@ -765,5 +761,5 @@
   syncEvaluationTracesWithSheet();
   loadHibouProofs();
   loadRecentAchievements();
-  if(PAGE_KIND==='eleves') loadRosterFromSheet(false);
+  if(syncConfigured()) loadRosterFromSheet(false); // V34.79 : charge les métadonnées sécurisées dès l'ouverture
 })();

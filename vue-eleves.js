@@ -2,7 +2,7 @@
 'use strict';
 const KEYS={roster:'progressions_ce2_classe_v1',meta:'progressions_ce2_classe_meta_v1',tracking:'progressions_ce2_suivi_eleves_v1',recent:'progressions_ce2_hibou_reussites_v1',proofs:'progressions_ce2_hibou_preuves_v1',api:'hibou_sync_api_url_v25754',device:'hibou_sync_device_key_v25754',last:'progressions_ce2_sync_last_roster_v3279'};
 const state={search:'',sort:'recent',filter:'all'};
-const staticMeta=window.ENSEIGNANT_ELEVES_META||{};
+const staticMeta={}; // V34.79 : aucune métadonnée élève embarquée dans GitHub
 let roster=readJson(KEYS.roster,[]),meta={...staticMeta,...readJson(KEYS.meta,{})},tracking=readJson(KEYS.tracking,{}),recent=readJson(KEYS.recent,[]),proofs=readJson(KEYS.proofs,[]),syncState=roster.length?'cache':'loading';
 const grid=document.getElementById('studentsGrid'),empty=document.getElementById('emptyState'),syncStatus=document.getElementById('syncStatus');
 function readJson(k,f){try{const v=JSON.parse(localStorage.getItem(k)||'null');return v??f}catch(e){return f}}
