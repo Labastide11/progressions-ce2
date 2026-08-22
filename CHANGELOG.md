@@ -1,3 +1,13 @@
+# V34.80 — Consolidation sans changement fonctionnel
+
+- Rangement des 30 notes `README_PATCH_V34_*.txt` dans `docs/historique/patches-v34/`.
+- Archivage de `CHANGELOG_V34_17_NOUVEAU.md` dans `docs/historique/`.
+- Regroupement des tests LSU sous `tools/tests/`.
+- Adaptation de leurs chemins relatifs et réalignement du test V34.42 sur le connecteur LSU actuel `1.0.3` ; le test était déjà obsolète en V34.79.
+- `assets/home-v32-31` et `assets/home-v32-32` étaient strictement identiques (23 fichiers, mêmes SHA-256) et non référencés par le code actif ; suppression du doublon et conservation d'une copie historique hors des assets actifs.
+- Mise à jour des balises `<title>` des pages principales en V34.80.
+- Aucun changement fonctionnel, aucune modification d'API ni de données.
+
 # V34.79 — Sécurisation des métadonnées élèves
 
 - Retrait de `data/enseignant-eleves-meta.js` du dépôt public.

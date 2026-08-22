@@ -46,6 +46,6 @@ En V34.37, le moteur est prêt pour ces marqueurs mais **aucun marquage massif n
 
 ## Tests
 
-`node tools/test_lsu_engine.js`
+`node tools/tests/test_lsu_engine.js`
 
 Les 8 scénarios couvrent : preuve forte unique, progression consolidée, rôle des traces B, rôle de Maître Hibou, Hibou seul insuffisant, vigilance structurante, profil matière avec vigilance, couverture insuffisante.

@@ -2,9 +2,9 @@
 const fs=require('fs');
 const vm=require('vm');
 const path=require('path');
-const LSU=require('../lsu-synthesis-engine.js');
+const LSU=require('../../lsu-synthesis-engine.js');
 
-const root=path.resolve(__dirname,'..');
+const root=path.resolve(__dirname,'../..');
 const ctx={window:{}};
 vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(root,'data.js'),'utf8'),ctx);

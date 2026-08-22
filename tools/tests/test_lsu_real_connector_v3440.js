@@ -2,8 +2,8 @@
 const fs=require('fs');
 const vm=require('vm');
 const path=require('path');
-const Connector=require('../lsu-real-connector.js');
-const root=path.resolve(__dirname,'..');
+const Connector=require('../../lsu-real-connector.js');
+const root=path.resolve(__dirname,'../..');
 const ctx={window:{}}; vm.createContext(ctx); vm.runInContext(fs.readFileSync(path.join(root,'data.js'),'utf8'),ctx);
 const P=ctx.window.PROGRESSIONS;
 const STUDENT='Élève test connecteur';

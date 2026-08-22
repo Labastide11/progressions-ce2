@@ -1,4 +1,13 @@
-# V34.47 — Progressions CE2
+# V34.80 — Progressions CE2
+
+## V34.80 — Consolidation sans changement fonctionnel
+
+- Les notes `README_PATCH_V34_*.txt` sont rangées dans `docs/historique/patches-v34/`.
+- `CHANGELOG_V34_17_NOUVEAU.md` est archivé dans `docs/historique/`.
+- Les tests LSU sont regroupés dans `tools/tests/` ; aucun test n'est chargé par l'application.
+- Les dossiers `assets/home-v32-31` et `assets/home-v32-32` étaient strictement identiques et non référencés par le code actif : une seule copie historique est conservée dans `docs/historique/assets/home-v32-31/`.
+- Aucun fichier JavaScript/CSS de production, aucune donnée pédagogique, aucune API et aucun comportement utilisateur ne sont modifiés.
+
 
 La page « Compétences validées dans Maître Hibou » lit le `student_snapshot` réel en lecture seule et affiche un état de synchronisation explicite. Le raccourci « Évaluations en classe » ouvre désormais correctement la fenêtre d’évaluations.
 
@@ -36,7 +45,7 @@ Correctif ciblé de V34.40 : le callback JSONP du `student_snapshot` utilisait `
 - Filtrage S1/P1-P2 et S2/P3-P5 ; les compétences annuelles sont rattachées au semestre par la date de leur trace.
 - Sources A/B/C/D comptabilisées séparément ; D reste informatif et n’influence pas le niveau LSU.
 - Rapport de diagnostic par élève disponible en mémoire et au format Markdown.
-- Test automatisé : `tools/test_lsu_real_connector_v3440.js`.
+- Test automatisé : `tools/tests/test_lsu_real_connector_v3440.js`.
 
 
 ## V34.39 — Simulation LSU S1 sur élève fictif

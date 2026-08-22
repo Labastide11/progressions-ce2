@@ -1,5 +1,5 @@
 const fs=require('fs'), vm=require('vm'), path=require('path');
-const root=path.resolve(__dirname,'..');
+const root=path.resolve(__dirname,'../..');
 let appended=null;
 const head={appendChild(el){appended=el; const u=new URL(el.src); const cb=u.searchParams.get('callback'); if(!cb) throw new Error('callback absent'); setTimeout(()=>ctx[cb]({ok:true,snapshot:{eleve:{prenom:'Test'},competences:[],reussites:[],records:[],evaluation_traces:[]}}),0);}};
 const ctx={console,setTimeout,clearTimeout,URLSearchParams,URL,globalThis:null,localStorage:{getItem(k){return k.includes('device_key')?'TEST_KEY':'';}},document:{createElement(){return {remove(){},async:false,src:'',onerror:null};},head}};

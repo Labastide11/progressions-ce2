@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('assert');
-const LSU=require('../lsu-synthesis-engine.js');
+const LSU=require('../../lsu-synthesis-engine.js');
 const t=(date,code,level,source='evaluation_papier',evaluation_id='eval')=>({date,competence_code:code,niveau_lsu:level,source,evaluation_id});
 const h=(date,code,status)=>({date,competence_code:code,mastery_status:status});
 
