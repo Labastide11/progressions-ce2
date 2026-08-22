@@ -7,7 +7,7 @@
   const CACHE_KEY='progressions_ce2_questions_cache_v3388';
   const CACHE_MAX_AGE=5*60*1000;
   const els={};
-  let questions=[],activeFilter='new',subject='all',loading=false,syncState='idle',syncMessage='';
+  let questions=[],activeFilter='all',subject='all',loading=false,syncState='idle',syncMessage='';
 
   function norm(v){return String(v??'').trim();}
   function lower(v){return norm(v).toLocaleLowerCase('fr-FR');}

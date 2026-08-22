@@ -1,3 +1,8 @@
+## V34.82 — Questions des élèves : filtre Toutes par défaut
+- La fenêtre « Questions des élèves » s’ouvre désormais sur l’onglet « Toutes ».
+- Le dernier filtre utilisé n’est pas mémorisé : chaque rechargement repart sur « Toutes ».
+- Aucun changement sur la synchronisation API, les statuts ou les données élèves.
+
 # V34.80 — Consolidation sans changement fonctionnel
 
 
