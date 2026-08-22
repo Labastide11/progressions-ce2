@@ -1,6 +1,8 @@
 (function(){
 'use strict';
 const API='https://script.google.com/macros/s/AKfycbz25e9hIn7jgZuI2gzLNwqinvo_zTegoicJSeEzNaHDEfCTrEz52MIJREvFM5rvx7Yswg/exec';
+const DEVICE_KEY_STORAGE='hibou_sync_device_key_v25754';
+function professionalKey(){try{return String(localStorage.getItem(DEVICE_KEY_STORAGE)||'').trim()}catch(e){return ''}}
 const $=id=>document.getElementById(id), modal=$('journalModal'), openBtn=$('openJournalBtn'); if(!modal||!openBtn)return;
 const panel=modal.querySelector('.journal-panel');
 const closeBtn=$('closeJournalBtn'), todayView=$('journalTodayView'), weekView=$('journalWeekView'), archivesView=$('journalArchivesView'), summary=$('journalSummary'), status=$('journalStatus'), weekLabel=$('journalWeekLabel');
@@ -180,11 +182,18 @@ function localDaySessions(date){
 function timetableWeekSessions(){return [0,1,2,3,4].flatMap(n=>timetableDaySessions(iso(addDays(monday,n))))}
 function localWeekSessions(){return [0,1,2,3,4].flatMap(n=>localDaySessions(iso(addDays(monday,n))))}
 
-async function fetchJsonWithTimeout(url,options={},timeoutMs=12000){
+async function journalApi(payload,timeoutMs=12000){
+  const deviceKey=professionalKey();
+  if(!deviceKey)throw new Error('Clé professionnelle absente sur cet appareil.');
   const controller=new AbortController();
   const timer=setTimeout(()=>controller.abort(),timeoutMs);
-  try{const response=await fetch(url,{...options,signal:controller.signal});return await response.json()}
-  finally{clearTimeout(timer)}
+  const body={...payload,device_key:deviceKey,tablet_key:deviceKey,key:deviceKey};
+  try{
+    const response=await fetch(API,{method:'POST',cache:'no-store',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(body),signal:controller.signal});
+    const data=await response.json();
+    if(!data||data.success!==true)throw new Error(data&&data.error||'Réponse API invalide');
+    return data;
+  }finally{clearTimeout(timer)}
 }
 function updateLabel(){weekLabel.textContent=`Semaine du ${frDate(iso(monday),{day:'numeric',month:'long'})} au ${frDate(iso(addDays(monday,4)),{day:'numeric',month:'long',year:'numeric'})}`}
 function loadSummary(){let v={};try{v=JSON.parse(localStorage.getItem(key())||'{}')}catch(e){};Object.keys(fields).forEach(k=>fields[k].value=v[k]||'')}
@@ -198,7 +207,7 @@ async function loadWeek(){
   setStatus(`${sessions.length} séance(s) préparée(s) depuis l’emploi du temps · synchronisation…`);
   render();
   try{
-    const data=await fetchJsonWithTimeout(`${API}?action=semaine&dateDebut=${iso(monday)}`,{cache:'no-store'});
+    const data=await journalApi({action:'semaine',dateDebut:iso(monday)});
     const remote=data&&data.success&&Array.isArray(data.seances)?data.seances:[];
     sessions=mergeSessionLayers(base,remote,local);
     setStatus('');
@@ -352,7 +361,7 @@ function applyViewMode(){if(!panel)return;panel.classList.remove('journal-panel-
 function setTab(tab){active=tab;document.querySelectorAll('.journal-tab').forEach(b=>b.classList.toggle('is-active',b.dataset.journalTab===tab));todayView.classList.toggle('hidden',tab!=='today');weekView.classList.toggle('hidden',tab!=='week');archivesView.classList.toggle('hidden',tab!=='archives');summary.classList.toggle('hidden',tab==='archives');applyViewMode()}
 function textExport(){const map=groupByDate(), lines=[`CAHIER JOURNAL — CE2`,`École La Gravette`,weekLabel.textContent,''];[0,1,3,4].forEach(n=>{const d=iso(addDays(monday,n));lines.push(frDate(d).toUpperCase());(map[d]||[]).forEach(s=>{const pedagogy=pedagogyFor(s);const meta=sessionMetaFor(s);lines.push(`${s.horaire} — ${canonicalDomain(s.domaine)} — ${meta.subdomain} — ${meta.activity||'Activité à compléter'}`);if(!isNonTeachingTime(s))lines.push(`${meta.sequence} — ${meta.phase}`);if(!isNonTeachingTime(s)){if(pedagogy.objective)lines.push(`Objectif : ${pedagogy.objective}`);if(pedagogy.competence)lines.push(`Compétence : ${pedagogy.competence}`);if(s.remarque)lines.push(`Remarque : ${s.remarque}`)}if(s.statut)lines.push(`Statut : ${s.statut}`)});lines.push('')});const v=saveSummary();lines.push('SYNTHÈSE DE LA SEMAINE',`Apprentissages réalisés : ${v.learned}`,`Séances reportées : ${v.deferred}`,`Points à reprendre : ${v.review}`,`Événements particuliers : ${v.events}`,`Absences ou changements : ${v.changes}`,`À prévoir : ${v.next}`);return lines.join('\n')}
 async function copy(){try{await navigator.clipboard.writeText(textExport());setStatus('Cahier journal copié !')}catch(e){setStatus('Copie impossible') }}
-async function archive(){const v=saveSummary(), payload={action:'archiverSemaine',dateDebut:iso(monday),dateFin:iso(addDays(monday,4)),periode:'',synthese:[v.learned,v.review].filter(Boolean).join('\n'),apprentissagesRealises:v.learned,seancesReportees:v.deferred,pointsAReprendre:v.review,evenementsParticuliers:v.events,absencesOuChangements:v.changes,aPrevoirSemaineSuivante:v.next};setStatus('Archivage en cours…');try{const r=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});const data=await r.json();if(!data.success)throw new Error(data.error||'Erreur');const a=getArchives().filter(x=>x.dateDebut!==payload.dateDebut);a.unshift({dateDebut:payload.dateDebut,count:sessions.length,archivedAt:new Intl.DateTimeFormat('fr-FR',{dateStyle:'short',timeStyle:'short'}).format(new Date())});localStorage.setItem(archivesKey(),JSON.stringify(a));setStatus('Semaine archivée dans Google Sheet');renderArchives()}catch(e){setStatus('Erreur d’archivage') }}
+async function archive(){const v=saveSummary(), payload={action:'archiverSemaine',dateDebut:iso(monday),dateFin:iso(addDays(monday,4)),periode:'',synthese:[v.learned,v.review].filter(Boolean).join('\n'),apprentissagesRealises:v.learned,seancesReportees:v.deferred,pointsAReprendre:v.review,evenementsParticuliers:v.events,absencesOuChangements:v.changes,aPrevoirSemaineSuivante:v.next};setStatus('Archivage en cours…');try{await journalApi(payload);const a=getArchives().filter(x=>x.dateDebut!==payload.dateDebut);a.unshift({dateDebut:payload.dateDebut,count:sessions.length,archivedAt:new Intl.DateTimeFormat('fr-FR',{dateStyle:'short',timeStyle:'short'}).format(new Date())});localStorage.setItem(archivesKey(),JSON.stringify(a));setStatus('Semaine archivée dans Google Sheet');renderArchives()}catch(e){setStatus(e&&e.message?e.message:'Erreur d’archivage') }}
 function open(){monday=startOfWeek(new Date());modal.classList.remove('hidden');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';loadWeek();setTab('today')}
 function close(){saveSummary();modal.classList.add('hidden');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''}
 openBtn.onclick=open;closeBtn.onclick=close;modal.addEventListener('click',e=>{if(e.target===modal)close()});document.querySelectorAll('.journal-tab').forEach(b=>b.onclick=()=>setTab(b.dataset.journalTab));$('journalPreviousWeekBtn').onclick=()=>{monday=addDays(monday,-7);loadWeek()};$('journalNextWeekBtn').onclick=()=>{monday=addDays(monday,7);loadWeek()};$('journalCurrentWeekBtn').onclick=()=>{monday=startOfWeek(new Date());loadWeek()};$('journalCopyBtn').onclick=copy;$('journalPrintBtn').onclick=()=>window.print();$('journalPdfBtn').onclick=()=>window.print();$('journalArchiveBtn').onclick=archive;Object.values(fields).forEach(f=>f.addEventListener('change',saveSummary));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.classList.contains('hidden'))close()});

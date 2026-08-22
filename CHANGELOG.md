@@ -1,5 +1,13 @@
 # V34.80 — Consolidation sans changement fonctionnel
 
+
+## V34.81 — 22 août 2026 — Sécurisation Cahier journal / Programme du jour
+- API Cahier Journal V1.1 : `ping` reste public ; `parametres`, `jour`, `semaine`, `enregistrerJour` et `archiverSemaine` exigent désormais `TABLET_DEVICE_KEY`.
+- Progressions transmet la clé professionnelle déjà stockée sur l'appareil (`hibou_sync_device_key_v25754`) pour les lectures et écritures du cahier journal.
+- Les appels protégés passent en POST afin de ne pas placer la clé professionnelle dans l'URL.
+- Protection supplémentaire : une sauvegarde de journée sans séance est refusée afin d'éviter l'effacement accidentel d'une journée existante.
+- Aucun changement pédagogique ou d'interface.
+
 - Rangement des 30 notes `README_PATCH_V34_*.txt` dans `docs/historique/patches-v34/`.
 - Archivage de `CHANGELOG_V34_17_NOUVEAU.md` dans `docs/historique/`.
 - Regroupement des tests LSU sous `tools/tests/`.

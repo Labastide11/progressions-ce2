@@ -23,6 +23,9 @@
   const projectionClock=$('dailyProgramProjectionClock');
   const FONT_KEY='progressions_ce2_programme_font_v1';
   const JOURNAL_API='https://script.google.com/macros/s/AKfycbz25e9hIn7jgZuI2gzLNwqinvo_zTegoicJSeEzNaHDEfCTrEz52MIJREvFM5rvx7Yswg/exec';
+  const DEVICE_KEY_STORAGE='hibou_sync_device_key_v25754';
+  const professionalKey=()=>{try{return String(localStorage.getItem(DEVICE_KEY_STORAGE)||'').trim()}catch(e){return ''}};
+  async function journalApi(payload){const deviceKey=professionalKey();if(!deviceKey)throw new Error('Clé professionnelle absente sur cet appareil.');const body={...payload,device_key:deviceKey,tablet_key:deviceKey,key:deviceKey};const response=await fetch(JOURNAL_API,{method:'POST',cache:'no-store',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(body)});const data=await response.json();if(!data||data.success!==true)throw new Error(data&&data.error||'Réponse API invalide');return data;}
 
   const weekdays=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
   const iconMap={french:'📖',maths:'🧮',english:'🇬🇧',eps:'🏃',arts:'🎨',science:'🔬',history:'🌍',emc:'🤝',cham:'🎵',break:'🤸',lunch:'🍽️',mixed:'✏️',common:'🧩'};
@@ -114,8 +117,7 @@
     if(saved){items=saved;render();setSyncStatus('local','● Sauvegarde locale');return}
     setSyncStatus('loading','● Recherche dans le cahier journal…');
     try{
-      const response=await fetch(`${JOURNAL_API}?action=jour&date=${encodeURIComponent(dateInput.value)}`,{cache:'no-store'});
-      const data=await response.json();
+      const data=await journalApi({action:'jour',date:dateInput.value});
       if(data&&data.success&&Array.isArray(data.seances)&&data.seances.length){
         items=data.seances.map((s,index)=>({
           id:s.idJour?`${s.idJour}_${index}`:makeId(),
@@ -289,12 +291,9 @@
     saveDayBtn.disabled=true;
     const initial='💾 Enregistrer la journée';
     try{
-      const checkUrl=`${JOURNAL_API}?action=jour&date=${encodeURIComponent(dateInput.value)}&_=${Date.now()}`;
       let checkData;
       try{
-        const check=await fetch(checkUrl,{cache:'no-store',redirect:'follow'});
-        if(!check.ok)throw new Error(`Vérification impossible (${check.status})`);
-        checkData=await check.json();
+        checkData=await journalApi({action:'jour',date:dateInput.value});
       }catch(error){
         throw new Error('Impossible de vérifier le Google Sheet : aucun nouvel enregistrement n’a été envoyé.');
       }
@@ -309,9 +308,7 @@
         return;
       }
       setSyncStatus('loading','● Synchronisation en cours…');
-      const response=await fetch(JOURNAL_API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(buildDayPayload())});
-      const data=await response.json();
-      if(!data||!data.success)throw new Error(data&&data.error||'Erreur inconnue');
+      await journalApi(buildDayPayload());
       localStorage.setItem(journalSavedKey(),new Date().toISOString());
       setSyncStatus('synced','● Synchronisé avec Google Sheet');
       saveDayBtn.textContent='✓ Journée enregistrée';
