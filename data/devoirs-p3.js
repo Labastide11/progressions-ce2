@@ -140,7 +140,21 @@ window.DEVOIRS_P3 = {
           "routine": "Choisis UNE notion à revoir parmi le groupe nominal, le futur ou les tables. Quelques minutes seulement.",
           "challenge": "Explique ce que tu sais déjà faire sans regarder la leçon.",
           "family": "Une seule notion au choix : l’objectif est de consolider, pas de tout reprendre.",
-          "notion": "Consolidation au choix"
+          "notion": "Consolidation au choix",
+          "hibou": [
+            {
+              "label": "Le groupe nominal",
+              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-groupe-nominal.html"
+            },
+            {
+              "label": "Le futur",
+              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/conjugaison-futur.html"
+            },
+            {
+              "label": "Tables de multiplication",
+              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/tables-multiplication.html"
+            }
+          ]
         },
         {
           "due": "2027-01-30",

@@ -118,7 +118,12 @@ window.DEVOIRS_P5 = {
           "routineTitle": "Relire et améliorer",
           "routine": "Relis un court texte écrit en classe et trouve une amélioration possible : précision, accord, ponctuation ou mot mieux choisi.",
           "challenge": "Explique ce que tu as amélioré.",
-          "family": "Une seule amélioration suffit."
+          "family": "Une seule amélioration suffit.",
+          "hibou": {
+            "label": "Je relis et j’améliore mon texte",
+            "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/ecriture-relire-ameliorer-texte.html",
+            "intro": "Besoin d’une méthode de relecture ?"
+          }
         }
       ]
     },
@@ -239,10 +244,16 @@ window.DEVOIRS_P5 = {
                 "manipuler les groupes dans la phrase"
               ],
               "preparation": "Revoir surtout l’accord sujet-verbe et la méthode de relecture/amélioration. Imparfait et groupes sont du rebrassage.",
-              "hibou": {
-                "label": "Sujet et verbe",
-                "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-sujet-verbe.html"
-              }
+              "hibou": [
+                {
+                  "label": "Sujet et verbe",
+                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-sujet-verbe.html"
+                },
+                {
+                  "label": "Je relis et j’améliore mon texte",
+                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/ecriture-relire-ameliorer-texte.html"
+                }
+              ]
             },
             {
               "date": "2027-06-11",

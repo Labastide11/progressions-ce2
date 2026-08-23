@@ -53,7 +53,12 @@ window.DEVOIRS_P4 = {
           "routineTitle": "Les groupes dans la phrase",
           "routine": "Dans deux phrases simples, repère oralement le groupe sujet et le groupe verbal, puis déplace si possible un groupe complément.",
           "challenge": "Explique ce qui peut être déplacé ou supprimé.",
-          "family": "Deux phrases suffisent."
+          "family": "Deux phrases suffisent.",
+          "hibou": {
+            "label": "Les groupes dans la phrase",
+            "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-groupes-phrase.html",
+            "intro": "Besoin d’un rappel ?"
+          }
         },
         {
           "due": "2027-03-04",
@@ -90,7 +95,21 @@ window.DEVOIRS_P4 = {
           "routineTitle": "Petit rappel au choix",
           "routine": "Choisis UNE notion à revoir : imparfait, groupes dans la phrase ou division. Quelques minutes seulement.",
           "challenge": "Explique ce que tu sais déjà sans regarder la leçon.",
-          "family": "Une seule notion au choix."
+          "family": "Une seule notion au choix.",
+          "hibou": [
+            {
+              "label": "L’imparfait",
+              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/conjugaison-imparfait.html"
+            },
+            {
+              "label": "Les groupes dans la phrase",
+              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-groupes-phrase.html"
+            },
+            {
+              "label": "Le sens de la division",
+              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/sens-division.html"
+            }
+          ]
         },
         {
           "due": "2027-03-13",
@@ -130,8 +149,8 @@ window.DEVOIRS_P4 = {
                   "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/conjugaison-imparfait.html"
                 },
                 {
-                  "label": "Sujet et verbe",
-                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-sujet-verbe.html"
+                  "label": "Les groupes dans la phrase",
+                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-groupes-phrase.html"
                 }
               ]
             }
