@@ -1,3 +1,11 @@
+# V34.93 — Raccord public des dictées
+
+- `dictees-ce2.js` reste la source de vérité annuelle.
+- Ajout de `data/parents-dictees.js`, projection publique limitée au thème, aux mots et aux 5 mots prioritaires.
+- Aucun flash, dictée bilan, DRAS, production d’écrit ou donnée professionnelle n’est exposé aux familles.
+- Ajout de `outils/generer-dictees-parents.js` pour régénérer cette projection publique.
+- L’Espace Remplaçant professionnel peut continuer à charger la banque complète.
+
 # V34.92 — Dictées P5 + DRAS + production d’écrit
 
 - P5 enrichie dans `dictees-ce2.js`.
