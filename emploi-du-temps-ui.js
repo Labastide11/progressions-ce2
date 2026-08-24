@@ -1513,12 +1513,75 @@
     content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('p3',data.key)}${calendarNotice(data)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderP3DictationProgramming(data.frenchPlan,week)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Séance proposée</th><th>Compétence reliée à Progressions CE2</th><th>Suivi / évaluation</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td><td>${pedagogyMarkers('p3',data.key,day,r)}${r[2]}${p3DictationTimetableGuide(week,day,r)}${annualMathLessonButton(r[6])}</td><td>${r[3]}</td><td><span class="${/Évaluation|Mini-test|Dictée évaluée/i.test(r[5])?'eval-badge':'follow-badge'}">${r[5]}</span></td><td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
     bindStatusControls(content);
   }
+  function laterPeriodDictationBankData(period,week){
+    return (annualFrenchPlans[period]||[])[week-1]||null;
+  }
+
+  function renderLaterPeriodDictationProgramming(period,plan,week){
+    if(!plan)return '';
+    const label=String(period||'').toUpperCase();
+    return `<details class="dictation-programming-compact">
+      <summary>
+        <span>📝 <strong>Dictée — ${label} · semaine ${week}</strong></span>
+        <span class="dictation-programming-compact__summary">${plan.support} · ${plan.priority.join(', ')} · ${plan.orthographeCible||'orthographe de la semaine'}</span>
+        <span class="dictation-programming-compact__toggle">Voir le détail</span>
+      </summary>
+      <div class="dictation-programming-compact__body">
+        <div><strong>Banque :</strong> ${plan.words.join(', ')}</div>
+        <div><strong>5 prioritaires :</strong> ${plan.priority.join(', ')}</div>
+        <div><strong>Orthographe :</strong> ${plan.orthographeCible||'—'}</div>
+        <div><strong>Mots / exemples :</strong> ${plan.motsCibles||'—'}</div>
+        <div><strong>Grammaire :</strong> ${plan.grammaireCible||'—'}</div>
+        <div><strong>Exemple élève :</strong> ${plan.exempleGrammaire||'—'}</div>
+        <div><strong>Réactivation :</strong> ${plan.reactivationWords||plan.reactivation||'—'}</div>
+        ${plan.ecritureDRAS?`<div><strong>DRAS — phrase de départ :</strong> ${plan.ecritureDRAS.phraseDepart}</div><div><strong>Production d’écrit :</strong> ${plan.ecritureDRAS.production}</div><div><strong>Mots à employer :</strong> ${plan.ecritureDRAS.motsAEmployer}</div>`:''}
+        <div class="dictation-programming-compact__final"><strong>Dictée bilan :</strong> ${plan.final}</div>
+      </div>
+    </details>`;
+  }
+
+  function laterPeriodDictationTimetableGuide(period,week,day,row){
+    if(!row||row[0]!=='10h–10h45')return '';
+    const p=laterPeriodDictationBankData(period,week); if(!p)return '';
+    const d=String(day||'').split(' ')[0];
+    if(d==='Lundi')return `<div class="dictation-timetable-guide">
+      <div class="dictation-timetable-guide__title">📝 ${p.support}</div>
+      <div><strong>Banque :</strong> ${p.words.join(', ')}</div>
+      <div><strong>Prioritaires :</strong> ${p.priority.join(', ')}</div>
+      <div><strong>Point orthographique :</strong> ${p.orthographeCible||'—'}</div>
+      <div><strong>Mots concernés :</strong> ${p.motsCibles||'—'}</div>
+      <div><strong>Réactivation :</strong> ${p.reactivationWords||'—'}</div>
+    </div>`;
+    if(d==='Mardi')return `<div class="dictation-timetable-guide">
+      <div class="dictation-timetable-guide__title">✍️ Flash 2</div>
+      <div>${p.flash[1]}</div>
+      <div><strong>Grammaire :</strong> ${p.grammaireCible||'—'}</div>
+      <div><strong>Manipulation :</strong> ${p.exempleGrammaire||'—'}</div>
+      ${renderDictationDrasGuide(p,'tuesday')}
+    </div>`;
+    if(d==='Jeudi')return `<div class="dictation-timetable-guide">
+      <div class="dictation-timetable-guide__title">✍️ Flash 3</div>
+      <div>${p.flash[2]}</div>
+      <div><strong>Réactivation :</strong> ${p.reactivationWords||'—'}</div>
+      <div><strong>Vigilance :</strong> ${p.motsCibles||'—'}</div>
+      ${renderDictationDrasGuide(p,'thursday')}
+    </div>`;
+    if(d==='Vendredi')return `<div class="dictation-timetable-guide">
+      <div class="dictation-timetable-guide__title">✅ Dictée bilan</div>
+      <div>${p.final}</div>
+      <div><strong>À surveiller :</strong> ${p.motsCibles||'—'}</div>
+      <div><strong>Mots à reprendre :</strong> ${p.reactivationWords||'—'}</div>
+      ${renderDictationDrasGuide(p,'friday')}
+    </div>`;
+    return '';
+  }
+
   function renderLaterPeriodWeek(period,week){
     const source=period==='p4'?p4DetailedWeeks:p5DetailedWeeks;
     const data=source[week-1]||source[0];
     const content=document.getElementById('timetableContent');
     const evalCount=data.days.reduce((n,[,rows])=>n+rows.filter(r=>/Évaluation|Mini-test|Dictée évaluée|Validation/i.test(r[5]||'')).length,0);
-    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector(period,data.key)}${calendarNotice(data)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Séance proposée</th><th>Compétence reliée à Progressions CE2</th><th>Suivi / évaluation</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td><td>${pedagogyMarkers(period,data.key,day,r)}${r[2]}${annualMathLessonButton(r[6])}</td><td>${r[3]}</td><td><span class="${/Évaluation|Mini-test|Dictée évaluée/i.test(r[5])?'eval-badge':'follow-badge'}">${r[5]}</span></td><td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector(period,data.key)}${calendarNotice(data)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${period==='p4'?renderLaterPeriodDictationProgramming(period,data.frenchPlan,week):renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Séance proposée</th><th>Compétence reliée à Progressions CE2</th><th>Suivi / évaluation</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td><td>${pedagogyMarkers(period,data.key,day,r)}${r[2]}${period==='p4'?laterPeriodDictationTimetableGuide(period,week,day,r):''}${annualMathLessonButton(r[6])}</td><td>${r[3]}</td><td><span class="${/Évaluation|Mini-test|Dictée évaluée/i.test(r[5])?'eval-badge':'follow-badge'}">${r[5]}</span></td><td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
     bindStatusControls(content);
   }
   function render(p){

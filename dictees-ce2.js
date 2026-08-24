@@ -140,6 +140,100 @@ const p3Dras=[
 ];
 annualFrenchPlans.p3.forEach((plan,i)=>plan.ecritureDRAS=p3Dras[i]);
 
-window.DICTEES_CE2={version:'34.89',p1,p2:annualFrenchPlans.p2,p3:annualFrenchPlans.p3,p4:annualFrenchPlans.p4,p5:annualFrenchPlans.p5};
+
+const p4Meta=[
+{
+  orthographeCible:'Accord sujet–verbe au présent ; pluriel des noms et adjectifs.',
+  motsCibles:'oiseau → oiseaux ; rapide → rapides ; puissant → puissants ; repérer.',
+  grammaireCible:'Identifier le sujet et accorder le verbe avec lui.',
+  exempleGrammaire:'Comparer « l’oiseau vole » / « les oiseaux volent » puis changer le sujet.',
+  reactivation:'Réactiver des accords déjà travaillés en P3.',
+  reactivationWords:'aigle, rapace, puissant'
+},
+{
+  orthographeCible:'Accord dans le groupe nominal ; adjectifs qualificatifs.',
+  motsCibles:'petite, grande, sombre, brillante ; nom + adjectif au singulier et au pluriel.',
+  grammaireCible:'Chaîne d’accords déterminant–nom–adjectif.',
+  exempleGrammaire:'Passer de « une petite étoile brillante » à « de petites étoiles brillantes ».',
+  reactivation:'Réactiver 3 mots de P3.',
+  reactivationWords:'fourmi, colonie, souterrain'
+},
+{
+  orthographeCible:'Homophones grammaticaux fréquents ; marques du pluriel.',
+  motsCibles:'a / à ; et / est ; son / sont dans les phrases du corpus.',
+  grammaireCible:'Choisir l’homophone grâce au sens et à la fonction dans la phrase.',
+  exempleGrammaire:'Comparer « il a peur » / « il va à la maison » puis « il est calme » / « Paul et Léa ».',
+  reactivation:'Réactiver des homophones vus en P2 et P3.',
+  reactivationWords:'cadeau, tempête, bonhomme'
+},
+{
+  orthographeCible:'Accord sujet–verbe à l’imparfait ; terminaison -aient.',
+  motsCibles:'ils regardaient, ils avançaient, ils cherchaient ; sujet pluriel + verbe.',
+  grammaireCible:'Consolider le sujet, le verbe et l’accord à l’imparfait.',
+  exempleGrammaire:'Passer de « l’enfant regardait » à « les enfants regardaient ».',
+  reactivation:'Réactiver des mots du champ lexical déjà rencontrés.',
+  reactivationWords:'nuage, chemin, paysage'
+},
+{
+  orthographeCible:'Accords en chaîne dans la phrase ; orthographe lexicale plus fine.',
+  motsCibles:'groupe nominal sujet + adjectif + verbe ; mots complexes du corpus de la semaine.',
+  grammaireCible:'Faire tous les accords nécessaires lors d’une transformation.',
+  exempleGrammaire:'Remplacer un sujet singulier par un sujet pluriel et vérifier déterminant, nom, adjectif et verbe.',
+  reactivation:'Boucle de consolidation P4.',
+  reactivationWords:'3 à 5 mots fragiles de P4 + 2 mots de P3'
+}
+];
+annualFrenchPlans.p4.forEach((plan,i)=>Object.assign(plan,p4Meta[i]||{}));
+
+const p4Dras=[
+{
+  phraseDepart:'L’oiseau puissant repère sa proie dans le ciel.',
+  supprimer:'Supprimer « dans le ciel » puis comparer la précision.',
+  deplacer:'Déplacer « dans le ciel » au début de la phrase.',
+  remplacer:'Remplacer « l’oiseau puissant » par « les oiseaux puissants » et accorder le verbe.',
+  ajouter:'Ajouter un adjectif à proie ou ciel.',
+  production:'Décrire un oiseau en deux phrases en utilisant au moins trois mots de la banque.',
+  motsAEmployer:'oiseau, puissant, rapide, repérer'
+},
+{
+  phraseDepart:'Une petite étoile brillante éclaire la nuit sombre.',
+  supprimer:'Supprimer un adjectif et observer ce que la phrase perd.',
+  deplacer:'Déplacer « dans la nuit sombre » ou un complément du corpus.',
+  remplacer:'Remplacer « une petite étoile brillante » par « de petites étoiles brillantes ».',
+  ajouter:'Ajouter une précision de lieu ou de manière.',
+  production:'Écrire deux phrases descriptives en faisant au moins deux accords dans le groupe nominal.',
+  motsAEmployer:'étoile, petite, brillante, sombre'
+},
+{
+  phraseDepart:'Le garçon a peur et il reste près de la porte.',
+  supprimer:'Supprimer un groupe complément sans casser le sens principal.',
+  deplacer:'Déplacer le complément de lieu au début de la phrase.',
+  remplacer:'Remplacer un homophone par une autre construction et justifier le choix.',
+  ajouter:'Ajouter une seconde proposition avec est ou sont.',
+  production:'Écrire deux phrases contenant au moins deux homophones étudiés.',
+  motsAEmployer:'a / à, et / est, son / sont + 2 mots de la banque'
+},
+{
+  phraseDepart:'Les enfants regardaient les nuages au-dessus du chemin.',
+  supprimer:'Supprimer « au-dessus du chemin » puis comparer.',
+  deplacer:'Déplacer le complément au début de la phrase.',
+  remplacer:'Remplacer « les enfants » par « l’enfant » et adapter le verbe.',
+  ajouter:'Ajouter un adjectif à nuages ou chemin.',
+  production:'Écrire deux phrases à l’imparfait avec un sujet pluriel.',
+  motsAEmployer:'enfants, regardaient, nuages, chemin'
+},
+{
+  phraseDepart:'Les jeunes explorateurs attentifs observent le paysage.',
+  supprimer:'Supprimer « attentifs » puis comparer.',
+  deplacer:'Déplacer un complément de la phrase du corpus.',
+  remplacer:'Remplacer « les jeunes explorateurs attentifs » par un sujet singulier et faire tous les accords.',
+  ajouter:'Ajouter un complément et un adjectif.',
+  production:'Écrire un court paragraphe de trois phrases en réemployant quatre mots de la période.',
+  motsAEmployer:'4 mots de P4 + 2 mots réactivés de P3'
+}
+];
+annualFrenchPlans.p4.forEach((plan,i)=>plan.ecritureDRAS=p4Dras[i]);
+
+window.DICTEES_CE2={version:'34.91',p1,p2:annualFrenchPlans.p2,p3:annualFrenchPlans.p3,p4:annualFrenchPlans.p4,p5:annualFrenchPlans.p5};
 window.DICTEES_CE2_ANNUAL=annualFrenchPlans;
 })();

@@ -1,3 +1,17 @@
+# V34.91 — Dictées P4 + DRAS + production d’écrit
+
+- P4 enrichie dans `dictees-ce2.js`.
+- Pour chaque semaine : orthographe cible, mots concernés, grammaire cible, exemple élève et réactivation.
+- Progression P4 : accord sujet–verbe, chaînes d’accords, homophones fréquents, imparfait, accords complets lors des transformations.
+- Ajout de `ecritureDRAS` à chaque semaine de P4.
+- Les phrases DRAS réemploient le corpus de dictée de la semaine.
+- Mardi : phrase DRAS + Déplacer + Remplacer.
+- Jeudi : phrase DRAS + Supprimer + Ajouter + production d’écrit.
+- Vendredi : relecture DRAS et vocabulaire de la semaine.
+- P4 reprend l’affichage validé P1–P3 dans l’emploi du temps.
+- P5 inchangée pour cette étape.
+- Espace Parents inchangé.
+
 # V34.90 — Phrase DRAS visible dans l’emploi du temps
 
 - La phrase DRAS de départ est maintenant affichée explicitement dans l’emploi du temps.
