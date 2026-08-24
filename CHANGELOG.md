@@ -1,3 +1,12 @@
+# V34.98 — Intégration GDVB P3 → P4
+
+- P3 : amorce « En route vers le GDVB » dans le créneau EPS du vendredi, sans déplacer les autres apprentissages.
+- P3 : 5 jalons progressifs : « Bouger, c’est quoi ? », Memory des bienfaits, Croix rythmée, pause active test, annonce du GDVB.
+- P4 : du 22 février au 2 avril 2027, Domec du lundi devient le socle EPS du fil rouge GDVB.
+- P4 : chaque vendredi, le créneau EPS accueille un défi GDVB : Croix rythmée, cerceaux, lancer, déménageurs, défi collectif, bilan.
+- Espace Parents : publication dans « Infos de la classe → À venir » de l’amorce P3 et du GDVB du 22 février au 4 avril 2027.
+- Aucun changement des progressions de français, mathématiques, histoire, géographie ou sciences.
+
 # V34.97 — Refonte complète des devoirs P1 + moteur annuel
 
 - Ajout de `data/devoirs-engine.js`, nomenclature commune pour P1→P5.
