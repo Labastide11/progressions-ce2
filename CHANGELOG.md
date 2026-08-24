@@ -1,3 +1,15 @@
+# V34.97 — Refonte complète des devoirs P1 + moteur annuel
+
+- Ajout de `data/devoirs-engine.js`, nomenclature commune pour P1→P5.
+- Six catégories verrouillées : Lecture, Français, Mathématiques, Préparation, Poésie, Défi famille.
+- Chaque tâche P1 possède désormais : matière, verbe d’action, consigne autonome, aide/exemple, durée et lien avec l’apprentissage de classe.
+- Maximum : 2 tâches essentielles par échéance, 5 à 10 minutes au total.
+- Le cahier devient une aide et non une condition ; chaque consigne prévoit un repli sans cahier.
+- Les dictées sont anticipées deux fois lorsque pertinent : première mémorisation puis rappel avant le bilan. Les mots restent issus de `dictees-ce2.js`.
+- Les anciens « Défis du jour » d’entraînement sont remplacés par de vrais blocs disciplinaires ; le mot « défi » est réservé au ludique/recherche.
+- Le Défi famille reste facultatif.
+- P1 devient le modèle de référence pour la migration P2→P5.
+
 # V34.96 — Lien réel dictées ↔ devoirs Parents
 
 - `dictees-ce2.js` reste la source de vérité des mots de dictée.
