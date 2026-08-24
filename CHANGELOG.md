@@ -1,3 +1,11 @@
+# V34.84 — Programmation explicite des dictées P1
+
+- Ajout d'une programmation professeur pour les 7 semaines de P1.
+- Thème, banque de mots, 5 mots prioritaires, difficulté orthographique dominante, grammaire mobilisée et réactivation.
+- Corpus Charivari, dictées flash et dictées bilans conservés.
+- S1 diagnostique ; S2 installation ; S3 à S6 banques structurées ; S7 réactivation personnalisée.
+- Espace Parents, Maître Hibou, API et données élèves inchangés.
+
 ## V34.82 — Questions des élèves : filtre Toutes par défaut
 - La fenêtre « Questions des élèves » s’ouvre désormais sur l’onglet « Toutes ».
 - Le dernier filtre utilisé n’est pas mémorisé : chaque rechargement repart sur « Toutes ».

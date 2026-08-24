@@ -573,6 +573,63 @@
       rules:'Réactivation ciblée : phrase, négation, verbe et infinitif, sujet et pronom, singulier et pluriel.'
     }
   };
+  // V34.84 — Programmation explicite des dictées CE2, période 1.
+  // Les corpus, dictées flash et dictées bilans existants restent inchangés.
+  const p1DictationProgramming={
+    1:{phase:'diagnostic',theme:'Rentrée — diagnostic très court',words:'Pas de banque à mémoriser.',priority:'Aucun mot prioritaire.',orthography:'Observer l’encodage des sons, la segmentation et les premières stratégies orthographiques.',grammar:'Phrase simple, majuscule, ponctuation et relecture.',reactivation:'Aucune : il s’agit d’un état des lieux de rentrée.',note:'Pas de dictée bilan classique : observation formative et correction collective raisonnée.'},
+    2:{phase:'installation',theme:'Installer le rituel de dictée',words:'Premiers mots fréquents rencontrés en classe.',priority:'Sélection courte selon les observations de rentrée.',orthography:'Mémoriser progressivement des mots fréquents et stabiliser les correspondances sons/graphies.',grammar:'Reconnaître une phrase ; phrase affirmative et phrase négative.',reactivation:'Réutiliser les mots rencontrés pendant la semaine 1.',note:'Semaine d’installation : aucune liste de 8 mots n’est ajoutée artificiellement.'},
+    3:{phase:'regular',corpusWeek:1,lessonId:'s1monday',theme:'Le cheval et le fermier',orthography:'Encoder les sons et mémoriser les mots fréquents ; observer ch dans cheval, chemin, chien et chaleur.',grammar:'Phrase correcte ; phrase affirmative et phrase négative.',reactivation:'Première banque structurée : pas d’anciens mots imposés.'},
+    4:{phase:'regular',corpusWeek:2,lessonId:'s2monday',theme:'Les métiers',orthography:'Stabiliser l’orthographe lexicale des mots de métiers et des mots fréquents de la semaine.',grammar:'Repérer le verbe conjugué et retrouver son infinitif.',reactivation:'Réemployer fermier et au moins un mot de la semaine précédente.'},
+    5:{phase:'regular',corpusWeek:3,lessonId:'s3monday',theme:'Christophe et les nuages',orthography:'Singulier/pluriel ; observer notamment le pluriel en -eaux dans chapeau/chapeaux.',grammar:'Repérer le groupe sujet et le remplacer par un pronom.',reactivation:'Réemployer au moins deux mots issus des banques précédentes.'},
+    6:{phase:'regular',corpusWeek:4,lessonId:'s4monday',theme:'La pluie',orthography:'Consolider le pluriel et observer m devant m, b, p ainsi que son/sont dans le corpus.',grammar:'Consolider verbe, infinitif, sujet et pronom.',reactivation:'Réutiliser au moins deux mots déjà mémorisés, notamment autour des familles paysage/nuage.'},
+    7:{phase:'reactivation',corpusWeek:5,lessonId:'s5monday',theme:'Réactivation personnalisée de la période 1',orthography:'Reprendre les mots et régularités encore fragiles plutôt que lancer une nouvelle difficulté.',grammar:'Phrase, négation, verbe/infinitif, sujet/pronom, singulier/pluriel.',reactivation:'Chaque élève choisit 3 à 5 mots encore fragiles parmi les banques précédentes.',note:'Aucune nouvelle liste : cette semaine constitue la boucle de consolidation de P1.'}
+  };
+
+  function p1DictationBankData(week){
+    const plan=p1DictationProgramming[week];
+    if(!plan)return null;
+    const lesson=plan.lessonId?p1LessonPlans[plan.lessonId]:null;
+    const corpus=plan.corpusWeek?p1CharivariCorpus[plan.corpusWeek]:null;
+    return {...plan,
+      words:lesson&&lesson.words?lesson.words:(plan.words||''),
+      priority:lesson&&lesson.priority?lesson.priority:(plan.priority||''),
+      flashes:corpus&&corpus.flashes?corpus.flashes:[],
+      final:corpus&&corpus.final?corpus.final:'',
+      support:corpus&&corpus.name?corpus.name:''
+    };
+  }
+
+  function renderP1DictationProgramming(week){
+    const p=p1DictationBankData(week); if(!p)return '';
+    const flashes=p.flashes.length?`<ol>${p.flashes.map(x=>`<li><strong>${x[0]} :</strong> ${x[1]}</li>`).join('')}</ol>`:'<p><em>Pas encore de série de trois dictées flash cette semaine.</em></p>';
+    const bilan=p.final?`<p><strong>Dictée bilan :</strong> ${p.final}</p>`:`<p><strong>Bilan :</strong> ${p.note||'Observation formative.'}</p>`;
+    return `<article class="lesson-card lesson-card--wide"><h3>📝 Programmation des dictées CE2 — P1 · semaine ${week}</h3>
+      <div class="charivari-corpus">
+        <div class="charivari-line"><strong>Thème</strong><p>${p.theme}</p></div>
+        <div class="charivari-line"><strong>Banque de mots</strong><p>${p.words}</p></div>
+        <div class="charivari-line"><strong>5 mots prioritaires</strong><p>${p.priority}</p></div>
+        <div class="charivari-line"><strong>Difficulté orthographique dominante</strong><p>${p.orthography}</p></div>
+        <div class="charivari-line"><strong>Grammaire mobilisée</strong><p>${p.grammar}</p></div>
+        <div class="charivari-line"><strong>Anciens mots réactivés</strong><p>${p.reactivation}</p></div>
+        ${p.support?`<div class="charivari-line"><strong>Support</strong><p>${p.support}</p></div>`:''}
+        <div class="charivari-line"><strong>Dictées flash</strong>${flashes}</div>
+        <div class="charivari-line charivari-final">${bilan}</div>
+      </div>
+      <p class="lesson-note"><strong>Principe V34.84 :</strong> une difficulté dominante par semaine et une réactivation explicite des acquis précédents. Les dictées existantes sont conservées.</p>
+    </article>`;
+  }
+
+  function renderP1DictationOverview(){
+    const rows=Object.keys(p1DictationProgramming).map(Number).sort((a,b)=>a-b).map(week=>{
+      const p=p1DictationBankData(week);
+      return `<tr><td><strong>S${week}</strong></td><td>${p.theme}</td><td>${p.orthography}</td><td>${p.grammar}</td><td>${p.reactivation}</td></tr>`;
+    }).join('');
+    return `<article class="lesson-card lesson-card--wide"><h3>🗓️ Vue d’ensemble — progression des dictées P1</h3>
+      <div class="detail-table-wrap"><table class="detail-table">
+      <thead><tr><th>Semaine</th><th>Thème</th><th>Orthographe</th><th>Grammaire</th><th>Réactivation</th></tr></thead>
+      <tbody>${rows}</tbody></table></div></article>`;
+  }
+
   function renderP1Corpus(weekNumber){
     const corpus=p1CharivariCorpus[weekNumber];
     if(!corpus)return '';
@@ -620,6 +677,7 @@
     content.innerHTML=`<section class="lesson-view"><div class="detail-top"><div><span class="detail-zone">P1 · fiche de préparation enseignant</span><h2>${lesson.title}</h2><p>${lesson.domain} · ${lesson.duration}</p><p><strong>Support :</strong> ${support}</p></div><button class="detail-back" type="button" data-back-p1-week="${lesson.week}">← Retour à la semaine ${lesson.week}</button></div>${modeBar}
       <div class="lesson-grid"><article class="lesson-card"><h3>🎯 Objectifs</h3><ul>${lesson.objectives.map(x=>`<li>${x}</li>`).join('')}</ul></article>
       ${lesson.words?`<article class="lesson-card"><h3>📝 Mots de la semaine</h3><p>${lesson.words}</p><p><strong>Parcours prioritaire :</strong> ${lesson.priority}</p></article>`:''}
+      ${renderP1DictationProgramming(lesson.week+2)}
       ${renderP1Corpus(lesson.week)}
       <article class="lesson-card lesson-card--wide"><h3>🧭 Déroulement enseignant</h3><ol class="lesson-steps">${lesson.phases.map(p=>`<li><time>${p[0]}</time><div><strong>${p[1]}</strong><p>${p[2]}</p></div></li>`).join('')}</ol></article>
       ${lesson.hibou?`<article class="lesson-card lesson-card--wide hibou-reuse-card"><h3>🦉 Travail Maître Hibou réutilisé</h3><p><strong>${lesson.hibou.title}</strong></p><p>Cette leçon existante sert de synthèse collective et de prolongement individuel. Elle n’est pas recréée dans Progressions CE2.</p><a class="hibou-open-link" href="${lesson.hibou.url}" target="_blank" rel="noopener">Ouvrir la leçon Maître Hibou ↗</a></article>`:''}
@@ -1213,7 +1271,7 @@
     const data=p1DetailedWeeks[week-1]||p1DetailedWeeks[0];
     const content=document.getElementById('timetableContent');
     const evalCount=data.days.reduce((n,[,rows])=>n+rows.filter(r=>/Évaluation|Mini-test|validation|Mesure (initiale|intermédiaire)|Dictée évaluée/i.test(r[5]||'')).length,0);
-    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('p1',data.key)}${calendarNotice(data)}${p1FrenchWeekPlan(week)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Séance proposée</th><th>Compétence reliée à Progressions CE2</th><th>Suivi / évaluation</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${p1ActivityLabel(r)}</span></td><td>${pedagogyMarkers('p1',data.key,day,r)}${r[2]}${p1LessonButton(r[6])}</td><td>${r[3]}</td><td><span class="${/Évaluation|Mini-test|Dictée évaluée/i.test(r[5])?'eval-badge':'follow-badge'}">${r[5]}</span></td><td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('p1',data.key)}${calendarNotice(data)}${p1FrenchWeekPlan(week)}${week===1?renderP1DictationOverview():''}${renderP1DictationProgramming(week)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Séance proposée</th><th>Compétence reliée à Progressions CE2</th><th>Suivi / évaluation</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${p1ActivityLabel(r)}</span></td><td>${pedagogyMarkers('p1',data.key,day,r)}${r[2]}${p1LessonButton(r[6])}</td><td>${r[3]}</td><td><span class="${/Évaluation|Mini-test|Dictée évaluée/i.test(r[5])?'eval-badge':'follow-badge'}">${r[5]}</span></td><td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
     bindStatusControls(content);
   }
 
