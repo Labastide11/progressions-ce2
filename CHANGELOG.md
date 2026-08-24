@@ -1,3 +1,14 @@
+# V34.87 — Banque annuelle unique des dictées + P2 structurée
+
+- Création de `dictees-ce2.js`, source centrale P1→P5.
+- P1 migre vers cette banque sans changement visuel.
+- Les corpus P2→P5 sortent de `emploi-du-temps-ui.js`.
+- P2 : orthographe cible, mots concernés, grammaire, exemple élève et réactivation explicite.
+- Spirale P2 : 2 à 3 anciens mots repris chaque semaine ; S7 consolide les mots fragiles.
+- P2 reprend l’affichage pratique validé en P1 dans l’emploi du temps.
+- P3→P5 restent fonctionnelles et seront enrichies ensuite.
+- Espace Parents inchangé pour cette étape.
+
 # V34.86 — Dictées intégrées dans l’emploi du temps
 
 - Le créneau Orthographe / dictée affiche directement les informations utiles face aux élèves.
