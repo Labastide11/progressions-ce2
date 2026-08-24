@@ -1,5 +1,5 @@
-/* Progressions CE2 V34.93 — projection publique des dictées pour les familles.\n   Générée depuis dictees-ce2.js ; aucun flash, bilan, DRAS ou donnée professionnelle. */\nwindow.PARENTS_DICTEES_CE2 = {
-  "version": "34.93",
+/* Progressions CE2 V34.94 — projection publique des dictées pour les familles.\n   Générée depuis dictees-ce2.js ; aucun flash, bilan, DRAS ou donnée professionnelle. */\nwindow.PARENTS_DICTEES_CE2 = {
+  "version": "34.94",
   "schoolYear": "2026-2027",
   "periods": {
     "p1": [

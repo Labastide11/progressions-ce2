@@ -1,3 +1,11 @@
+# V34.94 — P1 S2 autonome pour les familles
+
+- P1 S2 : banque commune visible `avec, dans, pour, mais, très, aussi, alors, parce que`.
+- 5 prioritaires : `avec, dans, pour, mais, très`.
+- Le travail à la maison reste possible sans cahier.
+- La projection publique Parents est synchronisée.
+- Le Remplaçant récupère automatiquement cette banque depuis Progressions.
+
 # V34.93 — Raccord public des dictées
 
 - `dictees-ce2.js` reste la source de vérité annuelle.
