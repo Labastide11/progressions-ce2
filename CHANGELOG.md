@@ -1,3 +1,11 @@
+# V34.85 — Dictées P1 : mots et exemples directement visibles
+
+- Ajout d'une colonne « Mots concernés / exemples » dans la vue d'ensemble P1.
+- Ajout des mots ou exemples associés à chaque difficulté orthographique.
+- Ajout d'un exemple grammatical directement exploitable avec les élèves.
+- Ajout des mots à réactiver explicitement.
+- Aucun changement des corpus, dictées flash, dictées bilans, Espace Parents, Maître Hibou, API ou données élèves.
+
 # V34.84 — Programmation explicite des dictées P1
 
 - Ajout d'une programmation professeur pour les 7 semaines de P1.
