@@ -1,3 +1,13 @@
+# V34.99 — « À venir » dynamique par période
+
+- Espace Parents : les informations « À venir » sont désormais organisées par période.
+- P1 : mot de rentrée léger.
+- P2 : natation à Grazailles.
+- P3 : Cavayère (course d’orientation + sandball) et préparation du GDVB.
+- P4 : GDVB 2027 + Domec (gymnastique + lutte) + défi collectif hebdomadaire.
+- P5 : aucun message automatique tant que la Journée Grand Défi de l’école n’a pas de date validée.
+- Les compléments manuels restent possibles via `upcomingItems`.
+
 # V34.98 — Intégration GDVB P3 → P4
 
 - P3 : amorce « En route vers le GDVB » dans le créneau EPS du vendredi, sans déplacer les autres apprentissages.
