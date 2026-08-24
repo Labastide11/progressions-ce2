@@ -1,3 +1,11 @@
+# V34.96 — Lien réel dictées ↔ devoirs Parents
+
+- `dictees-ce2.js` reste la source de vérité des mots de dictée.
+- `data/parents-dictees.js` contient désormais, pour chaque semaine : `start`, `end`, `reviewDue`, `hasFinal`, thème, mots et priorités.
+- `reviewDue` est calculé depuis les vraies dates des devoirs : priorité au jeudi, sinon au dernier devoir avant vendredi.
+- La projection ne contient toujours aucun flash, bilan, DRAS ou donnée professionnelle.
+- L’Espace Parents peut maintenant afficher les mots exactement dans le devoir de la veille, au lieu d’une carte hebdomadaire indépendante.
+
 # V34.94 — P1 S2 autonome pour les familles
 
 - P1 S2 : banque commune visible `avec, dans, pour, mais, très, aussi, alors, parce que`.
