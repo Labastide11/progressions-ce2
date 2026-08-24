@@ -1,3 +1,14 @@
+# V34.86 — Dictées intégrées dans l’emploi du temps
+
+- Le créneau Orthographe / dictée affiche directement les informations utiles face aux élèves.
+- Lundi : thème, banque de mots, 5 prioritaires, point orthographique et mots concernés.
+- Mardi : dictée flash 2, grammaire et manipulation.
+- Jeudi : dictée flash 3, réactivation et point de vigilance.
+- Vendredi : dictée bilan, points à surveiller et mots à reprendre.
+- Le grand bloc « Programmation des dictées » devient un résumé compact dépliable.
+- Une seule source de données alimente le résumé et l’emploi du temps.
+- Espace Parents, Maître Hibou, API et données élèves inchangés.
+
 # V34.85 — Dictées P1 : mots et exemples directement visibles
 
 - Ajout d'une colonne « Mots concernés / exemples » dans la vue d'ensemble P1.

@@ -603,20 +603,68 @@
     const p=p1DictationBankData(week); if(!p)return '';
     const flashes=p.flashes.length?`<ol>${p.flashes.map(x=>`<li><strong>${x[0]} :</strong> ${x[1]}</li>`).join('')}</ol>`:'<p><em>Pas encore de série de trois dictées flash cette semaine.</em></p>';
     const bilan=p.final?`<p><strong>Dictée bilan :</strong> ${p.final}</p>`:`<p><strong>Bilan :</strong> ${p.note||'Observation formative.'}</p>`;
-    return `<article class="lesson-card lesson-card--wide"><h3>📝 Programmation des dictées CE2 — P1 · semaine ${week}</h3>
-      <div class="charivari-corpus">
-        <div class="charivari-line"><strong>Thème</strong><p>${p.theme}</p></div>
-        <div class="charivari-line"><strong>Banque de mots</strong><p>${p.words}</p></div>
-        <div class="charivari-line"><strong>5 mots prioritaires</strong><p>${p.priority}</p></div>
-        <div class="charivari-line"><strong>Difficulté orthographique dominante</strong><p>${p.orthography}</p><p><strong>Mots / exemples concernés :</strong> ${p.orthographyWords||'À préciser avec le corpus.'}</p></div>
-        <div class="charivari-line"><strong>Grammaire mobilisée</strong><p>${p.grammar}</p><p><strong>Exemple à utiliser avec les élèves :</strong> ${p.grammarExamples||'À partir d’une phrase de la semaine.'}</p></div>
-        <div class="charivari-line"><strong>Anciens mots réactivés</strong><p>${p.reactivation}</p><p><strong>Mots à reprendre :</strong> ${p.reactivationWords||'—'}</p></div>
-        ${p.support?`<div class="charivari-line"><strong>Support</strong><p>${p.support}</p></div>`:''}
-        <div class="charivari-line"><strong>Dictées flash</strong>${flashes}</div>
-        <div class="charivari-line charivari-final">${bilan}</div>
+    return `<details class="dictation-programming-compact">
+      <summary>
+        <span>📝 <strong>Dictée — semaine ${week}</strong></span>
+        <span class="dictation-programming-compact__summary">${p.theme} · ${p.priority||'priorités à définir'} · ${p.orthography}</span>
+        <span class="dictation-programming-compact__toggle">Voir le détail</span>
+      </summary>
+      <div class="dictation-programming-compact__body">
+        <div><strong>Thème :</strong> ${p.theme}</div>
+        <div><strong>Banque de mots :</strong> ${p.words}</div>
+        <div><strong>5 mots prioritaires :</strong> ${p.priority}</div>
+        <div><strong>Orthographe :</strong> ${p.orthography}</div>
+        <div><strong>Mots / exemples :</strong> ${p.orthographyWords||'À préciser avec le corpus.'}</div>
+        <div><strong>Grammaire :</strong> ${p.grammar}</div>
+        <div><strong>Exemple élève :</strong> ${p.grammarExamples||'À partir d’une phrase de la semaine.'}</div>
+        <div><strong>Réactivation :</strong> ${p.reactivationWords||p.reactivation||'—'}</div>
+        ${p.support?`<div><strong>Support :</strong> ${p.support}</div>`:''}
+        <div><strong>Dictées flash :</strong>${flashes}</div>
+        <div class="dictation-programming-compact__final">${bilan}</div>
       </div>
-      <p class="lesson-note"><strong>Principe V34.85 :</strong> une difficulté dominante par semaine et une réactivation explicite des acquis précédents. Les dictées existantes sont conservées.</p>
-    </article>`;
+    </details>`;
+  }
+
+  function p1DictationTimetableGuide(week,day,row){
+    if(!row || row[0]!=='10h–10h45') return '';
+    const p=p1DictationBankData(week); if(!p)return '';
+    const dayName=String(day||'').split(' ')[0];
+    if(dayName==='Lundi'){
+      return `<div class="dictation-timetable-guide">
+        <div class="dictation-timetable-guide__title">📝 ${p.theme}</div>
+        <div><strong>Banque :</strong> ${p.words}</div>
+        <div><strong>Prioritaires :</strong> ${p.priority}</div>
+        <div><strong>Point orthographique :</strong> ${p.orthography}</div>
+        <div><strong>Mots concernés :</strong> ${p.orthographyWords||'À relever avec la classe.'}</div>
+      </div>`;
+    }
+    if(dayName==='Mardi'){
+      const flash=p.flashes[1]||'Dictée flash 2 à construire à partir des mots observés.';
+      return `<div class="dictation-timetable-guide">
+        <div class="dictation-timetable-guide__title">✍️ Flash 2</div>
+        <div>${flash}</div>
+        <div><strong>Grammaire :</strong> ${p.grammar}</div>
+        <div><strong>À faire dire / manipuler :</strong> ${p.grammarExamples||'À partir de la phrase du jour.'}</div>
+      </div>`;
+    }
+    if(dayName==='Jeudi'){
+      const flash=p.flashes[2]||'Dictée flash 3 à construire à partir des mots observés.';
+      return `<div class="dictation-timetable-guide">
+        <div class="dictation-timetable-guide__title">✍️ Flash 3</div>
+        <div>${flash}</div>
+        <div><strong>Réactivation :</strong> ${p.reactivationWords||p.reactivation||'—'}</div>
+        <div><strong>Point de vigilance :</strong> ${p.orthographyWords||p.orthography}</div>
+      </div>`;
+    }
+    if(dayName==='Vendredi'){
+      return `<div class="dictation-timetable-guide">
+        <div class="dictation-timetable-guide__title">✅ Dictée bilan</div>
+        <div>${p.final||p.note||'Bilan formatif de la semaine.'}</div>
+        <div><strong>À surveiller :</strong> ${p.orthographyWords||p.orthography}</div>
+        <div><strong>Mots à reprendre si besoin :</strong> ${p.reactivationWords||'selon les réussites observées'}</div>
+      </div>`;
+    }
+    return '';
   }
 
   function renderP1DictationOverview(){
@@ -1271,7 +1319,7 @@
     const data=p1DetailedWeeks[week-1]||p1DetailedWeeks[0];
     const content=document.getElementById('timetableContent');
     const evalCount=data.days.reduce((n,[,rows])=>n+rows.filter(r=>/Évaluation|Mini-test|validation|Mesure (initiale|intermédiaire)|Dictée évaluée/i.test(r[5]||'')).length,0);
-    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('p1',data.key)}${calendarNotice(data)}${p1FrenchWeekPlan(week)}${week===1?renderP1DictationOverview():''}${renderP1DictationProgramming(week)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Séance proposée</th><th>Compétence reliée à Progressions CE2</th><th>Suivi / évaluation</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${p1ActivityLabel(r)}</span></td><td>${pedagogyMarkers('p1',data.key,day,r)}${r[2]}${p1LessonButton(r[6])}</td><td>${r[3]}</td><td><span class="${/Évaluation|Mini-test|Dictée évaluée/i.test(r[5])?'eval-badge':'follow-badge'}">${r[5]}</span></td><td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('p1',data.key)}${calendarNotice(data)}${p1FrenchWeekPlan(week)}${week===1?renderP1DictationOverview():''}${renderP1DictationProgramming(week)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Séance proposée</th><th>Compétence reliée à Progressions CE2</th><th>Suivi / évaluation</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${p1ActivityLabel(r)}</span></td><td>${pedagogyMarkers('p1',data.key,day,r)}${r[2]}${p1DictationTimetableGuide(week,day,r)}${p1LessonButton(r[6])}</td><td>${r[3]}</td><td><span class="${/Évaluation|Mini-test|Dictée évaluée/i.test(r[5])?'eval-badge':'follow-badge'}">${r[5]}</span></td><td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
     bindStatusControls(content);
   }
 

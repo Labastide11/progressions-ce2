@@ -330,3 +330,81 @@ body.projection-active{overflow:hidden}
   .timetable-modal.timetable-modal--direct .timetable-tabs,
   .timetable-modal.timetable-modal--tbi .timetable-tabs{padding-right:66px}
 }
+
+
+/* V34.86 — Dictées : programmation compacte + guide directement dans l'emploi du temps */
+.dictation-programming-compact{
+  margin:14px 0;
+  border:1px solid #cfd8e8;
+  border-radius:14px;
+  background:#fff;
+  overflow:hidden;
+}
+.dictation-programming-compact>summary{
+  list-style:none;
+  cursor:pointer;
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  align-items:center;
+  gap:14px;
+  padding:12px 16px;
+  color:#283574;
+  background:#f8f9ff;
+}
+.dictation-programming-compact>summary::-webkit-details-marker{display:none}
+.dictation-programming-compact__summary{
+  min-width:0;
+  color:#42506f;
+  font-size:.92rem;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.dictation-programming-compact__toggle{
+  font-size:.82rem;
+  font-weight:800;
+  color:#0a786f;
+}
+.dictation-programming-compact[open] .dictation-programming-compact__toggle{font-size:0}
+.dictation-programming-compact[open] .dictation-programming-compact__toggle::before{
+  content:"Masquer le détail";
+  font-size:.82rem;
+}
+.dictation-programming-compact__body{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px 18px;
+  padding:14px 16px 16px;
+  border-top:1px solid #e5eaf4;
+  line-height:1.45;
+}
+.dictation-programming-compact__body>div{
+  padding:7px 0;
+  border-bottom:1px dashed #e3e7f0;
+}
+.dictation-programming-compact__body ol{margin:6px 0 0 20px}
+.dictation-programming-compact__final{grid-column:1/-1}
+
+.dictation-timetable-guide{
+  margin-top:10px;
+  padding:10px 12px;
+  border:1px solid #e5bd53;
+  border-left:4px solid #e5a900;
+  border-radius:10px;
+  background:#fff9e8;
+  color:#263858;
+  font-size:.92rem;
+  line-height:1.4;
+}
+.dictation-timetable-guide>div+div{margin-top:4px}
+.dictation-timetable-guide__title{
+  color:#755300;
+  font-weight:900;
+  margin-bottom:5px;
+}
+@media(max-width:900px){
+  .dictation-programming-compact>summary{grid-template-columns:1fr auto}
+  .dictation-programming-compact__summary{grid-column:1/-1;grid-row:2}
+  .dictation-programming-compact__body{grid-template-columns:1fr}
+  .dictation-programming-compact__final{grid-column:auto}
+}
