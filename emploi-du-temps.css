@@ -425,3 +425,14 @@ body.projection-active{overflow:hidden}
   color:#5540a9;
   margin-bottom:4px;
 }
+
+
+/* V34.90 — Phrase DRAS toujours visible dans l'emploi du temps */
+.dictation-dras-guide__phrase{
+  margin:5px 0 7px;
+  padding:7px 9px;
+  border-radius:7px;
+  background:#fff;
+  border:1px solid #d9d1f4;
+  color:#24345e;
+}

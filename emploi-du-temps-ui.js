@@ -614,7 +614,7 @@
     if(mode==='tuesday'){
       return `<div class="dictation-dras-guide">
         <div class="dictation-dras-guide__title">🧩 DRAS — à partir du corpus</div>
-        <div><strong>Phrase de départ :</strong> ${d.phraseDepart}</div>
+        <div class="dictation-dras-guide__phrase"><strong>Phrase DRAS de départ :</strong> « ${d.phraseDepart} »</div>
         <div><strong>D — Déplacer :</strong> ${d.deplacer}</div>
         <div><strong>R — Remplacer :</strong> ${d.remplacer}</div>
       </div>`;
@@ -622,6 +622,7 @@
     if(mode==='thursday'){
       return `<div class="dictation-dras-guide">
         <div class="dictation-dras-guide__title">✍️ DRAS + production d’écrit</div>
+        <div class="dictation-dras-guide__phrase"><strong>Phrase DRAS de départ :</strong> « ${d.phraseDepart} »</div>
         <div><strong>S — Supprimer :</strong> ${d.supprimer}</div>
         <div><strong>A — Ajouter :</strong> ${d.ajouter}</div>
         <div><strong>Production :</strong> ${d.production}</div>
@@ -631,6 +632,7 @@
     if(mode==='friday'){
       return `<div class="dictation-dras-guide">
         <div class="dictation-dras-guide__title">🔎 Relecture DRAS</div>
+        <div class="dictation-dras-guide__phrase"><strong>Phrase DRAS de référence :</strong> « ${d.phraseDepart} »</div>
         <div>Relire la production et vérifier : <strong>sens, accords, précision et vocabulaire de la semaine</strong>.</div>
         <div><strong>Mots attendus / disponibles :</strong> ${d.motsAEmployer}</div>
       </div>`;

@@ -1,3 +1,11 @@
+# V34.90 — Phrase DRAS visible dans l’emploi du temps
+
+- La phrase DRAS de départ est maintenant affichée explicitement dans l’emploi du temps.
+- Mardi : phrase DRAS de départ + Déplacer + Remplacer.
+- Jeudi : phrase DRAS de départ + Supprimer + Ajouter + production d’écrit.
+- Vendredi : phrase DRAS de référence rappelée pour la relecture.
+- Aucun changement des corpus, dictées, mots, progressions P1–P3, Espace Parents ou API.
+
 # V34.89 — Consolidation Dictée ↔ DRAS ↔ Production d’écrit P1–P3
 
 - Ajout d’un objet `ecritureDRAS` à chaque semaine de P1, P2 et P3.
