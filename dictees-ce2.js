@@ -234,6 +234,202 @@ const p4Dras=[
 ];
 annualFrenchPlans.p4.forEach((plan,i)=>plan.ecritureDRAS=p4Dras[i]);
 
-window.DICTEES_CE2={version:'34.91',p1,p2:annualFrenchPlans.p2,p3:annualFrenchPlans.p3,p4:annualFrenchPlans.p4,p5:annualFrenchPlans.p5};
+
+const p5Meta=[
+{
+  orthographeCible:'Réactivation des accords dans le groupe nominal ; noms propres et majuscules.',
+  motsCibles:'Tour Eiffel, Paris ; monument, célèbre, immense ; accords nom–adjectif.',
+  grammaireCible:'Groupe nominal enrichi et accord déterminant–nom–adjectif.',
+  exempleGrammaire:'Passer de « un monument célèbre » à « des monuments célèbres ».',
+  reactivation:'Réactiver accords et pluriels de P4.',
+  reactivationWords:'oiseau, puissant, étoiles'
+},
+{
+  orthographeCible:'Accord sujet–verbe ; orthographe lexicale des noms propres et mots culturels.',
+  motsCibles:'Londres, Tamise, tour, célèbre ; sujet singulier/pluriel.',
+  grammaireCible:'Accorder le verbe avec un groupe sujet enrichi.',
+  exempleGrammaire:'Comparer « la tour domine » / « les tours dominent ».',
+  reactivation:'Réactiver 3 mots de la semaine précédente.',
+  reactivationWords:'Paris, monument, célèbre'
+},
+{
+  orthographeCible:'Réactivation des homophones grammaticaux ; pluriels et accords.',
+  motsCibles:'Rome, Colisée ; a / à, et / est, son / sont dans les phrases.',
+  grammaireCible:'Choisir l’homophone grâce au sens de la phrase.',
+  exempleGrammaire:'Justifier le choix dans « Le Colisée est à Rome. »',
+  reactivation:'Réactiver des homophones de P2/P4.',
+  reactivationWords:'a / à, et / est, son / sont'
+},
+{
+  orthographeCible:'Accord sujet–verbe au présent et au futur ; noms propres.',
+  motsCibles:'New York, statue, liberté, visiteurs ; ils visiteront / elle domine.',
+  grammaireCible:'Changer le temps ou le sujet sans perdre les accords.',
+  exempleGrammaire:'Transformer « la statue domine » en « les statues domineront ».',
+  reactivation:'Réactiver 3 mots culturels déjà rencontrés.',
+  reactivationWords:'Londres, Rome, monument'
+},
+{
+  orthographeCible:'Familles de mots et dérivation ; accords dans la phrase.',
+  motsCibles:'Chine, muraille, construire → construction ; long → longueur.',
+  grammaireCible:'Identifier le nom, le verbe et les mots d’une même famille.',
+  exempleGrammaire:'Relier construire / construction et long / longueur dans des phrases.',
+  reactivation:'Réactiver 3 mots de P5.',
+  reactivationWords:'statue, visiteurs, liberté'
+},
+{
+  orthographeCible:'Accords dans le groupe nominal ; orthographe lexicale des mots complexes.',
+  motsCibles:'Taj Mahal, Inde, marbre, magnifique, blanc → blanche/blancs/blanches.',
+  grammaireCible:'Accord de l’adjectif avec le nom.',
+  exempleGrammaire:'Comparer « un monument blanc » / « une façade blanche » / « des pierres blanches ».',
+  reactivation:'Réactiver 3 mots de P5.',
+  reactivationWords:'muraille, construction, Rome'
+},
+{
+  orthographeCible:'Réactivation générale : accords, pluriels, homophones, mots invariables.',
+  motsCibles:'Machu Picchu, Pérou, montagne, ancien, cité ; accords et mots fréquents.',
+  grammaireCible:'Relecture grammaticale complète d’une phrase.',
+  exempleGrammaire:'Repérer sujet, verbe, accords et mots invariables dans une phrase du corpus.',
+  reactivation:'Réactivation cumulative P5.',
+  reactivationWords:'4 mots fragiles des semaines précédentes'
+},
+{
+  orthographeCible:'Pluriel et accords ; noms propres géographiques.',
+  motsCibles:'île de Pâques, statues, géantes, pierre ; accord nom–adjectif.',
+  grammaireCible:'Transformer une phrase du singulier au pluriel.',
+  exempleGrammaire:'Passer de « une statue géante » à « des statues géantes ».',
+  reactivation:'Réactiver 3 mots antérieurs.',
+  reactivationWords:'montagne, cité, ancien'
+},
+{
+  orthographeCible:'Accord sujet–verbe et enrichissement du groupe nominal.',
+  motsCibles:'Rio, Christ Rédempteur, montagne, immense ; adjectifs et sujet.',
+  grammaireCible:'Accorder le verbe avec un groupe sujet enrichi.',
+  exempleGrammaire:'Comparer « le monument immense domine » / « les monuments immenses dominent ».',
+  reactivation:'Réactiver 3 mots de P5.',
+  reactivationWords:'statue, pierre, géante'
+},
+{
+  orthographeCible:'Familles de mots ; mots d’origine savante ; pluriels.',
+  motsCibles:'Égypte, pyramide, pharaon, tombeau ; construire / construction.',
+  grammaireCible:'Enrichir une phrase avec adjectifs et compléments.',
+  exempleGrammaire:'Développer « La pyramide se dresse. » avec deux groupes supplémentaires.',
+  reactivation:'Réactiver les familles de mots rencontrées.',
+  reactivationWords:'construire, construction, monument'
+},
+{
+  orthographeCible:'Synthèse annuelle : accords, homophones, pluriels, mots invariables et lexique culturel.',
+  motsCibles:'Sphinx, Gizeh, désert, ancien ; + mots fragiles de P5.',
+  grammaireCible:'Relecture autonome : sujet/verbe, accords du GN, ponctuation, homophones.',
+  exempleGrammaire:'Corriger collectivement une phrase volontairement fautive en justifiant chaque correction.',
+  reactivation:'Boucle finale de consolidation.',
+  reactivationWords:'5 mots fragiles de P5 + 3 mots issus de P3/P4'
+}
+];
+annualFrenchPlans.p5.forEach((plan,i)=>Object.assign(plan,p5Meta[i]||{}));
+
+const p5Dras=[
+{
+  phraseDepart:'La Tour Eiffel est un monument célèbre de Paris.',
+  supprimer:'Supprimer « de Paris » puis observer la perte d’information.',
+  deplacer:'Déplacer « à Paris » ou un complément du corpus au début.',
+  remplacer:'Remplacer « un monument célèbre » par « des monuments célèbres » et accorder.',
+  ajouter:'Ajouter un adjectif ou un complément pour mieux décrire la tour.',
+  production:'Écrire deux phrases pour présenter la Tour Eiffel.',
+  motsAEmployer:'Tour Eiffel, Paris, monument, célèbre'
+},
+{
+  phraseDepart:'La grande tour domine la Tamise à Londres.',
+  supprimer:'Supprimer « à Londres » puis comparer.',
+  deplacer:'Déplacer « à Londres » au début.',
+  remplacer:'Remplacer « la grande tour » par « les grandes tours » et accorder le verbe.',
+  ajouter:'Ajouter une précision sur la Tamise.',
+  production:'Présenter Londres ou sa tour en deux phrases.',
+  motsAEmployer:'Londres, Tamise, tour, célèbre'
+},
+{
+  phraseDepart:'Le Colisée est à Rome et il accueille de nombreux visiteurs.',
+  supprimer:'Supprimer un complément sans perdre l’idée principale.',
+  deplacer:'Déplacer « à Rome » au début.',
+  remplacer:'Remplacer « le Colisée » par « les monuments » et refaire les accords.',
+  ajouter:'Ajouter une phrase avec a ou à correctement choisi.',
+  production:'Écrire deux phrases sur Rome en utilisant au moins deux homophones étudiés.',
+  motsAEmployer:'Rome, Colisée, visiteurs, a / à, et / est'
+},
+{
+  phraseDepart:'La statue de la Liberté domine le port de New York.',
+  supprimer:'Supprimer « de New York » puis comparer.',
+  deplacer:'Déplacer « dans le port » au début.',
+  remplacer:'Remplacer « la statue » par « les statues » et accorder.',
+  ajouter:'Ajouter un complément avec visiteurs.',
+  production:'Écrire deux phrases au présent puis transformer l’une d’elles au futur.',
+  motsAEmployer:'New York, statue, liberté, visiteurs'
+},
+{
+  phraseDepart:'La Grande Muraille traverse une longue région de Chine.',
+  supprimer:'Supprimer « de Chine » puis comparer.',
+  deplacer:'Déplacer un complément de lieu au début.',
+  remplacer:'Remplacer « la longue muraille » par « les longues murailles ».',
+  ajouter:'Ajouter un mot de la famille de construire.',
+  production:'Écrire deux phrases utilisant construire et construction.',
+  motsAEmployer:'Chine, muraille, construire, construction'
+},
+{
+  phraseDepart:'Le Taj Mahal est un magnifique monument de marbre blanc.',
+  supprimer:'Supprimer un adjectif et observer ce que la description perd.',
+  deplacer:'Déplacer un complément de lieu.',
+  remplacer:'Remplacer « un monument blanc » par « une façade blanche » puis par le pluriel.',
+  ajouter:'Ajouter un adjectif précis.',
+  production:'Décrire le Taj Mahal en deux ou trois phrases.',
+  motsAEmployer:'Taj Mahal, Inde, marbre, magnifique, blanc'
+},
+{
+  phraseDepart:'Le Machu Picchu est une ancienne cité dans la montagne.',
+  supprimer:'Supprimer « dans la montagne ».',
+  deplacer:'Déplacer le complément de lieu au début.',
+  remplacer:'Remplacer « une ancienne cité » par « des anciennes cités » et corriger si nécessaire.',
+  ajouter:'Ajouter un adjectif et un complément.',
+  production:'Écrire trois phrases courtes pour présenter le Machu Picchu.',
+  motsAEmployer:'Machu Picchu, Pérou, montagne, ancien, cité'
+},
+{
+  phraseDepart:'Une statue géante se dresse sur l’île de Pâques.',
+  supprimer:'Supprimer « sur l’île de Pâques » puis comparer.',
+  deplacer:'Déplacer ce complément au début.',
+  remplacer:'Remplacer « une statue géante » par « des statues géantes ».',
+  ajouter:'Ajouter une précision sur la pierre.',
+  production:'Décrire les statues de l’île de Pâques en deux phrases.',
+  motsAEmployer:'île de Pâques, statue, géante, pierre'
+},
+{
+  phraseDepart:'Le Christ Rédempteur immense domine Rio depuis la montagne.',
+  supprimer:'Supprimer « depuis la montagne ».',
+  deplacer:'Déplacer le complément de lieu au début.',
+  remplacer:'Remplacer le sujet singulier par un sujet pluriel et refaire les accords.',
+  ajouter:'Ajouter un adjectif ou une précision sur Rio.',
+  production:'Écrire deux phrases descriptives avec un groupe nominal enrichi.',
+  motsAEmployer:'Rio, Christ Rédempteur, montagne, immense'
+},
+{
+  phraseDepart:'La pyramide de Khéops est un ancien tombeau de pharaon.',
+  supprimer:'Supprimer « de pharaon » puis comparer.',
+  deplacer:'Déplacer un complément au début.',
+  remplacer:'Remplacer « la pyramide » par « les pyramides » et accorder.',
+  ajouter:'Ajouter un mot de la famille de construire.',
+  production:'Écrire trois phrases sur la pyramide en enrichissant chaque phrase.',
+  motsAEmployer:'Égypte, pyramide, pharaon, tombeau, construction'
+},
+{
+  phraseDepart:'Le Sphinx de Gizeh veille dans le désert depuis très longtemps.',
+  supprimer:'Supprimer un complément et observer la précision perdue.',
+  deplacer:'Déplacer « dans le désert » au début.',
+  remplacer:'Remplacer un groupe nominal par un autre et refaire tous les accords.',
+  ajouter:'Ajouter un adjectif et un mot invariable.',
+  production:'Écrire un petit paragraphe de trois phrases en réemployant cinq mots de P5.',
+  motsAEmployer:'Sphinx, Gizeh, désert, ancien + 2 mots fragiles de P5'
+}
+];
+annualFrenchPlans.p5.forEach((plan,i)=>plan.ecritureDRAS=p5Dras[i]);
+
+window.DICTEES_CE2={version:'34.92',p1,p2:annualFrenchPlans.p2,p3:annualFrenchPlans.p3,p4:annualFrenchPlans.p4,p5:annualFrenchPlans.p5};
 window.DICTEES_CE2_ANNUAL=annualFrenchPlans;
 })();

@@ -1,3 +1,17 @@
+# V34.92 — Dictées P5 + DRAS + production d’écrit
+
+- P5 enrichie dans `dictees-ce2.js`.
+- Pour chaque semaine : orthographe cible, mots concernés, grammaire cible, exemple élève et réactivation.
+- Progression P5 : synthèse des accords, pluriels, homophones, familles de mots, noms propres et relecture autonome.
+- Ajout de `ecritureDRAS` à chaque semaine de P5.
+- Les phrases DRAS réemploient les corpus culturels de la période : Tour Eiffel, Londres, Colisée, Statue de la Liberté, Grande Muraille, Taj Mahal, Machu Picchu, île de Pâques, Christ Rédempteur, pyramide de Khéops, Sphinx.
+- Mardi : phrase DRAS + Déplacer + Remplacer.
+- Jeudi : phrase DRAS + Supprimer + Ajouter + production d’écrit.
+- Vendredi : relecture DRAS et vocabulaire de la semaine.
+- P5 reprend l’affichage validé P1–P4 dans l’emploi du temps.
+- La dernière semaine devient une boucle de synthèse et de réactivation annuelle.
+- Espace Parents inchangé dans cette version.
+
 # V34.91 — Dictées P4 + DRAS + production d’écrit
 
 - P4 enrichie dans `dictees-ce2.js`.
