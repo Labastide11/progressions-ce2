@@ -12,8 +12,8 @@
       {
         "week": 2,
         "theme": "Installer le rituel de dictée",
-        "words": "Premiers mots fréquents rencontrés en classe.",
-        "priority": "Sélection courte selon les observations de rentrée."
+        "words": "avec, dans, pour, mais, très, aussi, alors, parce que",
+        "priority": "avec, dans, pour, mais, très"
       },
       {
         "week": 3,
