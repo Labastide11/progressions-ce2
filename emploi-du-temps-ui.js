@@ -601,11 +601,41 @@
         <div><strong>Grammaire :</strong> ${p.grammar}</div>
         <div><strong>Exemple élève :</strong> ${p.grammarExamples||'À partir d’une phrase de la semaine.'}</div>
         <div><strong>Réactivation :</strong> ${p.reactivationWords||p.reactivation||'—'}</div>
+        ${p.ecritureDRAS?`<div><strong>DRAS — phrase de départ :</strong> ${p.ecritureDRAS.phraseDepart}</div><div><strong>Production d’écrit :</strong> ${p.ecritureDRAS.production}</div><div><strong>Mots à employer :</strong> ${p.ecritureDRAS.motsAEmployer}</div>`:''}
         ${p.support?`<div><strong>Support :</strong> ${p.support}</div>`:''}
         <div><strong>Dictées flash :</strong>${flashes}</div>
         <div class="dictation-programming-compact__final">${bilan}</div>
       </div>
     </details>`;
+  }
+
+  function renderDictationDrasGuide(p,mode){
+    const d=p&&p.ecritureDRAS; if(!d)return '';
+    if(mode==='tuesday'){
+      return `<div class="dictation-dras-guide">
+        <div class="dictation-dras-guide__title">🧩 DRAS — à partir du corpus</div>
+        <div><strong>Phrase de départ :</strong> ${d.phraseDepart}</div>
+        <div><strong>D — Déplacer :</strong> ${d.deplacer}</div>
+        <div><strong>R — Remplacer :</strong> ${d.remplacer}</div>
+      </div>`;
+    }
+    if(mode==='thursday'){
+      return `<div class="dictation-dras-guide">
+        <div class="dictation-dras-guide__title">✍️ DRAS + production d’écrit</div>
+        <div><strong>S — Supprimer :</strong> ${d.supprimer}</div>
+        <div><strong>A — Ajouter :</strong> ${d.ajouter}</div>
+        <div><strong>Production :</strong> ${d.production}</div>
+        <div><strong>Mots à employer :</strong> ${d.motsAEmployer}</div>
+      </div>`;
+    }
+    if(mode==='friday'){
+      return `<div class="dictation-dras-guide">
+        <div class="dictation-dras-guide__title">🔎 Relecture DRAS</div>
+        <div>Relire la production et vérifier : <strong>sens, accords, précision et vocabulaire de la semaine</strong>.</div>
+        <div><strong>Mots attendus / disponibles :</strong> ${d.motsAEmployer}</div>
+      </div>`;
+    }
+    return '';
   }
 
   function p1DictationTimetableGuide(week,day,row){
@@ -628,6 +658,7 @@
         <div>${flash}</div>
         <div><strong>Grammaire :</strong> ${p.grammar}</div>
         <div><strong>À faire dire / manipuler :</strong> ${p.grammarExamples||'À partir de la phrase du jour.'}</div>
+        ${renderDictationDrasGuide(p,'tuesday')}
       </div>`;
     }
     if(dayName==='Jeudi'){
@@ -637,6 +668,7 @@
         <div>${flash}</div>
         <div><strong>Réactivation :</strong> ${p.reactivationWords||p.reactivation||'—'}</div>
         <div><strong>Point de vigilance :</strong> ${p.orthographyWords||p.orthography}</div>
+        ${renderDictationDrasGuide(p,'thursday')}
       </div>`;
     }
     if(dayName==='Vendredi'){
@@ -645,6 +677,7 @@
         <div>${p.final||p.note||'Bilan formatif de la semaine.'}</div>
         <div><strong>À surveiller :</strong> ${p.orthographyWords||p.orthography}</div>
         <div><strong>Mots à reprendre si besoin :</strong> ${p.reactivationWords||'selon les réussites observées'}</div>
+        ${renderDictationDrasGuide(p,'friday')}
       </div>`;
     }
     return '';
@@ -1384,6 +1417,7 @@
       <div><strong>Grammaire :</strong> ${plan.grammaireCible}</div>
       <div><strong>Exemple élève :</strong> ${plan.exempleGrammaire}</div>
       <div><strong>Réactivation :</strong> ${plan.reactivationWords}</div>
+      ${plan.ecritureDRAS?`<div><strong>DRAS — phrase de départ :</strong> ${plan.ecritureDRAS.phraseDepart}</div><div><strong>Production d’écrit :</strong> ${plan.ecritureDRAS.production}</div><div><strong>Mots à employer :</strong> ${plan.ecritureDRAS.motsAEmployer}</div>`:''}
       <div class="dictation-programming-compact__final"><strong>Bilan :</strong> ${plan.final}</div>
       </div></details>`;
   }
@@ -1392,9 +1426,9 @@
     const p=p2DictationBankData(week); if(!p)return '';
     const d=String(day||'').split(' ')[0];
     if(d==='Lundi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">📝 ${p.support}</div><div><strong>Banque :</strong> ${p.words.join(', ')}</div><div><strong>Prioritaires :</strong> ${p.priority.join(', ')}</div><div><strong>Point orthographique :</strong> ${p.orthographeCible}</div><div><strong>Mots concernés :</strong> ${p.motsCibles}</div><div><strong>Réactivation :</strong> ${p.reactivationWords}</div></div>`;
-    if(d==='Mardi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">✍️ Flash 2</div><div>${p.flash[1]}</div><div><strong>Grammaire :</strong> ${p.grammaireCible}</div><div><strong>Manipulation :</strong> ${p.exempleGrammaire}</div></div>`;
-    if(d==='Jeudi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">✍️ Flash 3</div><div>${p.flash[2]}</div><div><strong>Réactivation :</strong> ${p.reactivationWords}</div><div><strong>Vigilance :</strong> ${p.motsCibles}</div></div>`;
-    if(d==='Vendredi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">✅ Dictée bilan</div><div>${p.final}</div><div><strong>À surveiller :</strong> ${p.motsCibles}</div><div><strong>Mots à reprendre :</strong> ${p.reactivationWords}</div></div>`;
+    if(d==='Mardi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">✍️ Flash 2</div><div>${p.flash[1]}</div><div><strong>Grammaire :</strong> ${p.grammaireCible}</div><div><strong>Manipulation :</strong> ${p.exempleGrammaire}</div>${renderDictationDrasGuide(p,'tuesday')}</div>`;
+    if(d==='Jeudi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">✍️ Flash 3</div><div>${p.flash[2]}</div><div><strong>Réactivation :</strong> ${p.reactivationWords}</div><div><strong>Vigilance :</strong> ${p.motsCibles}</div>${renderDictationDrasGuide(p,'thursday')}</div>`;
+    if(d==='Vendredi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">✅ Dictée bilan</div><div>${p.final}</div><div><strong>À surveiller :</strong> ${p.motsCibles}</div><div><strong>Mots à reprendre :</strong> ${p.reactivationWords}</div>${renderDictationDrasGuide(p,'friday')}</div>`;
     return '';
   }
 
@@ -1425,6 +1459,7 @@
         <div><strong>Grammaire :</strong> ${plan.grammaireCible}</div>
         <div><strong>Exemple élève :</strong> ${plan.exempleGrammaire}</div>
         <div><strong>Réactivation :</strong> ${plan.reactivationWords}</div>
+        ${plan.ecritureDRAS?`<div><strong>DRAS — phrase de départ :</strong> ${plan.ecritureDRAS.phraseDepart}</div><div><strong>Production d’écrit :</strong> ${plan.ecritureDRAS.production}</div><div><strong>Mots à employer :</strong> ${plan.ecritureDRAS.motsAEmployer}</div>`:''}
         <div><strong>Flash 1 :</strong> ${plan.flash[0]}</div>
         <div><strong>Flash 2 :</strong> ${plan.flash[1]}</div>
         <div><strong>Flash 3 :</strong> ${plan.flash[2]}</div>
@@ -1450,18 +1485,21 @@
       <div>${p.flash[1]}</div>
       <div><strong>Grammaire :</strong> ${p.grammaireCible}</div>
       <div><strong>Manipulation :</strong> ${p.exempleGrammaire}</div>
+      ${renderDictationDrasGuide(p,'tuesday')}
     </div>`;
     if(d==='Jeudi')return `<div class="dictation-timetable-guide">
       <div class="dictation-timetable-guide__title">✍️ Flash 3</div>
       <div>${p.flash[2]}</div>
       <div><strong>Réactivation :</strong> ${p.reactivationWords}</div>
       <div><strong>Vigilance :</strong> ${p.motsCibles}</div>
+      ${renderDictationDrasGuide(p,'thursday')}
     </div>`;
     if(d==='Vendredi')return `<div class="dictation-timetable-guide">
       <div class="dictation-timetable-guide__title">✅ Dictée bilan</div>
       <div>${p.final}</div>
       <div><strong>À surveiller :</strong> ${p.motsCibles}</div>
       <div><strong>Mots à reprendre :</strong> ${p.reactivationWords}</div>
+      ${renderDictationDrasGuide(p,'friday')}
     </div>`;
     return '';
   }

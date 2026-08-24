@@ -408,3 +408,20 @@ body.projection-active{overflow:hidden}
   .dictation-programming-compact__body{grid-template-columns:1fr}
   .dictation-programming-compact__final{grid-column:auto}
 }
+
+
+/* V34.89 — DRAS directement relié au corpus de dictée */
+.dictation-dras-guide{
+  margin-top:8px;
+  padding:9px 10px;
+  border:1px dashed #8b78d8;
+  border-radius:9px;
+  background:#f7f4ff;
+  color:#263858;
+}
+.dictation-dras-guide>div+div{margin-top:3px}
+.dictation-dras-guide__title{
+  font-weight:900;
+  color:#5540a9;
+  margin-bottom:4px;
+}

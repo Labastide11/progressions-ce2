@@ -1,3 +1,16 @@
+# V34.89 — Consolidation Dictée ↔ DRAS ↔ Production d’écrit P1–P3
+
+- Ajout d’un objet `ecritureDRAS` à chaque semaine de P1, P2 et P3.
+- Chaque DRAS part d’une phrase construite avec le corpus réel de la dictée de la semaine.
+- Mardi : phrase de départ + Déplacer + Remplacer.
+- Jeudi : Supprimer + Ajouter + production d’écrit courte.
+- La production impose explicitement plusieurs mots de la banque de dictée.
+- Vendredi : relecture DRAS de la production avec sens, accords, précision et vocabulaire.
+- Les blocs compacts de programmation indiquent désormais la phrase DRAS et la production attendue.
+- Une seule source reste utilisée : `dictees-ce2.js`.
+- P4/P5 inchangées pour cette étape.
+- Espace Parents inchangé.
+
 # V34.88 — Dictées P3 structurées
 
 - P3 enrichie dans la banque annuelle `dictees-ce2.js`.
