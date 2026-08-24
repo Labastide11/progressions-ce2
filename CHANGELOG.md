@@ -1,3 +1,14 @@
+# V34.88 — Dictées P3 structurées
+
+- P3 enrichie dans la banque annuelle `dictees-ce2.js`.
+- Pour chaque semaine : orthographe cible, mots concernés, grammaire cible, exemple élève et réactivation.
+- Progression P3 : m devant m/b/p, accents, familles de mots, préfixes/suffixes, accords du groupe nominal.
+- Spirale de réactivation : 3 anciens mots repris chaque semaine ; dernière semaine = consolidation.
+- P3 reprend l’affichage validé en P1/P2 directement dans l’emploi du temps.
+- Bloc de programmation P3 compact et dépliable.
+- P4/P5 inchangées pour cette étape.
+- Espace Parents inchangé.
+
 # V34.87 — Banque annuelle unique des dictées + P2 structurée
 
 - Création de `dictees-ce2.js`, source centrale P1→P5.

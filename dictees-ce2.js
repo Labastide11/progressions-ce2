@@ -63,6 +63,50 @@ const p2Meta=[
 ];
 annualFrenchPlans.p2.forEach((plan,i)=>Object.assign(plan,p2Meta[i]||{}));
 
-window.DICTEES_CE2={version:'34.87',p1,p2:annualFrenchPlans.p2,p3:annualFrenchPlans.p3,p4:annualFrenchPlans.p4,p5:annualFrenchPlans.p5};
+const p3Meta=[
+{
+  orthographeCible:'m devant m, b, p ; accents et orthographe lexicale.',
+  motsCibles:'bonhomme, imposant ; délicatement, énorme ; prudence.',
+  grammaireCible:'Accord sujet–verbe à l’imparfait et marques du pluriel.',
+  exempleGrammaire:'Comparer « le gamin poussait » / « les gamins poussaient ».',
+  reactivation:'Réactiver des mots de P2 dans une phrase à l’imparfait.',
+  reactivationWords:'tempête, cadeau, directeur'
+},
+{
+  orthographeCible:'Accents ; familles de mots ; pluriel des noms.',
+  motsCibles:'protéger → protection ; coquille, faille, rocher ; pieuvre → pieuvres.',
+  grammaireCible:'Accord dans le groupe nominal et reprise pronominale.',
+  exempleGrammaire:'Passer de « la pieuvre cachée » à « les pieuvres cachées » puis reprendre par elles.',
+  reactivation:'Réactiver 3 mots déjà appris.',
+  reactivationWords:'bonhomme, neige, effort'
+},
+{
+  orthographeCible:'Familles de mots ; suffixes ; accords dans le groupe nominal.',
+  motsCibles:'communiquer → communication ; sifflement ; mammifère ; intelligent.',
+  grammaireCible:'Accord nom–adjectif et sujet–verbe au présent.',
+  exempleGrammaire:'Comparer « le dauphin intelligent nage » / « les dauphins intelligents nagent ».',
+  reactivation:'Réactiver des mots de P3 et P2.',
+  reactivationWords:'protéger, rocher, cadeau'
+},
+{
+  orthographeCible:'Préfixe sous- ; familles de mots ; pluriel régulier.',
+  motsCibles:'souterrain ; fourmi → fourmis ; ouvrière → ouvrières ; survivre → survie.',
+  grammaireCible:'Accords dans le groupe nominal et emploi du présent.',
+  exempleGrammaire:'Transformer « l’ouvrière fabrique le nid » en « les ouvrières fabriquent les nids ».',
+  reactivation:'Réactiver 3 mots antérieurs.',
+  reactivationWords:'mammifère, communiquer, coquille'
+},
+{
+  orthographeCible:'Accords dans le groupe nominal ; orthographe lexicale de mots complexes.',
+  motsCibles:'puissant → puissants ; rapide → rapides ; rapace ; repérer ; acéré.',
+  grammaireCible:'Chaîne d’accords nom–adjectif et sujet–verbe.',
+  exempleGrammaire:'Comparer « l’oiseau puissant chasse » / « les oiseaux puissants chassent ».',
+  reactivation:'Boucle de consolidation P3.',
+  reactivationWords:'3 à 5 mots fragiles de P3 + 1 mot de P2'
+}
+];
+annualFrenchPlans.p3.forEach((plan,i)=>Object.assign(plan,p3Meta[i]||{}));
+
+window.DICTEES_CE2={version:'34.88',p1,p2:annualFrenchPlans.p2,p3:annualFrenchPlans.p3,p4:annualFrenchPlans.p4,p5:annualFrenchPlans.p5};
 window.DICTEES_CE2_ANNUAL=annualFrenchPlans;
 })();
