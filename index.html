@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période." name="description"/>
-<title>V34.99 — Progressions CE2 — Ma classe au quotidien</title>
+<title>V35.23 — Progressions CE2 — Ma classe au quotidien</title>
 <link href="styles.css?v=33.27" rel="stylesheet"/>
 <link href="groupes-besoin.css?v=32.92" rel="stylesheet"/>
 <link href="home-tablet.css?v=33.27" rel="stylesheet"/>
@@ -21,6 +21,7 @@
 <link href="feliciter.css?v=33.27" rel="stylesheet"/><link href="timer.css?v=33.27" rel="stylesheet"/><link href="quick-labels.css?v=33.27" rel="stylesheet"/><link href="espace-publication.css?v=34.78" rel="stylesheet"/>
 <link href="parent-flash-info.css?v=33.69" rel="stylesheet"/>
 <link href="questions-eleves.css?v=33.88" rel="stylesheet"/>
+<link href="parent-activity.css?v=35.23" rel="stylesheet"/>
 </head>
 <body>
 <header class="app-header">
@@ -95,7 +96,7 @@
 <article class="home-panel home-panel--pedago home-panel--list">
 <div class="home-panel__headerline">
 <div class="home-panel__lead">
-<div class="home-panel__bigicon home-panel__bigicon--logo home-panel__mascot home-panel__mascot--owl"><img alt="" class="home-panel__hero" src="assets/home-v32-75/hibou-coucou-transparent.png"/></div>
+<button aria-haspopup="dialog" aria-controls="parentActivityModal" class="home-panel__bigicon home-panel__bigicon--logo home-panel__mascot home-panel__mascot--owl parent-activity-trigger" id="parentActivityBtn" title="Activité Espace Parents" type="button"><img alt="" class="home-panel__hero" src="assets/home-v32-75/hibou-coucou-transparent.png"/></button>
 <div>
 <h2>Organisation</h2>
 <p>Planifiez, organisez et structurez vos apprentissages.</p>
@@ -800,7 +801,31 @@
 <script src="documents.js?v=31.55"></script>
 <script src="data.js?v=34.38"></script>
 <script src="hibou-progression-map.js?v=31.55"></script>
+<section aria-hidden="true" aria-labelledby="parentActivityTitle" class="parent-activity-modal hidden" id="parentActivityModal">
+  <div aria-modal="true" class="parent-activity-panel" role="dialog">
+    <header class="parent-activity-head">
+      <div><p class="parent-activity-kicker">Espace Parents</p><h2 id="parentActivityTitle">📊 Activité Espace Parents</h2></div>
+      <button aria-label="Fermer" class="parent-activity-close" id="parentActivityClose" type="button">×</button>
+    </header>
+    <div class="parent-activity-body">
+      <p class="parent-activity-status" id="parentActivityStatus">Chargement des statistiques…</p>
+      <div class="parent-activity-totals">
+        <div class="parent-activity-total"><strong id="parentActivityToday">—</strong><span>Visites aujourd’hui</span></div>
+        <div class="parent-activity-total"><strong id="parentActivityWeek">—</strong><span>Visites sur 7 jours</span></div>
+      </div>
+      <div class="parent-activity-grid">
+        <section class="parent-activity-card"><h3>📄 Pages les plus vues</h3><div class="parent-activity-bars" id="parentActivityPages"></div></section>
+        <section class="parent-activity-card"><h3>🌐 Langues utilisées</h3><div class="parent-activity-bars" id="parentActivityLanguages"></div></section>
+        <section class="parent-activity-card"><h3>📱 Appareils utilisés</h3><div class="parent-activity-bars" id="parentActivityDevices"></div></section>
+        <section class="parent-activity-card"><h3>🕒 Horaires de consultation</h3><div class="parent-activity-bars" id="parentActivityHours"></div></section>
+      </div>
+      <p class="parent-activity-foot">Statistiques anonymes : aucune famille ni aucun élève n’est identifié.</p>
+      <button class="btn" id="parentActivityRefresh" type="button">↻ Actualiser</button>
+    </div>
+  </div>
+</section>
 <script src="app.js?v=34.47"></script>
+<script src="parent-activity.js?v=35.23"></script>
 <script src="groupes-besoin.js?v=32.96"></script>
 <script src="liste-eleves-popup.js?v=33.38"></script>
 <script src="random-student.js?v=32.63"></script>
