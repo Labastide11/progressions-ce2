@@ -1,3 +1,11 @@
+
+## V35.27 — Photos élèves locales
+- Ajout d’un gestionnaire commun de portraits (`student-photos.js`).
+- Utilisation des photos disponibles dans Vue élèves, liste/appel, tirage au sort, CHAM, suivi et parcours.
+- `IMG_9761.JPG` est associé à Hiba (`hiba.JPG`).
+- En l’absence de photo, conservation automatique de l’icône fille/garçon/neutre.
+- Le dossier `assets/photos-eleves/` est ignoré par Git par défaut pour éviter une publication accidentelle de photos d’élèves.
+
 # V34.99 — « À venir » dynamique par période
 
 - Espace Parents : les informations « À venir » sont désormais organisées par période.

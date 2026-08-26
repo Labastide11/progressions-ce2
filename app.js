@@ -84,7 +84,7 @@
       cham:pick(live.cham,fallback.cham??'')
     };
   }
-  function studentPortraitPath(student){const sexe=hibouNorm(rosterMetaFor(student).sexe||'');if(['fille','feminin','female','f'].includes(sexe)||sexe.startsWith('fill')||sexe.startsWith('femin'))return 'assets/portraits/portrait_fille.png';if(['garcon','masculin','male','m','g'].includes(sexe)||sexe.startsWith('garc')||sexe.startsWith('mascul'))return 'assets/portraits/portrait_garcon.png';return 'assets/portraits/portrait_neutre.png';}
+  function studentPortraitPath(student){const sexe=rosterMetaFor(student).sexe||'';if(window.ProgressionsStudentPhotos)return window.ProgressionsStudentPhotos.get(student,sexe);const s=hibouNorm(sexe);if(['fille','feminin','female','f'].includes(s)||s.startsWith('fill')||s.startsWith('femin'))return 'assets/portraits/portrait_fille.png';if(['garcon','masculin','male','m','g'].includes(s)||s.startsWith('garc')||s.startsWith('mascul'))return 'assets/portraits/portrait_garcon.png';return 'assets/portraits/portrait_neutre.png';}
   function studentAvatarHtml(student,extraClass=''){const portrait=studentPortraitPath(student);return '<span class="student-avatar '+extraClass+'"><img class="student-avatar__image" src="'+esc(portrait)+'" alt="Portrait de '+esc(student)+'"></span>'; }
   function subjectFromCode(code){const prefix=String(code||'').split('-')[0];const map={OR:'francais',LEC:'francais',COM:'francais',LIT:'francais',VOC:'francais',GRA:'francais',CONJ:'francais',ORT:'francais',ECR:'francais',NUM:'maths',CAL:'maths',GEO:'maths',MES:'maths',PROB:'maths'};return map[prefix]||state.subject||'francais';}
   function periodFromCode(code){const m=String(code||'').match(/-P([1-5])-?/i);return m?'p'+m[1]:'all';}

@@ -23,7 +23,8 @@
     return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
   };
   const readJson=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key)||'')||fallback;}catch(e){return fallback;}};
-  const portraitFor=sexe=>{
+  const portraitFor=(prenom,sexe)=>{
+    if(window.ProgressionsStudentPhotos)return window.ProgressionsStudentPhotos.get(prenom,sexe);
     const value=norm(sexe);
     if(['fille','feminin','female','f'].includes(value)||value.startsWith('fill')||value.startsWith('femin'))return 'assets/portraits/portrait_fille.png';
     if(['garcon','masculin','male','m','g'].includes(value)||value.startsWith('garc')||value.startsWith('mascul'))return 'assets/portraits/portrait_garcon.png';
@@ -87,7 +88,7 @@
     }
     selectedStudent=pool[Math.floor(Math.random()*pool.length)];
     result.innerHTML=`<div class="random-student-card">
-      <img src="${portraitFor(selectedStudent.sexe||'')}" alt="Portrait de ${esc(selectedStudent.prenom)}">
+      <img src="${portraitFor(selectedStudent.prenom,selectedStudent.sexe||'')}" alt="Portrait de ${esc(selectedStudent.prenom)}">
       <span>Élève choisi</span>
       <strong>${esc(displayName(selectedStudent))}</strong>
     </div>`;

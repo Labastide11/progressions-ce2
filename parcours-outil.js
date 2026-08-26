@@ -42,7 +42,7 @@ function key(){return `${currentStudent}__${periodSelect.value}`;}
 function emptyRecord(){return {masteredNotes:'',needs:'',goals:'',supports:'',nextSteps:'',bilan:'',updatedAt:today(),successes:[],comments:[],savedAt:''};}
 function record(){return db[key()]||emptyRecord();}
 function getMeta(student){const all=rosterMeta();return all[norm(student)]||{};}
-function portraitFor(student){const sex=norm(getMeta(student).sexe);if(sex.startsWith('f'))return 'assets/portraits/portrait_fille.png';if(sex.startsWith('g')||sex.startsWith('m'))return 'assets/portraits/portrait_garcon.png';return 'assets/portraits/portrait_neutre.png';}
+function portraitFor(student){const sexe=getMeta(student).sexe||'';if(window.ProgressionsStudentPhotos)return window.ProgressionsStudentPhotos.get(student,sexe);const sex=norm(sexe);if(sex.startsWith('f'))return 'assets/portraits/portrait_fille.png';if(sex.startsWith('g')||sex.startsWith('m'))return 'assets/portraits/portrait_garcon.png';return 'assets/portraits/portrait_neutre.png';}
 function parseDate(value){if(!value)return null;const d=new Date(value);if(!Number.isNaN(d.getTime()))return d;const m=String(value).match(/^(\d{2})\/(\d{2})\/(\d{4})(?:[ T](\d{2}):(\d{2})(?::(\d{2}))?)?$/);if(!m)return null;return new Date(Number(m[3]),Number(m[2])-1,Number(m[1]),Number(m[4]||0),Number(m[5]||0),Number(m[6]||0));}
 function formatDate(value){if(!value)return 'Jamais';const d=parseDate(value);return d?new Intl.DateTimeFormat('fr-FR',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}).format(d).replace(',',' à'):String(value);}
 function dateTime(value){const d=parseDate(value);return d?d.getTime():0;}

@@ -31,7 +31,8 @@
   const writeAttendance=data=>localStorage.setItem(attendanceKey(),JSON.stringify({morning:Array.from(new Set(data.morning||[])),afternoon:Array.from(new Set(data.afternoon||[]))}));
   const studentKey=s=>norm([s.prenom,s.nom].filter(Boolean).join('|'));
 
-  const portraitFor=sexe=>{
+  const portraitFor=(prenom,sexe)=>{
+    if(window.ProgressionsStudentPhotos)return window.ProgressionsStudentPhotos.get(prenom,sexe);
     const value=norm(sexe);
     if(['fille','feminin','female','f'].includes(value)||value.startsWith('fill')||value.startsWith('femin'))return 'assets/portraits/portrait_fille.png';
     if(['garcon','masculin','male','m','g'].includes(value)||value.startsWith('garc')||value.startsWith('mascul'))return 'assets/portraits/portrait_garcon.png';
@@ -140,7 +141,7 @@
       const absent=absentSet.has(key);
       const fullName=[s.prenom,String(s.nom||'').toUpperCase()].filter(Boolean).join(' ');
       const birth=fmtDate(s.naissance||'');
-      const portrait=portraitFor(s.sexe||'');
+      const portrait=portraitFor(s.prenom,s.sexe||'');
       const cardClass=genderClass(s.sexe||'');
       const cham=isYes(s.cham);
       const period=activeSession==='morning'?'ce matin':'cet après-midi';

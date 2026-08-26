@@ -63,7 +63,9 @@ function metaFor(n){
   };
 }
 function portrait(n){
-  const s=norm(metaFor(n).sexe);
+  const sexe=metaFor(n).sexe||'';
+  if(window.ProgressionsStudentPhotos)return window.ProgressionsStudentPhotos.get(n,sexe);
+  const s=norm(sexe);
   if(['fille','feminin','female','f'].includes(s)||s.startsWith('fill')||s.startsWith('femin'))return'assets/portraits/portrait_fille.png';
   if(['garcon','masculin','male','m','g'].includes(s)||s.startsWith('garc')||s.startsWith('mascul'))return'assets/portraits/portrait_garcon.png';
   return'assets/portraits/portrait_neutre.png';
