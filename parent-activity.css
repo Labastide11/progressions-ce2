@@ -1,4 +1,4 @@
-/* V35.25 — badge ancré au bouton hibou */
+/* V35.26 — badge ancré directement sur l'image du hibou */
 .parent-activity-trigger{
   appearance:none;border:0;background:transparent;padding:0;margin:0;cursor:pointer;
   font:inherit;color:inherit;position:relative;border-radius:22px;
@@ -11,8 +11,21 @@
   overflow:visible!important;
 }
 
+
+.parent-activity-icon-wrap{
+  position:relative;
+  display:inline-flex;
+  width:fit-content;
+  height:fit-content;
+  line-height:0;
+  overflow:visible;
+}
+.parent-activity-icon-wrap .home-panel__hero{
+  display:block;
+}
+
 .parent-activity-badge{
-  position:absolute;top:-5px;right:-10px;z-index:8;
+  position:absolute;top:-7px;right:-9px;z-index:8;
   min-width:25px;height:25px;padding:0 6px;
   display:inline-flex;align-items:center;justify-content:center;
   border:3px solid #fff;border-radius:999px;

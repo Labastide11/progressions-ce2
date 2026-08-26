@@ -1,4 +1,4 @@
-// V35.24 — Activité Espace Parents : clic uniquement + badge nouvelles visites
+// V35.26 — badge ancré directement sur l'image du hibou
 (function(){
   'use strict';
 
@@ -22,13 +22,14 @@
 
   function ensureBadge(){
     if(!btn)return null;
-    let badge=btn.querySelector('.parent-activity-badge');
+    const anchor=btn.querySelector('.parent-activity-icon-wrap') || btn;
+    let badge=anchor.querySelector('.parent-activity-badge');
     if(!badge){
       badge=document.createElement('span');
       badge.className='parent-activity-badge';
       badge.setAttribute('aria-label','');
       badge.hidden=true;
-      btn.appendChild(badge);
+      anchor.appendChild(badge);
     }
     return badge;
   }
