@@ -1,8 +1,21 @@
-/* V35.23 — Activité Espace Parents */
+/* V35.24 — Activité Espace Parents : clic + badge nouvelles visites */
 .parent-activity-trigger{
   appearance:none;border:0;background:transparent;padding:0;margin:0;cursor:pointer;
   font:inherit;color:inherit;position:relative;border-radius:22px;
 }
+
+.parent-activity-badge{
+  position:absolute;top:-7px;right:-9px;z-index:8;
+  min-width:25px;height:25px;padding:0 6px;
+  display:inline-flex;align-items:center;justify-content:center;
+  border:3px solid #fff;border-radius:999px;
+  background:#f14668;color:#fff;
+  font:900 12px/1 system-ui,sans-serif;
+  box-shadow:0 4px 12px rgba(183,26,61,.28);
+  pointer-events:none;
+}
+.parent-activity-badge[hidden]{display:none!important}
+
 .parent-activity-trigger:focus-visible{outline:4px solid rgba(74,144,226,.38);outline-offset:4px}
 .parent-activity-trigger::after{
   content:'Activité Espace Parents';position:absolute;left:50%;bottom:-34px;transform:translateX(-50%) translateY(-3px);
