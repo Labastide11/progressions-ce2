@@ -1,0 +1,219 @@
+/* V35.31 — Audit global des popups / écrans portables
+   Règle permanente : toute fenêtre dépassant la hauteur disponible doit rester navigable
+   par ascenseur vertical interne, sans défilement horizontal. */
+
+/* Sécurité générale : aucune fenêtre ne peut sortir verticalement de l'écran. */
+.document-library__panel,
+.evaluations-panel,
+.feliciter-dialog,
+.memo-notes-dialog,
+.parent-activity-panel,
+.po-panel,
+.random-student-panel,
+.supports-panel,
+.quick-riddle-panel,
+.test-mode-panel {
+  max-height:calc(100vh - 28px)!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  overscroll-behavior:contain;
+  scrollbar-gutter:stable;
+}
+
+/* Liste des élèves : en-tête fixe, seule la liste défile. */
+.student-list-panel {
+  max-height:calc(100vh - 28px)!important;
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+.student-list-panel__header { flex:0 0 auto!important; }
+.student-list-panel__body {
+  flex:1 1 auto!important;
+  min-height:0!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  overscroll-behavior:contain;
+  scrollbar-gutter:stable;
+}
+
+/* CHAM : même comportement que la liste des élèves. */
+.cham-panel {
+  max-height:calc(100vh - 28px)!important;
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+.cham-panel__header { flex:0 0 auto!important; }
+.cham-panel__body {
+  flex:1 1 auto!important;
+  min-height:0!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  overscroll-behavior:contain;
+  scrollbar-gutter:stable;
+}
+
+/* Créateur de groupes : commandes accessibles, résultats défilants. */
+.group-maker-panel {
+  height:min(92vh,900px)!important;
+  max-height:calc(100vh - 28px)!important;
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+.group-maker-head { flex:0 0 auto!important; }
+.group-maker-layout {
+  flex:1 1 auto!important;
+  min-height:0!important;
+}
+.group-maker-controls,
+.group-maker-results {
+  min-height:0!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  overscroll-behavior:contain;
+  scrollbar-gutter:stable;
+}
+
+/* Emploi du temps de la classe / Organisation de la semaine :
+   en-tête + onglets visibles, contenu défilant. */
+.timetable-panel {
+  width:min(1500px,calc(100vw - 28px))!important;
+  min-height:0!important;
+  height:min(94vh,980px)!important;
+  max-height:calc(100vh - 28px)!important;
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+.timetable-header,
+.timetable-tabs { flex:0 0 auto!important; }
+.timetable-content {
+  flex:1 1 auto!important;
+  min-height:0!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  overscroll-behavior:contain;
+  scrollbar-gutter:stable;
+}
+
+/* Emploi du temps simplifié / vues TBI : la barre reste visible et la scène défile. */
+.projection-overlay { overflow:hidden!important; }
+.projection-toolbar { flex:0 0 auto!important; }
+.projection-stage {
+  flex:1 1 auto!important;
+  min-height:0!important;
+  overflow-y:auto!important;
+  overflow-x:auto!important;
+  overscroll-behavior:contain;
+  scrollbar-gutter:stable;
+}
+
+/* Programme du jour : en-tête et commandes restent accessibles. */
+.daily-program-panel {
+  max-height:calc(100vh - 28px)!important;
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+.daily-program-header,
+.daily-program-toolbar,
+.daily-program-info-row { flex:0 0 auto!important; }
+.daily-program-list {
+  flex:1 1 auto!important;
+  min-height:0!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  overscroll-behavior:contain;
+  scrollbar-gutter:stable;
+}
+
+/* Questions élèves et suivi de rentrée disposaient déjà d'une zone scrollable :
+   on verrouille le comportement pour les faibles hauteurs. */
+.qe-dialog,
+.rentree-dialog {
+  max-height:calc(100vh - 28px)!important;
+  overflow:hidden!important;
+}
+.qe-list,
+.rentree-list,
+.rentree-missing-body {
+  min-height:0!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  overscroll-behavior:contain;
+  scrollbar-gutter:stable;
+}
+
+/* Cahier journal : conserve son scroll existant et évite le débordement horizontal. */
+.journal-panel {
+  max-height:calc(100vh - 20px)!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  overscroll-behavior:contain;
+  scrollbar-gutter:stable;
+}
+
+/* Notifications : contenu défilant, structure du panneau conservée. */
+.memo-panel__content {
+  min-height:0!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  overscroll-behavior:contain;
+  scrollbar-gutter:stable;
+}
+
+/* Très petites hauteurs de portable : on réduit les marges extérieures au minimum. */
+@media (max-height:760px) {
+  .student-list-modal,
+  .cham-modal,
+  .group-maker-modal,
+  .random-student-modal,
+  .quick-riddle-modal,
+  .timetable-modal,
+  .daily-program-modal,
+  .evaluations-modal,
+  .supports-modal,
+  .po-modal,
+  .feliciter-modal,
+  .parent-activity-modal,
+  .qe-modal,
+  .journal-modal,
+  .document-library,
+  .rentree-modal,
+  .test-mode-modal {
+    padding:8px!important;
+  }
+  .student-list-panel,
+  .cham-panel,
+  .group-maker-panel,
+  .random-student-panel,
+  .quick-riddle-panel,
+  .timetable-panel,
+  .daily-program-panel,
+  .evaluations-panel,
+  .supports-panel,
+  .po-panel,
+  .feliciter-dialog,
+  .parent-activity-panel,
+  .qe-dialog,
+  .journal-panel,
+  .document-library__panel,
+  .rentree-dialog,
+  .test-mode-panel {
+    max-height:calc(100vh - 16px)!important;
+  }
+}
+
+@media (max-width:650px) {
+  .timetable-panel,
+  .student-list-panel,
+  .cham-panel,
+  .group-maker-panel,
+  .daily-program-panel {
+    width:100%!important;
+    max-height:calc(100vh - 12px)!important;
+  }
+}
+/* /V35.31 */
