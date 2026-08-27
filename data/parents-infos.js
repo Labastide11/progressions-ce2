@@ -1,7 +1,9 @@
-// V34.99 — Infos familles : messages « À venir » dynamiques selon la période
+// V35.36 — Infos familles : évaluations nationales CE2 de septembre 2026 + messages dynamiques
 window.PARENTS_INFOS = {
   "urgentMessage": "Fiches de renseignement + assurance à remplir",
-  "importantItems": [],
+  "importantItems": [
+    "📘 Évaluations nationales CE2 — du 7 au 18 septembre 2026. Tous les élèves participent à 5 courtes séances non consécutives : 3 en français (16 à 18 min), 2 en mathématiques (17 et 19 min), ainsi qu’à une lecture individuelle à voix haute d’1 minute. Ce ne sont pas des contrôles à préparer : aucune préparation particulière n’est demandée à la maison. Les résultats seront communiqués individuellement aux familles."
+  ],
   "upcomingItems": [],
   "upcomingByPeriod": {
     "p1": [
@@ -26,6 +28,10 @@ window.PARENTS_INFOS = {
     {
       "label": "📄 Mots aux parents — Espace Parents & Maître Hibou",
       "url": "assets/documents/mots-aux-parents-espace-parents-maitre-hibou.pdf"
+    },
+    {
+      "label": "🔎 Source — Ministère de l’Éducation nationale : évaluations des acquis en CE2",
+      "url": "https://www.education.gouv.fr/l-evaluation-des-acquis-des-eleves-en-ce2-des-reperes-de-debut-d-annee-414303"
     }
   ]
 };

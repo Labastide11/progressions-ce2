@@ -1,6 +1,6 @@
-// V34.97 — Refonte P1 : moteur annuel commun, consignes autonomes et lien classe → maison.
+// V35.36 — P1 : devoirs allégés pendant les évaluations nationales CE2.
 window.DEVOIRS_P1 = {
-  "version": "34.97",
+  "version": "35.36",
   "period": "p1",
   "schoolYear": "2026-2027",
   "principles": {
@@ -36,7 +36,8 @@ window.DEVOIRS_P1 = {
       "label": "Semaine 2",
       "start": "2026-09-07",
       "end": "2026-09-11",
-      "theme": "Installer tranquillement la routine",
+      "theme": "Évaluations nationales et routines légères",
+      "note": "Du 7 au 18 septembre, la classe participe aux évaluations nationales CE2. Aucune préparation particulière n’est demandée à la maison : les devoirs restent courts et ordinaires.",
       "items": [
         {
           "due": "2026-09-08",
@@ -76,19 +77,7 @@ window.DEVOIRS_P1 = {
           "notion": "Mots fréquents · installation du rituel de dictée",
           "challenge": "",
           "dictationStage": "final",
-          "secondary": {
-            "category": "maths",
-            "subject": "calcul-mental",
-            "subjectLabel": "Calcul mental",
-            "icon": "➕",
-            "action": "Je réactive",
-            "title": "Calcul mental — Je réactive",
-            "instruction": "Complète oralement : 7 + ? = 10 · 6 + ? = 10 · 9 + ? = 10 · 3 + ? = 10.",
-            "help": "Tu peux montrer 10 avec tes doigts si besoin.",
-            "duration": 2,
-            "classLink": "Compléments à 10"
-          },
-          "family": "Si vous avez envie : « Fais 10 ! » Un adulte annonce un nombre entre 1 et 9 ; l’enfant donne son complément à 10, puis on échange les rôles.",
+          "family": "",
           "hibou": {
             "label": "Trouver des compléments",
             "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/complements.html",
@@ -112,18 +101,6 @@ window.DEVOIRS_P1 = {
           "routine": "Relis la leçon si tu as ton cahier. Puis explique oralement comment reconnaître une phrase.",
           "notion": "Phrase · majuscule · ponctuation",
           "challenge": "",
-          "secondary": {
-            "category": "francais",
-            "subject": "grammaire",
-            "subjectLabel": "Grammaire",
-            "icon": "🧩",
-            "action": "Je manipule",
-            "title": "Grammaire — Je manipule",
-            "instruction": "Choisis oralement le bon signe : « Quel âge as-tu… » · « Je vais à l’école… » · « Attention… »",
-            "help": "Dis pourquoi tu choisis ?, . ou !",
-            "duration": 2,
-            "classLink": "Ponctuation"
-          },
           "family": "",
           "hibou": {
             "label": "La phrase et la ponctuation",
@@ -148,7 +125,7 @@ window.DEVOIRS_P1 = {
           "routine": "Si tu as le passage indiqué en classe, lis-le à voix haute pendant environ 5 minutes. Sans le texte, raconte l’épisode ou l’idée principale avec tes mots.",
           "notion": "Fluence · groupes de sens",
           "challenge": "",
-          "family": "Si vous avez envie : lecture duo. L’adulte lit une phrase, puis l’enfant lit la suivante."
+          "family": ""
         }
       ]
     },
@@ -157,7 +134,8 @@ window.DEVOIRS_P1 = {
       "label": "Semaine 3",
       "start": "2026-09-14",
       "end": "2026-09-18",
-      "theme": "Compréhension, numération et automatismes",
+      "theme": "Évaluations nationales et travail léger",
+      "note": "Les évaluations nationales se poursuivent cette semaine. Elles ne se préparent pas à la maison : on garde seulement de petites routines de lecture ou de mémorisation.",
       "items": [
         {
           "due": "2026-09-15",
@@ -177,7 +155,7 @@ window.DEVOIRS_P1 = {
           "notion": "Compréhension explicite · reformulation",
           "challenge": "",
           "dictationStage": "first",
-          "family": "Si vous avez envie : le nombre mystère. Un adulte choisit un nombre entre 1 000 et 10 000 et donne trois indices ; puis on échange les rôles."
+          "family": ""
         },
         {
           "due": "2026-09-17",
@@ -197,19 +175,7 @@ window.DEVOIRS_P1 = {
           "notion": "Dictée · Le cheval et le fermier · mots du corpus",
           "challenge": "",
           "dictationStage": "final",
-          "secondary": {
-            "category": "maths",
-            "subject": "calcul-mental",
-            "subjectLabel": "Calcul mental",
-            "icon": "➕",
-            "action": "Je réactive",
-            "title": "Calcul mental — Je réactive",
-            "instruction": "Complète oralement : 70 + ? = 100 · 40 + ? = 100 · 90 + ? = 100 · 65 + ? = 100.",
-            "help": "Cherche d’abord combien il manque pour arriver à la dizaine suivante, puis à 100.",
-            "duration": 3,
-            "classLink": "Compléments à 100"
-          },
-          "family": "Si vous avez envie : objectif 100. Un adulte annonce un nombre, l’enfant donne ce qu’il faut ajouter pour faire 100 ; puis on échange les rôles.",
+          "family": "",
           "hibou": {
             "label": "Trouver des compléments",
             "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/complements.html",
@@ -233,7 +199,7 @@ window.DEVOIRS_P1 = {
           "routine": "Relis la leçon si tu as ton cahier. Puis explique oralement comment transformer une phrase affirmative en phrase négative.",
           "notion": "Phrase affirmative · phrase négative",
           "challenge": "",
-          "family": "Si vous avez envie : dis le contraire. Un adulte donne une phrase affirmative ; transforme-la à la forme négative, puis inversez les rôles.",
+          "family": "",
           "hibou": {
             "label": "Les formes de phrases",
             "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-formes-phrases.html",
@@ -257,7 +223,7 @@ window.DEVOIRS_P1 = {
           "routine": "Si tu as le passage indiqué, relis-le à voix haute pendant 5 minutes. Sans le texte, raconte l’essentiel de la lecture précédente.",
           "notion": "Fluence · compréhension",
           "challenge": "",
-          "family": "Si vous avez envie : le journaliste. Après la lecture, quelqu’un pose seulement 3 questions : Qui ? Où ? Que s’est-il passé ?"
+          "family": ""
         }
       ]
     },
