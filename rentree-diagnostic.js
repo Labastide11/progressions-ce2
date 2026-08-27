@@ -1,0 +1,63 @@
+(function(){
+'use strict';
+/* V35.33 — Diagnostic de bascule de rentrée. LECTURE SEULE : aucune écriture localStorage/sessionStorage. */
+const $=id=>document.getElementById(id);
+const openBtn=$('openRentreeDiagnosticBtn'),modal=$('rentreeDiagnosticModal'),body=$('rentreeDiagnosticBody');
+const closeBtn=$('closeRentreeDiagnosticBtn'),closeFooter=$('closeRentreeDiagnosticFooterBtn'),refreshBtn=$('refreshRentreeDiagnosticBtn'),status=$('rentreeDiagnosticStatus');
+if(!openBtn||!modal||!body)return;
+const API_URL_KEY='hibou_sync_api_url_v25754',DEVICE_KEY='hibou_sync_device_key_v25754';
+const ROSTER_KEY='progressions_ce2_classe_v1',META_KEY='progressions_ce2_classe_meta_v1',LAST_SYNC='progressions_ce2_sync_last_roster_v3279';
+const PHOTO_CACHE='progressions_ce2_drive_student_photos_v35_29';
+const norm=v=>String(v||'').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[’']/g,"'");
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function readText(k){try{return String(localStorage.getItem(k)||'').trim();}catch(_){return ''}}
+function readJson(k,f){try{const x=JSON.parse(localStorage.getItem(k)||'null');return x??f;}catch(_){return f}}
+function countValue(v){if(Array.isArray(v))return v.length;if(v&&typeof v==='object')return Object.keys(v).length;if(typeof v==='string')return v?1:0;return Number(Boolean(v));}
+function bytesForKey(k){try{return (localStorage.getItem(k)||'').length*2}catch(_){return 0}}
+function fmtBytes(n){if(n<1024)return n+' o';if(n<1024*1024)return (n/1024).toFixed(1)+' Ko';return (n/1024/1024).toFixed(1)+' Mo'}
+function localRoster(){const r=readJson(ROSTER_KEY,[]);return Array.isArray(r)?[...new Set(r.map(v=>String(v||'').trim()).filter(Boolean))]:[]}
+function metaRows(){const m=readJson(META_KEY,{});return m&&typeof m==='object'?Object.values(m).filter(x=>x&&x.prenom):[]}
+function yes(v){return v===true||v===1||['oui','true','vrai','yes','1','x','cham'].includes(norm(v))}
+function apiConfig(){return {url:readText(API_URL_KEY),key:readText(DEVICE_KEY)}}
+function configured(){const c=apiConfig();return /^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(c.url)&&c.key.length>=16}
+function extractRows(value){if(Array.isArray(value))return value;if(!value||typeof value!=='object')return [];if(Array.isArray(value.eleves))return value.eleves;if(Array.isArray(value.students))return value.students;if(Array.isArray(value.data))return value.data;if(value.data&&Array.isArray(value.data.eleves))return value.data.eleves;if(value.result&&Array.isArray(value.result.eleves))return value.result.eleves;return []}
+function jsonp(params){return new Promise((resolve,reject)=>{const c=apiConfig();if(!configured())return reject(new Error('Synchronisation Google Sheet non configurée sur cet appareil.'));const cb='progressionsRentreeDiag_'+Date.now()+'_'+Math.random().toString(36).slice(2);const s=document.createElement('script');let done=false;const finish=(err,data)=>{if(done)return;done=true;clearTimeout(timer);try{delete window[cb]}catch(_){window[cb]=undefined}if(s.parentNode)s.remove();err?reject(err):resolve(data)};const timer=setTimeout(()=>finish(new Error('Délai de connexion au Google Sheet dépassé.')),20000);window[cb]=data=>{if(!data||data.ok===false)return finish(new Error((data&&data.error)||'Réponse API invalide.'));finish(null,data)};const q=new URLSearchParams({...params,device_key:c.key,tablet_key:c.key,callback:cb,_:Date.now()});s.async=true;s.referrerPolicy='no-referrer';s.src=c.url+'?'+q.toString();s.onerror=()=>finish(new Error('Réponse Apps Script indisponible.'));document.head.appendChild(s)})}
+async function remoteRoster(){let response;try{response=await jsonp({action:'getElevesData'})}catch(first){response=await jsonp({action:'get_eleves'})}const rows=extractRows(response);return rows.map(x=>typeof x==='string'?{prenom:x}:(x||{})).filter(x=>String(x.prenom||x.name||'').trim()).map(x=>({...x,prenom:String(x.prenom||x.name||'').trim()}))}
+function resetInventory(){
+  const exact=[
+    ['Suivi individuel','progressions_ce2_suivi_eleves_v1'],['Traces de compétences','progressions_ce2_traces_competences_v1'],['Réussites Maître Hibou','progressions_ce2_hibou_reussites_v1'],['Preuves Maître Hibou','progressions_ce2_hibou_preuves_v1'],['Notifications Hibou ignorées','progressions_ce2_hibou_ignorees_v1'],['Notifications Hibou vues','progressions_ce2_hibou_vues_v1'],['Notifications Hibou traitées','progressions_ce2_hibou_traitees_v1'],['Parcours individuels','progressions_ce2_parcours_outil_v2'],['Ancien parcours','progressions_ce2_parcours_outil_v1'],['Groupes du jour','progressions_ce2_groups_v1'],['Groupes de besoin','progressions_ce2_groupes_besoin_v3285'],['Tirages élève au hasard','progressions_ce2_random_history_v1'],['Anniversaires déjà signalés','progressions_ce2_anniversaires_vus_v1']
+  ];
+  const rows=exact.map(([label,key])=>({label,key,present:localStorage.getItem(key)!==null,count:countValue(readJson(key,localStorage.getItem(key)||'')),bytes:bytesForKey(key)}));
+  const presenceKeys=[],rentreeKeys=[];for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i)||'';if(k.startsWith('progressions_ce2_presences_'))presenceKeys.push(k);if(k.startsWith('progressions_suivi_rentree_'))rentreeKeys.push(k)}
+  rows.unshift({label:'Journées de présence enregistrées',key:'progressions_ce2_presences_*',present:presenceKeys.length>0,count:presenceKeys.length,bytes:presenceKeys.reduce((n,k)=>n+bytesForKey(k),0)});
+  rows.push({label:'Suivi administratif de rentrée',key:'progressions_suivi_rentree_*',present:rentreeKeys.length>0,count:rentreeKeys.length,bytes:rentreeKeys.reduce((n,k)=>n+bytesForKey(k),0)});
+  return rows;
+}
+function photoCount(){try{const x=JSON.parse(sessionStorage.getItem(PHOTO_CACHE)||'{}');return x&&typeof x==='object'?Object.keys(x).length:0}catch(_){return 0}}
+function dateText(v){if(!v)return 'jamais';const d=new Date(v);return isNaN(d)?String(v):new Intl.DateTimeFormat('fr-FR',{dateStyle:'short',timeStyle:'short'}).format(d)}
+function row(label,value,cls=''){return `<div class="rentree-diagnostic-row"><span>${esc(label)}</span><strong class="${cls}">${esc(value)}</strong></div>`}
+function renderLocal(remoteState){
+  const local=localRoster(),meta=metaRows(),cham=meta.filter(x=>yes(x.cham)).length,birthMissing=meta.filter(x=>!String(x.naissance||'').trim()).length;
+  const inv=resetInventory(),present=inv.filter(x=>x.present),totalBytes=present.reduce((n,x)=>n+x.bytes,0),last=readText(LAST_SYNC);
+  const apiOk=configured();
+  const remoteHtml=remoteState?.loading?`<p class="rentree-diagnostic-muted">Connexion au Google Sheet en cours…</p>`:remoteState?.error?`<p class="rentree-diagnostic-error">❌ ${esc(remoteState.error)}</p>`:`<p class="rentree-diagnostic-muted">En attente du contrôle distant.</p>`;
+  body.innerHTML=`<div class="rentree-diagnostic-grid">
+    <section class="rentree-diagnostic-card"><h3>👥 Classe locale sur ce PC</h3><div class="rentree-diagnostic-metric"><strong>${local.length}</strong><span>élève${local.length>1?'s':''}</span></div><div class="rentree-diagnostic-checks">${row('Métadonnées élèves',meta.length+' fiche'+(meta.length>1?'s':''),meta.length===local.length?'rentree-diagnostic-ok':'rentree-diagnostic-warn')}${row('Élèves CHAM',String(cham))}${row('Dates de naissance manquantes',String(birthMissing),birthMissing?'rentree-diagnostic-warn':'rentree-diagnostic-ok')}${row('Dernière synchro liste',dateText(last))}</div></section>
+    <section class="rentree-diagnostic-card" id="rentreeRemoteCard"><h3>☁️ Google Sheet / API</h3>${row('Configuration API',apiOk?'Présente':'Absente',apiOk?'rentree-diagnostic-ok':'rentree-diagnostic-error')}<div id="rentreeRemoteContent">${remoteHtml}</div></section>
+    <section class="rentree-diagnostic-card"><h3>🧹 Données liées à l’ancienne classe</h3><div class="rentree-diagnostic-metric"><strong>${present.length}</strong><span>catégorie${present.length>1?'s':''} présente${present.length>1?'s':''}</span></div><p>${fmtBytes(totalBytes)} de données locales repérées comme candidates à une future remise à zéro.</p><div class="rentree-diagnostic-checks">${present.slice(0,8).map(x=>row(x.label,x.count?String(x.count):'présent')).join('')}${present.length>8?row('Autres catégories','+'+(present.length-8)):''}</div></section>
+    <section class="rentree-diagnostic-card"><h3>✅ Éléments à conserver</h3><div class="rentree-diagnostic-checks">${row('Progressions pédagogiques',localStorage.getItem('progressions_ce2_suivi_v2')!==null?'Présentes':'Pas encore de données','rentree-diagnostic-ok')}${row('Configuration API',apiOk?'Conservée':'À configurer',apiOk?'rentree-diagnostic-ok':'rentree-diagnostic-warn')}${row('Photos Drive en session',photoCount()+' portrait'+(photoCount()>1?'s':''))}${row('Référentiels / emploi du temps','Conservés','rentree-diagnostic-ok')}</div></section>
+    <section class="rentree-diagnostic-card rentree-diagnostic-card--wide"><h3>🛡️ État de préparation</h3><p id="rentreeVerdict">Le diagnostic distant doit encore vérifier que la liste locale correspond au Google Sheet.</p><p class="rentree-diagnostic-muted">Aucune commande de suppression n’existe dans cette version V35.33.</p></section>
+  </div>`;
+}
+function renderRemote(rows){
+  const local=localRoster();const localMap=new Map(local.map(x=>[norm(x),x]));const remoteNames=[...new Set(rows.map(x=>x.prenom).filter(Boolean))];const remoteMap=new Map(remoteNames.map(x=>[norm(x),x]));
+  const missingLocal=remoteNames.filter(x=>!localMap.has(norm(x)));const extraLocal=local.filter(x=>!remoteMap.has(norm(x)));const same=!missingLocal.length&&!extraLocal.length&&local.length===remoteNames.length;
+  const content=$('rentreeRemoteContent');if(content)content.innerHTML=`<div class="rentree-diagnostic-metric"><strong>${remoteNames.length}</strong><span>élève${remoteNames.length>1?'s':''} dans le Google Sheet</span></div>${row('Comparaison des listes',same?'Concordantes':'Différentes',same?'rentree-diagnostic-ok':'rentree-diagnostic-error')}${!same?`<div class="rentree-diagnostic-diff"><div><h4>Dans Google Sheet, absents de ce PC</h4><p>${missingLocal.length?missingLocal.map(esc).join(', '):'Aucun'}</p></div><div><h4>Sur ce PC, absents du Google Sheet</h4><p>${extraLocal.length?extraLocal.map(esc).join(', '):'Aucun'}</p></div></div>`:''}`;
+  const verdict=$('rentreeVerdict');if(verdict){verdict.className=same?'rentree-diagnostic-ok':'rentree-diagnostic-error';verdict.innerHTML=same?`✅ <strong>Listes concordantes :</strong> ${local.length} élève${local.length>1?'s':''} sur ce PC et dans Google Sheet. Le diagnostic est prêt pour l’étape suivante.`:`⛔ <strong>Bascule à bloquer :</strong> la liste de ce PC et celle du Google Sheet ne concordent pas encore.`}
+  status.textContent=same?'Diagnostic terminé : listes concordantes.':'Diagnostic terminé : écart de liste détecté.';
+}
+async function run(){status.textContent='Diagnostic en cours…';refreshBtn.disabled=true;renderLocal({loading:true});try{const rows=await remoteRoster();renderRemote(rows)}catch(e){const c=$('rentreeRemoteContent');if(c)c.innerHTML=`<p class="rentree-diagnostic-error">❌ ${esc(e&&e.message?e.message:e)}</p><p class="rentree-diagnostic-muted">Le diagnostic local reste valable, mais la bascule devra rester bloquée tant que Google Sheet n’est pas vérifié.</p>`;const v=$('rentreeVerdict');if(v){v.className='rentree-diagnostic-error';v.innerHTML='⛔ <strong>Contrôle distant impossible :</strong> aucune bascule ne doit être lancée.'}status.textContent='Diagnostic local terminé ; contrôle Google Sheet impossible.'}finally{refreshBtn.disabled=false}}
+function open(){modal.classList.remove('hidden');modal.setAttribute('aria-hidden','false');document.body.classList.add('modal-open');run()}
+function close(){modal.classList.add('hidden');modal.setAttribute('aria-hidden','true');document.body.classList.remove('modal-open')}
+openBtn.addEventListener('click',open);closeBtn?.addEventListener('click',close);closeFooter?.addEventListener('click',close);refreshBtn?.addEventListener('click',run);modal.addEventListener('click',e=>{if(e.target===modal)close()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.classList.contains('hidden'))close()});
+})();

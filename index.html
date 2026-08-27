@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période." name="description"/>
-<title>V35.32 — Progressions CE2 — Ma classe au quotidien</title>
+<title>V35.33 — Progressions CE2 — Ma classe au quotidien</title>
 <link href="styles.css?v=35.32" rel="stylesheet"/>
 <link href="groupes-besoin.css?v=32.92" rel="stylesheet"/>
 <link href="home-tablet.css?v=33.27" rel="stylesheet"/>
@@ -27,6 +27,7 @@
 .header-view__label{color:#4b5f9e;}
 </style>
 <link href="popup-scroll-fix.css?v=35.31" rel="stylesheet"/>
+<link href="rentree-diagnostic.css?v=35.33" rel="stylesheet"/>
 </head>
 <body>
 <header class="app-header">
@@ -655,6 +656,7 @@
 <button id="refreshStudentListBtn" type="button">🔄 Actualiser</button>
 <button id="studentListDrivePhotosBtn" type="button" title="Charger ou actualiser les portraits privés depuis Google Drive">📷 Photos Drive</button>
 <button class="secondary" id="configureStudentListSyncBtn" type="button">⚙️ Configurer</button>
+<button class="secondary rentree-diagnostic-open" id="openRentreeDiagnosticBtn" type="button" title="Vérifier la classe avant la bascule de rentrée">🎒 Rentrée</button>
 <div aria-live="polite" class="student-list-sync-info" id="studentListSyncInfo"></div>
 <button aria-label="Fermer" class="student-list-panel__close" id="closeStudentListBtn" type="button">×</button>
 </div>
@@ -663,6 +665,27 @@
 <div aria-live="polite" class="student-list-status" hidden="" id="studentListStatus"></div>
 <div class="student-list-content" id="studentListContent"></div>
 </div>
+</div>
+</section>
+<section aria-hidden="true" aria-labelledby="rentreeDiagnosticTitle" class="rentree-diagnostic-modal hidden" id="rentreeDiagnosticModal">
+<div aria-modal="true" class="rentree-diagnostic-panel" role="dialog">
+<header class="rentree-diagnostic-head">
+<div>
+<p class="rentree-diagnostic-kicker">Préparation 2026–2027</p>
+<h2 id="rentreeDiagnosticTitle">🎒 Diagnostic — Bascule de rentrée</h2>
+<p>Contrôle en lecture seule avant tout changement de liste d’élèves.</p>
+</div>
+<button aria-label="Fermer" class="rentree-diagnostic-close" id="closeRentreeDiagnosticBtn" type="button">×</button>
+</header>
+<div class="rentree-diagnostic-safety">🔒 <strong>Lecture seule :</strong> ce diagnostic ne supprime, ne réinitialise et ne remplace aucune donnée.</div>
+<div class="rentree-diagnostic-body" id="rentreeDiagnosticBody">
+<div class="rentree-diagnostic-loading">Préparation du diagnostic…</div>
+</div>
+<footer class="rentree-diagnostic-actions">
+<span aria-live="polite" id="rentreeDiagnosticStatus">Prêt.</span>
+<button id="refreshRentreeDiagnosticBtn" type="button">🔍 Relancer le diagnostic</button>
+<button class="secondary" id="closeRentreeDiagnosticFooterBtn" type="button">Fermer</button>
+</footer>
 </div>
 </section>
 <section aria-hidden="true" aria-labelledby="groupMakerTitle" class="group-maker-modal hidden" id="groupMakerModal">
@@ -835,6 +858,7 @@
 <script src="parent-activity.js?v=35.26"></script>
 <script src="groupes-besoin.js?v=32.96"></script>
 <script src="liste-eleves-popup.js?v=35.32"></script>
+<script src="rentree-diagnostic.js?v=35.33"></script>
 <script src="random-student.js?v=35.27"></script>
 <script src="group-maker.js?v=32.64"></script>
 <script src="quick-riddle.js?v=32.69"></script>
