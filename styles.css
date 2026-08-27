@@ -1524,3 +1524,112 @@ body.view-mode-suivi .compact-controlbar{margin-bottom:8px}
 @media(max-width:760px){.cham-card{grid-template-columns:56px minmax(0,1fr)}.cham-card__portrait{width:56px;height:56px;border-radius:15px}}
 /* /V35.30 */
 
+
+
+/* V35.32 — Liste des élèves : portraits x2, cartes resserrées et commandes sur 2 lignes */
+@media (min-width:900px){
+  .student-list-panel{
+    width:calc(100vw - 28px);
+    max-width:1740px;
+  }
+  .student-list-panel__header{
+    display:grid;
+    grid-template-columns:minmax(240px,1fr) auto;
+    grid-template-areas:"title actions";
+    align-items:center;
+    gap:12px 18px;
+    padding:12px 18px 10px;
+  }
+  .student-list-panel__header h2{grid-area:title;margin:0;min-width:0}
+  .student-list-header-actions{
+    grid-area:actions;
+    display:grid;
+    grid-template-columns:repeat(3,max-content) auto 42px;
+    align-items:center;
+    justify-content:end;
+    gap:8px;
+    width:auto;
+  }
+  .student-list-header-actions>button:not(.student-list-panel__close){
+    min-height:40px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:8px 12px;
+  }
+  .student-list-panel__header .student-list-sync-info{margin:0;white-space:nowrap}
+  .student-list-panel__body{padding:9px 14px 14px}
+
+  .student-attendance-toolbar{margin:0 0 9px;padding:7px 10px;border-radius:14px}
+  .student-attendance-toolbar__mainline{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:nowrap;
+    min-width:0;
+  }
+  .student-attendance-switch{flex:0 0 auto;gap:5px;padding:3px}
+  .student-attendance-switch button,.student-attendance-reset{min-height:36px;padding:7px 11px;white-space:nowrap}
+  .student-attendance-summary{display:flex;align-items:center;gap:6px;flex:0 0 auto;margin:0}
+  .student-attendance-summary strong,.student-attendance-summary>span{padding:6px 10px;white-space:nowrap}
+  .student-attendance-copy{margin-left:auto;padding:6px 10px;border-radius:999px;background:#fff;border:1px solid #ded1f2;white-space:nowrap;font-size:.86rem}
+  .student-attendance-copy b{font-size:1rem}
+  .student-attendance-reset{flex:0 0 auto}
+  .student-attendance-help{margin:5px 2px 0;font-size:.7rem}
+
+  .student-list-content{
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:8px;
+  }
+  .student-list-card{
+    position:relative;
+    grid-template-columns:112px minmax(0,1fr);
+    gap:10px;
+    min-height:118px;
+    padding:7px 9px;
+  }
+  .student-list-card__number{
+    position:absolute;
+    z-index:2;
+    left:4px;
+    top:4px;
+    width:27px;
+    height:27px;
+    border-radius:9px;
+    font-size:.76rem;
+    box-shadow:0 2px 6px rgba(27,55,88,.12);
+  }
+  .student-list-card__portrait{
+    width:112px;
+    height:112px;
+    border-radius:20px;
+  }
+  .student-list-card__main{gap:5px;padding-right:1px}
+  .student-list-card__name{width:100%;gap:5px}
+  .student-list-card__main strong{font-size:.93rem;line-height:1.1;white-space:normal;overflow:visible;text-overflow:clip}
+  .student-list-card__attendance-badge{font-size:.69rem;padding:3px 7px}
+  .student-list-card__birth{font-size:.72rem!important}
+}
+
+@media (min-width:900px) and (max-width:1250px){
+  .student-list-content{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+  .student-list-card{grid-template-columns:104px minmax(0,1fr);min-height:110px}
+  .student-list-card__portrait{width:104px;height:104px;border-radius:19px}
+  .student-list-header-actions{grid-template-columns:repeat(3,max-content) 42px}
+  .student-list-panel__header .student-list-sync-info{grid-column:1/-1;justify-self:end}
+  .student-attendance-toolbar__mainline{flex-wrap:wrap}
+  .student-attendance-copy{margin-left:0}
+}
+
+@media (max-width:899px){
+  .student-list-header-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%}
+  .student-list-header-actions>button:not(.student-list-panel__close){width:100%;min-width:0}
+  .student-list-panel__header .student-list-sync-info{grid-column:1/-1;text-align:center}
+  .student-attendance-toolbar__mainline{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .student-attendance-summary{display:flex;align-items:center;gap:6px;margin:0}
+  .student-attendance-copy{margin-left:0}
+  .student-list-card{grid-template-columns:84px minmax(0,1fr);min-height:90px}
+  .student-list-card__portrait{width:84px;height:84px;border-radius:18px}
+  .student-list-card__number{position:absolute;left:4px;top:4px;z-index:2;width:26px;height:26px}
+}
+/* /V35.32 */

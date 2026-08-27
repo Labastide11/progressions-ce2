@@ -67,17 +67,17 @@
     toolbar.id='studentAttendanceToolbar';
     toolbar.className='student-attendance-toolbar';
     toolbar.innerHTML=`
-      <div class="student-attendance-toolbar__top">
+      <div class="student-attendance-toolbar__mainline">
         <div class="student-attendance-switch" role="group" aria-label="Demi-journée">
           <button type="button" data-session="morning">☀️ Matin</button>
           <button type="button" data-session="afternoon">🌤️ Après-midi</button>
         </div>
+        <div class="student-attendance-summary" aria-live="polite">
+          <strong id="studentPresentCount">0 présents</strong>
+          <span id="studentAbsentCount">0 absent</span>
+        </div>
+        <span class="student-attendance-copy">📄 Photocopies : <b id="studentCopyCount">0</b></span>
         <button type="button" class="student-attendance-reset" id="resetStudentAttendanceBtn">↺ Réinitialiser</button>
-      </div>
-      <div class="student-attendance-summary" aria-live="polite">
-        <strong id="studentPresentCount">0 présents</strong>
-        <span id="studentAbsentCount">0 absent</span>
-        <span class="student-attendance-copy">📄 Photocopies à prévoir : <b id="studentCopyCount">0</b></span>
       </div>
       <p class="student-attendance-help">Clique sur le portrait d’un élève pour le marquer absent ou présent pour la demi-journée sélectionnée.</p>`;
     const body=modal.querySelector('.student-list-panel__body');
