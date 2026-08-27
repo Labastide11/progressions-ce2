@@ -1,6 +1,7 @@
 (function(){
 'use strict';
-/* V35.34 — Diagnostic + prévisualisation de bascule. LECTURE SEULE : aucune écriture localStorage/sessionStorage. */
+/* V35.35 — Verrou de concordance Google Sheet ↔ liste locale.
+   LECTURE SEULE : aucune écriture localStorage/sessionStorage. */
 const $=id=>document.getElementById(id);
 const openBtn=$('openRentreeDiagnosticBtn'),modal=$('rentreeDiagnosticModal'),body=$('rentreeDiagnosticBody');
 const closeBtn=$('closeRentreeDiagnosticBtn'),closeFooter=$('closeRentreeDiagnosticFooterBtn'),refreshBtn=$('refreshRentreeDiagnosticBtn'),previewBtn=$('previewRentreeResetBtn'),status=$('rentreeDiagnosticStatus');
@@ -8,6 +9,7 @@ if(!openBtn||!modal||!body)return;
 const API_URL_KEY='hibou_sync_api_url_v25754',DEVICE_KEY='hibou_sync_device_key_v25754';
 const ROSTER_KEY='progressions_ce2_classe_v1',META_KEY='progressions_ce2_classe_meta_v1',LAST_SYNC='progressions_ce2_sync_last_roster_v3279';
 const PHOTO_CACHE='progressions_ce2_drive_student_photos_v35_29';
+const gate=window.ProgressionsRentreeGate={version:'35.35',checkedAt:null,fresh:false,canBascule:false,reason:'Diagnostic non exécuté',localCount:0,remoteCount:0,commonCount:0,onlySheet:[],onlyLocal:[]};
 const norm=v=>String(v||'').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[’']/g,"'");
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function readText(k){try{return String(localStorage.getItem(k)||'').trim();}catch(_){return ''}}
@@ -37,7 +39,20 @@ function photoCount(){try{const x=JSON.parse(sessionStorage.getItem(PHOTO_CACHE)
 function dateText(v){if(!v)return 'jamais';const d=new Date(v);return isNaN(d)?String(v):new Intl.DateTimeFormat('fr-FR',{dateStyle:'short',timeStyle:'short'}).format(d)}
 function row(label,value,cls=''){return `<div class="rentree-diagnostic-row"><span>${esc(label)}</span><strong class="${cls}">${esc(value)}</strong></div>`}
 let lastRemote=null,lastComparison=null;
-function compareRows(rows){const local=localRoster();const localMap=new Map(local.map(x=>[norm(x),x]));const remoteNames=[...new Set(rows.map(x=>x.prenom).filter(Boolean))];const remoteMap=new Map(remoteNames.map(x=>[norm(x),x]));const missingLocal=remoteNames.filter(x=>!localMap.has(norm(x)));const extraLocal=local.filter(x=>!remoteMap.has(norm(x)));const same=!missingLocal.length&&!extraLocal.length&&local.length===remoteNames.length;return {local,remoteNames,missingLocal,extraLocal,same}}
+function compareRows(rows){
+  const local=localRoster();
+  const remoteNames=[...new Set(rows.map(x=>x.prenom).filter(Boolean))];
+  const localMap=new Map(local.map(x=>[norm(x),x]));
+  const remoteMap=new Map(remoteNames.map(x=>[norm(x),x]));
+  const common=local.filter(x=>remoteMap.has(norm(x)));
+  const missingLocal=remoteNames.filter(x=>!localMap.has(norm(x))); // uniquement Sheet
+  const extraLocal=local.filter(x=>!remoteMap.has(norm(x)));       // uniquement PC
+  const localNorms=local.map(norm),remoteNorms=remoteNames.map(norm);
+  const dupLocal=[...new Set(localNorms.filter((x,i,a)=>x&&a.indexOf(x)!==i))];
+  const dupRemote=[...new Set(remoteNorms.filter((x,i,a)=>x&&a.indexOf(x)!==i))];
+  const same=!missingLocal.length&&!extraLocal.length&&!dupLocal.length&&!dupRemote.length&&local.length===remoteNames.length;
+  return {local,remoteNames,common,missingLocal,extraLocal,dupLocal,dupRemote,same};
+}
 function renderLocal(remoteState){
   const local=localRoster(),meta=metaRows(),cham=meta.filter(x=>yes(x.cham)).length,birthMissing=meta.filter(x=>!String(x.naissance||'').trim()).length;
   const inv=resetInventory(),present=inv.filter(x=>x.present),totalBytes=present.reduce((n,x)=>n+x.bytes,0),last=readText(LAST_SYNC);const apiOk=configured();
@@ -47,13 +62,38 @@ function renderLocal(remoteState){
     <section class="rentree-diagnostic-card" id="rentreeRemoteCard"><h3>☁️ Google Sheet / API</h3>${row('Configuration API',apiOk?'Présente':'Absente',apiOk?'rentree-diagnostic-ok':'rentree-diagnostic-error')}<div id="rentreeRemoteContent">${remoteHtml}</div></section>
     <section class="rentree-diagnostic-card"><h3>🧹 Données liées à l’ancienne classe</h3><div class="rentree-diagnostic-metric"><strong>${present.length}</strong><span>catégorie${present.length>1?'s':''} présente${present.length>1?'s':''}</span></div><p>${fmtBytes(totalBytes)} de données locales repérées comme candidates à une future remise à zéro.</p><div class="rentree-diagnostic-checks">${present.slice(0,8).map(x=>row(x.label,x.count?String(x.count):'présent')).join('')}${present.length>8?row('Autres catégories','+'+(present.length-8)):''}</div></section>
     <section class="rentree-diagnostic-card"><h3>✅ Éléments à conserver</h3><div class="rentree-diagnostic-checks">${row('Progressions pédagogiques',localStorage.getItem('progressions_ce2_suivi_v2')!==null?'Présentes':'Pas encore de données','rentree-diagnostic-ok')}${row('Configuration API',apiOk?'Conservée':'À configurer',apiOk?'rentree-diagnostic-ok':'rentree-diagnostic-warn')}${row('Photos Drive en session',photoCount()+' portrait'+(photoCount()>1?'s':''))}${row('Référentiels / emploi du temps','Conservés','rentree-diagnostic-ok')}</div></section>
-    <section class="rentree-diagnostic-card rentree-diagnostic-card--wide"><h3>🛡️ État de préparation</h3><p id="rentreeVerdict">Le diagnostic distant doit encore vérifier que la liste locale correspond au Google Sheet.</p><p class="rentree-diagnostic-muted">V35.34 : prévisualisation disponible, mais toujours aucune commande de suppression.</p></section>
+    <section class="rentree-diagnostic-card rentree-diagnostic-card--wide"><h3>🛡️ État de préparation</h3><p id="rentreeVerdict">Le diagnostic distant doit encore vérifier que la liste locale correspond au Google Sheet.</p><p class="rentree-diagnostic-muted">V35.35 : verrou de concordance actif, toujours aucune commande de suppression.</p></section>
   </div>`;
 }
-function renderRemote(rows){lastRemote=rows;lastComparison=compareRows(rows);const {local,remoteNames,missingLocal,extraLocal,same}=lastComparison;
-  const content=$('rentreeRemoteContent');if(content)content.innerHTML=`<div class="rentree-diagnostic-metric"><strong>${remoteNames.length}</strong><span>élève${remoteNames.length>1?'s':''} dans le Google Sheet</span></div>${row('Comparaison des listes',same?'Concordantes':'Différentes',same?'rentree-diagnostic-ok':'rentree-diagnostic-error')}${!same?`<div class="rentree-diagnostic-diff"><div><h4>Dans Google Sheet, absents de ce PC</h4><p>${missingLocal.length?missingLocal.map(esc).join(', '):'Aucun'}</p></div><div><h4>Sur ce PC, absents du Google Sheet</h4><p>${extraLocal.length?extraLocal.map(esc).join(', '):'Aucun'}</p></div></div>`:''}`;
-  const verdict=$('rentreeVerdict');if(verdict){verdict.className=same?'rentree-diagnostic-ok':'rentree-diagnostic-error';verdict.innerHTML=same?`✅ <strong>Listes concordantes :</strong> ${local.length} élève${local.length>1?'s':''} sur ce PC et dans Google Sheet. La prévisualisation peut être examinée.`:`⛔ <strong>Bascule à bloquer :</strong> la liste de ce PC et celle du Google Sheet ne concordent pas encore. La prévisualisation reste consultable, mais aucune future suppression ne devra être autorisée.`}
-  status.textContent=same?'Diagnostic terminé : listes concordantes.':'Diagnostic terminé : écart de liste détecté.';
+function renderRemote(rows){
+  lastRemote=rows;lastComparison=compareRows(rows);
+  const {local,remoteNames,common,missingLocal,extraLocal,dupLocal,dupRemote,same}=lastComparison;
+  gate.checkedAt=Date.now();gate.fresh=true;gate.canBascule=same;gate.localCount=local.length;gate.remoteCount=remoteNames.length;gate.commonCount=common.length;gate.onlySheet=[...missingLocal];gate.onlyLocal=[...extraLocal];
+  gate.reason=same?'Listes concordantes':'Écart entre Google Sheet et ce PC';
+  const content=$('rentreeRemoteContent');
+  if(content)content.innerHTML=`
+    <div class="rentree-lock-summary">
+      <div><strong>${remoteNames.length}</strong><span>Google Sheet</span></div>
+      <div><strong>${local.length}</strong><span>Ce PC</span></div>
+      <div class="${same?'rentree-lock-good':''}"><strong>${common.length}</strong><span>Communs</span></div>
+      <div class="${missingLocal.length?'rentree-lock-bad':'rentree-lock-good'}"><strong>${missingLocal.length}</strong><span>Uniquement Sheet</span></div>
+      <div class="${extraLocal.length?'rentree-lock-bad':'rentree-lock-good'}"><strong>${extraLocal.length}</strong><span>Uniquement PC</span></div>
+    </div>
+    ${row('Concordance stricte',same?'VALIDÉE':'BLOQUÉE',same?'rentree-diagnostic-ok':'rentree-diagnostic-error')}
+    ${dupLocal.length||dupRemote.length?`<p class="rentree-diagnostic-error">⚠️ Doublon de prénom normalisé détecté : la bascule reste bloquée.</p>`:''}
+    <div class="rentree-diagnostic-diff rentree-diagnostic-diff--three">
+      <div><h4>✅ Élèves communs (${common.length})</h4><p>${common.length?common.map(esc).join(', '):'Aucun'}</p></div>
+      <div class="${missingLocal.length?'rentree-diff-alert':''}"><h4>☁️ Uniquement Google Sheet (${missingLocal.length})</h4><p>${missingLocal.length?missingLocal.map(esc).join(', '):'Aucun'}</p></div>
+      <div class="${extraLocal.length?'rentree-diff-alert':''}"><h4>💻 Uniquement ce PC (${extraLocal.length})</h4><p>${extraLocal.length?extraLocal.map(esc).join(', '):'Aucun'}</p></div>
+    </div>`;
+  const verdict=$('rentreeVerdict');
+  if(verdict){
+    verdict.className=same?'rentree-diagnostic-ok':'rentree-diagnostic-error';
+    verdict.innerHTML=same
+      ?`🔓 <strong>Verrou de concordance validé.</strong> Les ${local.length} élèves de ce PC correspondent aux ${remoteNames.length} élèves du Google Sheet. Une future bascule pourra passer à l’étape suivante, après une nouvelle vérification juste avant l’écriture.`
+      :`🔒 <strong>Bascule verrouillée.</strong> Corriger la liste avant toute remise à zéro : ${missingLocal.length} élève${missingLocal.length>1?'s':''} uniquement dans le Sheet et ${extraLocal.length} uniquement sur ce PC.`;
+  }
+  status.textContent=same?'Concordance validée — verrou ouvert pour la préparation.':'Concordance refusée — future bascule bloquée.';
 }
 function previewTableRow(x,action){const state=x.present?(x.count?String(x.count):'présent'):'déjà vide';const cls=x.present?'rentree-preview-reset':'rentree-preview-zero';return `<tr><td><strong>${esc(x.label)}</strong><span class="rentree-preview-key">${esc(x.key)}</span></td><td class="${cls}">${esc(state)}</td><td>${x.present?fmtBytes(x.bytes):'0 o'}</td><td class="${action==='reset'?'rentree-preview-reset':'rentree-preview-keep'}">${action==='reset'?'Remise à zéro':'Conservé'}</td></tr>`}
 function renderPreview(){
@@ -64,19 +104,19 @@ function renderPreview(){
     ['Clé de cet appareil',DEVICE_KEY,readText(DEVICE_KEY)?'configurée':'absente'],
     ['Référentiels et emploi du temps','fichiers application','conservés']
   ];
-  const block=cmp&&!cmp.same;body.innerHTML=`
+  const block=!cmp||!cmp.same;body.innerHTML=`
     <div class="rentree-preview-banner">🧾 <div><strong>Prévisualisation uniquement.</strong><br>Aucune des lignes ci-dessous n’est supprimée ou modifiée par V35.34.</div></div>
     <div class="rentree-preview-summary"><div><strong>${active.length}</strong><span>catégories actuellement à remettre à zéro</span></div><div><strong>${fmtBytes(bytes)}</strong><span>données locales concernées</span></div><div><strong>${local.length}</strong><span>élèves dans la classe locale actuelle</span></div></div>
     <div class="rentree-diagnostic-grid">
       <section class="rentree-diagnostic-card rentree-diagnostic-card--wide"><h3>🧹 Ce que la future bascule remettra à zéro</h3><div style="overflow-x:auto"><table class="rentree-preview-table"><thead><tr><th>Donnée</th><th>État actuel</th><th>Taille</th><th>Action future</th></tr></thead><tbody>${inv.map(x=>previewTableRow(x,'reset')).join('')}</tbody></table></div></section>
       <section class="rentree-diagnostic-card"><h3>🔄 Ce qui sera remplacé</h3><div class="rentree-diagnostic-checks">${row('Liste locale des élèves',local.length+' élève'+(local.length>1?'s':''),'rentree-preview-replace')}${row('Métadonnées élèves',meta.length+' fiche'+(meta.length>1?'s':''),'rentree-preview-replace')}${row('Dernière synchro de liste','sera réactualisée','rentree-preview-replace')}</div><p class="rentree-diagnostic-muted">Ces éléments ne seront pas simplement effacés : ils seront remplacés par la nouvelle classe validée.</p></section>
       <section class="rentree-diagnostic-card"><h3>✅ Ce qui restera intact</h3><div class="rentree-diagnostic-checks">${preserved.map(([a,b,c])=>`<div class="rentree-diagnostic-row"><span>${esc(a)}<span class="rentree-preview-key">${esc(b)}</span></span><strong class="rentree-preview-keep">${esc(c)}</strong></div>`).join('')}${row('Photos Drive en session',photoCount()+' portrait'+(photoCount()>1?'s':''),'rentree-preview-keep')}</div></section>
-      <section class="rentree-diagnostic-card rentree-diagnostic-card--wide"><h3>🛡️ Verrou de sécurité prévu pour V35.35</h3><p class="${block?'rentree-diagnostic-error':'rentree-diagnostic-ok'}">${block?'⛔ Les listes locale et Google Sheet sont actuellement différentes : une bascule réelle resterait bloquée.':'✅ Le contrôle actuel ne détecte pas d’écart de liste. Une future bascule réelle devra toutefois refaire ce diagnostic juste avant toute écriture.'}</p><p class="rentree-diagnostic-muted">La future V35.35 devra demander une confirmation explicite et revérifier le Google Sheet immédiatement avant toute remise à zéro.</p></section>
+      <section class="rentree-diagnostic-card rentree-diagnostic-card--wide"><h3>🛡️ Verrou de concordance V35.35</h3><p class="${block?'rentree-diagnostic-error':'rentree-diagnostic-ok'}">${block?'🔒 Le verrou de concordance n’est pas validé : une bascule réelle resterait bloquée.':'🔓 Le verrou de concordance est validé pour cette vérification. Une future bascule réelle devra impérativement refaire ce contrôle juste avant toute écriture.'}</p><p class="rentree-diagnostic-muted">La future version de bascule réelle devra demander une confirmation explicite et revérifier le Google Sheet immédiatement avant toute remise à zéro.</p></section>
     </div>`;
   status.textContent='Prévisualisation affichée — aucune donnée modifiée.';
   previewBtn.textContent='↩ Retour au diagnostic';previewBtn.dataset.mode='back';
 }
-async function run(){status.textContent='Diagnostic en cours…';refreshBtn.disabled=true;previewBtn.disabled=true;previewBtn.textContent='🧾 Prévisualiser la remise à zéro';previewBtn.dataset.mode='preview';lastRemote=null;lastComparison=null;renderLocal({loading:true});try{const rows=await remoteRoster();renderRemote(rows)}catch(e){const c=$('rentreeRemoteContent');if(c)c.innerHTML=`<p class="rentree-diagnostic-error">❌ ${esc(e&&e.message?e.message:e)}</p><p class="rentree-diagnostic-muted">Le diagnostic local reste valable, mais la bascule devra rester bloquée tant que Google Sheet n’est pas vérifié.</p>`;const v=$('rentreeVerdict');if(v){v.className='rentree-diagnostic-error';v.innerHTML='⛔ <strong>Contrôle distant impossible :</strong> aucune bascule ne doit être lancée.'}status.textContent='Diagnostic local terminé ; contrôle Google Sheet impossible.'}finally{refreshBtn.disabled=false;previewBtn.disabled=false}}
+async function run(){status.textContent='Diagnostic en cours…';refreshBtn.disabled=true;previewBtn.disabled=true;previewBtn.textContent='🧾 Prévisualiser la remise à zéro';previewBtn.dataset.mode='preview';lastRemote=null;lastComparison=null;Object.assign(gate,{checkedAt:null,fresh:false,canBascule:false,reason:'Vérification en cours',localCount:localRoster().length,remoteCount:0,commonCount:0,onlySheet:[],onlyLocal:[]});renderLocal({loading:true});try{const rows=await remoteRoster();renderRemote(rows)}catch(e){gate.fresh=false;gate.canBascule=false;gate.reason='Contrôle Google Sheet impossible';const c=$('rentreeRemoteContent');if(c)c.innerHTML=`<p class="rentree-diagnostic-error">❌ ${esc(e&&e.message?e.message:e)}</p><p class="rentree-diagnostic-muted">Le diagnostic local reste valable, mais le verrou reste fermé tant que Google Sheet n’est pas vérifié.</p>`;const v=$('rentreeVerdict');if(v){v.className='rentree-diagnostic-error';v.innerHTML='🔒 <strong>Contrôle distant impossible :</strong> verrou fermé, aucune future bascule ne doit être autorisée.'}status.textContent='Diagnostic local terminé ; verrou de concordance fermé.'}finally{refreshBtn.disabled=false;previewBtn.disabled=false}}
 function open(){modal.classList.remove('hidden');modal.setAttribute('aria-hidden','false');document.body.classList.add('modal-open');run()}
 function close(){modal.classList.add('hidden');modal.setAttribute('aria-hidden','true');document.body.classList.remove('modal-open')}
 openBtn.addEventListener('click',open);closeBtn?.addEventListener('click',close);closeFooter?.addEventListener('click',close);refreshBtn?.addEventListener('click',run);previewBtn?.addEventListener('click',()=>{if(previewBtn.dataset.mode==='back')run();else renderPreview()});modal.addEventListener('click',e=>{if(e.target===modal)close()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.classList.contains('hidden'))close()});
