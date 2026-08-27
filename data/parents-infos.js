@@ -1,8 +1,12 @@
-// V35.36 — Infos familles : évaluations nationales CE2 de septembre 2026 + messages dynamiques
+// V35.37 — Rappels familles datés : évaluations nationales CE2 visibles du 3 au 18 septembre 2026
 window.PARENTS_INFOS = {
   "urgentMessage": "Fiches de renseignement + assurance à remplir",
   "importantItems": [
-    "📘 Évaluations nationales CE2 — du 7 au 18 septembre 2026. Tous les élèves participent à 5 courtes séances non consécutives : 3 en français (16 à 18 min), 2 en mathématiques (17 et 19 min), ainsi qu’à une lecture individuelle à voix haute d’1 minute. Ce ne sont pas des contrôles à préparer : aucune préparation particulière n’est demandée à la maison. Les résultats seront communiqués individuellement aux familles."
+    {
+      "start": "2026-09-03",
+      "end": "2026-09-18",
+      "text": "📘 Évaluations nationales CE2 — du 7 au 18 septembre 2026. Tous les élèves participent à 5 courtes séances non consécutives : 3 en français (16 à 18 min), 2 en mathématiques (17 et 19 min), ainsi qu’à une lecture individuelle à voix haute d’1 minute. Ce ne sont pas des contrôles à préparer : aucune préparation particulière n’est demandée à la maison. Les résultats seront communiqués individuellement aux familles."
+    }
   ],
   "upcomingItems": [],
   "upcomingByPeriod": {
