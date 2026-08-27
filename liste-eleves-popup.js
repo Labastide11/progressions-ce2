@@ -11,6 +11,7 @@
   const count=$('studentListCount');
   const status=$('studentListStatus');
   const refreshBtn=$('refreshStudentListBtn');
+  const drivePhotosBtn=$('studentListDrivePhotosBtn');
   const configureBtn=$('configureStudentListSyncBtn');
   const syncInfo=$('studentListSyncInfo');
   if(!openBtn||!modal||!closeBtn||!list||!count)return;
@@ -170,6 +171,17 @@
   if(refreshBtn)refreshBtn.addEventListener('click',async()=>{
     refreshBtn.disabled=true;refreshBtn.textContent='⏳ Actualisation…';
     try{await window.ProgressionsRoster?.refresh?.(true);}finally{refreshBtn.disabled=false;refreshBtn.textContent='🔄 Actualiser';render();}
+  });
+  if(drivePhotosBtn)drivePhotosBtn.addEventListener('click',()=>{
+    const api=window.ProgressionsStudentPhotos;
+    if(!api?.connect){
+      if(status){status.hidden=false;status.textContent='Le module Photos Drive n’est pas disponible.';}
+      return;
+    }
+    drivePhotosBtn.disabled=true;
+    drivePhotosBtn.textContent='⏳ Photos Drive…';
+    try{api.connect();}
+    finally{setTimeout(()=>{drivePhotosBtn.disabled=false;drivePhotosBtn.textContent='📷 Photos Drive';},1200);}
   });
   if(configureBtn)configureBtn.addEventListener('click',()=>{window.ProgressionsRoster?.configure?.();render();});
   closeBtn.addEventListener('click',close);

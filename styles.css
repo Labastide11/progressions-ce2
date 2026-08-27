@@ -1404,6 +1404,7 @@ body.view-mode-suivi .compact-controlbar{margin-bottom:8px}
   box-shadow:0 5px 12px rgba(37,99,235,.12);
 }
 .student-list-header-actions #refreshStudentListBtn{background:#356fd4;color:#fff}
+.student-list-header-actions #studentListDrivePhotosBtn{background:#e8f7ee;color:#187547;box-shadow:0 5px 12px rgba(24,117,71,.10)}
 .student-list-header-actions #configureStudentListSyncBtn{background:#eee7ff;color:#6551a8;box-shadow:0 5px 12px rgba(101,81,168,.1)}
 .student-list-header-actions>button:disabled{opacity:.62;cursor:wait}
 .student-list-panel__header .student-list-sync-info{
