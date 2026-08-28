@@ -29,7 +29,9 @@ function normalizeRoster(rows){
       nom:x.nom||x.Nom||old.nom||'',
       sexe:x.sexe||x.Sexe||old.sexe||'',
       naissance:x.naissance||x.date_naissance||x.dateNaissance||x.anniversaire||x['Date de naissance']||old.naissance||'',
-      cham:x.cham??x.CHAM??old.cham??''
+      cham:x.cham??x.CHAM??old.cham??'',
+      ulis:x.ulis??x.ULIS??old.ulis??'',
+      photo:x.photo??x.Photo??x.PHOTO??old.photo??''
     };
   });
   roster=[...new Set(names)].sort((a,b)=>a.localeCompare(b,'fr',{sensitivity:'base'}));
@@ -59,7 +61,9 @@ function metaFor(n){
     nom:pick(live.nom,fallback.nom||''),
     sexe:pick(live.sexe,fallback.sexe||''),
     naissance:pick(live.naissance,fallback.naissance||''),
-    cham:pick(live.cham,fallback.cham??'')
+    cham:pick(live.cham,fallback.cham??''),
+    ulis:pick(live.ulis,fallback.ulis??''),
+    photo:pick(live.photo,fallback.photo??'')
   };
 }
 function portrait(n){
@@ -72,7 +76,7 @@ function portrait(n){
 }
 function parseDate(v){if(typeof v==='number'&&Number.isFinite(v))return new Date(Math.round((v-25569)*86400000));const raw=String(v||'').trim();let m=raw.match(/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{4})$/);if(m)return new Date(+m[3],+m[2]-1,+m[1]);m=raw.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/);if(m)return new Date(+m[1],+m[2]-1,+m[3]);const d=new Date(raw);return Number.isNaN(d.getTime())?null:d}
 function age(d){const n=new Date();let a=n.getFullYear()-d.getFullYear();if(n.getMonth()<d.getMonth()||(n.getMonth()===d.getMonth()&&n.getDate()<d.getDate()))a--;return a}
-function birth(n){const m=metaFor(n),d=parseDate(m.naissance),cham=[true,1,'oui','true','1','x','cham'].includes(typeof m.cham==='string'?norm(m.cham):m.cham)?' · 🎵 CHAM':'';if(!d)return'🎂 Date non renseignée'+cham;return'🎂 '+new Intl.DateTimeFormat('fr-FR',{day:'2-digit',month:'2-digit',year:'numeric'}).format(d)+' · '+age(d)+' ans'+cham}
+function birth(n){const m=metaFor(n),d=parseDate(m.naissance),cham=[true,1,'oui','true','1','x','cham'].includes(typeof m.cham==='string'?norm(m.cham):m.cham)?' · 🎵 CHAM':'',ulis=[true,1,'oui','true','1','x','ulis'].includes(typeof m.ulis==='string'?norm(m.ulis):m.ulis)?' · 🧩 ULIS':'';if(!d)return'🎂 Date non renseignée'+cham+ulis;return'🎂 '+new Intl.DateTimeFormat('fr-FR',{day:'2-digit',month:'2-digit',year:'numeric'}).format(d)+' · '+age(d)+' ans'+cham+ulis}
 function eventStudent(r){return String(r&&(r.prenom||r.eleve||r.name||r.student)||'').trim()}
 function eventTime(r){const t=new Date(r&&(r.date||r.timestamp||r.datetime||r.created_at||r.createdAt)||0).getTime();return Number.isFinite(t)?t:0}
 function activityText(r){if(!r)return'Aucune activité enregistrée';return String(r.texte||r.text||r.detail||r.activite||r.competence||r.ceinture||'Activité Maître Hibou').trim()}

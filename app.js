@@ -81,7 +81,9 @@
       initiale:pick(live.initiale,fallback.initiale||''),
       sexe:pick(live.sexe,fallback.sexe||''),
       naissance:pick(live.naissance,fallback.naissance||''),
-      cham:pick(live.cham,fallback.cham??'')
+      cham:pick(live.cham,fallback.cham??''),
+      ulis:pick(live.ulis,fallback.ulis??''),
+      photo:pick(live.photo,fallback.photo??'')
     };
   }
   function studentPortraitPath(student){const sexe=rosterMetaFor(student).sexe||'';if(window.ProgressionsStudentPhotos)return window.ProgressionsStudentPhotos.get(student,sexe);const s=hibouNorm(sexe);if(['fille','feminin','female','f'].includes(s)||s.startsWith('fill')||s.startsWith('femin'))return 'assets/portraits/portrait_fille.png';if(['garcon','masculin','male','m','g'].includes(s)||s.startsWith('garc')||s.startsWith('mascul'))return 'assets/portraits/portrait_garcon.png';return 'assets/portraits/portrait_neutre.png';}
@@ -366,7 +368,9 @@
           nom:source.nom||source.Nom||source.NOM||source.nom_famille||source.nomFamille||old.nom||'',
           sexe:source.sexe||source.Sexe||source.SEXE||old.sexe||'',
           naissance:source.naissance||source.date_naissance||source.dateNaissance||source.anniversaire||source.date_de_naissance||source['Date de naissance']||old.naissance||'',
-          cham:source.cham??source.CHAM??old.cham??''
+          cham:source.cham??source.CHAM??old.cham??'',
+          ulis:source.ulis??source.ULIS??old.ulis??'',
+          photo:source.photo??source.Photo??source.PHOTO??old.photo??''
         };
       });
       classRoster=names;
@@ -527,7 +531,8 @@
   }
   function ageAtToday(date){const now=new Date();let age=now.getFullYear()-date.getFullYear();const beforeBirthday=now.getMonth()<date.getMonth()||(now.getMonth()===date.getMonth()&&now.getDate()<date.getDate());if(beforeBirthday)age--;return age;}
   function isChamStudent(student){const value=rosterMetaFor(student).cham;if(value===true||value===1)return true;const normalized=String(value||'').trim().toLowerCase();return ['oui','true','vrai','yes','1','x','cham'].includes(normalized);}
-  function birthLabel(student){const meta=rosterMetaFor(student);const cham=isChamStudent(student)?' · 🎵 CHAM':'';const date=parseBirthDate(meta.naissance);if(!date)return `🎂 Date de naissance non renseignée${cham}`;const formatted=new Intl.DateTimeFormat('fr-FR',{day:'2-digit',month:'2-digit',year:'numeric'}).format(date);const age=ageAtToday(date);return `🎂 ${formatted} · ${age} an${age>1?'s':''}${cham}`;}
+  function isUlisStudent(student){const value=rosterMetaFor(student).ulis;if(value===true||value===1)return true;const normalized=String(value||'').trim().toLowerCase();return ['oui','true','vrai','yes','1','x','ulis'].includes(normalized);}
+  function birthLabel(student){const meta=rosterMetaFor(student);const cham=isChamStudent(student)?' · 🎵 CHAM':'';const ulis=isUlisStudent(student)?' · 🧩 ULIS':'';const date=parseBirthDate(meta.naissance);if(!date)return `🎂 Date de naissance non renseignée${cham}${ulis}`;const formatted=new Intl.DateTimeFormat('fr-FR',{day:'2-digit',month:'2-digit',year:'numeric'}).format(date);const age=ageAtToday(date);return `🎂 ${formatted} · ${age} an${age>1?'s':''}${cham}${ulis}`;}
   function recentRows(){try{return JSON.parse(localStorage.getItem(HIBOU_RECENT_KEY)||'[]')||[];}catch(e){return [];}}
   function eventStudent(row){return String((row&&(row.prenom||row.eleve||row.name||row.student))||'').trim();}
   function eventDateValue(row){const raw=row&&(row.date||row.timestamp||row.datetime||row.created_at||row.createdAt);const time=new Date(raw||0).getTime();return Number.isFinite(time)?time:0;}

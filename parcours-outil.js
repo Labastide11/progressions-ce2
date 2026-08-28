@@ -109,6 +109,7 @@ function fillIdentity(){
   const parts=[];
   if(meta.naissance) parts.push((isGirl?'Née':isBoy?'Né':'Né(e)')+' le '+String(meta.naissance));
   if(meta.cham===true||['oui','true','1','x'].includes(norm(meta.cham))) parts.push('🎵 CHAM');
+  if(meta.ulis===true||['oui','true','1','x','ulis'].includes(norm(meta.ulis))) parts.push('🧩 ULIS');
   const metaNode=document.getElementById('poStudentMeta');
   metaNode.textContent=parts.join('  •  ')||'Informations de classe non renseignées';
   const label=document.querySelector('.po-student-heading span');

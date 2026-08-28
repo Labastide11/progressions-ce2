@@ -144,6 +144,7 @@
       const portrait=window.ProgressionsStudentPhotos?.get?.(s.prenom,s.sexe||'')||portraitFor(s.sexe||'');
       const cardClass=genderClass(s.sexe||'');
       const cham=isYes(s.cham);
+      const ulis=isYes(s.ulis);
       const period=activeSession==='morning'?'ce matin':'cet après-midi';
       return `<article class="student-list-card ${cardClass}${cham?' is-cham':''}${absent?' is-absent':''}">
         <div class="student-list-card__number">${index+1}</div>
@@ -151,7 +152,7 @@
           <img src="${portrait}" alt="">
         </button>
         <div class="student-list-card__main">
-          <div class="student-list-card__name"><strong>${esc(fullName)}</strong>${cham?'<span class="student-list-card__cham" title="Élève CHAM" aria-label="Élève CHAM">🎵</span>':''}</div>
+          <div class="student-list-card__name"><strong>${esc(fullName)}</strong>${cham?'<span class="student-list-card__cham" title="Élève CHAM" aria-label="Élève CHAM">🎵</span>':''}${ulis?'<span class="student-list-card__ulis" title="Élève ULIS" aria-label="Élève ULIS">🧩</span>':''}</div>
           <span class="student-list-card__attendance-badge ${absent?'is-absent':'is-present'}">${absent?'🔴 Absent':'🟢 Présent'}</span>
           <small class="student-list-card__birth">${esc(birth)}</small>
         </div>
