@@ -152,7 +152,7 @@
           <img src="${portrait}" alt="">
         </button>
         <div class="student-list-card__main">
-          <div class="student-list-card__name"><strong>${esc(fullName)}</strong><span class="student-list-card__markers">${cham?'<span class="student-list-card__cham" title="Élève CHAM" aria-label="Élève CHAM">🎵</span>':''}${ulis?'<span class="student-list-card__ulis" title="Élève ULIS" aria-label="Élève ULIS">🧩</span>':''}</span></div>
+          <div class="student-list-card__name"><strong>${esc(fullName)}</strong><span class="student-list-card__markers">${cham?'<span class="student-list-card__cham" title="Élève CHAM" aria-label="Élève CHAM">🎵</span>':''}${ulis?'<span class="student-list-card__ulis" title="Élève ULIS" aria-label="Élève ULIS">⭐</span>':''}</span></div>
           <span class="student-list-card__attendance-badge ${absent?'is-absent':'is-present'}">${absent?'🔴 Absent':'🟢 Présent'}</span>
           <small class="student-list-card__birth">${esc(birth)}</small>
         </div>
