@@ -1702,8 +1702,14 @@
       const period=btn.dataset.openSummaryPeriod||'p1';
       showModal(true);
       tabs.querySelectorAll('button').forEach(x=>x.classList.toggle('is-active',x.dataset.period===period));
+
       if(period==='p1') renderP1Week(1);
+      else if(period==='p2') renderP2Week(1);
+      else if(period==='p3') renderP3Week(1);
+      else if(period==='p4') renderLaterPeriodWeek('p4',1);
+      else if(period==='p5') renderLaterPeriodWeek('p5',1);
       else render(period);
+
       content.scrollTop=0;
     }));
     if(openDetail) openDetail.addEventListener('click',()=>{showModal(false);tabs.querySelectorAll('button').forEach(x=>x.classList.toggle('is-active',x.dataset.period==='p1'));renderP1Week(1);content.scrollTop=0});
