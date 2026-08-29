@@ -1235,6 +1235,18 @@
     bindStatusControls(content);
   }
 
+
+  function sessionDocumentsButton(meta){
+    const docs=meta&&Array.isArray(meta.documents)?meta.documents:[];
+    if(!docs.length)return '';
+    return `<div class="session-documents">${docs.map(doc=>{
+      const title=String(doc&&doc.titre||'Document').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      const url=String(doc&&doc.url||'');
+      if(!/^https:\/\/drive\.google\.com\//i.test(url))return '';
+      return `<a class="session-document-link" href="${url}" target="_blank" rel="noopener noreferrer" title="Ouvrir ${title} dans Google Drive">📄 ${title}</a>`;
+    }).join('')}</div>`;
+  }
+
   function p1ActivityLabel(row){
     const subject=(row[1]||'').toLowerCase();
     const session=(row[2]||'').toLowerCase();
@@ -1337,7 +1349,7 @@
     const data=p1DetailedWeeks[week-1]||p1DetailedWeeks[0];
     const content=document.getElementById('timetableContent');
     const evalCount=data.days.reduce((n,[,rows])=>n+rows.filter(r=>/Évaluation|Mini-test|validation|Mesure (initiale|intermédiaire)|Dictée évaluée/i.test(r[5]||'')).length,0);
-    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('p1',data.key)}${calendarNotice(data)}${p1FrenchWeekPlan(week)}${week===1?renderP1DictationOverview():''}${renderP1DictationProgramming(week)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Séance proposée</th><th>Compétence reliée à Progressions CE2</th><th>Suivi / évaluation</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${p1ActivityLabel(r)}</span></td><td>${pedagogyMarkers('p1',data.key,day,r)}${r[2]}${p1DictationTimetableGuide(week,day,r)}${p1LessonButton(r[6])}</td><td>${r[3]}</td><td><span class="${/Évaluation|Mini-test|Dictée évaluée/i.test(r[5])?'eval-badge':'follow-badge'}">${r[5]}</span></td><td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('p1',data.key)}${calendarNotice(data)}${p1FrenchWeekPlan(week)}${week===1?renderP1DictationOverview():''}${renderP1DictationProgramming(week)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Séance proposée</th><th>Compétence reliée à Progressions CE2</th><th>Suivi / évaluation</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${p1ActivityLabel(r)}</span></td><td>${pedagogyMarkers('p1',data.key,day,r)}${r[2]}${sessionDocumentsButton(r[7])}${p1DictationTimetableGuide(week,day,r)}${p1LessonButton(r[6])}</td><td>${r[3]}</td><td><span class="${/Évaluation|Mini-test|Dictée évaluée/i.test(r[5])?'eval-badge':'follow-badge'}">${r[5]}</span></td><td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
     bindStatusControls(content);
   }
 
