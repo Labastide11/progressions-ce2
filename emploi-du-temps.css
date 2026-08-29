@@ -441,3 +441,33 @@ body.projection-active{overflow:hidden}
 .session-documents{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
 .session-document-link{display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border:1px solid rgba(51,78,122,.18);border-radius:10px;background:#fff;text-decoration:none;font-weight:700;font-size:.88rem;line-height:1.15}
 .session-document-link:hover,.session-document-link:focus-visible{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.08);outline:none}
+
+
+/* V35.50 — tableau de bord emploi du temps : compétence puis grande séance */
+.detail-competence-cell{
+  min-width:210px;
+  width:23%;
+  vertical-align:top;
+  line-height:1.38;
+}
+.detail-session-cell.detail-session-wide{
+  width:48%;
+  min-width:360px;
+  vertical-align:top;
+  line-height:1.42;
+}
+.dashboard-follow{
+  margin-top:10px;
+  padding-top:8px;
+  border-top:1px dashed rgba(72,91,125,.18);
+}
+.detail-session-wide .session-guide,
+.detail-session-wide .lesson-card,
+.detail-session-wide .problem-card,
+.detail-session-wide .dictation-guide{
+  max-width:none;
+}
+@media (max-width:1100px){
+  .detail-competence-cell{min-width:170px;width:22%}
+  .detail-session-cell.detail-session-wide{min-width:300px;width:50%}
+}

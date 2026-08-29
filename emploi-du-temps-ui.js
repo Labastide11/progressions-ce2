@@ -1231,45 +1231,25 @@
   function renderDetailedWeek(key){
     const data=detailedWeeks[key];
     const content=document.getElementById('timetableContent');
-    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('rentree',key)}<div class="timetable-note">${data.note}</div>${renderP2DictationProgramming(data.frenchPlan,week)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Séance proposée</th><th>Compétence reliée à Progressions CE2</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td>${adaptiveDetailCellsNoFollow(`${pedagogyMarkers('rentree',key,day,r)}${r[2]}${rentreeMathButton(key,r)}${rentreeSessionGuide(r)}`,r[3])}<td>${statusSelect(statusKey(key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('rentree',key)}<div class="timetable-note">${data.note}</div>${renderP2DictationProgramming(data.frenchPlan,week)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td><td class="detail-competence-cell">${r[3]}</td><td class="detail-session-cell detail-session-wide">${pedagogyMarkers('rentree',key,day,r)}${r[2]}${rentreeMathButton(key,r)}${rentreeSessionGuide(r)}</td><td>${statusSelect(statusKey(key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
     bindStatusControls(content);
   }
 
 
 
-  // V35.49 — cellules adaptatives dans l'emploi du temps détaillé.
-  // Quand une colonne est réellement vide, la cellule voisine s'étend
-  // afin d'éviter les grands blancs dans le tableau de bord.
-  function detailCellHasContent(value){
-    return String(value == null ? '' : value)
-      .replace(/<[^>]*>/g,'')
-      .replace(/&nbsp;/gi,' ')
-      .trim().length > 0;
+
+  // V35.50 — tableau de bord à 5 colonnes :
+  // Horaire | Domaine | Compétence | Séance détaillée + suivi | Statut
+  function dashboardFollowBadge_(suivi,evalPattern){
+    const value=String(suivi==null?'':suivi).trim();
+    if(!value)return '';
+    const badge=(evalPattern||/Évaluation|Mini-test|Dictée évaluée/i).test(value)
+      ?'eval-badge':'follow-badge';
+    return `<div class="dashboard-follow"><span class="${badge}">${value}</span></div>`;
   }
 
-  function adaptiveDetailCells(sessionHtml,competence,suivi,evalPattern){
-    const hasCompetence=detailCellHasContent(competence);
-    const hasSuivi=detailCellHasContent(suivi);
-    const sessionSpan=!hasCompetence&&!hasSuivi?3:(!hasCompetence?2:1);
-
-    let html=`<td class="detail-session-cell"${sessionSpan>1?` colspan="${sessionSpan}"`:''}>${sessionHtml}</td>`;
-
-    if(hasCompetence){
-      html+=`<td${!hasSuivi?' colspan="2"':''}>${competence}</td>`;
-    }
-
-    if(hasSuivi){
-      const badge=(evalPattern||/Évaluation|Mini-test|Dictée évaluée/i).test(String(suivi||''))
-        ?'eval-badge':'follow-badge';
-      html+=`<td><span class="${badge}">${suivi}</span></td>`;
-    }
-
-    return html;
-  }
-
-  function adaptiveDetailCellsNoFollow(sessionHtml,competence){
-    const hasCompetence=detailCellHasContent(competence);
-    return `<td class="detail-session-cell"${hasCompetence?'':' colspan="2"'}>${sessionHtml}</td>${hasCompetence?`<td>${competence}</td>`:''}`;
+  function dashboardSessionCell_(sessionHtml,suivi,evalPattern){
+    return `<td class="detail-session-cell detail-session-wide">${sessionHtml}${dashboardFollowBadge_(suivi,evalPattern)}</td>`;
   }
 
   function sessionDocumentsButton(meta){
@@ -1385,7 +1365,7 @@
     const data=p1DetailedWeeks[week-1]||p1DetailedWeeks[0];
     const content=document.getElementById('timetableContent');
     const evalCount=data.days.reduce((n,[,rows])=>n+rows.filter(r=>/Évaluation|Mini-test|validation|Mesure (initiale|intermédiaire)|Dictée évaluée/i.test(r[5]||'')).length,0);
-    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('p1',data.key)}${calendarNotice(data)}${p1FrenchWeekPlan(week)}${week===1?renderP1DictationOverview():''}${renderP1DictationProgramming(week)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Séance proposée</th><th>Compétence reliée à Progressions CE2</th><th>Suivi / évaluation</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${p1ActivityLabel(r)}</span></td>${adaptiveDetailCells(`${pedagogyMarkers('p1',data.key,day,r)}${r[2]}${sessionDocumentsButton(r[7])}${p1DictationTimetableGuide(week,day,r)}${p1LessonButton(r[6])}`,r[3],r[5],/Évaluation|Mini-test|Dictée évaluée/i)}<td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('p1',data.key)}${calendarNotice(data)}${p1FrenchWeekPlan(week)}${week===1?renderP1DictationOverview():''}${renderP1DictationProgramming(week)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${p1ActivityLabel(r)}</span></td><td class="detail-competence-cell">${r[3]}</td>${dashboardSessionCell_(`${pedagogyMarkers('p1',data.key,day,r)}${r[2]}${sessionDocumentsButton(r[7])}${p1DictationTimetableGuide(week,day,r)}${p1LessonButton(r[6])}`,r[5],/Évaluation|Mini-test|Dictée évaluée/i)}<td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
     bindStatusControls(content);
   }
 
@@ -1486,7 +1466,7 @@
     const data=p2DetailedWeeks[week-1]||p2DetailedWeeks[0];
     const content=document.getElementById('timetableContent');
     const evalCount=data.days.reduce((n,[,rows])=>n+rows.filter(r=>/Évaluation|Mini-test|validation|Mesure (initiale|intermédiaire)|Dictée/i.test(r[5]||'')).length,0);
-    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('p2',data.key)}${data.holiday?`<div class="holiday-note">📅 ${data.holiday}</div>`:''}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Séance proposée</th><th>Compétence reliée à Progressions CE2</th><th>Suivi / évaluation</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td>${adaptiveDetailCells(`${pedagogyMarkers('p2',data.key,day,r)}${r[2]}${p2DictationTimetableGuide(week,day,r)}${annualMathLessonButton(r[6])}`,r[3],r[5],/Évaluation|Mini-test|Dictée/i)}<td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('p2',data.key)}${data.holiday?`<div class="holiday-note">📅 ${data.holiday}</div>`:''}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td><td class="detail-competence-cell">${r[3]}</td>${dashboardSessionCell_(`${pedagogyMarkers('p2',data.key,day,r)}${r[2]}${p2DictationTimetableGuide(week,day,r)}${annualMathLessonButton(r[6])}`,r[5],/Évaluation|Mini-test|Dictée/i)}<td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
     bindStatusControls(content);
   }
   function p3DictationBankData(week){
@@ -1558,7 +1538,7 @@
     const data=p3DetailedWeeks[week-1]||p3DetailedWeeks[0];
     const content=document.getElementById('timetableContent');
     const evalCount=data.days.reduce((n,[,rows])=>n+rows.filter(r=>/Évaluation|Mini-test|Dictée évaluée|Validation/i.test(r[5]||'')).length,0);
-    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('p3',data.key)}${calendarNotice(data)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderP3DictationProgramming(data.frenchPlan,week)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Séance proposée</th><th>Compétence reliée à Progressions CE2</th><th>Suivi / évaluation</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td>${adaptiveDetailCells(`${pedagogyMarkers('p3',data.key,day,r)}${r[2]}${p3DictationTimetableGuide(week,day,r)}${annualMathLessonButton(r[6])}`,r[3],r[5],/Évaluation|Mini-test|Dictée évaluée/i)}<td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('p3',data.key)}${calendarNotice(data)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderP3DictationProgramming(data.frenchPlan,week)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td><td class="detail-competence-cell">${r[3]}</td>${dashboardSessionCell_(`${pedagogyMarkers('p3',data.key,day,r)}${r[2]}${p3DictationTimetableGuide(week,day,r)}${annualMathLessonButton(r[6])}`,r[5],/Évaluation|Mini-test|Dictée évaluée/i)}<td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
     bindStatusControls(content);
   }
   function laterPeriodDictationBankData(period,week){
@@ -1629,7 +1609,7 @@
     const data=source[week-1]||source[0];
     const content=document.getElementById('timetableContent');
     const evalCount=data.days.reduce((n,[,rows])=>n+rows.filter(r=>/Évaluation|Mini-test|Dictée évaluée|Validation/i.test(r[5]||'')).length,0);
-    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector(period,data.key)}${calendarNotice(data)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${(period==='p4'||period==='p5')?renderLaterPeriodDictationProgramming(period,data.frenchPlan,week):renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Séance proposée</th><th>Compétence reliée à Progressions CE2</th><th>Suivi / évaluation</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td>${adaptiveDetailCells(`${pedagogyMarkers(period,data.key,day,r)}${r[2]}${(period==='p4'||period==='p5')?laterPeriodDictationTimetableGuide(period,week,day,r):''}${annualMathLessonButton(r[6])}`,r[3],r[5],/Évaluation|Mini-test|Dictée évaluée/i)}<td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector(period,data.key)}${calendarNotice(data)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${(period==='p4'||period==='p5')?renderLaterPeriodDictationProgramming(period,data.frenchPlan,week):renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td><td class="detail-competence-cell">${r[3]}</td>${dashboardSessionCell_(`${pedagogyMarkers(period,data.key,day,r)}${r[2]}${(period==='p4'||period==='p5')?laterPeriodDictationTimetableGuide(period,week,day,r):''}${annualMathLessonButton(r[6])}`,r[5],/Évaluation|Mini-test|Dictée évaluée/i)}<td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
     bindStatusControls(content);
   }
   function render(p){
