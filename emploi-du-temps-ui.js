@@ -1682,7 +1682,14 @@
     const shut=()=>{modal.classList.add('hidden');modal.classList.remove('timetable-modal--direct','timetable-modal--tbi');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''};
     const showModal=(direct=false,tbi=false)=>{modal.classList.toggle('timetable-modal--direct',!!direct);modal.classList.toggle('timetable-modal--tbi',!!tbi);modal.classList.remove('hidden');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'};
     if(openSummary) openSummary.addEventListener('click',()=>{showModal(false);tabs.querySelectorAll('button').forEach(x=>x.classList.toggle('is-active',x.dataset.period==='rentree'));render('rentree')});
-    openSummaryPeriods.forEach(btn=>btn.addEventListener('click',()=>{const period=btn.dataset.openSummaryPeriod||'p1';showModal(true);tabs.querySelectorAll('button').forEach(x=>x.classList.toggle('is-active',x.dataset.period===period));render(period);content.scrollTop=0;}));
+    openSummaryPeriods.forEach(btn=>btn.addEventListener('click',()=>{
+      const period=btn.dataset.openSummaryPeriod||'p1';
+      showModal(true);
+      tabs.querySelectorAll('button').forEach(x=>x.classList.toggle('is-active',x.dataset.period===period));
+      if(period==='p1') renderP1Week(1);
+      else render(period);
+      content.scrollTop=0;
+    }));
     if(openDetail) openDetail.addEventListener('click',()=>{showModal(false);tabs.querySelectorAll('button').forEach(x=>x.classList.toggle('is-active',x.dataset.period==='p1'));renderP1Week(1);content.scrollTop=0});
     if(openTbi) openTbi.addEventListener('open-tbi-view',()=>{showModal(true,true);tabs.querySelectorAll('button').forEach(x=>x.classList.toggle('is-active',x.dataset.period==='p1'));render('p1');content.scrollTop=0;});
     close.addEventListener('click',shut); modal.addEventListener('click',e=>{if(e.target===modal)shut()}); document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.classList.contains('hidden'))shut()});
