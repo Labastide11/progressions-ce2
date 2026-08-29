@@ -328,7 +328,7 @@
     m1e:buildP1MathLesson(1,"Calcul mental — Compléments à 10 et à 100","15 min","Automatismes",["Automatiser les compléments à 10", "S’appuyer sur les dizaines pour compléter à 100"],[["3 min", "Rappel", "Compléments à 10 avec les doigts ou cartes."], ["5 min", "Passage à 100", "30 + ? = 100, puis 63 + ? = 100."], ["5 min", "Ardoise", "Cinq compléments variés."], ["2 min", "Autoévaluation", "Colorier vert, orange ou rouge selon l’aisance."]],"4 réponses justes sur 5.","Bande numérique, dizaines entières d’abord, puis nombres comme 63."),
     m1f:buildP1MathLesson(1,"Numération — Comparer deux nombres","45 min","Numération",["Comparer deux nombres jusqu’à 10 000", "Justifier avec la valeur de position"],[["5 min", "Problème", "Quel stade peut accueillir le plus de personnes ?"], ["10 min", "Manipulation", "Comparer d’abord le nombre de milliers, puis centaines, dizaines et unités."], ["10 min", "Institutionnalisation", "Introduire ou rappeler <, > et = avec une justification orale."], ["15 min", "Entraînement", "Comparer, ranger puis insérer un nombre entre deux autres."], ["5 min", "Trace", "On compare les chiffres de gauche à droite."]],"Comparer cinq paires et justifier une réponse.","Tableau de numération et symboles accompagnés des mots plus petit/plus grand."),
     m1g:buildP1MathLesson(1,"Calcul mental — Bilan de la semaine","15 min","Évaluation formative",["Mobiliser tables, compléments et stratégie ±9", "Identifier un objectif personnel"],[["2 min", "Préparation", "Rappeler les trois familles de calculs."], ["6 min", "Mini-bilan", "Six calculs courts sans chronomètre stressant."], ["5 min", "Correction", "Faire expliciter deux procédures."], ["2 min", "Objectif", "Choisir le calcul à retravailler."]],"Résultats et stratégie notés séparément.","Quatre calculs, temps majoré, droite numérique autorisée."),
-    m1h:buildP1MathLesson(1,"Numération — Composer, décomposer et comparer","45 min","Évaluation courte",["Mobiliser lecture, écriture, décomposition et comparaison", "Expliquer une procédure"],[["5 min", "Réactivation", "Lire deux nombres et rappeler les critères de comparaison."], ["20 min", "Évaluation", "Lire/écrire, décomposer, comparer et ranger."], ["10 min", "Correction différée", "Reprendre une erreur avec le matériel."], ["5 min", "Trace de progrès", "Indiquer ce que je sais faire."], ["5 min", "Remédiation", "Former les groupes de besoin."]],"Évaluation par compétence, sans note globale unique.","Nombres plus petits, tableau de numération et consignes lues."),
+    m1h:buildP1MathLesson(1,"Numération — Composer, décomposer et comparer","45 min","Consolidation",["Réinvestir la lecture et l’écriture des nombres jusqu’à 10 000", "Décomposer un nombre", "Comparer et ranger en justifiant"],[["5 min", "Réactivation", "Lire 2 405 et 3 080 puis rappeler la valeur de chaque chiffre."], ["10 min", "Composer et décomposer", "Construire 3 482 puis écrire 3 000 + 400 + 80 + 2 ; proposer une autre décomposition."], ["10 min", "Comparer", "Comparer 2 709 et 2 790 puis 4 050 et 4 005 en verbalisant la position décisive."], ["10 min", "Ranger", "Ranger 1 908 ; 1 890 ; 1 980 ; 1 809 du plus petit au plus grand."], ["5 min", "Défi", "Trouver un nombre compris entre 3 450 et 3 500 et justifier."], ["5 min", "Bilan", "Faire formuler : je lis de gauche à droite et je regarde la valeur des chiffres."]],"Observation formative pendant la consolidation ; aucune note.","Tableau de numération, matériel base 10 et nombres réduits si nécessaire."),
     m1i:buildP1MathLesson(1,"Problèmes — Comprendre la question","35 min","Résolution de problèmes",["Identifier ce que l’on cherche", "Distinguer données utiles et inutiles"],[["5 min", "Lecture", "Lire un problème sans montrer la question."], ["8 min", "Anticipation", "Inventer une question possible puis comparer avec la vraie question."], ["10 min", "Tri", "Surligner ce que l’on sait et entourer ce que l’on cherche."], ["8 min", "Recherche", "Choisir un schéma ou une opération sans forcément calculer."], ["4 min", "Trace", "Avant de calculer, je reformule la question."]],"Reformuler la question avec ses propres mots.","Lecture orale, pictogramme « je cherche », données réduites."),
     m2a:buildP1MathLesson(2,"Calcul mental — Ajouter ou retrancher 9 et 19","15 min","Automatismes",["Utiliser un nombre rond voisin", "Expliquer +20−1 ou −20+1"],[["3 min", "Rappel", "Reprendre la stratégie de ±9."], ["5 min", "Extension", "Passer à +19 et −19."], ["5 min", "Ardoise", "Six calculs gradués."], ["2 min", "Bilan", "Nommer la compensation utilisée."]],"Procédure correcte sur quatre calculs.","Droite numérique et nombres inférieurs à 100."),
     m2b:buildP1MathLesson(2,"Numération — Encadrer entre deux dizaines puis deux centaines","45 min","Numération",["Trouver les dizaines qui encadrent un nombre", "Étendre la procédure aux centaines"],[["5 min", "Situation", "Placer 347 sur une droite graduée."], ["10 min", "Manipulation", "Repérer 340 et 350, puis 300 et 400."], ["10 min", "Langage", "Écrire 340 < 347 < 350 et lire l’encadrement."], ["15 min", "Entraînement", "Encadrements variés et nombres à compléter."], ["5 min", "Trace", "Les bornes sont les multiples voisins."]],"Encadrer correctement quatre nombres.","Droites graduées partiellement complétées."),
@@ -348,7 +348,7 @@
     m3g:buildP1MathLesson(3,"Calcul mental — Bilan","15 min","Évaluation formative",["Mobiliser tables, compléments et compensations", "Identifier ses progrès"],[["2 min", "Installation", "Rappeler qu’on évalue aussi la méthode."], ["7 min", "Bilan", "Huit calculs."], ["4 min", "Correction", "Coder les familles d’erreurs."], ["2 min", "Objectif", "Choisir un entraînement."]],"Suivi individuel par famille de calculs.","Cinq calculs et outils autorisés selon le PAP."),
     m3h:buildP1MathLesson(3,"Calcul posé — Addition et soustraction","45 min","Évaluation courte",["Choisir et poser l’opération", "Vérifier le résultat"],[["5 min", "Lecture", "Identifier addition ou soustraction dans deux situations."], ["20 min", "Évaluation", "Deux additions et deux soustractions."], ["10 min", "Vérification", "Estimer puis contrôler une opération."], ["5 min", "Correction ciblée", "Reprendre l’alignement ou l’échange."], ["5 min", "Bilan", "Cocher les compétences."]],"Opération, pose, calcul et contrôle évalués séparément.","Un item de chaque type, gabarit quadrillé."),
     m3i:buildP1MathLesson(3,"Fractions — Représenter et nommer une fraction simple","35 min","Fractions",["Comprendre une fraction comme partage équitable", "Nommer demi, tiers et quart"],[["5 min", "Situation", "Partager équitablement une bande entre 2, 3 puis 4 élèves."], ["10 min", "Manipulation", "Plier et colorier des bandes."], ["8 min", "Langage", "Une part sur quatre se note 1/4 et se lit un quart."], ["8 min", "Association", "Relier dessins, écritures et mots."], ["4 min", "Trace", "Le dénominateur indique le nombre de parts égales."]],"Associer correctement trois représentations.","Parts prétracées, manipulation concrète et vocabulaire limité à demi/quart."),
-    m4a:buildP1MathLesson(4,"Calcul mental — Évaluation courte","15 min","Évaluation",["Mobiliser les automatismes de P1", "Gérer un temps court sans précipitation"],[["2 min", "Consigne", "Présenter les familles de calculs."], ["8 min", "Évaluation", "Dix calculs gradués."], ["3 min", "Relecture", "Vérifier les signes et résultats."], ["2 min", "Bilan", "Repérer la famille à retravailler."]],"Résultats ventilés par compétence.","Six calculs, temps prolongé."),
+    m4a:buildP1MathLesson(4,"Calcul mental — Tables, compléments et ±9/19/29","15 min","Consolidation",["Réactiver les trois familles d’automatismes de P1", "Choisir une stratégie efficace"],[["3 min", "Tables d’addition", "Proposer 7+6, 8+5 et 9+4 ; faire expliciter un double ou presque-double."], ["4 min", "Compléments", "Faire 6+…=10, 70+…=100 et 63+…=100."], ["5 min", "Compensation", "Calculer 34+9, 52−19 et 47+29 en passant par un nombre rond."], ["3 min", "Bilan", "Chaque élève nomme la stratégie qu’il doit encore automatiser."]],"Observation des procédures, sans nouvelle évaluation formelle.","Moins de calculs, droite numérique ou cartes de référence si besoin."),
     m4b:buildP1MathLesson(4,"Problèmes — Résoudre un problème additif en deux étapes","45 min","Résolution de problèmes",["Organiser deux calculs successifs", "Conserver le sens des résultats intermédiaires"],[["5 min", "Lecture", "Reformuler ce que l’on cherche."], ["10 min", "Schéma", "Construire une représentation avec deux étapes."], ["12 min", "Recherche", "Effectuer le premier calcul puis nommer son résultat."], ["10 min", "Seconde étape", "Utiliser ce résultat pour répondre."], ["5 min", "Mise en commun", "Comparer les ordres de calcul possibles."], ["3 min", "Trace", "J’écris ce que signifie chaque résultat."]],"Deux étapes cohérentes et phrase-réponse.","Nombres simples, étapes matérialisées par deux cadres."),
     m4c:buildP1MathLesson(4,"Calcul mental — Remédiation ciblée","15 min","Remédiation",["Renforcer une famille de calculs", "Utiliser un outil adapté puis s’en détacher"],[["3 min", "Groupes", "Répartir selon tables, compléments ou compensation."], ["8 min", "Ateliers", "Cartes, droite numérique ou jeu de dés."], ["2 min", "Défi final", "Deux calculs sans outil."], ["2 min", "Bilan", "Noter le progrès."]],"Observation individualisée.","Atelier très guidé avec matériel."),
     m4d:buildP1MathLesson(4,"Mesures — Mesurer et tracer des segments","45 min","Évaluation pratique",["Mesurer en cm et mm", "Tracer une longueur donnée"],[["5 min", "Rappel gestuel", "Placer le zéro et maintenir la règle."], ["20 min", "Évaluation", "Mesurer trois segments et en tracer deux."], ["10 min", "Contrôle", "Vérifier avec une seconde mesure."], ["5 min", "Correction", "Analyser les écarts."], ["5 min", "Bilan", "Identifier le geste à améliorer."]],"Précision du geste et résultat.","Moins de segments, longueurs entières en cm."),
@@ -358,9 +358,9 @@
     m4h:buildP1MathLesson(4,"Calcul posé — Évaluation addition et soustraction","45 min","Évaluation",["Poser et calculer les deux opérations", "Contrôler la vraisemblance"],[["5 min", "Préparation", "Relire les critères."], ["22 min", "Évaluation", "Opérations variées."], ["8 min", "Contrôle", "Estimation ou opération inverse."], ["5 min", "Relecture", "Alignement, retenues, signe."], ["5 min", "Bilan", "Repérer la compétence acquise."]],"Critères séparés pour la pose et le calcul.","Deux opérations, gabarit et temps majoré."),
     m4i:buildP1MathLesson(4,"Monnaie — Composer une somme en euros","35 min","Grandeurs et mesures",["Reconnaître billets et pièces", "Composer une même somme de plusieurs façons"],[["5 min", "Observation", "Nommer les pièces et billets factices."], ["10 min", "Manipulation", "Composer 7 €, 12 € puis 25 €."], ["8 min", "Défi", "Trouver deux compositions différentes."], ["8 min", "Jeu marchand", "Payer exactement un objet."], ["4 min", "Trace", "Une somme peut être composée de différentes manières."]],"Composer trois sommes exactes.","Sommes inférieures à 10 €, pièces limitées."),
     m5a:buildP1MathLesson(5,"Calcul mental — Ateliers selon les besoins","15 min","Remédiation",["Reprendre une compétence non validée", "Mesurer un progrès"],[["3 min", "Orientation", "Choisir l’atelier à partir du bilan."], ["8 min", "Atelier", "Tables, compléments ou compensation."], ["2 min", "Validation", "Trois calculs ciblés."], ["2 min", "Bilan", "Reporter le résultat dans le suivi."]],"Validation différée individualisée.","Outils maintenus si prévus dans les adaptations."),
-    m5b:buildP1MathLesson(5,"Problèmes — Une ou deux étapes","45 min","Évaluation et remédiation",["Comprendre la question", "Choisir et enchaîner les opérations"],[["5 min", "Lecture", "Reformuler les questions."], ["20 min", "Évaluation", "Un problème à une étape puis un à deux étapes."], ["10 min", "Représentation", "Ajouter ou corriger un schéma."], ["5 min", "Réponse", "Vérifier l’unité et la phrase."], ["5 min", "Reprise", "Corriger avec un indice."]],"Compréhension, représentation, calcul et réponse séparés.","Un seul problème, données simplifiées et schéma partiellement fourni."),
+    m5b:buildP1MathLesson(5,"Problèmes — Une ou deux étapes","45 min","Consolidation",["Comprendre la question", "Résoudre un problème additif en une ou deux étapes", "Expliquer le rôle de chaque calcul"],[["5 min", "Lecture", "Lire un problème et reformuler précisément ce que l’on cherche."], ["10 min", "Problème à une étape", "Résoudre une transformation simple et comparer les représentations proposées."], ["15 min", "Problème à deux étapes", "Chercher d’abord une information intermédiaire puis utiliser ce résultat pour répondre."], ["10 min", "Mise en commun", "Faire expliciter ce que signifie chaque calcul et vérifier la phrase-réponse."], ["5 min", "Bilan", "Rappeler : je comprends, je représente, je calcule, je réponds."]],"Petite trace formative par observation ; aucune évaluation supplémentaire.","Un seul problème à la fois, nombres simplifiés et schéma partiellement fourni."),
     m5c:buildP1MathLesson(5,"Calcul mental — Jeu de réinvestissement","15 min","Automatismes",["Réinvestir sans nouvelle difficulté", "Coopérer et verbaliser"],[["3 min", "Règles", "Présenter le jeu par équipes."], ["9 min", "Défi", "Cartes calculs avec justification obligatoire."], ["2 min", "Correction", "Valider collectivement."], ["1 min", "Bilan", "Féliciter la stratégie, pas seulement la vitesse."]],"Observation de la procédure.","Cartes de niveau adapté."),
-    m5d:buildP1MathLesson(5,"Fractions — Évaluation et consolidation","45 min","Fractions",["Représenter une fraction simple", "Nommer une fraction simple"],[["5 min", "Manipulation", "Replier une bande en parts égales."], ["15 min", "Évaluation", "Colorier, écrire et nommer des demis, tiers et quarts."], ["10 min", "Jeu d’association", "Images, écritures et mots."], ["10 min", "Remédiation", "Reprendre avec le matériel."], ["5 min", "Trace", "Expliquer le rôle du dénominateur."]],"Parts égales et correspondance correcte.","Demi et quart seulement, modèles prépartagés."),
+    m5d:buildP1MathLesson(5,"Fractions — Représenter et nommer des fractions simples","45 min","Fractions · consolidation",["Représenter une fraction simple", "Nommer une fraction simple"],[["5 min", "Manipulation", "Replier une bande en parts égales."], ["15 min", "Évaluation", "Colorier, écrire et nommer des demis, tiers et quarts."], ["10 min", "Jeu d’association", "Images, écritures et mots."], ["10 min", "Remédiation", "Reprendre avec le matériel."], ["5 min", "Trace", "Expliquer le rôle du dénominateur."]],"Parts égales et correspondance correcte.","Demi et quart seulement, modèles prépartagés."),
     m5e:buildP1MathLesson(5,"Calcul mental — Bilan personnel","15 min","Métacognition",["Identifier ses automatismes solides", "Choisir un objectif pour P2"],[["3 min", "Lecture du suivi", "Observer ses résultats des semaines précédentes."], ["6 min", "Défi personnel", "Calculs adaptés à l’objectif."], ["4 min", "Correction", "Comparer avec une ancienne tentative."], ["2 min", "Objectif P2", "Écrire une phrase simple."]],"Progrès individuel.","Objectif formulé oralement ou avec pictogrammes."),
     m5f:buildP1MathLesson(5,"Solides et données — Décrire un solide, lire un tableau","45 min","Géométrie et données",["Décrire cube, pavé ou boule avec un vocabulaire simple", "Prélever une information dans un tableau"],[["5 min", "Manipulation", "Trier des objets selon leur forme."], ["10 min", "Description", "Face, arête et sommet pour cube et pavé."], ["10 min", "Tableau", "Reporter le nombre de faces, arêtes et sommets."], ["15 min", "Lecture", "Répondre à des questions à partir du tableau."], ["5 min", "Bilan", "Relier objet, description et données."]],"Décrire un solide et lire deux informations.","Solides réels, tableau très aéré et questions lues."),
     m5g:buildP1MathLesson(5,"Calcul mental — Défi coopératif","15 min","Réinvestissement",["Mobiliser les stratégies de P1", "Coopérer sans compétition excessive"],[["3 min", "Organisation", "Former des équipes équilibrées."], ["9 min", "Défi", "Chaque réponse doit être accompagnée d’une stratégie."], ["2 min", "Retour", "Partager une méthode efficace."], ["1 min", "Bilan", "Valoriser l’entraide."]],"Participation et justification.","Rôle de lecteur ou manipulateur possible."),
@@ -709,7 +709,7 @@
       <p class="lesson-note"><strong>Utilisation dans notre progression :</strong> ce corpus sert de matériau au DRAS, au vocabulaire, à l’oral et à la production d’écrit. La dictée réellement donnée reste la version adaptée indiquée dans le déroulement de la séance.</p>
     </article>`;
   }
-  function p1LessonButton(id){return id?`<button type="button" class="lesson-open" data-open-p1-lesson="${id}">📖 Ouvrir la séance</button>`:'';}
+  function p1LessonButton(id){return id?`<button type="button" class="lesson-open" data-open-p1-lesson="${id}">📘 Ouvrir la séance complète</button>`:'';}
   function studentInstruction(text){
     const replacements=[
       [/^Afficher /i,'Observe '],[/^Présenter /i,'Observe '],[/^Faire verbaliser /i,'Explique '],
@@ -1121,14 +1121,14 @@
       {file:'problemes-additifs.html',title:'Problèmes additifs',url:'hibou/lecons/problemes-additifs.html'},
       ['12 billes + 5 billes : combien maintenant ?','18 oiseaux, 7 s’envolent : combien restent ?'],['12 + 5 = 17','18 − 7 = 11'],'Explique sans calculer quelle opération tu choisirais pour 25 cartes, 8 perdues.'),
 
-    'p1r1-geo1':buildP1EarlyMathLesson_(
-      'Géométrie — Se repérer et reconnaître des figures usuelles','30 min',
-      'reconnaître et décrire carré, rectangle et triangle et utiliser le matériel avec soin.',
-      ['Je nomme une figure.','Je justifie avec un nombre de côtés ou des angles.'],
-      ['Règles','Figures découpées ou projetées','Ardoises'],
-      [['5 min','Observation','Trier plusieurs figures sans donner les noms.'],['10 min','Mise en mots','Nommer carré, rectangle et triangle.'],['10 min','Jeu de repérage','Trouver une figure à partir d’indices.'],['5 min','Bilan','Rappeler vocabulaire : côté, sommet.']],
-      {file:'polygones.html',title:'Polygones',url:'hibou/lecons/polygones.html'},
-      ['Combien de côtés a un triangle ?','Quel quadrilatère a 4 côtés égaux ?'],['3','Le carré'],'Décris un rectangle sans prononcer son nom.'),
+     'p1r1-geo1':buildP1EarlyMathLesson_(
+      'Géométrie — Point, droite, segment et alignement','30 min',
+      'reconnaître un point, une droite et un segment puis vérifier si des points sont alignés.',
+      ['Je distingue une droite d’un segment.','Je vérifie un alignement avec la règle.'],
+      ['Règles','Ardoises ou feuilles','Points et tracés projetés'],
+      [['5 min','Observation','Faire distinguer un point, une droite et un segment sur trois dessins simples.'],['8 min','Manipulation','Placer A et B, tracer [AB], puis prolonger pour faire apparaître la droite (AB).'],['10 min','Alignement','Projeter trois groupes de points et vérifier avec la règle lesquels sont alignés.'],['5 min','Défi','Placer un point C aligné avec A et B.'],['2 min','Bilan','Faire employer les mots point, droite, segment, aligné.']],
+      {file:'droites-segments-milieu.html',title:'Droites et segments',url:'hibou/lecons/droites-segments-milieu.html'},
+      ['Nomme : A ; [AB] ; (AB).','Les points A, B et C sont-ils alignés ?'],['A est un point ; [AB] est un segment ; (AB) est une droite.','Je vérifie avec la règle.'],'Place un point D sur la droite (AB), mais en dehors du segment [AB].'),
 
     'p1r2-cal1':buildP1EarlyMathLesson_(
       'Calcul mental — Compléments à 10 et additions simples','15 min',
@@ -1193,14 +1193,14 @@
       {file:'problemes-additifs.html',title:'Problèmes additifs',url:'hibou/lecons/problemes-additifs.html'},
       ['La classe a 18 livres et en reçoit 7. Combien maintenant ?','25 cartes, 9 sont données. Combien restent ?'],['18 + 7 = 25','25 − 9 = 16'],'Invente une phrase-réponse complète pour le deuxième problème.'),
 
-    'p1r2-geo1':buildP1EarlyMathLesson_(
-      'Géométrie — Reconnaître et décrire des figures usuelles','30 min',
-      'reconnaître et décrire des figures à partir de leurs propriétés simples.',
-      ['Je nomme carré, rectangle et triangle.','Je décris avec côté, sommet et angle.'],
-      ['Règles','Figures projetées ou découpées'],
-      [['5 min','Tri','Classer des figures librement.'],['10 min','Description','Faire justifier les regroupements.'],['10 min','Portrait de figure','Trouver une figure à partir d’indices.'],['5 min','Bilan','Stabiliser le vocabulaire.']],
-      {file:'polygones.html',title:'Polygones',url:'hibou/lecons/polygones.html'},
-      ['Je possède 3 côtés et 3 sommets : qui suis-je ?','Je possède 4 côtés égaux : qui suis-je ?'],['Un triangle','Un carré'],'Fais deviner un rectangle avec deux indices.')
+     'p1r2-geo1':buildP1EarlyMathLesson_(
+      'Géométrie — Point, droite, segment et alignement','30 min',
+      'consolider le vocabulaire point, droite, segment et utiliser la règle pour vérifier un alignement.',
+      ['Je nomme correctement point, droite et segment.','Je justifie un alignement avec la règle.'],
+      ['Règles','Feuilles ou cahier','Figures projetées'],
+      [['5 min','Réactivation','Nommer A, [AB] et (AB).'],['8 min','Tracé guidé','Placer A et B puis tracer le segment [AB] et la droite (AB).'],['10 min','Alignements','Tester plusieurs triplets de points avec la règle et justifier.'],['5 min','Production','Construire trois points alignés puis un quatrième non aligné.'],['2 min','Bilan','Rappeler les conventions de notation.']],
+      {file:'points-alignes.html',title:'Points alignés',url:'hibou/lecons/points-alignes.html'},
+      ['Trace le segment [AB].','Trace la droite (CD).','Vérifie si E, F et G sont alignés.'],['Le segment a deux extrémités.','La droite se prolonge des deux côtés.','La règle permet de vérifier l’alignement.'],'Construis trois points alignés et un point qui ne l’est pas.')
   };
 
   Object.assign(rentreeMathLessons,p1EarlyMathLessons);
@@ -1223,11 +1223,76 @@
     'p1r2|Vendredi|14h15–14h45':'p1r2-geo1'
   };
 
+
+  // V35.53 — correspondance explicite créneau -> fiche pour toute la P1.
+  // Aucun créneau d'évaluation (nationale ou de référence) n'est mappé.
+  const p1MathLessonSlotMap={
+    // Semaine 3
+    'p1s1|Lundi|11h–11h15':'m1a',
+    'p1s1|Lundi|11h15–12h':'m1b',
+    'p1s1|Mardi|11h–11h15':'m1c',
+    'p1s1|Mardi|11h15–12h':'m1d',
+    'p1s1|Vendredi|11h–11h15':'m1g',
+    'p1s1|Vendredi|11h15–12h':'m1h',
+    'p1s1|Vendredi|14h–14h35':'m1i',
+
+    // Semaine 4
+    'p1s2|Lundi|11h–11h15':'m2a',
+    'p1s2|Lundi|11h15–12h':'m2b',
+    'p1s2|Mardi|11h–11h15':'m2c',
+    'p1s2|Mardi|11h15–12h':'m2d',
+    'p1s2|Jeudi|11h–11h15':'m2e',
+    'p1s2|Jeudi|11h15–12h':'m2f',
+    'p1s2|Vendredi|11h–11h15':'m2g',
+    'p1s2|Vendredi|11h15–12h':'m2h',
+    'p1s2|Vendredi|14h–14h35':'m2i',
+
+    // Semaine 5
+    'p1s3|Lundi|11h–11h15':'m3a',
+    'p1s3|Lundi|11h15–12h':'m3b',
+    'p1s3|Mardi|11h–11h15':'m3c',
+    'p1s3|Mardi|11h15–12h':'m3d',
+    'p1s3|Jeudi|11h–11h15':'m3e',
+    'p1s3|Jeudi|11h15–12h':'m3f',
+    'p1s3|Vendredi|11h–11h15':'m3g',
+    'p1s3|Vendredi|11h15–12h':'m3h',
+    'p1s3|Vendredi|14h–14h35':'m3i',
+
+    // Semaine 6 : le 9 octobre 11h15–12h est une évaluation, donc sans fiche.
+    'p1s4|Lundi|11h–11h15':'m4a',
+    'p1s4|Lundi|11h15–12h':'m4b',
+    'p1s4|Mardi|11h–11h15':'m4c',
+    'p1s4|Mardi|11h15–12h':'m4d',
+    'p1s4|Jeudi|11h–11h15':'m4e',
+    'p1s4|Jeudi|11h15–12h':'m4f',
+    'p1s4|Vendredi|11h–11h15':'m4g',
+    'p1s4|Vendredi|14h–14h35':'m4i',
+
+    // Semaine 7
+    'p1s5|Lundi|11h–11h15':'m5a',
+    'p1s5|Lundi|11h15–12h':'m5b',
+    'p1s5|Mardi|11h–11h15':'m5c',
+    'p1s5|Mardi|11h15–12h':'m5d',
+    'p1s5|Jeudi|11h–11h15':'m5e',
+    'p1s5|Jeudi|11h15–12h':'m5f',
+    'p1s5|Vendredi|11h–11h15':'m5g',
+    'p1s5|Vendredi|11h15–12h':'m5h',
+    'p1s5|Vendredi|14h–14h35':'m5i'
+  };
+
+  function p1MathLessonIdForSlot(weekKey,day,row){
+    if(row[4]!=='maths')return '';
+    if(/Évaluations? nationales?|Évaluation P1 ciblée/i.test(String(row[1]||'')+' '+String(row[2]||'')))return '';
+    const dayName=String(day||'').split(' ')[0];
+    return p1MathLessonSlotMap[`${weekKey}|${dayName}|${row[0]}`]||'';
+  }
+
   function p1EarlyMathButton(weekKey,day,row){
     if(row[4]!=='maths')return '';
+    if(/Évaluations? nationales?/i.test(String(row[1]||'')+' '+String(row[2]||'')))return '';
     const dayName=String(day||'').split(' ')[0];
     const lessonKey=p1EarlyMathSlotMap[`${weekKey}|${dayName}|${row[0]}`];
-    return lessonKey?`<button type="button" class="lesson-open" data-open-rentree-math="${weekKey}|${lessonKey}">📘 Ouvrir la séance</button>`:'';
+    return lessonKey?`<button type="button" class="lesson-open" data-open-rentree-math="${weekKey}|${lessonKey}">📘 Ouvrir la séance complète</button>`:'';
   }
 
   function rentreeMathId(key,row){ return key+'|'+String(row[1]||''); }
@@ -1545,7 +1610,7 @@
     const data=p1DetailedWeeks[week-1]||p1DetailedWeeks[0];
     const content=document.getElementById('timetableContent');
     const evalCount=data.days.reduce((n,[,rows])=>n+rows.filter(r=>/Évaluation|Mini-test|validation|Mesure (initiale|intermédiaire)|Dictée évaluée/i.test(r[5]||'')).length,0);
-    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('p1',data.key)}${calendarNotice(data)}${p1FrenchWeekPlan(week)}${week===1?renderP1DictationOverview():''}${renderP1DictationProgramming(week)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${p1ActivityLabel(r)}</span></td><td class="detail-competence-cell">${r[3]}</td>${dashboardSessionCell_(`${pedagogyMarkers('p1',data.key,day,r)}${r[2]}${sessionDocumentsButton(r[7])}${p1DictationTimetableGuide(week,day,r)}${p1LessonButton(r[6])}${p1EarlyMathButton(data.key,day,r)}`,r[5],/Évaluation|Mini-test|Dictée évaluée/i)}<td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('p1',data.key)}${calendarNotice(data)}${p1FrenchWeekPlan(week)}${week===1?renderP1DictationOverview():''}${renderP1DictationProgramming(week)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${p1ActivityLabel(r)}</span></td><td class="detail-competence-cell">${r[3]}</td>${dashboardSessionCell_(`${pedagogyMarkers('p1',data.key,day,r)}${r[2]}${sessionDocumentsButton(r[7])}${p1DictationTimetableGuide(week,day,r)}${p1LessonButton(r[6]||p1MathLessonIdForSlot(data.key,day,r))}${p1EarlyMathButton(data.key,day,r)}`,r[5],/Évaluation|Mini-test|Dictée évaluée/i)}<td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
     bindStatusControls(content);
   }
 
