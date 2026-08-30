@@ -53,11 +53,13 @@ window.EVALUATIONS_CE2 = {
       },
     }
   },
-  // V35.59 — compréhension de texte, semestre 1 : une évaluation courte par période, centrée sur 2 compétences principales.
+  // V35.60 — compréhension de texte : une évaluation courte par période, centrée sur 2 compétences principales.
   francaisComprehension: [
     { date:'2026-10-06', title:'Compréhension P1 — Le carnet retrouvé', skillCodes:['COM-P1-01','COM-P1-04'], studentDoc:'https://drive.google.com/file/d/1-vh0HueECCJFy-bO_Bd8rMz5TxCQA3Wo/view?usp=drivesdk' },
     { date:'2026-11-24', title:'Compréhension P2 — La balade au parc', skillCodes:['COM-P2-01','COM-P2-02'], studentDoc:'https://drive.google.com/file/d/1FwYShE2fh47W6a9gVYbC0TgwtXaS2_TM/view?usp=drivesdk' },
-    { date:'2027-02-02', title:'Compréhension P3 — Le chat sous l’abri', skillCodes:['COM-P3-01','COM-P3-02'], studentDoc:'https://drive.google.com/file/d/1UdRBpwiIhM-cOm_6zQP4FSbEN-VCmIky/view?usp=drivesdk' }
+    { date:'2027-02-02', title:'Compréhension P3 — Le chat sous l’abri', skillCodes:['COM-P3-01','COM-P3-02'], studentDoc:'https://drive.google.com/file/d/1UdRBpwiIhM-cOm_6zQP4FSbEN-VCmIky/view?usp=drivesdk' },
+    { date:'2027-03-16', title:'Compréhension P4 — Le mystérieux sac bleu', skillCodes:['COM-P4-01','COM-P4-02'], studentDoc:'https://drive.google.com/file/d/1mRt5UYuFPDKSuk19ozBGZyKxY4cdQpDs/view?usp=drivesdk' },
+    { date:'2027-05-20', title:'Compréhension P5 — Pourquoi les hérissons sortent-ils surtout la nuit ?', skillCodes:['COM-P5-02','COM-P5-04'], studentDoc:'https://drive.google.com/file/d/1fpf2ioVAwlgFzTM88qDjf37cCDDjV0mg/view?usp=drivesdk', returnDoc:'https://drive.google.com/file/d/1fh5Vi1NtoFoNlvHcRBT2MWm5W3edhcP-/view?usp=drivesdk' }
   ],
 
   // V35.58 — trois évaluations de production d’écrits, construites à partir du DRAS et des écrits courts réellement travaillés.

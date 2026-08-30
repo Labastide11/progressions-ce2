@@ -1,5 +1,13 @@
 ## V35.59 — Compréhension de texte — semestre 1 (30 août 2026)
 
+## V35.60 — Compréhension S2 : P4 et P5
+- P4 : remplacement de l’ancienne évaluation française trop large du 16 mars 2027 par une évaluation ciblée de compréhension, `COM-P4-01` + `COM-P4-02`, avec lien Drive vers « Le mystérieux sac bleu ».
+- P5 : ajout le 20 mai 2027 d’une évaluation ciblée de compréhension, `COM-P5-02` + `COM-P5-04`.
+- P5 reste en deux pages A4 séparées sur Drive : page 1 (texte + questions) et page 2 (retour enseignant / parents / élève).
+- Aucun PDF d’évaluation n’est ajouté au dépôt ; Progressions CE2 ne conserve que les métadonnées et liens Drive.
+- Aucun README de patch ajouté.
+
+
 - Ajoute 3 évaluations de compréhension de texte en français, une par période du semestre 1.
 - P1 — mardi 6 octobre 2026 : « Le carnet retrouvé » — COM-P1-01 + COM-P1-04.
 - P2 — mardi 24 novembre 2026 : « La balade au parc » — COM-P2-01 + COM-P2-02.
