@@ -1,11 +1,13 @@
-# V35.56 — 30 août 2026 — Navigation détaillée par période
-- Correction de la navigation de la rubrique « Progressions par période ».
-- Quand cette rubrique ouvre un emploi du temps détaillé, les onglets RENTREE / P1 / P2 / P3 / P4 / P5 conservent désormais le mode détaillé.
-- Suppression du retour involontaire vers l'emploi du temps général lors d'un changement de période.
-- Le bouton explicite « Retour à la vue synthétique » reste disponible et bascule volontairement vers la vue générale.
-
 # V35.55 — 30 août 2026 — Fiches de mathématiques semestrielles
-- 8 fiches PDF de mathématiques rangées exclusivement dans Google Drive : `CE2 2026-2027 / 02 - Évaluations / P1…P5`.
+
+## V35.57 — Cohérence des évaluations de mathématiques
+
+- P3 : la fiche 3 « Temps et géométrie » est désormais placée au **vendredi 22 janvier 2027, 11h15–12h**, avec son lien Google Drive.
+- P3 : le vendredi 8 janvier redevient une séance d’**entraînement et manipulation**, sans évaluation formelle prématurée.
+- P1 : après l’évaluation du vendredi 9 octobre, le créneau de 14h–14h35 devient une **consolidation légère autour de la monnaie**, sans nouvel apprentissage lourd.
+- Aucun document d’évaluation n’est ajouté au dépôt : les PDF/DOCX restent exclusivement dans Google Drive.
+
+- 8 fiches PDF de mathématiques rangées dans Google Drive : Progressions CE2 / Évaluations / Mathématiques.
 - Liens PDF ajoutés directement aux séances d’évaluation dans l’emploi du temps.
 - Semestre 1 : 9 octobre, 11 décembre, 22 janvier et 4 février.
 - Semestre 2 : 23 mars, 28 mai, 4 juin et 11 juin.
