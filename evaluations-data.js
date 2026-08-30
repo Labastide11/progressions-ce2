@@ -68,42 +68,42 @@ window.EVALUATIONS_CE2 = {
       p2: {
         title: 'Période 2 — Valeur des chiffres et soustraction',
         status: 'ready',
-        description: 'Évaluation P2 courte et progressive : 2 nouvelles compétences essentielles, dont le fondamental LSU « repérer la valeur d’un chiffre », plus un rebrassage P1 sur la compréhension de la question d’un problème.',
+        description: 'Trace ciblée du semestre 1 : 2 compétences maximum, valeur d’un chiffre et soustraction avec échange. Les autres domaines sont évalués à d’autres moments du semestre.',
         studentDoc: 'assets/evaluations/maths/Maths_P2_eleve_verrouillee.docx',
         teacherDoc: 'assets/evaluations/maths/Maths_P2_grille_enseignant_verrouillee.docx',
         newSkillCodes: ['NUM-P2-02','OPE-P2-02'],
-        reviewSkillCodes: ['PRO-P1-01'],
-        skillCodes: ['NUM-P2-02','OPE-P2-02','PRO-P1-01']
+        reviewSkillCodes: [],
+        skillCodes: ['NUM-P2-02','OPE-P2-02']
       },
       p3: {
         title: 'Période 3 — Tables et multiplication posée',
         status: 'ready',
-        description: 'Évaluation P3 courte et progressive : 2 nouvelles compétences essentielles — connaître les tables de multiplication (fondamental LSU) et poser une multiplication par un chiffre — plus un rebrassage P2 sur la valeur d’un chiffre.',
+        description: 'Dernière trace ciblée du semestre 1 : 2 compétences maximum, tables de multiplication et multiplication posée. La géométrie et le temps font l’objet d’une petite trace distincte en janvier.',
         studentDoc: 'assets/evaluations/maths/Maths_P3_eleve_verrouillee.docx',
         teacherDoc: 'assets/evaluations/maths/Maths_P3_grille_enseignant_verrouillee.docx',
         newSkillCodes: ['CAL-P3-01','OPE-P3-01'],
-        reviewSkillCodes: ['NUM-P2-02'],
-        skillCodes: ['CAL-P3-01','OPE-P3-01','NUM-P2-02']
+        reviewSkillCodes: [],
+        skillCodes: ['CAL-P3-01','OPE-P3-01']
       },
       p4: {
         title: 'Période 4 — Stratégies de calcul et sens de la division',
         status: 'ready',
-        description: 'Évaluation P4 ciblée : 2 nouvelles compétences essentielles — choisir une stratégie de calcul efficace (fondamental LSU) et comprendre le sens de la division — plus 2 rebrassages P3 sur la multiplication posée et les tables.',
+        description: 'Trace ciblée du semestre 2 : 2 compétences maximum, choisir une stratégie de calcul efficace et comprendre le sens de la division. Les autres sous-domaines sont répartis jusqu’en juin.',
         studentDoc: 'assets/evaluations/maths/Maths_P4_eleve_verrouillee.docx',
         teacherDoc: 'assets/evaluations/maths/Maths_P4_grille_enseignant_verrouillee.docx',
         newSkillCodes: ['CAL-P4-02','OPE-P4-02'],
-        reviewSkillCodes: ['OPE-P3-01','CAL-P3-01'],
-        skillCodes: ['CAL-P4-02','OPE-P4-02','OPE-P3-01','CAL-P3-01']
+        reviewSkillCodes: [],
+        skillCodes: ['CAL-P4-02','OPE-P4-02']
       },
       p5: {
         title: 'Période 5 — Représentations des nombres et problème complexe',
         status: 'ready',
-        description: 'Évaluation P5 ciblée : 2 nouvelles compétences essentielles et fondamentales LSU — mobiliser différentes représentations des nombres et résoudre un problème complexe ou atypique — plus 2 rebrassages sur le sens de la division et la multiplication posée.',
+        description: 'Trace de synthèse du semestre 2 : 2 compétences maximum, représentations des nombres et problème complexe. Des traces distinctes en mai et début juin couvrent mesures/fractions puis géométrie/données.',
         studentDoc: 'assets/evaluations/maths/Maths_P5_eleve_verrouillee.docx',
         teacherDoc: 'assets/evaluations/maths/Maths_P5_grille_enseignant_verrouillee.docx',
         newSkillCodes: ['NUM-P5-01','PRO-P5-02'],
-        reviewSkillCodes: ['OPE-P4-02','OPE-P3-01'],
-        skillCodes: ['NUM-P5-01','PRO-P5-02','OPE-P4-02','OPE-P3-01']
+        reviewSkillCodes: [],
+        skillCodes: ['NUM-P5-01','PRO-P5-02']
       }
     }
   },
