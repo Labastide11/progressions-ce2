@@ -1,3 +1,11 @@
+## V35.67 — 30 août 2026 — Badges d’évaluation dans l’emploi du temps
+
+- Harmonisation visuelle avec l’Espace Parents V35.32.
+- Dans l’emploi du temps détaillé, toute séance identifiée comme évaluation affiche désormais deux badges : `📝 Évaluation` + le sous-domaine précis.
+- Sous-domaines distingués notamment : lecture/compréhension, dictée/mots appris, lexique, production d’écrits, grammaire, conjugaison, numération, calcul/opérations, problèmes, géométrie, fractions, grandeurs/mesures, données, histoire, géographie, sciences, anglais et EMC.
+- La couleur principale de la séance reste celle de la matière ; les badges ne modifient ni les compétences, ni les contenus, ni les dates.
+- Aucun badge supplémentaire n’est ajouté aux séances ordinaires : les repères pédagogiques existants sont conservés.
+
 # V35.66 — Correction des évaluations de mathématiques P3 — 30 août 2026
 
 - 22 janvier 2027 : rétablissement de l’évaluation ciblée **Temps + Géométrie** (`TEM-P3-01` + `GEO-P3-01`) dans l’emploi du temps P3, avec lien vers la fiche élève déjà référencée dans `evaluations-data.js`.

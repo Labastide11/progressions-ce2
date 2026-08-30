@@ -1465,11 +1465,63 @@
     return {label:'Entraînement',kind:'practice'};
   }
 
+  // V35.67 — badges d’évaluation harmonisés avec l’Espace Parents.
+  // La couleur du bloc reste celle de la matière ; pour une évaluation,
+  // on affiche un badge rouge transversal + un badge de sous-domaine.
+  function evaluationDomainBadge_(row){
+    const text=`${row?.[1]||''} ${row?.[2]||''} ${row?.[3]||''} ${row?.[5]||''}`.toLowerCase();
+    const code=String(row?.[3]||'').toUpperCase();
+    let icon='📚', label='Évaluation', kind='generic';
+
+    if(/dictée|mots appris|orthographe lexicale/.test(text) || /ORT-/.test(code)){
+      icon='✏️'; label=/dictée|mots appris/.test(text)?'Dictée / mots appris':'Orthographe'; kind='french';
+    } else if(/compréhension|lecture/.test(text) || /COM-|LEC-/.test(code)){
+      icon='📖'; label='Lecture / compréhension'; kind='french';
+    } else if(/lexique|vocabulaire/.test(text) || /VOC-/.test(code)){
+      icon='🧠'; label='Lexique / vocabulaire'; kind='french';
+    } else if(/production d[’']?écrit|production écrite|écriture/.test(text) || /ECR-/.test(code)){
+      icon='✍️'; label='Production d’écrits'; kind='french';
+    } else if(/grammaire/.test(text) || /GRA-/.test(code)){
+      icon='📚'; label='Grammaire'; kind='french';
+    } else if(/conjugaison/.test(text) || /CONJ-/.test(code)){
+      icon='⏳'; label='Conjugaison'; kind='french';
+    } else if(/problème/.test(text) || /PRO-/.test(code)){
+      icon='🧩'; label='Problèmes'; kind='maths';
+    } else if(/calcul|opération|addition|soustraction|multiplication|division/.test(text) || /CAL-|OPE-/.test(code)){
+      icon='➕'; label='Calcul / opérations'; kind='maths';
+    } else if(/géométr|symétr|solide/.test(text) || /GEO-|SYM-|SOL-/.test(code)){
+      icon='📐'; label='Géométrie'; kind='maths';
+    } else if(/fraction/.test(text) || /FRA-/.test(code)){
+      icon='🍰'; label='Fractions'; kind='maths';
+    } else if(/numération|nombre/.test(text) || /NUM-/.test(code)){
+      icon='🔢'; label='Numération'; kind='maths';
+    } else if(/mesure|temps|durée/.test(text) || /MES-|TEM-/.test(code)){
+      icon='📏'; label='Grandeurs / mesures'; kind='maths';
+    } else if(/donnée|graphique|tableau/.test(text) || /DON-/.test(code)){
+      icon='📊'; label='Données'; kind='maths';
+    } else if(/histoire/.test(text) || /HIS-/.test(code)){
+      icon='🏺'; label='Histoire / repères temporels'; kind='history';
+    } else if(/géographie/.test(text) || /GEOG-/.test(code)){
+      icon='🗺️'; label='Géographie'; kind='history';
+    } else if(/science/.test(text) || /SCI-/.test(code)){
+      icon='🔬'; label='Sciences'; kind='science';
+    } else if(/anglais/.test(text) || /ANG-/.test(code)){
+      icon='🇬🇧'; label='Anglais'; kind='english';
+    } else if(/emc/.test(text) || /EMC-/.test(code)){
+      icon='🤝'; label='EMC'; kind='emc';
+    }
+    return {icon,label,kind};
+  }
+
   function pedagogyMarkers(period,weekKey,day,row){
     const subject=sequenceSubject(row[1]);
     const sequenceInfo=subject?buildSequenceMap(period).get(`${weekKey}|${day}|${row[0]}|${subject}`):null;
     const stage=pedagogicalStage(row,sequenceInfo);
     const sequence=sequenceInfo?`<span class="pedagogy-badge pedagogy-sequence">Séance ${sequenceInfo.index}/${sequenceInfo.total}</span>`:'';
+    if(stage.kind==='evaluation'){
+      const domain=evaluationDomainBadge_(row);
+      return `<div class="pedagogy-markers evaluation-markers"><span class="edt-eval-badge">📝 Évaluation</span><span class="edt-domain-badge edt-domain-${domain.kind}">${domain.icon} ${domain.label}</span>${sequence}</div>`;
+    }
     return `<div class="pedagogy-markers"><span class="pedagogy-badge pedagogy-${stage.kind}">${stage.label}</span>${sequence}</div>`;
   }
 

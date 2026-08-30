@@ -471,3 +471,21 @@ body.projection-active{overflow:hidden}
   .detail-competence-cell{min-width:170px;width:22%}
   .detail-session-cell.detail-session-wide{min-width:300px;width:50%}
 }
+
+
+/* V35.67 — double badge des évaluations, cohérent avec l'Espace Parents */
+.evaluation-markers{align-items:center;gap:.4rem}
+.edt-eval-badge,.edt-domain-badge{
+  display:inline-flex;align-items:center;min-height:1.65rem;padding:.2rem .58rem;
+  border-radius:999px;font-size:.75rem;font-weight:850;line-height:1.15;
+  border:1px solid rgba(15,23,42,.12);white-space:nowrap;
+}
+.edt-eval-badge{background:#b91c1c;color:#fff;border-color:#991b1b;box-shadow:0 2px 5px rgba(153,27,27,.16)}
+.edt-domain-badge{background:#f8fafc;color:#334155;border-color:#cbd5e1}
+.edt-domain-french{background:#fff1f2;color:#9f1239;border-color:#fda4af}
+.edt-domain-maths{background:#eff6ff;color:#1d4ed8;border-color:#93c5fd}
+.edt-domain-history{background:#fffbeb;color:#92400e;border-color:#fcd34d}
+.edt-domain-science{background:#ecfeff;color:#0e7490;border-color:#67e8f9}
+.edt-domain-english{background:#f5f3ff;color:#6d28d9;border-color:#c4b5fd}
+.edt-domain-emc{background:#f0fdf4;color:#166534;border-color:#86efac}
+@media(max-width:760px){.edt-eval-badge,.edt-domain-badge{font-size:.7rem;white-space:normal}}
