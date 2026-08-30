@@ -1,3 +1,14 @@
+## V35.59 — Compréhension de texte — semestre 1 (30 août 2026)
+
+- Ajoute 3 évaluations de compréhension de texte en français, une par période du semestre 1.
+- P1 — mardi 6 octobre 2026 : « Le carnet retrouvé » — COM-P1-01 + COM-P1-04.
+- P2 — mardi 24 novembre 2026 : « La balade au parc » — COM-P2-01 + COM-P2-02.
+- P3 — mardi 2 février 2027 : « Le chat sous l’abri » — COM-P3-01 + COM-P3-02.
+- Chaque séance ouvre directement la planche pédagogique PDF stockée sur Google Drive dans le dossier annuel de la période.
+- Les anciennes grosses évaluations d’étude de la langue des 6 octobre et 2 février sont remplacées par ces évaluations ciblées de compréhension.
+- Aucun PDF/DOCX n’est ajouté au dépôt Progressions CE2 ; seuls les liens Drive et les métadonnées sont intégrés.
+- Aucun README de patch ajouté.
+
 ## V35.58 — Évaluations de production d’écrits (30 août 2026)
 
 - Ajoute trois évaluations de production d’écrits en français, sous forme de planches graphiques pédagogiques en paysage.

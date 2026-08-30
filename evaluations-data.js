@@ -53,6 +53,13 @@ window.EVALUATIONS_CE2 = {
       },
     }
   },
+  // V35.59 — compréhension de texte, semestre 1 : une évaluation courte par période, centrée sur 2 compétences principales.
+  francaisComprehension: [
+    { date:'2026-10-06', title:'Compréhension P1 — Le carnet retrouvé', skillCodes:['COM-P1-01','COM-P1-04'], studentDoc:'https://drive.google.com/file/d/1-vh0HueECCJFy-bO_Bd8rMz5TxCQA3Wo/view?usp=drivesdk' },
+    { date:'2026-11-24', title:'Compréhension P2 — La balade au parc', skillCodes:['COM-P2-01','COM-P2-02'], studentDoc:'https://drive.google.com/file/d/1FwYShE2fh47W6a9gVYbC0TgwtXaS2_TM/view?usp=drivesdk' },
+    { date:'2027-02-02', title:'Compréhension P3 — Le chat sous l’abri', skillCodes:['COM-P3-01','COM-P3-02'], studentDoc:'https://drive.google.com/file/d/1UdRBpwiIhM-cOm_6zQP4FSbEN-VCmIky/view?usp=drivesdk' }
+  ],
+
   // V35.58 — trois évaluations de production d’écrits, construites à partir du DRAS et des écrits courts réellement travaillés.
   francaisEcriture: [
     { date:'2026-12-15', title:'Production d’écrits 1 — Raconter dans l’ordre', skillCodes:['ECR-P2-04'], studentDoc:'https://drive.google.com/file/d/14t9Ypv9Uu6CvA7-LWzMfIn3JFxAUB3Ma/view?usp=drivesdk' },
