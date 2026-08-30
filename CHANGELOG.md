@@ -1,3 +1,14 @@
+# V35.65 — Nettoyage des anciens contrôles de français — 30 août 2026
+
+- Suppression de l’ancienne matrice de contrôles généraux Français P1 à P5 (grammaire/conjugaison/orthographe regroupées), devenue obsolète après la consolidation du nouveau plan d’évaluation.
+- P1, 6 octobre : remplacement de l’ancien contrôle « verbe / groupe sujet » par l’évaluation validée de compréhension « Le carnet retrouvé ».
+- P2, 24 novembre : restauration de l’évaluation validée de compréhension « La balade au parc ».
+- P2, 1er décembre : suppression de l’ancien contrôle « présent et récit chronologique », remplacé par un temps d’entraînement/réinvestissement.
+- P3, 2 février : remplacement de l’ancienne évaluation générale de français par la compréhension « Le chat sous l’abri ».
+- P4, 23 février : suppression de l’ancienne date de Production d’écrits 2 ; maintien d’un entraînement préparatoire.
+- P4, 30 mars : restauration de la Production d’écrits 2 à sa date validée.
+- Aucun changement aux évaluations de mathématiques.
+
 ## V35.63 — Rééquilibrage des évaluations de français (30 août 2026)
 - P2 : déplacement de l’évaluation de lexique du mardi 15 décembre au mardi 8 décembre 2026 (10h–10h45).
 - P2 : restauration de l’évaluation de production d’écrits du mardi 15 décembre 2026 (10h–10h45), sans collision avec le lexique.

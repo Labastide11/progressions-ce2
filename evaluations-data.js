@@ -2,56 +2,9 @@ window.EVALUATIONS_CE2 = {
   francais: {
     label: 'Français',
     icon: '✏️',
-    periods: {
-      p1: {
-        title: 'Période 1 — Verbe et groupe sujet',
-        status: 'ready',
-        description: 'Évaluation P1 volontairement courte : 2 nouvelles compétences essentielles seulement. Les autres apprentissages de la période restent suivis au fil des séances et ne donnent pas lieu à un contrôle systématique.',
-        studentDoc: 'assets/evaluations/francais/Francais_P1_eleve_DRAS_verrouillee.docx',
-        teacherDoc: 'assets/evaluations/francais/Francais_P1_grille_enseignant_DRAS_verrouillee.docx',
-        skillCodes: ['GRA-P1-04','GRA-P1-06']
-      },
-      p2: {
-        title: 'Période 2 — Présent et récit chronologique',
-        status: 'ready',
-        description: 'Évaluation P2 courte et progressive : 2 nouvelles compétences essentielles, accompagnées d’une compétence P1 en rebrassage. Les autres apprentissages de la période restent suivis au fil des séances.',
-        studentDoc: 'assets/evaluations/francais/Francais_P2_eleve_DRAS_verrouillee.docx',
-        teacherDoc: 'assets/evaluations/francais/Francais_P2_grille_enseignant_DRAS_verrouillee.docx',
-        newSkillCodes: ['CONJ-P2-02','ECR-P2-04'],
-        reviewSkillCodes: ['GRA-P1-04'],
-        skillCodes: ['CONJ-P2-02','ECR-P2-04','GRA-P1-04']
-      },
-      p3: {
-        title: 'Période 3 — Groupe nominal et futur',
-        status: 'ready',
-        description: 'Évaluation P3 courte et progressive : 2 nouvelles compétences essentielles — identifier le groupe nominal et conjuguer les verbes en -er au futur — plus un rebrassage P2 du présent des verbes en -er.',
-        studentDoc: 'assets/evaluations/francais/Francais_P3_eleve_DRAS_verrouillee.docx',
-        teacherDoc: 'assets/evaluations/francais/Francais_P3_grille_enseignant_DRAS_verrouillee.docx',
-        newSkillCodes: ['GRA-P3-03','CONJ-P3-02'],
-        reviewSkillCodes: ['CONJ-P2-02'],
-        skillCodes: ['GRA-P3-03','CONJ-P3-02','CONJ-P2-02']
-      },
-      p4: {
-        title: 'Période 4 — Groupes dans la phrase et imparfait',
-        status: 'ready',
-        description: 'Évaluation P4 ciblée : 2 nouvelles compétences essentielles — manipuler les groupes dans la phrase (fondamental LSU) et conjuguer les verbes en -er à l’imparfait — plus 2 rebrassages P3 sur le futur et le groupe nominal.',
-        studentDoc: 'assets/evaluations/francais/Francais_P4_eleve_DRAS_verrouillee.docx',
-        teacherDoc: 'assets/evaluations/francais/Francais_P4_grille_enseignant_DRAS_verrouillee.docx',
-        newSkillCodes: ['GRA-P4-02','CONJ-P4-02'],
-        reviewSkillCodes: ['CONJ-P3-02','GRA-P3-03'],
-        skillCodes: ['GRA-P4-02','CONJ-P4-02','CONJ-P3-02','GRA-P3-03']
-      },
-      p5: {
-        title: 'Période 5 — Accord sujet-verbe et révision autonome',
-        status: 'ready',
-        description: 'Évaluation P5 ciblée : 2 nouvelles compétences essentielles — accorder le sujet et le verbe, puis réviser/améliorer un texte (fondamental LSU) — plus 2 rebrassages P4 sur l’imparfait et la manipulation des groupes dans la phrase.',
-        studentDoc: 'assets/evaluations/francais/Francais_P5_eleve_DRAS_verrouillee.docx',
-        teacherDoc: 'assets/evaluations/francais/Francais_P5_grille_enseignant_DRAS_verrouillee.docx',
-        newSkillCodes: ['ORT-P5-01','ECR-P5-04'],
-        reviewSkillCodes: ['CONJ-P4-02','GRA-P4-02'],
-        skillCodes: ['ORT-P5-01','ECR-P5-04','CONJ-P4-02','GRA-P4-02']
-      },
-    }
+    // V35.65 — anciennes évaluations globales grammaire/conjugaison retirées.
+    // Les évaluations françaises canoniques sont décrites dans les trois listes ci-dessous.
+    periods: {}
   },
   // V35.60 — compréhension de texte : une évaluation courte par période, centrée sur 2 compétences principales.
   francaisComprehension: [
