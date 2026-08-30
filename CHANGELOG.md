@@ -1,3 +1,11 @@
+## V35.62 — Bilans des mots appris
+
+- S1 : P1 Grande Muraille ; P2 Île de Pâques.
+- S2 : P3 Opéra de Sydney ; P4 Angkor Vat.
+- P5 : aucun bilan spécifique.
+- Chaque série choisie est placée dans la progression de dictée avant son bilan et les 10 mots sont explicitement annoncés dans l’emploi du temps.
+- Aucun document d’évaluation ajouté au dépôt.
+
 ## V35.61 — Lexique / vocabulaire — intégration annuelle (30 août 2026)
 
 - P1 — vendredi 9 octobre 2026, 9h30–10h : classement de mots et ordre alphabétique (`VOC-P1-02`, `VOC-P1-04`).

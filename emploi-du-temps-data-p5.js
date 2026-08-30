@@ -1,3 +1,4 @@
+// V35.62 — P5 : aucun bilan spécifique de mots appris.
 /* V34.33 — Données détaillées P5 — programmation alignée sur les compétences évaluées */
 (function(global){
   'use strict';
