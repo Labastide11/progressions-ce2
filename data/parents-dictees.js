@@ -1,8 +1,9 @@
-/* Progressions CE2 V34.96 — projection publique datée des dictées.
+/* Progressions CE2 V35.62 — projection publique datée des dictées.
    Source de vérité : dictees-ce2.js ; bornes de semaine : devoirs-p1..p5.js.
-   Données publiques uniquement : dates, thème, mots, priorités. */
+   Données publiques uniquement : dates, thème, mots, priorités.
+   Régénéré automatiquement depuis la banque annuelle courante. */
 window.PARENTS_DICTEES_CE2 = {
-  "version": "34.96",
+  "version": "35.62",
   "schoolYear": "2026-2027",
   "periods": {
     "p1": [
@@ -62,9 +63,9 @@ window.PARENTS_DICTEES_CE2 = {
         "end": "2026-10-09",
         "reviewDue": "2026-10-08",
         "hasFinal": true,
-        "theme": "La pluie",
-        "words": "pluie, matin, chemin, manteau, nuage, parapluie, froid, rentrer",
-        "priority": "pluie, matin, chemin, manteau, nuage"
+        "theme": "La Grande Muraille",
+        "words": "une frontière, une invasion, le nord, une structure, l’homme, une longueur, une tour de guet, important, contre, jamais",
+        "priority": "frontière, structure, longueur, tour de guet, jamais"
       },
       {
         "week": 7,
@@ -144,9 +145,9 @@ window.PARENTS_DICTEES_CE2 = {
         "end": "2026-12-18",
         "reviewDue": "2026-12-15",
         "hasFinal": true,
-        "theme": "Charivari — série 11 « Mademoiselle Guimard »",
-        "words": "mademoiselle, grande, jolie, coiffe, noire, parlait, pourtant, classe",
-        "priority": "grande, jolie, noire, parlait, classe"
+        "theme": "Le voyage — 8 « L’île de Pâques »",
+        "words": "tailler, une paroi, un cratère, un volcan, l’intérieur, aligner, la côte, la mer, le long, un dos",
+        "priority": "paroi, cratère, volcan, intérieur, côte"
       }
     ],
     "p3": [
@@ -196,9 +197,9 @@ window.PARENTS_DICTEES_CE2 = {
         "end": "2027-02-05",
         "reviewDue": "2027-02-03",
         "hasFinal": true,
-        "theme": "Charivari — série 16 « Les rapaces »",
-        "words": "aigle, rapace, puissant, rapide, chasser, bec, serre, repérer",
-        "priority": "aigle, rapace, chasser, bec, repérer"
+        "theme": "Le voyage — 14 « L’Opéra de Sydney »",
+        "words": "accueillir, un magasin, un souvenir, un hall, une répétition, un studio, un spectacle, un théâtre, un coquillage, un restaurant",
+        "priority": "accueillir, souvenir, répétition, spectacle, théâtre"
       }
     ],
     "p4": [
@@ -258,9 +259,9 @@ window.PARENTS_DICTEES_CE2 = {
         "end": "2027-04-02",
         "reviewDue": "2027-03-30",
         "hasFinal": true,
-        "theme": "Charivari — série 22 « Chameaux et dromadaires »",
-        "words": "chameau, dromadaire, désert, sable, sauvage, laine, bosse, économiser",
-        "priority": "chameau, dromadaire, désert, sable, bosse"
+        "theme": "Le voyage — 19 « Angkor Vat »",
+        "words": "un tombeau, un chantier, un millier, un océan, un bassin, une paroi, un moine, le droit, un symbole, sculpter",
+        "priority": "tombeau, chantier, bassin, paroi, sculpter"
       }
     ],
     "p5": [

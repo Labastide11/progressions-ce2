@@ -669,3 +669,9 @@ Le détail complet des anciennes versions est conservé dans `docs/historique/`.
 - Progressions CE2 conserve uniquement les dates, titres, compétences et liens Drive nécessaires.
 - Les 8 liens Drive sont rattachés aux dates d'évaluation correspondantes dans les emplois du temps P1 à P5.
 - Le déplacement des fichiers Drive n'a pas modifié leurs identifiants ; les liens intégrés restent valides.
+
+## V35.64 — Synchronisation publique des dictées Parents
+- Régénération complète de `data/parents-dictees.js` depuis la banque annuelle courante `dictees-ce2.js` V35.62.
+- Conservation des bornes de semaines et dates `reviewDue` déjà utilisées par l’Espace Parents.
+- Correction des séries publiques évaluées : P1 « La Grande Muraille », P2 « L’île de Pâques », P3 « L’Opéra de Sydney », P4 « Angkor Vat ».
+- Les données exposées restent limitées aux dates, thèmes, mots et mots prioritaires ; aucune donnée élève ou professionnelle n’est ajoutée.
