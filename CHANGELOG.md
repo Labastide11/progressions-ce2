@@ -1,3 +1,11 @@
+# V35.55 — 30 août 2026 — Fiches de mathématiques semestrielles
+- 8 fiches PDF de mathématiques rangées dans Google Drive : Progressions CE2 / Évaluations / Mathématiques.
+- Liens PDF ajoutés directement aux séances d’évaluation dans l’emploi du temps.
+- Semestre 1 : 9 octobre, 11 décembre, 22 janvier et 4 février.
+- Semestre 2 : 23 mars, 28 mai, 4 juin et 11 juin.
+- 2 compétences maximum par fiche ; maintien de la logique enseignement → entraînement → évaluation quand la compétence est mûre.
+- `evaluations-data.js` pointe désormais vers les PDF Drive pour les évaluations principales et référence les trois traces complémentaires.
+
 
 ## V35.27 — Photos élèves locales
 - Ajout d’un gestionnaire commun de portraits (`student-photos.js`).
@@ -591,3 +599,8 @@ Le détail complet des anciennes versions est conservé dans `docs/historique/`.
 - `espace-publication.js` ne génère plus de ZIP Remplaçant et ne conserve que la publication Parents.
 - Conservation de `data/remplacant-programme.js`, `data/remplacant-cahier-journal.js` et `data/remplacant-infos-pratiques.js`, encore lus par le nouveau site `espace-remplacant-ce2`.
 - Mise à jour de la balise `<title>` vers V34.78.
+
+### V35.55 — correction de rangement Drive
+- Arborescence Drive corrigée : `CE2 2026-2027 / 02 - Évaluations / P1 à P5`.
+- Les 8 fiches PDF de mathématiques sont rangées dans leur période réelle.
+- Aucun changement d'identifiant Drive : les liens déjà intégrés à l'emploi du temps restent valides.

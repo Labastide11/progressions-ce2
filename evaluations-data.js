@@ -61,7 +61,7 @@ window.EVALUATIONS_CE2 = {
         title: 'Période 1 — Comprendre un problème et poser une addition',
         status: 'ready',
         description: 'Évaluation P1 volontairement courte : 2 nouvelles compétences essentielles seulement, dont le fondamental LSU « comprendre la question d’un problème ». Les autres notions travaillées sont suivies en classe sans contrôle systématique.',
-        studentDoc: 'assets/evaluations/maths/Maths_P1_eleve_verrouillee.docx',
+        studentDoc: 'https://drive.google.com/file/d/1L-oMPAj5NqmIlWjzvUz4gUQs-qI3Giot/view?usp=drivesdk',
         teacherDoc: 'assets/evaluations/maths/Maths_P1_grille_enseignant_verrouillee.docx',
         skillCodes: ['PRO-P1-01','OPE-P1-01']
       },
@@ -69,7 +69,7 @@ window.EVALUATIONS_CE2 = {
         title: 'Période 2 — Valeur des chiffres et soustraction',
         status: 'ready',
         description: 'Trace ciblée du semestre 1 : 2 compétences maximum, valeur d’un chiffre et soustraction avec échange. Les autres domaines sont évalués à d’autres moments du semestre.',
-        studentDoc: 'assets/evaluations/maths/Maths_P2_eleve_verrouillee.docx',
+        studentDoc: 'https://drive.google.com/file/d/1jKguxYH0ccuQgZiHzIx3COZbBnADi4-g/view?usp=drivesdk',
         teacherDoc: 'assets/evaluations/maths/Maths_P2_grille_enseignant_verrouillee.docx',
         newSkillCodes: ['NUM-P2-02','OPE-P2-02'],
         reviewSkillCodes: [],
@@ -79,7 +79,7 @@ window.EVALUATIONS_CE2 = {
         title: 'Période 3 — Tables et multiplication posée',
         status: 'ready',
         description: 'Dernière trace ciblée du semestre 1 : 2 compétences maximum, tables de multiplication et multiplication posée. La géométrie et le temps font l’objet d’une petite trace distincte en janvier.',
-        studentDoc: 'assets/evaluations/maths/Maths_P3_eleve_verrouillee.docx',
+        studentDoc: 'https://drive.google.com/file/d/1JM2jsROfpxYGC8XC1RiBOBSoy7XJualp/view?usp=drivesdk',
         teacherDoc: 'assets/evaluations/maths/Maths_P3_grille_enseignant_verrouillee.docx',
         newSkillCodes: ['CAL-P3-01','OPE-P3-01'],
         reviewSkillCodes: [],
@@ -89,7 +89,7 @@ window.EVALUATIONS_CE2 = {
         title: 'Période 4 — Stratégies de calcul et sens de la division',
         status: 'ready',
         description: 'Trace ciblée du semestre 2 : 2 compétences maximum, choisir une stratégie de calcul efficace et comprendre le sens de la division. Les autres sous-domaines sont répartis jusqu’en juin.',
-        studentDoc: 'assets/evaluations/maths/Maths_P4_eleve_verrouillee.docx',
+        studentDoc: 'https://drive.google.com/file/d/1ZVbsaiOwdBOxwaPBRaZTnPNP2rpBHrDJ/view?usp=drivesdk',
         teacherDoc: 'assets/evaluations/maths/Maths_P4_grille_enseignant_verrouillee.docx',
         newSkillCodes: ['CAL-P4-02','OPE-P4-02'],
         reviewSkillCodes: [],
@@ -99,7 +99,7 @@ window.EVALUATIONS_CE2 = {
         title: 'Période 5 — Représentations des nombres et problème complexe',
         status: 'ready',
         description: 'Trace de synthèse du semestre 2 : 2 compétences maximum, représentations des nombres et problème complexe. Des traces distinctes en mai et début juin couvrent mesures/fractions puis géométrie/données.',
-        studentDoc: 'assets/evaluations/maths/Maths_P5_eleve_verrouillee.docx',
+        studentDoc: 'https://drive.google.com/file/d/1y3cgIeNQ4zojuXsy9AvP_qPDpPbnC-x9/view?usp=drivesdk',
         teacherDoc: 'assets/evaluations/maths/Maths_P5_grille_enseignant_verrouillee.docx',
         newSkillCodes: ['NUM-P5-01','PRO-P5-02'],
         reviewSkillCodes: [],
@@ -107,6 +107,13 @@ window.EVALUATIONS_CE2 = {
       }
     }
   },
+
+  // V35.55 — fiches mathématiques semestrielles complémentaires
+  mathsSupplementary: [
+    { date:'2027-01-22', title:'Fiche 3 — Temps et géométrie', skillCodes:['TEM-P3-01','GEO-P3-01'], studentDoc:'https://drive.google.com/file/d/1Cz8yblesNvQutdUd8O4RtHEhDCRi5C5M/view?usp=drivesdk' },
+    { date:'2027-05-28', title:'Fiche 6 — Fractions et mesures', skillCodes:['FRA-P5-01','MES-P5-01'], studentDoc:'https://drive.google.com/file/d/1_J5kVE29l9lZJD8apu4q6TGrHfbXZJs4/view?usp=drivesdk' },
+    { date:'2027-06-04', title:'Fiche 7 — Géométrie et données', skillCodes:['GEO-P5-01','DON-P5-01'], studentDoc:'https://drive.google.com/file/d/1ghDwsnchy70xUJWHMofIV6Zl_6Ipq0eN/view?usp=drivesdk' }
+  ],
   emc: {
     label: 'EMC',
     icon: '🤝',
