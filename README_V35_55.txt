@@ -1,28 +1,26 @@
-Progressions CE2 — V35.55
-Fiches de mathématiques semestrielles : Google Drive + emploi du temps
+Progressions CE2 - V35.55 - LIENS DRIVE UNIQUEMENT
 
-CORRECTION DE RANGEMENT GOOGLE DRIVE
+Principe d'architecture :
+- Progressions CE2 ne stocke AUCUNE fiche d'évaluation DOCX ou PDF.
+- Les fiches d'évaluation restent exclusivement dans Google Drive.
+- Progressions CE2 conserve uniquement les dates, titres, compétences et liens Drive nécessaires à l'emploi du temps et au suivi.
 
-Les 8 PDF sont rangés dans l'arborescence annuelle existante :
-CE2 2026-2027 / 02 - Évaluations /
+Arborescence Google Drive de référence :
+  CE2 2026-2027 / 02 - Évaluations / P1
+  CE2 2026-2027 / 02 - Évaluations / P2
+  CE2 2026-2027 / 02 - Évaluations / P3
+  CE2 2026-2027 / 02 - Évaluations / P4
+  CE2 2026-2027 / 02 - Évaluations / P5
 
-Répartition :
-- P1 : Maths_S1_Fiche1_Problemes_Addition.pdf
-- P2 : Maths_S1_Fiche2_Numeration_Soustraction.pdf
-- P3 : Maths_S1_Fiche3_Temps_Geometrie.pdf
-       Maths_S1_Fiche4_Tables_Multiplication.pdf
-- P4 : Maths_S2_Fiche5_Calcul_Division.pdf
-- P5 : Maths_S2_Fiche6_Fractions_Mesures.pdf
-       Maths_S2_Fiche7_Geometrie_Donnees.pdf
-       Maths_S2_Fiche8_Numeration_Probleme_Complexe.pdf
+Répartition des fiches de mathématiques :
+- P1 : Fiche 1 - Problèmes et addition
+- P2 : Fiche 2 - Numération et soustraction
+- P3 : Fiche 3 - Temps et géométrie ; Fiche 4 - Tables et multiplication posée
+- P4 : Fiche 5 - Stratégies de calcul et division
+- P5 : Fiches 6 à 8 - Fractions/mesures ; Géométrie/données ; Numération/problème complexe
 
-Les fichiers ont été déplacés dans Google Drive sans changer leur identifiant.
-Les URL Drive intégrées dans Progressions CE2 restent donc valides.
+Le suivi reste semestriel :
+- semestre 1 : fiches 1 à 4
+- semestre 2 : fiches 5 à 8
 
-Ce patch contient :
-- emploi-du-temps-data-p1.js à emploi-du-temps-data-p5.js
-- evaluations-data.js
-- index.html
-- CHANGELOG.md
-
-Installation : remplacer les fichiers correspondants à la racine du dépôt progressions-ce2.
+Règle : 1 à 2 compétences maximum par fiche ; évaluation seulement quand l'apprentissage est suffisamment mûr.

@@ -600,7 +600,9 @@ Le détail complet des anciennes versions est conservé dans `docs/historique/`.
 - Conservation de `data/remplacant-programme.js`, `data/remplacant-cahier-journal.js` et `data/remplacant-infos-pratiques.js`, encore lus par le nouveau site `espace-remplacant-ce2`.
 - Mise à jour de la balise `<title>` vers V34.78.
 
-### V35.55 — correction de rangement Drive
-- Arborescence Drive corrigée : `CE2 2026-2027 / 02 - Évaluations / P1 à P5`.
-- Les 8 fiches PDF de mathématiques sont rangées dans leur période réelle.
-- Aucun changement d'identifiant Drive : les liens déjà intégrés à l'emploi du temps restent valides.
+### V35.55 — intégration des évaluations de mathématiques via Google Drive
+- Les fiches DOCX et PDF ne sont pas stockées dans le dépôt Progressions CE2.
+- Les supports restent exclusivement dans `CE2 2026-2027 / 02 - Évaluations / P1 à P5` sur Google Drive.
+- Progressions CE2 conserve uniquement les dates, titres, compétences et liens Drive nécessaires.
+- Les 8 liens Drive sont rattachés aux dates d'évaluation correspondantes dans les emplois du temps P1 à P5.
+- Le déplacement des fichiers Drive n'a pas modifié leurs identifiants ; les liens intégrés restent valides.
