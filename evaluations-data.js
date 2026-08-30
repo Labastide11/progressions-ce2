@@ -65,9 +65,9 @@ window.EVALUATIONS_CE2 = {
   // V35.61 — lexique / vocabulaire : 2 évaluations au semestre 1, pause en P3, puis 2 évaluations au semestre 2.
   francaisLexique: [
     { date:'2026-10-09', title:'Lexique P1 — Classer des mots et ordre alphabétique', skillCodes:['VOC-P1-02','VOC-P1-04'], studentDoc:'https://drive.google.com/file/d/1gzmXZRIwOgYY8wwR8KCninkzy6vN0xcu/view?usp=drivesdk' },
-    { date:'2026-12-15', title:'Lexique P2 — Familles de mots et synonymes/contraires', skillCodes:['VOC-P2-01','VOC-P2-04','VOC-P2-05'], studentDoc:'https://drive.google.com/file/d/1nOqTyje_xwY2YGEDBbrIvkB8I3_jo1UA/view?usp=drivesdk' },
+    { date:'2026-12-08', title:'Lexique P2 — Familles de mots et synonymes/contraires', skillCodes:['VOC-P2-01','VOC-P2-04','VOC-P2-05'], studentDoc:'https://drive.google.com/file/d/1nOqTyje_xwY2YGEDBbrIvkB8I3_jo1UA/view?usp=drivesdk' },
     { date:'2027-04-01', title:'Lexique P4 — Sens des mots et expressions', skillCodes:['VOC-P4-01','VOC-P4-02'], studentDoc:'https://drive.google.com/file/d/1Jsqzfx6fX5ErodX0oMcTiZIO1OMWMgG-/view?usp=drivesdk' },
-    { date:'2027-06-15', title:'Lexique P5 — Réseaux lexicaux et morphologie', skillCodes:['VOC-P5-01','VOC-P5-02'], studentDoc:'https://drive.google.com/file/d/1iyqcBS8MGw2sMpG6DY498FPDFs5NEnTc/view?usp=drivesdk' }
+    { date:'2027-06-01', title:'Lexique P5 — Réseaux lexicaux et morphologie', skillCodes:['VOC-P5-01','VOC-P5-02'], studentDoc:'https://drive.google.com/file/d/1iyqcBS8MGw2sMpG6DY498FPDFs5NEnTc/view?usp=drivesdk' }
   ],
 
   // V35.58 — trois évaluations de production d’écrits, construites à partir du DRAS et des écrits courts réellement travaillés.

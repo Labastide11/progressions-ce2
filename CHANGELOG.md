@@ -1,3 +1,10 @@
+## V35.63 — Rééquilibrage des évaluations de français (30 août 2026)
+- P2 : déplacement de l’évaluation de lexique du mardi 15 décembre au mardi 8 décembre 2026 (10h–10h45).
+- P2 : restauration de l’évaluation de production d’écrits du mardi 15 décembre 2026 (10h–10h45), sans collision avec le lexique.
+- P5 : déplacement de l’évaluation de lexique du mardi 15 juin au mardi 1er juin 2027 (10h–10h45), avant la production d’écrits du 8 juin.
+- P5 : le 15 juin devient une séance de consolidation sans nouvelle évaluation.
+- `evaluations-data.js` est synchronisé avec ces nouvelles dates.
+
 ## V35.62 — Bilans des mots appris
 
 - S1 : P1 Grande Muraille ; P2 Île de Pâques.
