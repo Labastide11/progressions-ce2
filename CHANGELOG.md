@@ -1,3 +1,14 @@
+## V35.61 — Lexique / vocabulaire — intégration annuelle (30 août 2026)
+
+- P1 — vendredi 9 octobre 2026, 9h30–10h : classement de mots et ordre alphabétique (`VOC-P1-02`, `VOC-P1-04`).
+- P2 — mardi 15 décembre 2026, 10h–10h45 : familles de mots, synonymes et contraires (`VOC-P2-01`, `VOC-P2-04`, `VOC-P2-05`).
+- P3 : aucune évaluation formelle de lexique.
+- P4 — jeudi 1er avril 2027, 9h15–10h : sens propre / figuré et expressions (`VOC-P4-01`, `VOC-P4-02`).
+- P5 — mardi 15 juin 2027, 10h–10h45 : réseaux lexicaux et morphologie (`VOC-P5-01`, `VOC-P5-02`).
+- Les 4 planches sont stockées uniquement sur Google Drive dans les dossiers P1, P2, P4 et P5 ; le dépôt conserve seulement les métadonnées et liens Drive.
+- Aucun README de patch ajouté.
+
+
 ## V35.59 — Compréhension de texte — semestre 1 (30 août 2026)
 
 ## V35.60 — Compréhension S2 : P4 et P5
