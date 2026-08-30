@@ -1,3 +1,13 @@
+## V35.58 — Évaluations de production d’écrits (30 août 2026)
+
+- Ajoute trois évaluations de production d’écrits en français, sous forme de planches graphiques pédagogiques en paysage.
+- 15 décembre 2026 : 1 à 3 phrases, raconter les événements dans l’ordre (`ECR-P2-04`).
+- 30 mars 2027 : 1 à 3 phrases, ajouter une précision puis corriger 1 ou 2 erreurs signalées (`ECR-P3-02`, `ECR-P4-05`).
+- 8 juin 2027 : 3 à 5 phrases, écrire une suite, utiliser le DRAS puis relire/corriger (`ECR-P5-02`, `ECR-P5-04`).
+- Les trois documents élèves sont stockés uniquement sur Google Drive (P2, P4, P5) ; Progressions CE2 ne conserve que les liens et métadonnées.
+- Les créneaux du mardi 10h–10h45 sont mis à jour dans l’emploi du temps détaillé.
+- Conserve la correction V35.56 : la navigation P1→P5 depuis « Progressions par période » reste en vue détaillée.
+
 # V35.55 — 30 août 2026 — Fiches de mathématiques semestrielles
 
 ## V35.57 — Cohérence des évaluations de mathématiques

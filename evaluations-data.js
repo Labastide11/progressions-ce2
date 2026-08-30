@@ -53,6 +53,13 @@ window.EVALUATIONS_CE2 = {
       },
     }
   },
+  // V35.58 — trois évaluations de production d’écrits, construites à partir du DRAS et des écrits courts réellement travaillés.
+  francaisEcriture: [
+    { date:'2026-12-15', title:'Production d’écrits 1 — Raconter dans l’ordre', skillCodes:['ECR-P2-04'], studentDoc:'https://drive.google.com/file/d/14t9Ypv9Uu6CvA7-LWzMfIn3JFxAUB3Ma/view?usp=drivesdk' },
+    { date:'2027-03-30', title:'Production d’écrits 2 — Ajouter une précision et corriger', skillCodes:['ECR-P3-02','ECR-P4-05'], studentDoc:'https://drive.google.com/file/d/1FS2P3SXBMwjU5oJxV9pldfMTCayWlBWl/view?usp=drivesdk' },
+    { date:'2027-06-08', title:'Production d’écrits 3 — Écrire, relire et améliorer', skillCodes:['ECR-P5-02','ECR-P5-04'], studentDoc:'https://drive.google.com/file/d/1rQUOxt5vSyY_tD7VF0EcLDMXiN5OWsA4/view?usp=drivesdk' }
+  ],
+
   maths: {
     label: 'Mathématiques',
     icon: '📐',
