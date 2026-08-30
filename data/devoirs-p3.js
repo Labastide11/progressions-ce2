@@ -95,6 +95,19 @@ window.DEVOIRS_P3 = {
           "challenge": "Transforme oralement : « Aujourd’hui je joue. » → « Demain… »",
           "family": "Quelques formes verbales suffisent.",
           "notion": "Futur des verbes en -er",
+          "evaluations": [
+            {
+              "date": "2027-01-22",
+              "subject": "Mathématiques",
+              "title": "2 compétences ciblées",
+              "newSkills": [
+                "lire la demi-heure et le quart d’heure",
+                "reconnaître et décrire un triangle"
+              ],
+              "reviewSkills": [],
+              "preparation": "Un rappel très court suffit : relire l’heure, la demi-heure et les quarts, puis revoir comment reconnaître un triangle et repérer un angle droit."
+            }
+          ],
           "hibou": {
             "label": "Le futur",
             "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/conjugaison-futur.html",
@@ -204,15 +217,13 @@ window.DEVOIRS_P3 = {
             {
               "date": "2027-02-04",
               "subject": "Mathématiques",
-              "title": "2 nouvelles compétences + 1 déjà vue",
+              "title": "2 compétences ciblées",
               "newSkills": [
                 "connaître les tables de multiplication étudiées",
                 "poser et effectuer une multiplication par un chiffre"
               ],
-              "reviewSkills": [
-                "repérer la valeur d’un chiffre selon sa position"
-              ],
-              "preparation": "Quelques tables et un rappel de la multiplication posée suffisent. La valeur d’un chiffre est déjà connue depuis la P2.",
+              "reviewSkills": [],
+              "preparation": "Quelques tables et un rappel de la multiplication posée suffisent.",
               "hibou": [
                 {
                   "label": "Tables de multiplication",

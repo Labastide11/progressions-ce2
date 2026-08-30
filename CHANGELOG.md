@@ -1,3 +1,10 @@
+# V35.66 — Correction des évaluations de mathématiques P3 — 30 août 2026
+
+- 22 janvier 2027 : rétablissement de l’évaluation ciblée **Temps + Géométrie** (`TEM-P3-01` + `GEO-P3-01`) dans l’emploi du temps P3, avec lien vers la fiche élève déjà référencée dans `evaluations-data.js`.
+- 4 février 2027 : remplacement de l’ancienne évaluation globale P3 par la seule évaluation ciblée **Tables + multiplication posée** (`CAL-P3-01` + `OPE-P3-01`).
+- `data/devoirs-p3.js` : annonce familiale du 22 janvier ajoutée ; annonce du 4 février ramenée aux 2 compétences réellement évaluées.
+- Aucun changement apporté aux autres évaluations de mathématiques ou de français.
+
 # V35.65 — Nettoyage des anciens contrôles de français — 30 août 2026
 
 - Suppression de l’ancienne matrice de contrôles généraux Français P1 à P5 (grammaire/conjugaison/orthographe regroupées), devenue obsolète après la consolidation du nouveau plan d’évaluation.
