@@ -6,6 +6,7 @@
   'use strict';
 
   window.PROGRESSIONS_EVENEMENTS_ECOLE = Object.freeze([
+    { id:'2026-09-01-photo-eleves', date:'2026-09-01', allDay:true, title:'📸 Prendre les élèves en photo' },
     { id:'2026-09-07-coop', date:'2026-09-07', start:'17:05', end:'17:15', title:'Réunion avec Gilles — Coop scolaire', location:'Sous le préau des CE2' },
     { id:'2026-09-07-classe', date:'2026-09-07', start:'17:15', end:'18:15', title:'Réunion en classe', location:'Classe' },
     { id:'2026-09-08-conseil-maitres', date:'2026-09-08', start:'12:45', end:'13:45', title:'Conseil des maîtres' },
