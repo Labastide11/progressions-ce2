@@ -1,3 +1,11 @@
+# V35.73 — Mathématiques : matière + sous-domaine sur P1 → P5
+
+- Harmonisation de tous les créneaux de mathématiques des cinq périodes : le badge indique désormais **Mathématiques — sous-domaine**.
+- Sous-domaines distingués selon le contenu réel : **Calcul mental**, **Numération**, **Calcul posé**, **Résolution de problèmes**, **Grandeurs et mesures**, **Géométrie**, **Fractions** et **Données**.
+- Pour les séances réellement transversales, un libellé combiné court est conservé (ex. **Numération / calcul / problèmes** ou **Fractions / mesures / géométrie**) afin de ne pas masquer le contenu.
+- Aucun horaire, compétence, contenu de séance ou statut n’est modifié : seule la lecture matière/sous-matière est clarifiée.
+- Les cinq fichiers de périodes utilisent le même principe de nommage.
+
 # V35.72 — Première séance « Mon cahier d’écrivain » enrichie
 
 - Mardi 1er septembre, 10h25–10h45 : remplacement de la production trop scolaire « prénom + phrase » par **Trois mots pour ma rentrée**.
