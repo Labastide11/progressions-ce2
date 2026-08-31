@@ -1,3 +1,7 @@
+## V35.81 — Cahier journal encore plus direct
+
+Le bandeau « Intention de la semaine » est supprimé sur P1 à P5 afin d’accéder plus rapidement au déroulé quotidien.
+
 ## V35.78 — Correctif cumulatif interface du cahier journal
 
 Cette version regroupe la navigation des semaines abrégée sur une seule ligne et la popup Cahier journal quasi plein écran.

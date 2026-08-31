@@ -1,3 +1,11 @@
+# V35.81 — Suppression de l’intention de la semaine
+
+- Suppression complète du bandeau « Intention de la semaine » dans la vue détaillée du cahier journal.
+- Modification appliquée aux périodes P1 à P5.
+- Aucun remplacement : la vue enchaîne désormais directement les bandeaux utiles avec le premier jour de la semaine.
+- Les contenus pédagogiques, horaires, compétences, statuts, dictées et progression d’anglais ne sont pas modifiés.
+- La navigation compacte des semaines et la popup quasi plein écran sont conservées.
+
 # V35.79 — Semaines vraiment abrégées, sans jours
 
 - La navigation hebdomadaire du cahier journal n'affiche plus les noms de jours.
