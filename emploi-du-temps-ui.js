@@ -1334,16 +1334,32 @@
 
   function compactWeekDateLabel(raw){
     const months={janvier:'janv.',février:'févr.',mars:'mars',avril:'avr.',mai:'mai',juin:'juin',juillet:'juil.',août:'août',septembre:'sept.',octobre:'oct.',novembre:'nov.',décembre:'déc.'};
-    const s=String(raw||'')
+    const clean=String(raw||'')
       .replace(/^Du\s+/i,'')
-      .replace(/^(lundi|mardi|mercredi|jeudi|vendredi)\s+/i,'')
       .replace(/\s+202[0-9]$/,'')
-      .replace(/1er/g,'1');
-    const m=s.match(/^(\d+)\s+([a-zéûôîàèùç]+)\s+au\s+(?:lundi|mardi|mercredi|jeudi|vendredi)\s+(\d+)\s+([a-zéûôîàèùç]+)$/i);
-    if(!m) return s.replace(/\bau\b/,'–');
-    const a=m[1], ma=m[2].toLowerCase(), b=m[3], mb=m[4].toLowerCase();
-    if(ma===mb) return `${a}–${b} ${months[mb]||mb}`;
-    return `${a} ${months[ma]||ma}–${b} ${months[mb]||mb}`;
+      .replace(/1er/g,'1')
+      .trim();
+
+    // Ex. « mardi 1 au vendredi 4 septembre » -> « 1–4 sept. »
+    let m=clean.match(/^(?:lundi|mardi|mercredi|jeudi|vendredi)\s+(\d+)\s+au\s+(?:lundi|mardi|mercredi|jeudi|vendredi)\s+(\d+)\s+([a-zéûôîàèùç]+)$/i);
+    if(m){
+      const a=m[1], b=m[2], mb=m[3].toLowerCase();
+      return `${a}–${b} ${months[mb]||mb}`;
+    }
+
+    // Ex. « lundi 28 septembre au vendredi 2 octobre » -> « 28 sept.–2 oct. »
+    m=clean.match(/^(?:lundi|mardi|mercredi|jeudi|vendredi)\s+(\d+)\s+([a-zéûôîàèùç]+)\s+au\s+(?:lundi|mardi|mercredi|jeudi|vendredi)\s+(\d+)\s+([a-zéûôîàèùç]+)$/i);
+    if(m){
+      const a=m[1], ma=m[2].toLowerCase(), b=m[3], mb=m[4].toLowerCase();
+      return `${a} ${months[ma]||ma}–${b} ${months[mb]||mb}`;
+    }
+
+    // Repli de sécurité : retirer tout nom de jour restant.
+    return clean
+      .replace(/\b(lundi|mardi|mercredi|jeudi|vendredi)\b\s*/gi,'')
+      .replace(/\s+au\s+/i,'–')
+      .replace(/\s{2,}/g,' ')
+      .trim();
   }
 
   function compactWeekButton(w,i,activeKey,attr){

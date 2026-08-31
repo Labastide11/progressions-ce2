@@ -1,3 +1,11 @@
+# V35.79 — Semaines vraiment abrégées, sans jours
+
+- La navigation hebdomadaire du cahier journal n'affiche plus les noms de jours.
+- Format retenu : `S1 · 1–4 sept.`, `S2 · 7–11 sept.`, `S5 · 28 sept.–2 oct.`, etc.
+- Correction du formateur précédent qui laissait apparaître « vendredi » lorsque le mois n'était écrit qu'à la fin de la plage de dates.
+- Application à toutes les périodes P1 à P5.
+- La popup quasi plein écran de V35.77/V35.78 est conservée.
+
 # V35.78 — Correction cumulative : semaines compactes + cahier journal quasi plein écran
 
 - Réintègre explicitement la modification V35.76 absente du déploiement : navigation des semaines sur une seule ligne.
