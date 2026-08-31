@@ -495,3 +495,64 @@ body.projection-active{overflow:hidden}
 .notebook-cue--copy{border-left:4px solid #2563eb}
 .notebook-cue--writer{border-left:4px solid #7c3aed}
 /* /V35.71 */
+
+/* V35.75 — panneaux de pilotage compacts et repliables */
+.dashboard-collapse{
+  margin:10px 0;
+  border:1px solid #d6e0ea;
+  border-radius:14px;
+  background:#fff;
+  overflow:hidden;
+}
+.dashboard-collapse>summary{
+  list-style:none;
+  cursor:pointer;
+  min-height:44px;
+  padding:9px 12px;
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto auto;
+  gap:12px;
+  align-items:center;
+  color:#23385c;
+  background:#f8fafc;
+}
+.dashboard-collapse>summary::-webkit-details-marker{display:none}
+.dashboard-collapse__summary{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  color:#55657b;
+  font-size:.92rem;
+}
+.dashboard-collapse__badge{
+  padding:5px 9px;
+  border:1px solid currentColor;
+  border-radius:999px;
+  font-size:.82rem;
+  font-weight:800;
+  white-space:nowrap;
+}
+.dashboard-collapse__toggle{
+  font-size:.82rem;
+  font-weight:900;
+  white-space:nowrap;
+}
+.dashboard-collapse[open] .dashboard-collapse__toggle{font-size:0}
+.dashboard-collapse[open] .dashboard-collapse__toggle::before{content:'Masquer';font-size:.82rem}
+.dashboard-collapse__body{padding:12px;border-top:1px solid #e5eaf0}
+.dashboard-collapse--dictation{border-color:#d8e0ee}
+.dashboard-collapse--dictation>summary{background:#f6f8fc}
+.dashboard-collapse--english{border-color:#b8d8f5}
+.dashboard-collapse--english>summary{background:#eef7ff;color:#153f68}
+.dashboard-collapse--focus{border-color:#fed7aa}
+.dashboard-collapse--focus>summary{background:#fff7ed;color:#9a3412}
+.dashboard-collapse--focus .dashboard-collapse__summary{color:#9a5a38}
+.dashboard-collapse--focus .dashboard-collapse__body.p1-focus{margin:0;border:0;border-radius:0;background:#fffaf5}
+.dashboard-collapse--english .dashboard-collapse__body.english-week-plan{margin:0;border:0;border-radius:0;background:linear-gradient(135deg,#f4f9ff,#eef7ff)}
+@media(max-width:760px){
+  .dashboard-collapse>summary{grid-template-columns:minmax(0,1fr) auto}
+  .dashboard-collapse__summary{grid-column:1/-1;grid-row:2}
+  .dashboard-collapse__badge{grid-column:1;grid-row:3;justify-self:start}
+  .dashboard-collapse__toggle{grid-column:2;grid-row:1}
+}
+

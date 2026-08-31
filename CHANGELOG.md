@@ -1,3 +1,11 @@
+# V35.75 — Cahier journal : accès rapide au jour
+
+- Les trois vues de pilotage du haut deviennent des panneaux repliables compacts : progression des dictées P1, progression d’anglais et intention de la semaine.
+- Les panneaux sont fermés par défaut afin d’afficher plus rapidement le premier jour de la semaine.
+- L’état ouvert/fermé de chaque panneau est mémorisé localement dans le navigateur.
+- La ligne compacte « Dictée — semaine … / Voir le détail » reste visible.
+- Aucun horaire, contenu pédagogique, compétence ou statut de séance n’est modifié.
+
 # V35.74 — Français : Écrits courts / Production d’écrits sur P1 → P5
 
 - Remplace le libellé générique « Français — activité ciblée » par des intitulés pédagogiques explicites.
