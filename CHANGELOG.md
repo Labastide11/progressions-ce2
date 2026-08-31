@@ -1,3 +1,11 @@
+# V35.74 — Français : Écrits courts / Production d’écrits sur P1 → P5
+
+- Remplace le libellé générique « Français — activité ciblée » par des intitulés pédagogiques explicites.
+- « Français — Écrits courts » : phrases et productions brèves.
+- « Français — Production d’écrits » : récits, lettres, dialogues, réécriture et textes plus construits.
+- « Français — Copie » : séances de copie sur le Cahier du jour.
+- Harmonisation appliquée aux cinq périodes sans modifier les horaires ni les compétences.
+
 # V35.73 — Mathématiques : matière + sous-domaine sur P1 → P5
 
 - Harmonisation de tous les créneaux de mathématiques des cinq périodes : le badge indique désormais **Mathématiques — sous-domaine**.

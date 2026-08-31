@@ -1582,7 +1582,8 @@
     if(session.includes('dictée de mots') && session.includes('dictée flash')) return 'Dictée de mots + dictée flash 1';
     if(session.includes('dictée flash 2')) return 'Dictée flash 2 + étude de la langue — DRAS';
     if(session.includes('dictée flash 3')) return 'Dictée flash 3 + production d’écrit court — DRAS';
-    if(session.includes('production') || session.includes('écrire') || session.includes('rédiger') || session.includes('amélioration du texte')) return 'Production d’écrits — Mon cahier d’écrivain';
+    if(session.includes('mon cahier d’écrivain') && (session.includes('trois mots') || session.includes('écriture courte') || session.includes('une phrase') || session.includes('plusieurs phrases'))) return 'Français — Écrits courts';
+    if(session.includes('production') || session.includes('rédiger') || session.includes('réécrire') || session.includes('finaliser') || session.includes('amélioration du texte')) return 'Français — Production d’écrits';
     if(session.includes('dictée de phrase') || session.includes('dictée préparée')) return 'Dictée de phrase';
     if(session.includes('dictée de mots') || session.includes('mots de la semaine')) return 'Dictée de mots';
     if(session.includes('orthographe') || session.includes('encoder') || session.includes('mémoriser les premiers mots')) return 'Orthographe et dictée';
@@ -1592,7 +1593,7 @@
     if(session.includes('quoi de neuf') || session.includes('devinette') || session.includes('reformulation orale') || session.includes('oral')) return 'Langage oral';
     if(session.includes('copie')) return 'Copie — Cahier du jour';
     if(subject.includes('emi')) return 'Oral / EMI';
-    return 'Français — activité ciblée';
+    return 'Français';
   }
 
   // V31.52 — Programmation annuelle d'anglais CE2 intégrée à partir de la programmation CE1/CE2 année 2.
