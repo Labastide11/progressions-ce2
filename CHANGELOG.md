@@ -1,3 +1,11 @@
+# V35.72 — Première séance « Mon cahier d’écrivain » enrichie
+
+- Mardi 1er septembre, 10h25–10h45 : remplacement de la production trop scolaire « prénom + phrase » par **Trois mots pour ma rentrée**.
+- Les élèves choisissent 3 mots dans une banque de mots puis construisent une phrase complète.
+- Exemple guidé intégré : **content – copains – classe → « Je suis content de retrouver mes copains dans ma nouvelle classe. »**
+- Première approche très légère du DRAS : **Ajouter** ou **Remplacer** un mot pour améliorer la phrase.
+- Compétence ciblée : **ECR-P1-05 — Écrire une phrase correcte**.
+
 # V35.71 — Copie et production d’écrits clairement séparées (P1 → P5)
 
 - Règle annuelle explicite : **Copie → Cahier du jour** ; **Production d’écrits / réécriture DRAS → Mon cahier d’écrivain**.
