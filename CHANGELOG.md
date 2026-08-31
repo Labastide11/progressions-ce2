@@ -1,3 +1,13 @@
+## V35.68 — 31 août 2026 — Rappels des événements de l’école
+
+- Ajout d’un agenda professionnel local dans `evenements-ecole.js` pour les événements de septembre et octobre 2026.
+- Affichage automatique d’une popup **la veille** (« Demain ») et **le jour même** (« Aujourd’hui »).
+- La popup doit être validée avec **« J’ai lu »** : pas de fermeture par clic extérieur ni par la touche Échap.
+- Une validation J-1 n’empêche pas le rappel du Jour J ; chaque phase est acquittée séparément.
+- Plusieurs événements d’une même journée sont regroupés dans une seule popup.
+- Aucun accès direct à Google Agenda depuis le navigateur : aucun jeton OAuth, aucune donnée élève, seulement une copie locale des événements scolaires utiles.
+- Les événements sans horaire fourni (élections, photographe) sont affichés « Toute la journée ».
+
 ## V35.67 — 30 août 2026 — Badges d’évaluation dans l’emploi du temps
 
 - Harmonisation visuelle avec l’Espace Parents V35.32.
@@ -701,3 +711,11 @@ Le détail complet des anciennes versions est conservé dans `docs/historique/`.
 - Conservation des bornes de semaines et dates `reviewDue` déjà utilisées par l’Espace Parents.
 - Correction des séries publiques évaluées : P1 « La Grande Muraille », P2 « L’île de Pâques », P3 « L’Opéra de Sydney », P4 « Angkor Vat ».
 - Les données exposées restent limitées aux dates, thèmes, mots et mots prioritaires ; aucune donnée élève ou professionnelle n’est ajoutée.
+
+## V35.69 — Refonte « Accompagnements et inclusions »
+- La page devient une vue opérationnelle centrée sur les deux élèves accueillis en inclusion ULIS.
+- Ajout de deux cartes synthétiques : points d’appui, vigilances, adaptations de classe, priorités et repères d’apprentissage.
+- Les domaines d’inclusion prévus sont visibles sans inventer les horaires encore inconnus.
+- Ajout d’un bloc « Organisation des temps d’inclusion » explicitement marqué « À compléter ».
+- L’ancien formulaire générique est conservé dans une section secondaire repliable pour les futurs suivis RASED, APC, UPE2A, SESSAD ou extérieurs.
+- Aucune information familiale détaillée ni diagnostic médical n’est ajouté à l’écran principal.
