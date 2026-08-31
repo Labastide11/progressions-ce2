@@ -796,3 +796,9 @@ Le détail complet des anciennes versions est conservé dans `docs/historique/`.
 - Les dates complètes restent disponibles dans l’infobulle du bouton.
 - Sur les écrans moins larges, la barre reste sur une seule ligne et devient défilable horizontalement au lieu de créer une seconde rangée.
 
+## V35.80 — Cahier journal : vue hebdomadaire allégée
+- Suppression complète du bloc « Fil rouge français de la semaine », devenu redondant avec les dictées et le déroulé quotidien.
+- Progression des dictées, dictée de la semaine, intention de la semaine et progression d’anglais passent en bandeaux compacts d’une seule ligne sur écran large.
+- Les contenus détaillés restent accessibles avec « Afficher » / « Voir le détail ».
+- Le bouton « Retour à la vue synthétique » devient « Retour à l’emploi du temps » dans les vues détaillées du cahier journal.
+- Conservation de la navigation compacte des semaines et de la popup quasi plein écran.

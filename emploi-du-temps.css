@@ -583,3 +583,62 @@ body.projection-active{overflow:hidden}
 @media(max-width:1100px){
   .detail-week-nav--compact button{flex:0 0 auto;min-width:135px !important;}
 }
+\n\n/* V35.80 — bandeaux hebdomadaires sur une seule ligne */
+/* Le fil rouge français a été supprimé de la vue détaillée. */
+.dashboard-collapse,
+.dictation-programming-compact{
+  margin:6px 0;
+  border-radius:12px;
+}
+.dashboard-collapse>summary{
+  min-height:36px;
+  padding:6px 10px;
+  gap:9px;
+  grid-template-columns:auto minmax(0,1fr) auto auto;
+  white-space:nowrap;
+}
+.dashboard-collapse>summary>span:first-child{
+  white-space:nowrap;
+}
+.dashboard-collapse__summary{
+  font-size:.88rem;
+}
+.dashboard-collapse__badge{
+  padding:3px 7px;
+  font-size:.76rem;
+}
+.dashboard-collapse__toggle{
+  font-size:.78rem;
+}
+.dashboard-collapse[open] .dashboard-collapse__toggle::before{font-size:.78rem}
+.dictation-programming-compact>summary{
+  min-height:36px;
+  padding:6px 10px;
+  gap:9px;
+  white-space:nowrap;
+}
+.dictation-programming-compact>summary>span:first-child{
+  white-space:nowrap;
+}
+.dictation-programming-compact__summary{
+  font-size:.88rem;
+}
+.dictation-programming-compact__toggle{
+  font-size:.78rem;
+  white-space:nowrap;
+}
+@media(max-width:760px){
+  .dashboard-collapse>summary,
+  .dictation-programming-compact>summary{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    white-space:normal;
+  }
+  .dashboard-collapse__summary,
+  .dictation-programming-compact__summary{
+    grid-column:1/-1;
+    grid-row:2;
+  }
+  .dashboard-collapse__badge{grid-column:1;grid-row:3;justify-self:start}
+}
+/* /V35.80 */
