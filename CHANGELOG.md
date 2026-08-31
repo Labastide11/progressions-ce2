@@ -719,3 +719,11 @@ Le détail complet des anciennes versions est conservé dans `docs/historique/`.
 - Ajout d’un bloc « Organisation des temps d’inclusion » explicitement marqué « À compléter ».
 - L’ancien formulaire générique est conservé dans une section secondaire repliable pour les futurs suivis RASED, APC, UPE2A, SESSAD ou extérieurs.
 - Aucune information familiale détaillée ni diagnostic médical n’est ajouté à l’écran principal.
+
+
+## V35.70 — Anglais de rentrée : saluer et prendre congé
+- Ajout d’une séance d’anglais le mardi 1er septembre 2026, de 16h30 à 17h.
+- Compétences ciblées : ANG-P1-01 (comprendre une salutation familière) et ANG-P1-02 (saluer et prendre congé).
+- Déroulé oral de 30 minutes : mise en situation, compréhension orale, répétition, mini-dialogues, réinvestissement et bilan.
+- Lien vidéo intégré : « Greeting — Good morning / Goodbye » ; passages conseillés 0:06–0:52 et 3:44–5:05.
+- Réemploi contextualisé de « See you on Thursday » pour la prochaine journée de classe.
