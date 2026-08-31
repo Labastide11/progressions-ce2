@@ -642,6 +642,8 @@
 
   function p1DictationTimetableGuide(week,day,row){
     if(!row || row[0]!=='10h–10h45') return '';
+    const rowText=((row[1]||'')+' '+(row[2]||'')).toLowerCase();
+    if(rowText.includes('copie') && !/dictée|orthographe|grammaire|dras/.test(rowText)) return '';
     const p=p1DictationBankData(week); if(!p)return '';
     const dayName=String(day||'').split(' ')[0];
     if(dayName==='Lundi'){
@@ -1531,7 +1533,7 @@
   function renderDetailedWeek(key){
     const data=detailedWeeks[key];
     const content=document.getElementById('timetableContent');
-    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('rentree',key)}<div class="timetable-note">${data.note}</div>${renderP2DictationProgramming(data.frenchPlan,week)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td><td class="detail-competence-cell">${r[3]}</td><td class="detail-session-cell detail-session-wide">${pedagogyMarkers('rentree',key,day,r)}${r[2]}${rentreeMathButton(key,r)}${rentreeSessionGuide(r)}</td><td>${statusSelect(statusKey(key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('rentree',key)}<div class="timetable-note">${data.note}</div>${renderP2DictationProgramming(data.frenchPlan,week)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td><td class="detail-competence-cell">${r[3]}</td><td class="detail-session-cell detail-session-wide">${pedagogyMarkers('rentree',key,day,r)}${r[2]}${notebookCue_(r)}${rentreeMathButton(key,r)}${rentreeSessionGuide(r)}</td><td>${statusSelect(statusKey(key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
     bindStatusControls(content);
   }
 
@@ -1552,6 +1554,15 @@
     return `<td class="detail-session-cell detail-session-wide">${sessionHtml}${dashboardFollowBadge_(suivi,evalPattern)}</td>`;
   }
 
+  function notebookCue_(row){
+    const text=((row&&row[1]||'')+' '+(row&&row[2]||'')).toLowerCase();
+    if(text.includes('cahier du jour') || text.includes('mon cahier d’écrivain')) return '';
+    if(/\bcopie\b|copie différée|copie-bilan|copie de réinvestissement/.test(text)) return '<div class="notebook-cue notebook-cue--copy">📘 Support : <strong>Cahier du jour</strong></div>';
+    if(/production d[’']écrit|production écrite|écriture courte|rédiger|amélioration du texte/.test(text)) return '<div class="notebook-cue notebook-cue--writer">✍️ Support : <strong>Mon cahier d’écrivain</strong></div>';
+    return '';
+  }
+
+
   function sessionDocumentsButton(meta){
     const docs=meta&&Array.isArray(meta.documents)?meta.documents:[];
     if(!docs.length)return '';
@@ -1571,7 +1582,7 @@
     if(session.includes('dictée de mots') && session.includes('dictée flash')) return 'Dictée de mots + dictée flash 1';
     if(session.includes('dictée flash 2')) return 'Dictée flash 2 + étude de la langue — DRAS';
     if(session.includes('dictée flash 3')) return 'Dictée flash 3 + production d’écrit court — DRAS';
-    if(session.includes('production') || session.includes('écrire') || session.includes('rédiger') || session.includes('amélioration du texte')) return 'Production d’écrit court — méthode DRAS';
+    if(session.includes('production') || session.includes('écrire') || session.includes('rédiger') || session.includes('amélioration du texte')) return 'Production d’écrits — Mon cahier d’écrivain';
     if(session.includes('dictée de phrase') || session.includes('dictée préparée')) return 'Dictée de phrase';
     if(session.includes('dictée de mots') || session.includes('mots de la semaine')) return 'Dictée de mots';
     if(session.includes('orthographe') || session.includes('encoder') || session.includes('mémoriser les premiers mots')) return 'Orthographe et dictée';
@@ -1579,7 +1590,7 @@
     if(session.includes('vocabulaire') || session.includes('dictionnaire') || session.includes('famille de mots') || session.includes('ordre alphabétique')) return 'Vocabulaire spiralaire';
     if(session.includes('lecture') || session.includes('fluence')) return 'Lecture-compréhension';
     if(session.includes('quoi de neuf') || session.includes('devinette') || session.includes('reformulation orale') || session.includes('oral')) return 'Langage oral';
-    if(session.includes('copie')) return 'Copie et mémorisation';
+    if(session.includes('copie')) return 'Copie — Cahier du jour';
     if(subject.includes('emi')) return 'Oral / EMI';
     return 'Français — activité ciblée';
   }
@@ -1665,7 +1676,7 @@
     const data=p1DetailedWeeks[week-1]||p1DetailedWeeks[0];
     const content=document.getElementById('timetableContent');
     const evalCount=data.days.reduce((n,[,rows])=>n+rows.filter(r=>/Évaluation|Mini-test|validation|Mesure (initiale|intermédiaire)|Dictée évaluée/i.test(r[5]||'')).length,0);
-    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('p1',data.key)}${calendarNotice(data)}${p1FrenchWeekPlan(week)}${week===1?renderP1DictationOverview():''}${renderP1DictationProgramming(week)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${p1ActivityLabel(r)}</span></td><td class="detail-competence-cell">${r[3]}</td>${dashboardSessionCell_(`${pedagogyMarkers('p1',data.key,day,r)}${r[2]}${sessionDocumentsButton(r[7])}${p1DictationTimetableGuide(week,day,r)}${p1LessonButton(r[6]||p1MathLessonIdForSlot(data.key,day,r))}${p1EarlyMathButton(data.key,day,r)}`,r[5],/Évaluation|Mini-test|Dictée évaluée/i)}<td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à la vue synthétique</button></div>${detailWeekSelector('p1',data.key)}${calendarNotice(data)}${p1FrenchWeekPlan(week)}${week===1?renderP1DictationOverview():''}${renderP1DictationProgramming(week)}<div class="p1-focus"><div><strong>🎯 Intention de la semaine</strong><p>${data.focus}</p></div><span>${evalCount} temps de suivi répartis</span></div>${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${p1ActivityLabel(r)}</span></td><td class="detail-competence-cell">${r[3]}</td>${dashboardSessionCell_(`${pedagogyMarkers('p1',data.key,day,r)}${r[2]}${notebookCue_(r)}${sessionDocumentsButton(r[7])}${p1DictationTimetableGuide(week,day,r)}${p1LessonButton(r[6]||p1MathLessonIdForSlot(data.key,day,r))}${p1EarlyMathButton(data.key,day,r)}`,r[5],/Évaluation|Mini-test|Dictée évaluée/i)}<td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
     bindStatusControls(content);
   }
 
@@ -1693,7 +1704,7 @@
           }
           if(time==='10h–10h45' && dayName==='Jeudi'){
             row[1]='Dictée flash 3 + EDL — DRAS + production d’écrit court';
-            row[2]=`${plan.flash[2]} Puis transformation DRAS et rédaction d’une ou deux phrases réemployant le vocabulaire de la semaine.`;
+            row[2]=`${plan.flash[2]} Puis transformation DRAS et rédaction d’une ou deux phrases réemployant le vocabulaire de la semaine dans <strong>Mon cahier d’écrivain</strong>.`;
             row[5]='10 min de dictée + écrit court';
           }
           if(time==='16h40–17h' && dayName==='Jeudi'){

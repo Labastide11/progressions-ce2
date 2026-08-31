@@ -489,3 +489,9 @@ body.projection-active{overflow:hidden}
 .edt-domain-english{background:#f5f3ff;color:#6d28d9;border-color:#c4b5fd}
 .edt-domain-emc{background:#f0fdf4;color:#166534;border-color:#86efac}
 @media(max-width:760px){.edt-eval-badge,.edt-domain-badge{font-size:.7rem;white-space:normal}}
+
+/* V35.71 — repère matériel : séparation copie / production d’écrits */
+.notebook-cue{margin-top:7px;padding:6px 9px;border:1px solid #cbd5e1;border-radius:9px;background:#f8fafc;font-size:.88rem;line-height:1.3}
+.notebook-cue--copy{border-left:4px solid #2563eb}
+.notebook-cue--writer{border-left:4px solid #7c3aed}
+/* /V35.71 */

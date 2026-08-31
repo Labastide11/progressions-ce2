@@ -1,3 +1,12 @@
+# V35.71 — Copie et production d’écrits clairement séparées (P1 → P5)
+
+- Règle annuelle explicite : **Copie → Cahier du jour** ; **Production d’écrits / réécriture DRAS → Mon cahier d’écrivain**.
+- P1 rentrée : ancien bloc mixte 10h–10h45 séparé en **10h–10h25 Copie** puis **10h25–10h45 Production d’écrits**.
+- P1 à P5 : les séances de copie et de production indiquent désormais explicitement le cahier utilisé.
+- Le guide DRAS/dictée ne s’affiche plus sous une séance de copie pure.
+- Les séances ritualisées de production avec DRAS indiquent explicitement **Mon cahier d’écrivain**.
+- Ajout d’un repère matériel discret dans les déroulés pour éviter toute ambiguïté.
+
 ## V35.68 — 31 août 2026 — Rappels des événements de l’école
 
 - Ajout d’un agenda professionnel local dans `evenements-ecole.js` pour les événements de septembre et octobre 2026.
