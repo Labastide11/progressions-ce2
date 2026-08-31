@@ -1,3 +1,10 @@
+# V35.77 — Cahier journal quasi plein écran
+
+- La popup du cahier journal utilise désormais presque toute la largeur de l’écran : `calc(100vw - 32px)`.
+- Suppression de la limite de largeur fixe (`max-width: none`).
+- Hauteur portée à `calc(100vh - 24px)` pour maximiser la lecture de la journée.
+- Cette modification cible uniquement le cahier journal et ne change pas les autres popups.
+
 # V35.75 — Cahier journal : accès rapide au jour
 
 - Les trois vues de pilotage du haut deviennent des panneaux repliables compacts : progression des dictées P1, progression d’anglais et intention de la semaine.
@@ -768,3 +775,9 @@ Le détail complet des anciennes versions est conservé dans `docs/historique/`.
 - Déroulé oral de 30 minutes : mise en situation, compréhension orale, répétition, mini-dialogues, réinvestissement et bilan.
 - Lien vidéo intégré : « Greeting — Good morning / Goodbye » ; passages conseillés 0:06–0:52 et 3:44–5:05.
 - Réemploi contextualisé de « See you on Thursday » pour la prochaine journée de classe.
+## V35.76 — Navigation compacte des semaines
+- Les boutons de navigation des semaines utilisent désormais un libellé court sur une seule ligne : `S1 · 1–4 sept.`, `S2 · 7–11 sept.`, etc.
+- La règle est appliquée aux périodes P1 à P5.
+- Les dates complètes restent disponibles dans l’infobulle du bouton.
+- Sur les écrans moins larges, la barre reste sur une seule ligne et devient défilable horizontalement au lieu de créer une seconde rangée.
+
