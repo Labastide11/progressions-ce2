@@ -1,0 +1,26 @@
+/* V35.68 — Rappels obligatoires à lire : événements école J-1 / Jour J */
+.school-reminder-modal{
+  position:fixed;inset:0;z-index:6000;display:grid;place-items:center;padding:22px;
+  background:rgba(15,23,42,.66);backdrop-filter:blur(5px)
+}
+.school-reminder-panel{
+  width:min(610px,96vw);max-height:min(86vh,760px);overflow:auto;
+  background:#fff;border:2px solid #c9d8ee;border-radius:26px;
+  box-shadow:0 30px 90px rgba(15,23,42,.36);padding:26px 28px 24px
+}
+.school-reminder-kicker{margin:0 0 4px;color:#47668f;font-size:.78rem;font-weight:950;letter-spacing:.11em;text-transform:uppercase}
+.school-reminder-panel h2{margin:0;color:#173d6b;font-size:clamp(1.65rem,4vw,2.25rem);line-height:1.08}
+.school-reminder-intro{margin:9px 0 18px;color:#64748b;font-weight:750}
+.school-reminder-list{display:grid;gap:11px;margin:0 0 20px}
+.school-reminder-item{display:grid;grid-template-columns:92px minmax(0,1fr);gap:13px;align-items:start;padding:14px 15px;border:1px solid #dbe5f1;border-radius:17px;background:#f8fbff}
+.school-reminder-time{display:block;color:#225b9b;font-weight:950;white-space:nowrap}
+.school-reminder-copy strong{display:block;color:#203a5b;font-size:1.02rem}
+.school-reminder-copy small{display:block;margin-top:4px;color:#66778d;font-weight:700}
+.school-reminder-ack{width:100%;border:0;border-radius:15px;padding:14px 18px;background:#275f9e;color:#fff;font:inherit;font-weight:950;cursor:pointer;box-shadow:0 8px 18px rgba(39,95,158,.20)}
+.school-reminder-ack:hover{filter:brightness(.96)}
+.school-reminder-note{margin:10px 0 0;text-align:center;color:#7b8797;font-size:.78rem}
+@media(max-width:560px){
+  .school-reminder-modal{padding:10px}.school-reminder-panel{padding:20px 17px;border-radius:20px}
+  .school-reminder-item{grid-template-columns:1fr;gap:4px}.school-reminder-time{white-space:normal}
+}
+@media print{.school-reminder-modal{display:none!important}}
