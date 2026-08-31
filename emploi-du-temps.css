@@ -556,3 +556,30 @@ body.projection-active{overflow:hidden}
   .dashboard-collapse__toggle{grid-column:2;grid-row:1}
 }
 
+
+
+/* V35.76 — Navigation des semaines sur une seule ligne */
+.detail-week-nav--compact{
+  display:flex !important;
+  flex-wrap:nowrap !important;
+  grid-template-columns:none !important;
+  gap:9px;
+  overflow-x:auto;
+  scrollbar-width:thin;
+  padding:10px 12px;
+}
+.detail-week-nav--compact button{
+  flex:1 0 auto;
+  min-width:0 !important;
+  padding:10px 12px;
+  text-align:center;
+  white-space:nowrap;
+  line-height:1.15;
+}
+.detail-week-nav--compact.detail-week-nav--p1 button,
+.detail-week-nav--compact.detail-week-nav--p2 button{
+  flex-basis:0;
+}
+@media(max-width:1100px){
+  .detail-week-nav--compact button{flex:0 0 auto;min-width:135px !important;}
+}

@@ -1,3 +1,7 @@
+## V35.78 — Correctif cumulatif interface du cahier journal
+
+Cette version regroupe la navigation des semaines abrégée sur une seule ligne et la popup Cahier journal quasi plein écran.
+
 # V34.80 — Progressions CE2
 
 ## V34.80 — Consolidation sans changement fonctionnel

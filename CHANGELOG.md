@@ -1,3 +1,10 @@
+# V35.78 — Correction cumulative : semaines compactes + cahier journal quasi plein écran
+
+- Réintègre explicitement la modification V35.76 absente du déploiement : navigation des semaines sur une seule ligne.
+- Libellés abrégés : `S1 · 1–4 sept.`, `S2 · 7–11 sept.`, `S3 · 14–18 sept.`, etc.
+- Conserve la modification V35.77 : popup Cahier journal quasi plein écran.
+- Force le rechargement navigateur des fichiers `emploi-du-temps.css`, `emploi-du-temps-ui.js` et `cahier-journal.css` avec le cache-buster V35.78.
+
 # V35.77 — Cahier journal quasi plein écran
 
 - La popup du cahier journal utilise désormais presque toute la largeur de l’écran : `calc(100vw - 32px)`.

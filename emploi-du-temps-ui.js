@@ -1332,27 +1332,42 @@
   }
 
 
+  function compactWeekDateLabel(raw){
+    const months={janvier:'janv.',février:'févr.',mars:'mars',avril:'avr.',mai:'mai',juin:'juin',juillet:'juil.',août:'août',septembre:'sept.',octobre:'oct.',novembre:'nov.',décembre:'déc.'};
+    const s=String(raw||'')
+      .replace(/^Du\s+/i,'')
+      .replace(/^(lundi|mardi|mercredi|jeudi|vendredi)\s+/i,'')
+      .replace(/\s+202[0-9]$/,'')
+      .replace(/1er/g,'1');
+    const m=s.match(/^(\d+)\s+([a-zéûôîàèùç]+)\s+au\s+(?:lundi|mardi|mercredi|jeudi|vendredi)\s+(\d+)\s+([a-zéûôîàèùç]+)$/i);
+    if(!m) return s.replace(/\bau\b/,'–');
+    const a=m[1], ma=m[2].toLowerCase(), b=m[3], mb=m[4].toLowerCase();
+    if(ma===mb) return `${a}–${b} ${months[mb]||mb}`;
+    return `${a} ${months[ma]||ma}–${b} ${months[mb]||mb}`;
+  }
+
+  function compactWeekButton(w,i,activeKey,attr){
+    return `<button type="button" class="${activeKey===w.key?'is-active':''}" ${attr}="${i+1}" title="${w.dates}">S${i+1} · ${compactWeekDateLabel(w.dates)}</button>`;
+  }
+
   function detailWeekSelector(period,activeKey=''){
     if(period==='rentree'){
-      return `<nav class="detail-week-nav" aria-label="Semaines détaillées de la rentrée">
-        <button type="button" class="${activeKey==='rentree1'?'is-active':''}" data-open-detail="rentree1">Semaine 1<br><small>Accueillir et observer</small></button>
-        <button type="button" class="${activeKey==='rentree2'?'is-active':''}" data-open-detail="rentree2">Semaine 2<br><small>Commencer la progression P1</small></button>
+      return `<nav class="detail-week-nav detail-week-nav--compact" aria-label="Semaines détaillées de la rentrée">
+        <button type="button" class="${activeKey==='rentree1'?'is-active':''}" data-open-detail="rentree1" title="Semaine 1 — Accueillir et observer">S1 · rentrée</button>
+        <button type="button" class="${activeKey==='rentree2'?'is-active':''}" data-open-detail="rentree2" title="Semaine 2 — Commencer la progression P1">S2 · progression P1</button>
       </nav>`;
     }
-    if(period==='p1'){
-      return `<nav class="detail-week-nav detail-week-nav--p1" aria-label="Semaines détaillées de la période 1">
-        ${p1DetailedWeeks.map((w,i)=>`<button type="button" class="${activeKey===w.key?'is-active':''}" data-open-p1-week="${i+1}">Semaine ${i+1}<br><small>${w.dates.replace('Du lundi ','').replace(' 2026','')}</small></button>`).join('')}
-      </nav>`;
-    }
-    if(period==='p2'){
-      return `<nav class="detail-week-nav detail-week-nav--p2" aria-label="Semaines détaillées de la période 2">${p2DetailedWeeks.map((w,i)=>`<button type="button" class="${activeKey===w.key?'is-active':''}" data-open-p2-week="${i+1}">Semaine ${i+1}<br><small>${w.dates.replace('Du lundi ','').replace(' 2026','')}</small></button>`).join('')}</nav>`;
-    }
-    if(period==='p3'){
-      return `<nav class="detail-week-nav detail-week-nav--p3" aria-label="Semaines détaillées de la période 3">${p3DetailedWeeks.map((w,i)=>`<button type="button" class="${activeKey===w.key?'is-active':''}" data-open-p3-week="${i+1}">Semaine ${i+1}<br><small>${w.dates.replace('Du lundi ','').replace(' 2027','')}</small></button>`).join('')}</nav>`;
-    }
-    if(period==='p4') return `<nav class="detail-week-nav detail-week-nav--p4" aria-label="Semaines détaillées de la période 4">${p4DetailedWeeks.map((w,i)=>`<button type="button" class="${activeKey===w.key?'is-active':''}" data-open-p4-week="${i+1}">Semaine ${i+1}<br><small>${w.dates.replace('Du lundi ','').replace(' 2027','')}</small></button>`).join('')}</nav>`;
-    if(period==='p5') return `<nav class="detail-week-nav detail-week-nav--p5" aria-label="Semaines détaillées de la période 5">${p5DetailedWeeks.map((w,i)=>`<button type="button" class="${activeKey===w.key?'is-active':''}" data-open-p5-week="${i+1}">Semaine ${i+1}<br><small>${w.dates.replace('Du lundi ','').replace(' 2027','')}</small></button>`).join('')}</nav>`;
-    return '';
+    const defs={
+      p1:[p1DetailedWeeks,'data-open-p1-week','Période 1'],
+      p2:[p2DetailedWeeks,'data-open-p2-week','Période 2'],
+      p3:[p3DetailedWeeks,'data-open-p3-week','Période 3'],
+      p4:[p4DetailedWeeks,'data-open-p4-week','Période 4'],
+      p5:[p5DetailedWeeks,'data-open-p5-week','Période 5']
+    };
+    const def=defs[period];
+    if(!def) return '';
+    const [weeks,attr,label]=def;
+    return `<nav class="detail-week-nav detail-week-nav--compact detail-week-nav--${period}" aria-label="Semaines détaillées de la ${label.toLowerCase()}">${weeks.map((w,i)=>compactWeekButton(w,i,activeKey,attr)).join('')}</nav>`;
   }
 
   // V31.60 — Guides courts pour conduire les séances des deux premières semaines.
