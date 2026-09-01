@@ -1,4 +1,4 @@
-/* V35.88 — Cahier journal synthétique : fusion fiable des créneaux */
+/* V36.00 — Cahier journal synthétique : statuts compacts */
 (function(){
 'use strict';
 const API='https://script.google.com/macros/s/AKfycbz25e9hIn7jgZuI2gzLNwqinvo_zTegoicJSeEzNaHDEfCTrEz52MIJREvFM5rvx7Yswg/exec';
@@ -369,10 +369,10 @@ function statusClass(value){
   return 'is-planned';
 }
 function statusLabel(value){
-  if(value==='Réalisée')return '✓ Réalisée';
-  if(value==='Reportée')return '↪ Reportée';
-  if(value==='Annulée')return '× Annulée';
-  return '○ Prévue';
+  if(value==='Réalisée')return '✓ Fait';
+  if(value==='Reportée')return '↪ Reporté';
+  if(value==='Annulée')return '× Annulé';
+  return '○ Prévu';
 }
 function statusSelectHtml(s){
   if(isNonTeachingTime(s))return '';

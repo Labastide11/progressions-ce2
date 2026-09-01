@@ -937,3 +937,120 @@
 }
 /* /V35.98 — vue semaine densifiée */
 
+/* V35.99 — compactage fort des lignes horaires */
+/* Correctif fort : la vue semaine doit afficher davantage de créneaux à l'écran. */
+.journal-week-grid{
+  grid-template-columns:108px repeat(4,minmax(220px,1fr)) !important;
+}
+.journal-week-grid__time{
+  padding:4px 6px !important;
+  font-size:.88rem !important;
+  line-height:1.02 !important;
+  font-weight:900 !important;
+}
+.journal-week-grid__slot{
+  min-height:34px !important;
+  padding:1px 2px !important;
+}
+.journal-week-cell{
+  gap:1px !important;
+  padding:3px 4px !important;
+  margin-bottom:1px !important;
+  border-radius:6px !important;
+  border-left-width:3px !important;
+}
+.journal-week-cell__subject{
+  font-size:.66rem !important;
+  line-height:1 !important;
+  margin:0 !important;
+}
+.journal-week-cell__activity{
+  padding:1px 4px !important;
+  min-height:18px !important;
+  font-size:.82rem !important;
+  line-height:1.05 !important;
+  border-radius:4px !important;
+}
+.journal-week-cell .journal-status-select{
+  min-height:18px !important;
+  padding:0 5px !important;
+  font-size:.58rem !important;
+  line-height:1 !important;
+  border-radius:999px !important;
+}
+.journal-week-cell.is-non-teaching{
+  min-height:28px !important;
+  padding-top:4px !important;
+  padding-bottom:4px !important;
+}
+.journal-week-cell.is-non-teaching .journal-week-cell__subject{
+  font-size:.8rem !important;
+  line-height:1.02 !important;
+}
+/* Les lignes horaires ne doivent plus s'étirer inutilement. */
+.journal-week-grid > .journal-week-grid__time,
+.journal-week-grid > .journal-week-grid__slot{
+  align-self:stretch;
+}
+@media(max-width:1100px){
+  .journal-week-grid{grid-template-columns:96px repeat(4,minmax(190px,1fr)) !important}
+  .journal-week-grid__time{font-size:.82rem !important;padding:4px 5px !important}
+  .journal-week-grid__slot{min-height:32px !important}
+  .journal-week-cell__activity{font-size:.76rem !important}
+}
+@media(max-width:620px){
+  .journal-week-grid{grid-template-columns:82px repeat(4,minmax(160px,1fr)) !important}
+  .journal-week-grid__time{font-size:.74rem !important;padding:3px 4px !important}
+  .journal-week-grid__slot{min-height:30px !important;padding:1px !important}
+  .journal-week-cell{padding:2px 3px !important}
+  .journal-week-cell__subject{font-size:.6rem !important}
+  .journal-week-cell__activity{font-size:.7rem !important;min-height:16px !important;padding:1px 3px !important}
+  .journal-week-cell .journal-status-select{min-height:16px !important;font-size:.54rem !important}
+}
+/* /V35.99 — compactage fort des lignes horaires */
+
+/* V36.00 — statuts compacts */
+/* Les statuts deviennent de petites pastilles pour ne plus prendre la hauteur de la séance. */
+.journal-week-cell .journal-status-select,
+.journal-compact-status .journal-status-select{
+  width:auto !important;
+  min-width:72px !important;
+  max-width:92px !important;
+  min-height:18px !important;
+  height:20px !important;
+  padding:0 20px 0 8px !important;
+  font-size:.62rem !important;
+  line-height:1 !important;
+  border-radius:999px !important;
+  margin-left:auto !important;
+}
+.journal-week-cell{
+  position:relative;
+}
+.journal-week-cell .journal-status-select{
+  justify-self:end;
+}
+.journal-compact-status{
+  justify-content:flex-end !important;
+}
+@media(max-width:1100px){
+  .journal-week-cell .journal-status-select,
+  .journal-compact-status .journal-status-select{
+    min-width:66px !important;
+    max-width:84px !important;
+    font-size:.58rem !important;
+    height:19px !important;
+  }
+}
+@media(max-width:620px){
+  .journal-week-cell .journal-status-select,
+  .journal-compact-status .journal-status-select{
+    min-width:62px !important;
+    max-width:78px !important;
+    font-size:.54rem !important;
+    height:18px !important;
+    padding-left:6px !important;
+  }
+}
+/* /V36.00 — statuts compacts */
+
