@@ -1142,3 +1142,30 @@
 }
 /* /V36.01 — vue semaine sur une seule ligne */
 
+/* V36.02 — horaires sur une ligne dans Aujourd’hui */
+/* La colonne Horaire de la vue “Aujourd'hui” doit rester sur une seule ligne. */
+.journal-compact-headings,
+.journal-compact-row{
+  grid-template-columns:118px 150px minmax(240px,1fr) 150px;
+}
+.journal-compact-time,
+.journal-compact-headings span:first-child{
+  white-space:nowrap;
+}
+.journal-compact-time{
+  font-size:.96rem;
+  line-height:1.05;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+@media(max-width:1000px){
+  .journal-compact-headings,
+  .journal-compact-row{grid-template-columns:104px 130px minmax(180px,1fr) 135px}
+  .journal-compact-time{font-size:.9rem}
+}
+@media(max-width:620px){
+  .journal-compact-row{grid-template-columns:92px 1fr 120px}
+  .journal-compact-time{font-size:.84rem;padding:8px 8px}
+}
+/* /V36.02 — horaires sur une ligne dans Aujourd’hui */
+
