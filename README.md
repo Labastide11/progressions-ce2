@@ -1,3 +1,10 @@
+## V35.82 — Rituel mathématique P1 consolidé
+
+- La suite numérique jusqu’à 100 devient le prérequis explicite des deux premières semaines de P1.
+- Travail quotidien court : avancer/reculer, avant/après, passages de dizaines, suites à trous, pas de 2/5/10.
+- Les compléments et automatismes sont réintroduits progressivement.
+- Le reste du projet reste inchangé.
+
 ## V35.81 — Cahier journal encore plus direct
 
 Le bandeau « Intention de la semaine » est supprimé sur P1 à P5 afin d’accéder plus rapidement au déroulé quotidien.

@@ -1,3 +1,13 @@
+# V35.82 — P1 : suite numérique jusqu’à 100 avant les automatismes
+
+- Correction du rituel de calcul mental de début de P1 à partir des observations de rentrée.
+- S1 : compter en avant, poursuivre une suite depuis un nombre donné, avant/après, suites à trous et comptage à rebours jusqu’à 100.
+- S2 : compter de 2 en 2, 5 en 5 et 10 en 10, franchir les dizaines et commencer les compléments à la dizaine supérieure.
+- S3 : maintien d’une réactivation courte de la suite numérique puis retour progressif aux tables d’addition et compléments à 10.
+- Le travail de +9 est décalé : le créneau du 15 septembre devient +1 / -1 / +10 / -10 dans les nombres jusqu’à 100.
+- Aucune modification des périodes P2 à P5.
+- Les autres contenus de P1 sont conservés.
+
 # V35.81 — Suppression de l’intention de la semaine
 
 - Suppression complète du bandeau « Intention de la semaine » dans la vue détaillée du cahier journal.
