@@ -830,3 +830,52 @@
 }
 /* /V35.96 — suppression des sticky dépendants de la largeur */
 
+/* V35.97 — resserrement des créneaux horaires */
+/* Objectif : montrer davantage de lignes à l'écran tout en gardant une bonne lisibilité. */
+.journal-week-grid__time{
+  padding:8px 7px !important;
+  font-size:.95rem;
+  line-height:1.08 !important;
+}
+.journal-week-grid__slot{
+  min-height:58px !important;
+  padding:4px !important;
+}
+.journal-week-cell{
+  gap:4px;
+  padding:5px 6px;
+  margin-bottom:4px;
+  border-radius:9px;
+}
+.journal-week-cell__subject{
+  font-size:.73rem;
+  line-height:1.05;
+}
+.journal-week-cell__activity{
+  padding:4px 6px;
+  font-size:.95rem;
+  line-height:1.2;
+  min-height:30px;
+}
+.journal-week-cell .journal-status-select{
+  min-height:24px;
+  padding:2px 6px;
+  font-size:.68rem;
+}
+.journal-week-cell.is-non-teaching{
+  min-height:48px;
+}
+@media(max-width:1100px){
+  .journal-week-grid__slot{min-height:54px !important;padding:3px !important}
+  .journal-week-grid__time{font-size:.9rem}
+  .journal-week-cell__activity{font-size:.9rem}
+}
+@media(max-width:620px){
+  .journal-week-grid__slot{min-height:50px !important;padding:3px !important}
+  .journal-week-grid__time{padding:6px 5px !important;font-size:.84rem}
+  .journal-week-cell{padding:4px 5px}
+  .journal-week-cell__activity{font-size:.84rem;min-height:26px;padding:3px 5px}
+  .journal-week-cell .journal-status-select{min-height:22px;font-size:.64rem}
+}
+/* /V35.97 — resserrement des créneaux horaires */
+
