@@ -513,3 +513,50 @@
 }
 /* /V35.87 — jours de semaine plus lisibles + jours spéciaux */
 
+/* V35.89 — en-têtes de semaine renforcées */
+.journal-week-grid{
+  grid-template-columns:108px repeat(4,minmax(240px,1fr));
+}
+.journal-week-grid__head,
+.journal-week-grid__time{
+  box-sizing:border-box;
+}
+.journal-week-grid__head{
+  min-height:74px;
+  padding:14px 10px 16px;
+  gap:5px;
+  line-height:1.18;
+  border-bottom:1px solid rgba(255,255,255,.16);
+}
+.journal-week-grid__weekday{
+  font-size:1.08rem;
+  font-weight:950;
+  letter-spacing:.03em;
+}
+.journal-week-grid__date{
+  font-size:.92rem;
+  font-weight:850;
+}
+.journal-week-grid__corner .journal-week-grid__weekday{
+  font-size:.9rem;
+}
+.journal-week-grid__time{
+  font-size:1rem;
+  line-height:1.15;
+  padding:14px 8px;
+}
+@media(max-width:1100px){
+  .journal-week-grid{grid-template-columns:96px repeat(4,minmax(210px,1fr))}
+  .journal-week-grid__head{min-height:68px;padding:12px 8px 14px}
+  .journal-week-grid__weekday{font-size:.98rem}
+  .journal-week-grid__date{font-size:.84rem}
+}
+@media(max-width:620px){
+  .journal-week-grid{grid-template-columns:82px repeat(4,minmax(170px,1fr))}
+  .journal-week-grid__head{min-height:62px;padding:10px 6px 12px}
+  .journal-week-grid__weekday{font-size:.82rem}
+  .journal-week-grid__date{font-size:.72rem}
+  .journal-week-grid__time{font-size:.9rem}
+}
+/* /V35.89 — en-têtes de semaine renforcées */
+
