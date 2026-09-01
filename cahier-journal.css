@@ -437,3 +437,42 @@
 }
 /* /V35.85 — police manuscrite pour le cahier journal */
 
+/* V35.86 — jour mieux visible + pré-rentrée */
+.journal-day--compact header{
+  padding:14px 16px;
+  background:linear-gradient(135deg,var(--day) 0%, color-mix(in srgb,var(--day) 64%, #ffffff) 100%);
+  color:#fff;
+  border-bottom:0;
+}
+.journal-day--compact header h3{
+  margin:0;
+  color:#fff;
+  font-size:1.38rem;
+  font-weight:900;
+  letter-spacing:.01em;
+}
+.journal-week-grid__head{
+  font-size:.92rem;
+  padding:12px 8px;
+}
+.journal-compact-row.is-non-teaching{
+  background:linear-gradient(90deg,#fff8e8 0%,#fffdf7 100%);
+}
+.journal-compact-row.is-non-teaching .journal-compact-subject{
+  background:transparent;
+  color:#8a5a07;
+  font-size:1rem;
+}
+.journal-week-cell.is-non-teaching{
+  background:linear-gradient(90deg,#fff8e8 0%,#fffdf7 100%);
+}
+.journal-week-cell.is-non-teaching .journal-week-cell__subject{
+  color:#8a5a07;
+  font-size:.92rem;
+}
+@media(max-width:620px){
+  .journal-day--compact header h3{font-size:1.15rem}
+  .journal-week-grid__head{font-size:.82rem}
+}
+/* /V35.86 — jour mieux visible + pré-rentrée */
+

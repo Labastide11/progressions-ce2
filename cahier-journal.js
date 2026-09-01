@@ -1,4 +1,4 @@
-/* V35.84 — Cahier journal synthétique : Horaire · Matière · Activité · Statut + remarque quotidienne */
+/* V35.86 — Cahier journal synthétique : jour mieux visible + pré-rentrée */
 (function(){
 'use strict';
 const API='https://script.google.com/macros/s/AKfycbz25e9hIn7jgZuI2gzLNwqinvo_zTegoicJSeEzNaHDEfCTrEz52MIJREvFM5rvx7Yswg/exec';
@@ -84,6 +84,7 @@ const PEDAGOGY_FALLBACKS={
 const PEDAGOGY_PREFS_KEY='progressions_ce2_cahier_pedagogy_v2';
 const SESSION_META_PREFS_KEY='progressions_ce2_cahier_session_meta_v1';
 let monday=startOfWeek(new Date()), sessions=[], remoteSessions=[], active='today';
+const PRE_RENTREE_DATE='2026-08-31';
 function iso(d){return new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10)}
 function startOfWeek(d){const x=new Date(d);x.setHours(12,0,0,0);const day=x.getDay()||7;x.setDate(x.getDate()-day+1);return x}
 function addDays(d,n){const x=new Date(d);x.setDate(x.getDate()+n);return x}
@@ -118,6 +119,20 @@ function periodForDate(date){
   return 'p5';
 }
 function timetableDaySessions(date){
+  if(date===PRE_RENTREE_DATE){
+    return [{
+      date,
+      horaire:'Toute la journée',
+      domaine:'Vie de classe',
+      activite:'Journée de pré-rentrée',
+      objectifMaitre:'',
+      competenceEleve:'',
+      statut:'',
+      remarque:'',
+      ordre:1,
+      source:'special'
+    }];
+  }
   const api=window.ProgressionsEDT;
   if(!api||typeof api.getDayRows!=='function')return [];
   const dayNames=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
@@ -231,7 +246,7 @@ function refreshFromProgramme(date){
 function groupByDate(){const map={};sessions.forEach(s=>{const d=normalizeDate(s.date);if(d)(map[d]||(map[d]=[])).push(s)});return map}
 function domainClass(value){const v=String(value||'').toLowerCase();if(v.includes('français')||v.includes('lecture')||v.includes('dictée'))return 'is-french';if(v.includes('math'))return 'is-maths';if(v.includes('anglais'))return 'is-english';if(v.includes('récré'))return 'is-break';if(v.includes('pause méridienne')||v.includes('cantine')||v.includes('repas'))return 'is-lunch';if(v.includes('eps')||v.includes('sport'))return 'is-eps';if(v.includes('science'))return 'is-science';if(v.includes('histoire')||v.includes('géo'))return 'is-history';if(v.includes('emc'))return 'is-emc';if(v.includes('cham')||v.includes('musique'))return 'is-cham';if(v.includes('art'))return 'is-arts';return 'is-common'}
 function dayClass(date){const d=new Date(date+'T12:00:00').getDay();return ({1:'day-blue',2:'day-green',4:'day-orange',5:'day-red'})[d]||'day-blue'}
-function isNonTeachingTime(s){const text=`${s.domaine||''} ${s.activite||''}`.toLowerCase();return text.includes('récré')||text.includes('pause méridienne')||text.includes('cantine')||text.includes('repas à la maison')}
+function isNonTeachingTime(s){const text=normalizeText(`${s.domaine||''} ${s.activite||''}`);return text.includes('recre')||text.includes('pause meridienne')||text.includes('cantine')||text.includes('repas a la maison')||text.includes('pre-rentree')||text.includes('pre rentree')}
 function normalizeText(value){return String(value||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[’']/g,"'")}
 
 function isRoutineActivity(s){
@@ -240,6 +255,7 @@ function isRoutineActivity(s){
 }
 function nonTeachingLabel(s){
   const text=normalizeText(`${s.domaine||''} ${s.activite||''}`);
+  if(text.includes('pre-rentree')||text.includes('pre rentree'))return 'Journée de pré-rentrée';
   return text.includes('recre')?'Récréation':'Pause méridienne';
 }
 
