@@ -1,4 +1,4 @@
-/* V36.00 — Cahier journal synthétique : statuts compacts */
+/* V36.01 — Cahier journal : vue semaine en ligne unique compacte */
 (function(){
 'use strict';
 const API='https://script.google.com/macros/s/AKfycbz25e9hIn7jgZuI2gzLNwqinvo_zTegoicJSeEzNaHDEfCTrEz52MIJREvFM5rvx7Yswg/exec';
@@ -434,11 +434,15 @@ function compactDayHtml(date,list){
 }
 function weekCellHtml(s){
   const meta=sessionMetaFor(s), nonTeaching=isNonTeachingTime(s);
-  if(nonTeaching)return `<div class="journal-week-cell is-non-teaching ${domainClass(`${s.domaine} ${s.activite}`)}"><span class="journal-week-cell__subject">${esc(nonTeachingLabel(s))}</span></div>`;
-  return `<div class="journal-week-cell ${domainClass(s.domaine)} ${statusClass(syntheticStatusFor(s))}" data-session-key="${esc(sessionKey(s))}">
-    <div class="journal-week-cell__subject">${esc(displayDomainLabel(canonicalDomain(s.domaine)))}</div>
-    <input class="journal-week-cell__activity journal-activity-input" data-meta-key="${esc(sessionKey(s))}" data-meta-field="activity" value="${esc(meta.activity||'')}" aria-label="Activité">
-    ${statusSelectHtml(s)}
+  if(nonTeaching){
+    return `<div class="journal-week-cell journal-week-cell--single is-non-teaching ${domainClass(`${s.domaine} ${s.activite}`)}"><span class="journal-week-cell__single-label">${esc(nonTeachingLabel(s))}</span></div>`;
+  }
+  const domain=displayDomainLabel(canonicalDomain(s.domaine));
+  const activity=meta.activity||'Activité';
+  return `<div class="journal-week-cell journal-week-cell--single ${domainClass(s.domaine)} ${statusClass(syntheticStatusFor(s))}" data-session-key="${esc(sessionKey(s))}">
+    <span class="journal-week-cell__single-subject">${esc(domain)}</span>
+    <input class="journal-week-cell__single-activity journal-activity-input" data-meta-key="${esc(sessionKey(s))}" data-meta-field="activity" value="${esc(activity)}" aria-label="Activité">
+    <span class="journal-week-cell__single-status">${statusSelectHtml(s)}</span>
   </div>`;
 }
 function timeSortValue(value){

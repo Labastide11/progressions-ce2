@@ -1054,3 +1054,91 @@
 }
 /* /V36.00 — statuts compacts */
 
+/* V36.01 — vue semaine sur une seule ligne */
+/* Chaque séance de la vue "Cette semaine" tient sur une seule ligne : Matière · Activité · Statut. */
+.journal-week-grid__slot{
+  min-height:30px !important;
+  padding:1px 2px !important;
+}
+.journal-week-cell--single{
+  display:grid !important;
+  grid-template-columns:auto minmax(0,1fr) auto !important;
+  align-items:center !important;
+  gap:7px !important;
+  min-height:28px !important;
+  padding:2px 5px !important;
+  margin:0 0 1px 0 !important;
+  border-radius:6px !important;
+}
+.journal-week-cell__single-subject{
+  font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif !important;
+  font-size:.67rem !important;
+  font-weight:900 !important;
+  line-height:1 !important;
+  white-space:nowrap;
+  color:#31485f;
+}
+.journal-week-cell__single-activity{
+  min-width:0 !important;
+  width:100% !important;
+  min-height:20px !important;
+  height:20px !important;
+  padding:1px 4px !important;
+  border:0 !important;
+  border-radius:4px !important;
+  background:rgba(255,255,255,.72) !important;
+  font-family:"Patrick Hand","Comic Sans MS","Segoe Print",cursive !important;
+  font-size:.82rem !important;
+  line-height:1 !important;
+  color:#24384d !important;
+}
+.journal-week-cell__single-status{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+}
+.journal-week-cell__single-status .journal-status-select{
+  width:auto !important;
+  min-width:70px !important;
+  max-width:82px !important;
+  min-height:18px !important;
+  height:18px !important;
+  padding:0 16px 0 5px !important;
+  font-size:.58rem !important;
+  line-height:1 !important;
+}
+.journal-week-cell--single.is-non-teaching{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-height:26px !important;
+  padding:3px 5px !important;
+}
+.journal-week-cell__single-label{
+  font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif !important;
+  font-size:.76rem !important;
+  font-weight:900 !important;
+  line-height:1 !important;
+  color:#8a5a07;
+  white-space:nowrap;
+}
+.journal-week-grid__time{
+  padding:3px 5px !important;
+  font-size:.84rem !important;
+  line-height:1 !important;
+}
+@media(max-width:1100px){
+  .journal-week-cell--single{gap:5px !important;padding:2px 4px !important}
+  .journal-week-cell__single-subject{font-size:.62rem !important}
+  .journal-week-cell__single-activity{font-size:.76rem !important}
+  .journal-week-cell__single-status .journal-status-select{min-width:62px !important;max-width:72px !important;font-size:.54rem !important}
+}
+@media(max-width:620px){
+  .journal-week-cell--single{grid-template-columns:auto minmax(0,1fr) auto !important;gap:4px !important;min-height:26px !important}
+  .journal-week-cell__single-subject{font-size:.56rem !important}
+  .journal-week-cell__single-activity{font-size:.7rem !important;height:18px !important;min-height:18px !important}
+  .journal-week-cell__single-status .journal-status-select{min-width:56px !important;max-width:64px !important;height:16px !important;min-height:16px !important;font-size:.5rem !important}
+  .journal-week-grid__time{font-size:.74rem !important;padding:2px 4px !important}
+}
+/* /V36.01 — vue semaine sur une seule ligne */
+
