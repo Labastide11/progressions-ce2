@@ -879,3 +879,61 @@
 }
 /* /V35.97 — resserrement des créneaux horaires */
 
+/* V35.98 — vue semaine densifiée */
+/* La vue "Cette semaine" est une grille : chaque rangée prend la hauteur de la case la plus haute.
+   On compacte donc fortement chaque carte pour rapprocher le rendu de la vue "Aujourd'hui". */
+.journal-week-grid__time{
+  padding:6px 6px !important;
+  font-size:.92rem !important;
+  line-height:1.05 !important;
+}
+.journal-week-grid__slot{
+  min-height:46px !important;
+  padding:2px 3px !important;
+}
+.journal-week-cell{
+  gap:2px !important;
+  padding:4px 5px !important;
+  margin-bottom:2px !important;
+  border-radius:8px !important;
+}
+.journal-week-cell__subject{
+  font-size:.72rem !important;
+  line-height:1 !important;
+}
+.journal-week-cell__activity{
+  padding:3px 5px !important;
+  font-size:.9rem !important;
+  line-height:1.15 !important;
+  min-height:24px !important;
+  border-radius:6px !important;
+}
+.journal-week-cell .journal-status-select{
+  min-height:22px !important;
+  padding:1px 6px !important;
+  font-size:.66rem !important;
+  line-height:1.05 !important;
+}
+.journal-week-cell.is-non-teaching{
+  min-height:38px !important;
+  padding-top:6px !important;
+  padding-bottom:6px !important;
+}
+.journal-week-cell.is-non-teaching .journal-week-cell__subject{
+  font-size:.88rem !important;
+}
+@media(max-width:1100px){
+  .journal-week-grid__slot{min-height:44px !important}
+  .journal-week-grid__time{font-size:.88rem !important}
+  .journal-week-cell__activity{font-size:.86rem !important}
+}
+@media(max-width:620px){
+  .journal-week-grid__time{padding:5px 4px !important;font-size:.8rem !important}
+  .journal-week-grid__slot{min-height:40px !important;padding:2px !important}
+  .journal-week-cell{padding:3px 4px !important}
+  .journal-week-cell__subject{font-size:.66rem !important}
+  .journal-week-cell__activity{font-size:.78rem !important;min-height:22px !important;padding:2px 4px !important}
+  .journal-week-cell .journal-status-select{min-height:20px !important;font-size:.6rem !important}
+}
+/* /V35.98 — vue semaine densifiée */
+
