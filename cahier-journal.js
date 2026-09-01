@@ -1,3 +1,4 @@
+/* V35.84 — Cahier journal synthétique : Horaire · Matière · Activité · Statut + remarque quotidienne */
 (function(){
 'use strict';
 const API='https://script.google.com/macros/s/AKfycbz25e9hIn7jgZuI2gzLNwqinvo_zTegoicJSeEzNaHDEfCTrEz52MIJREvFM5rvx7Yswg/exec';
@@ -291,6 +292,118 @@ function selectOptions(values,current){
   const unique=[...new Set(values.filter(Boolean))];
   return unique.map(value=>`<option value="${esc(value)}" ${value===current?'selected':''}>${esc(value)}</option>`).join('')+`<option value="__custom__">✏️ Formulation personnalisée…</option>`;
 }
+
+const SYNTHETIC_STATUS_OPTIONS=['Prévue','Réalisée','Reportée','Annulée'];
+const SYNTHETIC_STATUS_PREFS_KEY='progressions_ce2_journal_status_v35_84';
+const SYNTHETIC_DAY_REMARKS_KEY='progressions_ce2_journal_day_remarks_v35_84';
+function readSyntheticStatusPrefs(){try{return JSON.parse(localStorage.getItem(SYNTHETIC_STATUS_PREFS_KEY)||'{}')}catch(e){return {}}}
+function saveSyntheticStatusPrefs(v){localStorage.setItem(SYNTHETIC_STATUS_PREFS_KEY,JSON.stringify(v))}
+function syntheticStatusFor(s){
+  const prefs=readSyntheticStatusPrefs(), k=sessionKey(s);
+  const explicit=String(prefs[k]||s.statut||'').trim();
+  if(/^réalis/i.test(explicit))return 'Réalisée';
+  if(/^report/i.test(explicit))return 'Reportée';
+  if(/^annul/i.test(explicit))return 'Annulée';
+  return 'Prévue';
+}
+function statusClass(value){
+  const v=normalizeText(value);
+  if(v.startsWith('real'))return 'is-realized';
+  if(v.startsWith('report'))return 'is-deferred';
+  if(v.startsWith('annul'))return 'is-cancelled';
+  return 'is-planned';
+}
+function statusLabel(value){
+  if(value==='Réalisée')return '✓ Réalisée';
+  if(value==='Reportée')return '↪ Reportée';
+  if(value==='Annulée')return '× Annulée';
+  return '○ Prévue';
+}
+function statusSelectHtml(s){
+  if(isNonTeachingTime(s))return '';
+  const key=sessionKey(s), current=syntheticStatusFor(s);
+  return `<select class="journal-status-select ${statusClass(current)}" data-status-key="${esc(key)}" aria-label="Statut de la séance">${SYNTHETIC_STATUS_OPTIONS.map(v=>`<option value="${esc(v)}" ${v===current?'selected':''}>${statusLabel(v)}</option>`).join('')}</select>`;
+}
+function bindSyntheticStatusSelectors(root){
+  root.querySelectorAll('.journal-status-select').forEach(select=>{
+    select.addEventListener('change',()=>{
+      const prefs=readSyntheticStatusPrefs();
+      prefs[select.dataset.statusKey]=select.value;
+      saveSyntheticStatusPrefs(prefs);
+      const session=sessions.find(item=>sessionKey(item)===select.dataset.statusKey);
+      if(session)session.statut=select.value;
+      select.classList.remove('is-planned','is-realized','is-deferred','is-cancelled');
+      select.classList.add(statusClass(select.value));
+      setStatus(`Statut : ${select.value}`);
+      render();
+    });
+  });
+}
+function readDayRemarks(){try{return JSON.parse(localStorage.getItem(SYNTHETIC_DAY_REMARKS_KEY)||'{}')}catch(e){return {}}}
+function dayRemark(date){return readDayRemarks()[date]||''}
+function bindDayRemarks(root){
+  root.querySelectorAll('.journal-day-remark-input').forEach(input=>{
+    input.addEventListener('change',()=>{
+      const remarks=readDayRemarks();
+      remarks[input.dataset.date]=input.value.trim();
+      localStorage.setItem(SYNTHETIC_DAY_REMARKS_KEY,JSON.stringify(remarks));
+      setStatus('Remarque de la journée enregistrée');
+    });
+  });
+}
+function compactSessionHtml(s){
+  const key=sessionKey(s), meta=sessionMetaFor(s), domain=canonicalDomain(s.domaine), nonTeaching=isNonTeachingTime(s);
+  if(nonTeaching){
+    return `<div class="journal-compact-row ${domainClass(`${s.domaine} ${s.activite}`)} is-non-teaching" data-session-key="${esc(key)}">
+      <div class="journal-compact-time">${esc(s.horaire)}</div>
+      <div class="journal-compact-subject">${esc(nonTeachingLabel(s))}</div>
+      <div class="journal-compact-activity"></div>
+      <div class="journal-compact-status"></div>
+    </div>`;
+  }
+  return `<div class="journal-compact-row ${domainClass(domain)} ${statusClass(syntheticStatusFor(s))}" data-session-key="${esc(key)}">
+    <div class="journal-compact-time">${esc(s.horaire)}</div>
+    <div class="journal-compact-subject">${esc(displayDomainLabel(domain))}</div>
+    <div class="journal-compact-activity"><input class="journal-activity-input" data-meta-key="${esc(key)}" data-meta-field="activity" value="${esc(meta.activity||'')}" placeholder="Activité" aria-label="Activité de la séance"></div>
+    <div class="journal-compact-status">${statusSelectHtml(s)}</div>
+  </div>`;
+}
+function compactDayHtml(date,list){
+  const rows=list.slice().sort((a,b)=>(a.ordre||0)-(b.ordre||0));
+  return `<article class="journal-day journal-day--compact ${dayClass(date)}">
+    <header><h3>📅 ${frDate(date)}</h3></header>
+    <div class="journal-compact-headings"><span>Horaire</span><span>Matière</span><span>Activité</span><span>Statut</span></div>
+    <div class="journal-sessions">${rows.length?rows.map(compactSessionHtml).join(''):'<div class="journal-empty">Aucune séance</div>'}</div>
+    <label class="journal-day-remark"><span>📝 Remarque de la journée</span><textarea class="journal-day-remark-input" data-date="${esc(date)}" placeholder="Une remarque générale pour la journée…">${esc(dayRemark(date))}</textarea></label>
+  </article>`;
+}
+function weekCellHtml(s){
+  const meta=sessionMetaFor(s), nonTeaching=isNonTeachingTime(s);
+  if(nonTeaching)return `<div class="journal-week-cell is-non-teaching ${domainClass(`${s.domaine} ${s.activite}`)}"><span class="journal-week-cell__subject">${esc(nonTeachingLabel(s))}</span></div>`;
+  return `<div class="journal-week-cell ${domainClass(s.domaine)} ${statusClass(syntheticStatusFor(s))}" data-session-key="${esc(sessionKey(s))}">
+    <div class="journal-week-cell__subject">${esc(displayDomainLabel(canonicalDomain(s.domaine)))}</div>
+    <input class="journal-week-cell__activity journal-activity-input" data-meta-key="${esc(sessionKey(s))}" data-meta-field="activity" value="${esc(meta.activity||'')}" aria-label="Activité">
+    ${statusSelectHtml(s)}
+  </div>`;
+}
+function timeSortValue(value){
+  const m=String(value||'').match(/(\d{1,2})\s*h\s*(\d{0,2})/i);
+  return m?(Number(m[1])*60+Number(m[2]||0)):9999;
+}
+function renderSyntheticWeek(map){
+  const days=[0,1,3,4].map(n=>iso(addDays(monday,n)));
+  const times=[...new Set(days.flatMap(d=>(map[d]||[]).map(s=>s.horaire).filter(Boolean)))].sort((a,b)=>timeSortValue(a)-timeSortValue(b));
+  const byDayTime={};
+  days.forEach(d=>{byDayTime[d]={};(map[d]||[]).forEach(s=>{(byDayTime[d][s.horaire]||(byDayTime[d][s.horaire]=[])).push(s)})});
+  const head=`<div class="journal-week-grid__head journal-week-grid__corner">Horaire</div>`+days.map(d=>`<div class="journal-week-grid__head">${frDate(d,{weekday:'long',day:'numeric',month:'short'})}</div>`).join('');
+  const body=times.map(time=>{
+    const cells=days.map(d=>`<div class="journal-week-grid__slot">${(byDayTime[d][time]||[]).map(weekCellHtml).join('')}</div>`).join('');
+    return `<div class="journal-week-grid__time">${esc(time)}</div>${cells}`;
+  }).join('');
+  const remarks=`<div class="journal-week-remarks-title">📝 Remarques de la journée</div>`+days.map(d=>`<label class="journal-week-day-remark"><span>${frDate(d,{weekday:'long'})}</span><textarea class="journal-day-remark-input" data-date="${esc(d)}" placeholder="Remarque…">${esc(dayRemark(d))}</textarea></label>`).join('');
+  return `<div class="journal-week-grid">${head}${body}</div><div class="journal-week-remarks">${remarks}</div>`;
+}
+
 function sessionHtml(s){
   const nonTeaching=isNonTeachingTime(s), pedagogy=pedagogyFor(s), key=pedagogyPrefKey(s), meta=sessionMetaFor(s), domain=canonicalDomain(s.domaine);
   const realized=String(s.statut||'').toLowerCase().startsWith('réalis');
@@ -364,18 +477,18 @@ function bindRemarkInputs(root){
 }
 function columnHeadings(){return `<div class="journal-column-headings"><span>Horaire</span><span>Matière</span><span>Sous-matière</span><span>Activité</span><span>Séance</span><span>Objectif du maître</span><span>Compétence élève</span><span>Remarque</span></div>`}
 function dayHtml(date,list){return `<article class="journal-day ${dayClass(date)}"><header><h3>📅 ${frDate(date)}</h3></header>${columnHeadings()}<div class="journal-sessions">${list.length?list.sort((a,b)=>(a.ordre||0)-(b.ordre||0)).map(sessionHtml).join(''):'<div class="journal-empty">Aucune journée enregistrée</div>'}</div></article>`}
-function renderToday(){const map=groupByDate(), today=iso(new Date()), date=(today>=iso(monday)&&today<=iso(addDays(monday,4)))?today:iso(monday);todayView.innerHTML=`<div class="journal-today">${dayHtml(date,map[date]||[])}</div>`;bindPedagogySelectors(todayView);bindSessionMetaSelectors(todayView);bindRemarkInputs(todayView)}
-function renderWeek(){const map=groupByDate();weekView.innerHTML=`<div class="journal-days">${[0,1,3,4].map(n=>{const d=iso(addDays(monday,n));return dayHtml(d,map[d]||[])}).join('')}</div>`;bindPedagogySelectors(weekView);bindSessionMetaSelectors(weekView);bindRemarkInputs(weekView)}
+function renderToday(){const map=groupByDate(), today=iso(new Date()), date=(today>=iso(monday)&&today<=iso(addDays(monday,4)))?today:iso(monday);todayView.innerHTML=`<div class="journal-today">${compactDayHtml(date,map[date]||[])}</div>`;bindSessionMetaSelectors(todayView);bindSyntheticStatusSelectors(todayView);bindDayRemarks(todayView)}
+function renderWeek(){const map=groupByDate();weekView.innerHTML=renderSyntheticWeek(map);bindSessionMetaSelectors(weekView);bindSyntheticStatusSelectors(weekView);bindDayRemarks(weekView)}
 function getArchives(){try{return JSON.parse(localStorage.getItem(archivesKey())||'[]')}catch(e){return []}}
 function renderArchives(){const a=getArchives();archivesView.innerHTML=a.length?a.map((x,i)=>`<article class="journal-archive-card"><div><strong>Semaine du ${esc(frDate(x.dateDebut,{day:'numeric',month:'long',year:'numeric'}))}</strong><small>${x.count} séance(s) · archivée le ${esc(x.archivedAt)}</small></div><button type="button" data-open-archive="${i}">Consulter</button></article>`).join(''):'<div class="journal-empty">Aucune semaine archivée sur cet appareil.</div>';archivesView.querySelectorAll('[data-open-archive]').forEach(b=>b.onclick=()=>{const x=a[Number(b.dataset.openArchive)];monday=new Date(x.dateDebut+'T12:00:00');setTab('week');loadWeek()})}
-function render(){renderToday();renderWeek();renderArchives();summary.classList.toggle('hidden',active==='archives')}
+function render(){renderToday();renderWeek();renderArchives();summary.classList.add('hidden')}
 function applyViewMode(){if(!panel)return;panel.classList.remove('journal-panel--portrait');panel.classList.add('journal-panel--wide','journal-panel--landscape')}
-function setTab(tab){active=tab;document.querySelectorAll('.journal-tab').forEach(b=>b.classList.toggle('is-active',b.dataset.journalTab===tab));todayView.classList.toggle('hidden',tab!=='today');weekView.classList.toggle('hidden',tab!=='week');archivesView.classList.toggle('hidden',tab!=='archives');summary.classList.toggle('hidden',tab==='archives');applyViewMode()}
-function textExport(){const map=groupByDate(), lines=[`CAHIER JOURNAL — CE2`,`École La Gravette`,weekLabel.textContent,''];[0,1,3,4].forEach(n=>{const d=iso(addDays(monday,n));lines.push(frDate(d).toUpperCase());(map[d]||[]).forEach(s=>{const pedagogy=pedagogyFor(s);const meta=sessionMetaFor(s);lines.push(`${s.horaire} — ${canonicalDomain(s.domaine)} — ${meta.subdomain} — ${meta.activity||'Activité à compléter'}`);if(!isNonTeachingTime(s))lines.push(`${meta.sequence} — ${meta.phase}`);if(!isNonTeachingTime(s)){if(pedagogy.objective)lines.push(`Objectif : ${pedagogy.objective}`);if(pedagogy.competence)lines.push(`Compétence : ${pedagogy.competence}`);if(s.remarque)lines.push(`Remarque : ${s.remarque}`)}if(s.statut)lines.push(`Statut : ${s.statut}`)});lines.push('')});const v=saveSummary();lines.push('SYNTHÈSE DE LA SEMAINE',`Apprentissages réalisés : ${v.learned}`,`Séances reportées : ${v.deferred}`,`Points à reprendre : ${v.review}`,`Événements particuliers : ${v.events}`,`Absences ou changements : ${v.changes}`,`À prévoir : ${v.next}`);return lines.join('\n')}
+function setTab(tab){active=tab;document.querySelectorAll('.journal-tab').forEach(b=>b.classList.toggle('is-active',b.dataset.journalTab===tab));todayView.classList.toggle('hidden',tab!=='today');weekView.classList.toggle('hidden',tab!=='week');archivesView.classList.toggle('hidden',tab!=='archives');summary.classList.add('hidden');applyViewMode()}
+function textExport(){const map=groupByDate(), lines=[`CAHIER JOURNAL — CE2`,`École La Gravette`,weekLabel.textContent,''];[0,1,3,4].forEach(n=>{const d=iso(addDays(monday,n));lines.push(frDate(d).toUpperCase());(map[d]||[]).forEach(s=>{const meta=sessionMetaFor(s);lines.push(`${s.horaire} — ${canonicalDomain(s.domaine)} — ${meta.activity||'Activité'} — ${syntheticStatusFor(s)}`)});const remark=dayRemark(d);if(remark)lines.push(`Remarque de la journée : ${remark}`);lines.push('')});return lines.join('\n')}
 async function copy(){try{await navigator.clipboard.writeText(textExport());setStatus('Cahier journal copié !')}catch(e){setStatus('Copie impossible') }}
-async function archive(){const v=saveSummary(), payload={action:'archiverSemaine',dateDebut:iso(monday),dateFin:iso(addDays(monday,4)),periode:'',synthese:[v.learned,v.review].filter(Boolean).join('\n'),apprentissagesRealises:v.learned,seancesReportees:v.deferred,pointsAReprendre:v.review,evenementsParticuliers:v.events,absencesOuChangements:v.changes,aPrevoirSemaineSuivante:v.next};setStatus('Archivage en cours…');try{await journalApi(payload);const a=getArchives().filter(x=>x.dateDebut!==payload.dateDebut);a.unshift({dateDebut:payload.dateDebut,count:sessions.length,archivedAt:new Intl.DateTimeFormat('fr-FR',{dateStyle:'short',timeStyle:'short'}).format(new Date())});localStorage.setItem(archivesKey(),JSON.stringify(a));setStatus('Semaine archivée dans Google Sheet');renderArchives()}catch(e){setStatus(e&&e.message?e.message:'Erreur d’archivage') }}
+async function archive(){const remarks=[0,1,3,4].map(n=>{const d=iso(addDays(monday,n)),r=dayRemark(d);return r?`${frDate(d)} : ${r}`:''}).filter(Boolean).join('\n');const payload={action:'archiverSemaine',dateDebut:iso(monday),dateFin:iso(addDays(monday,4)),periode:'',synthese:remarks,apprentissagesRealises:'',seancesReportees:sessions.filter(s=>syntheticStatusFor(s)==='Reportée').map(s=>`${s.date} ${s.horaire} ${sessionMetaFor(s).activity}`).join('\n'),pointsAReprendre:'',evenementsParticuliers:remarks,absencesOuChangements:'',aPrevoirSemaineSuivante:''};setStatus('Archivage en cours…');try{await journalApi(payload);const a=getArchives().filter(x=>x.dateDebut!==payload.dateDebut);a.unshift({dateDebut:payload.dateDebut,count:sessions.length,archivedAt:new Intl.DateTimeFormat('fr-FR',{dateStyle:'short',timeStyle:'short'}).format(new Date())});localStorage.setItem(archivesKey(),JSON.stringify(a));setStatus('Semaine archivée dans Google Sheet');renderArchives()}catch(e){setStatus(e&&e.message?e.message:'Erreur d’archivage') }}
 function open(){monday=startOfWeek(new Date());modal.classList.remove('hidden');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';loadWeek();setTab('today')}
-function close(){saveSummary();modal.classList.add('hidden');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+function close(){modal.classList.add('hidden');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''}
 window.addEventListener('progressions:programme-du-jour-updated',e=>refreshFromProgramme(e&&e.detail&&e.detail.date));
 openBtn.onclick=open;closeBtn.onclick=close;modal.addEventListener('click',e=>{if(e.target===modal)close()});document.querySelectorAll('.journal-tab').forEach(b=>b.onclick=()=>setTab(b.dataset.journalTab));$('journalPreviousWeekBtn').onclick=()=>{monday=addDays(monday,-7);loadWeek()};$('journalNextWeekBtn').onclick=()=>{monday=addDays(monday,7);loadWeek()};$('journalCurrentWeekBtn').onclick=()=>{monday=startOfWeek(new Date());loadWeek()};$('journalCopyBtn').onclick=copy;$('journalPrintBtn').onclick=()=>window.print();$('journalPdfBtn').onclick=()=>window.print();$('journalArchiveBtn').onclick=archive;Object.values(fields).forEach(f=>f.addEventListener('change',saveSummary));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.classList.contains('hidden'))close()});
 })();

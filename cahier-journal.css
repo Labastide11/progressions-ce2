@@ -233,3 +233,164 @@
 @media print{.journal-real-status{font-size:.62rem;padding:2px 5px}.journal-session.is-realized{background:#fff}}
 /* /V35.83 */
 
+
+
+/* V35.84 — Cahier journal synthétique */
+.journal-summary{display:none!important}
+.journal-day--compact{overflow:hidden}
+.journal-compact-headings,.journal-compact-row{
+  display:grid;
+  grid-template-columns:100px 150px minmax(260px,1fr) 150px;
+  gap:0;
+  align-items:stretch;
+}
+.journal-compact-headings{
+  padding:7px 10px;
+  background:#f4f7fb;
+  border-bottom:1px solid #dbe5ef;
+  color:#48627d;
+  font-size:.72rem;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+}
+.journal-compact-headings span{padding:0 9px}
+.journal-compact-row{
+  --accent:#64748b;
+  --subject-bg:#f1f5f9;
+  background:#fff;
+  border-left:4px solid var(--accent);
+  border-bottom:1px solid #e8eef5;
+}
+.journal-compact-row.is-french{--accent:#e85d75;--subject-bg:#fff2f5}
+.journal-compact-row.is-maths{--accent:#3b82f6;--subject-bg:#eff6ff}
+.journal-compact-row.is-english{--accent:#8b5cf6;--subject-bg:#f5f1ff}
+.journal-compact-row.is-eps{--accent:#22a06b;--subject-bg:#eefaf3}
+.journal-compact-row.is-arts{--accent:#e67e22;--subject-bg:#fff6ec}
+.journal-compact-row.is-science{--accent:#16a2b8;--subject-bg:#eefbfc}
+.journal-compact-row.is-history{--accent:#d49b16;--subject-bg:#fff9e7}
+.journal-compact-row.is-emc{--accent:#64748b;--subject-bg:#f5f7fa}
+.journal-compact-row.is-cham{--accent:#a855f7;--subject-bg:#faf2ff}
+.journal-compact-time,.journal-compact-subject,.journal-compact-activity,.journal-compact-status{
+  display:flex;align-items:center;min-height:52px;padding:8px 10px;
+}
+.journal-compact-time{font-weight:900;color:#324c67}
+.journal-compact-subject{font-weight:900;background:var(--subject-bg);color:#2f455d}
+.journal-compact-activity input{
+  width:100%;border:0;background:transparent;padding:7px 8px;font:inherit;font-weight:750;color:#243b53;border-radius:8px;
+}
+.journal-compact-activity input:focus{outline:2px solid rgba(59,130,246,.22);background:#fff}
+.journal-status-select{
+  width:100%;
+  min-height:34px;
+  border-radius:999px;
+  border:1px solid transparent;
+  padding:5px 10px;
+  font:inherit;
+  font-size:.78rem;
+  font-weight:900;
+  cursor:pointer;
+  text-align:center;
+}
+.journal-status-select.is-planned{background:#f4f6f8;color:#536579;border-color:#d9e0e7}
+.journal-status-select.is-realized{background:#e9f9ec;color:#19713a;border-color:#9fdfad}
+.journal-status-select.is-deferred{background:#fff4d9;color:#8a5b00;border-color:#eccb75}
+.journal-status-select.is-cancelled{background:#fff0f0;color:#a33c3c;border-color:#efb0b0}
+.journal-day-remark{
+  display:grid;gap:6px;padding:12px 14px;background:#fffdf7;border-top:1px solid #eadfbd;color:#725719;font-weight:900;
+}
+.journal-day-remark textarea,.journal-week-day-remark textarea{
+  width:100%;min-height:62px;resize:vertical;border:1px solid #e2d5ad;border-radius:10px;padding:9px 10px;background:#fff;font:inherit;color:#394b5f;
+}
+
+/* Vue semaine : une grille réellement synthétique, jours en colonnes */
+.journal-week-grid{
+  display:grid;
+  grid-template-columns:92px repeat(4,minmax(210px,1fr));
+  border:1px solid #dce6f1;
+  border-radius:16px;
+  overflow:auto;
+  background:#fff;
+}
+.journal-week-grid__head{
+  position:sticky;top:0;z-index:2;
+  padding:10px 8px;
+  background:#26384d;
+  color:#fff;
+  text-align:center;
+  font-weight:950;
+  text-transform:capitalize;
+  border-right:1px solid rgba(255,255,255,.14);
+}
+.journal-week-grid__corner{background:#1f3042}
+.journal-week-grid__time{
+  padding:12px 8px;
+  background:#f5f7fa;
+  color:#40566f;
+  font-weight:950;
+  text-align:center;
+  border-top:1px solid #e3eaf1;
+  border-right:1px solid #e3eaf1;
+}
+.journal-week-grid__slot{
+  min-height:74px;
+  padding:6px;
+  border-top:1px solid #e3eaf1;
+  border-right:1px solid #e3eaf1;
+  background:#fff;
+}
+.journal-week-cell{
+  --accent:#64748b;--subject-bg:#f1f5f9;
+  display:grid;gap:5px;
+  padding:7px 8px;
+  margin-bottom:5px;
+  border-left:4px solid var(--accent);
+  border-radius:10px;
+  background:var(--subject-bg);
+}
+.journal-week-cell:last-child{margin-bottom:0}
+.journal-week-cell.is-french{--accent:#e85d75;--subject-bg:#fff2f5}
+.journal-week-cell.is-maths{--accent:#3b82f6;--subject-bg:#eff6ff}
+.journal-week-cell.is-english{--accent:#8b5cf6;--subject-bg:#f5f1ff}
+.journal-week-cell.is-eps{--accent:#22a06b;--subject-bg:#eefaf3}
+.journal-week-cell.is-arts{--accent:#e67e22;--subject-bg:#fff6ec}
+.journal-week-cell.is-science{--accent:#16a2b8;--subject-bg:#eefbfc}
+.journal-week-cell.is-history{--accent:#d49b16;--subject-bg:#fff9e7}
+.journal-week-cell.is-cham{--accent:#a855f7;--subject-bg:#faf2ff}
+.journal-week-cell__subject{font-size:.76rem;font-weight:950;color:#31485f}
+.journal-week-cell__activity{
+  width:100%;border:0;background:rgba(255,255,255,.72);border-radius:7px;padding:6px 7px;font:inherit;font-size:.82rem;font-weight:750;color:#24384d;
+}
+.journal-week-cell .journal-status-select{font-size:.7rem;min-height:28px;padding:3px 7px}
+.journal-week-remarks{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  margin-top:12px;
+}
+.journal-week-remarks-title{
+  grid-column:1/-1;
+  font-weight:950;
+  color:#344f6d;
+}
+.journal-week-day-remark{
+  display:grid;gap:5px;padding:10px;border:1px solid #e3dfcf;border-radius:12px;background:#fffdf8;
+}
+.journal-week-day-remark span{text-transform:capitalize;font-weight:900;color:#6c5722}
+.journal-week-day-remark textarea{min-height:54px}
+@media(max-width:1000px){
+  .journal-compact-headings,.journal-compact-row{grid-template-columns:80px 130px minmax(190px,1fr) 135px}
+  .journal-week-grid{grid-template-columns:80px repeat(4,minmax(190px,1fr))}
+  .journal-week-remarks{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){
+  .journal-compact-headings{display:none}
+  .journal-compact-row{grid-template-columns:72px 1fr 120px}
+  .journal-compact-activity{grid-column:2/4;border-top:1px solid #edf1f5}
+  .journal-week-remarks{grid-template-columns:1fr}
+}
+@media print{
+  .journal-day-remark textarea,.journal-week-day-remark textarea{border:0;resize:none}
+  .journal-status-select{appearance:none;border:0;padding:0;background:transparent}
+  .journal-week-grid{overflow:visible;grid-template-columns:70px repeat(4,1fr)}
+}
