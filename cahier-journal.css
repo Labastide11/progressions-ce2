@@ -560,3 +560,39 @@
 }
 /* /V35.89 — en-têtes de semaine renforcées */
 
+/* V35.90 — jour et date sur une seule ligne */
+.journal-week-grid__head{
+  flex-direction:row;
+  flex-wrap:nowrap;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  min-height:56px;
+}
+.journal-week-grid__weekday,
+.journal-week-grid__date{
+  display:inline-block;
+  white-space:nowrap;
+  line-height:1;
+}
+.journal-week-grid__weekday{
+  font-size:1rem;
+}
+.journal-week-grid__date{
+  font-size:.92rem;
+}
+.journal-week-grid__corner{
+  justify-content:center;
+}
+@media(max-width:1100px){
+  .journal-week-grid__head{gap:6px;min-height:52px;padding:10px 8px}
+  .journal-week-grid__weekday{font-size:.92rem}
+  .journal-week-grid__date{font-size:.82rem}
+}
+@media(max-width:620px){
+  .journal-week-grid__head{gap:4px;min-height:48px;padding:8px 6px}
+  .journal-week-grid__weekday{font-size:.78rem}
+  .journal-week-grid__date{font-size:.7rem}
+}
+/* /V35.90 — jour et date sur une seule ligne */
+
