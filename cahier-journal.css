@@ -787,3 +787,46 @@
 }
 /* /V35.94 — police manuscrite limitée au contenu */
 
+/* V35.95 — respiration blanche avant le tableau semaine */
+.journal-week-grid{
+  margin-top:14px;
+  border-top-left-radius:16px;
+  border-top-right-radius:16px;
+}
+.journal-view#journalWeekView{
+  padding-top:4px;
+}
+@media(max-width:620px){
+  .journal-week-grid{margin-top:10px}
+  .journal-view#journalWeekView{padding-top:2px}
+}
+/* /V35.95 — respiration blanche avant le tableau semaine */
+
+/* V35.96 — suppression des sticky dépendants de la largeur */
+/* Le header et la navigation restent dans le flux normal :
+   aucun chevauchement possible entre boutons et en-têtes de semaine. */
+.journal-header,
+.journal-toolbar--unified,
+.journal-tabs{
+  position:static !important;
+  top:auto !important;
+}
+.journal-toolbar--unified{
+  z-index:auto !important;
+  margin:0 !important;
+  border-bottom:1px solid #e1eaf4;
+}
+#journalWeekView{
+  padding-top:12px !important;
+}
+.journal-week-grid{
+  margin-top:0 !important;
+}
+@media(max-width:900px){
+  #journalWeekView{padding-top:12px !important}
+}
+@media(max-width:620px){
+  #journalWeekView{padding-top:10px !important}
+}
+/* /V35.96 — suppression des sticky dépendants de la largeur */
+
