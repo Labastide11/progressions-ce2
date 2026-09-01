@@ -437,7 +437,7 @@
 }
 /* /V35.85 — police manuscrite pour le cahier journal */
 
-/* V35.86 — jour mieux visible + pré-rentrée */
+/* V35.87 — jours de semaine plus lisibles + jours spéciaux */
 .journal-day--compact header{
   padding:14px 16px;
   background:linear-gradient(135deg,var(--day) 0%, color-mix(in srgb,var(--day) 64%, #ffffff) 100%);
@@ -452,10 +452,36 @@
   letter-spacing:.01em;
 }
 .journal-week-grid__head{
-  font-size:.92rem;
-  padding:12px 8px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:3px;
+  min-height:58px;
+  padding:10px 8px;
+  line-height:1.05;
+  overflow:visible;
 }
-.journal-compact-row.is-non-teaching{
+.journal-week-grid__weekday{
+  display:block;
+  font-size:1rem;
+  font-weight:950;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.journal-week-grid__date{
+  display:block;
+  font-size:.82rem;
+  font-weight:800;
+  letter-spacing:.01em;
+  text-transform:none;
+  opacity:.96;
+}
+.journal-week-grid__corner .journal-week-grid__weekday{
+  font-size:.82rem;
+}
+.journal-compact-row.is-non-teaching,
+.journal-week-cell.is-non-teaching{
   background:linear-gradient(90deg,#fff8e8 0%,#fffdf7 100%);
 }
 .journal-compact-row.is-non-teaching .journal-compact-subject{
@@ -464,15 +490,26 @@
   font-size:1rem;
 }
 .journal-week-cell.is-non-teaching{
-  background:linear-gradient(90deg,#fff8e8 0%,#fffdf7 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:60px;
 }
 .journal-week-cell.is-non-teaching .journal-week-cell__subject{
   color:#8a5a07;
-  font-size:.92rem;
+  font-size:.96rem;
+  font-weight:950;
+  text-align:center;
+}
+@media(max-width:900px){
+  .journal-week-grid__weekday{font-size:.88rem}
+  .journal-week-grid__date{font-size:.76rem}
 }
 @media(max-width:620px){
   .journal-day--compact header h3{font-size:1.15rem}
-  .journal-week-grid__head{font-size:.82rem}
+  .journal-week-grid__head{min-height:52px;padding:8px 6px}
+  .journal-week-grid__weekday{font-size:.78rem}
+  .journal-week-grid__date{font-size:.68rem}
 }
-/* /V35.86 — jour mieux visible + pré-rentrée */
+/* /V35.87 — jours de semaine plus lisibles + jours spéciaux */
 

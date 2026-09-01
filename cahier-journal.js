@@ -1,4 +1,4 @@
-/* V35.86 — Cahier journal synthétique : jour mieux visible + pré-rentrée */
+/* V35.87 — Cahier journal synthétique : jours plus lisibles + vacances/pré-rentrée */
 (function(){
 'use strict';
 const API='https://script.google.com/macros/s/AKfycbz25e9hIn7jgZuI2gzLNwqinvo_zTegoicJSeEzNaHDEfCTrEz52MIJREvFM5rvx7Yswg/exec';
@@ -85,6 +85,7 @@ const PEDAGOGY_PREFS_KEY='progressions_ce2_cahier_pedagogy_v2';
 const SESSION_META_PREFS_KEY='progressions_ce2_cahier_session_meta_v1';
 let monday=startOfWeek(new Date()), sessions=[], remoteSessions=[], active='today';
 const PRE_RENTREE_DATE='2026-08-31';
+const SCHOOL_YEAR_START_DATE='2026-09-01';
 function iso(d){return new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10)}
 function startOfWeek(d){const x=new Date(d);x.setHours(12,0,0,0);const day=x.getDay()||7;x.setDate(x.getDate()-day+1);return x}
 function addDays(d,n){const x=new Date(d);x.setDate(x.getDate()+n);return x}
@@ -101,6 +102,21 @@ function normalizeDate(value){
   if(direct)return direct[0];
   const parsed=new Date(text);
   return isNaN(parsed)?'':iso(parsed);
+}
+function specialDayLabel(date){
+  const d=normalizeDate(date);
+  if(!d)return '';
+  if(d===PRE_RENTREE_DATE)return 'Journée de pré-rentrée';
+  if(d<SCHOOL_YEAR_START_DATE)return 'Vacances d’été';
+  return '';
+}
+function isClosedSchoolDay(date){return !!specialDayLabel(date)}
+function weekSpecialMessage(list){
+  const labels=[...new Set((Array.isArray(list)?list:[]).map(item=>specialDayLabel(item&&item.date)).filter(Boolean))];
+  if(!labels.length)return '';
+  if(labels.length===1)return labels[0];
+  if(labels.includes('Vacances d’été')&&labels.includes('Journée de pré-rentrée'))return 'Semaine spéciale : vacances d’été et pré-rentrée';
+  return `Semaine spéciale : ${labels.join(' · ')}`;
 }
 function sessionKey(s){return [normalizeDate(s.date),s.horaire||'',s.domaine||'',s.activite||'',Number(s.ordre||0)].join('|')}
 function dedupeSessions(list){
@@ -119,12 +135,13 @@ function periodForDate(date){
   return 'p5';
 }
 function timetableDaySessions(date){
-  if(date===PRE_RENTREE_DATE){
+  const specialLabel=specialDayLabel(date);
+  if(specialLabel){
     return [{
       date,
       horaire:'Toute la journée',
       domaine:'Vie de classe',
-      activite:'Journée de pré-rentrée',
+      activite:specialLabel,
       objectifMaitre:'',
       competenceEleve:'',
       statut:'',
@@ -172,11 +189,13 @@ function mergeSessionLayers(...layers){
     const value={...item,date:normalizeDate(item.date)};
     const k=slotKey(value);
     if(!k)return;
+    if(isClosedSchoolDay(value.date)&&value.source!=='special')return;
     map.set(k,{...(map.get(k)||{}),...value});
   }));
   return [...map.values()].sort((a,b)=>String(a.date).localeCompare(String(b.date))+(Number(a.ordre||0)-Number(b.ordre||0)));
 }
 function localDaySessions(date){
+  if(isClosedSchoolDay(date))return [];
   try{
     const raw=JSON.parse(localStorage.getItem(`progressions_ce2_programme_du_jour_${date}`)||'null');
     if(!Array.isArray(raw))return [];
@@ -220,17 +239,18 @@ async function loadWeek(){
   const base=timetableWeekSessions();
   const local=dedupeSessions(localWeekSessions());
   sessions=mergeSessionLayers(base,local);
-  setStatus(`${sessions.length} séance(s) préparée(s) depuis l’emploi du temps · synchronisation…`);
+  const specialWeekMessage=weekSpecialMessage(sessions);
+  setStatus(specialWeekMessage||`${sessions.length} séance(s) préparée(s) depuis l’emploi du temps · synchronisation…`);
   render();
   try{
     const data=await journalApi({action:'semaine',dateDebut:iso(monday)});
     remoteSessions=data&&data.success&&Array.isArray(data.seances)?data.seances:[];
     sessions=mergeSessionLayers(base,remoteSessions,local);
-    setStatus('');
+    setStatus(weekSpecialMessage(sessions)||'');
   }catch(e){
     remoteSessions=[];
     sessions=mergeSessionLayers(base,local);
-    setStatus(`${sessions.length} séance(s) affichée(s) depuis l’emploi du temps et la sauvegarde locale`);
+    setStatus(weekSpecialMessage(sessions)||`${sessions.length} séance(s) affichée(s) depuis l’emploi du temps et la sauvegarde locale`);
   }
   render();
 }
@@ -411,7 +431,7 @@ function renderSyntheticWeek(map){
   const times=[...new Set(days.flatMap(d=>(map[d]||[]).map(s=>s.horaire).filter(Boolean)))].sort((a,b)=>timeSortValue(a)-timeSortValue(b));
   const byDayTime={};
   days.forEach(d=>{byDayTime[d]={};(map[d]||[]).forEach(s=>{(byDayTime[d][s.horaire]||(byDayTime[d][s.horaire]=[])).push(s)})});
-  const head=`<div class="journal-week-grid__head journal-week-grid__corner">Horaire</div>`+days.map(d=>`<div class="journal-week-grid__head">${frDate(d,{weekday:'long',day:'numeric',month:'short'})}</div>`).join('');
+  const head=`<div class="journal-week-grid__head journal-week-grid__corner"><span class="journal-week-grid__weekday">Horaire</span></div>`+days.map(d=>`<div class="journal-week-grid__head"><span class="journal-week-grid__weekday">${esc(frDate(d,{weekday:'long'}).toUpperCase())}</span><span class="journal-week-grid__date">${esc(frDate(d,{day:'numeric',month:'long'}))}</span></div>`).join('');
   const body=times.map(time=>{
     const cells=days.map(d=>`<div class="journal-week-grid__slot">${(byDayTime[d][time]||[]).map(weekCellHtml).join('')}</div>`).join('');
     return `<div class="journal-week-grid__time">${esc(time)}</div>${cells}`;
