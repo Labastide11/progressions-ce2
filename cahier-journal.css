@@ -724,3 +724,66 @@
 }
 /* /V35.93 — en-têtes semaine en police lisible */
 
+/* V35.94 — police manuscrite limitée au contenu */
+/* Structure et navigation : police nette et stable. */
+.journal-panel,
+.journal-header,
+.journal-header h2,
+.journal-kicker,
+.journal-header p,
+.journal-toolbar,
+.journal-toolbar button,
+.journal-tab,
+.journal-actions button,
+.journal-day header,
+.journal-day header h3,
+.journal-compact-headings,
+.journal-compact-time,
+.journal-compact-subject,
+.journal-compact-status,
+.journal-status-select,
+.journal-week-grid__head,
+.journal-week-grid__weekday,
+.journal-week-grid__date,
+.journal-week-grid__time,
+.journal-week-cell__subject,
+.journal-week-day-remark span,
+.journal-day-remark > span{
+  font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif !important;
+}
+
+/* Manuscrit uniquement dans le contenu saisi ou pédagogique. */
+.journal-compact-activity input,
+.journal-week-cell__activity,
+.journal-day-remark textarea,
+.journal-week-day-remark textarea{
+  font-family:"Patrick Hand","Comic Sans MS","Segoe Print",cursive !important;
+  font-weight:400;
+  letter-spacing:.01em;
+}
+
+/* Les activités doivent rester lisibles même avec la police manuscrite. */
+.journal-compact-activity input,
+.journal-week-cell__activity{
+  font-size:1rem;
+  line-height:1.35;
+}
+.journal-day-remark textarea,
+.journal-week-day-remark textarea{
+  font-size:1rem;
+  line-height:1.4;
+}
+
+/* En-têtes semaine : stabilité maximale, sans rognage. */
+.journal-week-grid__head{
+  min-height:50px !important;
+  line-height:1.2 !important;
+  padding:9px 10px !important;
+}
+.journal-week-grid__weekday,
+.journal-week-grid__date{
+  line-height:1.2 !important;
+  padding:0 !important;
+}
+/* /V35.94 — police manuscrite limitée au contenu */
+
