@@ -1,4 +1,4 @@
-/* V35.87 — Cahier journal synthétique : jours plus lisibles + vacances/pré-rentrée */
+/* V35.88 — Cahier journal synthétique : fusion fiable des créneaux */
 (function(){
 'use strict';
 const API='https://script.google.com/macros/s/AKfycbz25e9hIn7jgZuI2gzLNwqinvo_zTegoicJSeEzNaHDEfCTrEz52MIJREvFM5rvx7Yswg/exec';
@@ -182,7 +182,7 @@ function timetableDaySessions(date){
     source:'emploi-du-temps'
   }));
 }
-function slotKey(s){return [normalizeDate(s.date),s.horaire||'',Number(s.ordre||0)].join('|')}
+function slotKey(s){return [normalizeDate(s.date),String(s.horaire||'').trim()].join('|')}
 function mergeSessionLayers(...layers){
   const map=new Map();
   layers.forEach(layer=>(Array.isArray(layer)?layer:[]).forEach(item=>{
@@ -190,9 +190,10 @@ function mergeSessionLayers(...layers){
     const k=slotKey(value);
     if(!k)return;
     if(isClosedSchoolDay(value.date)&&value.source!=='special')return;
-    map.set(k,{...(map.get(k)||{}),...value});
+    const previous=map.get(k)||{};
+    map.set(k,{...previous,...value,ordre:previous.ordre||value.ordre||0});
   }));
-  return [...map.values()].sort((a,b)=>String(a.date).localeCompare(String(b.date))+(Number(a.ordre||0)-Number(b.ordre||0)));
+  return [...map.values()].sort((a,b)=>String(a.date).localeCompare(String(b.date))+(timeSortValue(a.horaire)-timeSortValue(b.horaire))+(Number(a.ordre||0)-Number(b.ordre||0)));
 }
 function localDaySessions(date){
   if(isClosedSchoolDay(date))return [];
@@ -239,6 +240,7 @@ async function loadWeek(){
   const base=timetableWeekSessions();
   const local=dedupeSessions(localWeekSessions());
   sessions=mergeSessionLayers(base,local);
+  cleanupSyntheticStatusPrefs();
   const specialWeekMessage=weekSpecialMessage(sessions);
   setStatus(specialWeekMessage||`${sessions.length} séance(s) préparée(s) depuis l’emploi du temps · synchronisation…`);
   render();
@@ -246,10 +248,12 @@ async function loadWeek(){
     const data=await journalApi({action:'semaine',dateDebut:iso(monday)});
     remoteSessions=data&&data.success&&Array.isArray(data.seances)?data.seances:[];
     sessions=mergeSessionLayers(base,remoteSessions,local);
+    cleanupSyntheticStatusPrefs();
     setStatus(weekSpecialMessage(sessions)||'');
   }catch(e){
     remoteSessions=[];
     sessions=mergeSessionLayers(base,local);
+    cleanupSyntheticStatusPrefs();
     setStatus(weekSpecialMessage(sessions)||`${sessions.length} séance(s) affichée(s) depuis l’emploi du temps et la sauvegarde locale`);
   }
   render();
@@ -260,6 +264,7 @@ function refreshFromProgramme(date){
   const base=timetableWeekSessions();
   const local=dedupeSessions(localWeekSessions());
   sessions=mergeSessionLayers(base,remoteSessions,local);
+  cleanupSyntheticStatusPrefs();
   setStatus('✓ Actualisé depuis le Programme du jour');
   render();
 }
@@ -334,6 +339,20 @@ const SYNTHETIC_STATUS_PREFS_KEY='progressions_ce2_journal_status_v35_84';
 const SYNTHETIC_DAY_REMARKS_KEY='progressions_ce2_journal_day_remarks_v35_84';
 function readSyntheticStatusPrefs(){try{return JSON.parse(localStorage.getItem(SYNTHETIC_STATUS_PREFS_KEY)||'{}')}catch(e){return {}}}
 function saveSyntheticStatusPrefs(v){localStorage.setItem(SYNTHETIC_STATUS_PREFS_KEY,JSON.stringify(v))}
+function cleanupSyntheticStatusPrefs(){
+  const prefs=readSyntheticStatusPrefs();
+  const liveSlots=new Map(sessions.map(s=>[slotKey(s),sessionKey(s)]));
+  let changed=false;
+  Object.keys(prefs).forEach(oldKey=>{
+    const parts=String(oldKey).split('|');
+    if(parts.length<2)return;
+    const oldSlot=[parts[0],parts[1]].join('|');
+    const liveKey=liveSlots.get(oldSlot);
+    if(liveKey&&liveKey!==oldKey){delete prefs[oldKey];changed=true}
+  });
+  if(changed)saveSyntheticStatusPrefs(prefs);
+}
+
 function syntheticStatusFor(s){
   const prefs=readSyntheticStatusPrefs(), k=sessionKey(s);
   const explicit=String(prefs[k]||s.statut||'').trim();
