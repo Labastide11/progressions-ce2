@@ -68,7 +68,13 @@
     syncStatus.className=`daily-program-sync-status is-${state}`;
     syncStatus.textContent=message;
   }
-  const save=()=>{try{localStorage.setItem(storageKey(),JSON.stringify(items));setSyncStatus('local','● Sauvegarde locale')}catch(e){setSyncStatus('error','● Erreur de sauvegarde locale')}};
+  function notifyJournalUpdate(reason='update'){
+    try{
+      window.dispatchEvent(new CustomEvent('progressions:programme-du-jour-updated',{detail:{date:dateInput.value,reason,items:items.map(item=>({...item}))}}));
+      document.dispatchEvent(new CustomEvent('progressions:programme-du-jour-updated',{detail:{date:dateInput.value,reason,items:items.map(item=>({...item}))}}));
+    }catch(e){}
+  }
+  const save=(reason='update')=>{try{localStorage.setItem(storageKey(),JSON.stringify(items));setSyncStatus(reason==='validation'?'synced':'local',reason==='validation'?'● Cahier journal actualisé':'● Sauvegarde locale');notifyJournalUpdate(reason)}catch(e){setSyncStatus('error','● Erreur de sauvegarde locale')}};
   const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
   function defaultPeriod(){
@@ -162,7 +168,7 @@
   }
   function bindCards(){
     list.querySelectorAll('[data-title]').forEach(input=>input.addEventListener('change',()=>{const x=items.find(i=>i.id===input.dataset.title);if(x){x.title=input.value.trim()||'Activité';save();renderProjection()}}));
-    list.querySelectorAll('[data-done]').forEach(btn=>btn.onclick=()=>{const x=items.find(i=>i.id===btn.dataset.done);if(x){x.done=!x.done;x.status=x.done?'Réalisée':'Prévue';save();render()}});
+    list.querySelectorAll('[data-done]').forEach(btn=>btn.onclick=()=>{const x=items.find(i=>i.id===btn.dataset.done);if(x){x.done=!x.done;x.status=x.done?'Réalisée':'Prévue';save('validation');render()}});
     list.querySelectorAll('[data-hide]').forEach(btn=>btn.onclick=()=>{const x=items.find(i=>i.id===btn.dataset.hide);if(x){x.hidden=true;save();render()}});
     list.querySelectorAll('[data-delete]').forEach(btn=>btn.onclick=()=>{items=items.filter(i=>i.id!==btn.dataset.delete);save();render()});
     list.querySelectorAll('.daily-program-card').forEach(card=>{

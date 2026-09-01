@@ -82,7 +82,7 @@ const PEDAGOGY_FALLBACKS={
 };
 const PEDAGOGY_PREFS_KEY='progressions_ce2_cahier_pedagogy_v2';
 const SESSION_META_PREFS_KEY='progressions_ce2_cahier_session_meta_v1';
-let monday=startOfWeek(new Date()), sessions=[], active='today';
+let monday=startOfWeek(new Date()), sessions=[], remoteSessions=[], active='today';
 function iso(d){return new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10)}
 function startOfWeek(d){const x=new Date(d);x.setHours(12,0,0,0);const day=x.getDay()||7;x.setDate(x.getDate()-day+1);return x}
 function addDays(d,n){const x=new Date(d);x.setDate(x.getDate()+n);return x}
@@ -208,13 +208,23 @@ async function loadWeek(){
   render();
   try{
     const data=await journalApi({action:'semaine',dateDebut:iso(monday)});
-    const remote=data&&data.success&&Array.isArray(data.seances)?data.seances:[];
-    sessions=mergeSessionLayers(base,remote,local);
+    remoteSessions=data&&data.success&&Array.isArray(data.seances)?data.seances:[];
+    sessions=mergeSessionLayers(base,remoteSessions,local);
     setStatus('');
   }catch(e){
+    remoteSessions=[];
     sessions=mergeSessionLayers(base,local);
     setStatus(`${sessions.length} séance(s) affichée(s) depuis l’emploi du temps et la sauvegarde locale`);
   }
+  render();
+}
+function refreshFromProgramme(date){
+  const first=iso(monday), last=iso(addDays(monday,4));
+  if(date&&date<first||date&&date>last)return;
+  const base=timetableWeekSessions();
+  const local=dedupeSessions(localWeekSessions());
+  sessions=mergeSessionLayers(base,remoteSessions,local);
+  setStatus('✓ Actualisé depuis le Programme du jour');
   render();
 }
 function groupByDate(){const map={};sessions.forEach(s=>{const d=normalizeDate(s.date);if(d)(map[d]||(map[d]=[])).push(s)});return map}
@@ -283,6 +293,8 @@ function selectOptions(values,current){
 }
 function sessionHtml(s){
   const nonTeaching=isNonTeachingTime(s), pedagogy=pedagogyFor(s), key=pedagogyPrefKey(s), meta=sessionMetaFor(s), domain=canonicalDomain(s.domaine);
+  const realized=String(s.statut||'').toLowerCase().startsWith('réalis');
+  const statusBadge=nonTeaching?'':`<span class="journal-real-status ${realized?'is-realized':'is-planned'}">${realized?'✓ Réalisée':'Prévue'}</span>`;
   const objectives=pedagogy.entry.pairs.map(pair=>pair[0]);
   const competences=pedagogy.entry.pairs.map(pair=>pair[1]);
   if(pedagogy.objective&&!objectives.includes(pedagogy.objective))objectives.unshift(pedagogy.objective);
@@ -299,7 +311,7 @@ function sessionHtml(s){
   if(nonTeaching){
     return `<div class="journal-session ${domainClass(`${s.domaine} ${s.activite}`)} is-non-teaching" data-session-key="${esc(key)}"><div class="journal-time">${esc(s.horaire)}</div><div class="journal-non-teaching-label">${esc(nonTeachingLabel(s))}</div></div>`;
   }
-  return `<div class="journal-session ${domainClass(s.domaine)}" data-session-key="${esc(key)}"><div class="journal-time">${esc(s.horaire)}</div>${domainLabelHtml}${subdomainHtml}${activityHtml}${sequenceHtml}${pedagogyHtml}${remarkHtml}</div>`;
+  return `<div class="journal-session ${domainClass(s.domaine)} ${realized?'is-realized':''}" data-session-key="${esc(key)}"><div class="journal-time"><span>${esc(s.horaire)}</span>${statusBadge}</div>${domainLabelHtml}${subdomainHtml}${activityHtml}${sequenceHtml}${pedagogyHtml}${remarkHtml}</div>`;
 }
 function bindPedagogySelectors(root){
   root.querySelectorAll('.journal-pedagogy-select').forEach(select=>{
@@ -364,5 +376,6 @@ async function copy(){try{await navigator.clipboard.writeText(textExport());setS
 async function archive(){const v=saveSummary(), payload={action:'archiverSemaine',dateDebut:iso(monday),dateFin:iso(addDays(monday,4)),periode:'',synthese:[v.learned,v.review].filter(Boolean).join('\n'),apprentissagesRealises:v.learned,seancesReportees:v.deferred,pointsAReprendre:v.review,evenementsParticuliers:v.events,absencesOuChangements:v.changes,aPrevoirSemaineSuivante:v.next};setStatus('Archivage en cours…');try{await journalApi(payload);const a=getArchives().filter(x=>x.dateDebut!==payload.dateDebut);a.unshift({dateDebut:payload.dateDebut,count:sessions.length,archivedAt:new Intl.DateTimeFormat('fr-FR',{dateStyle:'short',timeStyle:'short'}).format(new Date())});localStorage.setItem(archivesKey(),JSON.stringify(a));setStatus('Semaine archivée dans Google Sheet');renderArchives()}catch(e){setStatus(e&&e.message?e.message:'Erreur d’archivage') }}
 function open(){monday=startOfWeek(new Date());modal.classList.remove('hidden');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';loadWeek();setTab('today')}
 function close(){saveSummary();modal.classList.add('hidden');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+window.addEventListener('progressions:programme-du-jour-updated',e=>refreshFromProgramme(e&&e.detail&&e.detail.date));
 openBtn.onclick=open;closeBtn.onclick=close;modal.addEventListener('click',e=>{if(e.target===modal)close()});document.querySelectorAll('.journal-tab').forEach(b=>b.onclick=()=>setTab(b.dataset.journalTab));$('journalPreviousWeekBtn').onclick=()=>{monday=addDays(monday,-7);loadWeek()};$('journalNextWeekBtn').onclick=()=>{monday=addDays(monday,7);loadWeek()};$('journalCurrentWeekBtn').onclick=()=>{monday=startOfWeek(new Date());loadWeek()};$('journalCopyBtn').onclick=copy;$('journalPrintBtn').onclick=()=>window.print();$('journalPdfBtn').onclick=()=>window.print();$('journalArchiveBtn').onclick=archive;Object.values(fields).forEach(f=>f.addEventListener('change',saveSummary));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.classList.contains('hidden'))close()});
 })();

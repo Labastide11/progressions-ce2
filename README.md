@@ -1,3 +1,7 @@
+## V35.83 — Le Programme du jour alimente le Cahier journal
+
+Principe : **Programme du jour = saisie du réel ; Cahier journal = mémoire du réel.** Une séance cochée dans le Programme du jour apparaît immédiatement comme « Réalisée » dans le Cahier journal. La synchronisation est locale et instantanée, y compris lorsque le Cahier journal est déjà ouvert. L’enregistrement Google Sheet existant n’est pas automatisé à chaque coche afin d’éviter les doublons.
+
 ## V35.82 — Rituel mathématique P1 consolidé
 
 - La suite numérique jusqu’à 100 devient le prérequis explicite des deux premières semaines de P1.

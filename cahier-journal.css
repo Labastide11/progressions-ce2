@@ -223,3 +223,13 @@
   .journal-header p{flex-basis:100%}
   .journal-header-separator{display:none}
 }
+
+/* V35.83 — Programme du jour = saisie du réel */
+.journal-session.is-realized{background:linear-gradient(90deg,#f0fff5 0,#fff 34%)}
+.journal-time{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:5px}
+.journal-real-status{display:inline-flex;align-items:center;border-radius:999px;padding:3px 7px;font-size:.68rem;font-weight:900;line-height:1;white-space:nowrap}
+.journal-real-status.is-realized{background:#dcfce7;color:#16713b;border:1px solid #86efac}
+.journal-real-status.is-planned{background:#f1f5f9;color:#64748b;border:1px solid #cbd5e1}
+@media print{.journal-real-status{font-size:.62rem;padding:2px 5px}.journal-session.is-realized{background:#fff}}
+/* /V35.83 */
+

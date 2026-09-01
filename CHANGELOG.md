@@ -1,3 +1,13 @@
+# V35.83 — Programme du jour → Cahier journal automatique
+
+- Le Programme du jour devient l’outil de saisie rapide du réalisé : cocher une séance la passe à « Réalisée ».
+- Chaque validation est immédiatement partagée avec le Cahier journal via la sauvegarde locale commune.
+- Si le Cahier journal est déjà ouvert, il s’actualise sans fermeture ni rechargement.
+- Les séances du Cahier journal affichent désormais clairement « ✓ Réalisée » ou « Prévue ».
+- Les séances réalisées sont légèrement mises en évidence pour distinguer le réel du prévu.
+- La synchronisation Google Sheet existante reste inchangée afin de ne pas créer de doublons : le bouton d’enregistrement de journée conserve son fonctionnement sécurisé.
+- Aucun changement aux progressions, emplois du temps, données élèves ou à Maître Hibou.
+
 # V35.82 — P1 : suite numérique jusqu’à 100 avant les automatismes
 
 - Correction du rituel de calcul mental de début de P1 à partir des observations de rentrée.
