@@ -596,3 +596,41 @@
 }
 /* /V35.90 — jour et date sur une seule ligne */
 
+/* V35.91 — correction chevauchement en-tête semaine */
+/* Le bandeau des jours ne doit plus passer sous la barre de navigation sticky. */
+.journal-week-grid__head{
+  position:relative;
+  top:auto;
+  z-index:1;
+  overflow:visible;
+}
+.journal-week-grid__weekday,
+.journal-week-grid__date{
+  position:relative;
+  top:auto;
+  transform:none;
+  padding-top:1px;
+  padding-bottom:1px;
+}
+/* On garde jour + date sur une seule ligne, bien centrés dans la case. */
+.journal-week-grid__head:not(.journal-week-grid__corner){
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:54px;
+}
+/* Sécurise aussi l'en-tête Horaire. */
+.journal-week-grid__corner{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:54px;
+}
+@media(max-width:620px){
+  .journal-week-grid__head:not(.journal-week-grid__corner),
+  .journal-week-grid__corner{min-height:48px}
+}
+/* /V35.91 — correction chevauchement en-tête semaine */
+
