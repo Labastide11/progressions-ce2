@@ -394,3 +394,46 @@
   .journal-status-select{appearance:none;border:0;padding:0;background:transparent}
   .journal-week-grid{overflow:visible;grid-template-columns:70px repeat(4,1fr)}
 }
+
+/* V35.85 — police manuscrite pour le cahier journal */
+.journal-panel,
+.journal-panel button,
+.journal-panel input,
+.journal-panel select,
+.journal-panel textarea{
+  font-family:"Patrick Hand","Comic Sans MS","Segoe Print","Trebuchet MS",cursive;
+}
+.journal-header h2,
+.journal-tab,
+.journal-day header h3,
+.journal-compact-headings,
+.journal-week-grid__head,
+.journal-week-grid__time,
+.journal-compact-subject,
+.journal-week-cell__subject,
+.journal-day-remark,
+.journal-week-day-remark span,
+.journal-actions button,
+.journal-toolbar button{
+  letter-spacing:.02em;
+}
+.journal-header h2{font-size:clamp(1.6rem,2.15vw,2.15rem)}
+.journal-kicker,.journal-header p,.journal-status{font-family:inherit}
+.journal-status-select,
+.journal-compact-activity input,
+.journal-week-cell__activity,
+.journal-day-remark textarea,
+.journal-week-day-remark textarea{
+  font-size:.96rem;
+}
+@media print{
+  .journal-panel,
+  .journal-panel button,
+  .journal-panel input,
+  .journal-panel select,
+  .journal-panel textarea{
+    font-family:"Patrick Hand","Comic Sans MS","Segoe Print","Trebuchet MS",cursive;
+  }
+}
+/* /V35.85 — police manuscrite pour le cahier journal */
+
