@@ -677,12 +677,33 @@
     return '';
   }
 
-  function p1DrasTimetableGuide(week,row){
+  function p1DrasTimetableGuide(week,row,day){
     if(!row) return '';
     const text=((row[1]||'')+' '+(row[2]||'')+' '+(row[5]||'')).toLowerCase();
-    if(!/\bdras\b|production d[’']écrit|production écrite|écriture courte|rédiger|réécrire|amélioration du texte/.test(text)) return '';
+    if(!/\bdras\b|production d[’']écrit|production écrite|écriture courte|rédiger|réécrire|amélioration du texte|écrits courts/.test(text)) return '';
     const p=p1DictationBankData(week); if(!p || !p.ecritureDRAS) return '';
     const d=p.ecritureDRAS;
+    const dayName=String(day||'').split(' ')[0];
+    if(Number(week)===1 && dayName==='Jeudi'){
+      return `<div class="dictation-dras-guide">
+        <div class="dictation-dras-guide__title">✍️ Production d’écrits — DRAS</div>
+        <div class="notebook-cue notebook-cue--writer">✍️ Support : <strong>Mon cahier d’écrivain</strong></div>
+        <div><strong>Point de départ :</strong> reprendre la phrase déjà écrite dans « Trois mots pour ma rentrée » ; ne pas proposer une deuxième phrase de départ.</div>
+        <div><strong>Guidage enseignant :</strong> relire une phrase, puis montrer <strong>un seul geste</strong> : <strong>Ajouter</strong> une précision ou <strong>Remplacer</strong> un mot.</div>
+        <div><strong>Exemple :</strong> « Je suis content de retrouver mes copains dans ma nouvelle classe. » → « Je suis <em>très</em> content de retrouver mes copains dans ma nouvelle classe. »</div>
+        <div><strong>À l’élève :</strong> « Reprends ta phrase. Ajoute une précision ou remplace un mot pour l’améliorer, puis recopie-la correctement. »</div>
+      </div>`;
+    }
+    if(Number(week)===1 && dayName==='Vendredi'){
+      return `<div class="dictation-dras-guide">
+        <div class="dictation-dras-guide__title">🔎 Production d’écrits — relecture DRAS</div>
+        <div class="notebook-cue notebook-cue--writer">✍️ Support : <strong>Mon cahier d’écrivain</strong></div>
+        <div><strong>Guidage enseignant :</strong> faire écrire d’abord 1 ou 2 phrases sur un moment réel de la rentrée, puis relire seulement après l’écriture.</div>
+        <div><strong>Exemple :</strong> « Jeudi, j’ai découvert la bibliothèque de l’école. » → « Jeudi, j’ai découvert la grande bibliothèque de l’école. »</div>
+        <div><strong>Questions à poser :</strong> « Est-ce que ta phrase raconte bien un moment ? Peux-tu ajouter une précision ou remplacer un mot ? »</div>
+        <div><strong>Consigne :</strong> choisir <strong>un seul geste DRAS</strong> si celui-ci améliore vraiment le texte.</div>
+      </div>`;
+    }
     return `<div class="dictation-dras-guide">
       <div class="dictation-dras-guide__title">✍️ Production d’écrits — DRAS</div>
       <div class="notebook-cue notebook-cue--writer">✍️ Support : <strong>Mon cahier d’écrivain</strong></div>
@@ -1765,7 +1786,7 @@
     const data=p1DetailedWeeks[week-1]||p1DetailedWeeks[0];
     const content=document.getElementById('timetableContent');
     const evalCount=data.days.reduce((n,[,rows])=>n+rows.filter(r=>/Évaluation|Mini-test|validation|Mesure (initiale|intermédiaire)|Dictée évaluée/i.test(r[5]||'')).length,0);
-    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à l’emploi du temps</button></div>${detailWeekSelector('p1',data.key)}${calendarNotice(data)}${week===1?renderP1DictationOverview():''}${renderP1DictationProgramming(week)}${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${p1ActivityLabel(r)}</span></td><td class="detail-competence-cell">${r[3]}</td>${dashboardSessionCell_(`${pedagogyMarkers('p1',data.key,day,r)}${r[2]}${notebookCue_(r)}${sessionDocumentsButton(r[7])}${p1DictationTimetableGuide(week,day,r)}${p1DrasTimetableGuide(week,r)}${p1LessonButton(r[6]||p1MathLessonIdForSlot(data.key,day,r))}${p1EarlyMathButton(data.key,day,r)}`,r[5],/Évaluation|Mini-test|Dictée évaluée/i)}<td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à l’emploi du temps</button></div>${detailWeekSelector('p1',data.key)}${calendarNotice(data)}${week===1?renderP1DictationOverview():''}${renderP1DictationProgramming(week)}${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${p1ActivityLabel(r)}</span></td><td class="detail-competence-cell">${r[3]}</td>${dashboardSessionCell_(`${pedagogyMarkers('p1',data.key,day,r)}${r[2]}${notebookCue_(r)}${sessionDocumentsButton(r[7])}${p1DictationTimetableGuide(week,day,r)}${p1DrasTimetableGuide(week,r,day)}${p1LessonButton(r[6]||p1MathLessonIdForSlot(data.key,day,r))}${p1EarlyMathButton(data.key,day,r)}`,r[5],/Évaluation|Mini-test|Dictée évaluée/i)}<td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
     bindStatusControls(content);
   }
 
