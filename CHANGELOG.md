@@ -1,3 +1,10 @@
+# V36.05 — Séparation Dictée / DRAS en P1
+- Règle verrouillée pour la période 1 : **dictée → Cahier du jour** ; **DRAS / production d’écrits → Mon cahier d’écrivain**.
+- Jeudi 3 septembre : le créneau 10h–10h45 est scindé en **10h–10h25 Dictée diagnostique** puis **10h25–10h45 Production d’écrits — DRAS**.
+- Le guide de dictée P1 ne s’injecte plus automatiquement dans tous les créneaux de 10h–10h45 : il s’affiche seulement sur une vraie séance de dictée/orthographe.
+- Le DRAS n’est plus imbriqué dans le bloc de dictée : il possède désormais son propre bloc « Production d’écrits — DRAS » avec le support *Mon cahier d’écrivain*.
+- Les repères de support sont renforcés sur toute la P1 : dictées/mots appris → Cahier du jour ; DRAS/productions/réécritures → Mon cahier d’écrivain.
+
 # V35.83 — Programme du jour → Cahier journal automatique
 
 - Le Programme du jour devient l’outil de saisie rapide du réalisé : cocher une séance la passe à « Réalisée ».

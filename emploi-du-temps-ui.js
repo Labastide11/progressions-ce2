@@ -625,9 +625,15 @@
   }
 
   function p1DictationTimetableGuide(week,day,row){
-    if(!row || row[0]!=='10h–10h45') return '';
+    if(!row) return '';
     const rowText=((row[1]||'')+' '+(row[2]||'')).toLowerCase();
-    if(rowText.includes('copie') && !/dictée|orthographe|grammaire|dras/.test(rowText)) return '';
+    // V36.05 — La banque de dictée ne s'affiche que dans une vraie séance de dictée/orthographe.
+    // Elle ne doit plus injecter automatiquement un Flash 2/3 ou du DRAS dans tout créneau de 10h–10h45.
+    if(!/dictée|orthographe|mots appris|mots fréquents/.test(rowText)) return '';
+    if(rowText.includes('dictée diagnostique')){
+      return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">📝 Dictée diagnostique</div><div class="notebook-cue notebook-cue--copy">📘 Support : <strong>Cahier du jour</strong></div><div>Observation courte, correction collective et repérage des besoins ; aucun DRAS dans ce bloc.</div></div>`;
+    }
+    if(rowText.includes('dictée préparée') || rowText.includes('bilan des mots appris')) return '';
     const p=p1DictationBankData(week); if(!p)return '';
     const dayName=String(day||'').split(' ')[0];
     if(dayName==='Lundi'){
@@ -646,7 +652,6 @@
         <div>${flash}</div>
         <div><strong>Grammaire :</strong> ${p.grammar}</div>
         <div><strong>À faire dire / manipuler :</strong> ${p.grammarExamples||'À partir de la phrase du jour.'}</div>
-        ${renderDictationDrasGuide(p,'tuesday')}
       </div>`;
     }
     if(dayName==='Jeudi'){
@@ -656,7 +661,6 @@
         <div>${flash}</div>
         <div><strong>Réactivation :</strong> ${p.reactivationWords||p.reactivation||'—'}</div>
         <div><strong>Point de vigilance :</strong> ${p.orthographyWords||p.orthography}</div>
-        ${renderDictationDrasGuide(p,'thursday')}
       </div>`;
     }
     if(dayName==='Vendredi'){
@@ -665,10 +669,28 @@
         <div>${p.final||p.note||'Bilan formatif de la semaine.'}</div>
         <div><strong>À surveiller :</strong> ${p.orthographyWords||p.orthography}</div>
         <div><strong>Mots à reprendre si besoin :</strong> ${p.reactivationWords||'selon les réussites observées'}</div>
-        ${renderDictationDrasGuide(p,'friday')}
       </div>`;
     }
     return '';
+  }
+
+  function p1DrasTimetableGuide(week,row){
+    if(!row) return '';
+    const text=((row[1]||'')+' '+(row[2]||'')+' '+(row[5]||'')).toLowerCase();
+    if(!/\bdras\b|production d[’']écrit|production écrite|écriture courte|rédiger|réécrire|amélioration du texte/.test(text)) return '';
+    const p=p1DictationBankData(week); if(!p || !p.ecritureDRAS) return '';
+    const d=p.ecritureDRAS;
+    return `<div class="dictation-dras-guide">
+      <div class="dictation-dras-guide__title">✍️ Production d’écrits — DRAS</div>
+      <div class="notebook-cue notebook-cue--writer">✍️ Support : <strong>Mon cahier d’écrivain</strong></div>
+      <div class="dictation-dras-guide__phrase"><strong>Phrase DRAS de départ :</strong> « ${d.phraseDepart} »</div>
+      <div><strong>D — Déplacer :</strong> ${d.deplacer}</div>
+      <div><strong>R — Remplacer :</strong> ${d.remplacer}</div>
+      <div><strong>A — Ajouter :</strong> ${d.ajouter}</div>
+      <div><strong>S — Supprimer :</strong> ${d.supprimer}</div>
+      <div><strong>Production :</strong> ${d.production}</div>
+      <div><strong>Mots à employer :</strong> ${d.motsAEmployer}</div>
+    </div>`;
   }
 
   function renderP1DictationOverview(){
@@ -1585,10 +1607,10 @@
   }
 
   function notebookCue_(row){
-    const text=((row&&row[1]||'')+' '+(row&&row[2]||'')).toLowerCase();
+    const text=((row&&row[1]||'')+' '+(row&&row[2]||'')+' '+(row&&row[5]||'')).toLowerCase();
     if(text.includes('cahier du jour') || text.includes('mon cahier d’écrivain')) return '';
-    if(/\bcopie\b|copie différée|copie-bilan|copie de réinvestissement/.test(text)) return '<div class="notebook-cue notebook-cue--copy">📘 Support : <strong>Cahier du jour</strong></div>';
-    if(/production d[’']écrit|production écrite|écriture courte|rédiger|amélioration du texte/.test(text)) return '<div class="notebook-cue notebook-cue--writer">✍️ Support : <strong>Mon cahier d’écrivain</strong></div>';
+    if(/\bcopie\b|copie différée|copie-bilan|copie de réinvestissement|dictée|dictée flash|dictée de mots|dictée de phrase|mots appris/.test(text)) return '<div class="notebook-cue notebook-cue--copy">📘 Support : <strong>Cahier du jour</strong></div>';
+    if(/\bdras\b|production d[’']écrit|production écrite|écriture courte|rédiger|réécrire|amélioration du texte/.test(text)) return '<div class="notebook-cue notebook-cue--writer">✍️ Support : <strong>Mon cahier d’écrivain</strong></div>';
     return '';
   }
 
@@ -1607,17 +1629,21 @@
   function p1ActivityLabel(row){
     const subject=(row[1]||'').toLowerCase();
     const session=(row[2]||'').toLowerCase();
+    const follow=(row[5]||'').toLowerCase();
     if(!subject.includes('français')) return row[1];
     if(session.includes('dictée bilan') || session.includes('dictée finale')) return 'Dictée bilan — phrases';
+    if(session.includes('dictée diagnostique')) return 'Français — Dictée diagnostique';
+    if(session.includes('bilan des mots appris')) return 'Français — Dictée / mots appris';
     if(session.includes('dictée de mots') && session.includes('dictée flash')) return 'Dictée de mots + dictée flash 1';
-    if(session.includes('dictée flash 2')) return 'Dictée flash 2 + étude de la langue — DRAS';
-    if(session.includes('dictée flash 3')) return 'Dictée flash 3 + production d’écrit court — DRAS';
+    if(session.includes('dictée flash 2')) return 'Dictée flash 2';
+    if(session.includes('dictée flash 3')) return 'Dictée flash 3';
+    if(session.includes('dras') || follow.includes('dras')) return 'Français — Production d’écrits — DRAS';
     if(session.includes('mon cahier d’écrivain') && (session.includes('trois mots') || session.includes('écriture courte') || session.includes('une phrase') || session.includes('plusieurs phrases'))) return 'Français — Écrits courts';
-    if(session.includes('production') || session.includes('rédiger') || session.includes('réécrire') || session.includes('finaliser') || session.includes('amélioration du texte')) return 'Français — Production d’écrits';
+    if(session.includes('dras') || session.includes('production') || session.includes('rédiger') || session.includes('réécrire') || session.includes('finaliser') || session.includes('amélioration du texte')) return 'Français — Production d’écrits';
     if(session.includes('dictée de phrase') || session.includes('dictée préparée')) return 'Dictée de phrase';
     if(session.includes('dictée de mots') || session.includes('mots de la semaine')) return 'Dictée de mots';
     if(session.includes('orthographe') || session.includes('encoder') || session.includes('mémoriser les premiers mots')) return 'Orthographe et dictée';
-    if(session.includes('grammaire') || session.includes('phrase affirmative') || session.includes('phrase négative') || session.includes('verbe') || session.includes('groupe sujet') || session.includes('infinitif')) return 'Étude de la langue — DRAS';
+    if(session.includes('grammaire') || session.includes('phrase affirmative') || session.includes('phrase négative') || session.includes('verbe') || session.includes('groupe sujet') || session.includes('infinitif')) return 'Étude de la langue';
     if(session.includes('vocabulaire') || session.includes('dictionnaire') || session.includes('famille de mots') || session.includes('ordre alphabétique')) return 'Vocabulaire spiralaire';
     if(session.includes('lecture') || session.includes('fluence')) return 'Lecture-compréhension';
     if(session.includes('quoi de neuf') || session.includes('devinette') || session.includes('reformulation orale') || session.includes('oral')) return 'Langage oral';
@@ -1709,7 +1735,7 @@
     const data=p1DetailedWeeks[week-1]||p1DetailedWeeks[0];
     const content=document.getElementById('timetableContent');
     const evalCount=data.days.reduce((n,[,rows])=>n+rows.filter(r=>/Évaluation|Mini-test|validation|Mesure (initiale|intermédiaire)|Dictée évaluée/i.test(r[5]||'')).length,0);
-    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à l’emploi du temps</button></div>${detailWeekSelector('p1',data.key)}${calendarNotice(data)}${week===1?renderP1DictationOverview():''}${renderP1DictationProgramming(week)}${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${p1ActivityLabel(r)}</span></td><td class="detail-competence-cell">${r[3]}</td>${dashboardSessionCell_(`${pedagogyMarkers('p1',data.key,day,r)}${r[2]}${notebookCue_(r)}${sessionDocumentsButton(r[7])}${p1DictationTimetableGuide(week,day,r)}${p1LessonButton(r[6]||p1MathLessonIdForSlot(data.key,day,r))}${p1EarlyMathButton(data.key,day,r)}`,r[5],/Évaluation|Mini-test|Dictée évaluée/i)}<td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à l’emploi du temps</button></div>${detailWeekSelector('p1',data.key)}${calendarNotice(data)}${week===1?renderP1DictationOverview():''}${renderP1DictationProgramming(week)}${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${p1ActivityLabel(r)}</span></td><td class="detail-competence-cell">${r[3]}</td>${dashboardSessionCell_(`${pedagogyMarkers('p1',data.key,day,r)}${r[2]}${notebookCue_(r)}${sessionDocumentsButton(r[7])}${p1DictationTimetableGuide(week,day,r)}${p1DrasTimetableGuide(week,r)}${p1LessonButton(r[6]||p1MathLessonIdForSlot(data.key,day,r))}${p1EarlyMathButton(data.key,day,r)}`,r[5],/Évaluation|Mini-test|Dictée évaluée/i)}<td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
     bindStatusControls(content);
   }
 
