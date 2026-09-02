@@ -1061,128 +1061,32 @@
     if(t.includes('problème')) return set(['Reformule la question.','Choisis les données utiles et annonce l’opération avant de calculer.'],['Une classe possède 28 livres et en achète 17. Combien en a-t-elle ?','6 boîtes contiennent 8 feutres chacune. Combien de feutres ?','72 images sont partagées entre 9 élèves. Combien chacun ?'],['45 livres','48 feutres','8 images'],'Un magasin reçoit 5 cartons de 24 cahiers et en vend 37. Combien en reste-t-il ?','5 × 24 = 120 ; 120 − 37 = 83 cahiers.');
     return set(['Explique la stratégie la plus rapide.','Propose une autre procédure.'],['48 + 29 = …','100 − 37 = …','6 × 8 = …','84 ÷ 7 = …'],['77','63','48','12'],'Invente un calcul utilisant la stratégie du jour.','Plusieurs réponses possibles, à justifier.');
   }
-  // V36.12 — Explicitation pédagogique des maths P1→P5.
-  // Chaque étape donne une action précise, un exemple directement exploitable
-  // et, lorsque c'est utile, la réponse ou la stratégie attendue.
-  function annualMathFamily_(title,file){
-    const t=(String(title||'')+' '+String(file||'')).toLowerCase();
-    if(/table|double|moiti|complément|mental|multiplier-10|ligne-numérique|ligne_numerique/.test(t)) return 'mental';
-    if(/multiplication-posee|sens-multiplication/.test(t)) return 'multiplication';
-    if(/division|partage|groupement/.test(t)) return 'division';
-    if(/fraction/.test(t)) return 'fractions';
-    if(/durée|heure/.test(t)) return 'durees';
-    if(/prix|monnaie/.test(t)) return 'monnaie';
-    if(/périmètre|longueur|masse|contenance/.test(t)) return 'mesures';
-    if(/symétr|polygone|quadrilat|cercle|solide|quadrillage|angle/.test(t)) return 'geometrie';
-    if(/diagramme|tableau|donnée/.test(t)) return 'donnees';
-    if(/problème/.test(t)) return 'problemes';
-    if(/addition|soustraction|calcul/.test(t)) return 'operations';
-    if(/nombre|numér|10000/.test(t)) return 'numeration';
-    return 'calcul';
-  }
+  // V36.07 — Audit maths annuel : chaque étape du déroulement enseignant comporte
+  // un exemple concret ou un repère immédiatement exploitable en CE2.
   function buildAnnualMathTeacherGuide(title,file,isMental){
-    const family=annualMathFamily_(title,file);
-    const resource=mathResourceTitles[file]||title;
-    const guides={
-      mental:[
-        'Réactivation — Donner 3 calculs courts et faire nommer la stratégie : 7 + ? = 10 ; double de 8 = 16 ; 34 + 9 = 43 en faisant +10 puis −1.',
-        'Recherche sur ardoise — Faire traiter 27 + 6 puis 52 − 19. Attendre une procédure : 27 + 3 + 3 = 33 ; 52 − 20 + 1 = 33.',
-        'Mise en commun — Comparer deux procédures sur 48 + 29 : +30 puis −1, ou décomposition 48 + 20 + 9. Faire dire laquelle est la plus rapide ici.',
-        'Entraînement — Faire varier les nombres : 63 + 9 ; 71 − 19 ; 46 + 29. Ajuster les valeurs selon la réussite.',
-        'Bilan — Demander : « Quelle stratégie as-tu utilisée pour 71 − 19 ? » Réponse attendue possible : −20 puis +1.'
-      ],
-      numeration:[
-        'Situation de départ — Construire 326 avec le matériel ou le tableau C-D-U. Faire dire : 3 centaines, 2 dizaines, 6 unités.',
-        'Manipulation guidée — Transformer 326 : +10 → 336 ; −100 → 226 ; +1 → 327. Demander à chaque fois quel chiffre change et pourquoi.',
-        'Ardoise — Lire 407 ; écrire « cinq-cent-vingt-trois » → 523 ; décomposer 638 → 600 + 30 + 8.',
-        'Jeu du nombre caché — 400 + 20 + 7 → 427 ; 6 centaines et 5 unités → 605 ; puis inverser : 542 → 500 + 40 + 2.',
-        'Bilan — Dans 638, faire préciser : 6 vaut 600, 3 vaut 30, 8 vaut 8. Faire verbaliser que la valeur dépend de la position.'
-      ],
-      operations:[
-        'Modélisation — Poser 243 + 125 : aligner unités, dizaines et centaines, commencer par les unités, puis calculer 3+5, 4+2, 2+1 → 368.',
-        'Pratique guidée — Faire 326 + 142 avec la classe → 468. Faire expliquer l’alignement avant de calculer.',
-        'Cas avec échange — Traiter 368 + 457 : 8+7=15, écrire 5 et retenir 1 dizaine ; résultat 825. Pour la soustraction, montrer un échange sur 402 − 178 si la séance le prévoit.',
-        'Entraînement — Proposer 247 + 131 puis une opération proche en changeant les nombres. Les élèves posent, calculent et estiment le résultat.',
-        'Bilan — Faire vérifier un résultat par ordre de grandeur ou opération inverse et demander : « Quelle colonne calcules-tu en premier ? »'
-      ],
-      multiplication:[
-        'Situation de départ — Représenter 4 groupes de 6 objets : 6 + 6 + 6 + 6 = 24, donc 4 × 6 = 24.',
-        'Modélisation — Pour 23 × 4, décomposer 23 en 20 + 3 : 20×4=80 et 3×4=12 ; 80+12=92.',
-        'Pratique guidée — Calculer 34 × 3 : 4×3=12, écrire 2 unités et retenir 1 dizaine ; 3×3+1=10 → 102.',
-        'Entraînement — Proposer 127 × 4 puis, pour les élèves prêts, 46 × 12. Faire verbaliser chaque produit partiel.',
-        'Bilan — Demander de relier multiplication, addition répétée et décomposition : « Pourquoi 23×4 peut-il devenir 20×4 + 3×4 ? »'
-      ],
-      division:[
-        'Situation concrète — Distribuer équitablement 24 jetons entre 4 élèves. Chaque élève reçoit 6 jetons : 24 ÷ 4 = 6 et 4 × 6 = 24.',
-        'Deuxième situation — Former des paquets de 5 avec 30 objets. On obtient 6 paquets : 30 ÷ 5 = 6.',
-        'Ardoise — 18 ÷ 3 = 6 ; 35 ÷ 5 = 7 ; 42 ÷ 6 = 7. Faire justifier avec la table correspondante.',
-        'Transfert — 27 élèves en équipes de 4 : 6 équipes complètes et 3 élèves restent. Faire distinguer quotient et reste sans formalisme excessif.',
-        'Bilan — Faire dire : « Diviser peut servir à partager équitablement ou à chercher combien de groupes on peut former. »'
-      ],
-      fractions:[
-        'Manipulation — Partager une bande en 4 parts égales et en colorier 3. Faire nommer et écrire 3/4.',
-        'Comparaison guidée — Sur deux bandes identiques partagées en 6, colorier 2/6 puis 5/6. Faire conclure : 2/6 < 5/6.',
-        'Équivalence — Plier une moitié puis partager la même bande en 4 : 1/2 = 2/4. Faire expliquer pourquoi la quantité coloriée ne change pas.',
-        'Ardoise — Compléter 1/2 = …/4 → 2/4 ; puis 1/4 + 2/4 = 3/4 quand la notion le permet.',
-        'Bilan — Demander ce qu’indiquent numérateur et dénominateur sur un exemple : dans 3/4, 4 parts égales au total, 3 parts prises.'
-      ],
-      durees:[
-        'Réactivation — Il est 9 h 20. Dans 40 min, il sera 10 h. Faire expliciter : +40 min pour atteindre l’heure suivante.',
-        'Calcul guidé — 8 h 45 + 30 min : +15 min → 9 h, puis +15 min → 9 h 15.',
-        'Durée entre deux horaires — De 10 h 15 à 11 h : 45 min. Utiliser une ligne du temps si nécessaire.',
-        'Transfert — Un film commence à 14 h 35 et dure 1 h 25 : +1 h → 15 h 35 ; +25 min → 16 h 00.',
-        'Bilan — Faire convertir 2 h 10 en 130 min et rappeler 1 h = 60 min.'
-      ],
-      monnaie:[
-        'Manipulation — Composer 7 € 50 avec billets et pièces. Chercher au moins deux compositions possibles.',
-        'Calcul de somme — 4 € 80 + 2 € 35 : 4+2 euros et 80+35 centimes = 6 € + 115 c = 7 € 15.',
-        'Rendu de monnaie — Achat à 13 € payé avec 20 € : 20 − 13 = 7 €. Faire verbaliser la différence entre prix, somme donnée et rendu.',
-        'Entraînement — 10 € − 6 € 70 = 3 € 30 ; rendu sur 20 € pour 14 € 60 = 5 € 40.',
-        'Bilan — Demander : « 100 centimes, cela fait combien d’euros ? » → 1 €.'
-      ],
-      mesures:[
-        'Situation de départ — Faire choisir l’instrument et l’unité : longueur d’un crayon → règle et cm ; masse d’un cartable → balance et kg.',
-        'Manipulation guidée — Tracer [AB] de 6 cm en plaçant le zéro de la règle sur A ; vérifier ensuite la mesure.',
-        'Conversions — 2 m = 200 cm ; 1 kg 250 g = 1 250 g ; 2 L = 200 cL, selon la notion du jour.',
-        'Problème — Rectangle 6 cm × 3 cm : périmètre = 6+3+6+3 = 18 cm. Faire distinguer mesure d’un côté et tour de la figure.',
-        'Bilan — Faire justifier l’unité choisie et contrôler si le résultat est vraisemblable.'
-      ],
-      geometrie:[
-        'Observation — Faire nommer une figure et demander une propriété vérifiable : « Ce quadrilatère a-t-il 4 angles droits ? » Utiliser l’équerre.',
-        'Modélisation — Pour un segment [AB] de 5 cm : placer A, aligner le zéro, marquer B à 5 cm puis tracer.',
-        'Pratique guidée — Carré : 4 côtés égaux et 4 angles droits ; triangle rectangle : 1 angle droit. Faire vérifier avec l’outil adapté.',
-        'Construction / repérage — Sur quadrillage, partir d’un point et avancer de 3 cases à droite puis 2 vers le haut ; faire décrire le déplacement.',
-        'Bilan — Faire produire une phrase de justification : « C’est un carré parce que… » ou « Ces points sont alignés parce que la règle passe par les trois. »'
-      ],
-      donnees:[
-        'Lecture guidée — Dans un tableau Lun. 12, Mar. 18, Jeu. 15, faire repérer titre, lignes, colonnes et unités.',
-        'Questions directes — Quel jour a la plus grande valeur ? → mardi. Quel est l’écart entre 18 et 12 ? → 6.',
-        'Calcul à partir des données — Total des trois valeurs : 12 + 18 + 15 = 45.',
-        'Production — Demander aux élèves d’inventer une question à laquelle le tableau permet de répondre, puis de la faire résoudre à un camarade.',
-        'Bilan — Faire expliquer où l’on a trouvé l’information avant de calculer.'
-      ],
-      problemes:[
-        'Lecture — Faire reformuler sans calculer : « Une classe possède 28 livres et en achète 17. Combien en a-t-elle maintenant ? »',
-        'Analyse — Faire identifier les données utiles 28 et 17, puis la question. Choix attendu ici : addition.',
-        'Recherche — Laisser dessin, schéma ou calcul. Mise en commun : 28 + 17 = 45 ; phrase-réponse : « La classe possède 45 livres. »',
-        'Transfert — 6 boîtes de 8 feutres → 48 feutres ; ou 72 images partagées entre 9 élèves → 8 images chacun, selon la famille travaillée.',
-        'Bilan — Faire réciter la démarche : je comprends la question, je choisis les données, je cherche, je calcule, j’écris une phrase-réponse.'
-      ],
-      calcul:[
-        'Situation de départ — Proposer 48 + 29. Demander une stratégie mentale avant tout calcul posé.',
-        'Recherche — Faire émerger 48 + 30 − 1 = 77 et comparer avec 48 + 20 + 9.',
-        'Entraînement — 100 − 37 = 63 ; 6 × 8 = 48 ; 84 ÷ 7 = 12. Adapter les nombres à la notion du jour.',
-        'Transfert — Les élèves inventent un calcul de même type et échangent avec un camarade.',
-        'Bilan — Faire nommer la stratégie utilisée et expliquer pourquoi elle est efficace.'
-      ]
-    };
-    const guide=(guides[family]||guides.calcul).slice();
-    if(resource){
-      const insertAt=Math.min(3,guide.length-1);
-      guide[insertAt]+=` Ressource possible : Maître Hibou « ${resource} » pour reprendre un exemple de même type.`;
+    const slides=buildAnnualMathSlides(title,file);
+    const exercise=(slides.find(s=>s.kind==='exercise')||slides.find(s=>s.kind==='problem')||slides[1]||{items:[]}).items||[];
+    const correction=(slides.find(s=>s.kind==='correction')||{items:[]}).items||[];
+    const challenge=(slides.find(s=>s.kind==='challenge')||{items:[]}).items||[];
+    const ex1=exercise[0]||'Proposer un exemple numérique directement lié à la notion du jour.';
+    const ex2=exercise[1]||exercise[0]||'Faire traiter un second exemple proche en changeant une seule variable.';
+    const cor=correction[0]||'Faire expliciter la procédure et vérifier collectivement le résultat.';
+    const defi=challenge[0]||exercise[2]||'Changer les nombres ou les données pour vérifier le transfert.';
+    if(isMental){
+      return [
+        `Réactivation — Donner immédiatement un premier repère : ${ex1}`,
+        `Ardoise — Faire chercher tous les élèves sur un exemple voisin : ${ex2}`,
+        `Correction expliquée — Faire verbaliser la stratégie à partir d’un résultat concret : ${cor}`,
+        `Variation — Reprendre la même procédure en changeant les nombres selon la réussite : ${defi}`
+      ];
     }
-    if(isMental) return guide.slice(0,4);
-    return guide;
+    return [
+      `Situation de départ — Présenter la notion avec un exemple concret : ${ex1}`,
+      `Recherche guidée — Faire chercher sur ardoise ou cahier avec un second exemple : ${ex2}`,
+      `Mise en commun — Corriger en faisant expliquer précisément l’action attendue : ${cor}`,
+      `Entraînement — Ouvrir la ressource Maître Hibou « ${mathResourceTitles[file]||title} » et reprendre un exemple de même type en changeant les données.`,
+      `Petit défi / adaptation — Modifier les variables selon la réussite des élèves : ${defi}`
+    ];
   }
   const annualMathLessons={};
   function installAnnualMathProgram(period,weeks){
@@ -1269,7 +1173,7 @@
       'construire un nombre avec centaines, dizaines et unités puis passer entre plusieurs écritures.',
       ['Je sais ce que vaut chaque chiffre.','Je passe de 526 à 500 + 20 + 6.'],
       ['Ardoises','Matériel base 10 ou étiquettes C-D-U','Tableau de numération'],
-      [['5 min','Situation de départ','Construire 326 avec le matériel ou les étiquettes. Faire verbaliser : 326 = 3 centaines, 2 dizaines et 6 unités. Puis demander : « Ajoute 1 dizaine » → 336 ; « Enlève 1 centaine » → 226 ; « Ajoute 1 unité » → 327.'],['10 min','Manipulation guidée','Partir de 326 et faire varier une seule position à la fois : 326 + 100 = 426 ; 326 + 10 = 336 ; 326 + 1 = 327 ; puis 326 − 100 = 226 et 326 − 10 = 316. Demander à chaque fois : « Quel chiffre a changé ? Pourquoi ? »'],['15 min','Ardoise','Faire trois types de tâches : lire 407 et 630 ; écrire « cinq-cent-vingt-trois » → 523 et « sept-cent-neuf » → 709 ; décomposer 638 = 600 + 30 + 8, 405 = 400 + 5 et 570 = 500 + 70. Demander ponctuellement : « Que représente le 3 dans 638 ? » → 30.'],['10 min','Jeu du nombre caché','Donner des indices puis retrouver le nombre : 4 centaines, 2 dizaines et 7 unités → 427 ; 6 centaines et 5 unités → 605 ; 3 centaines et 8 dizaines → 380 ; 500 + 40 + 2 → 542. Puis inverser : donner 684 et demander aux élèves de produire les indices.'],['5 min','Bilan','Avec 638, demander : chiffre des centaines ? → 6 ; valeur du 6 ? → 600 ; que représente le 3 ? → 30 ; le 8 ? → 8. Faire formuler : « La valeur d’un chiffre dépend de sa position : centaines, dizaines ou unités. »']],
+      [['5 min','Situation de départ','Construire 326 avec le matériel ou les étiquettes.'],['10 min','Manipulation guidée','Faire varier une centaine, une dizaine puis une unité.'],['15 min','Ardoise','Lire, écrire et décomposer plusieurs nombres. Exemples : lire 407 ; écrire « cinq-cent-vingt-trois » ; décomposer 638 = 600 + 30 + 8.'],['10 min','Jeu du nombre caché','Donner la décomposition et retrouver le nombre.'],['5 min','Bilan','Verbaliser C-D-U.']],
       {file:'valeur-position-chiffres.html',title:'Valeur et position des chiffres',url:'hibou/lecons/valeur-position-chiffres.html'},
       ['326 = … + … + …','Écris 4 centaines, 2 dizaines et 7 unités.','Quel nombre : 500 + 30 + 8 ?'],['300 + 20 + 6','427','538'],'Change seulement le chiffre des dizaines dans 538.'),
 
@@ -1374,50 +1278,6 @@
   };
 
   Object.assign(rentreeMathLessons,p1EarlyMathLessons);
-
-  // V36.12 — filet de sécurité P1 : une phase ne reste jamais sous forme de consigne vague.
-  // Les exemples restent des variables de départ que l'enseignant peut simplifier ou complexifier.
-  function p1MathRepereFor_(title,index){
-    const t=String(title||'').toLowerCase();
-    const banks={
-      numeration:['Exemple : 326 = 3 centaines, 2 dizaines et 6 unités ; 326 + 10 → 336.','Exemples : 407 = 400 + 7 ; 523 = 500 + 20 + 3.','Nombre caché : 400 + 20 + 7 → 427 ; 6 centaines et 5 unités → 605.','Comparaison : 697 > 679 ; rangement : 207 < 270 < 702 < 720.'],
-      mental:['Exemples : 7 + ? = 10 ; double de 8 = 16 ; 9 + 6 = 15.','Exemples : 34 + 9 = 43 en faisant +10 puis −1 ; 52 − 19 = 33 en faisant −20 puis +1.','Faire expliquer 27 + 5 : 27 + 3 + 2 = 32.','Défi : inventer un calcul égal à 20, par exemple 13 + 7.'],
-      operations:['Exemple : 243 + 125 = 368 en alignant les colonnes.','Avec échange : 368 + 457 = 825 ; faire verbaliser 8 + 7 = 15.','Soustraction : 402 − 178 ; matérialiser un échange si nécessaire.','Vérification : estimer 368 + 457 ≈ 400 + 500, donc un résultat autour de 900 est plausible.'],
-      problems:['Exemple : Mila a 24 cartes et en gagne 13 → 24 + 13 = 37.','Exemple : 32 élèves sont dans un bus, 9 descendent → 32 − 9 = 23.','Faire dire : « Je sais / je cherche / je choisis l’opération / je réponds. »','Phrase-réponse attendue : « Il reste 23 élèves dans le bus. »'],
-      geometry:['Exemple : tracer [AB] de 5 cm en plaçant le zéro de la règle sur A.','Alignement : vérifier avec la règle si A, B et C sont sur une même droite.','Angle droit : vérifier un coin de cahier avec l’équerre ou un gabarit.','Faire justifier : « C’est un segment car il a deux extrémités. »'],
-      measures:['Exemples : tracer 4 cm ; mesurer 6,5 cm ; 32 mm = 3,2 cm.','Choix d’unité : crayon → cm ; distance dans l’école → m.','Périmètre d’un rectangle 6 cm × 3 cm : 18 cm.','Faire vérifier la mesure une deuxième fois en repartant du zéro.'],
-      fractions:['Exemple : une bande en 4 parts égales, 3 coloriées → 3/4.','Comparer sur des bandes identiques : 2/6 < 5/6.','Équivalence : 1/2 = 2/4.','Faire dire : dans 3/4, 4 est le nombre de parts égales et 3 le nombre de parts prises.'],
-      money:['Exemples : composer 7 €, 12 €, 25 € avec la monnaie factice.','Deux compositions de 7 € : 5 € + 2 € ; 2 € + 2 € + 2 € + 1 €.','Rendu : 20 € − 13 € = 7 €.','Faire expliquer qu’une même somme peut être composée de plusieurs façons.']
-    };
-    let key='mental';
-    if(/numér|nombre|c-d-u|centaine|dizaine|unité/.test(t))key='numeration';
-    else if(/problème/.test(t))key='problems';
-    else if(/addition posée|soustraction|calcul posé/.test(t))key='operations';
-    else if(/géométr|segment|droite|angle|figure|alignement/.test(t))key='geometry';
-    else if(/mesure|longueur|périmètre/.test(t))key='measures';
-    else if(/fraction/.test(t))key='fractions';
-    else if(/monnaie|euro/.test(t))key='money';
-    const b=banks[key]; return b[index%b.length];
-  }
-  function phaseHasConcreteRepere_(detail){
-    const s=String(detail||'');
-    return /exemple|→|=|\d+\s*[+−\-×÷<>]|\d+\s*(?:cm|mm|m\b|€|h\b|min)|\[[A-Z]{2}\]|«[^»]*\d/i.test(s);
-  }
-  function enrichP1MathCollection_(collection){
-    Object.values(collection||{}).forEach(l=>{
-      if(!l||!Array.isArray(l.phases))return;
-      l.phases=l.phases.map((ph,i)=>{
-        if(!Array.isArray(ph)||ph.length<3)return ph;
-        const detail=String(ph[2]||'');
-        if(phaseHasConcreteRepere_(detail))return ph;
-        const copy=ph.slice();
-        copy[2]=detail.replace(/\s+$/,'')+(detail.trim().endsWith('.')?'':' .')+' Repère enseignant : '+p1MathRepereFor_(l.title,i);
-        return copy;
-      });
-    });
-  }
-  enrichP1MathCollection_(p1LessonPlans);
-  enrichP1MathCollection_(rentreeMathLessons);
 
   const p1EarlyMathSlotMap={
     'p1r1|Mardi|11h–11h15':'p1r1-cal1',
@@ -2158,18 +2018,60 @@
     if(period==='p4'||period==='p5') return laterPeriodDictationTimetableGuide(period,weekNumber,dayLabel,row);
     return '';
   }
+  function nextDetailedSchoolDay(fromDate){
+    const cursor=new Date(fromDate.getFullYear(),fromDate.getMonth(),fromDate.getDate());
+    for(let i=1;i<=120;i++){
+      cursor.setDate(cursor.getDate()+1);
+      const dow=cursor.getDay();
+      if(dow===0||dow===3||dow===6)continue;
+      const iso=localIsoDate(cursor);
+      if(calendarDayOff(iso))continue;
+      const found=findDetailedDayByIso(iso);
+      if(found)return {date:new Date(cursor),found};
+    }
+    return null;
+  }
+  function noClassTodayHtml(now,reason){
+    const next=nextDetailedSchoolDay(now);
+    const nextButton=next?`<button type="button" class="detail-back" data-open-next-school-day style="margin-left:auto;white-space:nowrap">Voir la prochaine journée d’école →</button>`:'';
+    return `<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Emploi du temps de la journée</span><h2>Aujourd’hui — ${dailyDateTitle(now)}</h2></div></div><div class="holiday-note" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span>📅 <strong>Pas de classe aujourd’hui.</strong>${reason?` <span>${reason}</span>`:''}</span>${nextButton}</div></section>`;
+  }
+  function renderNextSchoolDay(){
+    const content=document.getElementById('timetableContent');
+    const next=nextDetailedSchoolDay(new Date());
+    if(!next){
+      content.innerHTML=noClassTodayHtml(new Date(),'');
+      return;
+    }
+    const {date,found}=next;
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Prochaine journée d’école</span><h2>${dailyDateTitle(date)}</h2></div><button type="button" class="detail-back" data-back-today>← Retour à aujourd’hui</button></div><div class="lesson-mode-bar" role="group" aria-label="Choisir la demi-journée"><button type="button" class="lesson-mode-btn" data-next-daily-part="morning">Matin</button><button type="button" class="lesson-mode-btn" data-next-daily-part="afternoon">Après-midi</button><button type="button" class="lesson-mode-btn is-active" data-next-daily-part="all">Toute la journée</button></div>${dailyRowsTable(found,found.rows,'all')}</section>`;
+    content.dataset.nextSchoolIso=localIsoDate(date);
+    bindStatusControls(content);
+  }
+  function renderNextSchoolDayPart(part){
+    const content=document.getElementById('timetableContent');
+    const iso=content.dataset.nextSchoolIso||'';
+    const found=findDetailedDayByIso(iso);
+    if(!found){renderNextSchoolDay();return;}
+    const [y,m,d]=iso.split('-').map(Number),date=new Date(y,m-1,d);
+    const label=part==='morning'?'Matin':part==='afternoon'?'Après-midi':'Toute la journée';
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Prochaine journée d’école</span><h2>${dailyDateTitle(date)}${part==='all'?'':` — ${label}`}</h2></div><button type="button" class="detail-back" data-back-today>← Retour à aujourd’hui</button></div><div class="lesson-mode-bar" role="group" aria-label="Choisir la demi-journée"><button type="button" class="lesson-mode-btn ${part==='morning'?'is-active':''}" data-next-daily-part="morning">Matin</button><button type="button" class="lesson-mode-btn ${part==='afternoon'?'is-active':''}" data-next-daily-part="afternoon">Après-midi</button><button type="button" class="lesson-mode-btn ${part==='all'?'is-active':''}" data-next-daily-part="all">Toute la journée</button></div>${dailyRowsTable(found,found.rows,part)}</section>`;
+    content.dataset.nextSchoolIso=iso;
+    bindStatusControls(content);
+  }
   function renderTodayTimetable(forcePart){
     const content=document.getElementById('timetableContent');
+    delete content.dataset.nextSchoolIso;
     const now=new Date(), iso=localIsoDate(now), dow=now.getDay(), hour=now.getHours();
     const off=calendarDayOff(iso);
     if(dow===0||dow===3||dow===6||off){
       const reason=off?off.label:(dow===3?'Mercredi':dow===6?'Samedi':'Dimanche');
-      content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Emploi du temps de la journée</span><h2>Aujourd’hui — ${dailyDateTitle(now)}</h2></div></div><div class="holiday-note">📅 <strong>Pas de classe aujourd’hui.</strong>${reason?` <span>${reason}</span>`:''}</div></section>`;
+      content.innerHTML=noClassTodayHtml(now,reason);
       return;
     }
     const found=findDetailedDayByIso(iso);
     if(!found){
-      content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Emploi du temps de la journée</span><h2>Aujourd’hui — ${dailyDateTitle(now)}</h2></div></div><div class="holiday-note">📅 <strong>Pas de classe aujourd’hui.</strong></div></section>`;
+      content.innerHTML=noClassTodayHtml(now,'');
       return;
     }
     let part=forcePart || (hour<12?'morning':hour<17?'afternoon':'finished');
@@ -2243,6 +2145,12 @@
     if((!openSummary&&!openSummaryPeriods.length&&!openDetail)||!modal) return;
     const content=document.getElementById('timetableContent');
     content.addEventListener('click',e=>{
+      const nextSchool=e.target.closest('[data-open-next-school-day]');
+      if(nextSchool){renderNextSchoolDay();content.scrollTop=0;return;}
+      const backToday=e.target.closest('[data-back-today]');
+      if(backToday){renderTodayTimetable();content.scrollTop=0;return;}
+      const nextDailyPart=e.target.closest('[data-next-daily-part]');
+      if(nextDailyPart){renderNextSchoolDayPart(nextDailyPart.dataset.nextDailyPart);content.scrollTop=0;return;}
       const dailyPart=e.target.closest('[data-daily-part]');
       if(dailyPart){renderTodayTimetable(dailyPart.dataset.dailyPart);content.scrollTop=0;return;}
       const rentreeMath=e.target.closest('[data-open-rentree-math]');
