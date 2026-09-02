@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période." name="description"/>
-<title>V36.23 — Progressions CE2 — Ma classe au quotidien</title>
+<title>V36.24 — Progressions CE2 — Ma classe au quotidien</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
 <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet"/>
@@ -28,6 +28,25 @@
 <style>
 /* V35.28 — micro-repère visuel pour relancer le déploiement GitHub Pages */
 .header-view__label{color:#4b5f9e;}
+
+/* V36.24 — Ma classe : croix de fermeture ancrée en haut à droite */
+#studentListModal .student-list-modal__header,
+#studentListModal .modal-header {
+  position: relative;
+  padding-right: 72px;
+}
+#studentListModal .student-list-close,
+#studentListModal .modal-close,
+#studentListModal [data-close-student-list],
+#studentListModal button[aria-label="Fermer"] {
+  position: absolute !important;
+  top: 16px !important;
+  right: 18px !important;
+  left: auto !important;
+  margin: 0 !important;
+  z-index: 20;
+}
+
 </style>
 <link href="popup-scroll-fix.css?v=35.31" rel="stylesheet"/>
 <link href="rentree-diagnostic.css?v=35.35" rel="stylesheet"/>
