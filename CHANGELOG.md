@@ -1,3 +1,15 @@
+# V36.06 — Séparation Dictée / DRAS verrouillée sur toute l’année
+
+- Audit et normalisation des périodes P1 à P5.
+- Règle annuelle : dictée, mots appris et dictée préparée → **Cahier du jour**.
+- Règle annuelle : DRAS, production, réécriture et amélioration → **Mon cahier d’écrivain**.
+- P4 et P5 : les créneaux « Orthographe, dictée et révision de l’écrit » sont scindés en deux temps distincts (10h–10h25 dictée ; 10h25–10h45 production d’écrits — DRAS).
+- Les séances de dictée restantes portent désormais explicitement « Cahier du jour ».
+- Les séances de production d’écrits restantes portent explicitement « Mon cahier d’écrivain ».
+- Le moteur annuel de dictées ne réécrit plus automatiquement les créneaux : il ne peut plus greffer du DRAS dans une séance de dictée ou modifier une séance d’étude de la langue.
+- Les guides de séance n’affichent le DRAS que dans une vraie séance de production d’écrits, et la dictée que dans une vraie séance de dictée.
+- Vérification automatique finale : 47 séances de dictée et 84 séances d’écriture/DRAS contrôlées, 0 mélange de supports ou de contenus.
+
 # V36.05 — Séparation Dictée / DRAS en P1
 - Règle verrouillée pour la période 1 : **dictée → Cahier du jour** ; **DRAS / production d’écrits → Mon cahier d’écrivain**.
 - Jeudi 3 septembre : le créneau 10h–10h45 est scindé en **10h–10h25 Dictée diagnostique** puis **10h25–10h45 Production d’écrits — DRAS**.

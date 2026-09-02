@@ -13,10 +13,10 @@
     p5:{title:'Période 5 — Rééquilibrage annuel',note:'Période longue consacrée au rééquilibrage des arts, sciences, histoire-géographie et EMC, sans réduire français ni mathématiques.',hours:['9 h 10','4 h 35','1 h 30','2 h 08','2 h 07','1 h 19','1 h 11'],minutes:[550,275,90,128,127,79,71],days:{}}
   };
   const base={
-    lundi:[['9h–9h15','Quoi de neuf ?','Oral structuré','french'],['9h15–10h','Lecture-compréhension','','french'],['10h–10h45','Dictée de mots + dictée flash 1','Orthographe et vocabulaire','french'],['10h45–11h','Récréation','','break'],['11h–11h15','Problèmes du jour','2 problèmes courts — oral / ardoise','maths'],['11h15–12h','Mathématiques','Calcul mental (5 min) + nouvel apprentissage','maths'],['12h–14h','Cantine ou repas à la maison','Pause méridienne','lunch'],['14h–14h15','Quart d’heure de lecture','Lecture offerte ou lecture autonome — retour au calme','french'],['14h15–15h45','EPS / QLM selon période','','eps'],['15h45–16h','Récréation','','break'],['16h–16h25','Anglais','','english'],['16h25–17h','QLM / EMC','','history']],
-    mardi:[['9h–9h15','Copie','','french'],['9h15–10h','Lecture-compréhension','','french'],['10h–10h45','Dictée flash 2 + étude de la langue','10 min de dictée puis DRAS','french'],['10h45–11h','Récréation','','break'],['11h–11h15','Problèmes du jour','2 problèmes courts — oral / ardoise','maths'],['11h15–12h','Mathématiques','Calcul mental (5 min) + nouvel apprentissage','maths'],['12h–14h','Cantine ou repas à la maison','Pause méridienne','lunch'],['14h–14h15','Quart d’heure de lecture','Lecture offerte ou lecture autonome — retour au calme','french'],['14h15–14h30','Anglais','Rituel oral court avant le départ CHAM','english'],['14h30–15h45','CHAM au conservatoire','Non-CHAM : arts, plan de travail, consolidation','cham'],['15h45–16h','Récréation','','break'],['16h–16h30','CHAM au conservatoire','Poursuite des ateliers non-CHAM','cham'],['16h30–16h45','Anglais','Réactivation orale en classe entière','english'],['16h45–17h','Bilan de journée','Parole aux élèves et préparation du lendemain','emc']],
-    jeudi:[['9h–9h15','Devinette','','french'],['9h15–10h','Lecture-compréhension','','french'],['10h–10h45','Dictée flash 3 + production d’écrit court','10 min de dictée puis DRAS et écriture','french'],['10h45–11h','Récréation','','break'],['11h–11h15','Problèmes du jour','2 problèmes courts — oral / ardoise','maths'],['11h15–12h','Mathématiques','Calcul mental (5 min) + nouvel apprentissage','maths'],['12h–14h','Cantine ou repas à la maison','Pause méridienne','lunch'],['14h–14h15','Quart d’heure de lecture','Lecture offerte ou lecture autonome — retour au calme','french'],['14h15–15h','Sciences / QLM','Classe entière','science'],['15h–16h','Chant choral CHAM','Non-CHAM : arts ou consolidation','cham'],['16h–16h15','Récréation adaptée','','break'],['16h15–16h40','Anglais','Classe entière','english'],['16h40–17h','Vocabulaire / production écrite','','french']],
-    vendredi:[['9h–9h30','Un jour, une actu','Oral, compréhension, EMC','french'],['9h30–10h','Lecture et vocabulaire','','french'],['10h–10h45','Dictée bilan + correction raisonnée','Réemploi en production d’écrit court','french'],['10h45–11h','Récréation','','break'],['11h–11h15','Problèmes du jour','2 problèmes courts — oral / ardoise','maths'],['11h15–12h','Résolution de problèmes','2 problèmes + recherche, procédures et correction','maths'],['12h–14h','Cantine ou repas à la maison','Pause méridienne','lunch'],['14h–14h15','Quart d’heure de lecture','Lecture offerte ou lecture autonome — retour au calme','french'],['14h15–14h45','Mathématiques','Calcul mental, grandeurs, géométrie ou données','maths'],['14h45–15h45','EPS / projet selon période','','eps'],['15h45–16h','Récréation','','break'],['16h–16h40','Production écrite / QLM','','mixed'],['16h40–17h','Conseil et bilan de semaine','','emc']]
+    lundi:[['9h–9h15','Quoi de neuf ?','Oral structuré','french'],['9h15–10h','Lecture-compréhension','','french'],['10h–10h45','Orthographe / dictée','Cahier du jour','french'],['10h45–11h','Récréation','','break'],['11h–11h15','Problèmes du jour','2 problèmes courts — oral / ardoise','maths'],['11h15–12h','Mathématiques','Calcul mental (5 min) + nouvel apprentissage','maths'],['12h–14h','Cantine ou repas à la maison','Pause méridienne','lunch'],['14h–14h15','Quart d’heure de lecture','Lecture offerte ou lecture autonome — retour au calme','french'],['14h15–15h45','EPS / QLM selon période','','eps'],['15h45–16h','Récréation','','break'],['16h–16h25','Anglais','','english'],['16h25–17h','QLM / EMC','','history']],
+    mardi:[['9h–9h15','Copie','','french'],['9h15–10h','Lecture-compréhension','','french'],['10h–10h45','Étude de la langue','Grammaire / conjugaison / orthographe selon la progression','french'],['10h45–11h','Récréation','','break'],['11h–11h15','Problèmes du jour','2 problèmes courts — oral / ardoise','maths'],['11h15–12h','Mathématiques','Calcul mental (5 min) + nouvel apprentissage','maths'],['12h–14h','Cantine ou repas à la maison','Pause méridienne','lunch'],['14h–14h15','Quart d’heure de lecture','Lecture offerte ou lecture autonome — retour au calme','french'],['14h15–14h30','Anglais','Rituel oral court avant le départ CHAM','english'],['14h30–15h45','CHAM au conservatoire','Non-CHAM : arts, plan de travail, consolidation','cham'],['15h45–16h','Récréation','','break'],['16h–16h30','CHAM au conservatoire','Poursuite des ateliers non-CHAM','cham'],['16h30–16h45','Anglais','Réactivation orale en classe entière','english'],['16h45–17h','Bilan de journée','Parole aux élèves et préparation du lendemain','emc']],
+    jeudi:[['9h–9h15','Devinette','','french'],['9h15–10h','Lecture-compréhension','','french'],['10h–10h45','Orthographe / dictée','Cahier du jour','french'],['10h45–11h','Récréation','','break'],['11h–11h15','Problèmes du jour','2 problèmes courts — oral / ardoise','maths'],['11h15–12h','Mathématiques','Calcul mental (5 min) + nouvel apprentissage','maths'],['12h–14h','Cantine ou repas à la maison','Pause méridienne','lunch'],['14h–14h15','Quart d’heure de lecture','Lecture offerte ou lecture autonome — retour au calme','french'],['14h15–15h','Sciences / QLM','Classe entière','science'],['15h–16h','Chant choral CHAM','Non-CHAM : arts ou consolidation','cham'],['16h–16h15','Récréation adaptée','','break'],['16h15–16h40','Anglais','Classe entière','english'],['16h40–17h','Vocabulaire / production écrite','','french']],
+    vendredi:[['9h–9h30','Un jour, une actu','Oral, compréhension, EMC','french'],['9h30–10h','Lecture et vocabulaire','','french'],['10h–10h45','Production d’écrits','Mon cahier d’écrivain','french'],['10h45–11h','Récréation','','break'],['11h–11h15','Problèmes du jour','2 problèmes courts — oral / ardoise','maths'],['11h15–12h','Résolution de problèmes','2 problèmes + recherche, procédures et correction','maths'],['12h–14h','Cantine ou repas à la maison','Pause méridienne','lunch'],['14h–14h15','Quart d’heure de lecture','Lecture offerte ou lecture autonome — retour au calme','french'],['14h15–14h45','Mathématiques','Calcul mental, grandeurs, géométrie ou données','maths'],['14h45–15h45','EPS / projet selon période','','eps'],['15h45–16h','Récréation','','break'],['16h–16h40','Production écrite / QLM','','mixed'],['16h40–17h','Conseil et bilan de semaine','','emc']]
   };
   const detailedWeeks={
     rentree1:{
@@ -457,7 +457,10 @@
     const dayName=day.split(' ')[0];
     const map=p1TimetableUpdates[week.key]||{};
     const id=map[`${row[0]}|${dayName}`]||((dayName==='Lundi')?map[row[0]]:null);
-    if(id){row[2]=p1SessionLabels[id];row[6]=id;if(id.startsWith('m')) row[1]=p1LessonPlans[id].domain+' — '+p1LessonPlans[id].title.split(' — ').slice(1).join(' — ');}
+    // V36.06 — Les anciens scénarios français P1 combinaient parfois dictée et DRAS.
+    // Ils ne doivent plus écraser les séances détaillées désormais séparées dans les données P1.
+    // Les liens de séances complètes restent actifs uniquement pour les scénarios mathématiques.
+    if(id&&id.startsWith('m')){row[2]=p1SessionLabels[id];row[6]=id;row[1]=p1LessonPlans[id].domain+' — '+p1LessonPlans[id].title.split(' — ').slice(1).join(' — ');}
   })));
 
 
@@ -597,7 +600,7 @@
     const d=p&&p.ecritureDRAS; if(!d)return '';
     if(mode==='tuesday'){
       return `<div class="dictation-dras-guide">
-        <div class="dictation-dras-guide__title">🧩 DRAS — à partir du corpus</div>
+        <div class="dictation-dras-guide__title">🧩 Production d’écrits — DRAS</div><div class="notebook-cue notebook-cue--writer">✍️ Support : <strong>Mon cahier d’écrivain</strong></div>
         <div class="dictation-dras-guide__phrase"><strong>Phrase DRAS de départ :</strong> « ${d.phraseDepart} »</div>
         <div><strong>D — Déplacer :</strong> ${d.deplacer}</div>
         <div><strong>R — Remplacer :</strong> ${d.remplacer}</div>
@@ -605,7 +608,7 @@
     }
     if(mode==='thursday'){
       return `<div class="dictation-dras-guide">
-        <div class="dictation-dras-guide__title">✍️ DRAS + production d’écrit</div>
+        <div class="dictation-dras-guide__title">✍️ Production d’écrits — DRAS</div><div class="notebook-cue notebook-cue--writer">✍️ Support : <strong>Mon cahier d’écrivain</strong></div>
         <div class="dictation-dras-guide__phrase"><strong>Phrase DRAS de départ :</strong> « ${d.phraseDepart} »</div>
         <div><strong>S — Supprimer :</strong> ${d.supprimer}</div>
         <div><strong>A — Ajouter :</strong> ${d.ajouter}</div>
@@ -615,7 +618,7 @@
     }
     if(mode==='friday'){
       return `<div class="dictation-dras-guide">
-        <div class="dictation-dras-guide__title">🔎 Relecture DRAS</div>
+        <div class="dictation-dras-guide__title">🔎 Production d’écrits — relecture DRAS</div><div class="notebook-cue notebook-cue--writer">✍️ Support : <strong>Mon cahier d’écrivain</strong></div>
         <div class="dictation-dras-guide__phrase"><strong>Phrase DRAS de référence :</strong> « ${d.phraseDepart} »</div>
         <div>Relire la production et vérifier : <strong>sens, accords, précision et vocabulaire de la semaine</strong>.</div>
         <div><strong>Mots attendus / disponibles :</strong> ${d.motsAEmployer}</div>
@@ -1742,42 +1745,14 @@
   // V31.45 — programmation annuelle ritualisée : dictée, EDL par DRAS et vocabulaire spécifique.
   const annualFrenchPlans=window.DICTEES_CE2_ANNUAL||{p2:[],p3:[],p4:[],p5:[]};
 
+  // V36.06 — règle annuelle verrouillée : la banque de dictées reste informative.
+  // Elle ne réécrit plus les créneaux de l’emploi du temps et ne peut donc plus fusionner dictée et DRAS.
+  // Les séances réellement programmées portent explicitement leur support dans les données P1 à P5.
   function applyAnnualFrenchRitual(period,weeks){
     const plans=annualFrenchPlans[period]||[];
     weeks.forEach((week,idx)=>{
-      const plan=plans[idx]; if(!plan)return;
-      week.frenchPlan=plan;
-      week.days.forEach(([day,rows])=>{
-        const dayName=day.split(' ')[0];
-        rows.forEach(row=>{
-          const time=row[0];
-          if(time==='10h–10h45' && dayName==='Lundi'){
-            row[1]='Dictée de mots + dictée flash 1';
-            row[2]=`${plan.support} — découverte des 8 mots, encodage, observation orthographique et première phrase préparatoire.`;
-            row[5]='Mémorisation et observation formative';
-          }
-          if(time==='10h–10h45' && dayName==='Mardi'){
-            row[1]='Dictée flash 2 + étude de la langue — DRAS';
-            row[2]=`${plan.flash[1]} Puis manipulations DRAS : déplacer, remplacer, ajouter et supprimer pour comprendre la notion prévue.`;
-            row[5]='10 min de dictée puis entraînement EDL';
-          }
-          if(time==='10h–10h45' && dayName==='Jeudi'){
-            row[1]='Dictée flash 3 + EDL — DRAS + production d’écrit court';
-            row[2]=`${plan.flash[2]} Puis transformation DRAS et rédaction d’une ou deux phrases réemployant le vocabulaire de la semaine dans <strong>Mon cahier d’écrivain</strong>.`;
-            row[5]='10 min de dictée + écrit court';
-          }
-          if(time==='16h40–17h' && dayName==='Jeudi'){
-            row[1]='Vocabulaire — séance spécifique';
-            row[2]=`Étudier en profondeur : ${plan.vocab.join(' ; ')}. Réemploi oral puis préparation d’une phrase personnelle.`;
-            row[5]='Trace lexicale et réemploi';
-          }
-          if(time==='10h–10h45' && dayName==='Vendredi'){
-            row[1]='Dictée bilan de phrases + correction raisonnée';
-            row[2]=`${plan.final} Relecture avec une grille ciblée, puis correction et justification des choix.`;
-            row[5]='Dictée bilan hebdomadaire';
-          }
-        });
-      });
+      const plan=plans[idx];
+      if(plan)week.frenchPlan=plan;
     });
   }
   applyAnnualFrenchRitual('p2',p2DetailedWeeks);
@@ -1787,16 +1762,14 @@
 
   function renderAnnualFrenchPlan(plan){
     if(!plan)return '';
-    return `<section class="annual-french-plan"><h3>✍️ Français ritualisé — ${plan.support}</h3>
+    return `<section class="annual-french-plan"><h3>✍️ Banque annuelle — ${plan.support}</h3>
       <div class="annual-french-grid">
-        <div><strong>Lundi</strong><span>Dictée de mots + flash 1</span><p>${plan.flash[0]}</p></div>
-        <div><strong>Mardi</strong><span>Flash 2 + EDL par le DRAS</span><p>${plan.flash[1]}</p></div>
-        <div><strong>Jeudi</strong><span>Flash 3 + DRAS + production courte</span><p>${plan.flash[2]}</p></div>
-        <div><strong>Vendredi</strong><span>Dictée bilan</span><p>${plan.final}</p></div>
+        <div><strong>📘 Dictée / mots appris</strong><span>Cahier du jour</span><p>Les phrases et mots de la banque servent uniquement aux temps d’orthographe réellement programmés.</p></div>
+        <div><strong>✍️ Production d’écrits — DRAS</strong><span>Mon cahier d’écrivain</span><p>Le DRAS reste une séance distincte : déplacer, remplacer, ajouter, supprimer puis améliorer l’écrit.</p></div>
       </div>
       <p><strong>8 mots :</strong> ${plan.words.join(', ')}</p>
       <p><strong>5 mots prioritaires :</strong> ${plan.priority.join(', ')}</p>
-      <p><strong>Vocabulaire — séance spécifique :</strong> ${plan.vocab.join(' • ')}</p>
+      <p><strong>Vocabulaire :</strong> ${plan.vocab.join(' • ')}</p>
     </section>`;
   }
 
@@ -1817,18 +1790,24 @@
       <div><strong>Grammaire :</strong> ${plan.grammaireCible}</div>
       <div><strong>Exemple élève :</strong> ${plan.exempleGrammaire}</div>
       <div><strong>Réactivation :</strong> ${plan.reactivationWords}</div>
-      ${plan.ecritureDRAS?`<div><strong>DRAS — phrase de départ :</strong> ${plan.ecritureDRAS.phraseDepart}</div><div><strong>Production d’écrit :</strong> ${plan.ecritureDRAS.production}</div><div><strong>Mots à employer :</strong> ${plan.ecritureDRAS.motsAEmployer}</div>`:''}
+      ${plan.ecritureDRAS?`<div><strong>Production d’écrits — DRAS · Mon cahier d’écrivain — phrase de départ :</strong> ${plan.ecritureDRAS.phraseDepart}</div><div><strong>Production d’écrit :</strong> ${plan.ecritureDRAS.production}</div><div><strong>Mots à employer :</strong> ${plan.ecritureDRAS.motsAEmployer}</div>`:''}
       <div class="dictation-programming-compact__final"><strong>Bilan :</strong> ${plan.final}</div>
       </div></details>`;
   }
   function p2DictationTimetableGuide(week,day,row){
-    if(!row||row[0]!=='10h–10h45')return '';
+    if(!row)return '';
     const p=p2DictationBankData(week); if(!p)return '';
     const d=String(day||'').split(' ')[0];
-    if(d==='Lundi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">📝 ${p.support}</div><div><strong>Banque :</strong> ${p.words.join(', ')}</div><div><strong>Prioritaires :</strong> ${p.priority.join(', ')}</div><div><strong>Point orthographique :</strong> ${p.orthographeCible}</div><div><strong>Mots concernés :</strong> ${p.motsCibles}</div><div><strong>Réactivation :</strong> ${p.reactivationWords}</div></div>`;
-    if(d==='Mardi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">✍️ Flash 2</div><div>${p.flash[1]}</div><div><strong>Grammaire :</strong> ${p.grammaireCible}</div><div><strong>Manipulation :</strong> ${p.exempleGrammaire}</div>${renderDictationDrasGuide(p,'tuesday')}</div>`;
-    if(d==='Jeudi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">✍️ Flash 3</div><div>${p.flash[2]}</div><div><strong>Réactivation :</strong> ${p.reactivationWords}</div><div><strong>Vigilance :</strong> ${p.motsCibles}</div>${renderDictationDrasGuide(p,'thursday')}</div>`;
-    if(d==='Vendredi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">✅ Dictée bilan</div><div>${p.final}</div><div><strong>À surveiller :</strong> ${p.motsCibles}</div><div><strong>Mots à reprendre :</strong> ${p.reactivationWords}</div>${renderDictationDrasGuide(p,'friday')}</div>`;
+    const text=((row[1]||'')+' '+(row[2]||'')).toLowerCase();
+    if(/dras|production d[’']écrit/.test(text)){
+      return renderDictationDrasGuide(p,d==='Mardi'?'tuesday':d==='Jeudi'?'thursday':'friday');
+    }
+    if(!/dictée/.test(text))return '';
+    const support='<div class="notebook-cue notebook-cue--copy">📘 Support : <strong>Cahier du jour</strong></div>';
+    if(d==='Lundi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">📝 ${p.support}</div>${support}<div><strong>Banque :</strong> ${p.words.join(', ')}</div><div><strong>Prioritaires :</strong> ${p.priority.join(', ')}</div><div><strong>Point orthographique :</strong> ${p.orthographeCible}</div><div><strong>Mots concernés :</strong> ${p.motsCibles}</div><div><strong>Réactivation :</strong> ${p.reactivationWords}</div></div>`;
+    if(d==='Mardi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">✍️ Flash 2</div>${support}<div>${p.flash[1]}</div><div><strong>Grammaire :</strong> ${p.grammaireCible}</div><div><strong>Manipulation :</strong> ${p.exempleGrammaire}</div></div>`;
+    if(d==='Jeudi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">✍️ Flash 3</div>${support}<div>${p.flash[2]}</div><div><strong>Réactivation :</strong> ${p.reactivationWords}</div><div><strong>Vigilance :</strong> ${p.motsCibles}</div></div>`;
+    if(d==='Vendredi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">✅ Dictée bilan</div>${support}<div>${p.final}</div><div><strong>À surveiller :</strong> ${p.motsCibles}</div><div><strong>Mots à reprendre :</strong> ${p.reactivationWords}</div></div>`;
     return '';
   }
 
@@ -1859,7 +1838,7 @@
         <div><strong>Grammaire :</strong> ${plan.grammaireCible}</div>
         <div><strong>Exemple élève :</strong> ${plan.exempleGrammaire}</div>
         <div><strong>Réactivation :</strong> ${plan.reactivationWords}</div>
-        ${plan.ecritureDRAS?`<div><strong>DRAS — phrase de départ :</strong> ${plan.ecritureDRAS.phraseDepart}</div><div><strong>Production d’écrit :</strong> ${plan.ecritureDRAS.production}</div><div><strong>Mots à employer :</strong> ${plan.ecritureDRAS.motsAEmployer}</div>`:''}
+        ${plan.ecritureDRAS?`<div><strong>Production d’écrits — DRAS · Mon cahier d’écrivain — phrase de départ :</strong> ${plan.ecritureDRAS.phraseDepart}</div><div><strong>Production d’écrit :</strong> ${plan.ecritureDRAS.production}</div><div><strong>Mots à employer :</strong> ${plan.ecritureDRAS.motsAEmployer}</div>`:''}
         <div><strong>Flash 1 :</strong> ${plan.flash[0]}</div>
         <div><strong>Flash 2 :</strong> ${plan.flash[1]}</div>
         <div><strong>Flash 3 :</strong> ${plan.flash[2]}</div>
@@ -1869,38 +1848,19 @@
   }
 
   function p3DictationTimetableGuide(week,day,row){
-    if(!row||row[0]!=='10h–10h45')return '';
+    if(!row)return '';
     const p=p3DictationBankData(week); if(!p)return '';
     const d=String(day||'').split(' ')[0];
-    if(d==='Lundi')return `<div class="dictation-timetable-guide">
-      <div class="dictation-timetable-guide__title">📝 ${p.support}</div>
-      <div><strong>Banque :</strong> ${p.words.join(', ')}</div>
-      <div><strong>Prioritaires :</strong> ${p.priority.join(', ')}</div>
-      <div><strong>Point orthographique :</strong> ${p.orthographeCible}</div>
-      <div><strong>Mots concernés :</strong> ${p.motsCibles}</div>
-      <div><strong>Réactivation :</strong> ${p.reactivationWords}</div>
-    </div>`;
-    if(d==='Mardi')return `<div class="dictation-timetable-guide">
-      <div class="dictation-timetable-guide__title">✍️ Flash 2</div>
-      <div>${p.flash[1]}</div>
-      <div><strong>Grammaire :</strong> ${p.grammaireCible}</div>
-      <div><strong>Manipulation :</strong> ${p.exempleGrammaire}</div>
-      ${renderDictationDrasGuide(p,'tuesday')}
-    </div>`;
-    if(d==='Jeudi')return `<div class="dictation-timetable-guide">
-      <div class="dictation-timetable-guide__title">✍️ Flash 3</div>
-      <div>${p.flash[2]}</div>
-      <div><strong>Réactivation :</strong> ${p.reactivationWords}</div>
-      <div><strong>Vigilance :</strong> ${p.motsCibles}</div>
-      ${renderDictationDrasGuide(p,'thursday')}
-    </div>`;
-    if(d==='Vendredi')return `<div class="dictation-timetable-guide">
-      <div class="dictation-timetable-guide__title">✅ Dictée bilan</div>
-      <div>${p.final}</div>
-      <div><strong>À surveiller :</strong> ${p.motsCibles}</div>
-      <div><strong>Mots à reprendre :</strong> ${p.reactivationWords}</div>
-      ${renderDictationDrasGuide(p,'friday')}
-    </div>`;
+    const text=((row[1]||'')+' '+(row[2]||'')).toLowerCase();
+    if(/dras|production d[’']écrit/.test(text)){
+      return renderDictationDrasGuide(p,d==='Mardi'?'tuesday':d==='Jeudi'?'thursday':'friday');
+    }
+    if(!/dictée/.test(text))return '';
+    const support='<div class="notebook-cue notebook-cue--copy">📘 Support : <strong>Cahier du jour</strong></div>';
+    if(d==='Lundi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">📝 ${p.support}</div>${support}<div><strong>Banque :</strong> ${p.words.join(', ')}</div><div><strong>Prioritaires :</strong> ${p.priority.join(', ')}</div><div><strong>Point orthographique :</strong> ${p.orthographeCible}</div><div><strong>Mots concernés :</strong> ${p.motsCibles}</div><div><strong>Réactivation :</strong> ${p.reactivationWords}</div></div>`;
+    if(d==='Mardi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">✍️ Flash 2</div>${support}<div>${p.flash[1]}</div><div><strong>Grammaire :</strong> ${p.grammaireCible}</div><div><strong>Manipulation :</strong> ${p.exempleGrammaire}</div></div>`;
+    if(d==='Jeudi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">✍️ Flash 3</div>${support}<div>${p.flash[2]}</div><div><strong>Réactivation :</strong> ${p.reactivationWords}</div><div><strong>Vigilance :</strong> ${p.motsCibles}</div></div>`;
+    if(d==='Vendredi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">✅ Dictée bilan</div>${support}<div>${p.final}</div><div><strong>À surveiller :</strong> ${p.motsCibles}</div><div><strong>Mots à reprendre :</strong> ${p.reactivationWords}</div></div>`;
     return '';
   }
 
@@ -1932,45 +1892,26 @@
         <div><strong>Grammaire :</strong> ${plan.grammaireCible||'—'}</div>
         <div><strong>Exemple élève :</strong> ${plan.exempleGrammaire||'—'}</div>
         <div><strong>Réactivation :</strong> ${plan.reactivationWords||plan.reactivation||'—'}</div>
-        ${plan.ecritureDRAS?`<div><strong>DRAS — phrase de départ :</strong> ${plan.ecritureDRAS.phraseDepart}</div><div><strong>Production d’écrit :</strong> ${plan.ecritureDRAS.production}</div><div><strong>Mots à employer :</strong> ${plan.ecritureDRAS.motsAEmployer}</div>`:''}
+        ${plan.ecritureDRAS?`<div><strong>Production d’écrits — DRAS · Mon cahier d’écrivain — phrase de départ :</strong> ${plan.ecritureDRAS.phraseDepart}</div><div><strong>Production d’écrit :</strong> ${plan.ecritureDRAS.production}</div><div><strong>Mots à employer :</strong> ${plan.ecritureDRAS.motsAEmployer}</div>`:''}
         <div class="dictation-programming-compact__final"><strong>Dictée bilan :</strong> ${plan.final}</div>
       </div>
     </details>`;
   }
 
   function laterPeriodDictationTimetableGuide(period,week,day,row){
-    if(!row||row[0]!=='10h–10h45')return '';
+    if(!row)return '';
     const p=laterPeriodDictationBankData(period,week); if(!p)return '';
     const d=String(day||'').split(' ')[0];
-    if(d==='Lundi')return `<div class="dictation-timetable-guide">
-      <div class="dictation-timetable-guide__title">📝 ${p.support}</div>
-      <div><strong>Banque :</strong> ${p.words.join(', ')}</div>
-      <div><strong>Prioritaires :</strong> ${p.priority.join(', ')}</div>
-      <div><strong>Point orthographique :</strong> ${p.orthographeCible||'—'}</div>
-      <div><strong>Mots concernés :</strong> ${p.motsCibles||'—'}</div>
-      <div><strong>Réactivation :</strong> ${p.reactivationWords||'—'}</div>
-    </div>`;
-    if(d==='Mardi')return `<div class="dictation-timetable-guide">
-      <div class="dictation-timetable-guide__title">✍️ Flash 2</div>
-      <div>${p.flash[1]}</div>
-      <div><strong>Grammaire :</strong> ${p.grammaireCible||'—'}</div>
-      <div><strong>Manipulation :</strong> ${p.exempleGrammaire||'—'}</div>
-      ${renderDictationDrasGuide(p,'tuesday')}
-    </div>`;
-    if(d==='Jeudi')return `<div class="dictation-timetable-guide">
-      <div class="dictation-timetable-guide__title">✍️ Flash 3</div>
-      <div>${p.flash[2]}</div>
-      <div><strong>Réactivation :</strong> ${p.reactivationWords||'—'}</div>
-      <div><strong>Vigilance :</strong> ${p.motsCibles||'—'}</div>
-      ${renderDictationDrasGuide(p,'thursday')}
-    </div>`;
-    if(d==='Vendredi')return `<div class="dictation-timetable-guide">
-      <div class="dictation-timetable-guide__title">✅ Dictée bilan</div>
-      <div>${p.final}</div>
-      <div><strong>À surveiller :</strong> ${p.motsCibles||'—'}</div>
-      <div><strong>Mots à reprendre :</strong> ${p.reactivationWords||'—'}</div>
-      ${renderDictationDrasGuide(p,'friday')}
-    </div>`;
+    const text=((row[1]||'')+' '+(row[2]||'')).toLowerCase();
+    if(/dras|production d[’']écrit/.test(text)){
+      return renderDictationDrasGuide(p,d==='Mardi'?'tuesday':d==='Jeudi'?'thursday':'friday');
+    }
+    if(!/dictée/.test(text))return '';
+    const support='<div class="notebook-cue notebook-cue--copy">📘 Support : <strong>Cahier du jour</strong></div>';
+    if(d==='Lundi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">📝 ${p.support}</div>${support}<div><strong>Banque :</strong> ${p.words.join(', ')}</div><div><strong>Prioritaires :</strong> ${p.priority.join(', ')}</div><div><strong>Point orthographique :</strong> ${p.orthographeCible||'—'}</div><div><strong>Mots concernés :</strong> ${p.motsCibles||'—'}</div><div><strong>Réactivation :</strong> ${p.reactivationWords||'—'}</div></div>`;
+    if(d==='Mardi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">✍️ Flash 2</div>${support}<div>${p.flash[1]}</div><div><strong>Grammaire :</strong> ${p.grammaireCible||'—'}</div><div><strong>Manipulation :</strong> ${p.exempleGrammaire||'—'}</div></div>`;
+    if(d==='Jeudi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">✍️ Flash 3</div>${support}<div>${p.flash[2]}</div><div><strong>Réactivation :</strong> ${p.reactivationWords||'—'}</div><div><strong>Vigilance :</strong> ${p.motsCibles||'—'}</div></div>`;
+    if(d==='Vendredi')return `<div class="dictation-timetable-guide"><div class="dictation-timetable-guide__title">✅ Dictée bilan</div>${support}<div>${p.final}</div><div><strong>À surveiller :</strong> ${p.motsCibles||'—'}</div><div><strong>Mots à reprendre :</strong> ${p.reactivationWords||'—'}</div></div>`;
     return '';
   }
 
