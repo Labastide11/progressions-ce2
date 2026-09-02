@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période." name="description"/>
-<title>V36.25 — Progressions CE2 — Ma classe au quotidien</title>
+<title>V36.26 — Progressions CE2 — Ma classe au quotidien</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
 <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet"/>
@@ -96,6 +96,59 @@
   left: auto !important;
   margin: 0 !important;
   z-index: 30;
+}
+
+
+/* V36.26 — Ma classe : titre + commandes sur une seule ligne */
+#studentListModal .student-list-panel__header{
+  position:relative !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  gap:14px !important;
+  flex-wrap:nowrap !important;
+  min-height:72px !important;
+  padding:12px 72px 12px 22px !important;
+}
+
+#studentListModal .student-list-panel__header h2{
+  flex:0 0 auto !important;
+  margin:0 !important;
+  white-space:nowrap !important;
+}
+
+#studentListModal .student-list-header-actions{
+  flex:1 1 auto !important;
+  max-width:none !important;
+  margin:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  flex-wrap:nowrap !important;
+  gap:8px !important;
+  min-width:0 !important;
+}
+
+#studentListModal .student-list-header-actions > button{
+  flex:0 0 auto !important;
+  white-space:nowrap !important;
+}
+
+#studentListModal .student-list-sync-info{
+  flex:0 1 auto !important;
+  margin:0 0 0 4px !important;
+  white-space:nowrap !important;
+  font-size:11px !important;
+}
+
+#studentListModal #closeStudentListBtn{
+  position:absolute !important;
+  top:50% !important;
+  right:18px !important;
+  left:auto !important;
+  transform:translateY(-50%) !important;
+  margin:0 !important;
+  z-index:40 !important;
 }
 
 </style>
