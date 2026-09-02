@@ -1983,6 +1983,74 @@
     const detailEnabled=['rentree','p1','p2','p3','p4','p5'].includes(p);
     content.innerHTML=`<section class="timetable-summary-head"><div><h2>${data.title}</h2></div><div class="timetable-summary-actions"><button type="button" class="detail-launch ${detailEnabled?'':'is-disabled'}" ${detailEnabled?`data-open-detail-hub="${p}"`:'disabled'}>📋 Voir une proposition détaillée</button><button type="button" class="pe-launch ${['p1','p2','p3','p4','p5'].includes(p)?'':'is-disabled'}" ${['p1','p2','p3','p4','p5'].includes(p)?`data-open-parcours="${p}"`:'disabled'}>🧒 Parcours de l’élève</button></div></section><div class="timetable-note">${data.note}<br>${data.mode==='rentree'?'<strong>Organisation spéciale :</strong> aucun départ CHAM prévu ; tous les créneaux se déroulent en classe entière.':'<strong>Principe CHAM :</strong> aucune nouvelle notion ni évaluation commune pendant les absences du mardi et du jeudi.'}</div><div class="subject-legend" aria-label="Légende des matières">${legend}${data.mode==='rentree'?'':'<span class="subject-chip cham">🎵 CHAM</span>'}<span class="subject-chip break">☕ Récréation</span></div><div class="timetable-grid">${cards}</div><section class="weights-wrap"><div class="weights-title"><div><h3>Poids horaire des disciplines</h3><p>Répartition hebdomadaire nette de cette période, sur 22 heures d’enseignement.</p></div><strong>Français + maths : ${((data.minutes[0]+data.minutes[1])/1320*100).toFixed(1).replace('.',',')} %</strong></div><div class="weights-grid">${weights}</div></section><section class="hours-wrap"><h3>Contrôle annuel des volumes</h3><table class="hours-table"><thead><tr><th>Discipline</th><th>Moyenne hebdomadaire nette</th><th>Cible annuelle nette</th></tr></thead><tbody>${labels.map((l,i)=>`<tr class="subject-table-row ${subjectClasses[i]}"><td>${subjectIcons[i]} ${l}</td><td>${data.hours[i]}</td><td>${annual[i]}</td></tr>`).join('')}</tbody><tfoot><tr><td><strong>Total</strong></td><td><strong>22 h</strong></td><td class="ok">792 h sur l’année</td></tr></tfoot></table></section>`;
   }
+  // V36.10 — Accès « Emploi du temps de la journée » : demi-journée courante.
+  const dailyDayNames=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
+  const dailyMonthNames=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  function localIsoDate(date){
+    return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
+  }
+  function dailyDateTitle(date){
+    return `${dailyDayNames[date.getDay()]} ${date.getDate()} ${dailyMonthNames[date.getMonth()]} ${date.getFullYear()}`;
+  }
+  function findDetailedDayByIso(iso){
+    const sources=[
+      ['rentree',Object.values(detailedWeeks)],['p1',p1DetailedWeeks],['p2',p2DetailedWeeks],
+      ['p3',p3DetailedWeeks],['p4',p4DetailedWeeks],['p5',p5DetailedWeeks]
+    ];
+    for(const [period,weeks] of sources){
+      for(let wi=0;wi<(weeks||[]).length;wi++){
+        const week=weeks[wi];
+        for(const day of (week.days||[])){
+          if(isoFromFrenchDayLabel(day[0])===iso) return {period,week,weekNumber:wi+1,dayLabel:day[0],rows:day[1]||[]};
+        }
+      }
+    }
+    return null;
+  }
+  function rowStartMinutes(row){
+    const m=String(row&&row[0]||'').match(/(\d{1,2})h(?:(\d{2}))?/);
+    return m?Number(m[1])*60+Number(m[2]||0):0;
+  }
+  function dailyGuide(period,weekNumber,dayLabel,row){
+    if(period==='p1') return p1DictationTimetableGuide(weekNumber,dayLabel,row);
+    if(period==='p2') return p2DictationTimetableGuide(weekNumber,dayLabel,row);
+    if(period==='p3') return p3DictationTimetableGuide(weekNumber,dayLabel,row);
+    if(period==='p4'||period==='p5') return laterPeriodDictationTimetableGuide(period,weekNumber,dayLabel,row);
+    return '';
+  }
+  function renderTodayTimetable(forcePart){
+    const content=document.getElementById('timetableContent');
+    const now=new Date(), iso=localIsoDate(now), dow=now.getDay(), hour=now.getHours();
+    const off=calendarDayOff(iso);
+    if(dow===0||dow===3||dow===6||off){
+      const reason=off?off.label:(dow===3?'Mercredi':dow===6?'Samedi':'Dimanche');
+      content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Emploi du temps de la journée</span><h2>Aujourd’hui — ${dailyDateTitle(now)}</h2></div></div><div class="holiday-note">📅 <strong>Pas de classe aujourd’hui.</strong>${reason?` <span>${reason}</span>`:''}</div></section>`;
+      return;
+    }
+    const found=findDetailedDayByIso(iso);
+    if(!found){
+      content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Emploi du temps de la journée</span><h2>Aujourd’hui — ${dailyDateTitle(now)}</h2></div></div><div class="holiday-note">📅 <strong>Pas de classe aujourd’hui.</strong></div></section>`;
+      return;
+    }
+    let part=forcePart || (hour<12?'morning':hour<17?'afternoon':'finished');
+    if(part==='finished'){
+      content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Emploi du temps de la journée</span><h2>Aujourd’hui — ${dailyDateTitle(now)} — Journée terminée</h2></div></div><div class="lesson-mode-bar" role="group" aria-label="Choisir la demi-journée"><button type="button" class="lesson-mode-btn" data-daily-part="morning">Matin</button><button type="button" class="lesson-mode-btn" data-daily-part="afternoon">Après-midi</button><button type="button" class="lesson-mode-btn is-active" data-daily-part="all">Toute la journée</button></div>${dailyRowsTable(found,found.rows,'all')}</section>`;
+      bindStatusControls(content); return;
+    }
+    const label=part==='morning'?'Matin':'Après-midi';
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Emploi du temps de la journée</span><h2>Aujourd’hui — ${dailyDateTitle(now)} — ${label}</h2></div></div><div class="lesson-mode-bar" role="group" aria-label="Choisir la demi-journée"><button type="button" class="lesson-mode-btn ${part==='morning'?'is-active':''}" data-daily-part="morning">Matin</button><button type="button" class="lesson-mode-btn ${part==='afternoon'?'is-active':''}" data-daily-part="afternoon">Après-midi</button></div>${dailyRowsTable(found,found.rows,part)}</section>`;
+    bindStatusControls(content);
+  }
+  function dailyRowsTable(found,rows,part){
+    const filtered=(rows||[]).filter(row=>{
+      const t=rowStartMinutes(row);
+      if(part==='morning') return t<12*60;
+      if(part==='afternoon') return t>=12*60;
+      return true;
+    });
+    return `<section class="detail-day"><div class="detail-day-head"><h3>${found.dayLabel}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${filtered.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td><td class="detail-competence-cell">${r[3]||''}</td>${dashboardSessionCell_(`${pedagogyMarkers(found.period,found.week.key,found.dayLabel,r)}${r[2]||''}${dailyGuide(found.period,found.weekNumber,found.dayLabel,r)}${annualMathLessonButton(r[6])}`,r[5]||'',/Évaluation|Mini-test|Dictée évaluée|Dictée/i)}<td>${statusSelect(statusKey(found.week.key,found.dayLabel,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`;
+  }
+
   window.ProgressionsEDT = {
     periods,
     openWeek(period='p1',weekNumber=1){
@@ -2035,6 +2103,8 @@
     if((!openSummary&&!openSummaryPeriods.length&&!openDetail)||!modal) return;
     const content=document.getElementById('timetableContent');
     content.addEventListener('click',e=>{
+      const dailyPart=e.target.closest('[data-daily-part]');
+      if(dailyPart){renderTodayTimetable(dailyPart.dataset.dailyPart);content.scrollTop=0;return;}
       const rentreeMath=e.target.closest('[data-open-rentree-math]');
       if(rentreeMath){renderRentreeMathLesson(rentreeMath.dataset.openRentreeMath,'teacher',0);content.scrollTop=0;return;}
       const rentreeMathMode=e.target.closest('[data-open-rentree-math-mode]');
@@ -2092,7 +2162,7 @@
       renderDetailedPeriod(period);
       content.scrollTop=0;
     }));
-    if(openDetail) openDetail.addEventListener('click',()=>{periodNavigationMode='detail';showModal(false);tabs.querySelectorAll('button').forEach(x=>x.classList.toggle('is-active',x.dataset.period==='p1'));renderP1Week(1);content.scrollTop=0});
+    if(openDetail) openDetail.addEventListener('click',()=>{periodNavigationMode='detail';showModal(true);tabs.querySelectorAll('button').forEach(x=>x.classList.remove('is-active'));renderTodayTimetable();content.scrollTop=0});
     if(openTbi) openTbi.addEventListener('open-tbi-view',()=>{showModal(true,true);tabs.querySelectorAll('button').forEach(x=>x.classList.toggle('is-active',x.dataset.period==='p1'));render('p1');content.scrollTop=0;});
     close.addEventListener('click',shut); modal.addEventListener('click',e=>{if(e.target===modal)shut()}); document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.classList.contains('hidden'))shut()});
     render('rentree');
