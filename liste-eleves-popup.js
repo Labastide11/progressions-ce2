@@ -76,6 +76,7 @@
           <strong id="studentPresentCount">0 présents</strong>
           <span id="studentAbsentCount">0 absent</span>
         </div>
+        <span class="student-month-birthdays" id="studentMonthBirthdays">🎂 Anniversaires du mois : —</span>
         <span class="student-attendance-copy">📄 Photocopies : <b id="studentCopyCount">0</b></span>
         <button type="button" class="student-attendance-reset" id="resetStudentAttendanceBtn">↺ Réinitialiser</button>
       </div>
@@ -98,12 +99,48 @@
     return toolbar;
   }
 
+  function parseStudentBirthDate(row){
+    const raw=row&&(row.naissance||row.dateNaissance||row.date_naissance||row.birthDate||row.birthdate||row.ddn||'');
+    if(!raw)return null;
+    if(raw instanceof Date&&!isNaN(raw))return raw;
+    const s=String(raw).trim();
+    let d=null;
+    const fr=s.match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})$/);
+    if(fr)d=new Date(Number(fr[3]),Number(fr[2])-1,Number(fr[1]));
+    else{
+      const iso=s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/);
+      if(iso)d=new Date(Number(iso[1]),Number(iso[2])-1,Number(iso[3]));
+      else{
+        const parsed=new Date(s);
+        if(!isNaN(parsed))d=parsed;
+      }
+    }
+    return d&&!isNaN(d)?d:null;
+  }
+
+  function updateMonthBirthdays(rows){
+    const el=$('studentMonthBirthdays');
+    if(!el)return;
+    const now=new Date();
+    const month=now.getMonth();
+    const year=now.getFullYear();
+    const birthdays=rows.map(row=>{
+      const d=parseStudentBirthDate(row);
+      if(!d||d.getMonth()!==month)return null;
+      return {prenom:String(row.prenom||'').trim(),day:d.getDate(),age:year-d.getFullYear()};
+    }).filter(Boolean).sort((a,b)=>a.day-b.day||a.prenom.localeCompare(b.prenom,'fr'));
+    el.textContent=birthdays.length
+      ? `🎂 Anniversaires du mois : ${birthdays.map(b=>`${b.prenom} (le ${b.day}, ${b.age} ans)`).join(' · ')}`
+      : '🎂 Aucun anniversaire ce mois-ci';
+  }
+
   function updateSummary(rows,absentSet){
     const present=Math.max(0,rows.length-absentSet.size);
     const presentEl=$('studentPresentCount'), absentEl=$('studentAbsentCount'), copyEl=$('studentCopyCount');
     if(presentEl)presentEl.textContent=`${present} présent${present>1?'s':''}`;
     if(absentEl)absentEl.textContent=`${absentSet.size} absent${absentSet.size>1?'s':''}`;
     if(copyEl)copyEl.textContent=String(present);
+    updateMonthBirthdays(rows);
     modal.querySelectorAll('[data-session]').forEach(btn=>btn.classList.toggle('is-active',btn.dataset.session===activeSession));
   }
 
