@@ -1040,6 +1040,33 @@
     if(t.includes('problème')) return set(['Reformule la question.','Choisis les données utiles et annonce l’opération avant de calculer.'],['Une classe possède 28 livres et en achète 17. Combien en a-t-elle ?','6 boîtes contiennent 8 feutres chacune. Combien de feutres ?','72 images sont partagées entre 9 élèves. Combien chacun ?'],['45 livres','48 feutres','8 images'],'Un magasin reçoit 5 cartons de 24 cahiers et en vend 37. Combien en reste-t-il ?','5 × 24 = 120 ; 120 − 37 = 83 cahiers.');
     return set(['Explique la stratégie la plus rapide.','Propose une autre procédure.'],['48 + 29 = …','100 − 37 = …','6 × 8 = …','84 ÷ 7 = …'],['77','63','48','12'],'Invente un calcul utilisant la stratégie du jour.','Plusieurs réponses possibles, à justifier.');
   }
+  // V36.07 — Audit maths annuel : chaque étape du déroulement enseignant comporte
+  // un exemple concret ou un repère immédiatement exploitable en CE2.
+  function buildAnnualMathTeacherGuide(title,file,isMental){
+    const slides=buildAnnualMathSlides(title,file);
+    const exercise=(slides.find(s=>s.kind==='exercise')||slides.find(s=>s.kind==='problem')||slides[1]||{items:[]}).items||[];
+    const correction=(slides.find(s=>s.kind==='correction')||{items:[]}).items||[];
+    const challenge=(slides.find(s=>s.kind==='challenge')||{items:[]}).items||[];
+    const ex1=exercise[0]||'Proposer un exemple numérique directement lié à la notion du jour.';
+    const ex2=exercise[1]||exercise[0]||'Faire traiter un second exemple proche en changeant une seule variable.';
+    const cor=correction[0]||'Faire expliciter la procédure et vérifier collectivement le résultat.';
+    const defi=challenge[0]||exercise[2]||'Changer les nombres ou les données pour vérifier le transfert.';
+    if(isMental){
+      return [
+        `Réactivation — Donner immédiatement un premier repère : ${ex1}`,
+        `Ardoise — Faire chercher tous les élèves sur un exemple voisin : ${ex2}`,
+        `Correction expliquée — Faire verbaliser la stratégie à partir d’un résultat concret : ${cor}`,
+        `Variation — Reprendre la même procédure en changeant les nombres selon la réussite : ${defi}`
+      ];
+    }
+    return [
+      `Situation de départ — Présenter la notion avec un exemple concret : ${ex1}`,
+      `Recherche guidée — Faire chercher sur ardoise ou cahier avec un second exemple : ${ex2}`,
+      `Mise en commun — Corriger en faisant expliquer précisément l’action attendue : ${cor}`,
+      `Entraînement — Ouvrir la ressource Maître Hibou « ${mathResourceTitles[file]||title} » et reprendre un exemple de même type en changeant les données.`,
+      `Petit défi / adaptation — Modifier les variables selon la réussite des élèves : ${defi}`
+    ];
+  }
   const annualMathLessons={};
   function installAnnualMathProgram(period,weeks){
     const plans=annualMathWeeks[period]||[];
@@ -1056,7 +1083,7 @@
         entry.row[3]=(isMental?'Calculer mentalement et verbaliser une stratégie. ':'Comprendre, représenter, s’entraîner et expliquer. ')+'Ressource Maître Hibou : '+(mathResourceTitles[topic.file]||topic.title)+'.';
         entry.row[5]=isMental?'Observation ardoise et verbalisation':'Ardoise, correction projetée et entraînement Hibou';
         entry.row[6]=id;
-        annualMathLessons[id]={id,period,week:wi+1,title,duration:isMental?'15 min':'45 min',file:topic.file,resourceTitle:mathResourceTitles[topic.file]||topic.title,slides:buildAnnualMathSlides(topic.title,topic.file),teacher:['Réactiver la procédure connue avec une question orale.','Faire chercher tous les élèves sur ardoise avant toute correction.','Ouvrir la ressource Maître Hibou pour stabiliser le vocabulaire et la méthode.','Projeter la correction une réponse à la fois.','Prévoir ensuite le même repère en autonomie dans Maître Hibou.']};
+        annualMathLessons[id]={id,period,week:wi+1,title,duration:isMental?'15 min':'45 min',file:topic.file,resourceTitle:mathResourceTitles[topic.file]||topic.title,slides:buildAnnualMathSlides(topic.title,topic.file),teacher:buildAnnualMathTeacherGuide(topic.title,topic.file,isMental)};
       });
     });
   }
@@ -1098,7 +1125,7 @@
       'calculer mentalement de petites additions et soustractions et expliquer une stratégie.',
       ['Je réponds sans poser l’opération.','Je peux expliquer comment j’ai trouvé.'],
       ['Ardoises et feutres'],
-      [['2 min','Échauffement','Compter de 2 en 2 puis donner quelques doubles simples.'],['8 min','Ardoise','Proposer 5+3, 7+2, 10−4, 6+6, 9+5.'],['3 min','Mise en commun','Comparer compter, double et passage par 10.'],['2 min','Bilan','Nommer une stratégie efficace.']],
+      [['2 min','Échauffement','Compter de 2 en 2 de 0 à 20 puis donner quelques doubles simples : double de 3 = 6 ; double de 5 = 10.'],['8 min','Ardoise','Proposer 5+3, 7+2, 10−4, 6+6, 9+5.'],['3 min','Mise en commun','Comparer les stratégies avec des exemples : pour 6 + 6 utiliser le double ; pour 9 + 5 faire 10 + 4.'],['2 min','Bilan','Nommer une stratégie efficace.']],
       {file:'calcul-mental-addition.html',title:'Calcul mental : addition',url:'hibou/lecons/calcul-mental-addition.html'},
       ['5 + 3 = …','7 + 2 = …','10 − 4 = …','6 + 6 = …'],['8','9','6','12'],'Trouve deux façons de calculer 9 + 6.'),
 
@@ -1107,7 +1134,7 @@
       'lire, écrire et comparer des nombres en utilisant la valeur des chiffres.',
       ['Je lis et j’écris correctement un nombre.','Je compare en regardant d’abord le chiffre de plus grande valeur.'],
       ['Ardoises','Tableau C-D-U','Étiquettes-nombres facultatives'],
-      [['5 min','Calcul mental','Compléments simples et doubles.'],['10 min','Nombre mystère','Faire chercher à partir de 2 ou 3 indices.'],['10 min','Dictée de nombres','Dicter 47, 103, 218 puis demander la valeur d’un chiffre.'],['10 min','Comparer et ranger','Comparer 128, 182, 108.'],['5 min','Défi','Avec 2, 5 et 8 : plus grand puis plus petit nombre.'],['5 min','Bilan','Faire verbaliser la stratégie de comparaison.']],
+      [['5 min','Calcul mental','Compléments simples et doubles. Exemples : 7 + ? = 10 ; 8 + ? = 10 ; double de 6 ; double de 9.'],['10 min','Nombre mystère','Faire chercher à partir de 2 ou 3 indices. Exemple : « Je suis plus grand que 120, plus petit que 140 et mon chiffre des unités est 5. Qui suis-je ? »'],['10 min','Dictée de nombres','Dicter 47, 103, 218 puis demander la valeur d’un chiffre.'],['10 min','Comparer et ranger','Comparer 128, 182 et 108 en utilisant les signes <, > ou =, puis les ranger du plus petit au plus grand. Exemple attendu : 108 < 128 < 182.'],['5 min','Défi','Avec 2, 5 et 8, écrire le plus grand nombre puis le plus petit. Exemple : 852 et 258.'],['5 min','Bilan','Faire verbaliser la stratégie de comparaison. Exemple : « Je regarde d’abord les centaines ; si elles sont identiques, je regarde les dizaines. »']],
       {file:'nombres-jusqua-10000.html',title:'Nombres jusqu’à 10 000',url:'hibou/lecons/nombres-jusqua-10000.html'},
       ['Écris : cent trois.','Compare : 128 … 182.','Range : 128 ; 182 ; 108.'],['103','128 < 182','108 < 128 < 182'],'Avec 2, 5 et 8, fabrique le plus grand nombre possible.'),
 
@@ -1125,7 +1152,7 @@
       'construire un nombre avec centaines, dizaines et unités puis passer entre plusieurs écritures.',
       ['Je sais ce que vaut chaque chiffre.','Je passe de 526 à 500 + 20 + 6.'],
       ['Ardoises','Matériel base 10 ou étiquettes C-D-U','Tableau de numération'],
-      [['5 min','Situation de départ','Construire 326 avec le matériel ou les étiquettes.'],['10 min','Manipulation guidée','Faire varier une centaine, une dizaine puis une unité.'],['15 min','Ardoise','Lire, écrire et décomposer plusieurs nombres.'],['10 min','Jeu du nombre caché','Donner la décomposition et retrouver le nombre.'],['5 min','Bilan','Verbaliser C-D-U.']],
+      [['5 min','Situation de départ','Construire 326 avec le matériel ou les étiquettes.'],['10 min','Manipulation guidée','Faire varier une centaine, une dizaine puis une unité.'],['15 min','Ardoise','Lire, écrire et décomposer plusieurs nombres. Exemples : lire 407 ; écrire « cinq-cent-vingt-trois » ; décomposer 638 = 600 + 30 + 8.'],['10 min','Jeu du nombre caché','Donner la décomposition et retrouver le nombre.'],['5 min','Bilan','Verbaliser C-D-U.']],
       {file:'valeur-position-chiffres.html',title:'Valeur et position des chiffres',url:'hibou/lecons/valeur-position-chiffres.html'},
       ['326 = … + … + …','Écris 4 centaines, 2 dizaines et 7 unités.','Quel nombre : 500 + 30 + 8 ?'],['300 + 20 + 6','427','538'],'Change seulement le chiffre des dizaines dans 538.'),
 
