@@ -642,3 +642,13 @@ body.projection-active{overflow:hidden}
   .dashboard-collapse__badge{grid-column:1;grid-row:3;justify-self:start}
 }
 /* /V35.80 */
+
+
+/* V36.31 — vue « Emploi du temps de la journée » */
+.daily-timetable-view{display:flex;flex-direction:column;gap:14px}
+.daily-session-tabs{display:flex;gap:8px;flex-wrap:wrap;padding:0 0 2px}
+.daily-session-tabs button{border:1px solid #bfd1e7;background:#fff;color:#17365c;border-radius:12px;padding:9px 16px;font-weight:800;cursor:pointer}
+.daily-session-tabs button.is-active{background:#0f8178;color:#fff;border-color:#0f8178;box-shadow:0 5px 14px rgba(15,129,120,.18)}
+.daily-only-day{margin-top:0}
+.daily-detail-top{align-items:center}
+@media(max-width:760px){.daily-session-tabs button{flex:1 1 30%;padding:9px 8px}.daily-detail-top{align-items:flex-start}}

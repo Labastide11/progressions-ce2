@@ -2001,6 +2001,74 @@
     }
   };
 
+
+  // V36.31 — Emploi du temps de la journée : une seule journée, avec filtre matin / après-midi.
+  const dailyFrenchMonths={janvier:0,'février':1,mars:2,avril:3,mai:4,juin:5,juillet:6,'août':7,septembre:8,octobre:9,novembre:10,'décembre':11};
+  function parseDetailedDayDate_(label){
+    const clean=String(label||'').toLowerCase().replace(/1er/g,'1').replace(/\s+/g,' ').trim();
+    const m=clean.match(/(?:lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche)\s+(\d{1,2})\s+([a-zàâäéèêëîïôöùûüç]+)\s+(\d{4})/i);
+    if(!m || !(m[2] in dailyFrenchMonths)) return null;
+    return new Date(Number(m[3]),dailyFrenchMonths[m[2]],Number(m[1]),12,0,0,0);
+  }
+  function localDateKey_(d){
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  }
+  function allDetailedSchoolDays_(){
+    const groups=[['rentree',Object.values(detailedWeeks)],['p1',p1DetailedWeeks],['p2',p2DetailedWeeks],['p3',p3DetailedWeeks],['p4',p4DetailedWeeks],['p5',p5DetailedWeeks]];
+    const out=[];
+    groups.forEach(([period,weeks])=>(weeks||[]).forEach(week=>(week.days||[]).forEach(([day,rows])=>{
+      const date=parseDetailedDayDate_(day);
+      if(date) out.push({period,week,day,rows,date,key:localDateKey_(date)});
+    })));
+    out.sort((a,b)=>a.date-b.date);
+    return out;
+  }
+  function relevantSchoolDay_(fromDate=new Date()){
+    const days=allDetailedSchoolDays_();
+    if(!days.length) return null;
+    const target=new Date(fromDate.getFullYear(),fromDate.getMonth(),fromDate.getDate(),12,0,0,0);
+    const key=localDateKey_(target);
+    return days.find(x=>x.key===key) || days.find(x=>x.date>=target) || days[days.length-1];
+  }
+  function rowStartMinutes_(range){
+    const m=String(range||'').match(/(\d{1,2})h(?:(\d{2}))?/i);
+    return m?Number(m[1])*60+Number(m[2]||0):0;
+  }
+  function dailyRowsForSession_(rows,session){
+    if(session==='morning') return rows.filter(r=>rowStartMinutes_(r[0])<12*60);
+    if(session==='afternoon') return rows.filter(r=>rowStartMinutes_(r[0])>=14*60);
+    return rows;
+  }
+  function dailyActivityLabel_(entry,row){
+    return entry.period==='p1'?p1ActivityLabel(row):row[1];
+  }
+  function dailySessionHtml_(entry,row){
+    const period=entry.period, week=entry.week, day=entry.day;
+    let html=`${pedagogyMarkers(period,week.key,day,row)}${row[2]||''}`;
+    if(period==='rentree') html+=`${notebookCue_(row)}${rentreeMathButton(week.key,row)}${rentreeSessionGuide(row)}`;
+    else if(period==='p1') html+=`${notebookCue_(row)}${sessionDocumentsButton(row[7])}${p1DictationTimetableGuide(Number(String(week.key).match(/\d+$/)?.[0]||1),day,row)}${p1LessonButton(row[6]||p1MathLessonIdForSlot(week.key,day,row))}${p1EarlyMathButton(week.key,day,row)}${dashboardFollowBadge_(row[5],/Évaluation|Mini-test|Dictée évaluée/i)}`;
+    else if(period==='p2') html+=`${p2DictationTimetableGuide(Number(String(week.key).match(/\d+$/)?.[0]||1),day,row)}${annualMathLessonButton(row[6])}${dashboardFollowBadge_(row[5],/Évaluation|Mini-test|Dictée/i)}`;
+    else if(period==='p3') html+=`${p3DictationTimetableGuide(Number(String(week.key).match(/\d+$/)?.[0]||1),day,row)}${annualMathLessonButton(row[6])}${dashboardFollowBadge_(row[5],/Évaluation|Mini-test|Dictée évaluée/i)}`;
+    else if(period==='p4'||period==='p5') html+=`${laterPeriodDictationTimetableGuide(period,Number(String(week.key).match(/\d+$/)?.[0]||1),day,row)}${annualMathLessonButton(row[6])}${dashboardFollowBadge_(row[5],/Évaluation|Mini-test|Dictée évaluée/i)}`;
+    return html;
+  }
+  let activeDailyEntry_=null;
+  let activeDailySession_='day';
+  function renderDailyTimetable_(entry=activeDailyEntry_,session=activeDailySession_){
+    const content=document.getElementById('timetableContent');
+    if(!content) return;
+    activeDailyEntry_=entry||relevantSchoolDay_();
+    activeDailySession_=session||'day';
+    if(!activeDailyEntry_){
+      content.innerHTML='<section class="detail-view"><div class="detail-top"><div><h2>Emploi du temps de la journée</h2><p>Aucune journée de classe disponible.</p></div><button class="detail-back" type="button" data-back-summary>← Retour à l’emploi du temps</button></div></section>';
+      return;
+    }
+    const rows=dailyRowsForSession_(activeDailyEntry_.rows,activeDailySession_);
+    const labels={day:'Journée complète',morning:'Matin',afternoon:'Après-midi'};
+    content.innerHTML=`<section class="detail-view daily-timetable-view"><div class="detail-top daily-detail-top"><div><span class="detail-zone">Emploi du temps de la journée</span><h2>${activeDailyEntry_.day}</h2><p>${labels[activeDailySession_]}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à l’emploi du temps</button></div><div class="daily-session-tabs" role="group" aria-label="Choisir la partie de la journée"><button type="button" data-daily-session="day" class="${activeDailySession_==='day'?'is-active':''}">Journée complète</button><button type="button" data-daily-session="morning" class="${activeDailySession_==='morning'?'is-active':''}">Matin</button><button type="button" data-daily-session="afternoon" class="${activeDailySession_==='afternoon'?'is-active':''}">Après-midi</button></div><section class="detail-day daily-only-day"><div class="detail-day-head"><h3>${activeDailyEntry_.day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${dailyActivityLabel_(activeDailyEntry_,r)}</span></td><td class="detail-competence-cell">${r[3]||''}</td><td class="detail-session-cell detail-session-wide">${dailySessionHtml_(activeDailyEntry_,r)}</td><td>${statusSelect(statusKey(activeDailyEntry_.week.key,activeDailyEntry_.day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section></section>`;
+    bindStatusControls(content);
+  }
+
   function init(){
     const openSummary=document.getElementById('openTimetableSummaryBtn'), openSummaryPeriods=[...document.querySelectorAll('[data-open-summary-period]')], openDetail=document.getElementById('openTimetableDetailBtn'), openTbi=document.getElementById('openTbiViewBtn'), close=document.getElementById('closeTimetableBtn'), modal=document.getElementById('timetableModal'), tabs=document.getElementById('timetableTabs');
     // V35.56 — mémorise le contexte d'ouverture de la fenêtre.
@@ -2060,29 +2128,32 @@
       const parcours=e.target.closest('[data-open-parcours]');
       if(parcours&&window.ProgressionsParcoursEleve){window.ProgressionsParcoursEleve.renderPeriod(content,parcours.dataset.openParcours);content.scrollTop=0;return;}
       if(e.target.closest('[data-pe-back]')){render('p1');content.scrollTop=0;return;}
+      const dailySession=e.target.closest('[data-daily-session]');
+      if(dailySession){renderDailyTimetable_(activeDailyEntry_,dailySession.dataset.dailySession);content.scrollTop=0;return;}
       const detail=e.target.closest('[data-open-detail]');
       if(detail){renderDetailedWeek(detail.dataset.openDetail);content.scrollTop=0;return;}
       const hub=e.target.closest('[data-open-detail-hub]');
       if(hub){hub.dataset.openDetailHub==='rentree'?renderDetailedWeek('rentree1'):hub.dataset.openDetailHub==='p1'?renderP1Week(1):hub.dataset.openDetailHub==='p2'?renderP2Week(1):hub.dataset.openDetailHub==='p3'?renderP3Week(1):hub.dataset.openDetailHub==='p4'?renderLaterPeriodWeek('p4',1):renderLaterPeriodWeek('p5',1);content.scrollTop=0;return;}
       const p1week=e.target.closest('[data-open-p1-week]');
       if(p1week){renderP1Week(Number(p1week.dataset.openP1Week));content.scrollTop=0;return;} const p2week=e.target.closest('[data-open-p2-week]'); if(p2week){renderP2Week(Number(p2week.dataset.openP2Week));content.scrollTop=0;return;} const p3week=e.target.closest('[data-open-p3-week]'); if(p3week){renderP3Week(Number(p3week.dataset.openP3Week));content.scrollTop=0;return;} const p4week=e.target.closest('[data-open-p4-week]'); if(p4week){renderLaterPeriodWeek('p4',Number(p4week.dataset.openP4Week));content.scrollTop=0;return;} const p5week=e.target.closest('[data-open-p5-week]'); if(p5week){renderLaterPeriodWeek('p5',Number(p5week.dataset.openP5Week));content.scrollTop=0;return;}
-      if(e.target.closest('[data-back-summary]')){const active=tabs.querySelector('.is-active');periodNavigationMode='summary';render(active?active.dataset.period:'rentree');content.scrollTop=0;}
+      if(e.target.closest('[data-back-summary]')){const active=tabs.querySelector('.is-active');periodNavigationMode='summary';tabs.style.display='';render(active?active.dataset.period:'rentree');content.scrollTop=0;}
     });
     tabs.innerHTML=Object.keys(periods).map((p,i)=>`<button class="timetable-tab ${i===0?'is-active':''}" data-period="${p}">${p.toUpperCase()}</button>`).join('');
     tabs.addEventListener('click',e=>{const b=e.target.closest('[data-period]');if(!b)return;tabs.querySelectorAll('button').forEach(x=>x.classList.toggle('is-active',x===b));renderPeriodNavigation(b.dataset.period);content.scrollTop=0;});
     const shut=()=>{modal.classList.add('hidden');modal.classList.remove('timetable-modal--direct','timetable-modal--tbi');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''};
     const showModal=(direct=false,tbi=false)=>{modal.classList.toggle('timetable-modal--direct',!!direct);modal.classList.toggle('timetable-modal--tbi',!!tbi);modal.classList.remove('hidden');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'};
-    if(openSummary) openSummary.addEventListener('click',()=>{periodNavigationMode='summary';showModal(false);tabs.querySelectorAll('button').forEach(x=>x.classList.toggle('is-active',x.dataset.period==='rentree'));render('rentree')});
+    if(openSummary) openSummary.addEventListener('click',()=>{periodNavigationMode='summary';tabs.style.display='';showModal(false);tabs.querySelectorAll('button').forEach(x=>x.classList.toggle('is-active',x.dataset.period==='rentree'));render('rentree')});
     openSummaryPeriods.forEach(btn=>btn.addEventListener('click',()=>{
       const period=btn.dataset.openSummaryPeriod||'p1';
       periodNavigationMode='detail';
+      tabs.style.display='';
       showModal(true);
       tabs.querySelectorAll('button').forEach(x=>x.classList.toggle('is-active',x.dataset.period===period));
       renderDetailedPeriod(period);
       content.scrollTop=0;
     }));
-    if(openDetail) openDetail.addEventListener('click',()=>{periodNavigationMode='detail';showModal(false);tabs.querySelectorAll('button').forEach(x=>x.classList.toggle('is-active',x.dataset.period==='p1'));renderP1Week(1);content.scrollTop=0});
-    if(openTbi) openTbi.addEventListener('open-tbi-view',()=>{showModal(true,true);tabs.querySelectorAll('button').forEach(x=>x.classList.toggle('is-active',x.dataset.period==='p1'));render('p1');content.scrollTop=0;});
+    if(openDetail) openDetail.addEventListener('click',()=>{periodNavigationMode='detail';activeDailyEntry_=relevantSchoolDay_(new Date());activeDailySession_='day';tabs.style.display='none';showModal(false);renderDailyTimetable_(activeDailyEntry_,'day');content.scrollTop=0});
+    if(openTbi) openTbi.addEventListener('open-tbi-view',()=>{tabs.style.display='';showModal(true,true);tabs.querySelectorAll('button').forEach(x=>x.classList.toggle('is-active',x.dataset.period==='p1'));render('p1');content.scrollTop=0;});
     close.addEventListener('click',shut); modal.addEventListener('click',e=>{if(e.target===modal)shut()}); document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.classList.contains('hidden'))shut()});
     render('rentree');
   }
