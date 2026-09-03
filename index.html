@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période." name="description"/>
-<title>V36.34 — Progressions CE2 — Ma classe au quotidien</title>
+<title>V36.35 — Progressions CE2 — Ma classe au quotidien</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
 <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet"/>
@@ -249,6 +249,64 @@
   }
   #studentListModal .student-list-header-actions{
     grid-template-columns:1fr !important;
+  }
+}
+
+/* V36.35 — Ma classe mobile : commandes compactes sur une ligne */
+@media (max-width: 760px){
+  /* Le diagnostic de rentrée est un outil de test : inutile sur téléphone. */
+  #studentListModal #openRentreeDiagnosticBtn{
+    display:none !important;
+  }
+
+  #studentListModal .student-list-header-actions{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:6px !important;
+  }
+
+  #studentListModal .student-list-header-actions > button:not(#closeStudentListBtn){
+    min-height:38px !important;
+    padding:7px 5px !important;
+    white-space:nowrap !important;
+    font-size:0 !important;
+    line-height:1 !important;
+  }
+
+  #studentListModal #refreshStudentListBtn::after{
+    content:"↻ Actualiser";
+    font-size:.72rem;
+    font-weight:900;
+  }
+  #studentListModal #studentListDrivePhotosBtn::after{
+    content:"📷 Photos";
+    font-size:.72rem;
+    font-weight:900;
+  }
+  #studentListModal #configureStudentListSyncBtn::after{
+    content:"⚙️ Configurer";
+    font-size:.72rem;
+    font-weight:900;
+  }
+
+  #studentListModal .student-list-sync-info{
+    grid-column:1 / -1 !important;
+    padding:4px 6px !important;
+    font-size:.66rem !important;
+    background:transparent !important;
+  }
+}
+
+@media (max-width: 390px){
+  #studentListModal .student-list-header-actions{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  }
+  #studentListModal .student-list-header-actions > button:not(#closeStudentListBtn){
+    padding:6px 3px !important;
+  }
+  #studentListModal #refreshStudentListBtn::after,
+  #studentListModal #studentListDrivePhotosBtn::after,
+  #studentListModal #configureStudentListSyncBtn::after{
+    font-size:.65rem;
   }
 }
 
