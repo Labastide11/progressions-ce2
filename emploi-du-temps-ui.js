@@ -1999,6 +1999,19 @@
       if(!base[day]) return [];
       const key=selected.days && selected.days[day] ? selected.days[day] : '';
       return altered(day,key,selected.mode||'',period).map(row=>[...row]);
+    },
+    // V36.33 — source unique du cahier journal : la journée de l'emploi du temps détaillé.
+    // Retourne exactement les créneaux de la date demandée, dans le même ordre.
+    getDetailedDayRows(date){
+      const key=String(date||'').slice(0,10);
+      const entry=allDetailedSchoolDays_().find(item=>item.key===key);
+      if(!entry) return [];
+      return (entry.rows||[]).map(row=>[
+        row[0]||'',
+        dailyActivityLabel_(entry,row)||row[1]||'Activité',
+        row[2]||'',
+        row[4]||'common'
+      ]);
     }
   };
 

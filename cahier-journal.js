@@ -1,4 +1,4 @@
-/* V36.01 — Cahier journal : vue semaine en ligne unique compacte */
+/* V36.33 — Cahier journal lié strictement à l’emploi du temps détaillé */
 (function(){
 'use strict';
 const API='https://script.google.com/macros/s/AKfycbz25e9hIn7jgZuI2gzLNwqinvo_zTegoicJSeEzNaHDEfCTrEz52MIJREvFM5rvx7Yswg/exec';
@@ -154,11 +154,14 @@ function timetableDaySessions(date){
   if(!api||typeof api.getDayRows!=='function')return [];
   const dayNames=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
   const day=dayNames[new Date(date+'T12:00:00').getDay()];
-  const rawRows=api.getDayRows(day,periodForDate(date))||[];
+  // V36.33 : le cahier journal prend d'abord la journée EXACTE de l'emploi du temps détaillé.
+  // Le repli getDayRows ne sert qu'aux anciennes périodes qui n'auraient pas de détail daté.
+  const rawRows=(typeof api.getDetailedDayRows==='function' ? api.getDetailedDayRows(date) : []) || [];
+  const sourceRows=rawRows.length ? rawRows : (api.getDayRows(day,periodForDate(date))||[]);
   // Une seule récréation le matin et une seule l'après-midi.
   // Certaines anciennes trames contenaient deux lignes de récréation l'après-midi.
   const seenBreaks={morning:false,afternoon:false};
-  const rows=rawRows.filter(row=>{
+  const rows=sourceRows.filter(row=>{
     const label=normalizeText(`${row?.[1]||''} ${row?.[3]||''}`);
     if(!label.includes('recre'))return true;
     const hourMatch=String(row?.[0]||'').match(/(\d{1,2})\s*h/);
@@ -192,6 +195,25 @@ function mergeSessionLayers(...layers){
     if(isClosedSchoolDay(value.date)&&value.source!=='special')return;
     const previous=map.get(k)||{};
     map.set(k,{...previous,...value,ordre:previous.ordre||value.ordre||0});
+  }));
+  return [...map.values()].sort((a,b)=>String(a.date).localeCompare(String(b.date))+(timeSortValue(a.horaire)-timeSortValue(b.horaire))+(Number(a.ordre||0)-Number(b.ordre||0)));
+}
+// V36.33 — la structure (dates + horaires) appartient à l'emploi du temps détaillé.
+// Les sauvegardes locales/API peuvent enrichir un créneau existant, jamais en créer un ancien ou doublon.
+function mergeAgainstTimetable(base,...overlays){
+  const map=new Map();
+  (Array.isArray(base)?base:[]).forEach(item=>{
+    const value={...item,date:normalizeDate(item.date)};
+    const k=slotKey(value);
+    if(k)map.set(k,value);
+  });
+  overlays.forEach(layer=>(Array.isArray(layer)?layer:[]).forEach(item=>{
+    const value={...item,date:normalizeDate(item.date)};
+    const k=slotKey(value);
+    if(!k||!map.has(k))return;
+    const timetable=map.get(k);
+    // Conserve toujours l'horaire et l'ordre de l'emploi du temps détaillé.
+    map.set(k,{...timetable,...value,date:timetable.date,horaire:timetable.horaire,ordre:timetable.ordre,source:timetable.source});
   }));
   return [...map.values()].sort((a,b)=>String(a.date).localeCompare(String(b.date))+(timeSortValue(a.horaire)-timeSortValue(b.horaire))+(Number(a.ordre||0)-Number(b.ordre||0)));
 }
@@ -239,7 +261,7 @@ async function loadWeek(){
   loadSummary();
   const base=timetableWeekSessions();
   const local=dedupeSessions(localWeekSessions());
-  sessions=mergeSessionLayers(base,local);
+  sessions=mergeAgainstTimetable(base,local);
   cleanupSyntheticStatusPrefs();
   const specialWeekMessage=weekSpecialMessage(sessions);
   setStatus(specialWeekMessage||`${sessions.length} séance(s) préparée(s) depuis l’emploi du temps · synchronisation…`);
@@ -247,12 +269,12 @@ async function loadWeek(){
   try{
     const data=await journalApi({action:'semaine',dateDebut:iso(monday)});
     remoteSessions=data&&data.success&&Array.isArray(data.seances)?data.seances:[];
-    sessions=mergeSessionLayers(base,remoteSessions,local);
+    sessions=mergeAgainstTimetable(base,remoteSessions,local);
     cleanupSyntheticStatusPrefs();
     setStatus(weekSpecialMessage(sessions)||'');
   }catch(e){
     remoteSessions=[];
-    sessions=mergeSessionLayers(base,local);
+    sessions=mergeAgainstTimetable(base,local);
     cleanupSyntheticStatusPrefs();
     setStatus(weekSpecialMessage(sessions)||`${sessions.length} séance(s) affichée(s) depuis l’emploi du temps et la sauvegarde locale`);
   }
@@ -263,7 +285,7 @@ function refreshFromProgramme(date){
   if(date&&date<first||date&&date>last)return;
   const base=timetableWeekSessions();
   const local=dedupeSessions(localWeekSessions());
-  sessions=mergeSessionLayers(base,remoteSessions,local);
+  sessions=mergeAgainstTimetable(base,remoteSessions,local);
   cleanupSyntheticStatusPrefs();
   setStatus('✓ Actualisé depuis le Programme du jour');
   render();
