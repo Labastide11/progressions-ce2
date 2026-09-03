@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période." name="description"/>
-<title>V36.44 — Progressions CE2 — Ma classe au quotidien</title>
+<title>V36.45 — Progressions CE2 — Ma classe au quotidien</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
 <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet"/>
@@ -340,6 +340,12 @@
   .home-row-split .home-row__title{font-size:.88rem}
 }
 
+
+/* V36.45 — navigation entre journées de classe */
+#timetableModal .daily-detail-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+#timetableModal .daily-next-day{color:#0f766e;border-color:#99d8cf;background:#f0fdfa}
+#timetableModal .daily-next-day:hover{background:#ccfbf1}
+@media(max-width:700px){#timetableModal .daily-detail-actions{width:100%;justify-content:flex-start}#timetableModal .daily-detail-actions .detail-back{flex:1 1 auto;text-align:center}}
 </style>
 <link href="popup-scroll-fix.css?v=35.31" rel="stylesheet"/>
 <link href="rentree-diagnostic.css?v=35.35" rel="stylesheet"/>
@@ -1230,7 +1236,7 @@
 <script src="data/calendrier-scolaire-2026-2027.js?v=34.64"></script>
 <script src="evenements-ecole.js?v=35.68"></script>
 <script src="dictees-ce2.js?v=34.94"></script>
-<script src="emploi-du-temps-ui.js?v=36.44"></script>
+<script src="emploi-du-temps-ui.js?v=36.45"></script>
 <script src="programme-du-jour.js?v=35.83"></script>
 <script src="accompagnements.js?v=34.47"></script>
 <div aria-hidden="true" aria-labelledby="feliciterTitle" aria-modal="true" class="feliciter-modal hidden" id="feliciterModal" role="dialog">
