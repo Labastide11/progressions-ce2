@@ -4,8 +4,8 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="description" content="Suivi du comportement des élèves CE2 : avertissements, observations datées et historique."/>
-<title>V36.39 — Suivi du comportement — Progressions CE2</title>
-<link href="suivi-comportement.css?v=36.39" rel="stylesheet"/>
+<title>V36.40 — Suivi du comportement — Progressions CE2</title>
+<link href="suivi-comportement.css?v=36.40" rel="stylesheet"/>
 </head>
 <body>
 <main class="beh-page" id="behaviourApp">
@@ -65,14 +65,19 @@
       <div class="beh-field">
         <label for="behType">Type</label>
         <select id="behType">
-          <option value="avertissement">Avertissement / comportement à reprendre</option>
-          <option value="positif">Observation positive</option>
-          <option value="observation">Observation neutre</option>
+          <option value="avertissement">⚠️ Avertissement / comportement à reprendre</option>
+          <option value="positif">🙂 Observation positive</option>
+          <option value="observation">📝 Observation neutre</option>
         </select>
       </div>
       <div class="beh-field">
         <label for="behObservation">Observation factuelle</label>
         <textarea id="behObservation" maxlength="800" placeholder="Ex. Parle sans arrêt malgré plusieurs rappels."></textarea>
+      </div>
+      <div class="beh-field">
+        <label>Observations rapides</label>
+        <div class="beh-suggestions" id="behSuggestions"></div>
+        <p class="beh-suggestions-note">Clique sur une proposition pour l’ajouter dans l’observation. Tu peux en combiner plusieurs.</p>
       </div>
       <div class="beh-form__actions">
         <button class="beh-btn beh-danger" id="behDeleteBtn" type="button" hidden>Supprimer l’observation</button>
@@ -83,6 +88,6 @@
   </div>
 </section>
 <script src="student-photos.js?v=35.29"></script>
-<script src="suivi-comportement.js?v=36.39"></script>
+<script src="suivi-comportement.js?v=36.40"></script>
 </body>
 </html>

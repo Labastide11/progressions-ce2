@@ -10,9 +10,71 @@ const $=id=>document.getElementById(id);
 const grid=$('behStudentGrid'),dateInput=$('behDate'),searchInput=$('behSearch'),filterInput=$('behFilter');
 const statusEl=$('behStatus'),historyEl=$('behHistory'),historyTitle=$('behHistoryTitle'),frequencyEl=$('behFrequency');
 const modal=$('behModal'),form=$('behForm'),modalTitle=$('behModalTitle'),modalSubtitle=$('behModalSubtitle');
-const formDate=$('behFormDate'),formCrosses=$('behFormCrosses'),typeInput=$('behType'),observationInput=$('behObservation'),deleteBtn=$('behDeleteBtn');
+const formDate=$('behFormDate'),formCrosses=$('behFormCrosses'),typeInput=$('behType'),observationInput=$('behObservation'),deleteBtn=$('behDeleteBtn'),suggestionsEl=$('behSuggestions');
 let selectedStudent='';
 let modalStudent='';
+
+const QUICK_SUGGESTIONS={
+  avertissement:[
+    {title:'⚠️ Rappels / comportement',items:[
+      '⚠️ Parle sans arrêt malgré plusieurs rappels.',
+      '⚠️ Coupe la parole et interrompt les échanges.',
+      '⚠️ Ne respecte pas la consigne donnée.',
+      '⚠️ Gêne le travail de ses camarades.',
+      '⚠️ Se disperse et n’entre pas dans le travail.',
+      '⚠️ Attitude à reprendre pendant le temps de classe.'
+    ]}
+  ],
+  positif:[
+    {title:'🙂 À l’oral',items:[
+      '🙂 Réponse pertinente à l’oral.',
+      '🙂 Participation orale active et pertinente.',
+      '🙂 Prend la parole à bon escient.',
+      '🙂 Écoute les autres et attend son tour pour parler.'
+    ]},
+    {title:'✏️ À l’écrit',items:[
+      '✏️ Travail écrit soigné.',
+      '✏️ Écrit avec application.',
+      '✏️ Production écrite pertinente.',
+      '✏️ Présentation très propre.'
+    ]},
+    {title:'🌟 Attitude / travail',items:[
+      '🌟 S’applique sérieusement dans son travail.',
+      '🌟 Fait preuve d’autonomie.',
+      '🌟 Très bonne attitude en classe.',
+      '🌟 Aide un camarade de façon constructive.'
+    ]},
+    {title:'🎨 Arts / soin',items:[
+      '🎨 Travail très soigné et bien dessiné.',
+      '🎨 Réalisation appliquée et créative.',
+      '🎨 Dessin précis et soigné.'
+    ]}
+  ],
+  observation:[
+    {title:'📝 Observation',items:[
+      '📝 S’est davantage engagé après rappel.',
+      '📝 A eu besoin d’être relancé dans le travail.',
+      '📝 Efforts irréguliers au cours de la journée.',
+      '📝 Participation variable selon les moments.'
+    ]}
+  ]
+};
+
+function appendSuggestion(text){
+  const value=String(observationInput.value||'').trim();
+  if(!value){observationInput.value=text;observationInput.focus();return;}
+  if(value.includes(text)){observationInput.focus();return;}
+  observationInput.value=value+'\n'+text;
+  observationInput.focus();
+  observationInput.selectionStart=observationInput.selectionEnd=observationInput.value.length;
+}
+
+function renderSuggestions(){
+  if(!suggestionsEl)return;
+  const groups=QUICK_SUGGESTIONS[typeInput.value]||[];
+  suggestionsEl.innerHTML=groups.map(group=>`<div class="beh-suggest-group"><div class="beh-suggest-title">${esc(group.title)}</div><div class="beh-suggest-list">${group.items.map(item=>`<button class="beh-suggest-chip" type="button" data-suggestion="${esc(item)}">${esc(item)}</button>`).join('')}</div></div>`).join('');
+  suggestionsEl.querySelectorAll('[data-suggestion]').forEach(btn=>btn.addEventListener('click',()=>appendSuggestion(btn.dataset.suggestion||'')));
+}
 
 function norm(v){return String(v||'').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');}
 function esc(v){return String(v||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
@@ -62,7 +124,7 @@ function openObservation(prenom){
   const positive=recordFor(prenom,date,'positif',rows);const neutral=recordFor(prenom,date,'observation',rows);
   const existing=(warning&&warning.observation?warning:null)||(positive&&positive.observation?positive:null)||(neutral&&neutral.observation?neutral:null);
   modalTitle.textContent='Observation — '+prenom;modalSubtitle.textContent='Les faits sont datés automatiquement.';formDate.textContent='📅 '+frDate(date);formCrosses.textContent='❌ '+String(Number(warning?.croix)||0)+' croix';
-  typeInput.value=existing?.type||'avertissement';observationInput.value=existing?.observation||'';deleteBtn.hidden=!existing;
+  typeInput.value=existing?.type||'avertissement';observationInput.value=existing?.observation||'';deleteBtn.hidden=!existing;renderSuggestions();
   modal.classList.remove('hidden');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';setTimeout(()=>observationInput.focus(),20);renderHistory();
 }
 function closeModal(){modal.classList.add('hidden');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';modalStudent='';}
@@ -132,7 +194,7 @@ function bind(){
   dateInput.value=localDateKey();$('behTodayBtn').addEventListener('click',()=>{dateInput.value=localDateKey();render();});dateInput.addEventListener('change',render);searchInput.addEventListener('input',render);filterInput.addEventListener('change',render);
   $('behRefreshBtn').addEventListener('click',()=>refreshRemote(true));
   $('behModalClose').addEventListener('click',closeModal);$('behCancelBtn').addEventListener('click',closeModal);modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.classList.contains('hidden'))closeModal();});
-  form.addEventListener('submit',e=>{e.preventDefault();saveObservation();});deleteBtn.addEventListener('click',deleteObservation);
+  form.addEventListener('submit',e=>{e.preventDefault();saveObservation();});deleteBtn.addEventListener('click',deleteObservation);typeInput.addEventListener('change',renderSuggestions);
   window.addEventListener('storage',e=>{if([STORE_KEY,ROSTER_META_KEY,ROSTER_NAMES_KEY].includes(e.key))render();});
   render();
   if(apiConfigured())refreshRemote(false);
