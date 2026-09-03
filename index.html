@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période." name="description"/>
-<title>V36.36 — Progressions CE2 — Ma classe au quotidien</title>
+<title>V36.38 — Progressions CE2 — Ma classe au quotidien</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
 <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet"/>
@@ -310,6 +310,36 @@
   }
 }
 
+
+/* V36.38 — Accueil : Suivi des élèves + Suivi du comportement sur une seule ligne */
+.home-row-split{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:10px;
+}
+.home-row-split .home-row{
+  width:100%;
+  min-width:0;
+}
+.home-row-split .home-row__text{
+  min-width:0;
+}
+.home-row-split .home-row__title{
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.home-row-split .home-row__desc{
+  display:none!important;
+}
+.home-row--mint{border-color:#9ed9c2;background:#effaf4}
+.home-row--mint .home-row__title{color:#1c6a4e}
+@media(max-width:760px){
+  .home-row-split{gap:7px}
+  .home-row-split .home-row__icon{flex:0 0 44px}
+  .home-row-split .home-row__title{font-size:.88rem}
+}
+
 </style>
 <link href="popup-scroll-fix.css?v=35.31" rel="stylesheet"/>
 <link href="rentree-diagnostic.css?v=35.35" rel="stylesheet"/>
@@ -465,11 +495,18 @@
 <span class="home-row__text"><span class="home-row__title">Voir tous les élèves</span><span class="home-row__desc">Liste de classe avec portraits et accès direct.</span></span>
 <span class="home-row__arrow">›</span>
 </button>
+<div class="home-row-split" role="group" aria-label="Suivis des élèves">
 <button class="home-row home-row--green" data-page-link="mon-suivi.html" type="button">
 <span class="home-row__icon"><img alt="" src="assets/home-v32-43/mon-suivi.png"/></span>
 <span class="home-row__text"><span class="home-row__title">Suivi des élèves</span><span class="home-row__desc">Compétences Maître Hibou, évaluations en classe et aide à la rédaction du LSU.</span></span>
 <span class="home-row__arrow">›</span>
 </button>
+<button class="home-row home-row--mint" data-page-link="suivi-comportement.html" type="button">
+<span class="home-row__icon" aria-hidden="true">🧭</span>
+<span class="home-row__text"><span class="home-row__title">Suivi du comportement</span><span class="home-row__desc">Observations sur les règles de vie, l’attitude, l’écoute et la vie de classe.</span></span>
+<span class="home-row__arrow">›</span>
+</button>
+</div>
 <button class="home-row home-row--indigo" data-page-link="referentiel.html" type="button">
 <span class="home-row__icon"><img alt="" src="assets/home-v32-43/referentiel.png"/></span>
 <span class="home-row__text"><span class="home-row__title">Référentiel des compétences CE2</span><span class="home-row__desc">Repères officiels et compétences CE2.</span></span>
