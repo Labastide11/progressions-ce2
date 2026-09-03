@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content="Suivi du comportement des élèves CE2 : avertissements, observations datées et historique."/>
+<title>V36.39 — Suivi du comportement — Progressions CE2</title>
+<link href="suivi-comportement.css?v=36.39" rel="stylesheet"/>
+</head>
+<body>
+<main class="beh-page" id="behaviourApp">
+  <header class="beh-topbar">
+    <div class="beh-title">
+      <span class="beh-title__icon" aria-hidden="true">🧭</span>
+      <div><h1>Suivi du comportement</h1><p>Observations datées et avertissements de la journée</p></div>
+    </div>
+    <div class="beh-actions">
+      <input class="beh-date" id="behDate" type="date" aria-label="Date affichée"/>
+      <button class="beh-btn" id="behTodayBtn" type="button">Aujourd’hui</button>
+      <button class="beh-btn" id="behRefreshBtn" type="button">↻ Actualiser</button>
+      <a class="beh-btn beh-btn--ghost" href="index.html">← Accueil</a>
+    </div>
+  </header>
+
+  <section class="beh-summary" aria-label="Résumé de la journée">
+    <div class="beh-stat beh-stat--red"><span>Croix aujourd’hui</span><strong id="behCrossTotal">0</strong></div>
+    <div class="beh-stat"><span>Élèves concernés</span><strong id="behStudentsConcerned">0</strong></div>
+    <div class="beh-stat"><span>Observations</span><strong id="behObservationCount">0</strong></div>
+    <div class="beh-stat beh-stat--green"><span>Observations positives</span><strong id="behPositiveCount">0</strong></div>
+  </section>
+
+  <div class="beh-toolbar">
+    <input class="beh-search" id="behSearch" type="search" placeholder="Rechercher un élève…" autocomplete="off"/>
+    <select class="beh-filter" id="behFilter" aria-label="Filtrer les élèves">
+      <option value="all">Toute la classe</option>
+      <option value="warnings">Avec croix</option>
+      <option value="observations">Avec observation</option>
+      <option value="none">Sans observation</option>
+    </select>
+  </div>
+  <div class="beh-status" id="behStatus" aria-live="polite">Chargement de la classe…</div>
+  <section class="beh-grid" id="behStudentGrid" aria-label="Élèves"></section>
+
+  <section class="beh-lower">
+    <article class="beh-panel">
+      <h2 id="behHistoryTitle">Historique récent</h2>
+      <div class="beh-history" id="behHistory"></div>
+    </article>
+    <article class="beh-panel">
+      <h2>Régulier ou occasionnel ?</h2>
+      <div class="beh-frequency" id="behFrequency"></div>
+      <p class="beh-note">Le résumé s’appuie uniquement sur les observations datées. Il indique une fréquence, sans attribuer d’étiquette à l’élève.</p>
+    </article>
+  </section>
+</main>
+
+<section class="beh-modal hidden" id="behModal" aria-hidden="true">
+  <div class="beh-dialog" role="dialog" aria-modal="true" aria-labelledby="behModalTitle">
+    <div class="beh-dialog__head">
+      <div><h2 id="behModalTitle">Ajouter une observation</h2><p id="behModalSubtitle"></p></div>
+      <button class="beh-close" id="behModalClose" type="button" aria-label="Fermer">×</button>
+    </div>
+    <form class="beh-form" id="behForm">
+      <div class="beh-form__meta"><span class="beh-pill" id="behFormDate"></span><span class="beh-pill" id="behFormCrosses"></span></div>
+      <div class="beh-field">
+        <label for="behType">Type</label>
+        <select id="behType">
+          <option value="avertissement">Avertissement / comportement à reprendre</option>
+          <option value="positif">Observation positive</option>
+          <option value="observation">Observation neutre</option>
+        </select>
+      </div>
+      <div class="beh-field">
+        <label for="behObservation">Observation factuelle</label>
+        <textarea id="behObservation" maxlength="800" placeholder="Ex. Parle sans arrêt malgré plusieurs rappels."></textarea>
+      </div>
+      <div class="beh-form__actions">
+        <button class="beh-btn beh-danger" id="behDeleteBtn" type="button" hidden>Supprimer l’observation</button>
+        <button class="beh-btn" id="behCancelBtn" type="button">Annuler</button>
+        <button class="beh-btn beh-btn--primary" type="submit">Enregistrer</button>
+      </div>
+    </form>
+  </div>
+</section>
+<script src="student-photos.js?v=35.29"></script>
+<script src="suivi-comportement.js?v=36.39"></script>
+</body>
+</html>
