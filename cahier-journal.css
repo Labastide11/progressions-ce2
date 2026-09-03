@@ -1169,3 +1169,47 @@
 }
 /* /V36.02 — horaires sur une ligne dans Aujourd’hui */
 
+
+
+/* V36.36 — Cahier journal fidèle à l'emploi du temps détaillé
+   Horaire | Domaine / activité | Séance | Statut */
+.journal-day--compact .journal-compact-headings,
+.journal-day--compact .journal-compact-row{
+  grid-template-columns:118px minmax(210px,290px) minmax(360px,1fr) 150px;
+}
+.journal-day--compact .journal-compact-subject{
+  align-items:flex-start;
+  line-height:1.25;
+  white-space:normal;
+}
+.journal-day--compact .journal-compact-activity{
+  align-items:flex-start;
+  line-height:1.35;
+}
+.journal-session-text{
+  display:block;
+  width:100%;
+  padding:7px 8px;
+  color:#243b53;
+  font-weight:700;
+  white-space:normal;
+}
+@media(max-width:1000px){
+  .journal-day--compact .journal-compact-headings,
+  .journal-day--compact .journal-compact-row{
+    grid-template-columns:104px minmax(170px,230px) minmax(220px,1fr) 135px;
+  }
+}
+@media(max-width:620px){
+  .journal-day--compact .journal-compact-headings{display:none}
+  .journal-day--compact .journal-compact-row{
+    grid-template-columns:88px minmax(0,1fr) 112px;
+  }
+  .journal-day--compact .journal-compact-subject{grid-column:2/3}
+  .journal-day--compact .journal-compact-status{grid-column:3/4;grid-row:1}
+  .journal-day--compact .journal-compact-activity{
+    grid-column:2/4;
+    border-top:1px solid #edf1f5;
+  }
+}
+/* /V36.36 */

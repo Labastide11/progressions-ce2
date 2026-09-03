@@ -175,8 +175,12 @@ function timetableDaySessions(date){
   return rows.map((row,index)=>({
     date,
     horaire:row[0]||'',
+    // V36.36 — contenu du cahier journal = contenu exact de l'emploi du temps détaillé.
+    // row[1] : Domaine / activité ; row[2] : Séance détaillée ; row[3] : famille visuelle.
     domaine:labels[row[3]]||'Vie de classe',
+    domaineActivite:row[1]||'Activité',
     activite:row[1]||'Activité',
+    seance:row[2]||'',
     objectifMaitre:'',
     competenceEleve:'',
     statut:'',
@@ -212,8 +216,22 @@ function mergeAgainstTimetable(base,...overlays){
     const k=slotKey(value);
     if(!k||!map.has(k))return;
     const timetable=map.get(k);
-    // Conserve toujours l'horaire et l'ordre de l'emploi du temps détaillé.
-    map.set(k,{...timetable,...value,date:timetable.date,horaire:timetable.horaire,ordre:timetable.ordre,source:timetable.source});
+    // V36.36 — l'emploi du temps détaillé reste la source de vérité pour la structure ET le contenu.
+    // Les couches locale/API ne peuvent enrichir que le suivi (statut / remarque), jamais remplacer
+    // le domaine, l'activité ou la séance par une ancienne valeur.
+    map.set(k,{
+      ...timetable,
+      statut:value.statut||timetable.statut||'',
+      remarque:value.remarque||timetable.remarque||'',
+      date:timetable.date,
+      horaire:timetable.horaire,
+      domaine:timetable.domaine,
+      domaineActivite:timetable.domaineActivite||timetable.activite,
+      activite:timetable.activite,
+      seance:timetable.seance||'',
+      ordre:timetable.ordre,
+      source:timetable.source
+    });
   }));
   return [...map.values()].sort((a,b)=>String(a.date).localeCompare(String(b.date))+(timeSortValue(a.horaire)-timeSortValue(b.horaire))+(Number(a.ordre||0)-Number(b.ordre||0)));
 }
@@ -429,7 +447,9 @@ function bindDayRemarks(root){
   });
 }
 function compactSessionHtml(s){
-  const key=sessionKey(s), meta=sessionMetaFor(s), domain=canonicalDomain(s.domaine), nonTeaching=isNonTeachingTime(s);
+  const key=sessionKey(s), domain=canonicalDomain(s.domaine), nonTeaching=isNonTeachingTime(s);
+  const domaineActivite=String(s.domaineActivite||s.activite||displayDomainLabel(domain)).trim();
+  const seance=String(s.seance||'').trim();
   if(nonTeaching){
     return `<div class="journal-compact-row ${domainClass(`${s.domaine} ${s.activite}`)} is-non-teaching" data-session-key="${esc(key)}">
       <div class="journal-compact-time">${esc(s.horaire)}</div>
@@ -440,8 +460,8 @@ function compactSessionHtml(s){
   }
   return `<div class="journal-compact-row ${domainClass(domain)} ${statusClass(syntheticStatusFor(s))}" data-session-key="${esc(key)}">
     <div class="journal-compact-time">${esc(s.horaire)}</div>
-    <div class="journal-compact-subject">${esc(displayDomainLabel(domain))}</div>
-    <div class="journal-compact-activity"><input class="journal-activity-input" data-meta-key="${esc(key)}" data-meta-field="activity" value="${esc(meta.activity||'')}" placeholder="Activité" aria-label="Activité de la séance"></div>
+    <div class="journal-compact-subject">${esc(domaineActivite)}</div>
+    <div class="journal-compact-activity"><span class="journal-session-text">${esc(seance||'—')}</span></div>
     <div class="journal-compact-status">${statusSelectHtml(s)}</div>
   </div>`;
 }
@@ -449,7 +469,7 @@ function compactDayHtml(date,list){
   const rows=list.slice().sort((a,b)=>(a.ordre||0)-(b.ordre||0));
   return `<article class="journal-day journal-day--compact ${dayClass(date)}">
     <header><h3>📅 ${frDate(date)}</h3></header>
-    <div class="journal-compact-headings"><span>Horaire</span><span>Matière</span><span>Activité</span><span>Statut</span></div>
+    <div class="journal-compact-headings"><span>Horaire</span><span>Domaine / activité</span><span>Séance</span><span>Statut</span></div>
     <div class="journal-sessions">${rows.length?rows.map(compactSessionHtml).join(''):'<div class="journal-empty">Aucune séance</div>'}</div>
     <label class="journal-day-remark"><span>📝 Remarque de la journée</span><textarea class="journal-day-remark-input" data-date="${esc(date)}" placeholder="Une remarque générale pour la journée…">${esc(dayRemark(date))}</textarea></label>
   </article>`;
@@ -459,11 +479,11 @@ function weekCellHtml(s){
   if(nonTeaching){
     return `<div class="journal-week-cell journal-week-cell--single is-non-teaching ${domainClass(`${s.domaine} ${s.activite}`)}"><span class="journal-week-cell__single-label">${esc(nonTeachingLabel(s))}</span></div>`;
   }
-  const domain=displayDomainLabel(canonicalDomain(s.domaine));
-  const activity=meta.activity||'Activité';
+  const domainActivity=String(s.domaineActivite||s.activite||displayDomainLabel(canonicalDomain(s.domaine))).trim();
+  const session=String(s.seance||'').trim();
   return `<div class="journal-week-cell journal-week-cell--single ${domainClass(s.domaine)} ${statusClass(syntheticStatusFor(s))}" data-session-key="${esc(sessionKey(s))}">
-    <span class="journal-week-cell__single-subject">${esc(domain)}</span>
-    <input class="journal-week-cell__single-activity journal-activity-input" data-meta-key="${esc(sessionKey(s))}" data-meta-field="activity" value="${esc(activity)}" aria-label="Activité">
+    <span class="journal-week-cell__single-subject">${esc(domainActivity)}</span>
+    <span class="journal-week-cell__single-activity">${esc(session||'—')}</span>
     <span class="journal-week-cell__single-status">${statusSelectHtml(s)}</span>
   </div>`;
 }
@@ -565,7 +585,7 @@ function renderArchives(){const a=getArchives();archivesView.innerHTML=a.length?
 function render(){renderToday();renderWeek();renderArchives();summary.classList.add('hidden')}
 function applyViewMode(){if(!panel)return;panel.classList.remove('journal-panel--portrait');panel.classList.add('journal-panel--wide','journal-panel--landscape')}
 function setTab(tab){active=tab;document.querySelectorAll('.journal-tab').forEach(b=>b.classList.toggle('is-active',b.dataset.journalTab===tab));todayView.classList.toggle('hidden',tab!=='today');weekView.classList.toggle('hidden',tab!=='week');archivesView.classList.toggle('hidden',tab!=='archives');summary.classList.add('hidden');applyViewMode()}
-function textExport(){const map=groupByDate(), lines=[`CAHIER JOURNAL — CE2`,`École La Gravette`,weekLabel.textContent,''];[0,1,3,4].forEach(n=>{const d=iso(addDays(monday,n));lines.push(frDate(d).toUpperCase());(map[d]||[]).forEach(s=>{const meta=sessionMetaFor(s);lines.push(`${s.horaire} — ${canonicalDomain(s.domaine)} — ${meta.activity||'Activité'} — ${syntheticStatusFor(s)}`)});const remark=dayRemark(d);if(remark)lines.push(`Remarque de la journée : ${remark}`);lines.push('')});return lines.join('\n')}
+function textExport(){const map=groupByDate(), lines=[`CAHIER JOURNAL — CE2`,`École La Gravette`,weekLabel.textContent,''];[0,1,3,4].forEach(n=>{const d=iso(addDays(monday,n));lines.push(frDate(d).toUpperCase());(map[d]||[]).forEach(s=>{const meta=sessionMetaFor(s);lines.push(`${s.horaire} — ${s.domaineActivite||s.activite||canonicalDomain(s.domaine)} — ${s.seance||'—'} — ${syntheticStatusFor(s)}`)});const remark=dayRemark(d);if(remark)lines.push(`Remarque de la journée : ${remark}`);lines.push('')});return lines.join('\n')}
 async function copy(){try{await navigator.clipboard.writeText(textExport());setStatus('Cahier journal copié !')}catch(e){setStatus('Copie impossible') }}
 async function archive(){const remarks=[0,1,3,4].map(n=>{const d=iso(addDays(monday,n)),r=dayRemark(d);return r?`${frDate(d)} : ${r}`:''}).filter(Boolean).join('\n');const payload={action:'archiverSemaine',dateDebut:iso(monday),dateFin:iso(addDays(monday,4)),periode:'',synthese:remarks,apprentissagesRealises:'',seancesReportees:sessions.filter(s=>syntheticStatusFor(s)==='Reportée').map(s=>`${s.date} ${s.horaire} ${sessionMetaFor(s).activity}`).join('\n'),pointsAReprendre:'',evenementsParticuliers:remarks,absencesOuChangements:'',aPrevoirSemaineSuivante:''};setStatus('Archivage en cours…');try{await journalApi(payload);const a=getArchives().filter(x=>x.dateDebut!==payload.dateDebut);a.unshift({dateDebut:payload.dateDebut,count:sessions.length,archivedAt:new Intl.DateTimeFormat('fr-FR',{dateStyle:'short',timeStyle:'short'}).format(new Date())});localStorage.setItem(archivesKey(),JSON.stringify(a));setStatus('Semaine archivée dans Google Sheet');renderArchives()}catch(e){setStatus(e&&e.message?e.message:'Erreur d’archivage') }}
 function open(){monday=startOfWeek(new Date());modal.classList.remove('hidden');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';loadWeek();setTab('today')}
