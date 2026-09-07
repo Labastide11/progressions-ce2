@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période." name="description"/>
-<title>V36.45 — Progressions CE2 — Ma classe au quotidien</title>
+<title>V36.49 — Progressions CE2 — Ma classe au quotidien</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
 <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet"/>
@@ -1338,6 +1338,21 @@
     e.preventDefault();
     e.stopImmediatePropagation();
     window.location.href = 'cahier-journal.html';
+  }, true);
+})();
+</script>
+
+
+<script>
+/* V36.49 — Emploi du temps simplifié détaché : vraie page HTML. */
+(function(){
+  'use strict';
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('#openTbiViewBtn,[data-home-action="tbi-view"]');
+    if (!btn) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    window.location.href = 'emploi-du-temps-simplifie.html';
   }, true);
 })();
 </script>

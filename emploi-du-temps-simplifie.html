@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>V36.49 — Emploi du temps simplifié CE2</title>
+
+<link href="styles.css?v=35.40" rel="stylesheet">
+<link href="emploi-du-temps.css?v=36.31" rel="stylesheet">
+
+<style>
+  html,body{margin:0;min-height:100%;background:#eef4f7;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#18324a}
+  *{box-sizing:border-box}
+  .site-shell{min-height:100vh;display:flex;flex-direction:column}
+  .site-nav{
+    position:sticky;top:0;z-index:1000;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    padding:10px 16px;background:#173b5c;box-shadow:0 2px 10px rgba(0,0,0,.14)
+  }
+  .site-nav__brand{color:#fff;font-weight:900;margin-right:8px;white-space:nowrap}
+  .site-nav a{
+    display:inline-flex;align-items:center;min-height:38px;padding:0 13px;border-radius:10px;color:#fff;
+    text-decoration:none;font-weight:800;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18)
+  }
+  .site-nav a:hover,.site-nav a.is-active{background:#fff;color:#173b5c}
+  .site-nav__spacer{flex:1 1 auto}
+
+  .simple-wrap{width:min(1500px,calc(100% - 28px));margin:18px auto 36px}
+  .simple-head{
+    display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+    background:#fff;border-radius:18px;padding:18px 22px;box-shadow:0 8px 24px rgba(23,59,92,.10)
+  }
+  .simple-head h1{margin:0;font-size:clamp(26px,3vw,40px)}
+  .simple-head p{margin:5px 0 0;color:#5b7183;font-weight:700}
+  .simple-actions{display:flex;gap:8px;flex-wrap:wrap}
+  .simple-actions button,.simple-actions a{
+    border:1px solid #c7d6e2;background:#fff;color:#173b5c;border-radius:10px;padding:10px 14px;
+    font-weight:850;cursor:pointer;text-decoration:none
+  }
+  .simple-actions button:hover,.simple-actions a:hover{background:#edf5fb}
+  .simple-actions .primary{background:#173b5c;color:#fff;border-color:#173b5c}
+
+  .date-strip{
+    margin:14px 0;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+    background:#dcecf7;border:1px solid #b7d0e3;border-radius:14px;padding:12px 16px
+  }
+  .date-strip strong{font-size:20px}
+  .date-strip span{font-weight:800;color:#526f86}
+
+  .simple-grid{display:grid;grid-template-columns:1fr;gap:10px}
+  .simple-row{
+    display:grid;grid-template-columns:145px 220px minmax(0,1fr);align-items:stretch;
+    background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 14px rgba(23,59,92,.08);
+    border:1px solid #d9e5ed
+  }
+  .simple-time{padding:17px 16px;font-size:21px;font-weight:950;background:#eef4f8;display:flex;align-items:center}
+  .simple-subject{padding:17px 18px;font-size:20px;font-weight:950;display:flex;align-items:center;border-left:1px solid #dde8ef}
+  .simple-activity{padding:17px 20px;font-size:19px;line-height:1.4;display:flex;align-items:center;border-left:1px solid #dde8ef}
+  .simple-activity strong{font-weight:900}
+  .simple-row.break .simple-time,.simple-row.break .simple-subject,.simple-row.break .simple-activity{background:#f5f0e6}
+  .simple-row.break .simple-subject{color:#745f35}
+  .empty{
+    background:#fff;border-radius:16px;padding:34px;text-align:center;font-size:19px;font-weight:800;
+    color:#607789;box-shadow:0 5px 18px rgba(23,59,92,.08)
+  }
+  .simple-foot{margin-top:16px;color:#607789;font-size:14px;text-align:right}
+
+  @media(max-width:800px){
+    .site-nav{position:static}.site-nav__brand{width:100%}
+    .simple-wrap{width:min(100% - 16px,1500px);margin-top:10px}
+    .simple-row{grid-template-columns:110px 1fr}
+    .simple-time{grid-row:1 / span 2}
+    .simple-subject{border-left:1px solid #dde8ef}
+    .simple-activity{grid-column:2;border-left:1px solid #dde8ef;border-top:1px solid #dde8ef}
+    .simple-time,.simple-subject,.simple-activity{font-size:17px;padding:13px}
+  }
+
+  @media print{
+    .site-nav,.simple-actions{display:none!important}
+    .simple-wrap{width:100%;margin:0}.simple-head,.simple-row{box-shadow:none}
+  }
+</style>
+</head>
+<body>
+<div class="site-shell">
+  <nav class="site-nav" aria-label="Navigation principale">
+    <span class="site-nav__brand">🦉 Progressions CE2</span>
+    <a href="index.html">🏠 Accueil</a>
+    <a href="emploi-du-temps.html?mode=summary">🗓️ Emploi du temps</a>
+    <a class="is-active" href="emploi-du-temps-simplifie.html">📺 Emploi du temps simplifié</a>
+    <a href="cahier-journal.html">📘 Cahier journal</a>
+    <a href="index.html?open=students">👥 Ma classe</a>
+    <a href="index.html?open=programme">📋 Programme du jour</a>
+    <span class="site-nav__spacer"></span>
+  </nav>
+
+  <main class="simple-wrap">
+    <section class="simple-head">
+      <div>
+        <h1>📺 Emploi du temps simplifié</h1>
+        <p>Vue claire de la journée, adaptée à l’affichage en classe et au TBI.</p>
+      </div>
+      <div class="simple-actions">
+        <button id="prevDayBtn" type="button">← Jour précédent</button>
+        <button class="primary" id="todayBtn" type="button">Aujourd’hui</button>
+        <button id="nextDayBtn" type="button">Jour suivant →</button>
+        <a href="emploi-du-temps.html?mode=day">Voir le détail</a>
+      </div>
+    </section>
+
+    <div class="date-strip">
+      <strong id="simpleDate">—</strong>
+      <span id="simpleWeek">—</span>
+    </div>
+
+    <section class="simple-grid" id="simpleGrid"></section>
+    <div class="simple-foot">CE2 · École La Gravette · Année scolaire 2026-2027</div>
+  </main>
+</div>
+
+<script src="emploi-du-temps-data-p1.js?v=36.49"></script>
+<script src="emploi-du-temps-data-p2.js?v=36.06"></script>
+<script src="emploi-du-temps-data-p3.js?v=36.06"></script>
+<script src="emploi-du-temps-data-p4.js?v=36.06"></script>
+<script src="emploi-du-temps-data-p5.js?v=36.06"></script>
+
+<script>
+(function(){
+  'use strict';
+
+  var MONTHS={
+    janvier:0,février:1,fevrier:1,mars:2,avril:3,mai:4,juin:5,juillet:6,août:7,aout:7,
+    septembre:8,octobre:9,novembre:10,décembre:11,decembre:11
+  };
+
+  function norm(s){return String(s||'').trim().toLowerCase();}
+  function parseDayLabel(label){
+    var m=String(label||'').match(/^(Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi|Dimanche)\s+(\d{1,2})(?:er)?\s+([A-Za-zÀ-ÿ]+)\s+(\d{4})$/i);
+    if(!m)return null;
+    var month=MONTHS[norm(m[3])];
+    if(typeof month!=='number')return null;
+    return new Date(Number(m[4]),month,Number(m[2]),12,0,0,0);
+  }
+  function isoDate(d){
+    return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
+  }
+  function plainText(html){
+    var tmp=document.createElement('div');
+    tmp.innerHTML=String(html||'');
+    return (tmp.textContent||tmp.innerText||'').replace(/\s+/g,' ').trim();
+  }
+
+  function collectDays(){
+    var data=window.PROGRESSIONS_EDT_DATA||{};
+    var result=[];
+    Object.keys(data).forEach(function(key){
+      var weeks=data[key];
+      if(!Array.isArray(weeks) || !/DetailedWeeks$/i.test(key)) return;
+      weeks.forEach(function(week){
+        if(!week || !Array.isArray(week.days)) return;
+        week.days.forEach(function(day){
+          if(!Array.isArray(day) || !Array.isArray(day[1])) return;
+          var date=parseDayLabel(day[0]);
+          if(!date)return;
+          result.push({
+            date:date,
+            label:day[0],
+            weekTitle:week.title||week.dates||'',
+            rows:day[1]
+          });
+        });
+      });
+    });
+
+    /* Évite d'éventuels doublons entre blocs de rentrée et P1. */
+    var map=new Map();
+    result.sort(function(a,b){return a.date-b.date});
+    result.forEach(function(item){
+      var key=isoDate(item.date);
+      if(!map.has(key) || (item.rows && item.rows.length>(map.get(key).rows||[]).length)) map.set(key,item);
+    });
+    return Array.from(map.values()).sort(function(a,b){return a.date-b.date});
+  }
+
+  var days=collectDays();
+  var currentIndex=0;
+
+  function nearestIndexToToday(){
+    if(!days.length)return 0;
+    var today=new Date(); today.setHours(12,0,0,0);
+    var exact=days.findIndex(function(d){return isoDate(d.date)===isoDate(today)});
+    if(exact>=0)return exact;
+    var future=days.findIndex(function(d){return d.date>today});
+    if(future>=0)return future;
+    return days.length-1;
+  }
+
+  function render(){
+    var grid=document.getElementById('simpleGrid');
+    var dateEl=document.getElementById('simpleDate');
+    var weekEl=document.getElementById('simpleWeek');
+
+    if(!days.length){
+      grid.innerHTML='<div class="empty">Aucune journée détaillée trouvée dans les fichiers d’emploi du temps.</div>';
+      return;
+    }
+
+    var day=days[currentIndex];
+    dateEl.textContent=day.label;
+    weekEl.textContent=day.weekTitle||'';
+
+    grid.innerHTML='';
+    day.rows.forEach(function(row){
+      if(!Array.isArray(row))return;
+      var time=row[0]||'';
+      var subject=row[1]||'';
+      var activity=plainText(row[2]||'');
+      var kind=row[4]||'';
+
+      var el=document.createElement('article');
+      el.className='simple-row'+(kind==='break' || /récréation|pause/i.test(subject)?' break':'');
+      el.innerHTML=
+        '<div class="simple-time"></div>'+
+        '<div class="simple-subject"></div>'+
+        '<div class="simple-activity"></div>';
+      el.children[0].textContent=time;
+      el.children[1].textContent=subject;
+      el.children[2].textContent=activity;
+      grid.appendChild(el);
+    });
+
+    document.getElementById('prevDayBtn').disabled=currentIndex<=0;
+    document.getElementById('nextDayBtn').disabled=currentIndex>=days.length-1;
+  }
+
+  document.getElementById('prevDayBtn').addEventListener('click',function(){
+    if(currentIndex>0){currentIndex--;render();window.scrollTo({top:0,behavior:'smooth'});}
+  });
+  document.getElementById('nextDayBtn').addEventListener('click',function(){
+    if(currentIndex<days.length-1){currentIndex++;render();window.scrollTo({top:0,behavior:'smooth'});}
+  });
+  document.getElementById('todayBtn').addEventListener('click',function(){
+    currentIndex=nearestIndexToToday();render();
+  });
+
+  currentIndex=nearestIndexToToday();
+  render();
+})();
+</script>
+</body>
+</html>
