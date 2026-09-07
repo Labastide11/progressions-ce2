@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Cahier journal numérique CE2 — Progressions CE2">
+<title>Cahier journal CE2 — Progressions CE2</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+<link href="styles.css?v=35.40" rel="stylesheet">
+<link href="cahier-journal.css?v=36.36" rel="stylesheet">
+<link href="emploi-du-temps.css?v=36.31" rel="stylesheet">
+
+<style>
+  :root { color-scheme: light; }
+  html, body { margin:0; min-height:100%; background:#eef4f7; }
+  body { overflow:auto !important; }
+
+  .site-shell {
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .site-nav {
+    position:sticky;
+    top:0;
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+    padding:10px 16px;
+    background:#173b5c;
+    box-shadow:0 2px 10px rgba(0,0,0,.14);
+  }
+
+  .site-nav__brand {
+    color:#fff;
+    font-weight:900;
+    margin-right:8px;
+    white-space:nowrap;
+  }
+
+  .site-nav a {
+    display:inline-flex;
+    align-items:center;
+    min-height:38px;
+    padding:0 13px;
+    border-radius:10px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:800;
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.18);
+  }
+
+  .site-nav a:hover,
+  .site-nav a.is-active {
+    background:#fff;
+    color:#173b5c;
+  }
+
+  .site-nav__spacer { flex:1 1 auto; }
+
+  .journal-page-main {
+    flex:1 1 auto;
+    width:100%;
+  }
+
+  /* La structure historique de la popup devient une vraie page. */
+  #journalModal.journal-modal {
+    position:static !important;
+    inset:auto !important;
+    display:block !important;
+    width:100% !important;
+    min-height:calc(100vh - 60px) !important;
+    background:transparent !important;
+    padding:0 !important;
+    margin:0 !important;
+    overflow:visible !important;
+  }
+
+  #journalModal .journal-panel {
+    position:static !important;
+    width:100% !important;
+    max-width:none !important;
+    min-height:calc(100vh - 60px) !important;
+    height:auto !important;
+    max-height:none !important;
+    margin:0 !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+    overflow:visible !important;
+  }
+
+  #journalModal .journal-header {
+    position:sticky;
+    top:59px;
+    z-index:90;
+  }
+
+  #journalModal .journal-body {
+    max-height:none !important;
+    overflow:visible !important;
+  }
+
+  #journalModal .journal-close {
+    display:none !important;
+  }
+
+  #openJournalBtn {
+    position:absolute;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    clip:rect(0 0 0 0);
+    white-space:nowrap;
+  }
+
+  @media(max-width:850px){
+    .site-nav { position:static; }
+    #journalModal .journal-header { position:static; }
+    .site-nav__brand { width:100%; }
+  }
+</style>
+</head>
+<body>
+<div class="site-shell">
+
+  <nav class="site-nav" aria-label="Navigation principale">
+    <span class="site-nav__brand">🦉 Progressions CE2</span>
+    <a href="index.html">🏠 Accueil</a>
+    <a href="emploi-du-temps.html?mode=summary">🗓️ Emploi du temps</a>
+    <a class="is-active" href="cahier-journal.html">📘 Cahier journal</a>
+    <a href="index.html?open=students">👥 Ma classe</a>
+    <a href="index.html?open=programme">📋 Programme du jour</a>
+    <span class="site-nav__spacer"></span>
+    <a href="emploi-du-temps.html?mode=day">📅 Emploi du temps du jour</a>
+  </nav>
+
+  <main class="journal-page-main">
+    <button id="openJournalBtn" type="button">Ouvrir le cahier journal</button>
+
+    <section aria-hidden="true" aria-labelledby="journalTitle" class="journal-modal hidden" id="journalModal">
+      <div class="journal-panel" role="main">
+        <header class="journal-header">
+          <div class="journal-header-main">
+            <h2 id="journalTitle">📔 Cahier journal numérique</h2>
+            <span aria-hidden="true" class="journal-header-separator">•</span>
+            <span class="journal-kicker">ÉCOLE LA GRAVETTE · CE2</span>
+            <span aria-hidden="true" class="journal-header-separator">•</span>
+            <p id="journalWeekLabel">Semaine en cours</p>
+          </div>
+          <button aria-label="Retour à l’accueil" class="journal-close" id="closeJournalBtn" type="button">×</button>
+        </header>
+
+        <div class="journal-toolbar journal-toolbar--unified">
+          <nav aria-label="Vues du cahier journal" class="journal-tabs">
+            <button class="journal-tab is-active" data-journal-tab="today" type="button">Aujourd’hui</button>
+            <button class="journal-tab" data-journal-tab="week" type="button">Cette semaine</button>
+            <button class="journal-tab" data-journal-tab="archives" type="button">Archives</button>
+          </nav>
+          <span aria-hidden="true" class="journal-toolbar-separator"></span>
+          <div aria-label="Navigation entre les semaines" class="journal-week-navigation">
+            <button id="journalPreviousWeekBtn" type="button">← Semaine précédente</button>
+            <button id="journalCurrentWeekBtn" type="button">Semaine actuelle</button>
+            <button id="journalNextWeekBtn" type="button">Semaine suivante →</button>
+          </div>
+          <span aria-live="polite" class="journal-status" id="journalStatus"></span>
+        </div>
+
+        <main class="journal-body">
+          <section class="journal-view" id="journalTodayView"></section>
+          <section class="journal-view hidden" id="journalWeekView"></section>
+          <section class="journal-view hidden" id="journalArchivesView"></section>
+        </main>
+
+        <section aria-hidden="true" class="journal-summary hidden" id="journalSummary">
+          <h3>📝 Synthèse de la semaine</h3>
+          <div class="journal-summary-grid">
+            <label>Apprentissages réalisés<textarea id="journalLearned"></textarea></label>
+            <label>Séances reportées<textarea id="journalDeferred"></textarea></label>
+            <label>Points à reprendre<textarea id="journalReview"></textarea></label>
+            <label>Événements particuliers<textarea id="journalEvents"></textarea></label>
+            <label>Absences ou changements d’organisation<textarea id="journalChanges"></textarea></label>
+            <label>À prévoir pour la semaine suivante<textarea id="journalNext"></textarea></label>
+          </div>
+        </section>
+
+        <footer class="journal-actions">
+          <button id="journalCopyBtn" type="button">📋 Copier</button>
+          <button id="journalPrintBtn" type="button">🖨️ Imprimer</button>
+          <button id="journalPdfBtn" type="button">📄 Exporter PDF</button>
+          <button class="journal-archive" id="journalArchiveBtn" type="button">📦 Archiver la semaine</button>
+        </footer>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="cahier-journal-competences.js?v=32.29"></script>
+
+<script src="emploi-du-temps-data-p1.js?v=36.47"></script>
+<script src="emploi-du-temps-data-p2.js?v=36.06"></script>
+<script src="emploi-du-temps-data-p3.js?v=36.06"></script>
+<script src="emploi-du-temps-data-p4.js?v=36.06"></script>
+<script src="emploi-du-temps-data-p5.js?v=36.06"></script>
+<script src="data/calendrier-scolaire-2026-2027.js?v=34.64"></script>
+<script src="evenements-ecole.js?v=35.68"></script>
+<script src="dictees-ce2.js?v=34.94"></script>
+<script src="emploi-du-temps-ui.js?v=36.45"></script>
+
+<script src="cahier-journal.js?v=36.48"></script>
+
+<script>
+/* V36.48 — démarrage automatique du Cahier journal pleine page. */
+(function(){
+  'use strict';
+
+  function start(){
+    window.setTimeout(function(){
+      var btn = document.getElementById('openJournalBtn');
+      if (btn) btn.click();
+    }, 150);
+  }
+
+  document.addEventListener('click', function(e){
+    var close = e.target.closest('#closeJournalBtn');
+    if (!close) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    window.location.href = 'index.html';
+  }, true);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+})();
+</script>
+</body>
+</html>

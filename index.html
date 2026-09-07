@@ -1327,5 +1327,20 @@
 })();
 </script>
 
+
+<script>
+/* V36.48 — Cahier journal détaché de la popup : vraie page HTML. */
+(function(){
+  'use strict';
+  document.addEventListener('click', function(e){
+    var journal = e.target.closest('#openJournalBtn');
+    if (!journal) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    window.location.href = 'cahier-journal.html';
+  }, true);
+})();
+</script>
+
 </body>
 </html>
