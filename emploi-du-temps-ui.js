@@ -84,19 +84,16 @@
           ['16h30–17h','Méthodologie — agenda et cartable','Agenda, cartable et bilan des apprentissages.','Organiser son travail personnel.','common']
         ]],
         ['Mardi 8 septembre 2026',[
-          ['9h–9h15','Copie — méthode et soin','Rituel de copie.','Copier rapidement et avec exactitude.','french'],
-          ['9h15–10h','Lecture — prélever un indice','Trouver un indice dans un texte pour justifier une réponse.','Prélever une information explicite et justifier sa réponse.','french'],
-          ['10h–10h25','Orthographe — dictée de mots','Dictée de mots.','Mémoriser l’orthographe de mots fréquents.','french'],
-          ['10h25–10h45','Production d’écrit — se présenter','Produire trois phrases pour se présenter.','Écrire un texte court cohérent.','french'],
-          ['11h–11h15','Calcul mental — additions et soustractions','Additions et soustractions mentales.','Calculer mentalement en utilisant des procédures adaptées.','maths'],
-          ['11h15–12h','Calcul posé — addition','Réviser l’addition posée.','Poser et calculer une addition avec ou sans retenue.','maths'],
-          ['14h–14h15','Quart d’heure de lecture','Lecture offerte : écouter un nouvel épisode puis donner une impression en une phrase.','Écouter et exprimer une réaction personnelle simple.','french'],
-          ['14h15–14h30','Anglais — saluer et se présenter','Saluer, demander et donner son prénom.','Prendre part à un échange bref et ritualisé.','english'],
-          ['14h30–15h15','Arts plastiques — projet collectif','Finaliser les palettes porte-manteaux et réaliser une affiche collective de rentrée.','Coopérer dans un projet artistique.','arts'],
-          ['15h15–15h45','Méthodologie — défis coopératifs','Défis de rentrée en équipes : lecture de consignes, logique, coopération et découverte des outils.','Choisir un outil adapté et terminer une tâche.','common'],
-          ['16h–16h15','Anglais — réactivation orale','Reprendre les salutations et les prénoms sous forme de jeu rapide.','Réutiliser les formules apprises dans un échange bref.','english'],
-          ['16h15–16h30','Arts — présenter sa production','Présenter l’affiche collective ou une palette et écouter les retours.','Décrire une réalisation et écouter les autres.','arts'],
-          ['16h30–17h','Bilan — rangement et progrès','Classement et bilan individuel.','Ranger et identifier ses progrès.','common']
+          ['9h–9h15','Copie — méthode et soin','Cahier du jour — Copie : posture, soin et copie d’une courte phrase.','ECR-P1-01 · Copier sans erreur.','french'],
+          ['9h15–10h','Lecture à voix haute','Lecture à voix haute : exactitude et respect de la ponctuation.','LEC-P1-01 à 03.','french'],
+          ['10h–10h45','Grammaire — DRAS','Mon cahier d’écrivain — DRAS : reconnaître une phrase et manipuler l’ordre des mots pour produire une phrase correcte.','GRA-P1-01 · Reconnaître une phrase.','french'],
+          ['11h–11h30','Évaluations nationales CE2 — Mathématiques · séance 1','Passation collective. Temps de travail effectif annoncé : 17 minutes.','Repères nationaux de début d’année — mathématiques.','maths'],
+          ['11h30–12h','Mathématiques — Numération','Reprise courte : comparer et ranger des nombres à partir de manipulations simples.','NUM-P1-04 · Comparer deux nombres.','maths'],
+          ['14h–14h15','Quart d’heure de lecture','Lecture autonome + rotation Maître Hibou : Mohamed Z. · Ritej · Sayf · Khadidja. 2 tablettes + 2 PC ; les autres lisent en autonomie.','LIT-P1-01 · Entrer dans son parcours de lecteur.','french'],
+          ['14h15–14h45','Éducation musicale — chant','Chant : pratique vocale collective, écoute des autres et installation d’un répertoire commun de classe.','MUS-ANN-01 · Chanter avec justesse et expressivité ; MUS-ANN-02 · Écouter et tenir sa place dans une production collective.','arts'],
+          ['14h45–15h45','Arts visuels — Romero Britto','Observer et analyser une œuvre de Romero Britto : couleurs vives, contours marqués, zones et motifs ; compléter la fiche puis réaliser un court réinvestissement graphique.','ART-ANN-01 · Observer et décrire une œuvre ; ART-ANN-02 · Repérer des choix plastiques ; ART-ANN-03 · Expérimenter formes, couleurs et motifs.','arts'],
+          ['15h45–16h','Récréation','Récréation de l’après-midi.','','break'],
+          ['16h–17h','Révisions Français / Mathématiques','Fiche de révision sur des notions déjà travaillées en français et en mathématiques ; aucun nouvel apprentissage.','Réinvestissement des compétences déjà travaillées en français et en mathématiques.','maths']
         ]],
         ['Jeudi 10 septembre 2026',[
           ['9h–9h15','Oral — chercher et justifier','Devinette : chercher et justifier.','Formuler une hypothèse et argumenter brièvement.','french'],
@@ -2086,58 +2083,13 @@
     // rester dans les emplois du temps détaillés et ne jamais retomber
     // automatiquement sur la vue synthétique.
     let periodNavigationMode='summary';
-
-    // V36.46 — à l'ouverture d'un emploi du temps détaillé,
-    // sélectionner la semaine qui contient la date du jour.
-    // Si la date n'appartient pas à la période demandée, conserver S1.
-    const frenchMonthIndex_={
-      janvier:0,fevrier:1,'février':1,mars:2,avril:3,mai:4,juin:5,
-      juillet:6,aout:7,'août':7,septembre:8,octobre:9,novembre:10,
-      decembre:11,'décembre':11
-    };
-    const dateFromDetailedDayLabel_=(label)=>{
-      const cleaned=String(label||'').replace(/1er/i,'1');
-      const m=cleaned.match(/(?:Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi|Dimanche)\s+(\d{1,2})\s+([A-Za-zÀ-ÿ]+)\s+(\d{4})/i);
-      if(!m)return null;
-      const month=frenchMonthIndex_[m[2].toLowerCase()];
-      if(month===undefined)return null;
-      const d=new Date(Number(m[3]),month,Number(m[1]),12,0,0,0);
-      return Number.isNaN(d.getTime())?null:d;
-    };
-    const currentDetailedWeekNumber_=(weeks,today=new Date())=>{
-      if(!Array.isArray(weeks)||!weeks.length)return 1;
-      const target=new Date(today.getFullYear(),today.getMonth(),today.getDate(),12,0,0,0).getTime();
-      const index=weeks.findIndex(week=>{
-        if(!week||!Array.isArray(week.days)||!week.days.length)return false;
-        const dates=week.days.map(day=>dateFromDetailedDayLabel_(day&&day[0])).filter(Boolean);
-        if(!dates.length)return false;
-        const times=dates.map(d=>d.getTime());
-        return target>=Math.min(...times)&&target<=Math.max(...times);
-      });
-      return index>=0?index+1:1;
-    };
-    const currentRentreeKey_=()=>{
-      const entries=Object.entries(detailedWeeks||{});
-      const target=new Date();
-      target.setHours(12,0,0,0);
-      const found=entries.find(([,week])=>{
-        if(!week||!Array.isArray(week.days)||!week.days.length)return false;
-        const dates=week.days.map(day=>dateFromDetailedDayLabel_(day&&day[0])).filter(Boolean);
-        if(!dates.length)return false;
-        const times=dates.map(d=>d.getTime());
-        const t=target.getTime();
-        return t>=Math.min(...times)&&t<=Math.max(...times);
-      });
-      return found?found[0]:'rentree1';
-    };
-
     const renderDetailedPeriod=(period)=>{
-      if(period==='rentree') renderDetailedWeek(currentRentreeKey_());
-      else if(period==='p1') renderP1Week(currentDetailedWeekNumber_(p1DetailedWeeks));
-      else if(period==='p2') renderP2Week(currentDetailedWeekNumber_(p2DetailedWeeks));
-      else if(period==='p3') renderP3Week(currentDetailedWeekNumber_(p3DetailedWeeks));
-      else if(period==='p4') renderLaterPeriodWeek('p4',currentDetailedWeekNumber_(p4DetailedWeeks));
-      else if(period==='p5') renderLaterPeriodWeek('p5',currentDetailedWeekNumber_(p5DetailedWeeks));
+      if(period==='rentree') renderDetailedWeek('rentree1');
+      else if(period==='p1') renderP1Week(1);
+      else if(period==='p2') renderP2Week(1);
+      else if(period==='p3') renderP3Week(1);
+      else if(period==='p4') renderLaterPeriodWeek('p4',1);
+      else if(period==='p5') renderLaterPeriodWeek('p5',1);
       else render(period);
     };
     const renderPeriodNavigation=(period)=>{
@@ -2190,7 +2142,7 @@
       const detail=e.target.closest('[data-open-detail]');
       if(detail){renderDetailedWeek(detail.dataset.openDetail);content.scrollTop=0;return;}
       const hub=e.target.closest('[data-open-detail-hub]');
-      if(hub){renderDetailedPeriod(hub.dataset.openDetailHub||'p1');content.scrollTop=0;return;}
+      if(hub){hub.dataset.openDetailHub==='rentree'?renderDetailedWeek('rentree1'):hub.dataset.openDetailHub==='p1'?renderP1Week(1):hub.dataset.openDetailHub==='p2'?renderP2Week(1):hub.dataset.openDetailHub==='p3'?renderP3Week(1):hub.dataset.openDetailHub==='p4'?renderLaterPeriodWeek('p4',1):renderLaterPeriodWeek('p5',1);content.scrollTop=0;return;}
       const p1week=e.target.closest('[data-open-p1-week]');
       if(p1week){renderP1Week(Number(p1week.dataset.openP1Week));content.scrollTop=0;return;} const p2week=e.target.closest('[data-open-p2-week]'); if(p2week){renderP2Week(Number(p2week.dataset.openP2Week));content.scrollTop=0;return;} const p3week=e.target.closest('[data-open-p3-week]'); if(p3week){renderP3Week(Number(p3week.dataset.openP3Week));content.scrollTop=0;return;} const p4week=e.target.closest('[data-open-p4-week]'); if(p4week){renderLaterPeriodWeek('p4',Number(p4week.dataset.openP4Week));content.scrollTop=0;return;} const p5week=e.target.closest('[data-open-p5-week]'); if(p5week){renderLaterPeriodWeek('p5',Number(p5week.dataset.openP5Week));content.scrollTop=0;return;}
       if(e.target.closest('[data-back-summary]')){const active=tabs.querySelector('.is-active');periodNavigationMode='summary';tabs.style.display='';render(active?active.dataset.period:'rentree');content.scrollTop=0;}
