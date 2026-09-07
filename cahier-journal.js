@@ -86,6 +86,28 @@ const SESSION_META_PREFS_KEY='progressions_ce2_cahier_session_meta_v1';
 let monday=startOfWeek(new Date()), sessions=[], remoteSessions=[], active='today';
 const PRE_RENTREE_DATE='2026-08-31';
 const SCHOOL_YEAR_START_DATE='2026-09-01';
+const JOURNAL_DAY_NOTICES={
+  '2026-09-07':{
+    title:'Journée modifiée par rapport à l’emploi du temps prévu',
+    text:'Les évaluations nationales ont occupé une grande partie de la matinée. Plusieurs séances prévues ont donc été déplacées, remplacées ou reportées. L’après-midi a également été adapté avec un temps de dessin, une séance d’Histoire, la découverte du dojo et un temps de méthodologie autour des devoirs et de l’Espace Parents.'
+  }
+};
+const JOURNAL_DAY_OVERRIDES={
+  '2026-09-07':[
+    {horaire:'9h–9h15',domaine:'Français',domaineActivite:'Quoi de neuf ?',activite:'Quoi de neuf ?',seance:'Oral structuré : écouter les camarades, prendre la parole puis reformuler une information donnée par un camarade.',statut:'Réalisée'},
+    {horaire:'9h15–9h45',domaine:'Vie de classe',domaineActivite:'Métiers de la classe',activite:'Métiers de la classe',seance:'Présentation des responsabilités, fonctionnement sur une semaine et utilisation des cartes avec la photo des élèves pour attribuer les métiers.',statut:'Réalisée'},
+    {horaire:'9h45–10h45',domaine:'Français',domaineActivite:'Évaluations nationales CE2',activite:'Évaluations nationales CE2',seance:'Passation des évaluations nationales CE2 pendant la seconde partie de la matinée.',statut:'Réalisée'},
+    {horaire:'10h45–11h',domaine:'Récréation',domaineActivite:'Récréation',activite:'Récréation',seance:'',statut:''},
+    {horaire:'11h–12h',domaine:'Mathématiques',domaineActivite:'Évaluations nationales CE2',activite:'Évaluations nationales CE2',seance:'Reprise et poursuite des évaluations nationales CE2 jusqu’à 12h.',statut:'Réalisée'},
+    {horaire:'12h–14h',domaine:'Pause méridienne',domaineActivite:'Pause méridienne',activite:'Pause méridienne',seance:'',statut:''},
+    {horaire:'14h–14h15',domaine:'Arts',domaineActivite:'Quart d’heure de dessin',activite:'Quart d’heure de dessin',seance:'Temps calme de dessin libre pour permettre aux élèves de décompresser après les évaluations de la matinée.',statut:'Réalisée'},
+    {horaire:'14h15–15h',domaine:'Histoire-Géographie',domaineActivite:'Histoire',activite:'Histoire',seance:'Découvrir la frise chronologique et distinguer passé / présent.',statut:'Réalisée'},
+    {horaire:'15h–15h45',domaine:'EPS',domaineActivite:'EPS — découverte du dojo',activite:'EPS — découverte du dojo',seance:'Découverte du dojo de l’école : règles de fonctionnement et de sécurité, puis activité motrice sur le tatami.',statut:'Réalisée'},
+    {horaire:'15h45–16h',domaine:'Récréation',domaineActivite:'Récréation',activite:'Récréation',seance:'',statut:''},
+    {horaire:'16h–17h',domaine:'Vie de classe',domaineActivite:'Méthodologie / devoirs',activite:'Méthodologie / devoirs',seance:'Où faire ses devoirs ? Avec quoi ? Comment s’organiser ? Présentation et explication de l’Espace Parents.',statut:'Réalisée'}
+  ]
+};
+
 function iso(d){return new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10)}
 function startOfWeek(d){const x=new Date(d);x.setHours(12,0,0,0);const day=x.getDay()||7;x.setDate(x.getDate()-day+1);return x}
 function addDays(d,n){const x=new Date(d);x.setDate(x.getDate()+n);return x}
@@ -135,6 +157,18 @@ function periodForDate(date){
   return 'p5';
 }
 function timetableDaySessions(date){
+  const override=JOURNAL_DAY_OVERRIDES[date];
+  if(Array.isArray(override)){
+    return override.map((item,index)=>({
+      date,
+      ...item,
+      objectifMaitre:'',
+      competenceEleve:'',
+      remarque:'',
+      ordre:index+1,
+      source:'journal-override'
+    }));
+  }
   const specialLabel=specialDayLabel(date);
   if(specialLabel){
     return [{
@@ -467,8 +501,11 @@ function compactSessionHtml(s){
 }
 function compactDayHtml(date,list){
   const rows=list.slice().sort((a,b)=>(a.ordre||0)-(b.ordre||0));
+  const notice=JOURNAL_DAY_NOTICES[date];
+  const noticeHtml=notice?`<div class="journal-day-change-notice" style="margin:10px 14px 12px;padding:11px 14px;border:1px solid #f2c36b;border-radius:12px;background:#fff8e8;color:#6f4b00;line-height:1.35"><strong style="display:block;margin-bottom:4px">⚠️ ${esc(notice.title)}</strong><span>${esc(notice.text)}</span></div>`:'';
   return `<article class="journal-day journal-day--compact ${dayClass(date)}">
     <header><h3>📅 ${frDate(date)}</h3></header>
+    ${noticeHtml}
     <div class="journal-compact-headings"><span>Horaire</span><span>Domaine / activité</span><span>Séance</span><span>Statut</span></div>
     <div class="journal-sessions">${rows.length?rows.map(compactSessionHtml).join(''):'<div class="journal-empty">Aucune séance</div>'}</div>
     <label class="journal-day-remark"><span>📝 Remarque de la journée</span><textarea class="journal-day-remark-input" data-date="${esc(date)}" placeholder="Une remarque générale pour la journée…">${esc(dayRemark(date))}</textarea></label>
