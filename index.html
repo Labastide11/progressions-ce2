@@ -1280,5 +1280,52 @@
 <script src="parent-flash-info.js?v=35.38"></script>
 <script src="questions-eleves.js?v=34.82"></script>
 <script src="rappels-evenements.js?v=35.68"></script>
+
+<script>
+/* V36.47 — Emploi du temps détaché de la popup : navigation vers une vraie page HTML. */
+(function(){
+  'use strict';
+
+  document.addEventListener('click', function(e){
+    var periodBtn = e.target.closest('[data-open-summary-period]');
+    if (periodBtn) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      var p = periodBtn.getAttribute('data-open-summary-period') || 'p1';
+      window.location.href = 'emploi-du-temps.html?mode=period&period=' + encodeURIComponent(p);
+      return;
+    }
+
+    var summary = e.target.closest('#openTimetableSummaryBtn');
+    if (summary) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      window.location.href = 'emploi-du-temps.html?mode=summary';
+      return;
+    }
+
+    var daily = e.target.closest('#openTimetableDetailBtn,[data-home-action="detail-timetable"]');
+    if (daily) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      window.location.href = 'emploi-du-temps.html?mode=day';
+      return;
+    }
+  }, true);
+
+  /* Liens internes depuis les vraies pages du site. */
+  window.addEventListener('DOMContentLoaded', function(){
+    var params = new URLSearchParams(window.location.search);
+    var open = params.get('open');
+    if (!open) return;
+    var target = null;
+    if (open === 'journal') target = document.getElementById('openJournalBtn');
+    else if (open === 'students') target = document.getElementById('openStudentListBtn');
+    else if (open === 'programme') target = document.getElementById('openDailyProgramQuickBtn');
+    if (target) window.setTimeout(function(){ target.click(); }, 80);
+  });
+})();
+</script>
+
 </body>
 </html>

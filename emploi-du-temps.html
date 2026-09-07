@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Emploi du temps CE2 — Progressions CE2">
+<title>Emploi du temps CE2 — Progressions CE2</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+<link href="styles.css?v=35.40" rel="stylesheet">
+<link href="emploi-du-temps.css?v=36.31" rel="stylesheet">
+<link href="parcours-eleve.css?v=31.73" rel="stylesheet">
+<link href="parcours-outil.css?v=32.84" rel="stylesheet">
+
+<style>
+  :root { color-scheme: light; }
+  html, body { margin:0; min-height:100%; background:#eef4f7; }
+  body { overflow:auto !important; }
+
+  .site-shell {
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .site-nav {
+    position:sticky;
+    top:0;
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+    padding:10px 16px;
+    background:#173b5c;
+    box-shadow:0 2px 10px rgba(0,0,0,.14);
+  }
+
+  .site-nav__brand {
+    color:#fff;
+    font-weight:900;
+    margin-right:8px;
+    white-space:nowrap;
+  }
+
+  .site-nav a {
+    display:inline-flex;
+    align-items:center;
+    min-height:38px;
+    padding:0 13px;
+    border-radius:10px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:800;
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.18);
+  }
+
+  .site-nav a:hover,
+  .site-nav a.is-active {
+    background:#fff;
+    color:#173b5c;
+  }
+
+  .site-nav__spacer { flex:1 1 auto; }
+
+  .edt-page-actions {
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+  }
+
+  .edt-main {
+    flex:1 1 auto;
+    width:100%;
+  }
+
+  /* La structure historique de la popup devient ici une vraie page. */
+  #timetableModal.timetable-modal {
+    position:static !important;
+    inset:auto !important;
+    width:100% !important;
+    height:auto !important;
+    min-height:calc(100vh - 60px) !important;
+    display:block !important;
+    background:transparent !important;
+    padding:0 !important;
+    margin:0 !important;
+    overflow:visible !important;
+  }
+
+  #timetableModal .timetable-panel {
+    position:static !important;
+    width:100% !important;
+    max-width:none !important;
+    min-height:calc(100vh - 60px) !important;
+    height:auto !important;
+    max-height:none !important;
+    margin:0 !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+    overflow:visible !important;
+  }
+
+  #timetableModal .timetable-header {
+    position:sticky;
+    top:59px;
+    z-index:90;
+  }
+
+  #timetableModal .timetable-content {
+    max-height:none !important;
+    height:auto !important;
+    overflow:visible !important;
+    padding-bottom:40px;
+  }
+
+  #timetableModal .timetable-close {
+    display:none !important;
+  }
+
+  .edt-hidden-triggers {
+    position:absolute;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    clip:rect(0 0 0 0);
+    white-space:nowrap;
+  }
+
+  @media(max-width:850px){
+    .site-nav { position:static; }
+    #timetableModal .timetable-header { position:static; }
+    .site-nav__brand { width:100%; }
+  }
+</style>
+</head>
+<body>
+<div class="site-shell">
+
+  <nav class="site-nav" aria-label="Navigation principale">
+    <span class="site-nav__brand">🦉 Progressions CE2</span>
+    <a href="index.html">🏠 Accueil</a>
+    <a class="is-active" href="emploi-du-temps.html?mode=summary">🗓️ Emploi du temps</a>
+    <a href="index.html?open=journal">📘 Cahier journal</a>
+    <a href="index.html?open=students">👥 Ma classe</a>
+    <a href="index.html?open=programme">📋 Programme du jour</a>
+    <span class="site-nav__spacer"></span>
+    <div class="edt-page-actions" aria-label="Accès directs à l'emploi du temps">
+      <a href="emploi-du-temps.html?mode=day">Aujourd’hui</a>
+      <a href="emploi-du-temps.html?mode=period&period=p1">P1</a>
+      <a href="emploi-du-temps.html?mode=period&period=p2">P2</a>
+      <a href="emploi-du-temps.html?mode=period&period=p3">P3</a>
+      <a href="emploi-du-temps.html?mode=period&period=p4">P4</a>
+      <a href="emploi-du-temps.html?mode=period&period=p5">P5</a>
+    </div>
+  </nav>
+
+  <main class="edt-main">
+    <section aria-hidden="true" aria-labelledby="timetableTitle" class="timetable-modal hidden" id="timetableModal">
+      <div class="timetable-panel" role="main">
+        <header class="timetable-header">
+          <div>
+            <p class="eyebrow">ORGANISATION ANNUELLE 2026-2027</p>
+            <h2 id="timetableTitle">Emploi du temps CE2</h2>
+            <p>5 périodes coordonnées, volumes annualisés et créneaux CHAM protégés.</p>
+          </div>
+          <div class="timetable-header__actions">
+            <button class="timetable-project" id="projectTimetableBtn" type="button">📽️ Projeter cette vue</button>
+            <button aria-label="Retour à l’accueil" class="timetable-close" id="closeTimetableBtn" type="button">×</button>
+          </div>
+        </header>
+        <nav aria-label="Choisir une période" class="timetable-tabs" id="timetableTabs"></nav>
+        <div class="timetable-content" id="timetableContent"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="edt-hidden-triggers" aria-hidden="true">
+    <button id="openTimetableSummaryBtn" type="button">Résumé</button>
+    <button id="openTimetableDetailBtn" type="button">Jour</button>
+    <button data-open-summary-period="rentree" type="button">Rentrée</button>
+    <button data-open-summary-period="p1" type="button">P1</button>
+    <button data-open-summary-period="p2" type="button">P2</button>
+    <button data-open-summary-period="p3" type="button">P3</button>
+    <button data-open-summary-period="p4" type="button">P4</button>
+    <button data-open-summary-period="p5" type="button">P5</button>
+  </div>
+</div>
+
+<script src="data.js?v=34.38"></script>
+<script src="parcours-eleve-data.js?v=34.38"></script>
+<script src="parcours-eleve.js?v=31.73"></script>
+<script src="parcours-outil.js?v=35.39"></script>
+
+<script src="emploi-du-temps-data-p1.js?v=36.47"></script>
+<script src="emploi-du-temps-data-p2.js?v=36.06"></script>
+<script src="emploi-du-temps-data-p3.js?v=36.06"></script>
+<script src="emploi-du-temps-data-p4.js?v=36.06"></script>
+<script src="emploi-du-temps-data-p5.js?v=36.06"></script>
+<script src="data/calendrier-scolaire-2026-2027.js?v=34.64"></script>
+<script src="evenements-ecole.js?v=35.68"></script>
+<script src="dictees-ce2.js?v=34.94"></script>
+<script src="emploi-du-temps-ui.js?v=36.45"></script>
+<script src="emploi-du-temps-current-week.js?v=36.46"></script>
+
+<script>
+/* V36.47 — démarrage de la vraie page emploi du temps selon l'URL. */
+(function(){
+  'use strict';
+
+  function start(){
+    var params = new URLSearchParams(window.location.search);
+    var mode = params.get('mode') || 'period';
+    var period = (params.get('period') || 'p1').toLowerCase();
+
+    window.setTimeout(function(){
+      if (mode === 'day') {
+        var dayBtn = document.getElementById('openTimetableDetailBtn');
+        if (dayBtn) dayBtn.click();
+        return;
+      }
+
+      if (mode === 'summary') {
+        var summaryBtn = document.getElementById('openTimetableSummaryBtn');
+        if (summaryBtn) summaryBtn.click();
+        return;
+      }
+
+      var periodBtn = document.querySelector('[data-open-summary-period="' + period + '"]');
+      if (!periodBtn) periodBtn = document.querySelector('[data-open-summary-period="p1"]');
+      if (periodBtn) periodBtn.click();
+    }, 120);
+  }
+
+  document.addEventListener('click', function(e){
+    var close = e.target.closest('#closeTimetableBtn');
+    if (close) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      window.location.href = 'index.html';
+    }
+  }, true);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+})();
+</script>
+</body>
+</html>
