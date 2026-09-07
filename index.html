@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période." name="description"/>
-<title>V36.45 — Progressions CE2 — Ma classe au quotidien</title>
+<title>V36.46 — Progressions CE2 — Ma classe au quotidien</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
 <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet"/>
@@ -1237,6 +1237,134 @@
 <script src="evenements-ecole.js?v=35.68"></script>
 <script src="dictees-ce2.js?v=34.94"></script>
 <script src="emploi-du-temps-ui.js?v=36.45"></script>
+<script>
+/* V36.46 — Emploi du temps détaillé : ouverture automatique sur la semaine en cours.
+   L'auto-positionnement ne se fait qu'à l'ouverture du panneau : la navigation
+   manuelle S1, S2, S3... reste ensuite entièrement libre. */
+(function () {
+  "use strict";
+
+  const MONTHS = {
+    "janv":0, "janvier":0,
+    "fevr":1, "fevrier":1, "févr":1, "février":1,
+    "mars":2,
+    "avr":3, "avril":3,
+    "mai":4,
+    "juin":5,
+    "juil":6, "juillet":6,
+    "aout":7, "août":7,
+    "sept":8, "septembre":8,
+    "oct":9, "octobre":9,
+    "nov":10, "novembre":10,
+    "dec":11, "decembre":11, "déc":11, "décembre":11
+  };
+
+  function cleanMonth(value) {
+    return (value || "")
+      .toLowerCase()
+      .replace(/\./g, "")
+      .trim();
+  }
+
+  function parseWeekRange(label, referenceYear) {
+    const normalized = (label || "")
+      .replace(/\u00a0/g, " ")
+      .replace(/[—−]/g, "–");
+
+    /* Exemples acceptés :
+       S2 · 7–11 sept.
+       S5 · 28 sept.–2 oct.
+    */
+    const match = normalized.match(
+      /S\d+\s*[·:–-]\s*(\d{1,2})(?:\s+([A-Za-zÀ-ÿ.]+))?\s*–\s*(\d{1,2})\s+([A-Za-zÀ-ÿ.]+)/i
+    );
+    if (!match) return null;
+
+    const startDay = Number(match[1]);
+    const endDay = Number(match[3]);
+    const endMonth = MONTHS[cleanMonth(match[4])];
+    if (endMonth === undefined) return null;
+
+    let startMonth = match[2] ? MONTHS[cleanMonth(match[2])] : endMonth;
+    if (startMonth === undefined) return null;
+
+    /* "28–2 oct." : si le mois de départ est omis et que le jour de départ
+       est supérieur au jour de fin, le départ appartient au mois précédent. */
+    if (!match[2] && startDay > endDay) {
+      startMonth = (endMonth + 11) % 12;
+    }
+
+    let startYear = referenceYear;
+    let endYear = referenceYear;
+
+    /* Gestion du passage décembre -> janvier si nécessaire. */
+    if (startMonth === 11 && endMonth === 0) {
+      startYear = referenceYear - 1;
+    }
+
+    const start = new Date(startYear, startMonth, startDay, 0, 0, 0, 0);
+    const end = new Date(endYear, endMonth, endDay, 23, 59, 59, 999);
+    return { start, end };
+  }
+
+  function isTodayInside(range, today) {
+    return range && today >= range.start && today <= range.end;
+  }
+
+  function nextPaint() {
+    return new Promise(resolve =>
+      requestAnimationFrame(() => requestAnimationFrame(resolve))
+    );
+  }
+
+  async function selectCurrentWeek() {
+    const modal = document.getElementById("timetableModal");
+    const tabs = document.getElementById("timetableTabs");
+    const content = document.getElementById("timetableContent");
+    if (!modal || !tabs || !content || modal.classList.contains("hidden")) return;
+
+    const today = new Date();
+    today.setHours(12, 0, 0, 0);
+
+    const periodButtons = Array.from(tabs.querySelectorAll("button"));
+    if (!periodButtons.length) return;
+
+    /* On parcourt les périodes jusqu'à trouver la semaine contenant aujourd'hui. */
+    for (const periodButton of periodButtons) {
+      periodButton.click();
+      await nextPaint();
+
+      const weekButtons = Array.from(content.querySelectorAll("button"))
+        .filter(btn => /^S\d+\b/i.test((btn.textContent || "").trim()));
+
+      for (const weekButton of weekButtons) {
+        const range = parseWeekRange(weekButton.textContent, today.getFullYear());
+        if (isTodayInside(range, today)) {
+          weekButton.click();
+          return;
+        }
+      }
+    }
+  }
+
+  const modal = document.getElementById("timetableModal");
+  if (!modal) return;
+
+  let wasHidden = modal.classList.contains("hidden");
+
+  const observer = new MutationObserver(function () {
+    const isHidden = modal.classList.contains("hidden");
+
+    /* Déclenchement uniquement lors du passage fermé -> ouvert. */
+    if (wasHidden && !isHidden) {
+      setTimeout(selectCurrentWeek, 0);
+    }
+    wasHidden = isHidden;
+  });
+
+  observer.observe(modal, { attributes: true, attributeFilter: ["class"] });
+})();
+</script>
 <script src="programme-du-jour.js?v=35.83"></script>
 <script src="accompagnements.js?v=34.47"></script>
 <div aria-hidden="true" aria-labelledby="feliciterTitle" aria-modal="true" class="feliciter-modal hidden" id="feliciterModal" role="dialog">
