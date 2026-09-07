@@ -2086,13 +2086,58 @@
     // rester dans les emplois du temps détaillés et ne jamais retomber
     // automatiquement sur la vue synthétique.
     let periodNavigationMode='summary';
+
+    // V36.46 — à l'ouverture d'un emploi du temps détaillé,
+    // sélectionner la semaine qui contient la date du jour.
+    // Si la date n'appartient pas à la période demandée, conserver S1.
+    const frenchMonthIndex_={
+      janvier:0,fevrier:1,'février':1,mars:2,avril:3,mai:4,juin:5,
+      juillet:6,aout:7,'août':7,septembre:8,octobre:9,novembre:10,
+      decembre:11,'décembre':11
+    };
+    const dateFromDetailedDayLabel_=(label)=>{
+      const cleaned=String(label||'').replace(/1er/i,'1');
+      const m=cleaned.match(/(?:Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi|Dimanche)\s+(\d{1,2})\s+([A-Za-zÀ-ÿ]+)\s+(\d{4})/i);
+      if(!m)return null;
+      const month=frenchMonthIndex_[m[2].toLowerCase()];
+      if(month===undefined)return null;
+      const d=new Date(Number(m[3]),month,Number(m[1]),12,0,0,0);
+      return Number.isNaN(d.getTime())?null:d;
+    };
+    const currentDetailedWeekNumber_=(weeks,today=new Date())=>{
+      if(!Array.isArray(weeks)||!weeks.length)return 1;
+      const target=new Date(today.getFullYear(),today.getMonth(),today.getDate(),12,0,0,0).getTime();
+      const index=weeks.findIndex(week=>{
+        if(!week||!Array.isArray(week.days)||!week.days.length)return false;
+        const dates=week.days.map(day=>dateFromDetailedDayLabel_(day&&day[0])).filter(Boolean);
+        if(!dates.length)return false;
+        const times=dates.map(d=>d.getTime());
+        return target>=Math.min(...times)&&target<=Math.max(...times);
+      });
+      return index>=0?index+1:1;
+    };
+    const currentRentreeKey_=()=>{
+      const entries=Object.entries(detailedWeeks||{});
+      const target=new Date();
+      target.setHours(12,0,0,0);
+      const found=entries.find(([,week])=>{
+        if(!week||!Array.isArray(week.days)||!week.days.length)return false;
+        const dates=week.days.map(day=>dateFromDetailedDayLabel_(day&&day[0])).filter(Boolean);
+        if(!dates.length)return false;
+        const times=dates.map(d=>d.getTime());
+        const t=target.getTime();
+        return t>=Math.min(...times)&&t<=Math.max(...times);
+      });
+      return found?found[0]:'rentree1';
+    };
+
     const renderDetailedPeriod=(period)=>{
-      if(period==='rentree') renderDetailedWeek('rentree1');
-      else if(period==='p1') renderP1Week(1);
-      else if(period==='p2') renderP2Week(1);
-      else if(period==='p3') renderP3Week(1);
-      else if(period==='p4') renderLaterPeriodWeek('p4',1);
-      else if(period==='p5') renderLaterPeriodWeek('p5',1);
+      if(period==='rentree') renderDetailedWeek(currentRentreeKey_());
+      else if(period==='p1') renderP1Week(currentDetailedWeekNumber_(p1DetailedWeeks));
+      else if(period==='p2') renderP2Week(currentDetailedWeekNumber_(p2DetailedWeeks));
+      else if(period==='p3') renderP3Week(currentDetailedWeekNumber_(p3DetailedWeeks));
+      else if(period==='p4') renderLaterPeriodWeek('p4',currentDetailedWeekNumber_(p4DetailedWeeks));
+      else if(period==='p5') renderLaterPeriodWeek('p5',currentDetailedWeekNumber_(p5DetailedWeeks));
       else render(period);
     };
     const renderPeriodNavigation=(period)=>{
@@ -2145,7 +2190,7 @@
       const detail=e.target.closest('[data-open-detail]');
       if(detail){renderDetailedWeek(detail.dataset.openDetail);content.scrollTop=0;return;}
       const hub=e.target.closest('[data-open-detail-hub]');
-      if(hub){hub.dataset.openDetailHub==='rentree'?renderDetailedWeek('rentree1'):hub.dataset.openDetailHub==='p1'?renderP1Week(1):hub.dataset.openDetailHub==='p2'?renderP2Week(1):hub.dataset.openDetailHub==='p3'?renderP3Week(1):hub.dataset.openDetailHub==='p4'?renderLaterPeriodWeek('p4',1):renderLaterPeriodWeek('p5',1);content.scrollTop=0;return;}
+      if(hub){renderDetailedPeriod(hub.dataset.openDetailHub||'p1');content.scrollTop=0;return;}
       const p1week=e.target.closest('[data-open-p1-week]');
       if(p1week){renderP1Week(Number(p1week.dataset.openP1Week));content.scrollTop=0;return;} const p2week=e.target.closest('[data-open-p2-week]'); if(p2week){renderP2Week(Number(p2week.dataset.openP2Week));content.scrollTop=0;return;} const p3week=e.target.closest('[data-open-p3-week]'); if(p3week){renderP3Week(Number(p3week.dataset.openP3Week));content.scrollTop=0;return;} const p4week=e.target.closest('[data-open-p4-week]'); if(p4week){renderLaterPeriodWeek('p4',Number(p4week.dataset.openP4Week));content.scrollTop=0;return;} const p5week=e.target.closest('[data-open-p5-week]'); if(p5week){renderLaterPeriodWeek('p5',Number(p5week.dataset.openP5Week));content.scrollTop=0;return;}
       if(e.target.closest('[data-back-summary]')){const active=tabs.querySelector('.is-active');periodNavigationMode='summary';tabs.style.display='';render(active?active.dataset.period:'rentree');content.scrollTop=0;}
