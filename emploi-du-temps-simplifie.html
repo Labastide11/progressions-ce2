@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>V36.49 — Emploi du temps simplifié CE2</title>
+<title>V36.51 — Emploi du temps simplifié CE2</title>
 
 <link href="styles.css?v=35.40" rel="stylesheet">
 <link href="emploi-du-temps.css?v=36.31" rel="stylesheet">
@@ -63,6 +63,36 @@
     color:#607789;box-shadow:0 5px 18px rgba(23,59,92,.08)
   }
   .simple-foot{margin-top:16px;color:#607789;font-size:14px;text-align:right}
+
+  /* V36.51 — codes couleurs + pictogrammes de matières rétablis */
+  .simple-row{position:relative;border-left:8px solid var(--subject-color,#9fb3c3)}
+  .simple-subject{gap:12px}
+  .subject-picto{
+    flex:0 0 42px;width:42px;height:42px;border-radius:12px;
+    display:inline-flex;align-items:center;justify-content:center;
+    font-size:26px;background:var(--subject-soft,#eef4f8);
+    border:1px solid color-mix(in srgb,var(--subject-color,#9fb3c3) 35%, white);
+  }
+  .subject-label{min-width:0}
+  .simple-row.french{--subject-color:#e45772;--subject-soft:#fff0f4}
+  .simple-row.maths{--subject-color:#4386d8;--subject-soft:#eef6ff}
+  .simple-row.english{--subject-color:#2aa7a1;--subject-soft:#e9fbf8}
+  .simple-row.eps{--subject-color:#55a85c;--subject-soft:#eef9ef}
+  .simple-row.arts{--subject-color:#9a6bd4;--subject-soft:#f6efff}
+  .simple-row.history{--subject-color:#d68a3a;--subject-soft:#fff5e9}
+  .simple-row.science{--subject-color:#25a1a8;--subject-soft:#eaf9fa}
+  .simple-row.emc{--subject-color:#e4ae2e;--subject-soft:#fff8df}
+  .simple-row.break{--subject-color:#8fbd4a;--subject-soft:#f3f9e8}
+  .simple-row.common{--subject-color:#75879b;--subject-soft:#f1f4f7}
+
+  .simple-row .simple-time{background:var(--subject-soft,#eef4f8)}
+  .simple-row .simple-subject{background:#fff}
+  .simple-row .simple-activity{background:#fff}
+
+  .simple-row.break .simple-time,
+  .simple-row.break .simple-subject,
+  .simple-row.break .simple-activity{background:var(--subject-soft,#f3f9e8)}
+  .simple-row.break .simple-subject{color:#526f22}
 
   @media(max-width:800px){
     .site-nav{position:static}.site-nav__brand{width:100%}
@@ -214,16 +244,44 @@
       var time=row[0]||'';
       var subject=row[1]||'';
       var activity=plainText(row[2]||'');
-      var kind=row[4]||'';
+      var kind=row[4]||'common';
+
+      function pictoFor(subject,kind){
+        var s=String(subject||'').toLowerCase();
+        if(/récréation|pause/.test(s) || kind==='break') return '🛝';
+        if(/évaluation/.test(s)) return '📝';
+        if(/lecture|fluence|quart d.?heure de lecture/.test(s)) return '📖';
+        if(/dictée|orthographe/.test(s)) return '✍️';
+        if(/production d.?écrits|écrivain|copie/.test(s)) return '🖊️';
+        if(/calcul mental/.test(s)) return '🧠';
+        if(/géométr/.test(s)) return '📐';
+        if(/numération|nombres/.test(s)) return '🔢';
+        if(/problème/.test(s)) return '🧩';
+        if(/math/.test(s) || kind==='maths') return '➗';
+        if(/anglais/.test(s) || kind==='english') return '🇬🇧';
+        if(/eps|sport|dojo/.test(s) || kind==='eps') return '🏃';
+        if(/musique|chant/.test(s)) return '🎵';
+        if(/arts|dessin/.test(s) || kind==='arts') return '🎨';
+        if(/science/.test(s) || kind==='science') return '🔬';
+        if(/géographie/.test(s)) return '🌍';
+        if(/histoire/.test(s) || kind==='history') return '⏳';
+        if(/emc|vie de classe|conseil|méthodologie/.test(s) || kind==='emc') return '🤝';
+        if(/français/.test(s) || kind==='french') return '📘';
+        return '📌';
+      }
+
+      var cssKind=['french','maths','english','eps','arts','history','science','emc','break','common'].indexOf(kind)>=0?kind:'common';
+      if(/récréation|pause/i.test(subject)) cssKind='break';
 
       var el=document.createElement('article');
-      el.className='simple-row'+(kind==='break' || /récréation|pause/i.test(subject)?' break':'');
+      el.className='simple-row '+cssKind;
       el.innerHTML=
         '<div class="simple-time"></div>'+
-        '<div class="simple-subject"></div>'+
+        '<div class="simple-subject"><span class="subject-picto" aria-hidden="true"></span><span class="subject-label"></span></div>'+
         '<div class="simple-activity"></div>';
       el.children[0].textContent=time;
-      el.children[1].textContent=subject;
+      el.querySelector('.subject-picto').textContent=pictoFor(subject,kind);
+      el.querySelector('.subject-label').textContent=subject;
       el.children[2].textContent=activity;
       grid.appendChild(el);
     });
