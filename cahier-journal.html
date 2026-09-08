@@ -9,7 +9,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
-
 <link href="styles.css?v=35.40" rel="stylesheet">
 <link href="cahier-journal.css?v=36.36" rel="stylesheet">
 <link href="emploi-du-temps.css?v=36.31" rel="stylesheet">
@@ -24,7 +23,6 @@
     display:flex;
     flex-direction:column;
   }
-
   .site-nav {
     position:sticky;
     top:0;
@@ -44,7 +42,6 @@
     margin-right:8px;
     white-space:nowrap;
   }
-
   .site-nav a {
     display:inline-flex;
     align-items:center;
@@ -70,7 +67,6 @@
     flex:1 1 auto;
     width:100%;
   }
-
   /* La structure historique de la popup devient une vraie page. */
   #journalModal.journal-modal {
     position:static !important;
@@ -83,7 +79,6 @@
     margin:0 !important;
     overflow:visible !important;
   }
-
   #journalModal .journal-panel {
     position:static !important;
     width:100% !important;
@@ -102,7 +97,6 @@
     top:59px;
     z-index:90;
   }
-
   #journalModal .journal-body {
     max-height:none !important;
     overflow:visible !important;
@@ -120,7 +114,6 @@
     clip:rect(0 0 0 0);
     white-space:nowrap;
   }
-
   @media(max-width:850px){
     .site-nav { position:static; }
     #journalModal .journal-header { position:static; }
@@ -130,7 +123,6 @@
 </head>
 <body>
 <div class="site-shell">
-
   <nav class="site-nav" aria-label="Navigation principale">
     <span class="site-nav__brand">🦉 Progressions CE2</span>
     <a href="index.html">🏠 Accueil</a>
@@ -142,10 +134,8 @@
     <span class="site-nav__spacer"></span>
     <a href="emploi-du-temps.html?mode=day">📅 Emploi du temps du jour</a>
   </nav>
-
   <main class="journal-page-main">
     <button id="openJournalBtn" type="button">Ouvrir le cahier journal</button>
-
     <section aria-hidden="true" aria-labelledby="journalTitle" class="journal-modal hidden" id="journalModal">
       <div class="journal-panel" role="main">
         <header class="journal-header">
@@ -158,7 +148,6 @@
           </div>
           <button aria-label="Retour à l’accueil" class="journal-close" id="closeJournalBtn" type="button">×</button>
         </header>
-
         <div class="journal-toolbar journal-toolbar--unified">
           <nav aria-label="Vues du cahier journal" class="journal-tabs">
             <button class="journal-tab is-active" data-journal-tab="today" type="button">Aujourd’hui</button>
@@ -173,13 +162,11 @@
           </div>
           <span aria-live="polite" class="journal-status" id="journalStatus"></span>
         </div>
-
         <main class="journal-body">
           <section class="journal-view" id="journalTodayView"></section>
           <section class="journal-view hidden" id="journalWeekView"></section>
           <section class="journal-view hidden" id="journalArchivesView"></section>
         </main>
-
         <section aria-hidden="true" class="journal-summary hidden" id="journalSummary">
           <h3>📝 Synthèse de la semaine</h3>
           <div class="journal-summary-grid">
@@ -191,7 +178,6 @@
             <label>À prévoir pour la semaine suivante<textarea id="journalNext"></textarea></label>
           </div>
         </section>
-
         <footer class="journal-actions">
           <button id="journalCopyBtn" type="button">📋 Copier</button>
           <button id="journalPrintBtn" type="button">🖨️ Imprimer</button>
@@ -204,7 +190,6 @@
 </div>
 
 <script src="cahier-journal-competences.js?v=32.29"></script>
-
 <script src="emploi-du-temps-data-p1.js?v=36.47"></script>
 <script src="emploi-du-temps-data-p2.js?v=36.06"></script>
 <script src="emploi-du-temps-data-p3.js?v=36.06"></script>
@@ -214,7 +199,7 @@
 <script src="evenements-ecole.js?v=35.68"></script>
 <script src="dictees-ce2.js?v=34.94"></script>
 <script src="emploi-du-temps-ui.js?v=36.45"></script>
-
+<script src="cahier-journal-source-simplifie.js?v=36.52"></script>
 <script src="cahier-journal.js?v=36.48"></script>
 
 <script>
@@ -228,7 +213,6 @@
       if (btn) btn.click();
     }, 150);
   }
-
   document.addEventListener('click', function(e){
     var close = e.target.closest('#closeJournalBtn');
     if (!close) return;
