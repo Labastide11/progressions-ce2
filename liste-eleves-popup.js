@@ -280,6 +280,7 @@
     modal.setAttribute('aria-hidden','false');
     document.body.classList.add('modal-open');
     render();
+    window.ProgressionsStudentPhotos?.refresh?.(false);
   }
 
   function close(){
@@ -313,5 +314,6 @@
   modal.addEventListener('click',e=>{if(e.target===modal)close();});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.classList.contains('hidden'))close();});
   window.addEventListener('progressions-roster-updated',()=>{if(!modal.classList.contains('hidden'))render();});
+  window.addEventListener('progressions-student-photos-updated',()=>{if(!modal.classList.contains('hidden'))render();});
   window.addEventListener('storage',e=>{if((e.key===STORAGE_KEY||e.key===attendanceKey())&&!modal.classList.contains('hidden'))render();});
 })();
