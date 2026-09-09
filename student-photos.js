@@ -2,18 +2,14 @@
 'use strict';
 
 /*
-  Progressions CE2 V36.54 — portraits élèves locaux GitHub.
-
-  Règle :
-  - le Google Sheet privé conserve la correspondance prénom -> fichier anonymisé
-    dans la colonne "photo" (ex. ce2-05.png) ;
-  - GitHub ne contient que les avatars anonymisés dans assets/eleves/ ;
-  - aucun accès Google Drive, aucun OAuth, aucun cache photo Drive ;
-  - si la colonne photo est vide ou si le fichier n'existe pas,
-    l'avatar fille/garçon déjà présent dans Progressions CE2 est utilisé.
+  Progressions CE2 V36.55 — portraits élèves locaux GitHub.
+  Source de vérité :
+  - la ligne élève issue du Google Sheet fournit directement la colonne "photo";
+  - GitHub contient uniquement les avatars anonymisés dans assets/eleves/;
+  - aucun accès Google Drive / OAuth;
+  - si aucune photo n'est renseignée, avatar fille/garçon par défaut.
 */
 
-const META_KEY='progressions_ce2_classe_meta_v1';
 const PORTRAIT_DIR='assets/eleves/';
 
 function norm(v){
@@ -34,51 +30,22 @@ function fallback(sexe){
   return 'assets/portraits/portrait_neutre.png';
 }
 
-function readMeta(){
-  try{
-    const parsed=JSON.parse(localStorage.getItem(META_KEY)||'{}');
-    return parsed&&typeof parsed==='object'?parsed:{};
-  }catch(_){
-    return {};
-  }
-}
-
-function metaFor(prenom){
-  const wanted=norm(prenom);
-  const meta=readMeta();
-
-  if(meta[wanted]&&typeof meta[wanted]==='object')return meta[wanted];
-
-  for(const row of Object.values(meta)){
-    if(row&&typeof row==='object'&&norm(row.prenom)===wanted)return row;
-  }
-  return {};
-}
-
 function cleanFilename(value){
   let name=String(value||'').trim();
   if(!name)return '';
-
-  // La feuille peut contenir un simple nom de fichier ou un ancien chemin.
   name=name.replace(/\\/g,'/').split('/').pop();
-
-  // Refus de toute valeur qui ne soit pas un nom d'image simple.
   if(!/^[A-Za-z0-9._-]+\.(?:png|jpe?g|webp)$/i.test(name))return '';
   return name;
 }
 
-function photoFor(prenom){
-  const row=metaFor(prenom);
-  return cleanFilename(row.photo??row.Photo??row.PHOTO??'');
-}
-
-function get(prenom,sexe){
-  const filename=photoFor(prenom);
+/*
+  V36.55 : "photo" est transmis directement depuis la ligne élève.
+  On ne dépend donc plus d'un ancien cache localStorage qui pouvait ne pas
+  contenir la nouvelle colonne H du Sheet.
+*/
+function get(prenom,sexe,photo){
+  const filename=cleanFilename(photo);
   return filename ? PORTRAIT_DIR+encodeURIComponent(filename) : fallback(sexe);
-}
-
-function has(prenom){
-  return !!photoFor(prenom);
 }
 
 function onError(img,sexe){
@@ -87,42 +54,12 @@ function onError(img,sexe){
   img.src=fallback(sexe);
 }
 
-/*
-  Sécurité de secours :
-  certains écrans historiques créent <img> sans appeler onError().
-  Si un avatar local manque (cas des 2 élèves sans photo), on remplace
-  automatiquement l'image cassée par l'avatar selon le sexe.
-*/
-document.addEventListener('error',function(event){
-  const img=event.target;
-  if(!(img instanceof HTMLImageElement))return;
-
-  const src=String(img.getAttribute('src')||'');
-  if(!src.includes('assets/eleves/'))return;
-
-  const alt=String(img.getAttribute('alt')||'');
-  const prenom=alt.replace(/^Portrait de\s+/i,'').trim();
-  const row=metaFor(prenom);
-
-  img.onerror=null;
-  img.src=fallback(row.sexe||row.Sexe||'');
-},true);
-
-/*
-  Nettoyage unique de l'ancien cache Drive.
-  Il ne contient plus rien d'utile depuis la migration des portraits vers GitHub.
-*/
-try{
-  sessionStorage.removeItem('progressions_ce2_drive_student_photos_v35_29');
-  sessionStorage.removeItem('progressions_ce2_drive_student_photos_meta_v35_29');
-}catch(_){}
-
 window.ProgressionsStudentPhotos={
   get,
   fallback,
   onError,
-  has,
-  isReady:()=>Object.values(readMeta()).some(row=>row&&cleanFilename(row.photo??row.Photo??row.PHOTO??''))
+  has:photo=>!!cleanFilename(photo),
+  isReady:()=>true
 };
 
 })();
