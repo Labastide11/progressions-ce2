@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Progressions CE2 — Ma classe : présences, anniversaires et portraits élèves.">
+<title>V36.57 — Progressions CE2 — Ma classe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+<link href="ma-classe.css?v=36.57" rel="stylesheet">
+</head>
+<body>
+  <header class="class-topbar">
+    <nav class="class-topbar__nav" aria-label="Navigation principale">
+      <a class="class-nav-link" href="index.html">🏠 Accueil</a>
+      <a class="class-nav-link" href="emploi-du-temps-simplifie.html">📺 Emploi du temps simplifié</a>
+      <a class="class-nav-link" href="cahier-journal.html">📘 Cahier journal</a>
+      <a class="class-nav-link is-active" href="ma-classe.html" aria-current="page">👥 Ma classe</a>
+      <span class="class-topbar__spacer"></span>
+      <button class="class-nav-action class-nav-action--refresh" id="refreshClassBtn" type="button">🔄 Actualiser</button>
+      <button class="class-nav-action" id="configureClassBtn" type="button">⚙️ Configurer</button>
+    </nav>
+  </header>
+
+  <main class="class-page">
+    <section class="class-toolbar" aria-label="Présences de la classe">
+      <div class="class-toolbar__line">
+        <div class="session-switch" role="group" aria-label="Demi-journée">
+          <button type="button" data-session="morning">☀️ Matin</button>
+          <button type="button" data-session="afternoon">🌤️ Après-midi</button>
+        </div>
+
+        <div class="attendance-summary" aria-live="polite">
+          <strong id="presentCount">0 présents</strong>
+          <span id="absentCount">0 absent</span>
+        </div>
+
+        <div class="birthdays" id="monthBirthdays">🎂 Anniversaires du mois : —</div>
+
+        <span class="toolbar-spacer"></span>
+
+        <div class="copy-count">📄 Photocopies : <strong id="copyCount">0</strong></div>
+        <button class="reset-attendance" id="resetAttendanceBtn" type="button">↺ Réinitialiser</button>
+      </div>
+
+      <div class="class-toolbar__subline">
+        <p>Clique sur le portrait d’un élève pour le marquer absent ou présent pour la demi-journée sélectionnée.</p>
+        <span id="syncInfo" class="sync-info" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <section class="students-grid" id="studentsGrid" aria-live="polite"></section>
+  </main>
+
+<script src="student-photos.js?v=36.56"></script>
+<script src="ma-classe.js?v=36.57"></script>
+</body>
+</html>
