@@ -4,10 +4,10 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="description" content="Suivi du comportement des élèves CE2 : avertissements, observations datées et historique."/>
-<title>V36.58 — Suivi du comportement — Progressions CE2</title>
-<link href="suivi-comportement.css?v=36.58" rel="stylesheet"/>
+<title>V36.59 — Suivi du comportement — Progressions CE2</title>
+<link href="suivi-comportement.css?v=36.59" rel="stylesheet"/>
 
-<style id="behaviour-page-v3658">
+<style id="behaviour-page-v3659">
 html,body{width:100%;min-height:100%;margin:0}
 body{overflow-x:hidden}
 .progressions-main-nav{position:sticky;top:0;z-index:1200;width:100%;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:8px 14px;box-sizing:border-box;background:#173f63;box-shadow:0 2px 10px rgba(22,55,84,.18)}
@@ -20,16 +20,25 @@ body{overflow-x:hidden}
 .beh-grid{grid-template-columns:repeat(auto-fit,minmax(245px,1fr))!important}
 .beh-grid>*{cursor:pointer;transition:transform .12s ease,box-shadow .12s ease}
 .beh-grid>*:hover{transform:translateY(-1px);box-shadow:0 7px 20px rgba(34,75,112,.12)}
+.beh-grid>*[data-beh-selected="true"]{outline:3px solid #2f7db7;outline-offset:2px}
 .beh-panel--chart{grid-column:1/-1}
 .beh-chart-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:10px}
 .beh-chart-head h2{margin:0}.beh-chart-help{margin:0;color:#64748b;font-size:13px;font-weight:700}
-.beh-cross-chart{min-height:168px;display:flex;align-items:flex-end;gap:10px;padding:18px 14px 8px;overflow-x:auto;border:1px solid #d8e4ef;border-radius:14px;background:#f8fbfe}
-.beh-chart-empty{align-self:center;margin:auto;color:#708399;font-weight:750;text-align:center}
-.beh-chart-bar-wrap{flex:1 0 58px;min-width:58px;max-width:90px;height:138px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:5px}
-.beh-chart-value{font-size:12px;font-weight:900;color:#c2415b}
-.beh-chart-bar{width:34px;min-height:3px;border-radius:8px 8px 3px 3px;background:#ef5675}
-.beh-chart-label{width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center;font-size:11px;font-weight:800;color:#53677c}
-@media(max-width:880px){.progressions-main-nav{position:static}.progressions-main-nav__brand{width:100%}.beh-page{padding:10px!important}}
+.beh-cross-chart{position:relative;min-height:230px;padding:26px 18px 40px 58px;border:1px solid #d8e4ef;border-radius:14px;background:#f8fbfe;overflow-x:auto}
+.beh-chart-yaxis{position:absolute;left:10px;top:18px;bottom:38px;width:40px;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;font-size:12px;font-weight:800;color:#60758a}
+.beh-chart-ylabel{position:absolute;left:6px;top:50%;transform:translate(-40%,-50%) rotate(-90deg);font-size:11px;font-weight:850;color:#60758a;white-space:nowrap}
+.beh-chart-grid{position:absolute;left:52px;right:12px;top:18px;bottom:38px;background:repeating-linear-gradient(to top,rgba(148,163,184,.18) 0,rgba(148,163,184,.18) 1px,transparent 1px,transparent 25%);pointer-events:none}
+.beh-chart-bars{position:relative;z-index:2;height:170px;display:flex;align-items:flex-end;gap:12px;min-width:max-content}
+.beh-chart-bar-wrap{width:72px;height:170px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:5px}
+.beh-chart-value{font-size:12px;font-weight:900;color:#c2415b;min-height:16px}
+.beh-chart-bar{width:34px;min-height:2px;border-radius:8px 8px 3px 3px;background:#ef5675}
+.beh-chart-label{position:absolute;bottom:-28px;width:72px;text-align:center;font-size:11px;font-weight:800;color:#53677c}
+.beh-chart-empty{display:flex;align-items:center;justify-content:center;min-height:170px;color:#708399;font-weight:750;text-align:center}
+.beh-profile-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:10px}
+.beh-profile-stat{background:#fff;border:1px solid #d8e4ef;border-radius:12px;padding:10px 12px}
+.beh-profile-stat span{display:block;color:#64748b;font-size:12px;font-weight:750}
+.beh-profile-stat strong{display:block;margin-top:3px;font-size:22px;color:#173f63}
+@media(max-width:900px){.progressions-main-nav{position:static}.progressions-main-nav__brand{width:100%}.beh-page{padding:10px!important}.beh-profile-summary{grid-template-columns:repeat(2,1fr)}}
 </style>
 
 </head>
@@ -89,11 +98,17 @@ body{overflow-x:hidden}
 
     <article class="beh-panel beh-panel--chart" id="behChartPanel">
       <div class="beh-chart-head">
-        <h2 id="behChartTitle">Avertissements récents</h2>
+        <h2 id="behChartTitle">Évolution du comportement</h2>
         <p class="beh-chart-help">Clique sur une carte élève pour afficher son évolution.</p>
       </div>
-      <div class="beh-cross-chart" id="behCrossChart">
-        <div class="beh-chart-empty">Sélectionne un élève pour afficher son historique graphique.</div>
+      <div class="beh-profile-summary" id="behProfileSummary" hidden>
+        <div class="beh-profile-stat"><span>Croix sur 7 jours</span><strong id="behProfileCross7">0</strong></div>
+        <div class="beh-profile-stat"><span>Jours concernés</span><strong id="behProfileDays">0</strong></div>
+        <div class="beh-profile-stat"><span>Observations</span><strong id="behProfileObs">0</strong></div>
+        <div class="beh-profile-stat"><span>Positives</span><strong id="behProfilePos">0</strong></div>
+      </div>
+      <div class="beh-cross-chart" id="behCrossChart" aria-label="Évolution des avertissements par jour">
+        <div class="beh-chart-empty">Sélectionne un élève.</div>
       </div>
     </article>
     <article class="beh-panel">
@@ -142,67 +157,270 @@ body{overflow-x:hidden}
   </div>
 </section>
 <script src="student-photos.js?v=35.29"></script>
-<script src="suivi-comportement.js?v=36.58"></script>
+<script src="suivi-comportement.js?v=36.59"></script>
 
-<script id="behaviour-enhancements-v3658">
+<script id="behaviour-enhancements-v3659">
 (function(){
-'use strict';
-var grid=document.getElementById('behStudentGrid'),history=document.getElementById('behHistory'),
-historyTitle=document.getElementById('behHistoryTitle'),chart=document.getElementById('behCrossChart'),
-chartTitle=document.getElementById('behChartTitle');
+  'use strict';
 
-function interactive(t){return !!t.closest('button,a,input,select,textarea,label')}
-function nameOf(card){
- var n=card.querySelector('[data-student-name],.beh-student-name,.student-name,h2,h3,strong,b');
- var s=String(n?n.textContent:card.textContent||'').trim().replace(/\s+/g,' ');
- return s.split(/Aucune croix|croix|Observation|×|\+1/i)[0].trim()||'Élève';
-}
-function enhance(){
- if(!grid)return;
- Array.from(grid.children).forEach(function(card){
-  if(card.dataset.behClickable==='1')return;
-  card.dataset.behClickable='1';card.tabIndex=0;card.setAttribute('role','button');
-  card.addEventListener('click',function(e){
-   if(interactive(e.target))return;
-   if(chartTitle)chartTitle.textContent='Avertissements — '+nameOf(card);
-   setTimeout(render,100);setTimeout(render,250);
-  });
- });
-}
-function count(txt){
- var m=String(txt).match(/(\d+)\s*(?:croix|avertissement(?:s)?)/i);
- if(m)return parseInt(m[1],10)||0;
- var c=(String(txt).match(/❌|✖|×/g)||[]).length;
- if(c)return c;
- return /⚠️|avertissement|comportement à reprendre/i.test(txt)?1:0;
-}
-function label(txt,i){
- var s=String(txt).replace(/\s+/g,' ').trim();
- var m=s.match(/\b(\d{1,2}[\/.-]\d{1,2}(?:[\/.-]\d{2,4})?)\b/);
- if(m)return m[1];
- var f=s.match(/\b(?:lun\.?|mar\.?|mer\.?|jeu\.?|ven\.?|lundi|mardi|mercredi|jeudi|vendredi)\s+\d{1,2}\s+[a-zéûîôàèùç.]+\s*(?:20\d{2})?/i);
- return f?f[0]:'J'+(i+1);
-}
-function items(){
- if(!history)return [];
- var kids=Array.from(history.children||[]);
- if(!kids.length&&history.textContent.trim())kids=[history];
- return kids.map((n,i)=>({label:label(n.textContent||'',i),value:count(n.textContent||'')})).slice(-12);
-}
-function render(){
- if(!chart)return;
- var data=items();
- if(!data.length){chart.innerHTML='<div class="beh-chart-empty">Aucune donnée récente à représenter pour cet élève.</div>';return}
- var max=Math.max(1,...data.map(x=>x.value));chart.innerHTML='';
- data.forEach(function(x){
-  var w=document.createElement('div');w.className='beh-chart-bar-wrap';
-  w.innerHTML='<div class="beh-chart-value">'+x.value+'</div><div class="beh-chart-bar" style="height:'+Math.max(3,Math.round(x.value/max*92))+'px"></div><div class="beh-chart-label">'+x.label+'</div>';
-  chart.appendChild(w);
- });
-}
-if(grid){new MutationObserver(enhance).observe(grid,{childList:true});enhance()}
-if(history){new MutationObserver(function(){render();if(historyTitle&&chartTitle){var m=String(historyTitle.textContent||'').match(/—\s*(.+)$/);if(m)chartTitle.textContent='Avertissements — '+m[1]}}).observe(history,{childList:true,subtree:true,characterData:true})}
-render();
+  var grid=document.getElementById('behStudentGrid');
+  var history=document.getElementById('behHistory');
+  var historyTitle=document.getElementById('behHistoryTitle');
+  var chart=document.getElementById('behCrossChart');
+  var chartTitle=document.getElementById('behChartTitle');
+  var summary=document.getElementById('behProfileSummary');
+  var statCross7=document.getElementById('behProfileCross7');
+  var statDays=document.getElementById('behProfileDays');
+  var statObs=document.getElementById('behProfileObs');
+  var statPos=document.getElementById('behProfilePos');
+
+  function isInteractive(t){return !!(t&&t.closest&&t.closest('button,a,input,select,textarea,label'))}
+
+  function getCardName(card){
+    var selectors=['[data-student-name]','.beh-student-name','.student-name','.beh-card__name','.beh-student__name','h2','h3'];
+    for(var i=0;i<selectors.length;i++){
+      var el=card.querySelector(selectors[i]);
+      if(el&&el.textContent.trim()) return el.textContent.trim();
+    }
+    var clone=card.cloneNode(true);
+    clone.querySelectorAll('button,a,input,select,textarea').forEach(function(n){n.remove()});
+    return String(clone.textContent||'Élève').trim().split(/\s{2,}|Aucune croix|croix|Observation|\+1/i)[0].trim()||'Élève';
+  }
+
+  function clickLikelyHistorySelector(name){
+    /* On cherche un mécanisme de sélection déjà présent dans le JS existant. */
+    var candidates=[
+      '[data-student="'+CSS.escape(name)+'"]',
+      '[data-eleve="'+CSS.escape(name)+'"]',
+      '[data-name="'+CSS.escape(name)+'"]',
+      '[data-prenom="'+CSS.escape(name)+'"]'
+    ];
+    for(var i=0;i<candidates.length;i++){
+      var el=document.querySelector(candidates[i]);
+      if(el && el!==document.activeElement && !grid.contains(el)) {
+        try{ el.click(); return true; }catch(e){}
+      }
+    }
+    return false;
+  }
+
+  function selectCard(card){
+    Array.from(grid.children).forEach(function(c){c.removeAttribute('data-beh-selected')});
+    card.setAttribute('data-beh-selected','true');
+    var name=getCardName(card);
+
+    /* Le code existant met généralement à jour l'historique au clic sur la carte.
+       On déclenche un clic natif uniquement si nécessaire via l'évènement courant;
+       puis on attend son rendu avant de construire le graphique. */
+    if(chartTitle) chartTitle.textContent='Évolution du comportement — '+name;
+
+    setTimeout(function(){
+      renderForSelected(name);
+    },120);
+    setTimeout(function(){
+      renderForSelected(name);
+    },350);
+  }
+
+  function enhanceCards(){
+    if(!grid)return;
+    Array.from(grid.children).forEach(function(card){
+      if(card.dataset.behEnhanced==='1')return;
+      card.dataset.behEnhanced='1';
+      card.setAttribute('tabindex','0');
+      card.setAttribute('role','button');
+      card.setAttribute('title','Afficher l’évolution du comportement');
+
+      card.addEventListener('click',function(e){
+        if(isInteractive(e.target))return;
+        selectCard(card);
+      });
+
+      card.addEventListener('keydown',function(e){
+        if((e.key==='Enter'||e.key===' ')&&!isInteractive(e.target)){
+          e.preventDefault();
+          selectCard(card);
+        }
+      });
+    });
+  }
+
+  function parseDateText(txt){
+    var m=String(txt||'').match(/\b(\d{1,2})[\/.-](\d{1,2})(?:[\/.-](\d{2,4}))?\b/);
+    if(m){
+      var y=m[3]?Number(m[3]):new Date().getFullYear();
+      if(y<100)y+=2000;
+      return new Date(y,Number(m[2])-1,Number(m[1]),12);
+    }
+    var months={janvier:0,février:1,fevrier:1,mars:2,avril:3,mai:4,juin:5,juillet:6,août:7,aout:7,septembre:8,octobre:9,novembre:10,décembre:11,decembre:11};
+    var f=String(txt||'').toLowerCase().match(/\b(?:lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche|lun\.?|mar\.?|mer\.?|jeu\.?|ven\.?)\s+(\d{1,2})\s+([a-zéûîôàèùç]+)(?:\s+(20\d{2}))?/i);
+    if(f&&months[f[2]]!==undefined) return new Date(Number(f[3]||new Date().getFullYear()),months[f[2]],Number(f[1]),12);
+    return null;
+  }
+
+  function inferCrosses(txt){
+    txt=String(txt||'');
+    var m=txt.match(/(\d+)\s*(?:croix|avertissement(?:s)?)/i);
+    if(m)return Math.max(0,parseInt(m[1],10)||0);
+    var crosses=(txt.match(/❌|✖|×/g)||[]).length;
+    if(crosses)return crosses;
+    if(/⚠️|avertissement|comportement à reprendre/i.test(txt))return 1;
+    return 0;
+  }
+
+  function historyRows(){
+    if(!history)return [];
+    var nodes=Array.from(history.children||[]);
+    if(!nodes.length&&history.textContent.trim())nodes=[history];
+
+    var rows=[];
+    nodes.forEach(function(node){
+      var txt=String(node.textContent||'').replace(/\s+/g,' ').trim();
+      if(!txt)return;
+      var date=parseDateText(txt);
+      rows.push({
+        date:date,
+        label:date?date.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'}):'',
+        crosses:inferCrosses(txt),
+        positive:/positif|félicit|bravo|🙂|✅/i.test(txt),
+        observation:txt
+      });
+    });
+    return rows;
+  }
+
+  function schoolDaysBetween(minDate,maxDate){
+    var arr=[],d=new Date(minDate.getFullYear(),minDate.getMonth(),minDate.getDate(),12);
+    while(d<=maxDate){
+      var day=d.getDay();
+      if(day===1||day===2||day===4||day===5) arr.push(new Date(d));
+      d.setDate(d.getDate()+1);
+    }
+    return arr;
+  }
+
+  function key(d){
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+
+  function buildSeries(rows){
+    var dated=rows.filter(function(r){return r.date});
+    if(!dated.length){
+      var today=new Date();today.setHours(12,0,0,0);
+      var start=new Date(today);start.setDate(start.getDate()-13);
+      dated=[];
+      return schoolDaysBetween(start,today).slice(-10).map(function(d){return {date:d,label:d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'}),crosses:0}});
+    }
+
+    var min=new Date(Math.min.apply(null,dated.map(function(r){return r.date.getTime()})));
+    var max=new Date(Math.max.apply(null,dated.map(function(r){return r.date.getTime()})));
+    var today=new Date();today.setHours(12,0,0,0);
+    if(max<today)max=today;
+    var start=new Date(max);start.setDate(start.getDate()-20);
+    if(min<start)min=start;
+
+    var byDay={};
+    dated.forEach(function(r){
+      var k=key(r.date);
+      byDay[k]=(byDay[k]||0)+r.crosses;
+    });
+
+    return schoolDaysBetween(min,max).slice(-12).map(function(d){
+      return {date:d,label:d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'}),crosses:byDay[key(d)]||0};
+    });
+  }
+
+  function renderAxes(series){
+    if(!chart)return;
+    var max=Math.max(3,Math.max.apply(null,series.map(function(x){return x.crosses})));
+    var top=Math.max(4,max);
+    var ticks=[];
+    for(var i=top;i>=0;i--)ticks.push(i);
+
+    chart.innerHTML='';
+    var ylabel=document.createElement('div');
+    ylabel.className='beh-chart-ylabel';
+    ylabel.textContent='Avertissements';
+    chart.appendChild(ylabel);
+
+    var yaxis=document.createElement('div');
+    yaxis.className='beh-chart-yaxis';
+    [top,Math.round(top*0.75),Math.round(top*0.5),Math.round(top*0.25),0].forEach(function(v){
+      var s=document.createElement('span');s.textContent=v;yaxis.appendChild(s);
+    });
+    chart.appendChild(yaxis);
+
+    var gridBg=document.createElement('div');
+    gridBg.className='beh-chart-grid';
+    chart.appendChild(gridBg);
+
+    var bars=document.createElement('div');
+    bars.className='beh-chart-bars';
+
+    series.forEach(function(item){
+      var wrap=document.createElement('div');
+      wrap.className='beh-chart-bar-wrap';
+      wrap.style.position='relative';
+
+      var value=document.createElement('div');
+      value.className='beh-chart-value';
+      value.textContent=item.crosses;
+
+      var bar=document.createElement('div');
+      bar.className='beh-chart-bar';
+      bar.style.height=Math.max(2,Math.round((item.crosses/top)*142))+'px';
+      bar.title=item.label+' : '+item.crosses+' avertissement(s)';
+
+      var label=document.createElement('div');
+      label.className='beh-chart-label';
+      label.textContent=item.label;
+
+      wrap.appendChild(value);
+      wrap.appendChild(bar);
+      wrap.appendChild(label);
+      bars.appendChild(wrap);
+    });
+    chart.appendChild(bars);
+  }
+
+  function renderStats(rows,series){
+    if(!summary)return;
+    summary.hidden=false;
+    var last7=series.slice(-7);
+    var cross7=last7.reduce(function(a,b){return a+b.crosses},0);
+    var days=series.filter(function(x){return x.crosses>0}).length;
+    var obs=rows.filter(function(r){return r.observation}).length;
+    var pos=rows.filter(function(r){return r.positive}).length;
+
+    statCross7.textContent=cross7;
+    statDays.textContent=days;
+    statObs.textContent=obs;
+    statPos.textContent=pos;
+  }
+
+  function renderForSelected(name){
+    var rows=historyRows();
+
+    /* Synchronise aussi le titre historique avec l'élève réellement cliqué
+       si le module existant n'a pas encore mis à jour son propre titre. */
+    if(historyTitle && name) historyTitle.textContent='Historique — '+name;
+
+    var series=buildSeries(rows);
+    renderAxes(series);
+    renderStats(rows,series);
+  }
+
+  if(grid){
+    new MutationObserver(enhanceCards).observe(grid,{childList:true,subtree:false});
+    enhanceCards();
+  }
+
+  if(history){
+    new MutationObserver(function(){
+      var selected=grid&&grid.querySelector('[data-beh-selected="true"]');
+      if(selected) renderForSelected(getCardName(selected));
+    }).observe(history,{childList:true,subtree:true,characterData:true});
+  }
 })();
 </script>
 
