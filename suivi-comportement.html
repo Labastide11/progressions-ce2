@@ -4,10 +4,54 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="description" content="Suivi du comportement des élèves CE2 : avertissements, observations datées et historique."/>
-<title>V36.40 — Suivi du comportement — Progressions CE2</title>
-<link href="suivi-comportement.css?v=36.40" rel="stylesheet"/>
+<title>V36.58 — Suivi du comportement — Progressions CE2</title>
+<link href="suivi-comportement.css?v=36.58" rel="stylesheet"/>
+
+<style id="behaviour-page-v3658">
+html,body{width:100%;min-height:100%;margin:0}
+body{overflow-x:hidden}
+.progressions-main-nav{position:sticky;top:0;z-index:1200;width:100%;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:8px 14px;box-sizing:border-box;background:#173f63;box-shadow:0 2px 10px rgba(22,55,84,.18)}
+.progressions-main-nav__brand{color:#fff;font-weight:900;white-space:nowrap;margin-right:4px}
+.progressions-main-nav a{display:inline-flex;align-items:center;min-height:36px;padding:0 13px;border-radius:9px;border:1px solid rgba(255,255,255,.20);background:rgba(255,255,255,.10);color:#fff;text-decoration:none;font-weight:850;white-space:nowrap}
+.progressions-main-nav a:hover,.progressions-main-nav a.is-active{background:#fff;color:#173f63}
+.progressions-main-nav__spacer{flex:1 1 auto}
+.beh-page{width:100%!important;max-width:none!important;margin:0!important;padding:14px 18px 28px!important;box-sizing:border-box}
+.beh-topbar,.beh-summary,.beh-toolbar,.beh-status,.beh-grid,.beh-lower{width:100%;max-width:none!important;box-sizing:border-box}
+.beh-grid{grid-template-columns:repeat(auto-fit,minmax(245px,1fr))!important}
+.beh-grid>*{cursor:pointer;transition:transform .12s ease,box-shadow .12s ease}
+.beh-grid>*:hover{transform:translateY(-1px);box-shadow:0 7px 20px rgba(34,75,112,.12)}
+.beh-panel--chart{grid-column:1/-1}
+.beh-chart-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.beh-chart-head h2{margin:0}.beh-chart-help{margin:0;color:#64748b;font-size:13px;font-weight:700}
+.beh-cross-chart{min-height:168px;display:flex;align-items:flex-end;gap:10px;padding:18px 14px 8px;overflow-x:auto;border:1px solid #d8e4ef;border-radius:14px;background:#f8fbfe}
+.beh-chart-empty{align-self:center;margin:auto;color:#708399;font-weight:750;text-align:center}
+.beh-chart-bar-wrap{flex:1 0 58px;min-width:58px;max-width:90px;height:138px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:5px}
+.beh-chart-value{font-size:12px;font-weight:900;color:#c2415b}
+.beh-chart-bar{width:34px;min-height:3px;border-radius:8px 8px 3px 3px;background:#ef5675}
+.beh-chart-label{width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center;font-size:11px;font-weight:800;color:#53677c}
+@media(max-width:880px){.progressions-main-nav{position:static}.progressions-main-nav__brand{width:100%}.beh-page{padding:10px!important}}
+</style>
+
 </head>
 <body>
+
+<nav class="progressions-main-nav" aria-label="Navigation principale Progressions CE2">
+  <span class="progressions-main-nav__brand">🦉 Progressions CE2</span>
+  <a href="index.html">🏠 Accueil</a>
+  <a href="emploi-du-temps.html?mode=summary">🗓️ Emploi du temps</a>
+  <a href="cahier-journal.html">📘 Cahier journal</a>
+  <a class="is-active" href="suivi-comportement.html">🧭 Suivi du comportement</a>
+  <a href="vue-eleves.html">👥 Ma classe</a>
+  <a href="index.html?open=programme">📋 Programme du jour</a>
+  <span class="progressions-main-nav__spacer"></span>
+  <a href="emploi-du-temps.html?mode=day">Aujourd’hui</a>
+  <a href="emploi-du-temps.html?period=P1">P1</a>
+  <a href="emploi-du-temps.html?period=P2">P2</a>
+  <a href="emploi-du-temps.html?period=P3">P3</a>
+  <a href="emploi-du-temps.html?period=P4">P4</a>
+  <a href="emploi-du-temps.html?period=P5">P5</a>
+</nav>
+
 <main class="beh-page" id="behaviourApp">
   <header class="beh-topbar">
     <div class="beh-title">
@@ -42,6 +86,16 @@
   <section class="beh-grid" id="behStudentGrid" aria-label="Élèves"></section>
 
   <section class="beh-lower">
+
+    <article class="beh-panel beh-panel--chart" id="behChartPanel">
+      <div class="beh-chart-head">
+        <h2 id="behChartTitle">Avertissements récents</h2>
+        <p class="beh-chart-help">Clique sur une carte élève pour afficher son évolution.</p>
+      </div>
+      <div class="beh-cross-chart" id="behCrossChart">
+        <div class="beh-chart-empty">Sélectionne un élève pour afficher son historique graphique.</div>
+      </div>
+    </article>
     <article class="beh-panel">
       <h2 id="behHistoryTitle">Historique récent</h2>
       <div class="beh-history" id="behHistory"></div>
@@ -88,6 +142,69 @@
   </div>
 </section>
 <script src="student-photos.js?v=35.29"></script>
-<script src="suivi-comportement.js?v=36.40"></script>
+<script src="suivi-comportement.js?v=36.58"></script>
+
+<script id="behaviour-enhancements-v3658">
+(function(){
+'use strict';
+var grid=document.getElementById('behStudentGrid'),history=document.getElementById('behHistory'),
+historyTitle=document.getElementById('behHistoryTitle'),chart=document.getElementById('behCrossChart'),
+chartTitle=document.getElementById('behChartTitle');
+
+function interactive(t){return !!t.closest('button,a,input,select,textarea,label')}
+function nameOf(card){
+ var n=card.querySelector('[data-student-name],.beh-student-name,.student-name,h2,h3,strong,b');
+ var s=String(n?n.textContent:card.textContent||'').trim().replace(/\s+/g,' ');
+ return s.split(/Aucune croix|croix|Observation|×|\+1/i)[0].trim()||'Élève';
+}
+function enhance(){
+ if(!grid)return;
+ Array.from(grid.children).forEach(function(card){
+  if(card.dataset.behClickable==='1')return;
+  card.dataset.behClickable='1';card.tabIndex=0;card.setAttribute('role','button');
+  card.addEventListener('click',function(e){
+   if(interactive(e.target))return;
+   if(chartTitle)chartTitle.textContent='Avertissements — '+nameOf(card);
+   setTimeout(render,100);setTimeout(render,250);
+  });
+ });
+}
+function count(txt){
+ var m=String(txt).match(/(\d+)\s*(?:croix|avertissement(?:s)?)/i);
+ if(m)return parseInt(m[1],10)||0;
+ var c=(String(txt).match(/❌|✖|×/g)||[]).length;
+ if(c)return c;
+ return /⚠️|avertissement|comportement à reprendre/i.test(txt)?1:0;
+}
+function label(txt,i){
+ var s=String(txt).replace(/\s+/g,' ').trim();
+ var m=s.match(/\b(\d{1,2}[\/.-]\d{1,2}(?:[\/.-]\d{2,4})?)\b/);
+ if(m)return m[1];
+ var f=s.match(/\b(?:lun\.?|mar\.?|mer\.?|jeu\.?|ven\.?|lundi|mardi|mercredi|jeudi|vendredi)\s+\d{1,2}\s+[a-zéûîôàèùç.]+\s*(?:20\d{2})?/i);
+ return f?f[0]:'J'+(i+1);
+}
+function items(){
+ if(!history)return [];
+ var kids=Array.from(history.children||[]);
+ if(!kids.length&&history.textContent.trim())kids=[history];
+ return kids.map((n,i)=>({label:label(n.textContent||'',i),value:count(n.textContent||'')})).slice(-12);
+}
+function render(){
+ if(!chart)return;
+ var data=items();
+ if(!data.length){chart.innerHTML='<div class="beh-chart-empty">Aucune donnée récente à représenter pour cet élève.</div>';return}
+ var max=Math.max(1,...data.map(x=>x.value));chart.innerHTML='';
+ data.forEach(function(x){
+  var w=document.createElement('div');w.className='beh-chart-bar-wrap';
+  w.innerHTML='<div class="beh-chart-value">'+x.value+'</div><div class="beh-chart-bar" style="height:'+Math.max(3,Math.round(x.value/max*92))+'px"></div><div class="beh-chart-label">'+x.label+'</div>';
+  chart.appendChild(w);
+ });
+}
+if(grid){new MutationObserver(enhance).observe(grid,{childList:true});enhance()}
+if(history){new MutationObserver(function(){render();if(historyTitle&&chartTitle){var m=String(historyTitle.textContent||'').match(/—\s*(.+)$/);if(m)chartTitle.textContent='Avertissements — '+m[1]}}).observe(history,{childList:true,subtree:true,characterData:true})}
+render();
+})();
+</script>
+
 </body>
 </html>
