@@ -4,8 +4,8 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="description" content="Suivi du comportement des élèves CE2 : avertissements, observations datées et historique."/>
-<title>V36.59 — Suivi du comportement — Progressions CE2</title>
-<link href="suivi-comportement.css?v=36.59" rel="stylesheet"/>
+<title>V36.60 — Suivi du comportement — Progressions CE2</title>
+<link href="suivi-comportement.css?v=36.60" rel="stylesheet"/>
 
 <style id="behaviour-page-v3659">
 html,body{width:100%;min-height:100%;margin:0}
@@ -39,6 +39,121 @@ body{overflow-x:hidden}
 .beh-profile-stat span{display:block;color:#64748b;font-size:12px;font-weight:750}
 .beh-profile-stat strong{display:block;margin-top:3px;font-size:22px;color:#173f63}
 @media(max-width:900px){.progressions-main-nav{position:static}.progressions-main-nav__brand{width:100%}.beh-page{padding:10px!important}.beh-profile-summary{grid-template-columns:repeat(2,1fr)}}
+</style>
+
+
+<style id="behaviour-popup-v3660">
+  .beh-lower{display:none !important;} /* le détail passe désormais en popup */
+  body.beh-popup-open{overflow:hidden;}
+
+  #behInspectModal{
+    z-index:1600;
+    padding:18px;
+  }
+  #behInspectModal .beh-dialog{
+    width:min(1220px,96vw);
+    max-height:92vh;
+    overflow:auto;
+    border-radius:18px;
+  }
+  .beh-dialog--wide{
+    width:min(1220px,96vw);
+    max-height:92vh;
+    overflow:auto;
+  }
+  .beh-inspect-head{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:12px;
+  }
+  .beh-inspect-avatar{
+    width:72px;
+    height:72px;
+    border-radius:18px;
+    overflow:hidden;
+    flex:0 0 72px;
+    border:2px solid #d8e4ef;
+    background:#f8fbfe;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .beh-inspect-avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .beh-inspect-avatar span{
+    font-size:34px;
+  }
+  .beh-inspect-head h2{
+    margin:0;
+  }
+  .beh-inspect-head p{
+    margin:4px 0 0;
+    color:#64748b;
+    font-weight:700;
+  }
+  .beh-inspect-summary{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:10px;
+    margin:10px 0 14px;
+  }
+  .beh-inspect-summary .beh-profile-stat{
+    background:#fff;
+  }
+  .beh-inspect-columns{
+    display:grid;
+    grid-template-columns:1.5fr 1fr;
+    gap:12px;
+    margin-top:14px;
+  }
+  .beh-inspect-card{
+    border:1px solid #d8e4ef;
+    border-radius:14px;
+    background:#fff;
+    padding:14px;
+  }
+  .beh-inspect-card h3{
+    margin:0 0 10px;
+    color:#173f63;
+  }
+  .beh-inspect-history{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .beh-inspect-history .beh-empty{
+    color:#708399;
+    font-weight:700;
+  }
+  .beh-history-item{
+    border:1px solid #e4edf5;
+    border-radius:10px;
+    padding:10px 12px;
+    background:#f8fbfe;
+    color:#35516b;
+  }
+  .beh-history-item strong{
+    color:#173f63;
+  }
+  .beh-frequency-copy{
+    color:#35516b;
+    line-height:1.45;
+    white-space:pre-line;
+  }
+  #behInspectChart{
+    margin-top:6px;
+  }
+  @media (max-width: 900px){
+    .beh-inspect-summary{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .beh-inspect-columns{grid-template-columns:1fr;}
+    #behInspectModal{padding:8px;}
+    .beh-inspect-head{align-items:flex-start;}
+  }
 </style>
 
 </head>
@@ -123,6 +238,45 @@ body{overflow-x:hidden}
   </section>
 </main>
 
+
+<section class="beh-modal hidden" id="behInspectModal" aria-hidden="true">
+  <div class="beh-dialog beh-dialog--wide" role="dialog" aria-modal="true" aria-labelledby="behInspectTitle">
+    <div class="beh-dialog__head">
+      <div class="beh-inspect-head">
+        <div class="beh-inspect-avatar" id="behInspectAvatar"><span>👦</span></div>
+        <div>
+          <h2 id="behInspectTitle">Évolution du comportement</h2>
+          <p id="behInspectSubtitle">Clique sur une carte élève pour afficher son évolution.</p>
+        </div>
+      </div>
+      <button class="beh-close" id="behInspectClose" type="button" aria-label="Fermer">×</button>
+    </div>
+
+    <div class="beh-inspect-summary" id="behInspectSummary">
+      <div class="beh-profile-stat"><span>Croix sur 7 jours</span><strong id="behInspectCross7">0</strong></div>
+      <div class="beh-profile-stat"><span>Jours concernés</span><strong id="behInspectDays">0</strong></div>
+      <div class="beh-profile-stat"><span>Observations</span><strong id="behInspectObs">0</strong></div>
+      <div class="beh-profile-stat"><span>Positives</span><strong id="behInspectPos">0</strong></div>
+    </div>
+
+    <div class="beh-cross-chart" id="behInspectChart" aria-label="Évolution des avertissements par jour">
+      <div class="beh-chart-empty">Sélectionne un élève.</div>
+    </div>
+
+    <div class="beh-inspect-columns">
+      <article class="beh-inspect-card">
+        <h3 id="behInspectHistoryTitle">Historique récent</h3>
+        <div class="beh-inspect-history" id="behInspectHistory"></div>
+      </article>
+      <article class="beh-inspect-card">
+        <h3>Lecture rapide</h3>
+        <div class="beh-frequency-copy" id="behInspectFrequency">Aucune donnée pour le moment.</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
 <section class="beh-modal hidden" id="behModal" aria-hidden="true">
   <div class="beh-dialog" role="dialog" aria-modal="true" aria-labelledby="behModalTitle">
     <div class="beh-dialog__head">
@@ -157,24 +311,39 @@ body{overflow-x:hidden}
   </div>
 </section>
 <script src="student-photos.js?v=35.29"></script>
-<script src="suivi-comportement.js?v=36.59"></script>
+<script src="suivi-comportement.js?v=36.60"></script>
 
-<script id="behaviour-enhancements-v3659">
+
+<script id="behaviour-enhancements-v3660">
 (function(){
   'use strict';
 
   var grid=document.getElementById('behStudentGrid');
   var history=document.getElementById('behHistory');
   var historyTitle=document.getElementById('behHistoryTitle');
-  var chart=document.getElementById('behCrossChart');
-  var chartTitle=document.getElementById('behChartTitle');
-  var summary=document.getElementById('behProfileSummary');
-  var statCross7=document.getElementById('behProfileCross7');
-  var statDays=document.getElementById('behProfileDays');
-  var statObs=document.getElementById('behProfileObs');
-  var statPos=document.getElementById('behProfilePos');
+  var frequency=document.getElementById('behFrequency');
 
-  function isInteractive(t){return !!(t&&t.closest&&t.closest('button,a,input,select,textarea,label'))}
+  var popup=document.getElementById('behInspectModal');
+  var popupClose=document.getElementById('behInspectClose');
+  var popupTitle=document.getElementById('behInspectTitle');
+  var popupSubtitle=document.getElementById('behInspectSubtitle');
+  var popupAvatar=document.getElementById('behInspectAvatar');
+  var popupChart=document.getElementById('behInspectChart');
+  var popupHistory=document.getElementById('behInspectHistory');
+  var popupHistoryTitle=document.getElementById('behInspectHistoryTitle');
+  var popupFrequency=document.getElementById('behInspectFrequency');
+
+  var statCross7=document.getElementById('behInspectCross7');
+  var statDays=document.getElementById('behInspectDays');
+  var statObs=document.getElementById('behInspectObs');
+  var statPos=document.getElementById('behInspectPos');
+
+  var selectedCard=null;
+  var selectedName='';
+
+  function isInteractive(t){
+    return !!(t&&t.closest&&t.closest('button,a,input,select,textarea,label'));
+  }
 
   function getCardName(card){
     var selectors=['[data-student-name]','.beh-student-name','.student-name','.beh-card__name','.beh-student__name','h2','h3'];
@@ -183,66 +352,28 @@ body{overflow-x:hidden}
       if(el&&el.textContent.trim()) return el.textContent.trim();
     }
     var clone=card.cloneNode(true);
-    clone.querySelectorAll('button,a,input,select,textarea').forEach(function(n){n.remove()});
+    clone.querySelectorAll('button,a,input,select,textarea').forEach(function(n){n.remove();});
     return String(clone.textContent||'Élève').trim().split(/\s{2,}|Aucune croix|croix|Observation|\+1/i)[0].trim()||'Élève';
   }
 
-  function clickLikelyHistorySelector(name){
-    /* On cherche un mécanisme de sélection déjà présent dans le JS existant. */
-    var candidates=[
-      '[data-student="'+CSS.escape(name)+'"]',
-      '[data-eleve="'+CSS.escape(name)+'"]',
-      '[data-name="'+CSS.escape(name)+'"]',
-      '[data-prenom="'+CSS.escape(name)+'"]'
-    ];
-    for(var i=0;i<candidates.length;i++){
-      var el=document.querySelector(candidates[i]);
-      if(el && el!==document.activeElement && !grid.contains(el)) {
-        try{ el.click(); return true; }catch(e){}
-      }
+  function getCardAvatar(card){
+    var img=card.querySelector('img');
+    if(img && img.src){
+      return '<img src="'+img.src+'" alt="">';
     }
-    return false;
+    return '<span>👦</span>';
   }
 
-  function selectCard(card){
-    Array.from(grid.children).forEach(function(c){c.removeAttribute('data-beh-selected')});
-    card.setAttribute('data-beh-selected','true');
-    var name=getCardName(card);
-
-    /* Le code existant met généralement à jour l'historique au clic sur la carte.
-       On déclenche un clic natif uniquement si nécessaire via l'évènement courant;
-       puis on attend son rendu avant de construire le graphique. */
-    if(chartTitle) chartTitle.textContent='Évolution du comportement — '+name;
-
-    setTimeout(function(){
-      renderForSelected(name);
-    },120);
-    setTimeout(function(){
-      renderForSelected(name);
-    },350);
+  function openPopup(){
+    popup.classList.remove('hidden');
+    popup.setAttribute('aria-hidden','false');
+    document.body.classList.add('beh-popup-open');
   }
 
-  function enhanceCards(){
-    if(!grid)return;
-    Array.from(grid.children).forEach(function(card){
-      if(card.dataset.behEnhanced==='1')return;
-      card.dataset.behEnhanced='1';
-      card.setAttribute('tabindex','0');
-      card.setAttribute('role','button');
-      card.setAttribute('title','Afficher l’évolution du comportement');
-
-      card.addEventListener('click',function(e){
-        if(isInteractive(e.target))return;
-        selectCard(card);
-      });
-
-      card.addEventListener('keydown',function(e){
-        if((e.key==='Enter'||e.key===' ')&&!isInteractive(e.target)){
-          e.preventDefault();
-          selectCard(card);
-        }
-      });
-    });
+  function closePopup(){
+    popup.classList.add('hidden');
+    popup.setAttribute('aria-hidden','true');
+    document.body.classList.remove('beh-popup-open');
   }
 
   function parseDateText(txt){
@@ -304,16 +435,17 @@ body{overflow-x:hidden}
   }
 
   function buildSeries(rows){
-    var dated=rows.filter(function(r){return r.date});
+    var dated=rows.filter(function(r){return r.date;});
     if(!dated.length){
       var today=new Date();today.setHours(12,0,0,0);
       var start=new Date(today);start.setDate(start.getDate()-13);
-      dated=[];
-      return schoolDaysBetween(start,today).slice(-10).map(function(d){return {date:d,label:d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'}),crosses:0}});
+      return schoolDaysBetween(start,today).slice(-10).map(function(d){
+        return {date:d,label:d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'}),crosses:0};
+      });
     }
 
-    var min=new Date(Math.min.apply(null,dated.map(function(r){return r.date.getTime()})));
-    var max=new Date(Math.max.apply(null,dated.map(function(r){return r.date.getTime()})));
+    var min=new Date(Math.min.apply(null,dated.map(function(r){return r.date.getTime();})));
+    var max=new Date(Math.max.apply(null,dated.map(function(r){return r.date.getTime();})));
     var today=new Date();today.setHours(12,0,0,0);
     if(max<today)max=today;
     var start=new Date(max);start.setDate(start.getDate()-20);
@@ -330,29 +462,29 @@ body{overflow-x:hidden}
     });
   }
 
-  function renderAxes(series){
-    if(!chart)return;
-    var max=Math.max(3,Math.max.apply(null,series.map(function(x){return x.crosses})));
+  function renderAxes(container,series){
+    if(!container)return;
+    var max=Math.max(3,Math.max.apply(null,series.map(function(x){return x.crosses;})));
     var top=Math.max(4,max);
-    var ticks=[];
-    for(var i=top;i>=0;i--)ticks.push(i);
 
-    chart.innerHTML='';
+    container.innerHTML='';
     var ylabel=document.createElement('div');
     ylabel.className='beh-chart-ylabel';
     ylabel.textContent='Avertissements';
-    chart.appendChild(ylabel);
+    container.appendChild(ylabel);
 
     var yaxis=document.createElement('div');
     yaxis.className='beh-chart-yaxis';
     [top,Math.round(top*0.75),Math.round(top*0.5),Math.round(top*0.25),0].forEach(function(v){
-      var s=document.createElement('span');s.textContent=v;yaxis.appendChild(s);
+      var s=document.createElement('span');
+      s.textContent=v;
+      yaxis.appendChild(s);
     });
-    chart.appendChild(yaxis);
+    container.appendChild(yaxis);
 
     var gridBg=document.createElement('div');
     gridBg.className='beh-chart-grid';
-    chart.appendChild(gridBg);
+    container.appendChild(gridBg);
 
     var bars=document.createElement('div');
     bars.className='beh-chart-bars';
@@ -380,17 +512,15 @@ body{overflow-x:hidden}
       wrap.appendChild(label);
       bars.appendChild(wrap);
     });
-    chart.appendChild(bars);
+    container.appendChild(bars);
   }
 
   function renderStats(rows,series){
-    if(!summary)return;
-    summary.hidden=false;
     var last7=series.slice(-7);
-    var cross7=last7.reduce(function(a,b){return a+b.crosses},0);
-    var days=series.filter(function(x){return x.crosses>0}).length;
-    var obs=rows.filter(function(r){return r.observation}).length;
-    var pos=rows.filter(function(r){return r.positive}).length;
+    var cross7=last7.reduce(function(a,b){return a+b.crosses;},0);
+    var days=series.filter(function(x){return x.crosses>0;}).length;
+    var obs=rows.filter(function(r){return r.observation;}).length;
+    var pos=rows.filter(function(r){return r.positive;}).length;
 
     statCross7.textContent=cross7;
     statDays.textContent=days;
@@ -398,16 +528,75 @@ body{overflow-x:hidden}
     statPos.textContent=pos;
   }
 
-  function renderForSelected(name){
+  function renderHistory(rows){
+    popupHistory.innerHTML='';
+    if(!rows.length){
+      popupHistory.innerHTML='<div class="beh-empty">Aucune observation pour le moment.</div>';
+      return;
+    }
+    rows.slice().reverse().slice(0,6).forEach(function(row){
+      var item=document.createElement('div');
+      item.className='beh-history-item';
+      var label=row.label?('<strong>'+row.label+'</strong> — '):'';
+      item.innerHTML=label + row.observation;
+      popupHistory.appendChild(item);
+    });
+  }
+
+  function renderFrequency(){
+    var html=(frequency&&frequency.innerHTML&&frequency.innerHTML.trim()) ? frequency.innerHTML : 'Aucune donnée pour le moment.';
+    popupFrequency.innerHTML=html;
+  }
+
+  function renderPopup(){
     var rows=historyRows();
-
-    /* Synchronise aussi le titre historique avec l'élève réellement cliqué
-       si le module existant n'a pas encore mis à jour son propre titre. */
-    if(historyTitle && name) historyTitle.textContent='Historique — '+name;
-
     var series=buildSeries(rows);
-    renderAxes(series);
+    renderAxes(popupChart,series);
     renderStats(rows,series);
+    renderHistory(rows);
+    renderFrequency();
+    if(popupHistoryTitle) popupHistoryTitle.textContent='Historique — '+selectedName;
+  }
+
+  function selectCard(card){
+    if(!grid)return;
+    Array.from(grid.children).forEach(function(c){c.removeAttribute('data-beh-selected');});
+    card.setAttribute('data-beh-selected','true');
+    selectedCard=card;
+    selectedName=getCardName(card);
+
+    popupTitle.textContent='Évolution du comportement — '+selectedName;
+    popupSubtitle.textContent='Diagramme d’évolution et rappel des observations.';
+    popupAvatar.innerHTML=getCardAvatar(card);
+
+    openPopup();
+
+    setTimeout(renderPopup,120);
+    setTimeout(renderPopup,350);
+    setTimeout(renderPopup,700);
+  }
+
+  function enhanceCards(){
+    if(!grid)return;
+    Array.from(grid.children).forEach(function(card){
+      if(card.dataset.behEnhancedPopup==='1')return;
+      card.dataset.behEnhancedPopup='1';
+      card.setAttribute('tabindex','0');
+      card.setAttribute('role','button');
+      card.setAttribute('title','Afficher le graphique d’évolution');
+
+      card.addEventListener('click',function(e){
+        if(isInteractive(e.target))return;
+        selectCard(card);
+      });
+
+      card.addEventListener('keydown',function(e){
+        if((e.key==='Enter'||e.key===' ')&&!isInteractive(e.target)){
+          e.preventDefault();
+          selectCard(card);
+        }
+      });
+    });
   }
 
   if(grid){
@@ -417,10 +606,23 @@ body{overflow-x:hidden}
 
   if(history){
     new MutationObserver(function(){
-      var selected=grid&&grid.querySelector('[data-beh-selected="true"]');
-      if(selected) renderForSelected(getCardName(selected));
+      if(!popup.classList.contains('hidden')) renderPopup();
     }).observe(history,{childList:true,subtree:true,characterData:true});
   }
+
+  if(frequency){
+    new MutationObserver(function(){
+      if(!popup.classList.contains('hidden')) renderFrequency();
+    }).observe(frequency,{childList:true,subtree:true,characterData:true});
+  }
+
+  popupClose.addEventListener('click',closePopup);
+  popup.addEventListener('click',function(e){
+    if(e.target===popup) closePopup();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape' && !popup.classList.contains('hidden')) closePopup();
+  });
 })();
 </script>
 
