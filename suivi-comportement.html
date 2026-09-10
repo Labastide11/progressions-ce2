@@ -4,8 +4,8 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="description" content="Suivi du comportement des élèves CE2 : avertissements, observations datées et historique."/>
-<title>V36.60 — Suivi du comportement — Progressions CE2</title>
-<link href="suivi-comportement.css?v=36.60" rel="stylesheet"/>
+<title>V36.61 — Suivi du comportement — Progressions CE2</title>
+<link href="suivi-comportement.css?v=36.61" rel="stylesheet"/>
 
 <style id="behaviour-page-v3659">
 html,body{width:100%;min-height:100%;margin:0}
@@ -311,17 +311,77 @@ body{overflow-x:hidden}
   </div>
 </section>
 <script src="student-photos.js?v=35.29"></script>
-<script src="suivi-comportement.js?v=36.60"></script>
+
+<script id="behaviour-data-capture-v3661">
+(function(){
+  'use strict';
+
+  var store = [];
+  window.__BEH_CAPTURED_DATA_V3661 = store;
+
+  function norm(v){
+    return String(v == null ? '' : v).trim();
+  }
+
+  function mergeRows(rows){
+    if(!Array.isArray(rows)) return;
+    rows.forEach(function(raw){
+      if(!raw || typeof raw !== 'object') return;
+      var row = {
+        event_id: norm(raw.event_id || raw.id),
+        date: norm(raw.date),
+        prenom: norm(raw.prenom || raw.eleve || raw.name),
+        croix: Math.max(0, Number(raw.croix) || 0),
+        observation: norm(raw.observation || raw.texte || raw.text),
+        type: norm(raw.type || 'observation').toLowerCase()
+      };
+      if(!row.prenom && !row.date && !row.observation && !row.croix) return;
+
+      var key = row.event_id || [row.date,row.prenom,row.type,row.observation,row.croix].join('|');
+      var found = -1;
+      for(var i=0;i<store.length;i++){
+        var k = store[i].event_id || [store[i].date,store[i].prenom,store[i].type,store[i].observation,store[i].croix].join('|');
+        if(k === key){ found=i; break; }
+      }
+      if(found >= 0) store[found] = row;
+      else store.push(row);
+    });
+  }
+
+  window.__BEH_MERGE_V3661 = mergeRows;
+
+  if(typeof window.fetch === 'function' && !window.fetch.__behCapturedV3661){
+    var originalFetch = window.fetch;
+    var wrapped = function(){
+      var args = arguments;
+      return originalFetch.apply(this,args).then(function(response){
+        try{
+          response.clone().json().then(function(data){
+            if(data && Array.isArray(data.comportement)) mergeRows(data.comportement);
+            else if(Array.isArray(data)) mergeRows(data);
+          }).catch(function(){});
+        }catch(e){}
+        return response;
+      });
+    };
+    wrapped.__behCapturedV3661 = true;
+    window.fetch = wrapped;
+  }
+})();
+</script>
+
+<script src="suivi-comportement.js?v=36.61"></script>
 
 
-<script id="behaviour-enhancements-v3660">
+
+<script id="behaviour-enhancements-v3661">
 (function(){
   'use strict';
 
   var grid=document.getElementById('behStudentGrid');
   var history=document.getElementById('behHistory');
-  var historyTitle=document.getElementById('behHistoryTitle');
   var frequency=document.getElementById('behFrequency');
+  var dateInput=document.getElementById('behDate');
 
   var popup=document.getElementById('behInspectModal');
   var popupClose=document.getElementById('behInspectClose');
@@ -338,153 +398,183 @@ body{overflow-x:hidden}
   var statObs=document.getElementById('behInspectObs');
   var statPos=document.getElementById('behInspectPos');
 
-  var selectedCard=null;
   var selectedName='';
+  var selectedCard=null;
+
+  function norm(v){
+    return String(v == null ? '' : v).trim();
+  }
+
+  function keyName(v){
+    return norm(v).toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+      .replace(/[^a-z0-9]/g,'');
+  }
+
+  function esc(s){
+    return norm(s).replace(/[&<>"']/g,function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
 
   function isInteractive(t){
-    return !!(t&&t.closest&&t.closest('button,a,input,select,textarea,label'));
+    return !!(t && t.closest && t.closest('button,a,input,select,textarea,label'));
   }
 
   function getCardName(card){
-    var selectors=['[data-student-name]','.beh-student-name','.student-name','.beh-card__name','.beh-student__name','h2','h3'];
-    for(var i=0;i<selectors.length;i++){
-      var el=card.querySelector(selectors[i]);
-      if(el&&el.textContent.trim()) return el.textContent.trim();
+    var preferred=[
+      '[data-student-name]','.beh-student-name','.student-name',
+      '.beh-card__name','.beh-student__name'
+    ];
+    for(var i=0;i<preferred.length;i++){
+      var el=card.querySelector(preferred[i]);
+      if(el){
+        var exact=norm(el.getAttribute('data-student-name') || el.textContent);
+        if(exact) return exact.replace(/[❌✖×]+/g,'').trim();
+      }
     }
+
+    /* Fallback : prend le premier texte court non-bouton, sans les croix. */
     var clone=card.cloneNode(true);
     clone.querySelectorAll('button,a,input,select,textarea').forEach(function(n){n.remove();});
-    return String(clone.textContent||'Élève').trim().split(/\s{2,}|Aucune croix|croix|Observation|\+1/i)[0].trim()||'Élève';
+    var lines=norm(clone.innerText || clone.textContent).split(/\n+/).map(function(x){return x.trim();}).filter(Boolean);
+    for(var j=0;j<lines.length;j++){
+      var line=lines[j].replace(/[❌✖×]+/g,'').trim();
+      if(line && !/aucune croix|observation|avertissement|\+1/i.test(line)) return line;
+    }
+    return 'Élève';
   }
 
   function getCardAvatar(card){
     var img=card.querySelector('img');
-    if(img && img.src){
-      return '<img src="'+img.src+'" alt="">';
-    }
-    return '<span>👦</span>';
+    return (img && img.src) ? '<img src="'+esc(img.src)+'" alt="">' : '<span>👦</span>';
   }
 
-  function openPopup(){
-    popup.classList.remove('hidden');
-    popup.setAttribute('aria-hidden','false');
-    document.body.classList.add('beh-popup-open');
-  }
-
-  function closePopup(){
-    popup.classList.add('hidden');
-    popup.setAttribute('aria-hidden','true');
-    document.body.classList.remove('beh-popup-open');
-  }
-
-  function parseDateText(txt){
-    var m=String(txt||'').match(/\b(\d{1,2})[\/.-](\d{1,2})(?:[\/.-](\d{2,4}))?\b/);
-    if(m){
-      var y=m[3]?Number(m[3]):new Date().getFullYear();
-      if(y<100)y+=2000;
-      return new Date(y,Number(m[2])-1,Number(m[1]),12);
-    }
-    var months={janvier:0,février:1,fevrier:1,mars:2,avril:3,mai:4,juin:5,juillet:6,août:7,aout:7,septembre:8,octobre:9,novembre:10,décembre:11,decembre:11};
-    var f=String(txt||'').toLowerCase().match(/\b(?:lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche|lun\.?|mar\.?|mer\.?|jeu\.?|ven\.?)\s+(\d{1,2})\s+([a-zéûîôàèùç]+)(?:\s+(20\d{2}))?/i);
-    if(f&&months[f[2]]!==undefined) return new Date(Number(f[3]||new Date().getFullYear()),months[f[2]],Number(f[1]),12);
-    return null;
-  }
-
-  function inferCrosses(txt){
-    txt=String(txt||'');
-    var m=txt.match(/(\d+)\s*(?:croix|avertissement(?:s)?)/i);
-    if(m)return Math.max(0,parseInt(m[1],10)||0);
+  function cardTodayCrosses(card){
+    /* Les grandes croix visibles dans l'entête de la carte correspondent aux croix du jour.
+       On exclut le bouton +1 et les textes d'observation. */
+    var clone=card.cloneNode(true);
+    clone.querySelectorAll('button,a,input,select,textarea,.beh-observation,.observation').forEach(function(n){n.remove();});
+    var txt=norm(clone.innerText || clone.textContent);
     var crosses=(txt.match(/❌|✖|×/g)||[]).length;
-    if(crosses)return crosses;
-    if(/⚠️|avertissement|comportement à reprendre/i.test(txt))return 1;
-    return 0;
+    if(crosses) return crosses;
+
+    var m=txt.match(/(\d+)\s*croix/i);
+    return m ? Math.max(0,parseInt(m[1],10)||0) : 0;
   }
 
-  function historyRows(){
-    if(!history)return [];
-    var nodes=Array.from(history.children||[]);
-    if(!nodes.length&&history.textContent.trim())nodes=[history];
+  function cardObservation(card){
+    var selectors=[
+      '.beh-card__observation','.beh-observation','.student-observation',
+      '[data-observation]','.beh-card footer','.beh-card__footer'
+    ];
+    for(var i=0;i<selectors.length;i++){
+      var el=card.querySelector(selectors[i]);
+      if(el && norm(el.textContent)){
+        var t=norm(el.textContent);
+        if(!/aucune observation/i.test(t)) return t;
+      }
+    }
 
-    var rows=[];
-    nodes.forEach(function(node){
-      var txt=String(node.textContent||'').replace(/\s+/g,' ').trim();
-      if(!txt)return;
-      var date=parseDateText(txt);
-      rows.push({
-        date:date,
-        label:date?date.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'}):'',
-        crosses:inferCrosses(txt),
-        positive:/positif|félicit|bravo|🙂|✅/i.test(txt),
-        observation:txt
-      });
+    var txt=norm(card.innerText || card.textContent);
+    var lines=txt.split(/\n+/).map(function(x){return x.trim();}).filter(Boolean);
+    var candidates=lines.filter(function(x){
+      return x.length>25 && !/aucune observation/i.test(x) && !/observation$/i.test(x);
     });
+    return candidates.length ? candidates[candidates.length-1] : '';
+  }
+
+  function selectedDate(){
+    var v=dateInput ? norm(dateInput.value) : '';
+    if(/^\d{4}-\d{2}-\d{2}$/.test(v)) return v;
+    var d=new Date();
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+
+  function capturedRowsFor(name){
+    var wanted=keyName(name);
+    var all=Array.isArray(window.__BEH_CAPTURED_DATA_V3661) ? window.__BEH_CAPTURED_DATA_V3661 : [];
+    return all.filter(function(r){ return keyName(r.prenom)===wanted; }).map(function(r){
+      return {
+        event_id:norm(r.event_id),
+        date:norm(r.date),
+        prenom:norm(r.prenom),
+        croix:Math.max(0,Number(r.croix)||0),
+        observation:norm(r.observation),
+        type:norm(r.type||'observation').toLowerCase()
+      };
+    });
+  }
+
+  function mergeCardToday(rows,card,name){
+    var date=selectedDate();
+    var crosses=cardTodayCrosses(card);
+    var obs=cardObservation(card);
+
+    var sameDay=rows.filter(function(r){return r.date===date;});
+    var hasCross=sameDay.some(function(r){return Number(r.croix)>0;});
+    var hasObs=sameDay.some(function(r){return norm(r.observation);});
+
+    if(crosses>0 && !hasCross){
+      rows.push({
+        event_id:'card-'+date+'-'+keyName(name)+'-warning',
+        date:date, prenom:name, croix:crosses,
+        observation:obs, type:'avertissement'
+      });
+    } else if(obs && !hasObs){
+      rows.push({
+        event_id:'card-'+date+'-'+keyName(name)+'-observation',
+        date:date, prenom:name, croix:0,
+        observation:obs, type:'observation'
+      });
+    }
     return rows;
   }
 
-  function schoolDaysBetween(minDate,maxDate){
-    var arr=[],d=new Date(minDate.getFullYear(),minDate.getMonth(),minDate.getDate(),12);
-    while(d<=maxDate){
+  function schoolDays(endDate,count){
+    var out=[],d=new Date(endDate.getFullYear(),endDate.getMonth(),endDate.getDate(),12);
+    while(out.length<count){
       var day=d.getDay();
-      if(day===1||day===2||day===4||day===5) arr.push(new Date(d));
-      d.setDate(d.getDate()+1);
+      if(day===1||day===2||day===4||day===5) out.unshift(new Date(d));
+      d.setDate(d.getDate()-1);
     }
-    return arr;
+    return out;
   }
 
-  function key(d){
+  function dateObj(iso){
+    var m=norm(iso).match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    return m ? new Date(+m[1],+m[2]-1,+m[3],12) : null;
+  }
+
+  function dkey(d){
     return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
   }
 
   function buildSeries(rows){
-    var dated=rows.filter(function(r){return r.date;});
-    if(!dated.length){
-      var today=new Date();today.setHours(12,0,0,0);
-      var start=new Date(today);start.setDate(start.getDate()-13);
-      return schoolDaysBetween(start,today).slice(-10).map(function(d){
-        return {date:d,label:d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'}),crosses:0};
-      });
-    }
+    var current=dateObj(selectedDate()) || new Date();
+    var days=schoolDays(current,12);
+    var by={};
 
-    var min=new Date(Math.min.apply(null,dated.map(function(r){return r.date.getTime();})));
-    var max=new Date(Math.max.apply(null,dated.map(function(r){return r.date.getTime();})));
-    var today=new Date();today.setHours(12,0,0,0);
-    if(max<today)max=today;
-    var start=new Date(max);start.setDate(start.getDate()-20);
-    if(min<start)min=start;
-
-    var byDay={};
-    dated.forEach(function(r){
-      var k=key(r.date);
-      byDay[k]=(byDay[k]||0)+r.crosses;
+    rows.forEach(function(r){
+      if(!r.date) return;
+      by[r.date]=(by[r.date]||0)+Math.max(0,Number(r.croix)||0);
     });
 
-    return schoolDaysBetween(min,max).slice(-12).map(function(d){
-      return {date:d,label:d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'}),crosses:byDay[key(d)]||0};
+    return days.map(function(d){
+      var k=dkey(d);
+      return {date:k,label:d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'}),crosses:by[k]||0};
     });
   }
 
-  function renderAxes(container,series){
-    if(!container)return;
-    var max=Math.max(3,Math.max.apply(null,series.map(function(x){return x.crosses;})));
-    var top=Math.max(4,max);
+  function renderChart(series){
+    var max=Math.max(4,Math.max.apply(null,series.map(function(x){return x.crosses;})));
 
-    container.innerHTML='';
-    var ylabel=document.createElement('div');
-    ylabel.className='beh-chart-ylabel';
-    ylabel.textContent='Avertissements';
-    container.appendChild(ylabel);
-
-    var yaxis=document.createElement('div');
-    yaxis.className='beh-chart-yaxis';
-    [top,Math.round(top*0.75),Math.round(top*0.5),Math.round(top*0.25),0].forEach(function(v){
-      var s=document.createElement('span');
-      s.textContent=v;
-      yaxis.appendChild(s);
-    });
-    container.appendChild(yaxis);
-
-    var gridBg=document.createElement('div');
-    gridBg.className='beh-chart-grid';
-    container.appendChild(gridBg);
+    popupChart.innerHTML=
+      '<div class="beh-chart-ylabel">Avertissements</div>'+
+      '<div class="beh-chart-yaxis">'+
+        '<span>'+max+'</span><span>'+Math.round(max*.75)+'</span><span>'+Math.round(max*.5)+'</span><span>'+Math.round(max*.25)+'</span><span>0</span>'+
+      '</div>'+
+      '<div class="beh-chart-grid"></div>';
 
     var bars=document.createElement('div');
     bars.className='beh-chart-bars';
@@ -500,7 +590,7 @@ body{overflow-x:hidden}
 
       var bar=document.createElement('div');
       bar.className='beh-chart-bar';
-      bar.style.height=Math.max(2,Math.round((item.crosses/top)*142))+'px';
+      bar.style.height=Math.max(2,Math.round((item.crosses/max)*142))+'px';
       bar.title=item.label+' : '+item.crosses+' avertissement(s)';
 
       var label=document.createElement('div');
@@ -512,88 +602,115 @@ body{overflow-x:hidden}
       wrap.appendChild(label);
       bars.appendChild(wrap);
     });
-    container.appendChild(bars);
+    popupChart.appendChild(bars);
   }
 
   function renderStats(rows,series){
     var last7=series.slice(-7);
-    var cross7=last7.reduce(function(a,b){return a+b.crosses;},0);
-    var days=series.filter(function(x){return x.crosses>0;}).length;
-    var obs=rows.filter(function(r){return r.observation;}).length;
-    var pos=rows.filter(function(r){return r.positive;}).length;
-
-    statCross7.textContent=cross7;
-    statDays.textContent=days;
-    statObs.textContent=obs;
-    statPos.textContent=pos;
+    statCross7.textContent=last7.reduce(function(a,b){return a+b.crosses;},0);
+    statDays.textContent=series.filter(function(x){return x.crosses>0;}).length;
+    statObs.textContent=rows.filter(function(r){return !!norm(r.observation);}).length;
+    statPos.textContent=rows.filter(function(r){return /positif|felicitation|félicitation/.test(r.type);}).length;
   }
 
   function renderHistory(rows){
+    var withContent=rows.filter(function(r){return r.croix>0 || norm(r.observation);});
+    withContent.sort(function(a,b){return b.date.localeCompare(a.date);});
+
     popupHistory.innerHTML='';
-    if(!rows.length){
-      popupHistory.innerHTML='<div class="beh-empty">Aucune observation pour le moment.</div>';
+    if(!withContent.length){
+      popupHistory.innerHTML='<div class="beh-empty">Aucune observation enregistrée pour cet élève.</div>';
       return;
     }
-    rows.slice().reverse().slice(0,6).forEach(function(row){
+
+    withContent.slice(0,8).forEach(function(r){
       var item=document.createElement('div');
       item.className='beh-history-item';
-      var label=row.label?('<strong>'+row.label+'</strong> — '):'';
-      item.innerHTML=label + row.observation;
+      var d=dateObj(r.date);
+      var dl=d?d.toLocaleDateString('fr-FR') : r.date;
+      var crosses=r.croix>0 ? ' — '+r.croix+' croix' : '';
+      var obs=norm(r.observation);
+      item.innerHTML='<strong>'+esc(dl)+esc(crosses)+'</strong>'+
+        (obs?'<br>'+esc(obs):'');
       popupHistory.appendChild(item);
     });
   }
 
-  function renderFrequency(){
-    var html=(frequency&&frequency.innerHTML&&frequency.innerHTML.trim()) ? frequency.innerHTML : 'Aucune donnée pour le moment.';
-    popupFrequency.innerHTML=html;
+  function renderFrequency(rows,series){
+    var total=series.reduce(function(a,b){return a+b.crosses;},0);
+    var days=series.filter(function(x){return x.crosses>0;}).length;
+    var obsDays={};
+    rows.forEach(function(r){if(norm(r.observation)&&r.date)obsDays[r.date]=1;});
+    var latest=rows.filter(function(r){return r.date&&(r.croix>0||norm(r.observation));})
+                   .sort(function(a,b){return b.date.localeCompare(a.date);})[0];
+
+    popupFrequency.innerHTML=
+      '<div style="display:grid;gap:10px">'+
+        '<div>Sur les 12 derniers jours de classe <strong>'+days+' jour'+(days>1?'s':'')+' avec croix</strong></div>'+
+        '<div>Total des croix <strong>'+total+'</strong></div>'+
+        '<div>Jours avec observation <strong>'+Object.keys(obsDays).length+'</strong></div>'+
+        '<div>Dernier fait daté <strong>'+(latest?esc((dateObj(latest.date)||new Date(latest.date)).toLocaleDateString('fr-FR')):'—')+'</strong></div>'+
+      '</div>';
   }
 
   function renderPopup(){
-    var rows=historyRows();
+    if(!selectedCard || !selectedName) return;
+    var rows=capturedRowsFor(selectedName);
+    rows=mergeCardToday(rows,selectedCard,selectedName);
     var series=buildSeries(rows);
-    renderAxes(popupChart,series);
+
+    renderChart(series);
     renderStats(rows,series);
     renderHistory(rows);
-    renderFrequency();
-    if(popupHistoryTitle) popupHistoryTitle.textContent='Historique — '+selectedName;
+    renderFrequency(rows,series);
+    popupHistoryTitle.textContent='Historique — '+selectedName;
   }
 
-  function selectCard(card){
-    if(!grid)return;
-    Array.from(grid.children).forEach(function(c){c.removeAttribute('data-beh-selected');});
-    card.setAttribute('data-beh-selected','true');
+  function openPopup(card){
     selectedCard=card;
     selectedName=getCardName(card);
+
+    Array.from(grid.children).forEach(function(c){c.removeAttribute('data-beh-selected');});
+    card.setAttribute('data-beh-selected','true');
 
     popupTitle.textContent='Évolution du comportement — '+selectedName;
     popupSubtitle.textContent='Diagramme d’évolution et rappel des observations.';
     popupAvatar.innerHTML=getCardAvatar(card);
 
-    openPopup();
+    popup.classList.remove('hidden');
+    popup.setAttribute('aria-hidden','false');
+    document.body.classList.add('beh-popup-open');
 
-    setTimeout(renderPopup,120);
-    setTimeout(renderPopup,350);
-    setTimeout(renderPopup,700);
+    /* Premier rendu depuis les données déjà capturées + la carte du jour.
+       Puis nouveau rendu après les éventuelles requêtes du module principal. */
+    renderPopup();
+    setTimeout(renderPopup,180);
+    setTimeout(renderPopup,500);
+  }
+
+  function closePopup(){
+    popup.classList.add('hidden');
+    popup.setAttribute('aria-hidden','true');
+    document.body.classList.remove('beh-popup-open');
   }
 
   function enhanceCards(){
     if(!grid)return;
     Array.from(grid.children).forEach(function(card){
-      if(card.dataset.behEnhancedPopup==='1')return;
-      card.dataset.behEnhancedPopup='1';
+      if(card.dataset.behEnhancedV3661==='1') return;
+      card.dataset.behEnhancedV3661='1';
       card.setAttribute('tabindex','0');
       card.setAttribute('role','button');
-      card.setAttribute('title','Afficher le graphique d’évolution');
+      card.setAttribute('title','Afficher l’évolution du comportement');
 
       card.addEventListener('click',function(e){
-        if(isInteractive(e.target))return;
-        selectCard(card);
+        if(isInteractive(e.target)) return;
+        openPopup(card);
       });
-
       card.addEventListener('keydown',function(e){
         if((e.key==='Enter'||e.key===' ')&&!isInteractive(e.target)){
           e.preventDefault();
-          selectCard(card);
+          openPopup(card);
         }
       });
     });
@@ -610,18 +727,10 @@ body{overflow-x:hidden}
     }).observe(history,{childList:true,subtree:true,characterData:true});
   }
 
-  if(frequency){
-    new MutationObserver(function(){
-      if(!popup.classList.contains('hidden')) renderFrequency();
-    }).observe(frequency,{childList:true,subtree:true,characterData:true});
-  }
-
   popupClose.addEventListener('click',closePopup);
-  popup.addEventListener('click',function(e){
-    if(e.target===popup) closePopup();
-  });
+  popup.addEventListener('click',function(e){if(e.target===popup)closePopup();});
   document.addEventListener('keydown',function(e){
-    if(e.key==='Escape' && !popup.classList.contains('hidden')) closePopup();
+    if(e.key==='Escape'&&!popup.classList.contains('hidden')) closePopup();
   });
 })();
 </script>
