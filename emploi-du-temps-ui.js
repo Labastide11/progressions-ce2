@@ -6,7 +6,7 @@
   }
   const periods = {
     rentree:{title:'Rentrée — Semaines 1 et 2 (sans CHAM)',note:'Emploi du temps de secours pour les deux premières semaines, tant que la date de démarrage de la CHAM n’est pas confirmée. Toute la classe reste réunie le mardi et le jeudi.',hours:['9 h 10','4 h 35','1 h 30','2 h 30','2 h','1 h','1 h 15'],minutes:[550,275,90,150,120,60,75],days:{},mode:'rentree'},
-    p1:{title:'Période 1',note:'Installation des routines. EPS en classe, sans créneau sportif extérieur. Français et mathématiques restent prioritaires.',hours:['9 h 10','4 h 35','1 h 30','2 h 30','2 h','1 h','1 h 15'],minutes:[550,275,90,150,120,60,75],days:{}},
+    p1:{title:'Période 1 — Grille refondue',note:'Fondamentaux regroupés le matin ; autres disciplines l’après-midi. Le quart d’heure de lecture reste le seul rituel de français après 14 h. EPS : 45 min le lundi et 60 min maximum le vendredi.',hours:['8 h','4 h','1 h 20','1 h 45','2 h 30','45 min','3 h 40'],minutes:[480,240,80,105,150,45,220],days:{}},
     p2:{title:'Période 2 — Piscine le vendredi',note:'Vendredi après-midi réservé à la piscine de Grazailles. Le complément de mathématiques est déplacé sur un créneau commun.',hours:['9 h 10','4 h 35','1 h 15','3 h','1 h 45','1 h','1 h 15'],minutes:[550,275,75,180,105,60,75],days:{vendredi:'pool'}},
     p3:{title:'Période 3 — Cavayère le lundi matin',note:'Lundi matin : course d’orientation et sandball. Les apprentissages fondamentaux manqués sont redistribués uniquement sur des temps de classe entière.',hours:['9 h 10','4 h 35','1 h 15','3 h 30','1 h 30','45 min','1 h 15'],minutes:[550,275,75,210,90,45,75],days:{lundi:'cavayere'}},
     p4:{title:'Période 4 — Domec le lundi après-midi',note:'Lundi après-midi : gymnastique et lutte. Les matinées fondamentales sont inchangées.',hours:['9 h 10','4 h 35','1 h 15','3 h 15','1 h 30','45 min','1 h 30'],minutes:[550,275,75,195,90,45,90],days:{lundi:'domec'}},
@@ -792,7 +792,11 @@
   const subjectClasses=['french','maths','english','eps','arts','science','history'];
   const subjectIcons=['📚','➗','🇬🇧','🏃','🎨','🔬','🌍'];
   function altered(day,key,mode,period){
-    const rows=base[day].map(x=>[...x]);
+    const periodBase=(period==='p1' && window.PROGRESSIONS_EDT_DATA && window.PROGRESSIONS_EDT_DATA.p1Base)
+      ? window.PROGRESSIONS_EDT_DATA.p1Base
+      : base;
+    if(!periodBase[day]) return [];
+    const rows=periodBase[day].map(x=>[...x]);
     if(mode==='rentree'&&day==='mardi') return [
       ...rows.slice(0,7),
       ['14h15–14h30','Anglais','Rituel oral court en classe entière','english'],
@@ -1993,7 +1997,10 @@
     },
     getDayRows(day, period='p1'){
       const selected=periods[period]||periods.p1;
-      if(!base[day]) return [];
+      const periodBase=(period==='p1' && window.PROGRESSIONS_EDT_DATA && window.PROGRESSIONS_EDT_DATA.p1Base)
+        ? window.PROGRESSIONS_EDT_DATA.p1Base
+        : base;
+      if(!periodBase[day]) return [];
       const key=selected.days && selected.days[day] ? selected.days[day] : '';
       return altered(day,key,selected.mode||'',period).map(row=>[...row]);
     }
