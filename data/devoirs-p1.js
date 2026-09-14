@@ -1,6 +1,6 @@
-// V35.36 — P1 : devoirs allégés pendant les évaluations nationales CE2.
+// V36.69 — P1 synchronisée avec l’emploi du temps détaillé V36.68 et l’Espace Parents.
 window.DEVOIRS_P1 = {
-  "version": "35.36",
+  "version": "36.69",
   "period": "p1",
   "schoolYear": "2026-2027",
   "principles": {
@@ -19,7 +19,8 @@ window.DEVOIRS_P1 = {
     ],
     "dictationRule": "Les mots viennent de dictees-ce2.js. Première rencontre puis rappel avant la dictée bilan ; aucune recopie manuelle de la banque dans les devoirs.",
     "evaluationRule": "Annonce anticipée puis rappel court ciblé. Jour J : information seulement, aucun devoir ajouté.",
-    "autonomyRule": "Le cahier est une aide, jamais une condition : chaque devoir propose une solution de repli sans cahier."
+    "autonomyRule": "Le cahier est une aide, jamais une condition : chaque devoir propose une solution de repli sans cahier.",
+    "syncRule": "Les devoirs P1 sont alignés sur emploi-du-temps-data-p1.js V36.68 : une notion est révisée seulement après avoir été travaillée en classe ; les évaluations annoncées correspondent au détaillé."
   },
   "weeks": [
     {
@@ -37,7 +38,7 @@ window.DEVOIRS_P1 = {
       "start": "2026-09-07",
       "end": "2026-09-11",
       "theme": "Évaluations nationales et routines légères",
-      "note": "Du 7 au 18 septembre, la classe participe aux évaluations nationales CE2. Aucune préparation particulière n’est demandée à la maison : les devoirs restent courts et ordinaires.",
+      "note": "Les évaluations nationales ont occupé la semaine du 7 au 11 septembre. Les devoirs restent courts et ordinaires ; aucune préparation spécifique aux évaluations nationales n’est demandée.",
       "items": [
         {
           "due": "2026-09-08",
@@ -134,8 +135,8 @@ window.DEVOIRS_P1 = {
       "label": "Semaine 3",
       "start": "2026-09-14",
       "end": "2026-09-18",
-      "theme": "Évaluations nationales et travail léger",
-      "note": "Les évaluations nationales se poursuivent cette semaine. Elles ne se préparent pas à la maison : on garde seulement de petites routines de lecture ou de mémorisation.",
+      "theme": "Reprise complète des apprentissages",
+      "note": "Les évaluations nationales sont terminées. On reprend un rythme ordinaire : lecture, français et mathématiques le matin, avec de courtes révisions à la maison.",
       "items": [
         {
           "due": "2026-09-15",
@@ -165,22 +166,17 @@ window.DEVOIRS_P1 = {
           "icon": "📝",
           "action": "Je prépare ma dictée",
           "title": "Orthographe — Je prépare ma dictée",
-          "instruction": "Revois tous les mots de la dictée affichés ci-dessous. Épelle surtout les 5 mots prioritaires puis demande à quelqu’un de t’en faire retrouver 3 ou 4.",
+          "instruction": "Revois les 10 mots de La Grande Muraille affichés ci-dessous. Épelle surtout les 5 mots prioritaires puis demande à quelqu’un de t’en faire retrouver 3 ou 4.",
           "help": "Tu peux lire le mot, le cacher, l’épeler puis vérifier. La liste est ici : pas besoin du cahier.",
           "duration": 5,
-          "classLink": "Dictée · Le cheval et le fermier · mots du corpus",
+          "classLink": "Dictée · La Grande Muraille · 10 mots annoncés en classe",
           "routineIcon": "📝",
           "routineTitle": "Orthographe — Je prépare ma dictée",
-          "routine": "Revois tous les mots de la dictée affichés ci-dessous. Épelle surtout les 5 mots prioritaires puis demande à quelqu’un de t’en faire retrouver 3 ou 4.",
-          "notion": "Dictée · Le cheval et le fermier · mots du corpus",
+          "routine": "Revois les 10 mots de La Grande Muraille affichés ci-dessous. Épelle surtout les 5 mots prioritaires puis demande à quelqu’un de t’en faire retrouver 3 ou 4.",
+          "notion": "Dictée · La Grande Muraille · 10 mots annoncés en classe",
           "challenge": "",
           "dictationStage": "final",
-          "family": "",
-          "hibou": {
-            "label": "Trouver des compléments",
-            "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/complements.html",
-            "intro": "Besoin d’aide ?"
-          }
+          "family": ""
         },
         {
           "due": "2026-09-18",
@@ -240,18 +236,17 @@ window.DEVOIRS_P1 = {
           "subject": "orthographe",
           "subjectLabel": "Orthographe",
           "icon": "📝",
-          "action": "Je commence à préparer ma dictée",
-          "title": "Orthographe — Je commence à préparer ma dictée",
-          "instruction": "Découvre ou revois les mots de la semaine affichés ci-dessous. Lis-les puis épelle les 5 mots prioritaires.",
-          "help": "Ne cherche pas à tout apprendre d’un coup : 3 à 4 minutes suffisent aujourd’hui.",
+          "action": "Je revois les mots fréquents",
+          "title": "Orthographe — Je revois les mots fréquents",
+          "instruction": "Relis les mots fréquents et invariables travaillés lundi en classe. Choisis-en 5, épelle-les puis emploie-en deux oralement dans une phrase.",
+          "help": "3 à 4 minutes suffisent. Le but est de consolider les mots réellement rencontrés en classe.",
           "duration": 4,
-          "classLink": "Dictée · Les métiers · première mémorisation",
+          "classLink": "Orthographe · mots fréquents et mots invariables de la semaine",
           "routineIcon": "📝",
-          "routineTitle": "Orthographe — Je commence à préparer ma dictée",
-          "routine": "Découvre ou revois les mots de la semaine affichés ci-dessous. Lis-les puis épelle les 5 mots prioritaires.",
-          "notion": "Dictée · Les métiers · première mémorisation",
+          "routineTitle": "Orthographe — Je revois les mots fréquents",
+          "routine": "Relis les mots fréquents et invariables travaillés lundi en classe. Choisis-en 5, épelle-les puis emploie-en deux oralement dans une phrase.",
+          "notion": "Orthographe · mots fréquents et mots invariables de la semaine",
           "challenge": "",
-          "dictationStage": "first",
           "secondary": {
             "category": "maths",
             "subject": "calcul-mental",
@@ -283,7 +278,6 @@ window.DEVOIRS_P1 = {
           "routine": "Relis la leçon si tu as ton cahier. Puis explique oralement comment reconnaître le verbe dans une phrase.",
           "notion": "Identifier le verbe",
           "challenge": "",
-          "dictationStage": "final",
           "family": "Si vous avez envie : mime le verbe. Quelqu’un mime une action ; donne le verbe, puis inversez les rôles.",
           "hibou": {
             "label": "Le verbe",
@@ -314,25 +308,6 @@ window.DEVOIRS_P1 = {
             "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-verbe.html",
             "intro": "Pour revoir la leçon si besoin :"
           }
-        },
-        {
-          "due": "2026-09-28",
-          "category": "poesie",
-          "subject": "poesie",
-          "subjectLabel": "Poésie",
-          "icon": "🎭",
-          "action": "J’apprends progressivement",
-          "title": "Poésie — J’apprends progressivement",
-          "instruction": "Apprends seulement la première partie indiquée en classe. Lis-la plusieurs fois à voix haute puis essaie de la réciter sans regarder.",
-          "help": "Si le cahier n’est pas disponible, récite simplement de mémoire la partie déjà apprise : aucun nouveau vers n’est exigé sans le texte.",
-          "duration": 5,
-          "classLink": "Poésie · mémorisation · mise en voix",
-          "routineIcon": "🎭",
-          "routineTitle": "Poésie — J’apprends progressivement",
-          "routine": "Apprends seulement la première partie indiquée en classe. Lis-la plusieurs fois à voix haute puis essaie de la réciter sans regarder.",
-          "notion": "Poésie · mémorisation · mise en voix",
-          "challenge": "",
-          "family": "Si vous avez envie : le mot disparu. Pendant la récitation, quelqu’un t’arrête et demande quel mot venait juste après."
         }
       ]
     },
@@ -360,33 +335,12 @@ window.DEVOIRS_P1 = {
           "routine": "Donne oralement l’infinitif de : je chante · nous regardons · ils jouent. Puis invente un autre exemple.",
           "notion": "Verbe conjugué · infinitif",
           "challenge": "",
-          "dictationStage": "first",
           "family": "Si vous avez envie : la machine à verbes. Un adulte dit une forme conjuguée, tu donnes l’infinitif ; puis échangez les rôles.",
           "hibou": {
             "label": "Le verbe",
             "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-verbe.html",
             "intro": "Pour revoir la leçon si besoin :"
           }
-        },
-        {
-          "due": "2026-10-01",
-          "category": "poesie",
-          "subject": "poesie",
-          "subjectLabel": "Poésie",
-          "icon": "🎭",
-          "action": "J’apprends progressivement",
-          "title": "Poésie — J’apprends progressivement",
-          "instruction": "Revois la première partie puis apprends la partie suivante indiquée en classe.",
-          "help": "Commence par réciter ce que tu connais déjà. Si le cahier n’est pas disponible, n’apprends pas de nouveaux vers : consolide seulement la partie connue.",
-          "duration": 5,
-          "classLink": "Poésie · mémorisation progressive",
-          "routineIcon": "🎭",
-          "routineTitle": "Poésie — J’apprends progressivement",
-          "routine": "Revois la première partie puis apprends la partie suivante indiquée en classe.",
-          "notion": "Poésie · mémorisation progressive",
-          "challenge": "",
-          "dictationStage": "final",
-          "family": ""
         },
         {
           "due": "2026-10-02",
@@ -425,58 +379,62 @@ window.DEVOIRS_P1 = {
           }
         },
         {
-          "due": "2026-10-03",
-          "category": "preparation",
-          "subject": "preparation",
-          "subjectLabel": "Préparation",
-          "icon": "🧠",
+          "due": "2026-10-02",
+          "category": "famille",
+          "subject": "information",
+          "subjectLabel": "Information",
+          "icon": "📌",
           "action": "Je regarde ce qui arrive",
-          "title": "Préparation — Je regarde ce qui arrive",
-          "instruction": "Trois petites évaluations sont annoncées à l’avance. Lis simplement les matières et ce qu’il faudra savoir faire. Les rappels courts arriveront au bon moment.",
-          "help": "Il n’y a rien de nouveau à apprendre. L’objectif est seulement de savoir ce qui arrive et d’éviter les révisions de dernière minute.",
-          "duration": 3,
-          "classLink": "Annonce anticipée des évaluations",
+          "title": "À venir — évaluations de la semaine prochaine",
+          "instruction": "Information seulement : histoire lundi, compréhension mardi, lexique et mathématiques vendredi. Aucun devoir supplémentaire n’est demandé aujourd’hui.",
+          "help": "Les rappels courts seront proposés au bon moment. Rien de nouveau n’est à apprendre.",
+          "duration": 0,
+          "classLink": "Annonce anticipée · informations aux familles",
           "routineIcon": "🧠",
           "routineTitle": "Préparation — Je regarde ce qui arrive",
-          "routine": "Trois petites évaluations sont annoncées à l’avance. Lis simplement les matières et ce qu’il faudra savoir faire. Les rappels courts arriveront au bon moment.",
-          "notion": "Annonce anticipée des évaluations",
+          "routine": "Information seulement : histoire lundi, compréhension mardi, lexique et mathématiques vendredi. Aucun devoir supplémentaire n’est demandé aujourd’hui.",
+          "notion": "Annonce anticipée · informations aux familles",
           "challenge": "",
           "family": "",
           "evaluations": [
             {
               "date": "2026-10-05",
+              "announceOn": "2026-10-02",
               "subject": "Histoire",
-              "title": "Petite évaluation — 2 nouvelles compétences",
+              "title": "Frise chronologique — première trace de référence",
               "newSkills": [
-                "utiliser une frise chronologique",
+                "construire et lire une frise chronologique",
                 "reconnaître les grandes périodes historiques"
               ],
               "preparation": "Revoir simplement la frise et le nom des grandes périodes. Quelques minutes suffisent."
             },
             {
               "date": "2026-10-06",
+              "announceOn": "2026-10-02",
               "subject": "Français",
-              "title": "Petite évaluation — 2 nouvelles compétences",
+              "title": "Compréhension P1 — Le carnet retrouvé",
               "newSkills": [
-                "repérer le verbe conjugué dans une phrase simple",
-                "repérer le groupe sujet"
+                "identifier les personnages",
+                "retrouver une information explicite"
               ],
-              "preparation": "Relire seulement les leçons « Le verbe » et « Le sujet du verbe », pendant le week-end ou la veille.",
-              "hibou": [
-                {
-                  "label": "Le verbe",
-                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-verbe.html"
-                },
-                {
-                  "label": "Le sujet du verbe",
-                  "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-sujet-verbe.html"
-                }
-              ]
+              "preparation": "Relire tranquillement un petit texte et s’entraîner à retrouver les informations écrites clairement."
             },
             {
               "date": "2026-10-09",
+              "announceOn": "2026-10-02",
+              "subject": "Français",
+              "title": "Lexique P1 — Classer des mots et ordre alphabétique",
+              "newSkills": [
+                "classer des mots qui vont ensemble",
+                "ranger des mots dans l’ordre alphabétique"
+              ],
+              "preparation": "Revoir les petits exercices de classement et d’ordre alphabétique faits en classe."
+            },
+            {
+              "date": "2026-10-09",
+              "announceOn": "2026-10-02",
               "subject": "Mathématiques",
-              "title": "Petite évaluation — 2 nouvelles compétences",
+              "title": "Problèmes / calcul — première trace de référence",
               "newSkills": [
                 "comprendre ce que l’on cherche dans un problème",
                 "poser correctement une addition"
@@ -505,7 +463,7 @@ window.DEVOIRS_P1 = {
       "theme": "Consolider et préparer les petites évaluations",
       "items": [
         {
-          "due": "2026-10-07",
+          "due": "2026-10-08",
           "category": "preparation",
           "subject": "preparation",
           "subjectLabel": "Préparation",
@@ -521,7 +479,6 @@ window.DEVOIRS_P1 = {
           "routine": "Explique oralement ce que l’on cherche dans un petit problème, puis pose une addition sur une feuille seulement si tu en as envie. Quelques minutes suffisent.",
           "notion": "Évaluation de vendredi · problème additif · addition posée",
           "challenge": "",
-          "dictationStage": "first",
           "family": "",
           "hibou": [
             {
@@ -542,14 +499,14 @@ window.DEVOIRS_P1 = {
           "icon": "📝",
           "action": "Je prépare ma dictée",
           "title": "Orthographe — Je prépare ma dictée",
-          "instruction": "Revois les mots affichés ci-dessous. Épelle les 5 prioritaires puis fais-toi interroger oralement sur 3 ou 4 mots.",
+          "instruction": "Revois les 10 mots de La Grande Muraille affichés ci-dessous. Épelle les 5 prioritaires puis fais-toi interroger oralement sur 3 ou 4 mots.",
           "help": "Lis → cache → épelle → vérifie. Quelques minutes suffisent.",
           "duration": 4,
-          "classLink": "Dictée · La pluie · rappel avant bilan",
+          "classLink": "Bilan des mots appris · La Grande Muraille · lundi 12 octobre",
           "routineIcon": "📝",
           "routineTitle": "Orthographe — Je prépare ma dictée",
-          "routine": "Revois les mots affichés ci-dessous. Épelle les 5 prioritaires puis fais-toi interroger oralement sur 3 ou 4 mots.",
-          "notion": "Dictée · La pluie · rappel avant bilan",
+          "routine": "Revois les 10 mots de La Grande Muraille affichés ci-dessous. Épelle les 5 prioritaires puis fais-toi interroger oralement sur 3 ou 4 mots.",
+          "notion": "Bilan des mots appris · La Grande Muraille · lundi 12 octobre",
           "challenge": "",
           "dictationStage": "final",
           "secondary": {
@@ -572,28 +529,39 @@ window.DEVOIRS_P1 = {
           }
         },
         {
-          "due": "2026-10-10",
-          "category": "preparation",
-          "subject": "preparation",
-          "subjectLabel": "Préparation",
-          "icon": "🧠",
+          "due": "2026-10-09",
+          "category": "famille",
+          "subject": "information",
+          "subjectLabel": "Information",
+          "icon": "📌",
           "action": "Je regarde ce qui arrive",
-          "title": "Préparation — Je regarde ce qui arrive",
-          "instruction": "Deux petites évaluations sont annoncées pour la semaine prochaine : sciences jeudi et géographie vendredi. Lis simplement ce qui sera observé.",
-          "help": "Aucune fiche longue à apprendre. Des rappels courts et précis seront proposés mardi et mercredi.",
-          "duration": 3,
-          "classLink": "Annonce anticipée sciences · géographie",
+          "title": "À venir — évaluations de la semaine prochaine",
+          "instruction": "Information seulement : lundi, bilan des mots de La Grande Muraille ; jeudi, sciences ; vendredi, géographie. Aucun devoir supplémentaire n’est demandé aujourd’hui.",
+          "help": "Les rappels courts seront proposés au bon moment. Il n’y a rien de nouveau à apprendre.",
+          "duration": 0,
+          "classLink": "Annonce anticipée · informations aux familles",
           "routineIcon": "🧠",
           "routineTitle": "Préparation — Je regarde ce qui arrive",
-          "routine": "Deux petites évaluations sont annoncées pour la semaine prochaine : sciences jeudi et géographie vendredi. Lis simplement ce qui sera observé.",
-          "notion": "Annonce anticipée sciences · géographie",
+          "routine": "Information seulement : lundi, bilan des mots de La Grande Muraille ; jeudi, sciences ; vendredi, géographie. Aucun devoir supplémentaire n’est demandé aujourd’hui.",
+          "notion": "Annonce anticipée · informations aux familles",
           "challenge": "",
           "family": "",
           "evaluations": [
             {
+              "date": "2026-10-12",
+              "announceOn": "2026-10-09",
+              "subject": "Français",
+              "title": "Bilan des mots appris — La Grande Muraille",
+              "newSkills": [
+                "écrire correctement les 10 mots annoncés et travaillés"
+              ],
+              "preparation": "Revoir : une frontière, une invasion, le nord, une structure, l’homme, une longueur, une tour de guet, important, contre, jamais."
+            },
+            {
               "date": "2026-10-15",
+              "announceOn": "2026-10-09",
               "subject": "Sciences",
-              "title": "Observation en situation — 2 nouvelles compétences",
+              "title": "Eau et huile — observation et conclusion",
               "newSkills": [
                 "observer précisément les résultats d’une expérience",
                 "tirer une conclusion à partir des résultats"
@@ -602,8 +570,9 @@ window.DEVOIRS_P1 = {
             },
             {
               "date": "2026-10-16",
+              "announceOn": "2026-10-09",
               "subject": "Géographie",
-              "title": "Petite évaluation — 2 nouvelles compétences",
+              "title": "France et population — lecture de carte",
               "newSkills": [
                 "localiser la France à différentes échelles",
                 "lire une carte simple de répartition de la population"
@@ -660,7 +629,7 @@ window.DEVOIRS_P1 = {
           "family": ""
         },
         {
-          "due": "2026-10-14",
+          "due": "2026-10-15",
           "category": "preparation",
           "subject": "geographie",
           "subjectLabel": "Géographie",

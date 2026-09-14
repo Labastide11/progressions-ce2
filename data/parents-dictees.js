@@ -1,9 +1,6 @@
-/* Progressions CE2 V35.62 — projection publique datée des dictées.
-   Source de vérité : dictees-ce2.js ; bornes de semaine : devoirs-p1..p5.js.
-   Données publiques uniquement : dates, thème, mots, priorités.
-   Régénéré automatiquement depuis la banque annuelle courante. */
+/* V36.69 — Projection publique des dictées synchronisée avec P1 V36.68 et devoirs V36.69. */
 window.PARENTS_DICTEES_CE2 = {
-  "version": "35.62",
+  "version": "36.69",
   "schoolYear": "2026-2027",
   "periods": {
     "p1": [
@@ -33,29 +30,29 @@ window.PARENTS_DICTEES_CE2 = {
         "end": "2026-09-18",
         "reviewDue": "2026-09-17",
         "hasFinal": true,
-        "theme": "Le cheval et le fermier",
-        "words": "cheval, voiture, chemin, chien, animal, fermier, chaleur, autour",
-        "priority": "cheval, voiture, chemin, chien, animal"
+        "theme": "La Grande Muraille",
+        "words": "une frontière, une invasion, le nord, une structure, l’homme, une longueur, une tour de guet, important, contre, jamais",
+        "priority": "frontière, structure, longueur, tour de guet, jamais"
       },
       {
         "week": 4,
         "start": "2026-09-21",
         "end": "2026-09-25",
-        "reviewDue": "2026-09-24",
-        "hasFinal": true,
-        "theme": "Les métiers",
-        "words": "élève, facteur, lettre, planche, atelier, menuisier, distribuer, diriger",
-        "priority": "élève, facteur, lettre, planche, atelier"
+        "reviewDue": "",
+        "hasFinal": false,
+        "theme": "Mots fréquents et invariables",
+        "words": "Pas de banque à mémoriser.",
+        "priority": "Aucun mot prioritaire."
       },
       {
         "week": 5,
         "start": "2026-09-28",
         "end": "2026-10-02",
-        "reviewDue": "2026-10-01",
-        "hasFinal": true,
-        "theme": "Christophe et les nuages",
-        "words": "nuage, ciel, chapeau, paysage, sommeil, dame, main, pied",
-        "priority": "nuage, ciel, chapeau, paysage, sommeil"
+        "reviewDue": "",
+        "hasFinal": false,
+        "theme": "Orthographe grammaticale : singulier et pluriel",
+        "words": "Pas de banque à mémoriser.",
+        "priority": "Aucun mot prioritaire."
       },
       {
         "week": 6,
@@ -63,7 +60,7 @@ window.PARENTS_DICTEES_CE2 = {
         "end": "2026-10-09",
         "reviewDue": "2026-10-08",
         "hasFinal": true,
-        "theme": "La Grande Muraille",
+        "theme": "La Grande Muraille — préparation du bilan du 12 octobre",
         "words": "une frontière, une invasion, le nord, une structure, l’homme, une longueur, une tour de guet, important, contre, jamais",
         "priority": "frontière, structure, longueur, tour de guet, jamais"
       },
@@ -71,8 +68,8 @@ window.PARENTS_DICTEES_CE2 = {
         "week": 7,
         "start": "2026-10-12",
         "end": "2026-10-16",
-        "reviewDue": "2026-10-14",
-        "hasFinal": true,
+        "reviewDue": "",
+        "hasFinal": false,
         "theme": "Réactivation personnalisée de la période 1",
         "words": "Chaque élève reprend trois à cinq mots encore fragiles parmi les séries précédentes.",
         "priority": "3 à 5 mots personnalisés par élève."
