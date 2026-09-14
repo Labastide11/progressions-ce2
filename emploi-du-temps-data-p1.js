@@ -1110,20 +1110,50 @@
         "Mardi 15 septembre 2026",
         [
           [
-            "9h–9h15",
-            "Français — Copie",
-            "Cahier du jour — Copie : installer la méthode de copie par groupes de mots et la grille de relecture.",
-            "ECR-P1-02 · Copier par groupes de mots ; ECR-P1-03 · Respecter la présentation.",
+            "9h–9h30",
+            "Français — Lecture-compréhension — Vocabulaire",
+            "Autour du texte « Renart vole des poissons » — Reprendre le vocabulaire qui a gêné la compréhension. À partir des illustrations, identifier puis écrire les mots correspondants en s’aidant de la banque de mots. Fiche différenciée en 3 niveaux. Objectif : « Comprendre les mots du texte pour mieux comprendre l’histoire. »",
+            "COM-P1-04 · Retrouver une information explicite ; enrichir et mobiliser le vocabulaire pour comprendre un texte.",
             "french",
-            "Observation formative"
+            "Entraînement différencié — 3 niveaux",
+            null,
+            {
+              "documents": [
+                {
+                  "titre": "Renart — fiche élève noir et blanc",
+                  "url": "https://drive.google.com/file/d/1kmdJo1ZNnEyZxOUvQtmjbv_H-hv62_oX/view",
+                  "type": "image"
+                },
+                {
+                  "titre": "Renart — fiche couleur",
+                  "url": "https://drive.google.com/file/d/1inMFJ1TxsCpjQmo7PdJM8LAm39hl455D/view",
+                  "type": "image"
+                },
+                {
+                  "titre": "Renart — correction couleur",
+                  "url": "https://drive.google.com/file/d/1QoqYiWnEnqjKhHQ_ENziqWhxfVlV1MxP/view",
+                  "type": "image"
+                }
+              ]
+            }
           ],
           [
-            "9h15–10h",
-            "Français",
-            "Lecture : retrouver une information explicitement écrite.",
+            "9h30–10h",
+            "Français — Lecture-compréhension",
+            "Lecture documentaire — « Le wombat » : lire le texte, repérer les informations importantes puis répondre aux questions de compréhension.",
             "COM-P1-04 · Retrouver une information explicite.",
             "french",
-            "3 questions courtes"
+            "Lecture documentaire — questions de compréhension",
+            null,
+            {
+              "documents": [
+                {
+                  "titre": "Lecture documentaire — Le wombat",
+                  "url": "https://drive.google.com/file/d/1AHdlmT6PXaakqHYhnpxbHq2P1G38C3PP/view",
+                  "type": "pdf"
+                }
+              ]
+            }
           ],
           [
             "10h–10h45",
