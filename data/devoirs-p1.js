@@ -1,12 +1,12 @@
-// V36.69 — P1 synchronisée avec l’emploi du temps détaillé V36.68 et l’Espace Parents.
+// V36.70 — P1 : rituel maths (nombre en lettres + addition) à partir du 17/09, synchronisé avec l’emploi du temps.
 window.DEVOIRS_P1 = {
-  "version": "36.69",
+  "version": "36.70",
   "period": "p1",
   "schoolYear": "2026-2027",
   "principles": {
     "start": "2026-09-07",
     "maxMinutes": 10,
-    "writtenWork": false,
+    "writtenWork": true,
     "maxCoreTasks": 2,
     "formula": "Matière → verbe d’action → consigne autonome → aide/exemple → durée",
     "categories": [
@@ -20,7 +20,9 @@ window.DEVOIRS_P1 = {
     "dictationRule": "Les mots viennent de dictees-ce2.js. Première rencontre puis rappel avant la dictée bilan ; aucune recopie manuelle de la banque dans les devoirs.",
     "evaluationRule": "Annonce anticipée puis rappel court ciblé. Jour J : information seulement, aucun devoir ajouté.",
     "autonomyRule": "Le cahier est une aide, jamais une condition : chaque devoir propose une solution de repli sans cahier.",
-    "syncRule": "Les devoirs P1 sont alignés sur emploi-du-temps-data-p1.js V36.68 : une notion est révisée seulement après avoir été travaillée en classe ; les évaluations annoncées correspondent au détaillé."
+    "syncRule": "Les devoirs P1 sont alignés sur emploi-du-temps-data-p1.js V36.68. Le rituel maths renforce uniquement des apprentissages déjà travaillés en classe.",
+    "writtenWorkRule": "Le travail écrit reste exceptionnel : en P1, seul le rituel maths demande d’écrire un nombre en lettres et de calculer une addition. Environ 5 minutes.",
+    "mathRitualRule": "À partir du jeudi 17 septembre : rituel maths court, en principe deux fois par semaine hors journées d’évaluation. Toujours la même structure : 1 nombre jusqu’à 999 à écrire en lettres + 1 addition à calculer."
   },
   "weeks": [
     {
@@ -176,7 +178,19 @@ window.DEVOIRS_P1 = {
           "notion": "Dictée · La Grande Muraille · 10 mots annoncés en classe",
           "challenge": "",
           "dictationStage": "final",
-          "family": ""
+          "family": "",
+          "secondary": {
+            "category": "maths",
+            "subject": "maths",
+            "subjectLabel": "Mathématiques",
+            "icon": "➕",
+            "action": "Je fais mon rituel maths",
+            "title": "Rituel maths — Nombre + addition",
+            "instruction": "Écris en lettres : 348. Puis calcule : 127 + 89.",
+            "help": "Prends ton temps : pour le nombre, pense centaines, dizaines, unités. Pour l’addition, aligne bien les chiffres si tu la poses.",
+            "duration": 5,
+            "classLink": "Numération jusqu’à 999 · addition"
+          }
         },
         {
           "due": "2026-09-18",
@@ -249,15 +263,15 @@ window.DEVOIRS_P1 = {
           "challenge": "",
           "secondary": {
             "category": "maths",
-            "subject": "calcul-mental",
-            "subjectLabel": "Calcul mental",
+            "subject": "maths",
+            "subjectLabel": "Mathématiques",
             "icon": "➕",
-            "action": "Je réactive",
-            "title": "Calcul mental — Je réactive",
-            "instruction": "Calcule oralement : 24 + 9 · 31 + 9 · 52 − 9.",
-            "help": "Pour +9, tu peux faire +10 puis −1. Pour −9, fais −10 puis +1.",
-            "duration": 3,
-            "classLink": "Ajouter / retrancher 9"
+            "action": "Je fais mon rituel maths",
+            "title": "Rituel maths — Nombre + addition",
+            "instruction": "Écris en lettres : 271. Puis calcule : 134 + 52.",
+            "help": "Prends ton temps : pour le nombre, pense centaines, dizaines, unités. Pour l’addition, aligne bien les chiffres si tu la poses.",
+            "duration": 5,
+            "classLink": "Numération jusqu’à 999 · addition"
           },
           "family": "Si vous avez envie : calcul éclair. Un adulte propose 3 calculs avec +9 ou −9, puis vous échangez les rôles."
         },
@@ -283,6 +297,18 @@ window.DEVOIRS_P1 = {
             "label": "Le verbe",
             "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-verbe.html",
             "intro": "Pour revoir la leçon si besoin :"
+          },
+          "secondary": {
+            "category": "maths",
+            "subject": "maths",
+            "subjectLabel": "Mathématiques",
+            "icon": "➕",
+            "action": "Je fais mon rituel maths",
+            "title": "Rituel maths — Nombre + addition",
+            "instruction": "Écris en lettres : 496. Puis calcule : 248 + 37.",
+            "help": "Prends ton temps : pour le nombre, pense centaines, dizaines, unités. Pour l’addition, aligne bien les chiffres si tu la poses.",
+            "duration": 5,
+            "classLink": "Numération jusqu’à 999 · addition"
           }
         },
         {
@@ -340,7 +366,38 @@ window.DEVOIRS_P1 = {
             "label": "Le verbe",
             "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-verbe.html",
             "intro": "Pour revoir la leçon si besoin :"
+          },
+          "secondary": {
+            "category": "maths",
+            "subject": "maths",
+            "subjectLabel": "Mathématiques",
+            "icon": "➕",
+            "action": "Je fais mon rituel maths",
+            "title": "Rituel maths — Nombre + addition",
+            "instruction": "Écris en lettres : 580. Puis calcule : 156 + 124.",
+            "help": "Prends ton temps : pour le nombre, pense centaines, dizaines, unités. Pour l’addition, aligne bien les chiffres si tu la poses.",
+            "duration": 5,
+            "classLink": "Numération jusqu’à 999 · addition"
           }
+        },
+        {
+          "due": "2026-10-01",
+          "category": "maths",
+          "subject": "maths",
+          "subjectLabel": "Mathématiques",
+          "icon": "➕",
+          "action": "Je fais mon rituel maths",
+          "title": "Rituel maths — Nombre + addition",
+          "instruction": "Écris en lettres : 714. Puis calcule : 275 + 48.",
+          "help": "Prends ton temps : pour le nombre, pense centaines, dizaines, unités. Pour l’addition, aligne bien les chiffres si tu la poses.",
+          "duration": 5,
+          "classLink": "Numération jusqu’à 999 · addition",
+          "routineIcon": "➕",
+          "routineTitle": "Rituel maths — Nombre + addition",
+          "routine": "Écris en lettres : 714. Puis calcule : 275 + 48.",
+          "notion": "Écrire un nombre en lettres · calculer une addition",
+          "challenge": "",
+          "family": ""
         },
         {
           "due": "2026-10-02",
@@ -464,32 +521,22 @@ window.DEVOIRS_P1 = {
       "items": [
         {
           "due": "2026-10-08",
-          "category": "preparation",
-          "subject": "preparation",
-          "subjectLabel": "Préparation",
-          "icon": "🧠",
-          "action": "Je prépare l’évaluation de mathématiques",
-          "title": "Préparation — Je prépare l’évaluation de mathématiques",
-          "instruction": "Explique oralement ce que l’on cherche dans un petit problème, puis pose une addition sur une feuille seulement si tu en as envie. Quelques minutes suffisent.",
-          "help": "Sans feuille : invente un problème très court et explique quelle opération tu choisirais. Rien de nouveau à apprendre.",
+          "category": "maths",
+          "subject": "maths",
+          "subjectLabel": "Mathématiques",
+          "icon": "➕",
+          "action": "Je fais mon rituel maths",
+          "title": "Rituel maths — Nombre + addition",
+          "instruction": "Écris en lettres : 609. Puis calcule : 368 + 157.",
+          "help": "Prends ton temps : pour le nombre, pense centaines, dizaines, unités. Pour l’addition, aligne bien les chiffres si tu la poses.",
           "duration": 5,
-          "classLink": "Évaluation de vendredi · problème additif · addition posée",
-          "routineIcon": "🧠",
-          "routineTitle": "Préparation — Je prépare l’évaluation de mathématiques",
-          "routine": "Explique oralement ce que l’on cherche dans un petit problème, puis pose une addition sur une feuille seulement si tu en as envie. Quelques minutes suffisent.",
-          "notion": "Évaluation de vendredi · problème additif · addition posée",
+          "classLink": "Numération jusqu’à 999 · addition",
+          "routineIcon": "➕",
+          "routineTitle": "Rituel maths — Nombre + addition",
+          "routine": "Écris en lettres : 609. Puis calcule : 368 + 157.",
+          "notion": "Écrire un nombre en lettres · calculer une addition",
           "challenge": "",
-          "family": "",
-          "hibou": [
-            {
-              "label": "Résoudre un problème de parties et de tout",
-              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/problemes-additifs.html"
-            },
-            {
-              "label": "Poser une addition",
-              "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/addition-posee.html"
-            }
-          ]
+          "family": ""
         },
         {
           "due": "2026-10-08",
@@ -509,18 +556,6 @@ window.DEVOIRS_P1 = {
           "notion": "Bilan des mots appris · La Grande Muraille · lundi 12 octobre",
           "challenge": "",
           "dictationStage": "final",
-          "secondary": {
-            "category": "maths",
-            "subject": "calcul-mental",
-            "subjectLabel": "Calcul mental",
-            "icon": "➕",
-            "action": "Je réactive",
-            "title": "Calcul mental — Je réactive",
-            "instruction": "Calcule oralement : 8 + ? = 10 · 60 + ? = 100 · 34 + 9 · 52 − 9.",
-            "help": "Explique une stratégie, pas seulement la réponse.",
-            "duration": 3,
-            "classLink": "Automatismes de calcul P1"
-          },
           "family": "Si vous avez envie : 5 calculs chacun. Un adulte pose 5 calculs, puis l’enfant en propose 5.",
           "hibou": {
             "label": "Trouver des compléments",
@@ -593,21 +628,21 @@ window.DEVOIRS_P1 = {
         {
           "due": "2026-10-13",
           "category": "maths",
-          "subject": "calcul-mental",
-          "subjectLabel": "Calcul mental",
+          "subject": "maths",
+          "subjectLabel": "Mathématiques",
           "icon": "➕",
-          "action": "Je réactive une stratégie",
-          "title": "Calcul mental — Je réactive une stratégie",
-          "instruction": "Choisis une stratégie de calcul mental encore un peu difficile pour toi et explique-la oralement avec 3 à 5 petits calculs maximum.",
-          "help": "Tu peux choisir : compléments à 10/100, +9 ou −9. Explique comment tu fais.",
-          "duration": 4,
-          "classLink": "Calcul mental · explicitation · consolidation",
+          "action": "Je fais mon rituel maths",
+          "title": "Rituel maths — Nombre + addition",
+          "instruction": "Écris en lettres : 875. Puis calcule : 425 + 286.",
+          "help": "Prends ton temps : pour le nombre, pense centaines, dizaines, unités. Pour l’addition, aligne bien les chiffres si tu la poses.",
+          "duration": 5,
+          "classLink": "Numération jusqu’à 999 · addition",
           "routineIcon": "➕",
-          "routineTitle": "Calcul mental — Je réactive une stratégie",
-          "routine": "Choisis une stratégie de calcul mental encore un peu difficile pour toi et explique-la oralement avec 3 à 5 petits calculs maximum.",
-          "notion": "Calcul mental · explicitation · consolidation",
+          "routineTitle": "Rituel maths — Nombre + addition",
+          "routine": "Écris en lettres : 875. Puis calcule : 425 + 286.",
+          "notion": "Écrire un nombre en lettres · calculer une addition",
           "challenge": "",
-          "family": "Si vous avez envie : à toi de m’apprendre. Explique à quelqu’un une astuce de calcul apprise à l’école ; le parent joue l’élève et peut demander « Pourquoi ? »"
+          "family": ""
         },
         {
           "due": "2026-10-13",

@@ -2083,6 +2083,22 @@
     bindStatusControls(content);
   }
 
+  // V36.70 — À l'ouverture d'une période, afficher la semaine de classe en cours.
+  function currentPeriodWeekNumber_(weeks, fromDate=new Date()){
+    if(!Array.isArray(weeks)||!weeks.length) return 1;
+    const target=new Date(fromDate.getFullYear(),fromDate.getMonth(),fromDate.getDate(),12,0,0,0);
+    let upcoming=null;
+    for(let i=0;i<weeks.length;i++){
+      const dates=(weeks[i].days||[]).map(([day])=>parseDetailedDayDate_(day)).filter(Boolean).sort((a,b)=>a-b);
+      if(!dates.length) continue;
+      const start=new Date(dates[0]); start.setHours(0,0,0,0);
+      const end=new Date(dates[dates.length-1]); end.setHours(23,59,59,999);
+      if(target>=start && target<=end) return i+1;
+      if(target<start && upcoming===null) upcoming=i+1;
+    }
+    return upcoming || weeks.length;
+  }
+
   function init(){
     const openSummary=document.getElementById('openTimetableSummaryBtn'), openSummaryPeriods=[...document.querySelectorAll('[data-open-summary-period]')], openDetail=document.getElementById('openTimetableDetailBtn'), openTbi=document.getElementById('openTbiViewBtn'), close=document.getElementById('closeTimetableBtn'), modal=document.getElementById('timetableModal'), tabs=document.getElementById('timetableTabs');
     // V35.56 — mémorise le contexte d'ouverture de la fenêtre.
@@ -2092,7 +2108,7 @@
     let periodNavigationMode='summary';
     const renderDetailedPeriod=(period)=>{
       if(period==='rentree') renderDetailedWeek('rentree1');
-      else if(period==='p1') renderP1Week(1);
+      else if(period==='p1') renderP1Week(currentPeriodWeekNumber_(p1DetailedWeeks));
       else if(period==='p2') renderP2Week(1);
       else if(period==='p3') renderP3Week(1);
       else if(period==='p4') renderLaterPeriodWeek('p4',1);
@@ -2149,7 +2165,7 @@
       const detail=e.target.closest('[data-open-detail]');
       if(detail){renderDetailedWeek(detail.dataset.openDetail);content.scrollTop=0;return;}
       const hub=e.target.closest('[data-open-detail-hub]');
-      if(hub){hub.dataset.openDetailHub==='rentree'?renderDetailedWeek('rentree1'):hub.dataset.openDetailHub==='p1'?renderP1Week(1):hub.dataset.openDetailHub==='p2'?renderP2Week(1):hub.dataset.openDetailHub==='p3'?renderP3Week(1):hub.dataset.openDetailHub==='p4'?renderLaterPeriodWeek('p4',1):renderLaterPeriodWeek('p5',1);content.scrollTop=0;return;}
+      if(hub){hub.dataset.openDetailHub==='rentree'?renderDetailedWeek('rentree1'):hub.dataset.openDetailHub==='p1'?renderP1Week(currentPeriodWeekNumber_(p1DetailedWeeks)):hub.dataset.openDetailHub==='p2'?renderP2Week(1):hub.dataset.openDetailHub==='p3'?renderP3Week(1):hub.dataset.openDetailHub==='p4'?renderLaterPeriodWeek('p4',1):renderLaterPeriodWeek('p5',1);content.scrollTop=0;return;}
       const p1week=e.target.closest('[data-open-p1-week]');
       if(p1week){renderP1Week(Number(p1week.dataset.openP1Week));content.scrollTop=0;return;} const p2week=e.target.closest('[data-open-p2-week]'); if(p2week){renderP2Week(Number(p2week.dataset.openP2Week));content.scrollTop=0;return;} const p3week=e.target.closest('[data-open-p3-week]'); if(p3week){renderP3Week(Number(p3week.dataset.openP3Week));content.scrollTop=0;return;} const p4week=e.target.closest('[data-open-p4-week]'); if(p4week){renderLaterPeriodWeek('p4',Number(p4week.dataset.openP4Week));content.scrollTop=0;return;} const p5week=e.target.closest('[data-open-p5-week]'); if(p5week){renderLaterPeriodWeek('p5',Number(p5week.dataset.openP5Week));content.scrollTop=0;return;}
       if(e.target.closest('[data-back-summary]')){const active=tabs.querySelector('.is-active');periodNavigationMode='summary';tabs.style.display='';render(active?active.dataset.period:'rentree');content.scrollTop=0;}
