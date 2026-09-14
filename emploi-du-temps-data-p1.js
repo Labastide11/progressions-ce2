@@ -1,4 +1,4 @@
-/* V36.68 — REFONTE P1 : grille unique + détaillé synchronisé */
+/* V36.72 — Mardis P1 : chants / expression corporelle après la lecture ; suppression des doublons d’anglais */
 (function(global){
   'use strict';
   const data=global.PROGRESSIONS_EDT_DATA=global.PROGRESSIONS_EDT_DATA||{};
@@ -133,13 +133,13 @@
       "french"
     ],
     [
-      "14h15–14h30",
-      "Anglais",
-      "Rituel oral",
-      "english"
+      "14h15–14h45",
+      "Chants / expression corporelle",
+      "Chant collectif, jeux rythmiques et mouvements simples en lien avec la pulsation.",
+      "arts"
     ],
     [
-      "14h30–15h45",
+      "14h45–15h45",
       "CHAM / arts",
       "Non-CHAM : arts, projet, lecture culturelle ; aucune nouvelle notion fondamentale",
       "cham"
@@ -151,16 +151,10 @@
       "break"
     ],
     [
-      "16h–16h30",
+      "16h–16h45",
       "CHAM / numérique / méthodologie",
       "Ateliers non fondamentaux",
       "cham"
-    ],
-    [
-      "16h30–16h45",
-      "Anglais",
-      "Réactivation orale",
-      "english"
     ],
     [
       "16h45–17h",
@@ -407,15 +401,15 @@
             "Rituel quotidien"
           ],
           [
-            "14h15–14h30",
-            "Anglais",
-            "Saluer et se présenter : première prise de contact orale.",
-            "ANG-P1-01 · Saluer et prendre congé.",
-            "english",
-            "Classe entière"
+            "14h15–14h45",
+            "Éducation musicale — chants / expression corporelle",
+            "Après le quart d’heure de lecture : échauffement vocal, chant collectif, jeux rythmiques et mouvements simples pour sentir et maintenir la pulsation.",
+            "MUS-ANN-01 · Chanter avec justesse et expressivité ; MUS-ANN-02 · Écouter et tenir sa place dans une production collective ; mobiliser le corps pour suivre une pulsation.",
+            "arts",
+            "Pratique collective"
           ],
           [
-            "14h30–15h45",
+            "14h45–15h45",
             "Vie de classe / arts",
             "Découvrir les espaces, construire les règles de vie et réaliser une première production collective.",
             "EMC-P1-01 · Comprendre et respecter les règles de la classe.",
@@ -786,28 +780,20 @@
             "Rituel quotidien"
           ],
           [
-            "14h15–14h30",
-            "Anglais",
-            "Rituel oral : saluer et se présenter.",
-            "ANG-P1-01 ; ANG-P1-02.",
-            "english",
-            "Classe entière"
+            "14h15–14h45",
+            "Éducation musicale — chants / expression corporelle",
+            "Après le quart d’heure de lecture : échauffement vocal, chant collectif, jeux rythmiques et mouvements simples pour sentir et maintenir la pulsation.",
+            "MUS-ANN-01 · Chanter avec justesse et expressivité ; MUS-ANN-02 · Écouter et tenir sa place dans une production collective ; mobiliser le corps pour suivre une pulsation.",
+            "arts",
+            "Pratique collective"
           ],
           [
-            "14h30–16h30",
+            "14h45–16h45",
             "CHAM / ateliers",
             "CHAM au conservatoire ; non-CHAM : arts, lecture, jeux mathématiques et découverte des outils.",
             "Compétences déjà travaillées.",
             "cham",
             "Aucune notion nouvelle ni évaluation commune"
-          ],
-          [
-            "16h30–16h45",
-            "Anglais",
-            "Réactivation orale courte en classe entière.",
-            "ANG-RIT · Réemployer les formulations travaillées.",
-            "english",
-            "Rituel oral"
           ],
           [
             "16h45–17h",
@@ -1188,15 +1174,15 @@
             "Rituel quotidien"
           ],
           [
-            "14h15–14h30",
-            "Anglais",
-            "What’s your name? Demander et dire son prénom.",
-            "ANG-P1-03 · Demander et dire son prénom.",
-            "english",
-            "Binômes"
+            "14h15–14h45",
+            "Éducation musicale — chants / expression corporelle",
+            "Après le quart d’heure de lecture : échauffement vocal, chant collectif, jeux rythmiques et mouvements simples pour sentir et maintenir la pulsation.",
+            "MUS-ANN-01 · Chanter avec justesse et expressivité ; MUS-ANN-02 · Écouter et tenir sa place dans une production collective ; mobiliser le corps pour suivre une pulsation.",
+            "arts",
+            "Pratique collective"
           ],
           [
-            "14h30–15h45",
+            "14h45–15h45",
             "Arts / consolidation",
             "Finaliser les productions de porte-manteaux ; ateliers de lecture et calcul pour toute la classe.",
             "ART-ANN-01 · Expérimenter plusieurs outils ; ART-ANN-02 · Composer avec lignes, formes et couleurs.",
@@ -1212,20 +1198,12 @@
             "Pause"
           ],
           [
-            "16h–16h30",
+            "16h–16h45",
             "Numérique / méthodologie",
             "Organisation, outils numériques, projet de classe ou ateliers autonomes non fondamentaux.",
             "Compétences transversales.",
             "common",
             "Ateliers"
-          ],
-          [
-            "16h30–16h45",
-            "Anglais",
-            "Réactivation orale courte.",
-            "ANG-P1-01 à 06.",
-            "english",
-            "Rituel"
           ],
           [
             "16h45–17h",
@@ -1584,15 +1562,15 @@
             "Rituel quotidien"
           ],
           [
-            "14h15–14h30",
-            "Anglais",
-            "Météo : comprendre quelques formulations simples.",
-            "ANG-P1-04 · Comprendre une météo simple.",
-            "english",
-            "Écoute"
+            "14h15–14h45",
+            "Éducation musicale — chants / expression corporelle",
+            "Après le quart d’heure de lecture : échauffement vocal, chant collectif, jeux rythmiques et mouvements simples pour sentir et maintenir la pulsation.",
+            "MUS-ANN-01 · Chanter avec justesse et expressivité ; MUS-ANN-02 · Écouter et tenir sa place dans une production collective ; mobiliser le corps pour suivre une pulsation.",
+            "arts",
+            "Pratique collective"
           ],
           [
-            "14h30–15h45",
+            "14h45–15h45",
             "Arts / consolidation",
             "Composer avec des matières naturelles ; ateliers de consolidation pour toute la classe.",
             "ART-ANN-03 · Utiliser des matières naturelles.",
@@ -1608,20 +1586,12 @@
             "Pause"
           ],
           [
-            "16h–16h30",
+            "16h–16h45",
             "Numérique / méthodologie",
             "Organisation, outils numériques, projet de classe ou ateliers autonomes non fondamentaux.",
             "Compétences transversales.",
             "common",
             "Ateliers"
-          ],
-          [
-            "16h30–16h45",
-            "Anglais",
-            "Réactivation orale courte.",
-            "ANG-P1-01 à 06.",
-            "english",
-            "Rituel"
           ],
           [
             "16h45–17h",
@@ -1980,15 +1950,15 @@
             "Rituel quotidien"
           ],
           [
-            "14h15–14h30",
-            "Anglais",
-            "Rituel météo autonome.",
-            "ANG-P1-04 ; ANG-P1-05.",
-            "english",
-            "Observation"
+            "14h15–14h45",
+            "Éducation musicale — chants / expression corporelle",
+            "Après le quart d’heure de lecture : échauffement vocal, chant collectif, jeux rythmiques et mouvements simples pour sentir et maintenir la pulsation.",
+            "MUS-ANN-01 · Chanter avec justesse et expressivité ; MUS-ANN-02 · Écouter et tenir sa place dans une production collective ; mobiliser le corps pour suivre une pulsation.",
+            "arts",
+            "Pratique collective"
           ],
           [
-            "14h30–15h45",
+            "14h45–15h45",
             "Arts / consolidation",
             "Observer une œuvre représentant la nature puis produire.",
             "ART-ANN-03 · Observer une œuvre représentant la nature ; ART-ANN-01 à 03.",
@@ -2004,20 +1974,12 @@
             "Pause"
           ],
           [
-            "16h–16h30",
+            "16h–16h45",
             "Numérique / méthodologie",
             "Organisation, outils numériques, projet de classe ou ateliers autonomes non fondamentaux.",
             "Compétences transversales.",
             "common",
             "Ateliers"
-          ],
-          [
-            "16h30–16h45",
-            "Anglais",
-            "Réactivation orale courte.",
-            "ANG-P1-01 à 06.",
-            "english",
-            "Rituel"
           ],
           [
             "16h45–17h",
@@ -2378,15 +2340,15 @@
             "Rituel quotidien"
           ],
           [
-            "14h15–14h30",
-            "Anglais",
-            "Météo et prénoms : réactivation.",
-            "ANG-P1-03 à 05.",
-            "english",
-            "Jeu oral"
+            "14h15–14h45",
+            "Éducation musicale — chants / expression corporelle",
+            "Après le quart d’heure de lecture : échauffement vocal, chant collectif, jeux rythmiques et mouvements simples pour sentir et maintenir la pulsation.",
+            "MUS-ANN-01 · Chanter avec justesse et expressivité ; MUS-ANN-02 · Écouter et tenir sa place dans une production collective ; mobiliser le corps pour suivre une pulsation.",
+            "arts",
+            "Pratique collective"
           ],
           [
-            "14h30–15h45",
+            "14h45–15h45",
             "Arts / consolidation",
             "Finaliser la production sur la nature ; ateliers de remédiation pour toute la classe.",
             "ART-ANN-01 à 04.",
@@ -2402,20 +2364,12 @@
             "Pause"
           ],
           [
-            "16h–16h30",
+            "16h–16h45",
             "Numérique / méthodologie",
             "Organisation, outils numériques, projet de classe ou ateliers autonomes non fondamentaux.",
             "Compétences transversales.",
             "common",
             "Ateliers"
-          ],
-          [
-            "16h30–16h45",
-            "Anglais",
-            "Réactivation orale courte.",
-            "ANG-P1-01 à 06.",
-            "english",
-            "Rituel"
           ],
           [
             "16h45–17h",
@@ -2792,15 +2746,15 @@
             "Rituel quotidien"
           ],
           [
-            "14h15–14h30",
-            "Anglais",
-            "Halloween : vocabulaire et repères culturels.",
-            "ANG-P1-06.",
-            "english",
-            "Culture"
+            "14h15–14h45",
+            "Éducation musicale — chants / expression corporelle",
+            "Après le quart d’heure de lecture : échauffement vocal, chant collectif, jeux rythmiques et mouvements simples pour sentir et maintenir la pulsation.",
+            "MUS-ANN-01 · Chanter avec justesse et expressivité ; MUS-ANN-02 · Écouter et tenir sa place dans une production collective ; mobiliser le corps pour suivre une pulsation.",
+            "arts",
+            "Pratique collective"
           ],
           [
-            "14h30–15h45",
+            "14h45–15h45",
             "Arts / consolidation",
             "Projet artistique et ateliers de reprise pour toute la classe.",
             "ART-ANN-01 à 04.",
@@ -2816,20 +2770,12 @@
             "Pause"
           ],
           [
-            "16h–16h30",
+            "16h–16h45",
             "Numérique / méthodologie",
             "Organisation, outils numériques, projet de classe ou ateliers autonomes non fondamentaux.",
             "Compétences transversales.",
             "common",
             "Ateliers"
-          ],
-          [
-            "16h30–16h45",
-            "Anglais",
-            "Réactivation orale courte.",
-            "ANG-P1-01 à 06.",
-            "english",
-            "Rituel"
           ],
           [
             "16h45–17h",
@@ -3030,13 +2976,18 @@
     ]
   }
 ];
-  data.p1StructureVersion = '36.67';
+  data.p1StructureVersion = '36.72';
   data.validateP1Schedule = function(){
     const problems=[];
     const parse=t=>{const m=String(t).match(/(\d{1,2})h(?:(\d{2}))?[–-](\d{1,2})h(?:(\d{2}))?/);if(!m)return null;return [(+m[1])*60+(+(m[2]||0)),(+m[3])*60+(+(m[4]||0))];};
     (data.p1DetailedWeeks||[]).forEach(w=>(w.days||[]).forEach(([label,rows])=>{
-      const md=String(label).replace(/1er/g,'1').match(/(d{1,2})s+(septembre|octobre)s+2026/i); const future=md && (md[2].toLowerCase()==='octobre' || Number(md[1])>=14); if(!future)return;
-      rows.forEach(r=>{const span=parse(r[0]);const cat=String(r[4]||'').toLowerCase();if(span&&cat==='eps'&&(span[1]-span[0])>60)problems.push(label+' : EPS > 60 min ('+r[0]+')');if(span&&span[0]>=14*60+15&&(cat==='maths'||cat==='french'))problems.push(label+' : fondamental après 14h15 ('+r[0]+' '+r[1]+')');});
+      rows.forEach(r=>{const span=parse(r[0]);const cat=String(r[4]||'').toLowerCase();if(span&&cat==='eps'&&(span[1]-span[0])>60)problems.push(label+' : EPS > 60 min ('+r[0]+')');});
+      if(/^Mardi /.test(String(label))){
+        const english=rows.filter(r=>String(r[4]||'').toLowerCase()==='english');
+        const song=rows.filter(r=>String(r[0])==='14h15–14h45'&&/chant|expression corporelle/i.test(String(r[1])+' '+String(r[2])));
+        if(english.length) problems.push(label+' : anglais encore présent le mardi');
+        if(song.length!==1) problems.push(label+' : créneau chants/expression corporelle manquant ou dupliqué');
+      }
     }));
     if(problems.length) console.warn('[P1 structure]',problems);
     return problems;
