@@ -1,4 +1,4 @@
-/* V36.67 — REFONTE P1 : grille unique + détaillé synchronisé */
+/* V36.68 — REFONTE P1 : grille unique + détaillé synchronisé */
 (function(global){
   'use strict';
   const data=global.PROGRESSIONS_EDT_DATA=global.PROGRESSIONS_EDT_DATA||{};
@@ -394,7 +394,7 @@
             "11h15–12h",
             "Mathématiques — Numération",
             "Numération : lire, écrire, comparer et ranger des nombres.",
-            "NUM-P1-01 · Lire des nombres jusqu’à 10 000 ; NUM-P1-02 · Écrire des nombres jusqu’à 10 000 ; NUM-P1-04 · Comparer deux nombres.",
+            "NUM-P1-01 · Lire des nombres jusqu’à 999 ; NUM-P1-02 · Écrire des nombres jusqu’à 999 ; NUM-P1-04 · Comparer deux nombres.",
             "maths",
             "Manipulation / ardoise"
           ],
@@ -1051,8 +1051,8 @@
           [
             "11h15–12h",
             "Mathématiques — Numération",
-            "Lire et écrire des nombres jusqu’à 10 000.",
-            "NUM-P1-01 · Lire des nombres jusqu’à 10 000 ; NUM-P1-02 · Écrire des nombres jusqu’à 10 000.",
+            "Lire et écrire des nombres jusqu’à 999.",
+            "NUM-P1-01 · Lire des nombres jusqu’à 999 ; NUM-P1-02 · Écrire des nombres jusqu’à 999.",
             "maths",
             "Ardoise + correction immédiate"
           ],
@@ -1245,7 +1245,7 @@
           [
             "11h15–12h",
             "Mathématiques — Numération",
-            "Comparer, ranger et décomposer des nombres jusqu’à 10 000.",
+            "Comparer, ranger et décomposer des nombres jusqu’à 999.",
             "NUM-P1-03 ; NUM-P1-04.",
             "maths",
             "Manipulation"
