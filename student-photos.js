@@ -2,7 +2,7 @@
 'use strict';
 
 /*
-  Progressions CE2 V36.56 — portraits élèves anonymisés stockés sur GitHub.
+  Progressions CE2 V36.86 — portraits élèves anonymisés stockés sur GitHub.
 
   Source de vérité :
   - le Google Sheet privé conserve la correspondance prénom -> fichier anonyme
@@ -15,7 +15,7 @@
   d'un ancien cache de métadonnées ayant perdu la colonne "photo".
 */
 
-const VERSION='V36.56';
+const VERSION='V36.86';
 const PORTRAIT_DIR='assets/eleves/';
 const META_KEY='progressions_ce2_classe_meta_v1';
 const PHOTO_CACHE_KEY='progressions_ce2_photo_meta_v36_56';
@@ -218,22 +218,12 @@ async function refresh(showFeedback=false){
   return refreshPromise;
 }
 
-function updateDocumentTitle(){
-  const page=(location.pathname.split('/').pop()||'index.html').toLowerCase();
-
-  if(page==='vue-eleves.html'){
-    document.title=VERSION+' — Vue élèves — CE2 — Ma classe au quotidien';
-  }else if(page==='index.html'||page===''){
-    document.title=VERSION+' — Progressions CE2 — Ma classe au quotidien';
-  }
-}
 
 function removeLegacyPhotoButton(){
   document.getElementById('studentListDrivePhotosBtn')?.remove();
 }
 
 function start(){
-  updateDocumentTitle();
   removeLegacyPhotoButton();
 
   const observer=new MutationObserver(removeLegacyPhotoButton);
