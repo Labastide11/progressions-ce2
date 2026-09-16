@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Emploi du temps CE2 — Progressions CE2">
-<title>Emploi du temps CE2 — V36.76 — Progressions CE2</title>
+<title>Emploi du temps CE2 — V36.77 — Progressions CE2</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -196,7 +196,7 @@
 <script src="parcours-eleve.js?v=31.73"></script>
 <script src="parcours-outil.js?v=35.39"></script>
 
-<script src="emploi-du-temps-data-p1.js?v=36.76"></script>
+<script src="emploi-du-temps-data-p1.js?v=36.77"></script>
 <script src="emploi-du-temps-data-p2.js?v=36.06"></script>
 <script src="emploi-du-temps-data-p3.js?v=36.06"></script>
 <script src="emploi-du-temps-data-p4.js?v=36.06"></script>
@@ -204,7 +204,7 @@
 <script src="data/calendrier-scolaire-2026-2027.js?v=34.64"></script>
 <script src="evenements-ecole.js?v=35.68"></script>
 <script src="dictees-ce2.js?v=34.94"></script>
-<script src="emploi-du-temps-ui.js?v=36.76"></script>
+<script src="emploi-du-temps-ui.js?v=36.77"></script>
 
 <script>
 /* V36.47 — démarrage de la vraie page emploi du temps selon l'URL. */
@@ -251,5 +251,104 @@
   }
 })();
 </script>
+
+<script>
+/* V36.77 — garde-fou autonome pour ?mode=day.
+   Si le moteur principal n'a rien rendu, cette page affiche directement
+   la journée courante ou la prochaine journée de classe depuis les données. */
+(function(){
+  'use strict';
+
+  function esc(v){
+    return String(v == null ? '' : v)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+  var months={janvier:0,fevrier:1,'février':1,mars:2,avril:3,mai:4,juin:5,juillet:6,aout:7,'août':7,septembre:8,octobre:9,novembre:10,decembre:11,'décembre':11};
+  function parseDay(label){
+    var s=String(label||'').toLowerCase().replace(/1er/g,'1').replace(/\s+/g,' ').trim();
+    var m=s.match(/(?:lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche)\s+(\d{1,2})\s+([a-zàâäéèêëîïôöùûüç]+)\s+(\d{4})/i);
+    if(!m || !(m[2] in months)) return null;
+    return new Date(Number(m[3]),months[m[2]],Number(m[1]),12,0,0,0);
+  }
+  function key(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+  function startMinutes(range){
+    var m=String(range||'').match(/(\d{1,2})h(?:(\d{2}))?/i);
+    return m ? Number(m[1])*60+Number(m[2]||0) : 0;
+  }
+  function collectDays(){
+    var data=window.PROGRESSIONS_EDT_DATA||{};
+    var groups=[
+      ['p1',data.p1DetailedWeeks],['p2',data.p2DetailedWeeks],['p3',data.p3DetailedWeeks],
+      ['p4',data.p4DetailedWeeks],['p5',data.p5DetailedWeeks]
+    ];
+    var out=[];
+    groups.forEach(function(g){
+      (Array.isArray(g[1])?g[1]:[]).forEach(function(week){
+        (Array.isArray(week.days)?week.days:[]).forEach(function(dayPair){
+          var d=parseDay(dayPair[0]);
+          if(d) out.push({period:g[0],week:week,label:dayPair[0],rows:dayPair[1]||[],date:d,key:key(d)});
+        });
+      });
+    });
+    out.sort(function(a,b){return a.date-b.date;});
+    return out;
+  }
+  function sessionDocs(row){
+    var meta=row && row[7];
+    var docs=meta && Array.isArray(meta.documents) ? meta.documents : [];
+    if(!docs.length) return '';
+    return '<div class="daily-fallback-docs">'+docs.map(function(doc){
+      return '<a href="'+esc(doc.url)+'" target="_blank" rel="noopener">📄 '+esc(doc.titre||'Document')+'</a>';
+    }).join('')+'</div>';
+  }
+  function render(entry,session){
+    var content=document.getElementById('timetableContent');
+    var tabs=document.getElementById('timetableTabs');
+    if(!content || !entry) return false;
+    if(tabs) tabs.style.display='none';
+    var rows=entry.rows;
+    if(session==='morning') rows=rows.filter(function(r){return startMinutes(r[0])<720;});
+    if(session==='afternoon') rows=rows.filter(function(r){return startMinutes(r[0])>=840;});
+    var labels={day:'Journée complète',morning:'Matin',afternoon:'Après-midi'};
+    content.innerHTML=
+      '<section class="detail-view daily-timetable-view">'+
+      '<div class="detail-top daily-detail-top"><div><span class="detail-zone">Emploi du temps de la journée</span><h2>'+esc(entry.label)+'</h2><p>'+labels[session]+'</p></div></div>'+
+      '<div class="daily-session-tabs" role="group" aria-label="Choisir la partie de la journée">'+
+      '<button type="button" data-fallback-session="day" class="'+(session==='day'?'is-active':'')+'">Journée complète</button>'+
+      '<button type="button" data-fallback-session="morning" class="'+(session==='morning'?'is-active':'')+'">Matin</button>'+
+      '<button type="button" data-fallback-session="afternoon" class="'+(session==='afternoon'?'is-active':'')+'">Après-midi</button></div>'+
+      '<section class="detail-day daily-only-day"><div class="detail-day-head"><h3>'+esc(entry.label)+'</h3></div><div class="detail-table-wrap">'+
+      '<table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence</th><th>Séance détaillée</th></tr></thead><tbody>'+
+      rows.map(function(r){return '<tr><td class="detail-time">'+esc(r[0])+'</td><td><strong>'+esc(r[1])+'</strong></td><td class="detail-competence-cell">'+(r[3]||'')+'</td><td class="detail-session-cell detail-session-wide">'+(r[2]||'')+sessionDocs(r)+'</td></tr>';}).join('')+
+      '</tbody></table></div></section></section>';
+    content.dataset.dayFallback='1';
+    content.onclick=function(e){
+      var b=e.target.closest('[data-fallback-session]');
+      if(b){e.preventDefault();render(entry,b.getAttribute('data-fallback-session'));}
+    };
+    return true;
+  }
+  function boot(){
+    var params=new URLSearchParams(location.search);
+    if(params.get('mode')!=='day') return;
+    window.setTimeout(function(){
+      var content=document.getElementById('timetableContent');
+      if(!content || content.textContent.trim()) return;
+      var days=collectDays();
+      if(!days.length){
+        content.innerHTML='<section class="detail-view"><div class="detail-top"><div><h2>Emploi du temps de la journée</h2><p>Les données de la période ne sont pas disponibles.</p></div></div></section>';
+        return;
+      }
+      var now=new Date(); now=new Date(now.getFullYear(),now.getMonth(),now.getDate(),12,0,0,0);
+      var today=key(now);
+      var entry=days.find(function(x){return x.key===today;}) || days.find(function(x){return x.date>=now;}) || days[days.length-1];
+      render(entry,'day');
+    },500);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot); else boot();
+})();
+</script>
+
 </body>
 </html>
