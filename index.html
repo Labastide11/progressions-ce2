@@ -5,11 +5,11 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période." name="description"/>
-<title>V36.77 — Progressions CE2 — Ma classe au quotidien</title>
+<title>V36.79 — Progressions CE2 — Ma classe au quotidien</title>
 <script id="title-lock-v3677">
 (function(){
   'use strict';
-  var TITLE='V36.77 — Progressions CE2 — Ma classe au quotidien';
+  var TITLE='V36.79 — Progressions CE2 — Ma classe au quotidien';
   function setTitle(){ if(document.title!==TITLE) document.title=TITLE; }
   setTitle();
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', setTitle);
@@ -364,6 +364,55 @@
 <link href="popup-scroll-fix.css?v=35.31" rel="stylesheet"/>
 <link href="rentree-diagnostic.css?v=35.35" rel="stylesheet"/>
 <link href="rappels-evenements.css?v=35.68" rel="stylesheet"/>
+
+<style id="random-student-vpi-v3679">
+/* V36.79 — Élève au hasard : affichage VPI, photo centrale x2 */
+#randomStudentModal .random-student-result{
+  min-height: 320px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+#randomStudentModal .random-student-result img{
+  width: 230px !important;
+  height: 230px !important;
+  max-width: 230px !important;
+  max-height: 230px !important;
+  object-fit: cover !important;
+  border-radius: 26px !important;
+  border: 6px solid #fff !important;
+  box-shadow: 0 10px 26px rgba(23,59,92,.20) !important;
+}
+
+#randomStudentModal .random-student-result strong,
+#randomStudentModal .random-student-result .random-student-name,
+#randomStudentModal .random-student-result h3{
+  font-size: 2.55rem !important;
+  line-height: 1.05 !important;
+}
+
+#randomStudentModal .random-student-result .random-student-label{
+  font-size: 1rem !important;
+  letter-spacing: .08em;
+}
+
+#randomStudentModal .random-student-actions button{
+  min-height: 54px;
+  padding: 0 22px;
+  font-size: 1rem;
+}
+
+@media (max-width: 900px){
+  #randomStudentModal .random-student-result img{
+    width: 180px !important;
+    height: 180px !important;
+    max-width: 180px !important;
+    max-height: 180px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="app-header">
