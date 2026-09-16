@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période." name="description"/>
-<title>V36.85 — Progressions CE2 — Ma classe au quotidien</title>
+<title>V36.86 — Progressions CE2 — Ma classe au quotidien</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
 <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet"/>
@@ -2135,6 +2135,174 @@
 
     window.addEventListener('storage', function(e){
       if(e.key === PHOTO_KEY){ enhanceHistoryList(); }
+    });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', install);
+  }else{
+    install();
+  }
+})();
+</script>
+
+
+<script>
+/* V36.86 — Portraits par défaut selon le sexe pour les élèves sans photo */
+(function(){
+  'use strict';
+
+  var DEFAULT_GIRL = 'assets/portraits/portrait_fille.png';
+  var DEFAULT_BOY = 'assets/portraits/portrait_garcon.png';
+  var DEFAULT_NEUTRAL = 'assets/portraits/portrait_neutre.png';
+
+  var FEMALE_NAMES = {
+    'assya': true,
+    'jinene': true,
+    'khadidja': true,
+    'selma': true,
+    'espoir': true,
+    'ritej': true
+  };
+
+  var MALE_NAMES = {
+    'anis': true,
+    'bilal': true,
+    'fahd': true,
+    'hamza': true,
+    'mohamed': true,
+    'mohamed_s': true,
+    'mohamed_z': true,
+    'rayan': true,
+    'sayf': true,
+    'yaman': true,
+    'yazdan': true,
+    'younis': true
+  };
+
+  function norm(s){
+    return String(s || '')
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function defaultPortraitForName(name){
+    var key = norm(name).replace(/\s+/g, '_');
+    if(FEMALE_NAMES[key]) return DEFAULT_GIRL;
+    if(MALE_NAMES[key]) return DEFAULT_BOY;
+    return DEFAULT_NEUTRAL;
+  }
+
+  function imageLooksBroken(img){
+    if(!img) return true;
+    var raw = (img.getAttribute('src') || '').trim();
+    if(!raw) return true;
+    if(img.complete && typeof img.naturalWidth === 'number' && img.naturalWidth === 0) return true;
+    return false;
+  }
+
+  function nameFromResult(){
+    var box = document.getElementById('randomStudentResult');
+    if(!box) return '';
+    var nameEl = box.querySelector('.random-student-name, h3, strong');
+    if(nameEl && nameEl.textContent.trim()) return nameEl.textContent.trim();
+
+    var candidates = Array.prototype.slice.call(box.querySelectorAll('p, div, span'))
+      .map(function(el){ return (el.textContent || '').trim(); })
+      .filter(function(t){
+        return t &&
+          !/élève choisi/i.test(t) &&
+          !/passage validé/i.test(t) &&
+          !/encore disponible/i.test(t) &&
+          !/toute la classe est passée/i.test(t) &&
+          t.length <= 40;
+      });
+    return candidates.length ? candidates[candidates.length - 1] : '';
+  }
+
+  function ensureResultPortrait(){
+    var box = document.getElementById('randomStudentResult');
+    if(!box) return;
+    var img = box.querySelector('img');
+    if(!img) return;
+    var name = nameFromResult();
+    var fallback = defaultPortraitForName(name);
+    img.addEventListener('error', function(){ this.src = fallback; }, { once:false });
+    if(imageLooksBroken(img)){
+      img.src = fallback;
+    }
+  }
+
+  function ensureHistoryPortrait(card){
+    if(!card || card.classList.contains('random-student-history__empty')) return;
+
+    var nameEl = card.querySelector('.random-student-history__name');
+    var name = nameEl ? nameEl.textContent.trim() : '';
+    if(!name){
+      var clone = card.cloneNode(true);
+      Array.prototype.slice.call(clone.querySelectorAll('button,img,svg')).forEach(function(el){ el.remove(); });
+      name = (clone.textContent || '').replace(/\s+/g, ' ').trim().replace(/^\d+\s*/, '').trim();
+    }
+    var fallback = defaultPortraitForName(name);
+
+    var img = card.querySelector('.random-student-history__photo');
+    if(!img){
+      img = document.createElement('img');
+      img.className = 'random-student-history__photo';
+      img.alt = '';
+      img.src = fallback;
+
+      var badge = card.firstElementChild;
+      if(badge){
+        badge.insertAdjacentElement('afterend', img);
+      }else{
+        card.insertBefore(img, card.firstChild);
+      }
+    } else {
+      img.addEventListener('error', function(){ this.src = fallback; }, { once:false });
+      if(imageLooksBroken(img)){
+        img.src = fallback;
+      }
+    }
+  }
+
+  function ensureAllHistoryPortraits(){
+    var list = document.getElementById('randomStudentHistoryList');
+    if(!list) return;
+    Array.prototype.slice.call(list.children).forEach(ensureHistoryPortrait);
+  }
+
+  function install(){
+    ensureResultPortrait();
+    ensureAllHistoryPortraits();
+
+    var result = document.getElementById('randomStudentResult');
+    if(result){
+      new MutationObserver(function(){
+        ensureResultPortrait();
+        setTimeout(ensureAllHistoryPortraits, 20);
+      }).observe(result, { childList:true, subtree:true });
+    }
+
+    var list = document.getElementById('randomStudentHistoryList');
+    if(list){
+      new MutationObserver(function(){
+        ensureAllHistoryPortraits();
+      }).observe(list, { childList:true, subtree:true });
+    }
+
+    ['drawRandomStudentBtn','drawAnotherStudentBtn','validateRandomStudentBtn','resetRandomStudentHistoryBtn'].forEach(function(id){
+      var btn = document.getElementById(id);
+      if(btn){
+        btn.addEventListener('click', function(){
+          setTimeout(function(){
+            ensureResultPortrait();
+            ensureAllHistoryPortraits();
+          }, 120);
+        });
+      }
     });
   }
 
