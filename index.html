@@ -5,11 +5,11 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période." name="description"/>
-<title>V36.80 — Progressions CE2 — Ma classe au quotidien</title>
+<title>V36.81 — Progressions CE2 — Ma classe au quotidien</title>
 <script id="title-lock-v3677">
 (function(){
   'use strict';
-  var TITLE='V36.80 — Progressions CE2 — Ma classe au quotidien';
+  var TITLE='V36.81 — Progressions CE2 — Ma classe au quotidien';
   function setTitle(){ if(document.title!==TITLE) document.title=TITLE; }
   setTitle();
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', setTitle);
@@ -582,6 +582,66 @@
     height: 220px !important;
     max-width: 220px !important;
     max-height: 220px !important;
+  }
+}
+</style>
+
+
+<style id="random-student-history-photos-v3681">
+/* V36.81 — Élève au hasard : colonne droite avec photos + colonnes rééquilibrées */
+#randomStudentModal .random-student-panel{
+  width: min(97vw, 1760px) !important;
+  max-width: 1760px !important;
+}
+#randomStudentModal .random-student-layout{
+  grid-template-columns: minmax(0, 1.45fr) minmax(420px, 1.05fr) !important;
+}
+#randomStudentModal .random-student-result{
+  min-height: 520px !important;
+}
+#randomStudentModal .random-student-history{
+  min-width: 0 !important;
+}
+#randomStudentModal .random-student-history__list{
+  display:flex !important;
+  flex-direction:column !important;
+  gap: 12px !important;
+}
+#randomStudentModal .random-student-history__list > *{
+  min-height: 92px !important;
+}
+#randomStudentModal .random-student-history__entry{
+  display:grid !important;
+  grid-template-columns: 46px 120px minmax(0,1fr) 34px !important;
+  gap: 14px !important;
+  align-items:center !important;
+  padding: 10px 14px !important;
+}
+#randomStudentModal .random-student-history__entry .random-student-history__photo{
+  width: 120px !important;
+  height: 120px !important;
+  max-width: 120px !important;
+  max-height: 120px !important;
+  object-fit: cover !important;
+  border-radius: 18px !important;
+  border: 4px solid #fff !important;
+  box-shadow: 0 8px 22px rgba(23,59,92,.15) !important;
+}
+#randomStudentModal .random-student-history__name{
+  font-size: 1.22rem !important;
+  line-height: 1.15 !important;
+  font-weight: 800 !important;
+  color: #244782 !important;
+  min-width: 0 !important;
+  overflow-wrap:anywhere !important;
+}
+#randomStudentModal .random-student-history__entry > button,
+#randomStudentModal .random-student-history__entry > .random-student-remove{
+  justify-self:end !important;
+}
+@media (max-width: 1180px){
+  #randomStudentModal .random-student-layout{
+    grid-template-columns: 1fr !important;
   }
 }
 </style>
@@ -1590,6 +1650,165 @@
     e.stopImmediatePropagation();
     window.location.href = 'emploi-du-temps-simplifie.html';
   }, true);
+})();
+</script>
+
+
+<script>
+/* V36.81 — Historique du tirage : ajouter les photos des élèves déjà passés */
+(function(){
+  'use strict';
+  var PHOTO_KEY = 'ce2_random_student_photo_map_v3681';
+
+  function norm(s){
+    return String(s||'')
+      .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+      .toLowerCase().replace(/\s+/g,' ').trim();
+  }
+  function loadMap(){
+    try{
+      var raw = localStorage.getItem(PHOTO_KEY);
+      return raw ? JSON.parse(raw) : {};
+    }catch(e){ return {}; }
+  }
+  function saveMap(map){
+    try{ localStorage.setItem(PHOTO_KEY, JSON.stringify(map)); }catch(e){}
+  }
+  function extractCurrentStudent(){
+    var box = document.getElementById('randomStudentResult');
+    if(!box) return null;
+    var img = box.querySelector('img');
+    if(!img || !img.src) return null;
+
+    var candidates = Array.prototype.slice.call(box.querySelectorAll('.random-student-name, h3, strong, p, div, span'))
+      .map(function(el){ return (el.textContent || '').trim(); })
+      .filter(function(t){
+        return t &&
+          !/élève choisi/i.test(t) &&
+          !/clique sur/i.test(t) &&
+          t.length <= 40;
+      });
+
+    var name = candidates.length ? candidates[candidates.length-1] : '';
+    if(!name) return null;
+    return { name:name, src:img.src };
+  }
+
+  function rememberCurrentStudent(){
+    var current = extractCurrentStudent();
+    if(!current) return;
+    var map = loadMap();
+    map[norm(current.name)] = current.src;
+    saveMap(map);
+  }
+
+  function extractHistoryName(item){
+    var clone = item.cloneNode(true);
+    Array.prototype.slice.call(clone.querySelectorAll('button,img,svg')).forEach(function(el){ el.remove(); });
+    var txt = (clone.textContent || '').replace(/\s+/g,' ').trim();
+    txt = txt.replace(/^\d+\s*/, '').trim();
+    txt = txt.replace(/\s*[×x]\s*$/, '').trim();
+    return txt;
+  }
+
+  function enhanceHistoryItem(item){
+    if(!item || item.classList.contains('random-student-history__empty')) return;
+    item.classList.add('random-student-history__entry');
+
+    var map = loadMap();
+    var name = item.dataset.studentName || extractHistoryName(item);
+    if(!name) return;
+    item.dataset.studentName = name;
+
+    var photoSrc = map[norm(name)] || '';
+    var badge = item.firstElementChild;
+    var removeBtn = item.querySelector('button');
+    var hasPhoto = item.querySelector('.random-student-history__photo');
+    if(photoSrc && !hasPhoto){
+      var img = document.createElement('img');
+      img.className = 'random-student-history__photo';
+      img.alt = '';
+      img.src = photoSrc;
+      if(badge && badge !== removeBtn){
+        badge.insertAdjacentElement('afterend', img);
+      }else{
+        item.insertBefore(img, item.firstChild);
+      }
+    }
+
+    var nameEl = item.querySelector('.random-student-history__name');
+    if(!nameEl){
+      var walker = Array.prototype.slice.call(item.childNodes).find(function(node){
+        return node.nodeType === 3 && node.textContent.trim();
+      });
+      if(walker){
+        nameEl = document.createElement('span');
+        nameEl.className = 'random-student-history__name';
+        nameEl.textContent = walker.textContent.trim().replace(/^\d+\s*/, '');
+        item.replaceChild(nameEl, walker);
+      }else{
+        var candidateEls = Array.prototype.slice.call(item.children).filter(function(el){
+          return el !== badge && el !== removeBtn && !el.classList.contains('random-student-history__photo');
+        });
+        var target = candidateEls[0];
+        if(target){
+          target.classList.add('random-student-history__name');
+        }
+      }
+    }
+  }
+
+  function enhanceHistoryList(){
+    var list = document.getElementById('randomStudentHistoryList');
+    if(!list) return;
+    Array.prototype.slice.call(list.children).forEach(function(item){
+      enhanceHistoryItem(item);
+    });
+  }
+
+  function install(){
+    var result = document.getElementById('randomStudentResult');
+    var list = document.getElementById('randomStudentHistoryList');
+    if(!result || !list) return;
+
+    rememberCurrentStudent();
+    enhanceHistoryList();
+
+    var resultObserver = new MutationObserver(function(){
+      rememberCurrentStudent();
+      setTimeout(enhanceHistoryList, 30);
+    });
+    resultObserver.observe(result, {childList:true, subtree:true});
+
+    var listObserver = new MutationObserver(function(){
+      enhanceHistoryList();
+    });
+    listObserver.observe(list, {childList:true, subtree:true});
+
+    var validateBtn = document.getElementById('validateRandomStudentBtn');
+    var againBtn = document.getElementById('drawAnotherStudentBtn');
+    var drawBtn = document.getElementById('drawRandomStudentBtn');
+    [validateBtn, againBtn, drawBtn].forEach(function(btn){
+      if(btn){
+        btn.addEventListener('click', function(){
+          setTimeout(function(){
+            rememberCurrentStudent();
+            enhanceHistoryList();
+          }, 120);
+        });
+      }
+    });
+
+    window.addEventListener('storage', function(e){
+      if(e.key === PHOTO_KEY){ enhanceHistoryList(); }
+    });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', install);
+  }else{
+    install();
+  }
 })();
 </script>
 
