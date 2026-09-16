@@ -5,11 +5,11 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période." name="description"/>
-<title>V36.79 — Progressions CE2 — Ma classe au quotidien</title>
+<title>V36.80 — Progressions CE2 — Ma classe au quotidien</title>
 <script id="title-lock-v3677">
 (function(){
   'use strict';
-  var TITLE='V36.79 — Progressions CE2 — Ma classe au quotidien';
+  var TITLE='V36.80 — Progressions CE2 — Ma classe au quotidien';
   function setTitle(){ if(document.title!==TITLE) document.title=TITLE; }
   setTitle();
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', setTitle);
@@ -409,6 +409,179 @@
     height: 180px !important;
     max-width: 180px !important;
     max-height: 180px !important;
+  }
+}
+</style>
+
+
+<style id="random-student-fullscreen-v3680">
+/* V36.80 — Élève au hasard : quasi plein écran VPI */
+#randomStudentModal .random-student-panel{
+  width: min(96vw, 1680px) !important;
+  max-width: 1680px !important;
+  min-height: 90vh !important;
+  max-height: 92vh !important;
+  padding: 26px 28px !important;
+  border-radius: 28px !important;
+}
+
+#randomStudentModal .random-student-layout{
+  display:grid !important;
+  grid-template-columns: minmax(0, 1.9fr) minmax(300px, 0.9fr) !important;
+  gap: 24px !important;
+  align-items: stretch !important;
+  min-height: calc(90vh - 90px) !important;
+}
+
+#randomStudentModal .random-student-main{
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:flex-start !important;
+}
+
+#randomStudentModal .random-student-kicker{
+  font-size: 1.25rem !important;
+  letter-spacing: .08em !important;
+}
+
+#randomStudentModal #randomStudentTitle{
+  font-size: 3rem !important;
+  line-height: 1.05 !important;
+  margin: 8px 0 14px !important;
+}
+
+#randomStudentModal .random-student-result{
+  flex: 1 1 auto !important;
+  min-height: 500px !important;
+  padding: 20px !important;
+  border-radius: 28px !important;
+}
+
+#randomStudentModal .random-student-result img{
+  width: 260px !important;
+  height: 260px !important;
+  max-width: 260px !important;
+  max-height: 260px !important;
+  border-radius: 28px !important;
+  border: 7px solid #fff !important;
+}
+
+#randomStudentModal .random-student-result strong,
+#randomStudentModal .random-student-result .random-student-name,
+#randomStudentModal .random-student-result h3{
+  font-size: 4rem !important;
+  line-height: 1.05 !important;
+  margin-top: 8px !important;
+}
+
+#randomStudentModal .random-student-result .random-student-label{
+  font-size: 1.2rem !important;
+  letter-spacing: .1em !important;
+}
+
+#randomStudentModal .random-student-actions{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  gap: 14px !important;
+  justify-content:center !important;
+  margin-top: 18px !important;
+}
+
+#randomStudentModal .random-student-actions button{
+  min-height: 64px !important;
+  padding: 0 28px !important;
+  font-size: 1.2rem !important;
+  border-radius: 18px !important;
+}
+
+#randomStudentModal .random-student-note{
+  font-size: 1rem !important;
+  text-align: center !important;
+  margin-top: 14px !important;
+}
+
+#randomStudentModal .random-student-history{
+  display:flex !important;
+  flex-direction:column !important;
+  min-height: 100% !important;
+  padding: 20px 18px !important;
+  border-radius: 24px !important;
+}
+
+#randomStudentModal .random-student-history__head{
+  margin-bottom: 12px !important;
+}
+
+#randomStudentModal .random-student-history__eyebrow{
+  font-size: 1rem !important;
+}
+
+#randomStudentModal #randomStudentHistoryTitle{
+  font-size: 2rem !important;
+  line-height: 1.1 !important;
+}
+
+#randomStudentModal #randomStudentHistoryCount{
+  font-size: 1.7rem !important;
+  white-space: nowrap !important;
+}
+
+#randomStudentModal .random-student-history__list{
+  flex: 1 1 auto !important;
+  overflow: auto !important;
+  padding-right: 4px !important;
+}
+
+#randomStudentModal .random-student-history__list > *{
+  min-height: 70px !important;
+  font-size: 1.15rem !important;
+}
+
+#randomStudentModal .random-student-history__list img{
+  width: 120px !important;   /* environ deux fois plus petit que la photo centrale */
+  height: 120px !important;
+  max-width: 120px !important;
+  max-height: 120px !important;
+  object-fit: cover !important;
+  border-radius: 18px !important;
+}
+
+#randomStudentModal .random-student-history__list strong,
+#randomStudentModal .random-student-history__list .name,
+#randomStudentModal .random-student-history__list .student-name{
+  font-size: 1.15rem !important;
+}
+
+#randomStudentModal .random-student-reset{
+  min-height: 58px !important;
+  margin-top: 12px !important;
+  font-size: 1.05rem !important;
+  border-radius: 16px !important;
+}
+
+#randomStudentModal .random-student-close{
+  width: 58px !important;
+  height: 58px !important;
+  font-size: 2rem !important;
+}
+
+@media (max-width: 1180px){
+  #randomStudentModal .random-student-panel{
+    width: 97vw !important;
+    min-height: 92vh !important;
+  }
+  #randomStudentModal .random-student-layout{
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+  }
+  #randomStudentModal .random-student-result{
+    min-height: 380px !important;
+  }
+  #randomStudentModal .random-student-result img{
+    width: 220px !important;
+    height: 220px !important;
+    max-width: 220px !important;
+    max-height: 220px !important;
   }
 }
 </style>
