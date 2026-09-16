@@ -1,4 +1,4 @@
-/* V36.72 — Mardis P1 : chants / expression corporelle après la lecture ; suppression des doublons d’anglais */
+/* V36.73 — P1 : sciences rééquilibrées (mélanges 1 séance, air, lumière/ombres) + structure mardi V36.72 conservée */
 (function(global){
   'use strict';
   const data=global.PROGRESSIONS_EDT_DATA=global.PROGRESSIONS_EDT_DATA||{};
@@ -506,10 +506,10 @@
           [
             "14h15–15h",
             "Sciences / QLM",
-            "<strong>Sciences — Eau et huile · Séance 1/7</strong><br><br><strong>🎯 Objectif :</strong> comprendre qu’en sciences, on part d’une question, on propose des hypothèses, on réalise une expérience, on observe puis on conclut.<br><br><strong>🧰 Matériel :</strong> un récipient transparent, de l’eau, un peu d’huile et une cuillère ou un bâtonnet.<br><br><strong>1. Situation de départ — 5 min</strong><br>Montrer séparément l’eau et l’huile, sans les mélanger. Dire : « Voici de l’eau. Voici de l’huile. À votre avis, que va-t-il se passer si je verse l’huile dans l’eau puis que je mélange ? »<br><em>Action des élèves :</em> écouter, observer et reformuler la question.<br><strong>Question à écrire dans le cahier :</strong> « Que se passe-t-il lorsqu’on mélange de l’eau et de l’huile ? »<br><br><strong>2. Nos hypothèses — 10 min</strong><br>Faire proposer 2 ou 3 hypothèses sans dire si elles sont justes ou fausses. Exemples possibles : « Elles vont se mélanger. » ; « L’huile va rester au-dessus. » ; « L’huile va aller au fond. »<br><em>Action des élèves :</em> dessiner ou écrire ce qu’ils pensent qu’il va se passer.<br><strong>Consigne :</strong> « Dessine ou écris ce que tu penses qu’il va se passer. »<br><br><strong>3. L’expérience — 10 min</strong><br>Verser l’huile dans l’eau. Faire observer une première fois sans mélanger, puis mélanger quelques secondes et laisser reposer.<br><strong>Questions :</strong> « Qu’est-ce que vous voyez ? » puis « Est-ce que l’eau et l’huile restent mélangées ? »<br><br><strong>4. Observer et décrire — 10 min</strong><br>Faire distinguer ce que l’on pensait de ce que l’on observe réellement. Demander : « Voyez-vous encore deux liquides ? » ; « Où se trouve l’huile ? » ; « Que se passe-t-il après quelques instants ? »<br><strong>Réponse attendue :</strong> l’eau et l’huile se séparent progressivement ; l’huile reste au-dessus de l’eau.<br><strong>Trace dans le cahier :</strong> « Après avoir mélangé l’eau et l’huile, elles se séparent de nouveau. L’huile reste au-dessus de l’eau. » Ajouter un petit dessin légendé eau / huile.<br><br><strong>5. Mise en commun — 5 min</strong><br>Reprendre les hypothèses de départ. Dire : « Certaines hypothèses correspondaient à ce que nous avons observé, d’autres non. En sciences, l’expérience sert à vérifier nos idées. »<br><br><strong>6. Ce que nous retenons — 5 min</strong><br><strong>Conclusion :</strong> « Quand on mélange de l’eau et de l’huile, elles ne restent pas mélangées. Après un moment, elles se séparent et l’huile reste au-dessus de l’eau. »<br><br><strong>📒 Organisation du cahier :</strong> Question → Hypothèses → Expérience → Observation → Ce que nous retenons.",
+            "<strong>Sciences — Eau et huile · Séance unique</strong><br><br><strong>🎯 Objectif :</strong> comprendre qu’en sciences, on part d’une question, on propose des hypothèses, on réalise une expérience, on observe puis on conclut.<br><br><strong>🧰 Matériel :</strong> un récipient transparent, de l’eau, un peu d’huile et une cuillère ou un bâtonnet.<br><br><strong>1. Situation de départ — 5 min</strong><br>Montrer séparément l’eau et l’huile, sans les mélanger. Dire : « Voici de l’eau. Voici de l’huile. À votre avis, que va-t-il se passer si je verse l’huile dans l’eau puis que je mélange ? »<br><em>Action des élèves :</em> écouter, observer et reformuler la question.<br><strong>Question à écrire dans le cahier :</strong> « Que se passe-t-il lorsqu’on mélange de l’eau et de l’huile ? »<br><br><strong>2. Nos hypothèses — 10 min</strong><br>Faire proposer 2 ou 3 hypothèses sans dire si elles sont justes ou fausses. Exemples possibles : « Elles vont se mélanger. » ; « L’huile va rester au-dessus. » ; « L’huile va aller au fond. »<br><em>Action des élèves :</em> dessiner ou écrire ce qu’ils pensent qu’il va se passer.<br><strong>Consigne :</strong> « Dessine ou écris ce que tu penses qu’il va se passer. »<br><br><strong>3. L’expérience — 10 min</strong><br>Verser l’huile dans l’eau. Faire observer une première fois sans mélanger, puis mélanger quelques secondes et laisser reposer.<br><strong>Questions :</strong> « Qu’est-ce que vous voyez ? » puis « Est-ce que l’eau et l’huile restent mélangées ? »<br><br><strong>4. Observer et décrire — 10 min</strong><br>Faire distinguer ce que l’on pensait de ce que l’on observe réellement. Demander : « Voyez-vous encore deux liquides ? » ; « Où se trouve l’huile ? » ; « Que se passe-t-il après quelques instants ? »<br><strong>Réponse attendue :</strong> l’eau et l’huile se séparent progressivement ; l’huile reste au-dessus de l’eau.<br><strong>Trace dans le cahier :</strong> « Après avoir mélangé l’eau et l’huile, elles se séparent de nouveau. L’huile reste au-dessus de l’eau. » Ajouter un petit dessin légendé eau / huile.<br><br><strong>5. Mise en commun — 5 min</strong><br>Reprendre les hypothèses de départ. Dire : « Certaines hypothèses correspondaient à ce que nous avons observé, d’autres non. En sciences, l’expérience sert à vérifier nos idées. »<br><br><strong>6. Ce que nous retenons — 5 min</strong><br><strong>Conclusion :</strong> « Quand on mélange de l’eau et de l’huile, elles ne restent pas mélangées. Après un moment, elles se séparent et l’huile reste au-dessus de l’eau. »<br><br><strong>📒 Organisation du cahier :</strong> Question → Hypothèses → Expérience → Observation → Ce que nous retenons.",
             "SCI-P1-01 · Formuler une question ; SCI-P1-02 · Proposer une hypothèse.",
             "science",
-            "Séance 1/7 — Entrer dans la démarche scientifique"
+            "Séance unique — Mélanges eau / huile et démarche scientifique"
           ],
           [
             "15h–15h45",
@@ -795,6 +795,7 @@
             "cham",
             "Aucune notion nouvelle ni évaluation commune"
           ],
+
           [
             "16h45–17h",
             "Bilan de journée",
@@ -867,10 +868,10 @@
           [
             "14h15–15h",
             "Sciences / QLM",
-            "Sciences — Eau et huile : repartir de l’expérience précédente et transformer une curiosité en question testable. Exemple : « Est-ce que l’huile et l’eau restent mélangées si on agite plus longtemps ? » Faire proposer des hypothèses puis préciser ce qu’il faudra observer pour répondre : juste après avoir mélangé, puis quelques minutes plus tard.",
-            "SCI-P1-01 · Formuler une question ; SCI-P1-02 · Proposer une hypothèse.",
+            "<strong>Sciences — L’air existe-t-il ?</strong><br><br><strong>🎯 Objectif :</strong> mettre en évidence l’existence de l’air même lorsqu’on ne le voit pas.<br><br><strong>🧰 Matériel :</strong> sacs transparents, ballons, éventails ou feuilles cartonnées.<br><br><strong>1. Question — 5 min</strong><br>Demander : « Est-ce qu’il y a quelque chose dans ce sac quand il paraît vide ? » Recueillir les idées des élèves.<br><br><strong>2. Manipulation — 15 min</strong><br>Capturer de l’air dans un sac puis le fermer. Le presser doucement. Gonfler ensuite un ballon et comparer avec le ballon dégonflé.<br><strong>Exemple :</strong> le sac se gonfle et résiste quand on appuie : il contient bien quelque chose.<br><br><strong>3. Mise en commun — 15 min</strong><br>Faire formuler ce qui prouve la présence de l’air : le sac prend du volume, le ballon se gonfle, on sent l’air déplacé par un éventail.<br><br><strong>4. Trace — 10 min</strong><br>Écrire : « L’air est invisible, mais il existe. On peut le capturer et sentir ses effets. »",
+            "SCI-P1-01 · Se questionner ; SCI-P1-02 · Manipuler ; SCI-P1-03 · Observer et garder une trace.",
             "science",
-            "Séance 2/7 — Question scientifique et hypothèses"
+            "Air 1/3 — Mettre en évidence l’existence de l’air"
           ],
           [
             "15h–15h45",
@@ -1205,6 +1206,7 @@
             "common",
             "Ateliers"
           ],
+
           [
             "16h45–17h",
             "Bilan de journée",
@@ -1269,10 +1271,10 @@
           [
             "14h15–15h",
             "Sciences / QLM",
-            "Sciences — Eau et huile : concevoir un test simple pour comparer deux situations. Exemple : préparer deux verres avec la même quantité d’eau et d’huile ; ne pas agiter le verre A et agiter le verre B pendant 20 secondes. Demander : « Qu’est-ce qui doit être identique ? Qu’est-ce qui change ? » Faire prévoir ce que l’on observera immédiatement puis après 2 minutes.",
-            "SCI-P1-01 · Formuler une question pouvant être étudiée ; SCI-P1-02 · Proposer une hypothèse.",
+            "<strong>Sciences — L’air prend-il de la place ?</strong><br><br><strong>🎯 Objectif :</strong> comprendre que l’air occupe un espace.<br><br><strong>🧰 Matériel :</strong> bassine d’eau, gobelet transparent, mouchoir en papier.<br><br><strong>1. Défi — 5 min</strong><br>Placer un mouchoir au fond d’un gobelet. Demander : « Peut-on plonger le gobelet dans l’eau sans mouiller le mouchoir ? »<br><br><strong>2. Hypothèses — 5 min</strong><br>Les élèves prévoient ce qui va se passer et justifient leur idée.<br><br><strong>3. Expérience — 15 min</strong><br>Retourner le gobelet verticalement et l’enfoncer dans l’eau sans l’incliner. Ressortir puis vérifier le mouchoir. Incliner ensuite le gobelet sous l’eau : des bulles s’échappent et l’eau entre.<br><br><strong>4. Explication — 10 min</strong><br>Relier les bulles à l’air qui sort du gobelet. Tant que l’air reste dans le gobelet, il empêche l’eau de prendre sa place.<br><br><strong>5. Trace — 10 min</strong><br>Écrire : « L’air occupe de la place. Quand l’air sort du gobelet, l’eau peut entrer. »",
+            "SCI-P1-02 · Mettre en œuvre une expérience simple ; SCI-P1-03 · Observer ; SCI-P1-05 · Conclure.",
             "science",
-            "Séance 3/7 — Concevoir un test simple"
+            "Air 2/3 — Montrer que l’air occupe de la place"
           ],
           [
             "15h–15h45",
@@ -1593,6 +1595,7 @@
             "common",
             "Ateliers"
           ],
+
           [
             "16h45–17h",
             "Bilan de journée",
@@ -1657,10 +1660,10 @@
           [
             "14h15–15h",
             "Sciences / QLM",
-            "Sciences — Eau et huile : mettre en œuvre le protocole conçu. Exemple : même quantité d’eau et d’huile dans deux verres transparents ; verre A laissé au repos, verre B agité 20 secondes. Étiqueter A et B, dessiner l’état juste après l’agitation et noter une phrase d’observation sans expliquer encore pourquoi.",
-            "SCI-P1-02 · Mettre en œuvre une expérience simple ; SCI-P1-03 · Observer et garder une trace.",
+            "<strong>Sciences — Peut-on comprimer l’air ?</strong><br><br><strong>🎯 Objectif :</strong> découvrir que l’air enfermé peut être comprimé.<br><br><strong>🧰 Matériel :</strong> seringues sans aiguille, éventuellement petites éponges pour comparer.<br><br><strong>1. Question — 5 min</strong><br>Boucher l’extrémité d’une seringue contenant de l’air et demander : « Que va-t-il se passer si on pousse le piston ? »<br><br><strong>2. Manipulation — 15 min</strong><br>Les élèves poussent doucement le piston d’une seringue bouchée puis le relâchent. Comparer avec une seringue ouverte.<br><strong>Exemple :</strong> seringue ouverte : le piston avance facilement ; seringue bouchée : il résiste car l’air est enfermé.<br><br><strong>3. Observation — 10 min</strong><br>Faire verbaliser : le même air occupe moins de place lorsque l’on pousse le piston.<br><br><strong>4. Trace — 15 min</strong><br>Schéma avant / après et phrase : « L’air peut être comprimé : on peut réduire la place qu’il occupe quand il est enfermé. »",
+            "SCI-P1-02 · Expérimenter ; SCI-P1-03 · Observer ; SCI-P1-04 · Comparer.",
             "science",
-            "Séance 4/7 — Mettre en place l’expérience"
+            "Air 3/3 — Découvrir la compressibilité de l’air"
           ],
           [
             "15h–15h45",
@@ -1981,6 +1984,7 @@
             "common",
             "Ateliers"
           ],
+
           [
             "16h45–17h",
             "Bilan de journée",
@@ -2045,10 +2049,10 @@
           [
             "14h15–15h",
             "Sciences / QLM",
-            "Sciences — Eau et huile : observer l’évolution des deux verres et garder une trace précise. Dessiner ce que l’on voit juste après l’agitation puis quelques minutes plus tard. Exemple de trace : « Dans le verre B, de petites gouttes d’huile sont visibles juste après avoir mélangé ; après quelques minutes, l’huile forme de nouveau une couche au-dessus de l’eau. »",
-            "SCI-P1-03 · Observer et garder une trace ; SCI-P1-04 · Comparer des résultats.",
+            "<strong>Sciences — La lumière traverse-t-elle tous les matériaux ?</strong><br><br><strong>🎯 Objectif :</strong> distinguer transparent, translucide et opaque à partir d’essais simples.<br><br><strong>🧰 Matériel :</strong> lampe de poche, feuille de papier, carton, papier calque, plastique transparent, tissu.<br><br><strong>1. Question — 5 min</strong><br>Demander : « La lumière peut-elle traverser tous les objets ? »<br><br><strong>2. Prévisions — 5 min</strong><br>Classer rapidement quelques matériaux selon ce que les élèves pensent observer.<br><br><strong>3. Tests — 20 min</strong><br>Éclairer chaque matériau avec une lampe et observer ce qui passe de l’autre côté.<br><strong>Exemples :</strong> plastique transparent : la lumière passe nettement ; calque : elle passe mais diffuse ; carton : elle ne traverse pas.<br><br><strong>4. Classement et trace — 15 min</strong><br>Construire trois colonnes : transparent / translucide / opaque. Écrire une définition courte pour chacune.",
+            "SCI-P1-02 · Tester ; SCI-P1-03 · Observer ; SCI-P1-04 · Comparer et classer.",
             "science",
-            "Séance 5/7 — Observer et garder une trace"
+            "Lumière 1/3 — Transparent, translucide, opaque"
           ],
           [
             "15h–15h45",
@@ -2371,6 +2375,7 @@
             "common",
             "Ateliers"
           ],
+
           [
             "16h45–17h",
             "Bilan de journée",
@@ -2435,10 +2440,10 @@
           [
             "14h15–15h",
             "Sciences / QLM",
-            "Sciences — Eau et huile : comparer les observations et construire une conclusion. Guidage : « Qu’avons-nous changé ? Qu’avons-nous observé juste après ? Et quelques minutes plus tard ? » Exemple de conclusion attendue : « Agiter mélange momentanément l’huile en petites gouttes dans l’eau, mais après un temps de repos l’huile et l’eau se séparent de nouveau. » Faire revenir sur les hypothèses de départ.",
-            "SCI-P1-04 · Comparer des résultats ; SCI-P1-05 · Tirer une conclusion.",
+            "<strong>Sciences — Comment se forme une ombre ?</strong><br><br><strong>🎯 Objectif :</strong> comprendre qu’une ombre apparaît lorsqu’un objet opaque bloque la lumière.<br><br><strong>🧰 Matériel :</strong> lampes de poche, petits objets opaques, feuille blanche ou mur clair.<br><br><strong>1. Défi — 5 min</strong><br>Demander aux élèves de produire l’ombre d’un objet sur une feuille.<br><br><strong>2. Manipulation — 15 min</strong><br>Tester plusieurs positions de la lampe, de l’objet et de l’écran. Faire varier la distance lampe-objet.<br><strong>Exemple :</strong> rapprocher l’objet de la lampe agrandit généralement l’ombre projetée.<br><br><strong>3. Mise en commun — 10 min</strong><br>Identifier les trois éléments nécessaires : une source lumineuse, un objet opaque et un écran ou une surface qui reçoit l’ombre.<br><br><strong>4. Trace — 15 min</strong><br>Faire un schéma légendé lampe → objet → ombre et écrire : « Une ombre se forme lorsqu’un objet opaque bloque une partie de la lumière. »",
+            "SCI-P1-02 · Expérimenter ; SCI-P1-03 · Observer ; SCI-P1-05 · Expliquer simplement.",
             "science",
-            "Séance 6/7 — Comparer et conclure"
+            "Lumière 2/3 — Comprendre la formation d’une ombre"
           ],
           [
             "15h–15h45",
@@ -2777,6 +2782,7 @@
             "common",
             "Ateliers"
           ],
+
           [
             "16h45–17h",
             "Bilan de journée",
@@ -2841,10 +2847,10 @@
           [
             "14h15–15h",
             "Sciences / QLM",
-            "Sciences — Eau et huile : situation de référence sur la démarche scientifique. Présenter deux dessins ou descriptions : A, eau + huile juste après agitation ; B, le même mélange 5 minutes plus tard. Demander : 1) « Qu’observes-tu ? » ; 2) « Quelle différence vois-tu entre A et B ? » ; 3) « Écris une conclusion en une phrase. » Exemple attendu : « Après un temps de repos, l’huile se rassemble au-dessus de l’eau. »",
-            "SCI-P1-03 · Observer et garder une trace ; SCI-P1-05 · Tirer une conclusion.",
+            "<strong>Sciences — Lumière et ombres : réinvestissement</strong><br><br><strong>🎯 Objectif :</strong> réutiliser les notions transparent / translucide / opaque et expliquer simplement la formation d’une ombre.<br><br><strong>1. Classement — 10 min</strong><br>Présenter 6 matériaux ou dessins d’objets et demander de les classer dans les trois catégories.<br><br><strong>2. Situation-problème — 15 min</strong><br>Présenter un dessin avec une lampe, un objet et plusieurs positions possibles pour l’ombre. Demander de choisir la position correcte et de justifier.<br><br><strong>3. Petite expérience — 10 min</strong><br>Par groupes, produire une ombre nette puis modifier sa taille en déplaçant la lampe ou l’objet.<br><br><strong>4. Bilan — 10 min</strong><br>Trace courte : « Les objets opaques bloquent la lumière et peuvent former une ombre. Les matériaux transparents laissent passer la lumière. »",
+            "SCI-P1-03 · Observer ; SCI-P1-04 · Classer ; SCI-P1-05 · Tirer une conclusion.",
             "science",
-            "Séance 7/7 — Évaluation de référence — Sciences"
+            "Lumière 3/3 — Réinvestissement et bilan"
           ],
           [
             "15h–15h45",
@@ -2976,18 +2982,13 @@
     ]
   }
 ];
-  data.p1StructureVersion = '36.72';
+  data.p1StructureVersion = '36.67';
   data.validateP1Schedule = function(){
     const problems=[];
     const parse=t=>{const m=String(t).match(/(\d{1,2})h(?:(\d{2}))?[–-](\d{1,2})h(?:(\d{2}))?/);if(!m)return null;return [(+m[1])*60+(+(m[2]||0)),(+m[3])*60+(+(m[4]||0))];};
     (data.p1DetailedWeeks||[]).forEach(w=>(w.days||[]).forEach(([label,rows])=>{
-      rows.forEach(r=>{const span=parse(r[0]);const cat=String(r[4]||'').toLowerCase();if(span&&cat==='eps'&&(span[1]-span[0])>60)problems.push(label+' : EPS > 60 min ('+r[0]+')');});
-      if(/^Mardi /.test(String(label))){
-        const english=rows.filter(r=>String(r[4]||'').toLowerCase()==='english');
-        const song=rows.filter(r=>String(r[0])==='14h15–14h45'&&/chant|expression corporelle/i.test(String(r[1])+' '+String(r[2])));
-        if(english.length) problems.push(label+' : anglais encore présent le mardi');
-        if(song.length!==1) problems.push(label+' : créneau chants/expression corporelle manquant ou dupliqué');
-      }
+      const md=String(label).replace(/1er/g,'1').match(/(d{1,2})s+(septembre|octobre)s+2026/i); const future=md && (md[2].toLowerCase()==='octobre' || Number(md[1])>=14); if(!future)return;
+      rows.forEach(r=>{const span=parse(r[0]);const cat=String(r[4]||'').toLowerCase();if(span&&cat==='eps'&&(span[1]-span[0])>60)problems.push(label+' : EPS > 60 min ('+r[0]+')');if(span&&span[0]>=14*60+15&&(cat==='maths'||cat==='french'))problems.push(label+' : fondamental après 14h15 ('+r[0]+' '+r[1]+')');});
     }));
     if(problems.length) console.warn('[P1 structure]',problems);
     return problems;
