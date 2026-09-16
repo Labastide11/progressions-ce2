@@ -5,11 +5,11 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période." name="description"/>
-<title>V36.81 — Progressions CE2 — Ma classe au quotidien</title>
+<title>V36.83 — Progressions CE2 — Ma classe au quotidien</title>
 <script id="title-lock-v3677">
 (function(){
   'use strict';
-  var TITLE='V36.81 — Progressions CE2 — Ma classe au quotidien';
+  var TITLE='V36.83 — Progressions CE2 — Ma classe au quotidien';
   function setTitle(){ if(document.title!==TITLE) document.title=TITLE; }
   setTitle();
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', setTitle);
@@ -642,6 +642,225 @@
 @media (max-width: 1180px){
   #randomStudentModal .random-student-layout{
     grid-template-columns: 1fr !important;
+  }
+}
+</style>
+
+
+<style id="random-student-history-overlap-fix-v3682">
+/* V36.82 — Corrige le chevauchement des photos à droite */
+#randomStudentModal .random-student-history__list{
+  gap: 10px !important;
+}
+
+#randomStudentModal .random-student-history__entry{
+  grid-template-columns: 42px 92px minmax(0,1fr) 28px !important;
+  min-height: 112px !important;
+  padding: 10px 12px !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+}
+
+#randomStudentModal .random-student-history__entry .random-student-history__photo{
+  width: 92px !important;
+  height: 92px !important;
+  max-width: 92px !important;
+  max-height: 92px !important;
+  border-radius: 14px !important;
+  align-self: center !important;
+  justify-self: center !important;
+}
+
+#randomStudentModal .random-student-history__entry > :first-child{
+  align-self: center !important;
+  justify-self: center !important;
+}
+
+#randomStudentModal .random-student-history__name{
+  font-size: 1.12rem !important;
+  line-height: 1.15 !important;
+  align-self: center !important;
+}
+
+#randomStudentModal .random-student-history__entry > button,
+#randomStudentModal .random-student-history__entry > .random-student-remove{
+  align-self: center !important;
+  justify-self: center !important;
+  width: 24px !important;
+  height: 24px !important;
+  line-height: 24px !important;
+}
+
+#randomStudentModal .random-student-history{
+  padding-bottom: 16px !important;
+}
+
+#randomStudentModal .random-student-history__list > *{
+  min-height: 112px !important;
+}
+
+@media (max-width: 1180px){
+  #randomStudentModal .random-student-history__entry{
+    grid-template-columns: 36px 82px minmax(0,1fr) 24px !important;
+    min-height: 98px !important;
+  }
+  #randomStudentModal .random-student-history__entry .random-student-history__photo{
+    width: 82px !important;
+    height: 82px !important;
+    max-width: 82px !important;
+    max-height: 82px !important;
+  }
+}
+</style>
+
+
+<style id="random-student-balance-v3683">
+/* V36.83 — Rééquilibrage popup élève au hasard : 1/3 gauche, 2/3 droite */
+#randomStudentModal .random-student-panel{
+  width: min(97vw, 1820px) !important;
+  max-width: 1820px !important;
+  min-height: 90vh !important;
+  max-height: 92vh !important;
+  padding: 22px 26px 22px 26px !important;
+  position: relative !important;
+}
+
+#randomStudentModal .random-student-layout{
+  display: grid !important;
+  grid-template-columns: minmax(360px, 1fr) minmax(760px, 2fr) !important; /* 1/3 | 2/3 */
+  gap: 24px !important;
+  align-items: stretch !important;
+}
+
+#randomStudentModal .random-student-main{
+  min-width: 0 !important;
+}
+
+#randomStudentModal .random-student-result{
+  min-height: 520px !important;
+}
+
+#randomStudentModal .random-student-result img{
+  width: 240px !important;
+  height: 240px !important;
+  max-width: 240px !important;
+  max-height: 240px !important;
+}
+
+#randomStudentModal .random-student-result strong,
+#randomStudentModal .random-student-result .random-student-name,
+#randomStudentModal .random-student-result h3{
+  font-size: 3.9rem !important;
+}
+
+#randomStudentModal .random-student-history{
+  min-width: 0 !important;
+  padding: 20px 18px 18px 18px !important;
+}
+
+#randomStudentModal .random-student-history__head{
+  display: grid !important;
+  grid-template-columns: minmax(0,1fr) auto !important;
+  align-items: start !important;
+  gap: 12px !important;
+  padding-right: 88px !important; /* réserve pour la croix */
+  margin-bottom: 14px !important;
+}
+
+#randomStudentModal .random-student-history__head > div{
+  min-width: 0 !important;
+}
+
+#randomStudentModal #randomStudentHistoryTitle{
+  font-size: 2rem !important;
+  margin: 0 !important;
+}
+
+#randomStudentModal #randomStudentHistoryCount{
+  font-size: 1.7rem !important;
+  white-space: nowrap !important;
+  margin-right: 4px !important;
+}
+
+#randomStudentModal .random-student-close{
+  position: absolute !important;
+  top: 18px !important;
+  right: 18px !important;
+  width: 56px !important;
+  height: 56px !important;
+  font-size: 2rem !important;
+  z-index: 3 !important;
+}
+
+#randomStudentModal .random-student-history__list{
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  padding-right: 2px !important;
+}
+
+#randomStudentModal .random-student-history__list > *{
+  min-height: 126px !important;
+}
+
+#randomStudentModal .random-student-history__entry{
+  display: grid !important;
+  grid-template-columns: 42px 120px minmax(0,1fr) 28px !important;
+  gap: 16px !important;
+  align-items: center !important;
+  min-height: 126px !important;
+  padding: 12px 16px !important;
+  overflow: hidden !important;
+  border-radius: 18px !important;
+}
+
+#randomStudentModal .random-student-history__entry .random-student-history__photo{
+  width: 120px !important;
+  height: 120px !important;
+  max-width: 120px !important;
+  max-height: 120px !important;
+  object-fit: cover !important;
+  border-radius: 18px !important;
+  border: 4px solid #fff !important;
+  box-shadow: 0 8px 22px rgba(23,59,92,.15) !important;
+  align-self: center !important;
+  justify-self: center !important;
+}
+
+#randomStudentModal .random-student-history__name{
+  font-size: 1.28rem !important;
+  line-height: 1.15 !important;
+  font-weight: 800 !important;
+  color: #244782 !important;
+  min-width: 0 !important;
+  overflow-wrap: anywhere !important;
+}
+
+#randomStudentModal .random-student-history__entry > :first-child{
+  align-self: center !important;
+  justify-self: center !important;
+}
+
+#randomStudentModal .random-student-history__entry > button,
+#randomStudentModal .random-student-history__entry > .random-student-remove{
+  align-self: center !important;
+  justify-self: center !important;
+  width: 24px !important;
+  height: 24px !important;
+  line-height: 24px !important;
+}
+
+#randomStudentModal .random-student-reset{
+  min-height: 58px !important;
+  margin-top: 12px !important;
+}
+
+@media (max-width: 1280px){
+  #randomStudentModal .random-student-layout{
+    grid-template-columns: 1fr !important;
+  }
+  #randomStudentModal .random-student-history__head{
+    padding-right: 72px !important;
   }
 }
 </style>
