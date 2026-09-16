@@ -5,11 +5,11 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="Progressions CE2 interactives en français et mathématiques : référentiel annuel, checklist et mémoire par période." name="description"/>
-<title>V36.83 — Progressions CE2 — Ma classe au quotidien</title>
+<title>V36.84 — Progressions CE2 — Ma classe au quotidien</title>
 <script id="title-lock-v3677">
 (function(){
   'use strict';
-  var TITLE='V36.83 — Progressions CE2 — Ma classe au quotidien';
+  var TITLE='V36.84 — Progressions CE2 — Ma classe au quotidien';
   function setTitle(){ if(document.title!==TITLE) document.title=TITLE; }
   setTitle();
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', setTitle);
@@ -861,6 +861,135 @@
   }
   #randomStudentModal .random-student-history__head{
     padding-right: 72px !important;
+  }
+}
+</style>
+
+
+<style id="random-student-history-grid-v3684">
+/* V36.84 — Déjà passés en grille visuelle sans ascenseur */
+#randomStudentModal .random-student-panel{
+  width: min(97vw, 1820px) !important;
+  max-width: 1820px !important;
+}
+
+#randomStudentModal .random-student-layout{
+  grid-template-columns: minmax(360px, 1fr) minmax(820px, 2fr) !important; /* 1/3 | 2/3 */
+}
+
+#randomStudentModal .random-student-history{
+  overflow: visible !important;
+}
+
+#randomStudentModal .random-student-history__head{
+  padding-right: 90px !important; /* réserve pour la croix */
+}
+
+#randomStudentModal .random-student-history__list{
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  align-content: start !important;
+  overflow: visible !important;
+  max-height: none !important;
+  padding-right: 0 !important;
+}
+
+#randomStudentModal .random-student-history__list > *{
+  min-height: 0 !important;
+}
+
+#randomStudentModal .random-student-history__entry{
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  min-height: 162px !important;
+  padding: 14px 10px 12px !important;
+  gap: 8px !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+}
+
+#randomStudentModal .random-student-history__entry .random-student-history__photo{
+  width: 96px !important;
+  height: 96px !important;
+  max-width: 96px !important;
+  max-height: 96px !important;
+  object-fit: cover !important;
+  border-radius: 16px !important;
+  border: 4px solid #fff !important;
+  box-shadow: 0 8px 22px rgba(23,59,92,.15) !important;
+  align-self: center !important;
+  justify-self: center !important;
+}
+
+#randomStudentModal .random-student-history__name{
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  font-size: 1.04rem !important;
+  line-height: 1.12 !important;
+  font-weight: 800 !important;
+  color: #244782 !important;
+  overflow-wrap: anywhere !important;
+  margin-top: 2px !important;
+}
+
+#randomStudentModal .random-student-history__entry > :first-child{
+  position: absolute !important;
+  top: 8px !important;
+  left: 8px !important;
+  width: 30px !important;
+  height: 30px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 999px !important;
+  font-size: .95rem !important;
+}
+
+#randomStudentModal .random-student-history__entry > button,
+#randomStudentModal .random-student-history__entry > .random-student-remove{
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  width: 28px !important;
+  height: 28px !important;
+  line-height: 28px !important;
+  min-height: 28px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#randomStudentModal .random-student-reset{
+  margin-top: 14px !important;
+}
+
+@media (max-width: 1620px){
+  #randomStudentModal .random-student-history__list{
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 1280px){
+  #randomStudentModal .random-student-layout{
+    grid-template-columns: 1fr !important;
+  }
+  #randomStudentModal .random-student-history__head{
+    padding-right: 76px !important;
+  }
+  #randomStudentModal .random-student-history__list{
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 980px){
+  #randomStudentModal .random-student-history__list{
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }
 </style>
