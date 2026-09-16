@@ -1,4 +1,4 @@
-/* V36.72 — mardi : chants / expression corporelle après la lecture ; suppression de l’anglais en double */
+/* V36.76 — robustesse page emploi du temps : données de période absentes tolérées */
 
 (() => {
   if(!window.PROGRESSIONS_EDT_DATA){
@@ -884,7 +884,7 @@
   }
 
   function integrateDailyProblems(period,weeks){
-    weeks.forEach((week,weekIndex)=>{
+    (weeks||[]).forEach((week,weekIndex)=>{
       const source=problemBankWeek(period,weekIndex+1);
       if(!source) return;
       week.problemPlan={
@@ -1022,7 +1022,7 @@
   const annualMathLessons={};
   function installAnnualMathProgram(period,weeks){
     const plans=annualMathWeeks[period]||[];
-    weeks.forEach((week,wi)=>{
+    (weeks||[]).forEach((week,wi)=>{
       const spec=plans[wi]||plans[plans.length-1]; if(!spec)return;
       const topics=[]; for(let i=0;i<spec.length;i+=2) topics.push({title:spec[i],file:spec[i+1]});
       const mathRows=[]; week.days.forEach(([day,rows])=>rows.forEach(row=>{if((row[1]||'').toLowerCase().includes('math'))mathRows.push({day,row});}));
@@ -1477,7 +1477,7 @@
     const map=new Map();
     const counters={};
     const totals={};
-    const weeks=periodWeeks(period);
+    const weeks=periodWeeks(period)||[];
     weeks.forEach(week=>week.days.forEach(([day,rows])=>rows.forEach(row=>{
       const subject=sequenceSubject(row[1]);
       if(subject) totals[subject]=(totals[subject]||0)+1;
@@ -1688,7 +1688,7 @@
   }
   function applyAnnualEnglishProgression(period,weeks){
     const plans=annualEnglishPlans[period]||[];
-    weeks.forEach((week,wi)=>{
+    (weeks||[]).forEach((week,wi)=>{
       const plan=plans[Math.min(wi,plans.length-1)]; if(!plan)return;
       let englishRows=[];
       week.days.forEach(([day,rows])=>rows.forEach(r=>{if(r[1]==='Anglais') englishRows.push(r)}));
@@ -1726,7 +1726,7 @@
 
   function applyAnnualFrenchRitual(period,weeks){
     const plans=annualFrenchPlans[period]||[];
-    weeks.forEach((week,idx)=>{
+    (weeks||[]).forEach((week,idx)=>{
       const plan=plans[idx]; if(!plan)return;
       week.frenchPlan=plan;
       week.days.forEach(([day,rows])=>{
