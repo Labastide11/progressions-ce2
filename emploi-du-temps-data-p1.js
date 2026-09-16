@@ -1,4 +1,4 @@
-/* V36.73 — P1 : sciences rééquilibrées (mélanges 1 séance, air, lumière/ombres) + structure mardi V36.72 conservée */
+/* V36.78 — P1 : liens fiche élève + correction Sciences « L’air prend-il de la place ? » ajoutés au jeudi 17/09 + sciences rééquilibrées */
 (function(global){
   'use strict';
   const data=global.PROGRESSIONS_EDT_DATA=global.PROGRESSIONS_EDT_DATA||{};
@@ -1271,10 +1271,25 @@
           [
             "14h15–15h",
             "Sciences / QLM",
-            "<strong>Sciences — L’air prend-il de la place ?</strong><br><br><strong>🎯 Objectif :</strong> comprendre que l’air occupe un espace.<br><br><strong>🧰 Matériel :</strong> bassine d’eau, gobelet transparent, mouchoir en papier.<br><br><strong>1. Défi — 5 min</strong><br>Placer un mouchoir au fond d’un gobelet. Demander : « Peut-on plonger le gobelet dans l’eau sans mouiller le mouchoir ? »<br><br><strong>2. Hypothèses — 5 min</strong><br>Les élèves prévoient ce qui va se passer et justifient leur idée.<br><br><strong>3. Expérience — 15 min</strong><br>Retourner le gobelet verticalement et l’enfoncer dans l’eau sans l’incliner. Ressortir puis vérifier le mouchoir. Incliner ensuite le gobelet sous l’eau : des bulles s’échappent et l’eau entre.<br><br><strong>4. Explication — 10 min</strong><br>Relier les bulles à l’air qui sort du gobelet. Tant que l’air reste dans le gobelet, il empêche l’eau de prendre sa place.<br><br><strong>5. Trace — 10 min</strong><br>Écrire : « L’air occupe de la place. Quand l’air sort du gobelet, l’eau peut entrer. »<br><br><strong>📎 Documents :</strong><br>• <a href="https://drive.google.com/file/d/1jzDH15KmElNgmO28ua2MTdz5kjpXGqQT/view?usp=drivesdk" target="_blank" rel="noopener">📄 Fiche élève — L’air prend-il de la place ?</a><br>• <a href="https://drive.google.com/file/d/1QRoKgQSf-NlZaK9QoQmMhrEYeko-PFWd/view?usp=drivesdk" target="_blank" rel="noopener">✅ Correction — L’air prend-il de la place ?</a>",
+            "<strong>Sciences — L’air prend-il de la place ?</strong><br><br><strong>🎯 Objectif :</strong> comprendre que l’air occupe un espace.<br><br><strong>🧰 Matériel :</strong> bassine d’eau, gobelet transparent, mouchoir en papier.<br><br><strong>1. Défi — 5 min</strong><br>Placer un mouchoir au fond d’un gobelet. Demander : « Peut-on plonger le gobelet dans l’eau sans mouiller le mouchoir ? »<br><br><strong>2. Hypothèses — 5 min</strong><br>Les élèves prévoient ce qui va se passer et justifient leur idée.<br><br><strong>3. Expérience — 15 min</strong><br>Retourner le gobelet verticalement et l’enfoncer dans l’eau sans l’incliner. Ressortir puis vérifier le mouchoir. Incliner ensuite le gobelet sous l’eau : des bulles s’échappent et l’eau entre.<br><br><strong>4. Explication — 10 min</strong><br>Relier les bulles à l’air qui sort du gobelet. Tant que l’air reste dans le gobelet, il empêche l’eau de prendre sa place.<br><br><strong>5. Trace — 10 min</strong><br>Écrire : « L’air occupe de la place. Quand l’air sort du gobelet, l’eau peut entrer. »",
             "SCI-P1-02 · Mettre en œuvre une expérience simple ; SCI-P1-03 · Observer ; SCI-P1-05 · Conclure.",
             "science",
-            "Air 2/3 — Montrer que l’air occupe de la place"
+            "Air 2/3 — Montrer que l’air occupe de la place",
+            null,
+            {
+              "documents": [
+                {
+                  "titre": "Sciences — L’air prend-il de la place ? — Fiche élève CE2",
+                  "url": "https://drive.google.com/file/d/1jzDH15KmElNgmO28ua2MTdz5kjpXGqQT/view?usp=drivesdk",
+                  "type": "pdf"
+                },
+                {
+                  "titre": "Sciences — L’air prend-il de la place ? — Correction CE2",
+                  "url": "https://drive.google.com/file/d/1UsFx5ggG9IlVRlgP2ZPf7HckfVegvJKr/view?usp=drivesdk",
+                  "type": "pdf"
+                }
+              ]
+            }
           ],
           [
             "15h–15h45",

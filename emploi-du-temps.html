@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Emploi du temps CE2 — Progressions CE2">
-<title>Emploi du temps CE2 — V36.77 — Progressions CE2</title>
+<title>Emploi du temps CE2 — V36.78 — Progressions CE2</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -253,7 +253,7 @@
 </script>
 
 <script>
-/* V36.77 — garde-fou autonome pour ?mode=day.
+/* V36.78 — garde-fou autonome pour ?mode=day.
    Si le moteur principal n'a rien rendu, cette page affiche directement
    la journée courante ou la prochaine journée de classe depuis les données. */
 (function(){
@@ -342,8 +342,53 @@
       }
       var now=new Date(); now=new Date(now.getFullYear(),now.getMonth(),now.getDate(),12,0,0,0);
       var today=key(now);
-      var entry=days.find(function(x){return x.key===today;}) || days.find(function(x){return x.date>=now;}) || days[days.length-1];
-      render(entry,'day');
+
+      /* V36.78 — ne jamais sauter directement à la période suivante.
+         On cherche d'abord dans la période scolaire correspondant à la date du jour. */
+      function currentPeriod(d){
+        var y=d.getFullYear(), m=d.getMonth(), day=d.getDate();
+        if(y!==2026 && y!==2027) return null;
+        var n=(y*10000)+((m+1)*100)+day;
+        if(n>=20260901 && n<=20261016) return 'p1';
+        if(n>=20261102 && n<=20261218) return 'p2';
+        if(n>=20270104 && n<=20270219) return 'p3';
+        if(n>=20270308 && n<=20270416) return 'p4';
+        if(n>=20270503 && n<=20270706) return 'p5';
+        return null;
+      }
+
+      var period=currentPeriod(now);
+      var periodDays=period ? days.filter(function(x){return x.period===period;}) : days;
+      var exact=periodDays.find(function(x){return x.key===today;});
+
+      if(exact){
+        render(exact,'day');
+        return;
+      }
+
+      /* Mercredi / week-end / vacances : message clair + prochaine journée de classe,
+         sans basculer silencieusement sur novembre ou une autre période. */
+      var next=periodDays.find(function(x){return x.date>now;});
+      var weekday=now.getDay();
+      if(weekday===0 || weekday===3 || weekday===6 || !next){
+        var label = (weekday===3 || weekday===0 || weekday===6)
+          ? 'Pas de classe aujourd’hui.'
+          : 'Aucune journée de classe prévue aujourd’hui.';
+        var nextHtml = next
+          ? '<p><button type="button" id="fallbackNextSchoolDay">Voir la prochaine journée d’école — '+esc(next.label)+'</button></p>'
+          : '<p>La prochaine journée n’est pas disponible dans les données chargées.</p>';
+        content.innerHTML='<section class="detail-view daily-timetable-view"><div class="detail-top daily-detail-top"><div><span class="detail-zone">Emploi du temps de la journée</span><h2>'+label+'</h2>'+nextHtml+'</div></div></section>';
+        var b=document.getElementById('fallbackNextSchoolDay');
+        if(b && next) b.addEventListener('click',function(){render(next,'day');});
+        return;
+      }
+
+      if(next){
+        render(next,'day');
+        return;
+      }
+
+      content.innerHTML='<section class="detail-view"><div class="detail-top"><div><h2>Emploi du temps de la journée</h2><p>Les données de la période '+esc(period||'courante')+' ne sont pas chargées.</p></div></div></section>';
     },500);
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot); else boot();
