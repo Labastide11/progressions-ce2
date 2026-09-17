@@ -1,6 +1,6 @@
-// V36.70 — P1 : rituel maths (nombre en lettres + addition) à partir du 17/09, synchronisé avec l’emploi du temps.
+// V36.71 — P1 : rituel maths (nombre en lettres + addition) à partir du 17/09, synchronisé avec l’emploi du temps.
 window.DEVOIRS_P1 = {
-  "version": "36.70",
+  "version": "36.71",
   "period": "p1",
   "schoolYear": "2026-2027",
   "principles": {
@@ -198,23 +198,18 @@ window.DEVOIRS_P1 = {
           "subject": "grammaire",
           "subjectLabel": "Grammaire",
           "icon": "🧩",
-          "action": "Je revois les formes de phrases",
-          "title": "Grammaire — Je revois les formes de phrases",
-          "instruction": "Relis la leçon si tu as ton cahier. Puis explique oralement comment transformer une phrase affirmative en phrase négative.",
-          "help": "Essaie avec : « Lina aime les pommes. » · « Nous jouons dehors. » · « Il regarde la télévision. »",
+          "action": "Je revois le verbe et son infinitif",
+          "title": "Grammaire — Le verbe et son infinitif",
+          "instruction": "Relis la leçon si tu as ton cahier. Puis, à l’oral, trouve le verbe conjugué et donne son infinitif.",
+          "help": "Essaie avec : « Il chante. » → chanter · « Nous regardons. » → regarder · « Lina joue. » → jouer.",
           "duration": 5,
-          "classLink": "Phrase affirmative · phrase négative",
+          "classLink": "Verbe conjugué · infinitif",
           "routineIcon": "🧩",
-          "routineTitle": "Grammaire — Je revois les formes de phrases",
-          "routine": "Relis la leçon si tu as ton cahier. Puis explique oralement comment transformer une phrase affirmative en phrase négative.",
-          "notion": "Phrase affirmative · phrase négative",
+          "routineTitle": "Grammaire — Le verbe et son infinitif",
+          "routine": "Trouve le verbe conjugué dans une phrase puis donne son infinitif.",
+          "notion": "Verbe conjugué · infinitif",
           "challenge": "",
-          "family": "",
-          "hibou": {
-            "label": "Les formes de phrases",
-            "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_lecons/lecons/grammaire-formes-phrases.html",
-            "intro": "Pour revoir la leçon si besoin :"
-          }
+          "family": ""
         },
         {
           "due": "2026-09-21",
