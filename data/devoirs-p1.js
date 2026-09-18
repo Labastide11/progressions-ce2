@@ -1,6 +1,6 @@
-// V36.73 — P1 : précision du devoir de lecture du lundi 21/09 (cahier de Découverte du monde, partie Géographie, 5 à 10 min).
+// V36.88 — P1 : devoir Australie du 21/09 — 5 à 10 min + accès Drive si cahier oublié.
 window.DEVOIRS_P1 = {
-  "version": "36.73",
+  "version": "36.88",
   "period": "p1",
   "schoolYear": "2026-2027",
   "principles": {
@@ -222,13 +222,20 @@ window.DEVOIRS_P1 = {
           "instruction": "Dans ton cahier de Découverte du monde, partie Géographie, relis à voix haute pendant 5 à 10 minutes le texte « Un pays immense à découvrir » de la fiche « Australie – Mon carnet d’explorateur ».",
           "help": "Cherche à lire sans hésiter, par groupes de mots, en respectant la ponctuation.",
           "duration": 5,
+          "durationLabel": "5 à 10 min",
           "classLink": "Fluence · compréhension",
           "routineIcon": "📖",
           "routineTitle": "Lecture — Je prépare ma lecture",
           "routine": "Dans ton cahier de Découverte du monde, partie Géographie, relis à voix haute pendant 5 à 10 minutes le texte « Un pays immense à découvrir » de la fiche « Australie – Mon carnet d’explorateur ».",
           "notion": "Fluence · compréhension",
           "challenge": "",
-          "family": ""
+          "family": "",
+          "hibou": {
+            "icon": "📄",
+            "intro": "Cahier oublié ?",
+            "label": "Ouvrir la fiche « Australie – Mon carnet d’explorateur »",
+            "url": "https://drive.google.com/file/d/19-cTGxXGq6xvKlEJSRb32MpbL2UX97GH/view?usp=drivesdk"
+          }
         }
       ]
     },
