@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Emploi du temps CE2 — Progressions CE2">
-<title>V36.94 — Emploi du temps CE2 — Progressions CE2</title>
+<title>V36.95 — Emploi du temps CE2 — Progressions CE2</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -206,7 +206,7 @@
 <script src="dictees-ce2.js?v=34.94"></script>
 
 <script id="dictation-visible-in-edt-v3692">
-/* V36.94 — Afficher la dictée réelle directement dans la séance du matin.
+/* V36.95 — Afficher la dictée réelle directement dans la séance du matin.
    Source unique : DICTEES_CE2. Aucun texte de dictée n'est dupliqué ici. */
 (function(){
   'use strict';
@@ -370,228 +370,229 @@
 </script>
 
 
-<style id="edt-inline-session-v3694-style">
-.edt-inline-session{
-  margin:10px 0 14px;
-  border:1px solid #c9d8ee;
-  border-radius:14px;
+
+<style id="edt-inline-session-v3695-style">
+.edt-inline-full-session{
+  margin:12px 0 16px;
+  border:2px solid #8b78e8;
+  border-radius:16px;
   overflow:hidden;
   background:#fff;
-  box-shadow:0 4px 14px rgba(38,74,120,.08);
+  box-shadow:0 6px 18px rgba(63,49,135,.12);
 }
-.edt-inline-session[hidden]{display:none!important;}
-.edt-inline-session__head{
+.edt-inline-full-session__bar{
+  position:sticky;
+  top:60px;
+  z-index:6;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:10px;
+  gap:12px;
   padding:10px 14px;
-  background:#f5f8ff;
-  border-bottom:1px solid #dbe5f4;
-  font-weight:800;
-  color:#244d85;
+  background:#f3f0ff;
+  border-bottom:1px solid #d7cffb;
 }
-.edt-inline-session__close{
-  border:1px solid #c9d8ee;
-  border-radius:9px;
-  padding:6px 10px;
+.edt-inline-full-session__title{
+  font-weight:900;
+  color:#49399a;
+}
+.edt-inline-full-session__close{
+  border:1px solid #8b78e8;
+  border-radius:10px;
+  padding:7px 12px;
   background:#fff;
-  color:#244d85;
-  font-weight:800;
+  color:#49399a;
+  font-weight:900;
   cursor:pointer;
 }
-.edt-inline-session__frame{
-  display:block;
-  width:100%;
-  min-height:660px;
-  border:0;
+.edt-inline-full-session__body{
+  padding:8px 10px 18px;
   background:#fff;
 }
-@media (max-width:800px){
-  .edt-inline-session__frame{min-height:760px;}
+.edt-inline-full-session__body > *{
+  max-width:none !important;
+}
+.edt-inline-full-session .edt-inline-hide-return{
+  display:none!important;
 }
 </style>
 
-<script id="edt-inline-session-v3694">
-/* V36.94 — Séance complète dans la page.
-   Correction V36.94 : on ne bloque plus le gestionnaire d'origine.
-   Celui-ci calcule normalement l'URL ; window.open est intercepté uniquement
-   pendant le clic sur "Ouvrir la séance complète". */
+<script id="edt-inline-session-v3695">
+/*
+ V36.95 — La séance complète ne remplace plus la journée.
+ Principe :
+ 1. conserver les vrais nœuds de la journée (donc leurs événements et leur état) ;
+ 2. laisser le code historique générer la séance complète ;
+ 3. récupérer ce rendu ;
+ 4. remettre les nœuds de la journée ;
+ 5. placer la séance complète juste sous le bouton qui l'a ouverte.
+*/
 (function(){
   'use strict';
 
-  var sessionClickButton = null;
-  var nativeOpen = window.open;
+  var busy = false;
+  var openPanels = new WeakMap();
 
-  function label(el){
+  function cleanText(el){
     return String(el && el.textContent || '').replace(/\s+/g,' ').trim();
   }
 
-  function isSessionControl(el){
-    return !!el && /ouvrir la séance complète|masquer la séance complète/i.test(label(el));
+  function isOpenButton(el){
+    return !!el && /ouvrir la séance complète/i.test(cleanText(el));
   }
 
-  function closestSessionControl(target){
+  function findButton(target){
     if(!target || !target.closest) return null;
-    var direct = target.closest('a,button,[role="button"]');
-    if(direct && isSessionControl(direct)) return direct;
-
-    var node = target.closest('*');
-    while(node && node !== document.body){
-      if(isSessionControl(node)) return node;
-      node = node.parentElement;
-    }
+    var el = target.closest('button,a,[role="button"]');
+    if(el && isOpenButton(el)) return el;
     return null;
   }
 
-  function hostFor(btn){
-    return btn.closest(
-      '.timetable-session, .timetable-detail, .session-card, .lesson-card, ' +
-      '.timetable-row, .detail-card, tr, article, li'
-    ) || btn.parentElement || document.body;
+  function contentRoot(){
+    return document.getElementById('timetableContent');
   }
 
-  function existingPanel(host){
-    return host && host.querySelector ? host.querySelector('.edt-inline-session') : null;
-  }
-
-  function setButtonState(btn, open){
+  function setLabel(btn, opened){
     if(!btn) return;
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-expanded', opened ? 'true' : 'false');
 
-    var textNode = Array.from(btn.childNodes).find(function(n){
-      return n.nodeType === Node.TEXT_NODE && /séance complète/i.test(n.textContent || '');
+    var txt = opened ? ' Masquer la séance complète' : ' Ouvrir la séance complète';
+    var changed = false;
+
+    Array.from(btn.childNodes).forEach(function(n){
+      if(!changed && n.nodeType === 3 && /séance complète/i.test(n.textContent || '')){
+        n.textContent = txt;
+        changed = true;
+      }
     });
 
-    var value = open ? ' Masquer la séance complète' : ' Ouvrir la séance complète';
-    if(textNode){
-      textNode.textContent = value;
-    }else if(btn.children.length === 0){
-      btn.textContent = open ? '▴ Masquer la séance complète' : '🟪 Ouvrir la séance complète';
+    if(!changed && btn.children.length === 0){
+      btn.textContent = opened ? '▴ Masquer la séance complète' : '🟪 Ouvrir la séance complète';
     }
   }
 
-  function collapse(btn, panel){
-    if(panel) panel.hidden = true;
-    setButtonState(btn, false);
+  function closePanel(btn){
+    var panel = openPanels.get(btn);
+    if(panel && panel.parentNode) panel.remove();
+    openPanels.delete(btn);
+    setLabel(btn,false);
   }
 
-  function showInline(btn, url){
-    if(!btn || !url) return null;
+  function placePanel(btn, generatedNodes){
+    var panel = document.createElement('section');
+    panel.className = 'edt-inline-full-session';
 
-    var host = hostFor(btn);
-    var panel = existingPanel(host);
+    var bar = document.createElement('div');
+    bar.className = 'edt-inline-full-session__bar';
 
-    if(panel){
-      panel.hidden = false;
-      var frame0 = panel.querySelector('iframe');
-      if(frame0 && frame0.src !== new URL(url, location.href).href){
-        frame0.src = new URL(url, location.href).href;
-      }
-      setButtonState(btn, true);
-      return panel;
-    }
-
-    panel = document.createElement('section');
-    panel.className = 'edt-inline-session';
-    panel.setAttribute('aria-label','Séance complète');
-
-    var head = document.createElement('div');
-    head.className = 'edt-inline-session__head';
-
-    var title = document.createElement('span');
+    var title = document.createElement('div');
+    title.className = 'edt-inline-full-session__title';
     title.textContent = '📘 Séance complète';
 
     var close = document.createElement('button');
     close.type = 'button';
-    close.className = 'edt-inline-session__close';
-    close.textContent = 'Masquer';
+    close.className = 'edt-inline-full-session__close';
+    close.textContent = 'Masquer la séance';
 
-    head.appendChild(title);
-    head.appendChild(close);
+    bar.appendChild(title);
+    bar.appendChild(close);
 
-    var frame = document.createElement('iframe');
-    frame.className = 'edt-inline-session__frame';
-    frame.title = 'Séance complète';
-    frame.loading = 'eager';
-    frame.src = new URL(url, location.href).href;
+    var body = document.createElement('div');
+    body.className = 'edt-inline-full-session__body';
 
-    panel.appendChild(head);
-    panel.appendChild(frame);
+    generatedNodes.forEach(function(node){
+      body.appendChild(node);
+    });
 
-    var insertAfter = btn.closest('.session-resource-action, .resource-action, .lesson-action') || btn;
-    insertAfter.insertAdjacentElement('afterend', panel);
+    panel.appendChild(bar);
+    panel.appendChild(body);
 
-    setButtonState(btn, true);
+    // Retirer visuellement le bouton historique "Retour à la journée"
+    // s'il existe dans le rendu détaillé.
+    body.querySelectorAll('button,a').forEach(function(el){
+      if(/retour à la journée/i.test(cleanText(el))){
+        el.classList.add('edt-inline-hide-return');
+      }
+    });
 
-    close.addEventListener('click', function(e){
+    var anchor = btn.closest('.session-resource-action,.resource-action,.lesson-action') || btn;
+    anchor.insertAdjacentElement('afterend', panel);
+
+    openPanels.set(btn,panel);
+    setLabel(btn,true);
+
+    close.addEventListener('click',function(e){
       e.preventDefault();
       e.stopPropagation();
-      collapse(btn, panel);
+      closePanel(btn);
+      btn.scrollIntoView({block:'nearest'});
     });
 
     return panel;
   }
 
-  // Cas 1 : le bouton est un vrai lien <a href="...">.
-  document.addEventListener('click', function(e){
-    var btn = closestSessionControl(e.target);
-    if(!btn) return;
+  function captureAndRestore(btn, e){
+    if(busy) return;
 
-    var host = hostFor(btn);
-    var panel = existingPanel(host);
+    var root = contentRoot();
+    if(!root) return;
 
-    if(/masquer la séance complète/i.test(label(btn)) && panel){
+    // Un second clic masque simplement la séance.
+    if(openPanels.has(btn)){
       e.preventDefault();
       e.stopImmediatePropagation();
-      collapse(btn, panel);
+      closePanel(btn);
       return;
     }
 
-    var link = btn.matches && btn.matches('a[href]') ? btn : btn.closest && btn.closest('a[href]');
-    if(link && link.getAttribute('href')){
-      var href = link.getAttribute('href');
-      if(href && href !== '#' && !/^javascript:/i.test(href)){
-        e.preventDefault();
-        e.stopImmediatePropagation();
-        showInline(btn, href);
+    busy = true;
+
+    // Empêche uniquement une éventuelle navigation native d'un <a>.
+    // Les gestionnaires JavaScript déjà existants continuent, eux, à s'exécuter.
+    if(btn.tagName === 'A') e.preventDefault();
+
+    var saved = document.createDocumentFragment();
+    while(root.firstChild){
+      saved.appendChild(root.firstChild);
+    }
+
+    var scrollY = window.scrollY;
+
+    function finish(attempt){
+      // Le code existant peut rendre la fiche immédiatement ou avec un léger délai.
+      if(root.childNodes.length === 0 && attempt < 8){
+        window.setTimeout(function(){ finish(attempt+1); }, 35);
         return;
       }
-    }
 
-    // Cas 2 : bouton JS. On laisse SON gestionnaire fonctionner.
-    // Il appellera window.open avec l'URL calculée.
-    sessionClickButton = btn;
-    window.setTimeout(function(){
-      sessionClickButton = null;
-    }, 250);
-  }, true);
-
-  // Intercepte uniquement l'ouverture provoquée par le bouton "séance complète".
-  window.open = function(url, target, features){
-    if(sessionClickButton && url){
-      var btn = sessionClickButton;
-      sessionClickButton = null;
-      showInline(btn, url);
-      return {
-        closed:false,
-        focus:function(){},
-        close:function(){}
-      };
-    }
-    return nativeOpen ? nativeOpen.call(window, url, target, features) : null;
-  };
-
-  function prepare(){
-    document.querySelectorAll('a,button,[role="button"]').forEach(function(el){
-      if(isSessionControl(el) && !el.hasAttribute('aria-expanded')){
-        el.setAttribute('aria-expanded','false');
+      var generated = [];
+      while(root.firstChild){
+        generated.push(root.removeChild(root.firstChild));
       }
-    });
+
+      // Remet exactement les nœuds de la journée : pas de clone,
+      // donc les événements, selects, statuts et états restent conservés.
+      root.appendChild(saved);
+
+      if(generated.length){
+        placePanel(btn,generated);
+      }else{
+        // Sécurité : si aucun rendu n'a été produit, la journée reste intacte.
+        setLabel(btn,false);
+      }
+
+      window.scrollTo({top:scrollY,behavior:'auto'});
+      busy = false;
+    }
+
+    window.setTimeout(function(){ finish(0); },0);
   }
 
-  prepare();
-  new MutationObserver(prepare).observe(document.body,{childList:true,subtree:true});
+  document.addEventListener('click',function(e){
+    var btn = findButton(e.target);
+    if(!btn) return;
+    captureAndRestore(btn,e);
+  },true);
 })();
 </script>
 
