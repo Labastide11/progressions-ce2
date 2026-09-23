@@ -1,4 +1,4 @@
-/* V36.89 — P1 : liens fiche élève + correction Sciences « L’air prend-il de la place ? » ajoutés au jeudi 17/09 + sciences rééquilibrées */
+/* V36.91 — P1 : liens fiche élève + correction Sciences « L’air prend-il de la place ? » ajoutés au jeudi 17/09 + sciences rééquilibrées */
 (function(global){
   'use strict';
   const data=global.PROGRESSIONS_EDT_DATA=global.PROGRESSIONS_EDT_DATA||{};
@@ -337,7 +337,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Accueil, présentation de la classe et premiers échanges. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Cahier du jour — Découverte du cahier, installation de la date et copie courte soignée",
+            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Accueil, présentation de la classe et premiers échanges.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Cahier du jour — Découverte du cahier, installation de la date et copie courte soignée",
             "OR-P1-01 · Écouter une consigne jusqu’au bout ; OR-P1-03 · Respecter les règles d’un échange. ; ECR-P1-01 · Copier sans erreur ; ECR-P1-04 · Se relire. ; ECR-P1-05 · Écrire une phrase correcte.",
             "french",
             "Rituel + dictée + correction + révision"
@@ -432,7 +432,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Rituel Devinette — 3 nouvelles : 1) Cartable : « Je t’accompagne tous les jours ; je transporte cahiers et trousse. » 2) Trousse : « Je suis souvent dans le cartable ; je garde crayons, gomme et ciseaux. » 3) Cahier : « J’ai beaucoup de pages ; on écrit sur moi toute l’année. » ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Cahier du jour — Dictée diagnostique très courte puis correction collective raisonnée",
+            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Rituel Devinette — 3 nouvelles : 1) Cartable : « Je t’accompagne tous les jours ; je transporte cahiers et trousse. » 2) Trousse : « Je suis souvent dans le cartable ; je garde crayons, gomme et ciseaux. » 3) Cahier : « J’ai beaucoup de pages ; on écrit sur moi toute l’année. »<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Cahier du jour — Dictée diagnostique très courte puis correction collective raisonnée",
             "OR-P1-01 ; OR-P1-03. ; ORT-P1-01 · Transcrire les sons d’un mot. ; ECR-P1-05 · Écrire une phrase correcte ; ECR-P1-06 · Améliorer un écrit court.",
             "french",
             "Rituel + dictée + correction + révision"
@@ -545,7 +545,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Un jour, une actu : découvrir le rituel et distinguer information et opinion dans un exemple simple. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : révision courte de la phrase, de l’orthographe ou du vocabulaire selon la notion du jour.",
+            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Un jour, une actu : découvrir le rituel et distinguer information et opinion dans un exemple simple.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> révision courte de la phrase, de l’orthographe ou du vocabulaire selon la notion du jour.",
             "EMI-P1-01 · Identifier une information simple. ; ECR-P1-05 · Produire une ou plusieurs phrases cohérentes.",
             "french",
             "Rituel + dictée + correction + révision"
@@ -718,7 +718,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Copie : posture, soin et copie d’une courte phrase. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : révision courte de la phrase, de l’orthographe ou du vocabulaire selon la notion du jour.",
+            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Copie : posture, soin et copie d’une courte phrase.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> révision courte de la phrase, de l’orthographe ou du vocabulaire selon la notion du jour.",
             "ECR-P1-01 · Copier sans erreur. ; GRA-P1-01 · Reconnaître une phrase.",
             "french",
             "Rituel + dictée + correction + révision"
@@ -897,7 +897,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Un jour, une actu : identifier le sujet principal d’une information simple. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : révision courte de la phrase, de l’orthographe ou du vocabulaire selon la notion du jour.",
+            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Un jour, une actu : identifier le sujet principal d’une information simple.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> révision courte de la phrase, de l’orthographe ou du vocabulaire selon la notion du jour.",
             "EMI-P1-01 · Identifier une information simple. ; ECR-P1-04 ; ECR-P1-05.",
             "french",
             "Rituel + dictée + correction + révision"
@@ -990,7 +990,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Quoi de neuf ? : réactiver les règles d’écoute et présenter un camarade en cinq informations. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Cahier du jour — Dictée diagnostique ciblée puis première liste de mots fréquents à mémoriser",
+            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Quoi de neuf ? : réactiver les règles d’écoute et présenter un camarade en cinq informations.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Cahier du jour — Dictée diagnostique ciblée puis première liste de mots fréquents à mémoriser",
             "OR-P1-01 · Écouter une consigne jusqu’au bout ; OR-P1-03 · Respecter les règles d’un échange. ; ORT-P1-01 · Transcrire les sons d’un mot ; ORT-P1-02 · Écrire les mots fréquents étudiés.",
             "french",
             "Rituel + dictée + correction + révision"
@@ -1083,7 +1083,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Autour du texte « Renart vole des poissons » — Reprendre le vocabulaire qui a gêné la compréhension. À partir des illustrations, identifier puis écrire les mots correspondants en s’aidant de la banque de mots. Fiche différenciée en 3 niveaux. Objectif : « Comprendre les mots du texte pour mieux comprendre l’histoire. »",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Autour du texte « Renart vole des poissons » — Reprendre le vocabulaire qui a gêné la compréhension. À partir des illustrations, identifier puis écrire les mots correspondants en s’aidant de la banque de mots. Fiche différenciée en 3 niveaux. Objectif : « Comprendre les mots du texte pour mieux comprendre l’histoire. »",
             "COM-P1-04 · Retrouver une information explicite ; enrichir et mobiliser le vocabulaire pour comprendre un texte.",
             "french",
             "Rituel + dictée + correction + révision",
@@ -1207,7 +1207,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Rituel Devinette — 2 nouvelles + 1 déjà vue : 1) Tableau : « Toute la classe me regarde ; on écrit ou projette sur moi. » 2) Récréation : « Je ne suis pas une matière ; on sort pour jouer, parler et bouger. » 3) 🔁 Trousse : retrouver et justifier la réponse. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Grammaire : phrase affirmative et phrase négative. Complément intégré au matin : Vocabulaire : regrouper des mots par thème",
+            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Rituel Devinette — 2 nouvelles + 1 déjà vue : 1) Tableau : « Toute la classe me regarde ; on écrit ou projette sur moi. » 2) Récréation : « Je ne suis pas une matière ; on sort pour jouer, parler et bouger. » 3) 🔁 Trousse : retrouver et justifier la réponse.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Grammaire : phrase affirmative et phrase négative. Complément intégré au matin : Vocabulaire : regrouper des mots par thème",
             "OR-P1-04 · Donner une réponse en lien avec le sujet. ; GRA-P1-02 · Reconnaître une phrase négative ; GRA-P1-03 · Transformer une phrase affirmative en phrase négative. ; VOC-P1-02 · Regrouper des mots par thème.",
             "french",
             "Rituel + dictée + correction + révision"
@@ -1315,7 +1315,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Un jour, une actu : distinguer une information d’une anecdote et exprimer un avis argumenté. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Cahier du jour — Dictée préparée — La Grande Muraille. Les 10 mots du bilan sont annoncés aux élèves : une frontière, une invasion, le nord, une structure, l’homme, une longueur, une tour de guet, important, contre, jamais",
+            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Un jour, une actu : distinguer une information d’une anecdote et exprimer un avis argumenté.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Cahier du jour — Dictée préparée — La Grande Muraille. Les 10 mots du bilan sont annoncés aux élèves : une frontière, une invasion, le nord, une structure, l’homme, une longueur, une tour de guet, important, contre, jamais",
             "EMI-P1-01 · Distinguer une information d’une anecdote ; OR-P1-04. ; ORT-P1-01 à 03 ; ECR-P1-04 · Relire et corriger sa copie.",
             "french",
             "Rituel + dictée + correction + révision"
@@ -1424,7 +1424,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Quoi de neuf ? : reformuler l’idée d’un camarade et vérifier que l’on a bien compris. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Cahier du jour — Orthographe : mots fréquents et mots invariables de la semaine",
+            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Quoi de neuf ? : reformuler l’idée d’un camarade et vérifier que l’on a bien compris.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Cahier du jour — Orthographe : mots fréquents et mots invariables de la semaine",
             "OR-P1-02 · Reformuler un message entendu ; OR-P1-03. ; ORT-P1-02 ; ORT-P1-03.",
             "french",
             "Rituel + dictée + correction + révision"
@@ -1517,7 +1517,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Copie : utiliser de façon autonome la méthode et la grille de relecture installées. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Grammaire : repérer le verbe conjugué par transformation",
+            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Copie : utiliser de façon autonome la méthode et la grille de relecture installées.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Grammaire : repérer le verbe conjugué par transformation",
             "ECR-P1-03 ; ECR-P1-04. ; GRA-P1-04 · Repérer le verbe conjugué. ; ECR-P1-05 · Écrire une phrase correcte.",
             "french",
             "Rituel + dictée + correction + révision"
@@ -1611,7 +1611,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Rituel Devinette — 2 nouvelles + 1 déjà vue : 1) Crayon : « Je laisse une trace grise ; on peut m’effacer. » 2) Bibliothèque : « Je garde beaucoup de livres ; on vient y choisir une lecture. » 3) 🔁 Cahier : expliquer quels indices permettent de trouver. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Grammaire : donner l’infinitif d’un verbe conjugué. Complément intégré au matin : Vocabulaire : comprendre un mot grâce au contexte",
+            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Rituel Devinette — 2 nouvelles + 1 déjà vue : 1) Crayon : « Je laisse une trace grise ; on peut m’effacer. » 2) Bibliothèque : « Je garde beaucoup de livres ; on vient y choisir une lecture. » 3) 🔁 Cahier : expliquer quels indices permettent de trouver.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Grammaire : donner l’infinitif d’un verbe conjugué. Complément intégré au matin : Vocabulaire : comprendre un mot grâce au contexte",
             "OR-P1-04. ; GRA-P1-05 · Donner l’infinitif d’un verbe conjugué. ; VOC-P1-01 · Comprendre un mot grâce au contexte.",
             "french",
             "Rituel + dictée + correction + révision"
@@ -1704,7 +1704,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Un jour, une actu : fait ou opinion ? ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Grammaire : phrase correcte, négation et verbe",
+            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Un jour, une actu : fait ou opinion ?<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Grammaire : phrase correcte, négation et verbe",
             "EMI-P1-02 · Distinguer un fait d’une opinion. ; GRA-P1-01 à 04.",
             "french",
             "Rituel + dictée + correction + révision"
@@ -1805,7 +1805,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Quoi de neuf ? : préparer une réponse complète. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Orthographe : singulier et pluriel dans le groupe nominal",
+            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Quoi de neuf ? : préparer une réponse complète.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Orthographe : singulier et pluriel dans le groupe nominal",
             "OR-P1-04. ; ORT-P1-04 · Repérer le singulier et le pluriel.",
             "french",
             "Rituel + dictée + correction + révision"
@@ -1906,7 +1906,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Copie : groupes de mots, présentation et correction. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Grammaire : repérer le groupe sujet",
+            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Copie : groupes de mots, présentation et correction.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Grammaire : repérer le groupe sujet",
             "ECR-P1-02 à 04. ; GRA-P1-06 · Repérer le groupe sujet. ; ECR-P1-06 · Enchaîner plusieurs phrases sur un même sujet.",
             "french",
             "Rituel + dictée + correction + révision"
@@ -2000,7 +2000,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Rituel Devinette — 2 nouvelles + 1 déjà vue : 1) Ardoise : « On écrit sur moi puis on m’efface pour recommencer. » 2) Agenda : « Je garde les dates, les devoirs et les choses à ne pas oublier. » 3) 🔁 Règle : reformuler le raisonnement d’un camarade. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Grammaire : remplacer le groupe sujet par un pronom. Complément intégré au matin : Mots de la même famille",
+            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Rituel Devinette — 2 nouvelles + 1 déjà vue : 1) Ardoise : « On écrit sur moi puis on m’efface pour recommencer. » 2) Agenda : « Je garde les dates, les devoirs et les choses à ne pas oublier. » 3) 🔁 Règle : reformuler le raisonnement d’un camarade.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Grammaire : remplacer le groupe sujet par un pronom. Complément intégré au matin : Mots de la même famille",
             "OR-P1-02 ; OR-P1-04. ; GRA-P1-07 · Remplacer le groupe sujet par un pronom. ; VOC-P1-03 · Reconnaître des mots de la même famille.",
             "french",
             "Rituel + dictée + correction + révision"
@@ -2093,7 +2093,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Reconnaître différents médias",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Reconnaître différents médias",
             "EMI-P1-03 · Reconnaître différents médias. ; ECR-P1-04 à 06.",
             "french",
             "Rituel + dictée + correction + révision"
@@ -2194,7 +2194,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Quoi de neuf ? : écoute, reformulation et réponse dans le sujet. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Cahier du jour — Orthographe : mots étudiés et marques du pluriel",
+            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Quoi de neuf ? : écoute, reformulation et réponse dans le sujet.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Cahier du jour — Orthographe : mots étudiés et marques du pluriel",
             "OR-P1-01 à 04. ; ORT-P1-02 à 04.",
             "french",
             "Rituel + dictée + correction + révision"
@@ -2287,7 +2287,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Copie-bilan. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Évaluation de compréhension P1 — Le carnet retrouvé : identifier les personnages et retrouver des informations explicites dans un texte court",
+            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Copie-bilan.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Évaluation de compréhension P1 — Le carnet retrouvé : identifier les personnages et retrouver des informations explicites dans un texte court",
             "ECR-P1-01 à 04. ; COM-P1-01 · Identifier les personnages ; COM-P1-04 · Prélever une information explicite. ; ECR-P1-04 à 06.",
             "french",
             "Rituel + dictée + correction + révision",
@@ -2391,7 +2391,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Rituel Devinette — 2 nouvelles + 1 déjà vue : 1) Ciseaux : « J’ai deux lames et deux anneaux ; je découpe le papier. » 2) Colle : « Je sers à fixer une feuille ou une image sans agrafe. » 3) 🔁 Gomme : répondre de façon autonome et justifier. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Vocabulaire : ordre alphabétique. Complément intégré au matin : Chercher un mot dans le dictionnaire",
+            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Rituel Devinette — 2 nouvelles + 1 déjà vue : 1) Ciseaux : « J’ai deux lames et deux anneaux ; je découpe le papier. » 2) Colle : « Je sers à fixer une feuille ou une image sans agrafe. » 3) 🔁 Gomme : répondre de façon autonome et justifier.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Vocabulaire : ordre alphabétique. Complément intégré au matin : Chercher un mot dans le dictionnaire",
             "OR-P1-03 ; OR-P1-04. ; VOC-P1-04 · Ranger des mots dans l’ordre alphabétique. ; VOC-P1-05 · Chercher un mot dans le dictionnaire.",
             "french",
             "Rituel + dictée + correction + révision"
@@ -2484,7 +2484,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Identifier le but d’un document.. Évaluation lexique / vocabulaire P1 : classer des mots qui vont ensemble et ranger des mots dans l’ordre alphabétique",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Identifier le but d’un document.. Évaluation lexique / vocabulaire P1 : classer des mots qui vont ensemble et ranger des mots dans l’ordre alphabétique",
             "EMI-P1-04 · Identifier le but d’un document. ; VOC-P1-02 · Regrouper des mots par thème ; VOC-P1-04 · Ranger des mots dans l’ordre alphabétique. ; ECR-P1-05 ; ECR-P1-06.",
             "french",
             "Rituel + dictée + correction + révision",
@@ -2595,7 +2595,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Bilan oral de période : écouter, reformuler, répondre.. Cahier du jour — Bilan des mots appris — La Grande Muraille. Écrire les 10 mots annoncés et travaillés",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Bilan oral de période : écouter, reformuler, répondre.. Cahier du jour — Bilan des mots appris — La Grande Muraille. Écrire les 10 mots annoncés et travaillés",
             "OR-P1-01 à 04. ; ORT-P1-01 à 04 ; ECR-P1-04.",
             "french",
             "Rituel + dictée + correction + révision"
@@ -2720,7 +2720,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Copie de réinvestissement. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Grammaire : ateliers de remédiation phrase, verbe et sujet",
+            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Copie de réinvestissement.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Grammaire : ateliers de remédiation phrase, verbe et sujet",
             "ECR-P1-01 à 04. ; GRA-P1-01 à 07. ; ECR-P1-05 ; ECR-P1-06.",
             "french",
             "Rituel + dictée + correction + révision"
@@ -2846,7 +2846,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Rituel Devinette — 2 nouvelles + 1 déjà vue : 1) Dictionnaire : « Je contiens beaucoup de mots rangés dans l’ordre alphabétique et j’aide à comprendre leur sens. » 2) Horloge : « Je suis dans la classe ; mes aiguilles indiquent l’heure. » 3) 🔁 Tableau : devinette-bilan, réponse complète et justification. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Dictionnaire : ordre alphabétique et recherche d’un mot. Complément intégré au matin : Respecter les règles d’un échange en ligne",
+            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Rituel Devinette — 2 nouvelles + 1 déjà vue : 1) Dictionnaire : « Je contiens beaucoup de mots rangés dans l’ordre alphabétique et j’aide à comprendre leur sens. » 2) Horloge : « Je suis dans la classe ; mes aiguilles indiquent l’heure. » 3) 🔁 Tableau : devinette-bilan, réponse complète et justification.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Dictionnaire : ordre alphabétique et recherche d’un mot. Complément intégré au matin : Respecter les règles d’un échange en ligne",
             "OR-P1-04. ; VOC-P1-04 ; VOC-P1-05. ; EMI-P1-05 · Respecter les règles d’un échange en ligne.",
             "french",
             "Rituel + dictée + correction + révision"
@@ -2939,7 +2939,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Un jour, une actu : bilan des notions d’information et de média. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Portfolio : choisir une réussite et expliquer ses progrès",
+            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Un jour, une actu : bilan des notions d’information et de média.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Portfolio : choisir une réussite et expliquer ses progrès",
             "EMI-P1-01 à 05. ; ECR-P1-04 ; compétences de français travaillées en P1.",
             "french",
             "Rituel + dictée + correction + révision"

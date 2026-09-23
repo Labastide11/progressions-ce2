@@ -1,4 +1,4 @@
-/* V36.89 — Cahier journal : source canonique = emploi du temps détaillé + dictée du jour visible.
+/* V36.91 — Cahier journal : source canonique = emploi du temps détaillé + dictée du jour visible.
    Le journal reprend la journée datée et ajoute, au premier bloc du matin,
    la dictée issue de la banque annuelle DICTEES_CE2 (P1 à P5). */
 (function (global) {
