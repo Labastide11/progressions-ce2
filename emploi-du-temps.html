@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Emploi du temps CE2 — Progressions CE2">
-<title>V37.07 — Emploi du temps CE2 — Progressions CE2</title>
+<title>V37.08 — Emploi du temps CE2 — Progressions CE2</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -139,7 +139,7 @@
 </style>
 
 <style id="edt-hide-duplicate-day-date-v3703">
-/* V37.07 — la date est déjà affichée dans l'en-tête de la vue du jour. */
+/* V37.08 — la date est déjà affichée dans l'en-tête de la vue du jour. */
 #timetableContent .day-detail-date,
 #timetableContent .day-view-date,
 #timetableContent .timetable-day-date,
@@ -217,7 +217,7 @@
 <script src="dictees-ce2.js?v=34.94"></script>
 
 <script id="dictation-visible-in-edt-v3692">
-/* V37.07 — Afficher la dictée réelle directement dans la séance du matin.
+/* V37.08 — Afficher la dictée réelle directement dans la séance du matin.
    Source unique : DICTEES_CE2. Aucun texte de dictée n'est dupliqué ici. */
 (function(){
   'use strict';
@@ -468,7 +468,7 @@ body.edt-session-modal-open{
 
 <script id="edt-session-modal-v3696">
 /*
- V37.07 — Ouverture de la séance complète dans une popup.
+ V37.08 — Ouverture de la séance complète dans une popup.
  La journée reste intacte derrière la modale.
 */
 (function(){
@@ -571,7 +571,7 @@ body.edt-session-modal-open{
       }
     });
 
-    // V37.07 — alléger les popups de séances de maths :
+    // V37.08 — alléger les popups de séances de maths :
     // masquer les blocs de programmation annuelle et la progression spiralaire
     // des fractions, trop volumineux pour une consultation ponctuelle.
     function removePopupSectionByTitle(regex){
@@ -1054,6 +1054,87 @@ body.edt-session-modal-open{
   }
 
   new MutationObserver(enhance).observe(
+    document.getElementById('timetableContent') || document.body,
+    {childList:true,subtree:true}
+  );
+})();
+</script>
+
+
+<style id="lengths-drive-links-v3708-style">
+.lengths-drive-links{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+.lengths-drive-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:7px 11px;
+  border-radius:10px;
+  border:1px solid #b9c9df;
+  background:#fff;
+  color:#173b5c;
+  text-decoration:none;
+  font-weight:850;
+  box-shadow:0 2px 6px rgba(23,59,92,.08);
+}
+.lengths-drive-link:hover{background:#eef5fb}
+</style>
+
+<script id="lengths-drive-links-v3708">
+(function(){
+  'use strict';
+
+  var resources=[
+    {label:'📄 Fiche élève', url:'https://drive.google.com/file/d/1YA7802YG7RAnDJ8_d2G7_LKxnEYYc7Qr/view'},
+    {label:'✅ Corrigé couleur', url:'https://drive.google.com/file/d/1nKsPfMMvkojOIgpwjnvW30S6UDD9K985/view'}
+  ];
+
+  function txt(el){
+    return String(el && el.textContent || '').replace(/\s+/g,' ').trim();
+  }
+
+  function addLinks(){
+    var root=document.getElementById('timetableContent') || document;
+
+    Array.from(root.querySelectorAll('*')).forEach(function(el){
+      if(!/Mesurer une longueur en cm et mm/i.test(txt(el))) return;
+
+      var host=el.closest(
+        '.timetable-session,.session-card,.lesson-card,.detail-card,article,tr,.timetable-row'
+      ) || el.parentElement;
+
+      if(!host || host.querySelector('.lengths-drive-links')) return;
+
+      var bar=document.createElement('div');
+      bar.className='lengths-drive-links';
+
+      resources.forEach(function(r){
+        var a=document.createElement('a');
+        a.className='lengths-drive-link';
+        a.href=r.url;
+        a.target='_blank';
+        a.rel='noopener';
+        a.textContent=r.label;
+        bar.appendChild(a);
+      });
+
+      // Insérer les ressources près du contenu de la séance.
+      var target=host.querySelector('.session-detail,.lesson-detail,.detail-content') || el;
+      target.insertAdjacentElement('afterend',bar);
+    });
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',addLinks);
+  }else{
+    addLinks();
+  }
+
+  new MutationObserver(addLinks).observe(
     document.getElementById('timetableContent') || document.body,
     {childList:true,subtree:true}
   );
