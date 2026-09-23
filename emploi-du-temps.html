@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Emploi du temps CE2 — Progressions CE2">
-<title>V36.92 — Emploi du temps CE2 — Progressions CE2</title>
+<title>V36.93 — Emploi du temps CE2 — Progressions CE2</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -206,7 +206,7 @@
 <script src="dictees-ce2.js?v=34.94"></script>
 
 <script id="dictation-visible-in-edt-v3692">
-/* V36.92 — Afficher la dictée réelle directement dans la séance du matin.
+/* V36.93 — Afficher la dictée réelle directement dans la séance du matin.
    Source unique : DICTEES_CE2. Aucun texte de dictée n'est dupliqué ici. */
 (function(){
   'use strict';
@@ -368,5 +368,181 @@
   }
 })();
 </script>
+
+<style id="edt-inline-session-v3693-style">
+.edt-inline-session{
+  margin:10px 0 14px;
+  border:1px solid #c9d8ee;
+  border-radius:14px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 4px 14px rgba(38,74,120,.08);
+}
+.edt-inline-session[hidden]{display:none!important;}
+.edt-inline-session__head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:10px 14px;
+  background:#f5f8ff;
+  border-bottom:1px solid #dbe5f4;
+  font-weight:800;
+  color:#244d85;
+}
+.edt-inline-session__close{
+  border:1px solid #c9d8ee;
+  border-radius:9px;
+  padding:6px 10px;
+  background:#fff;
+  color:#244d85;
+  font-weight:800;
+  cursor:pointer;
+}
+.edt-inline-session__frame{
+  display:block;
+  width:100%;
+  min-height:620px;
+  border:0;
+  background:#fff;
+}
+@media (max-width:800px){
+  .edt-inline-session__frame{min-height:720px;}
+}
+</style>
+
+<script id="edt-inline-session-v3693">
+/* V36.93 — Les boutons "Ouvrir la séance complète" restent dans la journée.
+   La séance détaillée s'ouvre dans un accordéon sous le bouton, sans navigation. */
+(function(){
+  'use strict';
+
+  function textOf(el){
+    return String(el && el.textContent || '').replace(/\s+/g,' ').trim();
+  }
+
+  function isSessionButton(el){
+    return !!el && /ouvrir la séance complète/i.test(textOf(el));
+  }
+
+  function resolveUrl(el){
+    var a = el.closest && el.closest('a[href]');
+    if(a && a.getAttribute('href')) return a.getAttribute('href');
+
+    var candidates = [
+      el.getAttribute && el.getAttribute('data-url'),
+      el.getAttribute && el.getAttribute('data-href'),
+      el.dataset && (el.dataset.url || el.dataset.href || el.dataset.sessionUrl)
+    ];
+    for(var i=0;i<candidates.length;i++){
+      if(candidates[i]) return candidates[i];
+    }
+
+    var onclick = el.getAttribute && el.getAttribute('onclick');
+    if(onclick){
+      var m = onclick.match(/(?:location(?:\.href)?|window\.location(?:\.href)?)\s*=\s*['"]([^'"]+)['"]/i)
+           || onclick.match(/window\.open\(\s*['"]([^'"]+)['"]/i);
+      if(m) return m[1];
+    }
+    return '';
+  }
+
+  function findHost(btn){
+    return btn.closest(
+      '.timetable-session, .timetable-detail, .session-card, .lesson-card, ' +
+      '.timetable-row, tr, article, li, .card'
+    ) || btn.parentElement;
+  }
+
+  function closePanel(btn, panel){
+    if(panel) panel.hidden = true;
+    btn.setAttribute('aria-expanded','false');
+    btn.textContent = '🟪 Ouvrir la séance complète';
+  }
+
+  function openPanel(btn, url){
+    var host = findHost(btn);
+    if(!host) return;
+
+    var existing = host.querySelector(':scope > .edt-inline-session');
+    if(existing){
+      if(existing.hidden){
+        existing.hidden = false;
+        btn.setAttribute('aria-expanded','true');
+        btn.textContent = '▴ Masquer la séance complète';
+      }else{
+        closePanel(btn, existing);
+      }
+      return;
+    }
+
+    if(!url){
+      // Si l'URL est portée par un parent plus éloigné.
+      var parentLink = btn.parentElement && btn.parentElement.closest('a[href]');
+      if(parentLink) url = parentLink.getAttribute('href') || '';
+    }
+    if(!url) return;
+
+    var panel = document.createElement('section');
+    panel.className = 'edt-inline-session';
+    panel.setAttribute('aria-label','Séance complète');
+
+    var head = document.createElement('div');
+    head.className = 'edt-inline-session__head';
+    head.innerHTML = '<span>📘 Séance complète</span>';
+
+    var close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'edt-inline-session__close';
+    close.textContent = 'Masquer';
+    head.appendChild(close);
+
+    var frame = document.createElement('iframe');
+    frame.className = 'edt-inline-session__frame';
+    frame.loading = 'lazy';
+    frame.src = new URL(url, window.location.href).href;
+    frame.title = 'Séance complète';
+
+    panel.appendChild(head);
+    panel.appendChild(frame);
+
+    // Toujours juste sous l'action, afin de garder le fil chronologique.
+    var actionWrap = btn.closest('a,button') || btn;
+    var insertionPoint = actionWrap.parentElement || actionWrap;
+    insertionPoint.insertAdjacentElement('afterend', panel);
+
+    btn.setAttribute('aria-expanded','true');
+    btn.textContent = '▴ Masquer la séance complète';
+
+    close.addEventListener('click', function(){
+      closePanel(btn, panel);
+      btn.scrollIntoView({block:'nearest'});
+    });
+  }
+
+  document.addEventListener('click', function(e){
+    var el = e.target && e.target.closest ? e.target.closest('a,button') : null;
+    if(!isSessionButton(el)) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+
+    openPanel(el, resolveUrl(el));
+  }, true);
+
+  function prepareButtons(){
+    document.querySelectorAll('a,button').forEach(function(el){
+      if(!isSessionButton(el)) return;
+      el.setAttribute('aria-expanded','false');
+      el.setAttribute('aria-haspopup','false');
+    });
+  }
+
+  prepareButtons();
+  new MutationObserver(prepareButtons).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+
 </body>
 </html>
