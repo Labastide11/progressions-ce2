@@ -1030,7 +1030,7 @@
           [
             "14h–14h15",
             "Quart d’heure de lecture",
-            "Lecture autonome + rotation Maître Hibou ; les autres élèves lisent en autonomie.",
+            "• Lecture autonome<br>• Rotation Maître Hibou<br>• Les autres élèves lisent en autonomie.",
             "LIT-P1-01 · Entrer dans son parcours de lecteur.",
             "french",
             "Rituel quotidien"
@@ -1153,7 +1153,7 @@
           [
             "14h–14h15",
             "Quart d’heure de lecture",
-            "Lecture autonome + rotation Maître Hibou ; les autres élèves lisent en autonomie.",
+            "• Lecture autonome<br>• Rotation Maître Hibou<br>• Les autres élèves lisent en autonomie.",
             "LIT-P1-01 · Entrer dans son parcours de lecteur.",
             "french",
             "Rituel quotidien"
@@ -1247,7 +1247,7 @@
           [
             "14h–14h15",
             "Quart d’heure de lecture",
-            "Lecture autonome + rotation Maître Hibou ; les autres élèves lisent en autonomie.",
+            "• Lecture autonome<br>• Rotation Maître Hibou<br>• Les autres élèves lisent en autonomie.",
             "LIT-P1-01 · Entrer dans son parcours de lecteur.",
             "french",
             "Rituel quotidien"
@@ -1363,7 +1363,7 @@
           [
             "14h–14h15",
             "Quart d’heure de lecture",
-            "Lecture autonome + rotation Maître Hibou ; les autres élèves lisent en autonomie.",
+            "• Lecture autonome<br>• Rotation Maître Hibou<br>• Les autres élèves lisent en autonomie.",
             "LIT-P1-01 · Entrer dans son parcours de lecteur.",
             "french",
             "Rituel quotidien"
@@ -1464,7 +1464,7 @@
           [
             "14h–14h15",
             "Quart d’heure de lecture",
-            "Lecture autonome + rotation Maître Hibou ; les autres élèves lisent en autonomie.",
+            "• Lecture autonome<br>• Rotation Maître Hibou<br>• Les autres élèves lisent en autonomie.",
             "LIT-P1-01 · Entrer dans son parcours de lecteur.",
             "french",
             "Rituel quotidien"
@@ -1557,7 +1557,7 @@
           [
             "14h–14h15",
             "Quart d’heure de lecture",
-            "Lecture autonome + rotation Maître Hibou ; les autres élèves lisent en autonomie.",
+            "• Lecture autonome<br>• Rotation Maître Hibou<br>• Les autres élèves lisent en autonomie.",
             "LIT-P1-01 · Entrer dans son parcours de lecteur.",
             "french",
             "Rituel quotidien"
@@ -1611,7 +1611,7 @@
                     [
             "9h–9h40",
             "Français — Cahier du jour",
-            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Rituel Devinette — 2 nouvelles + 1 déjà vue : 1) Crayon : « Je laisse une trace grise ; on peut m’effacer. » 2) Bibliothèque : « Je garde beaucoup de livres ; on vient y choisir une lecture. » 3) 🔁 Cahier : expliquer quels indices permettent de trouver.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong> Grammaire : donner l’infinitif d’un verbe conjugué. Complément intégré au matin : Vocabulaire : comprendre un mot grâce au contexte",
+            "📘 <strong>Cahier du jour</strong><br>🗓️ <strong>Date et titre :</strong> écrire la date et le titre de la séance.<br><br>💬 <strong>Rituel :</strong> Rituel Devinette<br>1) Crayon : « Je laisse une trace grise ; on peut m’effacer. »<br>2) Bibliothèque : « Je garde beaucoup de livres ; on vient y choisir une lecture. »<br>3) 🔁 Cahier : expliquer quels indices permettent de trouver.<br><br>✍️ <strong>Dictée du jour :</strong> écrire la dictée.<br>✅ <strong>Correction :</strong> corriger juste en dessous.<br><br>🔎 <strong>Travail ciblé :</strong><br>• Grammaire : donner l’infinitif d’un verbe conjugué.<br>• Vocabulaire : comprendre un mot grâce au contexte",
             "OR-P1-04. ; GRA-P1-05 · Donner l’infinitif d’un verbe conjugué. ; VOC-P1-01 · Comprendre un mot grâce au contexte.",
             "french",
             "Rituel + dictée + correction + révision"
@@ -1627,7 +1627,7 @@
           [
             "10h15–10h45",
             "Français — Écriture / DRAS",
-            "✍️ Cahier d’écriture — Majuscule du jour. Écrire une phrase avec un verbe conjugué, souligner le verbe puis écrire son infinitif. Commencer ensuite un geste DRAS : Ajouter ou Remplacer.",
+            "✍️ <strong>Cahier d’écriture</strong><br>• Majuscule du jour.<br>• Écrire une phrase avec un verbe conjugué.<br>• Souligner le verbe puis écrire son infinitif.<br>• Commencer ensuite un geste DRAS : Ajouter ou Remplacer.",
             "ECR-P1-01 ; ECR-P1-04 à 06.",
             "french",
             "Cahier d’écriture — phrase / DRAS"
@@ -1651,7 +1651,7 @@
           [
             "14h–14h15",
             "Quart d’heure de lecture",
-            "Lecture autonome + rotation Maître Hibou ; les autres élèves lisent en autonomie.",
+            "• Lecture autonome<br>• Rotation Maître Hibou<br>• Les autres élèves lisent en autonomie.",
             "LIT-P1-01 · Entrer dans son parcours de lecteur.",
             "french",
             "Rituel quotidien"
@@ -1744,7 +1744,7 @@
           [
             "14h–14h15",
             "Quart d’heure de lecture",
-            "Lecture autonome + rotation Maître Hibou ; les autres élèves lisent en autonomie.",
+            "• Lecture autonome<br>• Rotation Maître Hibou<br>• Les autres élèves lisent en autonomie.",
             "LIT-P1-01 · Entrer dans son parcours de lecteur.",
             "french",
             "Rituel quotidien"
@@ -1853,7 +1853,7 @@
           [
             "14h–14h15",
             "Quart d’heure de lecture",
-            "Lecture autonome + rotation Maître Hibou ; les autres élèves lisent en autonomie.",
+            "• Lecture autonome<br>• Rotation Maître Hibou<br>• Les autres élèves lisent en autonomie.",
             "LIT-P1-01 · Entrer dans son parcours de lecteur.",
             "french",
             "Rituel quotidien"
@@ -1946,7 +1946,7 @@
           [
             "14h–14h15",
             "Quart d’heure de lecture",
-            "Lecture autonome + rotation Maître Hibou ; les autres élèves lisent en autonomie.",
+            "• Lecture autonome<br>• Rotation Maître Hibou<br>• Les autres élèves lisent en autonomie.",
             "LIT-P1-01 · Entrer dans son parcours de lecteur.",
             "french",
             "Rituel quotidien"
@@ -2040,7 +2040,7 @@
           [
             "14h–14h15",
             "Quart d’heure de lecture",
-            "Lecture autonome + rotation Maître Hibou ; les autres élèves lisent en autonomie.",
+            "• Lecture autonome<br>• Rotation Maître Hibou<br>• Les autres élèves lisent en autonomie.",
             "LIT-P1-01 · Entrer dans son parcours de lecteur.",
             "french",
             "Rituel quotidien"
@@ -2133,7 +2133,7 @@
           [
             "14h–14h15",
             "Quart d’heure de lecture",
-            "Lecture autonome + rotation Maître Hibou ; les autres élèves lisent en autonomie.",
+            "• Lecture autonome<br>• Rotation Maître Hibou<br>• Les autres élèves lisent en autonomie.",
             "LIT-P1-01 · Entrer dans son parcours de lecteur.",
             "french",
             "Rituel quotidien"
@@ -2234,7 +2234,7 @@
           [
             "14h–14h15",
             "Quart d’heure de lecture",
-            "Lecture autonome + rotation Maître Hibou ; les autres élèves lisent en autonomie.",
+            "• Lecture autonome<br>• Rotation Maître Hibou<br>• Les autres élèves lisent en autonomie.",
             "LIT-P1-01 · Entrer dans son parcours de lecteur.",
             "french",
             "Rituel quotidien"
@@ -2337,7 +2337,7 @@
           [
             "14h–14h15",
             "Quart d’heure de lecture",
-            "Lecture autonome + rotation Maître Hibou ; les autres élèves lisent en autonomie.",
+            "• Lecture autonome<br>• Rotation Maître Hibou<br>• Les autres élèves lisent en autonomie.",
             "LIT-P1-01 · Entrer dans son parcours de lecteur.",
             "french",
             "Rituel quotidien"
@@ -2431,7 +2431,7 @@
           [
             "14h–14h15",
             "Quart d’heure de lecture",
-            "Lecture autonome + rotation Maître Hibou ; les autres élèves lisent en autonomie.",
+            "• Lecture autonome<br>• Rotation Maître Hibou<br>• Les autres élèves lisent en autonomie.",
             "LIT-P1-01 · Entrer dans son parcours de lecteur.",
             "french",
             "Rituel quotidien"
@@ -2534,7 +2534,7 @@
           [
             "14h–14h15",
             "Quart d’heure de lecture",
-            "Lecture autonome + rotation Maître Hibou ; les autres élèves lisent en autonomie.",
+            "• Lecture autonome<br>• Rotation Maître Hibou<br>• Les autres élèves lisent en autonomie.",
             "LIT-P1-01 · Entrer dans son parcours de lecteur.",
             "french",
             "Rituel quotidien"
@@ -2667,7 +2667,7 @@
           [
             "14h–14h15",
             "Quart d’heure de lecture",
-            "Lecture autonome + rotation Maître Hibou ; les autres élèves lisent en autonomie.",
+            "• Lecture autonome<br>• Rotation Maître Hibou<br>• Les autres élèves lisent en autonomie.",
             "LIT-P1-01 · Entrer dans son parcours de lecteur.",
             "french",
             "Rituel quotidien"
@@ -2792,7 +2792,7 @@
           [
             "14h–14h15",
             "Quart d’heure de lecture",
-            "Lecture autonome + rotation Maître Hibou ; les autres élèves lisent en autonomie.",
+            "• Lecture autonome<br>• Rotation Maître Hibou<br>• Les autres élèves lisent en autonomie.",
             "LIT-P1-01 · Entrer dans son parcours de lecteur.",
             "french",
             "Rituel quotidien"
@@ -2886,7 +2886,7 @@
           [
             "14h–14h15",
             "Quart d’heure de lecture",
-            "Lecture autonome + rotation Maître Hibou ; les autres élèves lisent en autonomie.",
+            "• Lecture autonome<br>• Rotation Maître Hibou<br>• Les autres élèves lisent en autonomie.",
             "LIT-P1-01 · Entrer dans son parcours de lecteur.",
             "french",
             "Rituel quotidien"
@@ -2979,7 +2979,7 @@
           [
             "14h–14h15",
             "Quart d’heure de lecture",
-            "Lecture autonome + rotation Maître Hibou ; les autres élèves lisent en autonomie.",
+            "• Lecture autonome<br>• Rotation Maître Hibou<br>• Les autres élèves lisent en autonomie.",
             "LIT-P1-01 · Entrer dans son parcours de lecteur.",
             "french",
             "Rituel quotidien"
