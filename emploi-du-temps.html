@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Emploi du temps CE2 — Progressions CE2">
-<title>V36.99 — Emploi du temps CE2 — Progressions CE2</title>
+<title>V37.00 — Emploi du temps CE2 — Progressions CE2</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -206,7 +206,7 @@
 <script src="dictees-ce2.js?v=34.94"></script>
 
 <script id="dictation-visible-in-edt-v3692">
-/* V36.99 — Afficher la dictée réelle directement dans la séance du matin.
+/* V37.00 — Afficher la dictée réelle directement dans la séance du matin.
    Source unique : DICTEES_CE2. Aucun texte de dictée n'est dupliqué ici. */
 (function(){
   'use strict';
@@ -457,7 +457,7 @@ body.edt-session-modal-open{
 
 <script id="edt-session-modal-v3696">
 /*
- V36.99 — Ouverture de la séance complète dans une popup.
+ V37.00 — Ouverture de la séance complète dans une popup.
  La journée reste intacte derrière la modale.
 */
 (function(){
@@ -559,6 +559,41 @@ body.edt-session-modal-open{
         }
       }
     });
+
+    // V37.00 — alléger les popups de séances de maths :
+    // masquer les blocs de programmation annuelle et la progression spiralaire
+    // des fractions, trop volumineux pour une consultation ponctuelle.
+    function removePopupSectionByTitle(regex){
+      Array.from(modalBody.querySelectorAll('h1,h2,h3,h4,h5,h6,strong,b,div,p')).forEach(function(el){
+        var t = ownText(el);
+        if(!regex.test(t)) return;
+
+        var node = el;
+        var candidate = null;
+
+        // On remonte prudemment jusqu'à une section/carte autonome,
+        // sans jamais supprimer le conteneur global de la séance.
+        for(var i=0; i<5 && node && node !== modalBody; i++){
+          if(
+            node.matches &&
+            node.matches('section,article,.card,.panel,.box,.lesson-card,.session-card,.detail-card,.fiche-card')
+          ){
+            candidate = node;
+            break;
+          }
+          node = node.parentElement;
+        }
+
+        if(candidate && candidate !== modalBody){
+          candidate.remove();
+        } else {
+          el.style.display = 'none';
+        }
+      });
+    }
+
+    removePopupSectionByTitle(/^🗓️?\s*Découpage mathématique annuel prévu avec Maître Hibou$/i);
+    removePopupSectionByTitle(/^🍰?\s*Progression spiralaire des fractions\s*[—-]\s*P1 à P5$/i);
   }
 
   function openModal(nodes){
