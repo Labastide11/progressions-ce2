@@ -1,25 +1,25 @@
-/* V36.78 — P1 : liens fiche élève + correction Sciences « L’air prend-il de la place ? » ajoutés au jeudi 17/09 + sciences rééquilibrées */
+/* V36.89 — P1 : liens fiche élève + correction Sciences « L’air prend-il de la place ? » ajoutés au jeudi 17/09 + sciences rééquilibrées */
 (function(global){
   'use strict';
   const data=global.PROGRESSIONS_EDT_DATA=global.PROGRESSIONS_EDT_DATA||{};
   data.p1Base = {
   "lundi": [
-    [
-      "9h–9h15",
-      "Quoi de neuf ?",
-      "Oral structuré",
+        [
+      "9h–9h40",
+      "Cahier du jour",
+      "Date + titre ; rituel oral ; dictée du jour ; correction ; travail ciblé de français.",
       "french"
     ],
     [
-      "9h15–10h",
-      "Lecture-compréhension",
-      "",
+      "9h40–10h15",
+      "Lecture / fluence",
+      "Porte-vues de lecture : lecture, compréhension, ponctuation, repérage d’indices.",
       "french"
     ],
     [
-      "10h–10h45",
-      "Dictée / orthographe / étude de la langue",
-      "Majuscule intégrée dans le créneau ; aucune durée ajoutée",
+      "10h15–10h45",
+      "Écriture / DRAS",
+      "Cahier d’écriture : majuscule, phrase écrite puis début ou poursuite du DRAS.",
       "french"
     ],
     [
@@ -84,22 +84,22 @@
     ]
   ],
   "mardi": [
-    [
-      "9h–9h15",
-      "Copie",
-      "",
+        [
+      "9h–9h40",
+      "Cahier du jour",
+      "Date + titre ; rituel/copie ; dictée du jour ; correction ; travail ciblé de français.",
       "french"
     ],
     [
-      "9h15–10h",
-      "Lecture-compréhension",
-      "",
+      "9h40–10h15",
+      "Lecture / fluence",
+      "Porte-vues de lecture : lecture, compréhension, ponctuation, repérage d’indices.",
       "french"
     ],
     [
-      "10h–10h45",
-      "Étude de la langue / production d’écrit",
-      "DRAS, écrits courts et majuscule intégrée",
+      "10h15–10h45",
+      "Écriture / DRAS",
+      "Cahier d’écriture : majuscule, phrase écrite puis début ou poursuite du DRAS.",
       "french"
     ],
     [
@@ -164,22 +164,22 @@
     ]
   ],
   "jeudi": [
-    [
-      "9h–9h15",
-      "Devinette",
-      "",
+        [
+      "9h–9h40",
+      "Cahier du jour",
+      "Date + titre ; devinette ; dictée du jour ; correction ; travail ciblé de français.",
       "french"
     ],
     [
-      "9h15–10h",
-      "Lecture-compréhension",
-      "",
+      "9h40–10h15",
+      "Lecture / fluence",
+      "Porte-vues de lecture : lecture, compréhension, ponctuation, repérage d’indices.",
       "french"
     ],
     [
-      "10h–10h45",
-      "Étude de la langue / vocabulaire / écrit court",
-      "Majuscule intégrée ; contenus de français regroupés le matin",
+      "10h15–10h45",
+      "Écriture / DRAS",
+      "Cahier d’écriture : majuscule, phrase écrite puis début ou poursuite du DRAS.",
       "french"
     ],
     [
@@ -244,22 +244,22 @@
     ]
   ],
   "vendredi": [
-    [
-      "9h–9h30",
-      "Un jour, une actu",
-      "Oral, compréhension, EMI",
+        [
+      "9h–9h40",
+      "Cahier du jour",
+      "Date + titre ; Un jour, une actu / EMI ; dictée du jour ou bilan ; correction ; révision ciblée.",
       "french"
     ],
     [
-      "9h30–10h",
-      "Lecture et vocabulaire",
-      "",
+      "9h40–10h15",
+      "Lecture / compréhension",
+      "Porte-vues de lecture : compréhension, fluence, ponctuation et justification par le texte.",
       "french"
     ],
     [
-      "10h–10h45",
-      "Dictée / production d’écrit",
-      "Réemploi, écrits courts, majuscule intégrée",
+      "10h15–10h45",
+      "Écriture / DRAS",
+      "Cahier d’écriture : majuscule, phrase ou court écrit puis DRAS.",
       "french"
     ],
     [
@@ -334,21 +334,21 @@
       [
         "Mardi 1 septembre 2026",
         [
-          [
-            "9h–9h15",
-            "Français",
-            "Accueil, présentation de la classe et premiers échanges.",
-            "OR-P1-01 · Écouter une consigne jusqu’au bout ; OR-P1-03 · Respecter les règles d’un échange.",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Accueil, présentation de la classe et premiers échanges. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Cahier du jour — Découverte du cahier, installation de la date et copie courte soignée",
+            "OR-P1-01 · Écouter une consigne jusqu’au bout ; OR-P1-03 · Respecter les règles d’un échange. ; ECR-P1-01 · Copier sans erreur ; ECR-P1-04 · Se relire. ; ECR-P1-05 · Écrire une phrase correcte.",
             "french",
-            "Observation de rentrée"
+            "Rituel + dictée + correction + révision"
           ],
           [
-            "9h15–10h",
-            "Français",
-            "Lecture-compréhension : découvrir un texte court et échanger sur ce qui a été compris.",
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Lecture-compréhension : découvrir un texte court et échanger sur ce qui a été compris.",
             "LEC-P1-01 · Décoder un mot inconnu ; COM-P1-01 · Identifier les personnages.",
             "french",
-            "Observation diagnostique légère",
+            "Porte-vues de lecture",
             null,
             {
               "documents": [
@@ -361,20 +361,12 @@
             }
           ],
           [
-            "10h–10h25",
-            "Français — Copie",
-            "Cahier du jour — Découverte du cahier, installation de la date et copie courte soignée.",
-            "ECR-P1-01 · Copier sans erreur ; ECR-P1-04 · Se relire.",
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Mon cahier d’écrivain — Trois mots pour ma rentrée : choisir 3 mots parmi content, école, copains, classe, maître, cartable, jouer, apprendre, découvrir, revoir, puis construire une phrase complète. Exemple : « content – copains – classe » → « Je suis content de retrouver mes copains dans ma nouvelle classe. » Relire puis améliorer la phrase avec un premier geste DRAS simple : ajouter un mot ou remplacer un mot.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
             "french",
-            "Observation — copie"
-          ],
-          [
-            "10h25–10h45",
-            "Français — Écrits courts",
-            "Mon cahier d’écrivain — Trois mots pour ma rentrée : choisir 3 mots parmi content, école, copains, classe, maître, cartable, jouer, apprendre, découvrir, revoir, puis construire une phrase complète. Exemple : « content – copains – classe » → « Je suis content de retrouver mes copains dans ma nouvelle classe. » Relire puis améliorer la phrase avec un premier geste DRAS simple : ajouter un mot ou remplacer un mot.",
-            "ECR-P1-05 · Écrire une phrase correcte.",
-            "french",
-            "Premier écrit"
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h15",
@@ -437,21 +429,21 @@
       [
         "Jeudi 3 septembre 2026",
         [
-          [
-            "9h–9h15",
-            "Français",
-            "Rituel Devinette — 3 nouvelles : 1) Cartable : « Je t’accompagne tous les jours ; je transporte cahiers et trousse. » 2) Trousse : « Je suis souvent dans le cartable ; je garde crayons, gomme et ciseaux. » 3) Cahier : « J’ai beaucoup de pages ; on écrit sur moi toute l’année. »",
-            "OR-P1-01 ; OR-P1-03.",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Rituel Devinette — 3 nouvelles : 1) Cartable : « Je t’accompagne tous les jours ; je transporte cahiers et trousse. » 2) Trousse : « Je suis souvent dans le cartable ; je garde crayons, gomme et ciseaux. » 3) Cahier : « J’ai beaucoup de pages ; on écrit sur moi toute l’année. » ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Cahier du jour — Dictée diagnostique très courte puis correction collective raisonnée",
+            "OR-P1-01 ; OR-P1-03. ; ORT-P1-01 · Transcrire les sons d’un mot. ; ECR-P1-05 · Écrire une phrase correcte ; ECR-P1-06 · Améliorer un écrit court.",
             "french",
-            "Observation"
+            "Rituel + dictée + correction + révision"
           ],
           [
-            "9h15–10h",
-            "Français",
-            "Lecture-compréhension : repérer personnages, lieu et informations explicites.",
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Lecture-compréhension : repérer personnages, lieu et informations explicites.",
             "COM-P1-01 · Identifier les personnages ; COM-P1-02 · Repérer le lieu et le moment.",
             "french",
-            "Trace très courte",
+            "Porte-vues de lecture",
             null,
             {
               "documents": [
@@ -464,20 +456,12 @@
             }
           ],
           [
-            "10h–10h25",
-            "Français — Dictée",
-            "Cahier du jour — Dictée diagnostique très courte puis correction collective raisonnée.",
-            "ORT-P1-01 · Transcrire les sons d’un mot.",
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Mon cahier d’écrivain — Reprendre la phrase déjà écrite dans « Trois mots pour ma rentrée ». Relire l’exemple de départ si nécessaire : « content – copains – classe » → « Je suis content de retrouver mes copains dans ma nouvelle classe. » Montrer un seul geste DRAS : ajouter une précision OU remplacer un mot par un mot plus précis. Chaque élève améliore ensuite sa propre phrase et la recopie avec majuscule et point.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
             "french",
-            "Diagnostic sans note"
-          ],
-          [
-            "10h25–10h45",
-            "Français — Production d’écrits",
-            "Mon cahier d’écrivain — Reprendre la phrase déjà écrite dans « Trois mots pour ma rentrée ». Relire l’exemple de départ si nécessaire : « content – copains – classe » → « Je suis content de retrouver mes copains dans ma nouvelle classe. » Montrer un seul geste DRAS : ajouter une précision OU remplacer un mot par un mot plus précis. Chaque élève améliore ensuite sa propre phrase et la recopie avec majuscule et point.",
-            "ECR-P1-05 · Écrire une phrase correcte ; ECR-P1-06 · Améliorer un écrit court.",
-            "french",
-            "Premier écrit — DRAS"
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h15",
@@ -558,21 +542,21 @@
       [
         "Vendredi 4 septembre 2026",
         [
-          [
-            "9h–9h30",
-            "Français / EMC",
-            "Un jour, une actu : découvrir le rituel et distinguer information et opinion dans un exemple simple.",
-            "EMI-P1-01 · Identifier une information simple.",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Un jour, une actu : découvrir le rituel et distinguer information et opinion dans un exemple simple. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : révision courte de la phrase, de l’orthographe ou du vocabulaire selon la notion du jour.",
+            "EMI-P1-01 · Identifier une information simple. ; ECR-P1-05 · Produire une ou plusieurs phrases cohérentes.",
             "french",
-            "Oral collectif"
+            "Rituel + dictée + correction + révision"
           ],
           [
-            "9h30–10h",
-            "Français",
-            "Lecture et vocabulaire : reprendre le texte de la semaine et expliquer quelques mots.",
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Lecture et vocabulaire : reprendre le texte de la semaine et expliquer quelques mots.",
             "COM-P1-01 à 03 ; VOC-P1-01.",
             "french",
-            "Réinvestissement",
+            "Porte-vues de lecture",
             null,
             {
               "documents": [
@@ -585,12 +569,12 @@
             }
           ],
           [
-            "10h–10h45",
-            "Français — Écrits courts",
-            "Mon cahier d’écrivain — Raconter un moment de la rentrée en une ou deux phrases. Exemple : « Jeudi, j’ai découvert la bibliothèque de l’école. » Faire d’abord écrire, puis relire avec un guidage court : « Est-ce que ma phrase raconte bien un moment ? Puis-je ajouter une précision ou remplacer un mot ? » Choisir un seul geste DRAS si cela améliore réellement le texte.",
-            "ECR-P1-05 · Produire une ou plusieurs phrases cohérentes.",
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Mon cahier d’écrivain — Raconter un moment de la rentrée en une ou deux phrases. Exemple : « Jeudi, j’ai découvert la bibliothèque de l’école. » Faire d’abord écrire, puis relire avec un guidage court : « Est-ce que ma phrase raconte bien un moment ? Puis-je ajouter une précision ou remplacer un mot ? » Choisir un seul geste DRAS si cela améliore réellement le texte.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
             "french",
-            "Premier écrit"
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h15",
@@ -731,29 +715,29 @@
       [
         "Mardi 8 septembre 2026",
         [
-          [
-            "9h–9h15",
-            "Français — Copie",
-            "Cahier du jour — Copie : posture, soin et copie d’une courte phrase.",
-            "ECR-P1-01 · Copier sans erreur.",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Copie : posture, soin et copie d’une courte phrase. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : révision courte de la phrase, de l’orthographe ou du vocabulaire selon la notion du jour.",
+            "ECR-P1-01 · Copier sans erreur. ; GRA-P1-01 · Reconnaître une phrase.",
             "french",
-            "Observation"
+            "Rituel + dictée + correction + révision"
           ],
           [
-            "9h15–10h",
-            "Français",
-            "Lecture à voix haute : exactitude et respect de la ponctuation.",
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Lecture à voix haute : exactitude et respect de la ponctuation.",
             "LEC-P1-01 à 03.",
             "french",
-            "Repérage individuel"
+            "Porte-vues de lecture"
           ],
           [
-            "10h–10h45",
-            "Français",
-            "Mon cahier d’écrivain — DRAS : reconnaître une phrase et manipuler l’ordre des mots pour produire une phrase correcte.",
-            "GRA-P1-01 · Reconnaître une phrase.",
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Mon cahier d’écrivain — DRAS : reconnaître une phrase et manipuler l’ordre des mots pour produire une phrase correcte.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
             "french",
-            "Manipulations DRAS"
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h30",
@@ -910,29 +894,29 @@
       [
         "Vendredi 11 septembre 2026",
         [
-          [
-            "9h–9h30",
-            "Français / EMI",
-            "Un jour, une actu : identifier le sujet principal d’une information simple.",
-            "EMI-P1-01 · Identifier une information simple.",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Un jour, une actu : identifier le sujet principal d’une information simple. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : révision courte de la phrase, de l’orthographe ou du vocabulaire selon la notion du jour.",
+            "EMI-P1-01 · Identifier une information simple. ; ECR-P1-04 ; ECR-P1-05.",
             "french",
-            "Oral collectif"
+            "Rituel + dictée + correction + révision"
           ],
           [
-            "9h30–10h",
-            "Français",
-            "Lecture et vocabulaire : reformuler l’essentiel d’un texte court.",
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Lecture et vocabulaire : reformuler l’essentiel d’un texte court.",
             "COM-P1-05 · Reformuler l’essentiel ; VOC-P1-01.",
             "french",
-            "Trace courte"
+            "Porte-vues de lecture"
           ],
           [
-            "10h–10h45",
-            "Français — Écrits courts",
-            "Mon cahier d’écrivain — Écriture courte : produire plusieurs phrases cohérentes et se relire.",
-            "ECR-P1-04 ; ECR-P1-05.",
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Mon cahier d’écrivain — Écriture courte : produire plusieurs phrases cohérentes et se relire.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
             "french",
-            "Production courte"
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h15",
@@ -1003,29 +987,29 @@
       [
         "Lundi 14 septembre 2026",
         [
-          [
-            "9h–9h15",
-            "Français",
-            "Quoi de neuf ? : réactiver les règles d’écoute et présenter un camarade en cinq informations.",
-            "OR-P1-01 · Écouter une consigne jusqu’au bout ; OR-P1-03 · Respecter les règles d’un échange.",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Quoi de neuf ? : réactiver les règles d’écoute et présenter un camarade en cinq informations. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Cahier du jour — Dictée diagnostique ciblée puis première liste de mots fréquents à mémoriser",
+            "OR-P1-01 · Écouter une consigne jusqu’au bout ; OR-P1-03 · Respecter les règles d’un échange. ; ORT-P1-01 · Transcrire les sons d’un mot ; ORT-P1-02 · Écrire les mots fréquents étudiés.",
             "french",
-            "Observation formative"
+            "Rituel + dictée + correction + révision"
           ],
           [
-            "9h15–10h",
-            "Français",
-            "Lecture-compréhension : identifier personnages, lieu, informations explicites et justifier une réponse avec un indice du texte.",
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Lecture-compréhension : identifier personnages, lieu, informations explicites et justifier une réponse avec un indice du texte.",
             "COM-P1-01 ; COM-P1-02 ; COM-P1-04 ; COM-P1-05.",
             "french",
-            "Réinvestissement léger"
+            "Porte-vues de lecture"
           ],
           [
-            "10h–10h45",
-            "Français",
-            "✍️ Majuscule du jour — 5 min incluses dans ce créneau : observer le geste, tracer puis réemployer la lettre dans un mot. Cahier du jour — Dictée diagnostique ciblée puis première liste de mots fréquents à mémoriser.",
-            "ORT-P1-01 · Transcrire les sons d’un mot ; ORT-P1-02 · Écrire les mots fréquents étudiés.",
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Écrire une phrase en réemployant un ou deux mots étudiés, puis la relire et l’améliorer avec un geste DRAS.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
             "french",
-            "Dictée diagnostique ciblée"
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h15",
@@ -1096,13 +1080,13 @@
       [
         "Mardi 15 septembre 2026",
         [
-          [
-            "9h–9h30",
-            "Français — Lecture-compréhension — Vocabulaire",
-            "Autour du texte « Renart vole des poissons » — Reprendre le vocabulaire qui a gêné la compréhension. À partir des illustrations, identifier puis écrire les mots correspondants en s’aidant de la banque de mots. Fiche différenciée en 3 niveaux. Objectif : « Comprendre les mots du texte pour mieux comprendre l’histoire. »",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Autour du texte « Renart vole des poissons » — Reprendre le vocabulaire qui a gêné la compréhension. À partir des illustrations, identifier puis écrire les mots correspondants en s’aidant de la banque de mots. Fiche différenciée en 3 niveaux. Objectif : « Comprendre les mots du texte pour mieux comprendre l’histoire. »",
             "COM-P1-04 · Retrouver une information explicite ; enrichir et mobiliser le vocabulaire pour comprendre un texte.",
             "french",
-            "Entraînement différencié — 3 niveaux",
+            "Rituel + dictée + correction + révision",
             null,
             {
               "documents": [
@@ -1125,12 +1109,12 @@
             }
           ],
           [
-            "9h30–10h",
-            "Français — Lecture-compréhension",
-            "Lecture documentaire — « Le wombat » : lire le texte, repérer les informations importantes puis répondre aux questions de compréhension.",
-            "COM-P1-04 · Retrouver une information explicite.",
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Lecture documentaire — « Le wombat » : lire le texte, repérer les informations importantes puis répondre aux questions de compréhension. ✍️ Majuscule du jour — 5 min incluses dans ce créneau : observer le geste, tracer puis réemployer la lettre dans un mot. Grammaire : reconnaître une phrase correcte. Complément intégré au matin : Lecture offerte et reformulation orale.",
+            "COM-P1-04 · Retrouver une information explicite. ; GRA-P1-01 · Reconnaître une phrase correcte. ; OR-P1-02 · Reformuler un message entendu.",
             "french",
-            "Lecture documentaire — questions de compréhension",
+            "Porte-vues de lecture",
             null,
             {
               "documents": [
@@ -1143,12 +1127,12 @@
             }
           ],
           [
-            "10h–10h45",
-            "Français",
-            "✍️ Majuscule du jour — 5 min incluses dans ce créneau : observer le geste, tracer puis réemployer la lettre dans un mot. Grammaire : reconnaître une phrase correcte. Complément intégré au matin : Lecture offerte et reformulation orale.",
-            "GRA-P1-01 · Reconnaître une phrase correcte. ; OR-P1-02 · Reformuler un message entendu.",
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Écrire une phrase en réemployant un mot du vocabulaire travaillé, puis ajouter ou remplacer un mot pour la rendre plus précise.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
             "french",
-            "Manipulations"
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h15",
@@ -1220,29 +1204,29 @@
       [
         "Jeudi 17 septembre 2026",
         [
-          [
-            "9h–9h15",
-            "Français",
-            "Rituel Devinette — 2 nouvelles + 1 déjà vue : 1) Tableau : « Toute la classe me regarde ; on écrit ou projette sur moi. » 2) Récréation : « Je ne suis pas une matière ; on sort pour jouer, parler et bouger. » 3) 🔁 Trousse : retrouver et justifier la réponse.",
-            "OR-P1-04 · Donner une réponse en lien avec le sujet.",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Rituel Devinette — 2 nouvelles + 1 déjà vue : 1) Tableau : « Toute la classe me regarde ; on écrit ou projette sur moi. » 2) Récréation : « Je ne suis pas une matière ; on sort pour jouer, parler et bouger. » 3) 🔁 Trousse : retrouver et justifier la réponse. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Grammaire : phrase affirmative et phrase négative. Complément intégré au matin : Vocabulaire : regrouper des mots par thème",
+            "OR-P1-04 · Donner une réponse en lien avec le sujet. ; GRA-P1-02 · Reconnaître une phrase négative ; GRA-P1-03 · Transformer une phrase affirmative en phrase négative. ; VOC-P1-02 · Regrouper des mots par thème.",
             "french",
-            "Observation"
+            "Rituel + dictée + correction + révision"
           ],
           [
-            "9h15–10h",
+            "9h40–10h15",
             "Français — Lecture / fluence",
-            "Lire par groupes de mots, respecter la ponctuation puis reformuler l’essentiel d’un texte court.",
+            "📂 Porte-vues de lecture — Lire par groupes de mots, respecter la ponctuation puis reformuler l’essentiel d’un texte court.",
             "LEC-P1-03 ; LEC-P1-04 ; COM-P1-05.",
             "french",
-            "Entraînement guidé"
+            "Porte-vues de lecture"
           ],
           [
-            "10h–10h45",
-            "Français",
-            "✍️ Majuscule du jour — 5 min incluses dans ce créneau : observer le geste, tracer puis réemployer la lettre dans un mot. Grammaire : phrase affirmative et phrase négative. Complément intégré au matin : Vocabulaire : regrouper des mots par thème.",
-            "GRA-P1-02 · Reconnaître une phrase négative ; GRA-P1-03 · Transformer une phrase affirmative en phrase négative. ; VOC-P1-02 · Regrouper des mots par thème.",
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Écrire une phrase affirmative puis sa forme négative. Reprendre ensuite une phrase et l’améliorer avec un geste DRAS.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
             "french",
-            "Exercices guidés"
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h15",
@@ -1328,29 +1312,29 @@
       [
         "Vendredi 18 septembre 2026",
         [
-          [
-            "9h–9h30",
-            "Français / EMI",
-            "Un jour, une actu : distinguer une information d’une anecdote et exprimer un avis argumenté.",
-            "EMI-P1-01 · Distinguer une information d’une anecdote ; OR-P1-04.",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Un jour, une actu : distinguer une information d’une anecdote et exprimer un avis argumenté. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Cahier du jour — Dictée préparée — La Grande Muraille. Les 10 mots du bilan sont annoncés aux élèves : une frontière, une invasion, le nord, une structure, l’homme, une longueur, une tour de guet, important, contre, jamais",
+            "EMI-P1-01 · Distinguer une information d’une anecdote ; OR-P1-04. ; ORT-P1-01 à 03 ; ECR-P1-04 · Relire et corriger sa copie.",
             "french",
-            "Échange oral"
+            "Rituel + dictée + correction + révision"
           ],
           [
-            "9h30–10h",
-            "Français",
-            "Lecture : répondre puis montrer l’indice dans le texte.",
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Lecture : répondre puis montrer l’indice dans le texte.",
             "COM-P1-05 · Justifier une réponse avec un indice.",
             "french",
-            "Petite trace formative"
+            "Porte-vues de lecture"
           ],
           [
-            "10h–10h45",
-            "Français",
-            "✍️ Majuscule du jour — 5 min incluses dans ce créneau : observer le geste, tracer puis réemployer la lettre dans un mot. Cahier du jour — Dictée préparée — La Grande Muraille. Les 10 mots du bilan sont annoncés aux élèves : une frontière, une invasion, le nord, une structure, l’homme, une longueur, une tour de guet, important, contre, jamais.",
-            "ORT-P1-01 à 03 ; ECR-P1-04 · Relire et corriger sa copie.",
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Écrire une phrase en réemployant un ou deux mots étudiés, puis la relire et l’améliorer avec un geste DRAS.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
             "french",
-            "Entraînement — sans bilan formel"
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h15",
@@ -1437,29 +1421,29 @@
       [
         "Lundi 21 septembre 2026",
         [
-          [
-            "9h–9h15",
-            "Français",
-            "Quoi de neuf ? : reformuler l’idée d’un camarade et vérifier que l’on a bien compris.",
-            "OR-P1-02 · Reformuler un message entendu ; OR-P1-03.",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Quoi de neuf ? : reformuler l’idée d’un camarade et vérifier que l’on a bien compris. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Cahier du jour — Orthographe : mots fréquents et mots invariables de la semaine",
+            "OR-P1-02 · Reformuler un message entendu ; OR-P1-03. ; ORT-P1-02 ; ORT-P1-03.",
             "french",
-            "Observation"
+            "Rituel + dictée + correction + révision"
           ],
           [
-            "9h15–10h",
-            "Français",
-            "Lecture : remettre les événements d’un récit dans l’ordre.",
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Lecture : remettre les événements d’un récit dans l’ordre.",
             "COM-P1-03 · Remettre les événements dans l’ordre.",
             "french",
-            "Étiquettes puis écrit"
+            "Porte-vues de lecture"
           ],
           [
-            "10h–10h45",
-            "Français",
-            "✍️ Majuscule du jour — 5 min incluses dans ce créneau : observer le geste, tracer puis réemployer la lettre dans un mot. Cahier du jour — Orthographe : mots fréquents et mots invariables de la semaine.",
-            "ORT-P1-02 ; ORT-P1-03.",
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Écrire une phrase en réemployant un ou deux mots étudiés, puis la relire et l’améliorer avec un geste DRAS.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
             "french",
-            "Dictée préparée"
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h15",
@@ -1530,29 +1514,29 @@
       [
         "Mardi 22 septembre 2026",
         [
-          [
-            "9h–9h15",
-            "Français — Copie",
-            "Cahier du jour — Copie : utiliser de façon autonome la méthode et la grille de relecture installées.",
-            "ECR-P1-03 ; ECR-P1-04.",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Copie : utiliser de façon autonome la méthode et la grille de relecture installées. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Grammaire : repérer le verbe conjugué par transformation",
+            "ECR-P1-03 ; ECR-P1-04. ; GRA-P1-04 · Repérer le verbe conjugué. ; ECR-P1-05 · Écrire une phrase correcte.",
             "french",
-            "Petite trace formative"
+            "Rituel + dictée + correction + révision"
           ],
           [
-            "9h15–10h",
-            "Français",
-            "Lecture : chronologie et connecteurs temporels.",
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Lecture : chronologie et connecteurs temporels.",
             "COM-P1-03.",
             "french",
-            "Petite trace formative"
+            "Porte-vues de lecture"
           ],
           [
-            "10h–10h45",
-            "Français",
-            "✍️ Majuscule du jour — 5 min incluses dans ce créneau : observer le geste, tracer puis réemployer la lettre dans un mot. Grammaire : repérer le verbe conjugué par transformation. Complément intégré au matin : Mon cahier d’écrivain — Écrire une phrase correcte à partir d’une image.",
-            "GRA-P1-04 · Repérer le verbe conjugué. ; ECR-P1-05 · Écrire une phrase correcte.",
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Mon cahier d’écrivain — Écrire une phrase correcte à partir d’une image.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
             "french",
-            "Manipulations"
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h15",
@@ -1624,29 +1608,29 @@
       [
         "Jeudi 24 septembre 2026",
         [
-          [
-            "9h–9h15",
-            "Français",
-            "Rituel Devinette — 2 nouvelles + 1 déjà vue : 1) Crayon : « Je laisse une trace grise ; on peut m’effacer. » 2) Bibliothèque : « Je garde beaucoup de livres ; on vient y choisir une lecture. » 3) 🔁 Cahier : expliquer quels indices permettent de trouver.",
-            "OR-P1-04.",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Rituel Devinette — 2 nouvelles + 1 déjà vue : 1) Crayon : « Je laisse une trace grise ; on peut m’effacer. » 2) Bibliothèque : « Je garde beaucoup de livres ; on vient y choisir une lecture. » 3) 🔁 Cahier : expliquer quels indices permettent de trouver. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Grammaire : donner l’infinitif d’un verbe conjugué. Complément intégré au matin : Vocabulaire : comprendre un mot grâce au contexte",
+            "OR-P1-04. ; GRA-P1-05 · Donner l’infinitif d’un verbe conjugué. ; VOC-P1-01 · Comprendre un mot grâce au contexte.",
             "french",
-            "Observation"
+            "Rituel + dictée + correction + révision"
           ],
           [
-            "9h15–10h",
-            "Français",
-            "Fluence : lire par groupes de mots.",
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Fluence : lire par groupes de mots.",
             "LEC-P1-03 · Lire par groupes de mots.",
             "french",
-            "Entraînement chronométré"
+            "Porte-vues de lecture"
           ],
           [
-            "10h–10h45",
-            "Français",
-            "✍️ Majuscule du jour — 5 min incluses dans ce créneau : observer le geste, tracer puis réemployer la lettre dans un mot. Grammaire : donner l’infinitif d’un verbe conjugué. Complément intégré au matin : Vocabulaire : comprendre un mot grâce au contexte.",
-            "GRA-P1-05 · Donner l’infinitif d’un verbe conjugué. ; VOC-P1-01 · Comprendre un mot grâce au contexte.",
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Écrire une phrase avec un verbe conjugué, souligner le verbe puis écrire son infinitif. Commencer ensuite un geste DRAS : Ajouter ou Remplacer.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
             "french",
-            "Tri et transformation"
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h15",
@@ -1717,29 +1701,29 @@
       [
         "Vendredi 25 septembre 2026",
         [
-          [
-            "9h–9h30",
-            "Français / EMI",
-            "Un jour, une actu : fait ou opinion ?",
-            "EMI-P1-02 · Distinguer un fait d’une opinion.",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Un jour, une actu : fait ou opinion ? ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Grammaire : phrase correcte, négation et verbe",
+            "EMI-P1-02 · Distinguer un fait d’une opinion. ; GRA-P1-01 à 04.",
             "french",
-            "Oral collectif"
+            "Rituel + dictée + correction + révision"
           ],
           [
-            "9h30–10h",
-            "Français",
-            "Lecture : informations explicites et chronologie.",
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Lecture : informations explicites et chronologie.",
             "COM-P1-03 ; COM-P1-04.",
             "french",
-            "Petite trace formative"
+            "Porte-vues de lecture"
           ],
           [
-            "10h–10h45",
-            "Français",
-            "✍️ Majuscule du jour — 5 min incluses dans ce créneau : observer le geste, tracer puis réemployer la lettre dans un mot. Grammaire : phrase correcte, négation et verbe.",
-            "GRA-P1-01 à 04.",
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Écrire une phrase correcte contenant un verbe conjugué, puis commencer un geste DRAS : Ajouter ou Remplacer.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
             "french",
-            "Petite trace formative"
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h15",
@@ -1818,29 +1802,29 @@
       [
         "Lundi 28 septembre 2026",
         [
-          [
-            "9h–9h15",
-            "Français",
-            "Quoi de neuf ? : préparer une réponse complète.",
-            "OR-P1-04.",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Quoi de neuf ? : préparer une réponse complète. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Orthographe : singulier et pluriel dans le groupe nominal",
+            "OR-P1-04. ; ORT-P1-04 · Repérer le singulier et le pluriel.",
             "french",
-            "Observation"
+            "Rituel + dictée + correction + révision"
           ],
           [
-            "9h15–10h",
-            "Français",
-            "Lecture : justifier une réponse avec un indice précis.",
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Lecture : justifier une réponse avec un indice précis.",
             "COM-P1-05.",
             "french",
-            "Écrit court"
+            "Porte-vues de lecture"
           ],
           [
-            "10h–10h45",
-            "Français",
-            "✍️ Majuscule du jour — 5 min incluses dans ce créneau : observer le geste, tracer puis réemployer la lettre dans un mot. Orthographe : singulier et pluriel dans le groupe nominal.",
-            "ORT-P1-04 · Repérer le singulier et le pluriel.",
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Écrire une phrase contenant un groupe nominal au pluriel, vérifier les accords puis améliorer la phrase avec un geste DRAS.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
             "french",
-            "Manipulations"
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h15",
@@ -1919,29 +1903,29 @@
       [
         "Mardi 29 septembre 2026",
         [
-          [
-            "9h–9h15",
-            "Français — Copie",
-            "Cahier du jour — Copie : groupes de mots, présentation et correction.",
-            "ECR-P1-02 à 04.",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Copie : groupes de mots, présentation et correction. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Grammaire : repérer le groupe sujet",
+            "ECR-P1-02 à 04. ; GRA-P1-06 · Repérer le groupe sujet. ; ECR-P1-06 · Enchaîner plusieurs phrases sur un même sujet.",
             "french",
-            "Petite trace formative — copie"
+            "Rituel + dictée + correction + révision"
           ],
           [
-            "9h15–10h",
-            "Français",
-            "Lecture fluence : groupes de mots et ponctuation.",
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Lecture fluence : groupes de mots et ponctuation.",
             "LEC-P1-03 ; LEC-P1-04 · Respecter la ponctuation.",
             "french",
-            "Mesure intermédiaire"
+            "Porte-vues de lecture"
           ],
           [
-            "10h–10h45",
-            "Français",
-            "✍️ Majuscule du jour — 5 min incluses dans ce créneau : observer le geste, tracer puis réemployer la lettre dans un mot. Grammaire : repérer le groupe sujet. Complément intégré au matin : Mon cahier d’écrivain — Écrire plusieurs phrases sur un même sujet.",
-            "GRA-P1-06 · Repérer le groupe sujet. ; ECR-P1-06 · Enchaîner plusieurs phrases sur un même sujet.",
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Mon cahier d’écrivain — Écrire plusieurs phrases sur un même sujet.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
             "french",
-            "Manipulations"
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h15",
@@ -2013,29 +1997,29 @@
       [
         "Jeudi 1er octobre 2026",
         [
-          [
-            "9h–9h15",
-            "Français",
-            "Rituel Devinette — 2 nouvelles + 1 déjà vue : 1) Ardoise : « On écrit sur moi puis on m’efface pour recommencer. » 2) Agenda : « Je garde les dates, les devoirs et les choses à ne pas oublier. » 3) 🔁 Règle : reformuler le raisonnement d’un camarade.",
-            "OR-P1-02 ; OR-P1-04.",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Rituel Devinette — 2 nouvelles + 1 déjà vue : 1) Ardoise : « On écrit sur moi puis on m’efface pour recommencer. » 2) Agenda : « Je garde les dates, les devoirs et les choses à ne pas oublier. » 3) 🔁 Règle : reformuler le raisonnement d’un camarade. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Grammaire : remplacer le groupe sujet par un pronom. Complément intégré au matin : Mots de la même famille",
+            "OR-P1-02 ; OR-P1-04. ; GRA-P1-07 · Remplacer le groupe sujet par un pronom. ; VOC-P1-03 · Reconnaître des mots de la même famille.",
             "french",
-            "Observation"
+            "Rituel + dictée + correction + révision"
           ],
           [
-            "9h15–10h",
-            "Français",
-            "Compréhension : personnages, lieu, chronologie et indice.",
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Compréhension : personnages, lieu, chronologie et indice.",
             "COM-P1-01 à 05.",
             "french",
-            "Lecture longue guidée"
+            "Porte-vues de lecture"
           ],
           [
-            "10h–10h45",
-            "Français",
-            "✍️ Majuscule du jour — 5 min incluses dans ce créneau : observer le geste, tracer puis réemployer la lettre dans un mot. Grammaire : remplacer le groupe sujet par un pronom. Complément intégré au matin : Mots de la même famille.",
-            "GRA-P1-07 · Remplacer le groupe sujet par un pronom. ; VOC-P1-03 · Reconnaître des mots de la même famille.",
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Écrire une phrase, repérer le groupe sujet puis le remplacer par un pronom si cela convient. Améliorer ensuite la phrase.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
             "french",
-            "Transformations"
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h15",
@@ -2106,29 +2090,29 @@
       [
         "Vendredi 2 octobre 2026",
         [
-          [
-            "9h–9h30",
-            "Français / EMI",
-            "Reconnaître différents médias.",
-            "EMI-P1-03 · Reconnaître différents médias.",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Reconnaître différents médias",
+            "EMI-P1-03 · Reconnaître différents médias. ; ECR-P1-04 à 06.",
             "french",
-            "Classement"
+            "Rituel + dictée + correction + révision"
           ],
           [
-            "9h30–10h",
-            "Français",
-            "Fluence : lecture préparée avec ponctuation.",
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Fluence : lecture préparée avec ponctuation.",
             "LEC-P1-01 à 04.",
             "french",
-            "Petite trace formative"
+            "Porte-vues de lecture"
           ],
           [
-            "10h–10h45",
-            "Français — Production d’écrits",
-            "✍️ Majuscule du jour — 5 min incluses dans ce créneau : observer le geste, tracer puis réemployer la lettre dans un mot. Mon cahier d’écrivain — Production écrite : corriger puis améliorer plusieurs phrases.",
-            "ECR-P1-04 à 06.",
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Mon cahier d’écrivain — Production écrite : corriger puis améliorer plusieurs phrases.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
             "french",
-            "Petite trace formative — écriture"
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h15",
@@ -2207,29 +2191,29 @@
       [
         "Lundi 5 octobre 2026",
         [
-          [
-            "9h–9h15",
-            "Français",
-            "Quoi de neuf ? : écoute, reformulation et réponse dans le sujet.",
-            "OR-P1-01 à 04.",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Quoi de neuf ? : écoute, reformulation et réponse dans le sujet. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Cahier du jour — Orthographe : mots étudiés et marques du pluriel",
+            "OR-P1-01 à 04. ; ORT-P1-02 à 04.",
             "french",
-            "Bilan oral par observation"
+            "Rituel + dictée + correction + révision"
           ],
           [
-            "9h15–10h",
-            "Français",
-            "Compréhension complète d’un récit court.",
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Compréhension complète d’un récit court.",
             "COM-P1-01 à 05.",
             "french",
-            "Petite trace formative — lecture"
+            "Porte-vues de lecture"
           ],
           [
-            "10h–10h45",
-            "Français",
-            "✍️ Majuscule du jour — 5 min incluses dans ce créneau : observer le geste, tracer puis réemployer la lettre dans un mot. Cahier du jour — Orthographe : mots étudiés et marques du pluriel.",
-            "ORT-P1-02 à 04.",
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Écrire une phrase contenant un groupe nominal au pluriel, vérifier les accords puis améliorer la phrase avec un geste DRAS.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
             "french",
-            "Dictée évaluée"
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h15",
@@ -2300,29 +2284,13 @@
       [
         "Mardi 6 octobre 2026",
         [
-          [
-            "9h–9h15",
-            "Français — Copie",
-            "Cahier du jour — Copie-bilan.",
-            "ECR-P1-01 à 04.",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Copie-bilan. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Évaluation de compréhension P1 — Le carnet retrouvé : identifier les personnages et retrouver des informations explicites dans un texte court",
+            "ECR-P1-01 à 04. ; COM-P1-01 · Identifier les personnages ; COM-P1-04 · Prélever une information explicite. ; ECR-P1-04 à 06.",
             "french",
-            "Petite trace formative — copie"
-          ],
-          [
-            "9h15–10h",
-            "Français",
-            "Fluence : lecture finale pour un premier groupe.",
-            "LEC-P1-01 à 04.",
-            "french",
-            "Petite trace formative"
-          ],
-          [
-            "10h–10h45",
-            "Français",
-            "✍️ Majuscule du jour — 5 min incluses dans ce créneau : observer le geste, tracer puis réemployer la lettre dans un mot. Évaluation de compréhension P1 — Le carnet retrouvé : identifier les personnages et retrouver des informations explicites dans un texte court. Complément intégré au matin : Mon cahier d’écrivain — Réécrire un texte court après retour de l’enseignant.",
-            "COM-P1-01 · Identifier les personnages ; COM-P1-04 · Prélever une information explicite. ; ECR-P1-04 à 06.",
-            "french",
-            "Évaluation ciblée — Compréhension P1",
+            "Rituel + dictée + correction + révision",
             null,
             {
               "documents": [
@@ -2333,6 +2301,22 @@
                 }
               ]
             }
+          ],
+          [
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Fluence : lecture finale pour un premier groupe.",
+            "LEC-P1-01 à 04.",
+            "french",
+            "Porte-vues de lecture"
+          ],
+          [
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Mon cahier d’écrivain — Réécrire un texte court après retour de l’enseignant.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
+            "french",
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h15",
@@ -2404,29 +2388,29 @@
       [
         "Jeudi 8 octobre 2026",
         [
-          [
-            "9h–9h15",
-            "Français",
-            "Rituel Devinette — 2 nouvelles + 1 déjà vue : 1) Ciseaux : « J’ai deux lames et deux anneaux ; je découpe le papier. » 2) Colle : « Je sers à fixer une feuille ou une image sans agrafe. » 3) 🔁 Gomme : répondre de façon autonome et justifier.",
-            "OR-P1-03 ; OR-P1-04.",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Rituel Devinette — 2 nouvelles + 1 déjà vue : 1) Ciseaux : « J’ai deux lames et deux anneaux ; je découpe le papier. » 2) Colle : « Je sers à fixer une feuille ou une image sans agrafe. » 3) 🔁 Gomme : répondre de façon autonome et justifier. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Vocabulaire : ordre alphabétique. Complément intégré au matin : Chercher un mot dans le dictionnaire",
+            "OR-P1-03 ; OR-P1-04. ; VOC-P1-04 · Ranger des mots dans l’ordre alphabétique. ; VOC-P1-05 · Chercher un mot dans le dictionnaire.",
             "french",
-            "Observation"
+            "Rituel + dictée + correction + révision"
           ],
           [
-            "9h15–10h",
-            "Français",
-            "Fluence : lecture finale pour un second groupe.",
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Fluence : lecture finale pour un second groupe.",
             "LEC-P1-01 à 04.",
             "french",
-            "Petite trace formative"
+            "Porte-vues de lecture"
           ],
           [
-            "10h–10h45",
-            "Français",
-            "✍️ Majuscule du jour — 5 min incluses dans ce créneau : observer le geste, tracer puis réemployer la lettre dans un mot. Vocabulaire : ordre alphabétique. Complément intégré au matin : Chercher un mot dans le dictionnaire.",
-            "VOC-P1-04 · Ranger des mots dans l’ordre alphabétique. ; VOC-P1-05 · Chercher un mot dans le dictionnaire.",
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Écrire une phrase en réemployant un mot du vocabulaire travaillé, puis ajouter ou remplacer un mot pour la rendre plus précise.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
             "french",
-            "Entraînement"
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h15",
@@ -2497,21 +2481,13 @@
       [
         "Vendredi 9 octobre 2026",
         [
-          [
-            "9h–9h30",
-            "Français / EMI",
-            "Identifier le but d’un document.",
-            "EMI-P1-04 · Identifier le but d’un document.",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Identifier le but d’un document.. Évaluation lexique / vocabulaire P1 : classer des mots qui vont ensemble et ranger des mots dans l’ordre alphabétique",
+            "EMI-P1-04 · Identifier le but d’un document. ; VOC-P1-02 · Regrouper des mots par thème ; VOC-P1-04 · Ranger des mots dans l’ordre alphabétique. ; ECR-P1-05 ; ECR-P1-06.",
             "french",
-            "Analyse courte"
-          ],
-          [
-            "9h30–10h",
-            "Français",
-            "Évaluation lexique / vocabulaire P1 : classer des mots qui vont ensemble et ranger des mots dans l’ordre alphabétique.",
-            "VOC-P1-02 · Regrouper des mots par thème ; VOC-P1-04 · Ranger des mots dans l’ordre alphabétique.",
-            "french",
-            "Évaluation ciblée — Lexique P1",
+            "Rituel + dictée + correction + révision",
             null,
             {
               "documents": [
@@ -2524,12 +2500,20 @@
             }
           ],
           [
-            "10h–10h45",
-            "Français — Production d’écrits",
-            "✍️ Majuscule du jour — 5 min incluses dans ce créneau : observer le geste, tracer puis réemployer la lettre dans un mot. Mon cahier d’écrivain — Production écrite : plusieurs phrases cohérentes.",
-            "ECR-P1-05 ; ECR-P1-06.",
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Lecture / fluence / compréhension : lire, repérer la ponctuation et reformuler ce qui a été compris.",
+            "LEC-P1-01 à 04 ; COM-P1-01 à 05.",
             "french",
-            "Petite trace formative — écriture"
+            "Porte-vues de lecture"
+          ],
+          [
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Mon cahier d’écrivain — Production écrite : plusieurs phrases cohérentes.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
+            "french",
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h15",
@@ -2608,6 +2592,30 @@
       [
         "Lundi 12 octobre 2026",
         [
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Bilan oral de période : écouter, reformuler, répondre.. Cahier du jour — Bilan des mots appris — La Grande Muraille. Écrire les 10 mots annoncés et travaillés",
+            "OR-P1-01 à 04. ; ORT-P1-01 à 04 ; ECR-P1-04.",
+            "french",
+            "Rituel + dictée + correction + révision"
+          ],
+          [
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Ateliers de compréhension selon les besoins.",
+            "COM-P1-01 à 05.",
+            "french",
+            "Porte-vues de lecture"
+          ],
+          [
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Écrire une phrase en réemployant un ou deux mots étudiés, puis la relire et l’améliorer avec un geste DRAS.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
+            "french",
+            "Cahier d’écriture — phrase / DRAS"
+          ],
           [
             "Horaire selon passage",
             "Photographe scolaire",
@@ -2709,6 +2717,30 @@
       [
         "Mardi 13 octobre 2026",
         [
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Copie de réinvestissement. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Grammaire : ateliers de remédiation phrase, verbe et sujet",
+            "ECR-P1-01 à 04. ; GRA-P1-01 à 07. ; ECR-P1-05 ; ECR-P1-06.",
+            "french",
+            "Rituel + dictée + correction + révision"
+          ],
+          [
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Fluence : derniers passages individuels et ateliers autonomes.",
+            "LEC-P1-01 à 04.",
+            "french",
+            "Porte-vues de lecture"
+          ],
+          [
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Mon cahier d’écrivain — Finaliser et présenter un petit texte.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
+            "french",
+            "Cahier d’écriture — phrase / DRAS"
+          ],
           [
             "Horaire selon passage",
             "Photographe scolaire",
@@ -2811,29 +2843,29 @@
       [
         "Jeudi 15 octobre 2026",
         [
-          [
-            "9h–9h15",
-            "Français",
-            "Rituel Devinette — 2 nouvelles + 1 déjà vue : 1) Dictionnaire : « Je contiens beaucoup de mots rangés dans l’ordre alphabétique et j’aide à comprendre leur sens. » 2) Horloge : « Je suis dans la classe ; mes aiguilles indiquent l’heure. » 3) 🔁 Tableau : devinette-bilan, réponse complète et justification.",
-            "OR-P1-04.",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Rituel Devinette — 2 nouvelles + 1 déjà vue : 1) Dictionnaire : « Je contiens beaucoup de mots rangés dans l’ordre alphabétique et j’aide à comprendre leur sens. » 2) Horloge : « Je suis dans la classe ; mes aiguilles indiquent l’heure. » 3) 🔁 Tableau : devinette-bilan, réponse complète et justification. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Dictionnaire : ordre alphabétique et recherche d’un mot. Complément intégré au matin : Respecter les règles d’un échange en ligne",
+            "OR-P1-04. ; VOC-P1-04 ; VOC-P1-05. ; EMI-P1-05 · Respecter les règles d’un échange en ligne.",
             "french",
-            "Réinvestissement"
+            "Rituel + dictée + correction + révision"
           ],
           [
-            "9h15–10h",
-            "Français",
-            "Lecture autonome et retour sur les stratégies efficaces.",
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Lecture autonome et retour sur les stratégies efficaces.",
             "LEC-P1-01 à 04 ; COM-P1-01 à 05.",
             "french",
-            "Métacognition"
+            "Porte-vues de lecture"
           ],
           [
-            "10h–10h45",
-            "Français",
-            "✍️ Majuscule du jour — 5 min incluses dans ce créneau : observer le geste, tracer puis réemployer la lettre dans un mot. Dictionnaire : ordre alphabétique et recherche d’un mot. Complément intégré au matin : Respecter les règles d’un échange en ligne.",
-            "VOC-P1-04 ; VOC-P1-05. ; EMI-P1-05 · Respecter les règles d’un échange en ligne.",
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Écrire une phrase correcte en lien avec le travail du jour, puis commencer un geste DRAS (Ajouter ou Remplacer) lorsque la phrase est correcte.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
             "french",
-            "Petite trace formative"
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h15",
@@ -2904,29 +2936,29 @@
       [
         "Vendredi 16 octobre 2026",
         [
-          [
-            "9h–9h30",
-            "Français / EMI",
-            "Un jour, une actu : bilan des notions d’information et de média.",
-            "EMI-P1-01 à 05.",
+                    [
+            "9h–9h40",
+            "Français — Cahier du jour",
+            "📘 Cahier du jour — Écrire la date et le titre de la séance. Rituel : Un jour, une actu : bilan des notions d’information et de média. ✍️ Dictée du jour : écrire la dictée, puis faire la correction juste en dessous. 🔎 Travail ciblé : Portfolio : choisir une réussite et expliquer ses progrès",
+            "EMI-P1-01 à 05. ; ECR-P1-04 ; compétences de français travaillées en P1.",
             "french",
-            "Réinvestissement sans grosse évaluation"
+            "Rituel + dictée + correction + révision"
           ],
           [
-            "9h30–10h",
-            "Français",
-            "Lecture plaisir et conseil de lecteur.",
+            "9h40–10h15",
+            "Français — Lecture / fluence",
+            "📂 Porte-vues de lecture — Lecture plaisir et conseil de lecteur.",
             "LEC-P1-01 à 04 ; LIT-P1-01 · Entrer dans son parcours de lecteur ; OR-P1-04.",
             "french",
-            "Valorisation"
+            "Porte-vues de lecture"
           ],
           [
-            "10h–10h45",
-            "Français",
-            "✍️ Majuscule du jour — 5 min incluses dans ce créneau : observer le geste, tracer puis réemployer la lettre dans un mot. Portfolio : choisir une réussite et expliquer ses progrès.",
-            "ECR-P1-04 ; compétences de français travaillées en P1.",
+            "10h15–10h45",
+            "Français — Écriture / DRAS",
+            "✍️ Cahier d’écriture — Majuscule du jour. Écrire une phrase correcte en lien avec le travail du jour, puis commencer un geste DRAS (Ajouter ou Remplacer) lorsque la phrase est correcte.",
+            "ECR-P1-01 ; ECR-P1-04 à 06.",
             "french",
-            "Bilan individuel"
+            "Cahier d’écriture — phrase / DRAS"
           ],
           [
             "11h–11h15",
@@ -2997,7 +3029,7 @@
     ]
   }
 ];
-  data.p1StructureVersion = '36.67';
+  data.p1StructureVersion = '36.89';
   data.validateP1Schedule = function(){
     const problems=[];
     const parse=t=>{const m=String(t).match(/(\d{1,2})h(?:(\d{2}))?[–-](\d{1,2})h(?:(\d{2}))?/);if(!m)return null;return [(+m[1])*60+(+(m[2]||0)),(+m[3])*60+(+(m[4]||0))];};
