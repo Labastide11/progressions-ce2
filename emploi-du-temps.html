@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Emploi du temps CE2 — Progressions CE2">
-<title>V36.93 — Emploi du temps CE2 — Progressions CE2</title>
+<title>V36.94 — Emploi du temps CE2 — Progressions CE2</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -206,7 +206,7 @@
 <script src="dictees-ce2.js?v=34.94"></script>
 
 <script id="dictation-visible-in-edt-v3692">
-/* V36.93 — Afficher la dictée réelle directement dans la séance du matin.
+/* V36.94 — Afficher la dictée réelle directement dans la séance du matin.
    Source unique : DICTEES_CE2. Aucun texte de dictée n'est dupliqué ici. */
 (function(){
   'use strict';
@@ -369,7 +369,8 @@
 })();
 </script>
 
-<style id="edt-inline-session-v3693-style">
+
+<style id="edt-inline-session-v3694-style">
 .edt-inline-session{
   margin:10px 0 14px;
   border:1px solid #c9d8ee;
@@ -402,145 +403,195 @@
 .edt-inline-session__frame{
   display:block;
   width:100%;
-  min-height:620px;
+  min-height:660px;
   border:0;
   background:#fff;
 }
 @media (max-width:800px){
-  .edt-inline-session__frame{min-height:720px;}
+  .edt-inline-session__frame{min-height:760px;}
 }
 </style>
 
-<script id="edt-inline-session-v3693">
-/* V36.93 — Les boutons "Ouvrir la séance complète" restent dans la journée.
-   La séance détaillée s'ouvre dans un accordéon sous le bouton, sans navigation. */
+<script id="edt-inline-session-v3694">
+/* V36.94 — Séance complète dans la page.
+   Correction V36.94 : on ne bloque plus le gestionnaire d'origine.
+   Celui-ci calcule normalement l'URL ; window.open est intercepté uniquement
+   pendant le clic sur "Ouvrir la séance complète". */
 (function(){
   'use strict';
 
-  function textOf(el){
+  var sessionClickButton = null;
+  var nativeOpen = window.open;
+
+  function label(el){
     return String(el && el.textContent || '').replace(/\s+/g,' ').trim();
   }
 
-  function isSessionButton(el){
-    return !!el && /ouvrir la séance complète/i.test(textOf(el));
+  function isSessionControl(el){
+    return !!el && /ouvrir la séance complète|masquer la séance complète/i.test(label(el));
   }
 
-  function resolveUrl(el){
-    var a = el.closest && el.closest('a[href]');
-    if(a && a.getAttribute('href')) return a.getAttribute('href');
+  function closestSessionControl(target){
+    if(!target || !target.closest) return null;
+    var direct = target.closest('a,button,[role="button"]');
+    if(direct && isSessionControl(direct)) return direct;
 
-    var candidates = [
-      el.getAttribute && el.getAttribute('data-url'),
-      el.getAttribute && el.getAttribute('data-href'),
-      el.dataset && (el.dataset.url || el.dataset.href || el.dataset.sessionUrl)
-    ];
-    for(var i=0;i<candidates.length;i++){
-      if(candidates[i]) return candidates[i];
+    var node = target.closest('*');
+    while(node && node !== document.body){
+      if(isSessionControl(node)) return node;
+      node = node.parentElement;
     }
-
-    var onclick = el.getAttribute && el.getAttribute('onclick');
-    if(onclick){
-      var m = onclick.match(/(?:location(?:\.href)?|window\.location(?:\.href)?)\s*=\s*['"]([^'"]+)['"]/i)
-           || onclick.match(/window\.open\(\s*['"]([^'"]+)['"]/i);
-      if(m) return m[1];
-    }
-    return '';
+    return null;
   }
 
-  function findHost(btn){
+  function hostFor(btn){
     return btn.closest(
       '.timetable-session, .timetable-detail, .session-card, .lesson-card, ' +
-      '.timetable-row, tr, article, li, .card'
-    ) || btn.parentElement;
+      '.timetable-row, .detail-card, tr, article, li'
+    ) || btn.parentElement || document.body;
   }
 
-  function closePanel(btn, panel){
+  function existingPanel(host){
+    return host && host.querySelector ? host.querySelector('.edt-inline-session') : null;
+  }
+
+  function setButtonState(btn, open){
+    if(!btn) return;
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+
+    var textNode = Array.from(btn.childNodes).find(function(n){
+      return n.nodeType === Node.TEXT_NODE && /séance complète/i.test(n.textContent || '');
+    });
+
+    var value = open ? ' Masquer la séance complète' : ' Ouvrir la séance complète';
+    if(textNode){
+      textNode.textContent = value;
+    }else if(btn.children.length === 0){
+      btn.textContent = open ? '▴ Masquer la séance complète' : '🟪 Ouvrir la séance complète';
+    }
+  }
+
+  function collapse(btn, panel){
     if(panel) panel.hidden = true;
-    btn.setAttribute('aria-expanded','false');
-    btn.textContent = '🟪 Ouvrir la séance complète';
+    setButtonState(btn, false);
   }
 
-  function openPanel(btn, url){
-    var host = findHost(btn);
-    if(!host) return;
+  function showInline(btn, url){
+    if(!btn || !url) return null;
 
-    var existing = host.querySelector(':scope > .edt-inline-session');
-    if(existing){
-      if(existing.hidden){
-        existing.hidden = false;
-        btn.setAttribute('aria-expanded','true');
-        btn.textContent = '▴ Masquer la séance complète';
-      }else{
-        closePanel(btn, existing);
+    var host = hostFor(btn);
+    var panel = existingPanel(host);
+
+    if(panel){
+      panel.hidden = false;
+      var frame0 = panel.querySelector('iframe');
+      if(frame0 && frame0.src !== new URL(url, location.href).href){
+        frame0.src = new URL(url, location.href).href;
       }
-      return;
+      setButtonState(btn, true);
+      return panel;
     }
 
-    if(!url){
-      // Si l'URL est portée par un parent plus éloigné.
-      var parentLink = btn.parentElement && btn.parentElement.closest('a[href]');
-      if(parentLink) url = parentLink.getAttribute('href') || '';
-    }
-    if(!url) return;
-
-    var panel = document.createElement('section');
+    panel = document.createElement('section');
     panel.className = 'edt-inline-session';
     panel.setAttribute('aria-label','Séance complète');
 
     var head = document.createElement('div');
     head.className = 'edt-inline-session__head';
-    head.innerHTML = '<span>📘 Séance complète</span>';
+
+    var title = document.createElement('span');
+    title.textContent = '📘 Séance complète';
 
     var close = document.createElement('button');
     close.type = 'button';
     close.className = 'edt-inline-session__close';
     close.textContent = 'Masquer';
+
+    head.appendChild(title);
     head.appendChild(close);
 
     var frame = document.createElement('iframe');
     frame.className = 'edt-inline-session__frame';
-    frame.loading = 'lazy';
-    frame.src = new URL(url, window.location.href).href;
     frame.title = 'Séance complète';
+    frame.loading = 'eager';
+    frame.src = new URL(url, location.href).href;
 
     panel.appendChild(head);
     panel.appendChild(frame);
 
-    // Toujours juste sous l'action, afin de garder le fil chronologique.
-    var actionWrap = btn.closest('a,button') || btn;
-    var insertionPoint = actionWrap.parentElement || actionWrap;
-    insertionPoint.insertAdjacentElement('afterend', panel);
+    var insertAfter = btn.closest('.session-resource-action, .resource-action, .lesson-action') || btn;
+    insertAfter.insertAdjacentElement('afterend', panel);
 
-    btn.setAttribute('aria-expanded','true');
-    btn.textContent = '▴ Masquer la séance complète';
+    setButtonState(btn, true);
 
-    close.addEventListener('click', function(){
-      closePanel(btn, panel);
-      btn.scrollIntoView({block:'nearest'});
+    close.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      collapse(btn, panel);
     });
+
+    return panel;
   }
 
+  // Cas 1 : le bouton est un vrai lien <a href="...">.
   document.addEventListener('click', function(e){
-    var el = e.target && e.target.closest ? e.target.closest('a,button') : null;
-    if(!isSessionButton(el)) return;
+    var btn = closestSessionControl(e.target);
+    if(!btn) return;
 
-    e.preventDefault();
-    e.stopPropagation();
-    e.stopImmediatePropagation();
+    var host = hostFor(btn);
+    var panel = existingPanel(host);
 
-    openPanel(el, resolveUrl(el));
+    if(/masquer la séance complète/i.test(label(btn)) && panel){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      collapse(btn, panel);
+      return;
+    }
+
+    var link = btn.matches && btn.matches('a[href]') ? btn : btn.closest && btn.closest('a[href]');
+    if(link && link.getAttribute('href')){
+      var href = link.getAttribute('href');
+      if(href && href !== '#' && !/^javascript:/i.test(href)){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        showInline(btn, href);
+        return;
+      }
+    }
+
+    // Cas 2 : bouton JS. On laisse SON gestionnaire fonctionner.
+    // Il appellera window.open avec l'URL calculée.
+    sessionClickButton = btn;
+    window.setTimeout(function(){
+      sessionClickButton = null;
+    }, 250);
   }, true);
 
-  function prepareButtons(){
-    document.querySelectorAll('a,button').forEach(function(el){
-      if(!isSessionButton(el)) return;
-      el.setAttribute('aria-expanded','false');
-      el.setAttribute('aria-haspopup','false');
+  // Intercepte uniquement l'ouverture provoquée par le bouton "séance complète".
+  window.open = function(url, target, features){
+    if(sessionClickButton && url){
+      var btn = sessionClickButton;
+      sessionClickButton = null;
+      showInline(btn, url);
+      return {
+        closed:false,
+        focus:function(){},
+        close:function(){}
+      };
+    }
+    return nativeOpen ? nativeOpen.call(window, url, target, features) : null;
+  };
+
+  function prepare(){
+    document.querySelectorAll('a,button,[role="button"]').forEach(function(el){
+      if(isSessionControl(el) && !el.hasAttribute('aria-expanded')){
+        el.setAttribute('aria-expanded','false');
+      }
     });
   }
 
-  prepareButtons();
-  new MutationObserver(prepareButtons).observe(document.body,{childList:true,subtree:true});
+  prepare();
+  new MutationObserver(prepare).observe(document.body,{childList:true,subtree:true});
 })();
 </script>
 
