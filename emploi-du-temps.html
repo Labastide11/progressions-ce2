@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Emploi du temps CE2 — Progressions CE2">
-<title>V37.06 — Emploi du temps CE2 — Progressions CE2</title>
+<title>V37.07 — Emploi du temps CE2 — Progressions CE2</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -139,7 +139,7 @@
 </style>
 
 <style id="edt-hide-duplicate-day-date-v3703">
-/* V37.06 — la date est déjà affichée dans l'en-tête de la vue du jour. */
+/* V37.07 — la date est déjà affichée dans l'en-tête de la vue du jour. */
 #timetableContent .day-detail-date,
 #timetableContent .day-view-date,
 #timetableContent .timetable-day-date,
@@ -217,7 +217,7 @@
 <script src="dictees-ce2.js?v=34.94"></script>
 
 <script id="dictation-visible-in-edt-v3692">
-/* V37.06 — Afficher la dictée réelle directement dans la séance du matin.
+/* V37.07 — Afficher la dictée réelle directement dans la séance du matin.
    Source unique : DICTEES_CE2. Aucun texte de dictée n'est dupliqué ici. */
 (function(){
   'use strict';
@@ -468,7 +468,7 @@ body.edt-session-modal-open{
 
 <script id="edt-session-modal-v3696">
 /*
- V37.06 — Ouverture de la séance complète dans une popup.
+ V37.07 — Ouverture de la séance complète dans une popup.
  La journée reste intacte derrière la modale.
 */
 (function(){
@@ -571,7 +571,7 @@ body.edt-session-modal-open{
       }
     });
 
-    // V37.06 — alléger les popups de séances de maths :
+    // V37.07 — alléger les popups de séances de maths :
     // masquer les blocs de programmation annuelle et la progression spiralaire
     // des fractions, trop volumineux pour une consultation ponctuelle.
     function removePopupSectionByTitle(regex){
@@ -753,10 +753,14 @@ body.edt-session-modal-open{
 
 <style id="riddle-projection-v3705-style">
 .riddle-project-btn{
-  margin-top:10px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-left:10px;
+  vertical-align:middle;
   border:0;
   border-radius:10px;
-  padding:8px 12px;
+  padding:6px 10px;
   background:#5a47c8;
   color:#fff;
   font-weight:900;
@@ -998,7 +1002,7 @@ body.edt-session-modal-open{
       if(!/Rituel\s*:\s*Rituel Devinette/i.test(t)) return;
       if(!/1\)/.test(t) || !/2\)/.test(t) || !/3\)/.test(t)) return;
 
-      // Chercher le plus petit conteneur utile, sans remonter jusqu'à toute la ligne.
+      // Chercher le bloc qui contient les trois devinettes.
       var source=el;
       while(
         source.parentElement &&
@@ -1013,14 +1017,32 @@ body.edt-session-modal-open{
       var btn=document.createElement('button');
       btn.type='button';
       btn.className='riddle-project-btn';
-      btn.textContent='📺 Projeter les devinettes';
+      btn.textContent='📺 Projeter';
+
       btn.addEventListener('click',function(e){
         e.preventDefault();
         e.stopPropagation();
         openProjection(source);
       });
 
-      source.appendChild(btn);
+      // Insérer le bouton juste après la ligne "Rituel Devinette — 3 nouvelles".
+      var target=null;
+      Array.from(source.querySelectorAll('strong,b,span,p,div')).some(function(node){
+        var nt=cleanText(node.textContent);
+        if(/^Rituel\s*:\s*Rituel Devinette/i.test(nt) || /Rituel Devinette\s*—\s*3 nouvelles/i.test(nt)){
+          target=node;
+          return true;
+        }
+        return false;
+      });
+
+      if(target){
+        target.insertAdjacentElement('afterend',btn);
+      }else{
+        // Repli : placer le bouton au début du bloc, pas dans la colonne de statut.
+        source.insertBefore(btn,source.firstChild);
+      }
+
       if(source.dataset) source.dataset.riddleProjectionEnhanced='1';
     });
   }
