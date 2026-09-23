@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Emploi du temps CE2 — Progressions CE2">
-<title>V37.10 — Emploi du temps CE2 — Progressions CE2</title>
+<title>V37.11 — Emploi du temps CE2 — Progressions CE2</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -139,7 +139,7 @@
 </style>
 
 <style id="edt-hide-duplicate-day-date-v3703">
-/* V37.10 — la date est déjà affichée dans l'en-tête de la vue du jour. */
+/* V37.11 — la date est déjà affichée dans l'en-tête de la vue du jour. */
 #timetableContent .day-detail-date,
 #timetableContent .day-view-date,
 #timetableContent .timetable-day-date,
@@ -217,7 +217,7 @@
 <script src="dictees-ce2.js?v=34.94"></script>
 
 <script id="dictation-visible-in-edt-v3692">
-/* V37.10 — Afficher la dictée réelle directement dans la séance du matin.
+/* V37.11 — Afficher la dictée réelle directement dans la séance du matin.
    Source unique : DICTEES_CE2. Aucun texte de dictée n'est dupliqué ici. */
 (function(){
   'use strict';
@@ -468,7 +468,7 @@ body.edt-session-modal-open{
 
 <script id="edt-session-modal-v3696">
 /*
- V37.10 — Ouverture de la séance complète dans une popup.
+ V37.11 — Ouverture de la séance complète dans une popup.
  La journée reste intacte derrière la modale.
 */
 (function(){
@@ -571,7 +571,7 @@ body.edt-session-modal-open{
       }
     });
 
-    // V37.10 — alléger les popups de séances de maths :
+    // V37.11 — alléger les popups de séances de maths :
     // masquer les blocs de programmation annuelle et la progression spiralaire
     // des fractions, trop volumineux pour une consultation ponctuelle.
     function removePopupSectionByTitle(regex){
@@ -743,10 +743,16 @@ body.edt-session-modal-open{
     cleanDuplicateDate();
   }
 
-  new MutationObserver(cleanDuplicateDate).observe(
-    document.getElementById('timetableContent') || document.body,
-    {childList:true,subtree:true}
-  );
+  var duplicateDateRoot=document.getElementById('timetableContent') || document.body;
+  var duplicateDateScheduled=false;
+  new MutationObserver(function(){
+    if(duplicateDateScheduled) return;
+    duplicateDateScheduled=true;
+    window.setTimeout(function(){
+      duplicateDateScheduled=false;
+      cleanDuplicateDate();
+    },100);
+  }).observe(duplicateDateRoot,{childList:true,subtree:true});
 })();
 </script>
 
@@ -995,7 +1001,7 @@ body.edt-session-modal-open{
   function enhance(){
     var root=document.getElementById('timetableContent') || document;
 
-    // V37.10 : jamais plus d'un bouton de projection des devinettes.
+    // V37.11 : jamais plus d'un bouton de projection des devinettes.
     var buttons=Array.from(root.querySelectorAll('.riddle-project-btn'));
     if(buttons.length>1){
       buttons.slice(1).forEach(function(btn){ btn.remove(); });
@@ -1064,10 +1070,22 @@ body.edt-session-modal-open{
     enhance();
   }
 
-  new MutationObserver(enhance).observe(
-    document.getElementById('timetableContent') || document.body,
-    {childList:true,subtree:true}
-  );
+  var riddleRoot=document.getElementById('timetableContent') || document.body;
+  var riddleScheduled=false;
+
+  function scheduleEnhance(){
+    if(riddleScheduled) return;
+    if(riddleRoot.querySelector('.riddle-project-btn')) return;
+    riddleScheduled=true;
+    window.setTimeout(function(){
+      riddleScheduled=false;
+      enhance();
+    },80);
+  }
+
+  new MutationObserver(function(){
+    scheduleEnhance();
+  }).observe(riddleRoot,{childList:true,subtree:true});
 })();
 </script>
 
@@ -1163,12 +1181,19 @@ body.edt-session-modal-open{
     return row.querySelector('td:nth-child(3), td:nth-child(4), .session-detail, .lesson-detail, .detail-content') || row;
   }
 
+  var lengthsLinksScheduled=false;
+
   function addLinks(){
     var root=document.getElementById('timetableContent') || document;
-    removeAllBars(root);
+
+    // Si la paire correcte existe déjà, ne rien toucher.
+    if(root.querySelector('#lengthsDriveLinksUnique')) return;
 
     var row=findLengthsRow(root);
     if(!row) return;
+
+    // Nettoyer seulement d'anciens doublons résiduels, une seule fois.
+    removeAllBars(root);
 
     var anchor=findBestAnchor(row);
     if(!anchor) return;
@@ -1177,15 +1202,26 @@ body.edt-session-modal-open{
     anchor.insertAdjacentElement('afterend', bar);
   }
 
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded', addLinks);
-  } else {
-    addLinks();
+  function scheduleAddLinks(){
+    if(lengthsLinksScheduled) return;
+    lengthsLinksScheduled=true;
+    window.setTimeout(function(){
+      lengthsLinksScheduled=false;
+      addLinks();
+    },80);
   }
 
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', scheduleAddLinks);
+  } else {
+    scheduleAddLinks();
+  }
+
+  var lengthsRoot=document.getElementById('timetableContent') || document.body;
   new MutationObserver(function(){
-    addLinks();
-  }).observe(document.getElementById('timetableContent') || document.body, {
+    if(lengthsRoot.querySelector('#lengthsDriveLinksUnique')) return;
+    scheduleAddLinks();
+  }).observe(lengthsRoot, {
     childList:true,
     subtree:true
   });
