@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Emploi du temps CE2 — Progressions CE2">
-<title>V37.01 — Emploi du temps CE2 — Progressions CE2</title>
+<title>V37.03 — Emploi du temps CE2 — Progressions CE2</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -137,6 +137,17 @@
     .site-nav__brand { width:100%; }
   }
 </style>
+
+<style id="edt-hide-duplicate-day-date-v3703">
+/* V37.03 — la date est déjà affichée dans l'en-tête de la vue du jour. */
+#timetableContent .day-detail-date,
+#timetableContent .day-view-date,
+#timetableContent .timetable-day-date,
+#timetableContent .detail-day-title {
+  display:none !important;
+}
+</style>
+
 </head>
 <body>
 <div class="site-shell">
@@ -206,7 +217,7 @@
 <script src="dictees-ce2.js?v=34.94"></script>
 
 <script id="dictation-visible-in-edt-v3692">
-/* V37.01 — Afficher la dictée réelle directement dans la séance du matin.
+/* V37.03 — Afficher la dictée réelle directement dans la séance du matin.
    Source unique : DICTEES_CE2. Aucun texte de dictée n'est dupliqué ici. */
 (function(){
   'use strict';
@@ -457,7 +468,7 @@ body.edt-session-modal-open{
 
 <script id="edt-session-modal-v3696">
 /*
- V37.01 — Ouverture de la séance complète dans une popup.
+ V37.03 — Ouverture de la séance complète dans une popup.
  La journée reste intacte derrière la modale.
 */
 (function(){
@@ -560,7 +571,7 @@ body.edt-session-modal-open{
       }
     });
 
-    // V37.01 — alléger les popups de séances de maths :
+    // V37.03 — alléger les popups de séances de maths :
     // masquer les blocs de programmation annuelle et la progression spiralaire
     // des fractions, trop volumineux pour une consultation ponctuelle.
     function removePopupSectionByTitle(regex){
@@ -688,6 +699,47 @@ body.edt-session-modal-open{
 
     window.setTimeout(function(){ finish(0); }, 0);
   }, true);
+})();
+</script>
+
+
+<script id="edt-hide-duplicate-day-date-v3703-js">
+(function(){
+  'use strict';
+
+  function norm(s){
+    return String(s||'').replace(/\s+/g,' ').trim();
+  }
+
+  function cleanDuplicateDate(){
+    var root=document.getElementById('timetableContent');
+    if(!root) return;
+
+    var headings=Array.from(root.querySelectorAll('h1,h2,h3,strong,.day-detail-date,.day-view-date,.timetable-day-date,.detail-day-title'));
+    var datePattern=/^(Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi|Dimanche)\s+\d{1,2}(?:er)?\s+[A-Za-zÀ-ÿ]+\s+\d{4}$/i;
+    var seen={};
+
+    headings.forEach(function(el){
+      var t=norm(el.textContent);
+      if(!datePattern.test(t)) return;
+      if(seen[t]){
+        el.style.display='none';
+      }else{
+        seen[t]=true;
+      }
+    });
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',cleanDuplicateDate);
+  }else{
+    cleanDuplicateDate();
+  }
+
+  new MutationObserver(cleanDuplicateDate).observe(
+    document.getElementById('timetableContent') || document.body,
+    {childList:true,subtree:true}
+  );
 })();
 </script>
 
