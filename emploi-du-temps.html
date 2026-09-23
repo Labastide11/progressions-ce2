@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Emploi du temps CE2 — Progressions CE2">
-<title>V37.03 — Emploi du temps CE2 — Progressions CE2</title>
+<title>V37.04 — Emploi du temps CE2 — Progressions CE2</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -139,7 +139,7 @@
 </style>
 
 <style id="edt-hide-duplicate-day-date-v3703">
-/* V37.03 — la date est déjà affichée dans l'en-tête de la vue du jour. */
+/* V37.04 — la date est déjà affichée dans l'en-tête de la vue du jour. */
 #timetableContent .day-detail-date,
 #timetableContent .day-view-date,
 #timetableContent .timetable-day-date,
@@ -217,7 +217,7 @@
 <script src="dictees-ce2.js?v=34.94"></script>
 
 <script id="dictation-visible-in-edt-v3692">
-/* V37.03 — Afficher la dictée réelle directement dans la séance du matin.
+/* V37.04 — Afficher la dictée réelle directement dans la séance du matin.
    Source unique : DICTEES_CE2. Aucun texte de dictée n'est dupliqué ici. */
 (function(){
   'use strict';
@@ -468,7 +468,7 @@ body.edt-session-modal-open{
 
 <script id="edt-session-modal-v3696">
 /*
- V37.03 — Ouverture de la séance complète dans une popup.
+ V37.04 — Ouverture de la séance complète dans une popup.
  La journée reste intacte derrière la modale.
 */
 (function(){
@@ -571,7 +571,7 @@ body.edt-session-modal-open{
       }
     });
 
-    // V37.03 — alléger les popups de séances de maths :
+    // V37.04 — alléger les popups de séances de maths :
     // masquer les blocs de programmation annuelle et la progression spiralaire
     // des fractions, trop volumineux pour une consultation ponctuelle.
     function removePopupSectionByTitle(regex){
@@ -624,8 +624,15 @@ body.edt-session-modal-open{
         el.style.display = 'none';
       }
 
-      if(/^Projection élèves$/i.test(t)){
+      if(/Projection\s+élèves/i.test(t)){
         el.style.display = 'none';
+      }
+    });
+
+    modalBody.querySelectorAll('button,a,[role="button"]').forEach(function(el){
+      var projectionLabel=String(el.textContent||'').replace(/\s+/g,' ').trim();
+      if(/Projection\s+élèves/i.test(projectionLabel)){
+        el.style.display='none';
       }
     });
 
