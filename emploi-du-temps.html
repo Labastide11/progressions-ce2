@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Emploi du temps CE2 — Progressions CE2">
-<title>V37.11 — Emploi du temps CE2 — Progressions CE2</title>
+<title>V37.12 — Emploi du temps CE2 — Progressions CE2</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -139,7 +139,7 @@
 </style>
 
 <style id="edt-hide-duplicate-day-date-v3703">
-/* V37.11 — la date est déjà affichée dans l'en-tête de la vue du jour. */
+/* V37.12 — la date est déjà affichée dans l'en-tête de la vue du jour. */
 #timetableContent .day-detail-date,
 #timetableContent .day-view-date,
 #timetableContent .timetable-day-date,
@@ -217,7 +217,7 @@
 <script src="dictees-ce2.js?v=34.94"></script>
 
 <script id="dictation-visible-in-edt-v3692">
-/* V37.11 — Afficher la dictée réelle directement dans la séance du matin.
+/* V37.12 — Afficher la dictée réelle directement dans la séance du matin.
    Source unique : DICTEES_CE2. Aucun texte de dictée n'est dupliqué ici. */
 (function(){
   'use strict';
@@ -468,7 +468,7 @@ body.edt-session-modal-open{
 
 <script id="edt-session-modal-v3696">
 /*
- V37.11 — Ouverture de la séance complète dans une popup.
+ V37.12 — Ouverture de la séance complète dans une popup.
  La journée reste intacte derrière la modale.
 */
 (function(){
@@ -571,7 +571,7 @@ body.edt-session-modal-open{
       }
     });
 
-    // V37.11 — alléger les popups de séances de maths :
+    // V37.12 — alléger les popups de séances de maths :
     // masquer les blocs de programmation annuelle et la progression spiralaire
     // des fractions, trop volumineux pour une consultation ponctuelle.
     function removePopupSectionByTitle(regex){
@@ -1001,7 +1001,7 @@ body.edt-session-modal-open{
   function enhance(){
     var root=document.getElementById('timetableContent') || document;
 
-    // V37.11 : jamais plus d'un bouton de projection des devinettes.
+    // V37.12 : jamais plus d'un bouton de projection des devinettes.
     var buttons=Array.from(root.querySelectorAll('.riddle-project-btn'));
     if(buttons.length>1){
       buttons.slice(1).forEach(function(btn){ btn.remove(); });
@@ -1090,13 +1090,12 @@ body.edt-session-modal-open{
 </script>
 
 
-<style id="lengths-drive-links-v3710-style">
+<style id="lengths-drive-links-v3712-style">
 .lengths-drive-links {
   display:flex;
   gap:8px;
   flex-wrap:wrap;
-  margin-top:8px;
-  margin-bottom:2px;
+  margin-top:10px;
 }
 .lengths-drive-link {
   display:inline-flex;
@@ -1116,7 +1115,7 @@ body.edt-session-modal-open{
 }
 </style>
 
-<script id="lengths-drive-links-v3710">
+<script id="lengths-drive-links-v3712">
 (function(){
   'use strict';
 
@@ -1124,6 +1123,8 @@ body.edt-session-modal-open{
     {label:'📄 Fiche élève', url:'https://drive.google.com/file/d/1YA7802YG7RAnDJ8_d2G7_LKxnEYYc7Qr/view'},
     {label:'✅ Corrigé couleur', url:'https://drive.google.com/file/d/1nKsPfMMvkojOIgpwjnvW30S6UDD9K985/view'}
   ];
+
+  var lengthsLinksScheduled = false;
 
   function cleanText(el){
     return String((el && el.textContent) || '').replace(/\s+/g,' ').trim();
@@ -1154,52 +1155,47 @@ body.edt-session-modal-open{
   }
 
   function findLengthsRow(root){
-    var selectors = ['tr','article','section','div'];
-    for(var s=0;s<selectors.length;s++){
-      var nodes = root.querySelectorAll(selectors[s]);
-      for(var i=0;i<nodes.length;i++){
-        var t = cleanText(nodes[i]);
-        if(/MES-P1-01/i.test(t) && /Mesurer une longueur en cm et mm/i.test(t)){
-          return nodes[i];
-        }
+    var rows = Array.from(root.querySelectorAll('tr, article, section, .timetable-row, .session-row, .day-row'));
+    for(var i=0;i<rows.length;i++){
+      var t = cleanText(rows[i]);
+      if(/MES-P1-01/i.test(t) && /Mesurer une longueur en cm et mm/i.test(t)){
+        return rows[i];
       }
     }
     return null;
   }
 
-  function findBestAnchor(row){
+  function findTargetCell(row){
     if(!row) return null;
 
-    var candidates = Array.from(row.querySelectorAll('td, .session-detail, .lesson-detail, .detail-content, .competence, .session-card, .lesson-card, p, div, span'));
-    for(var i=0;i<candidates.length;i++){
-      var t = cleanText(candidates[i]);
-      if(/^MES-P1-01/i.test(t) || /MES-P1-01/i.test(t)){
-        return candidates[i];
+    var cells = Array.from(row.querySelectorAll('td, .competence, .session-detail, .lesson-detail, .detail-content, .content'));
+    for(var i=0;i<cells.length;i++){
+      var t = cleanText(cells[i]);
+      if(/MES-P1-01/i.test(t)){
+        return cells[i];
       }
     }
 
-    return row.querySelector('td:nth-child(3), td:nth-child(4), .session-detail, .lesson-detail, .detail-content') || row;
+    return row.querySelector('td:nth-child(3), td:nth-child(4), .competence, .session-detail, .lesson-detail, .detail-content') || null;
   }
-
-  var lengthsLinksScheduled=false;
 
   function addLinks(){
     var root=document.getElementById('timetableContent') || document;
+    var existing=root.querySelector('#lengthsDriveLinksUnique');
+    if(existing) return;
 
-    // Si la paire correcte existe déjà, ne rien toucher.
-    if(root.querySelector('#lengthsDriveLinksUnique')) return;
+    removeAllBars(root);
 
     var row=findLengthsRow(root);
     if(!row) return;
 
-    // Nettoyer seulement d'anciens doublons résiduels, une seule fois.
-    removeAllBars(root);
-
-    var anchor=findBestAnchor(row);
-    if(!anchor) return;
+    var cell=findTargetCell(row);
+    if(!cell) return;
 
     var bar=makeBar();
-    anchor.insertAdjacentElement('afterend', bar);
+
+    // Insertion DANS la cellule, jamais entre les colonnes du tableau.
+    cell.appendChild(bar);
   }
 
   function scheduleAddLinks(){
