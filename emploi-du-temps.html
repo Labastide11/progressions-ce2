@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Emploi du temps CE2 — Progressions CE2">
-<title>V36.91 — Emploi du temps CE2 — Progressions CE2</title>
+<title>V36.92 — Emploi du temps CE2 — Progressions CE2</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -204,6 +204,123 @@
 <script src="data/calendrier-scolaire-2026-2027.js?v=34.64"></script>
 <script src="evenements-ecole.js?v=35.68"></script>
 <script src="dictees-ce2.js?v=34.94"></script>
+
+<script id="dictation-visible-in-edt-v3692">
+/* V36.92 — Afficher la dictée réelle directement dans la séance du matin.
+   Source unique : DICTEES_CE2. Aucun texte de dictée n'est dupliqué ici. */
+(function(){
+  'use strict';
+
+  function clean(s){
+    return String(s || '')
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g,'')
+      .replace(/\s+/g,' ')
+      .trim();
+  }
+
+  function words(v){
+    return Array.isArray(v) ? v.join(' · ') : String(v || '').trim();
+  }
+
+  function flashes(plan){
+    if(!plan) return [];
+    var src = Array.isArray(plan.flashes) ? plan.flashes :
+              (Array.isArray(plan.flash) ? plan.flash : []);
+    return src.map(function(item){
+      return Array.isArray(item) ? item[item.length - 1] : item;
+    }).filter(Boolean);
+  }
+
+  function frenchDate(label){
+    var months={
+      janvier:0,fevrier:1,février:1,mars:2,avril:3,mai:4,juin:5,
+      juillet:6,aout:7,août:7,septembre:8,octobre:9,novembre:10,
+      decembre:11,décembre:11
+    };
+    var s=clean(label).replace(/\b1er\b/g,'1');
+    var m=s.match(/(?:lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche)\s+(\d{1,2})\s+([a-z]+)\s+(\d{4})/);
+    if(!m || months[m[2]]===undefined) return null;
+    return new Date(Number(m[3]),months[m[2]],Number(m[1]),12,0,0);
+  }
+
+  function dictation(plan, date){
+    if(!plan || !date) return null;
+    var day=date.getDay(), fs=flashes(plan), label='Dictée du jour', value='';
+
+    if(day===1){
+      label='Dictée de mots';
+      value=words(plan.priority || plan.words);
+      if(/^pas de banque/i.test(value)) value=String(plan.note || '');
+    } else if(day===2){
+      value=fs[0] || plan.final || words(plan.words);
+    } else if(day===4){
+      value=fs[1] || fs[0] || plan.final || words(plan.words);
+    } else if(day===5){
+      value=fs[2] || fs[1] || fs[0] || plan.final || words(plan.words);
+      if(plan.final && value !== plan.final){
+        value += '<br><strong>⭐ Dictée bilan :</strong> ' + plan.final;
+      }
+    }
+
+    if(!value) return null;
+    return {
+      label: label,
+      theme: String(plan.theme || plan.support || ''),
+      value: value
+    };
+  }
+
+  function stripGeneric(text){
+    return String(text || '')
+      .replace(/(?:<br>\s*)?✍️\s*(?:<strong>)?Dictée du jour(?:<\/strong>)?\s*:\s*écrire la dictée(?:,\s*puis faire la correction juste en dessous\.?)?/gi,'')
+      .replace(/(?:<br>\s*)?✅\s*(?:<strong>)?Correction(?:<\/strong>)?\s*:\s*corriger juste en dessous\.?/gi,'')
+      .replace(/\s{2,}/g,' ')
+      .trim();
+  }
+
+  function enrich(){
+    var data=window.PROGRESSIONS_EDT_DATA || {};
+    var bank=window.DICTEES_CE2 || {};
+    var weeks=data.p1DetailedWeeks;
+    if(!Array.isArray(weeks) || !bank.p1) return;
+
+    weeks.forEach(function(week, wi){
+      if(!week || !Array.isArray(week.days)) return;
+      var plan=bank.p1[wi + 1];
+      if(!plan) return;
+
+      week.days.forEach(function(dayEntry){
+        if(!Array.isArray(dayEntry) || !Array.isArray(dayEntry[1])) return;
+        var date=frenchDate(dayEntry[0]);
+        var d=dictation(plan,date);
+        if(!d) return;
+
+        var row=dayEntry[1].find(function(r){
+          return Array.isArray(r) && /^9h/.test(String(r[0]||'')) &&
+                 !/évaluation nationale/i.test(String(r[1]||'')+' '+String(r[2]||''));
+        });
+        if(!row) return;
+
+        var base=stripGeneric(row[2]);
+        var theme=d.theme ? ' — ' + d.theme : '';
+        var block =
+          '<br><br>✍️ <strong>' + d.label + theme + '</strong>' +
+          '<br><span class="dictation-exact">' + d.value + '</span>' +
+          '<br>✅ <strong>Correction :</strong> juste en dessous dans le cahier du jour.';
+
+        if(clean(base).indexOf(clean(d.value.replace(/<[^>]+>/g,' ')))===-1){
+          row[2]=base + block;
+        }
+      });
+    });
+  }
+
+  enrich();
+})();
+</script>
+
 <script src="emploi-du-temps-ui.js?v=36.72"></script>
 
 <script>
