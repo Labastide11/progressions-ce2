@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Emploi du temps CE2 — Progressions CE2">
-<title>V36.95 — Emploi du temps CE2 — Progressions CE2</title>
+<title>V36.96 — Emploi du temps CE2 — Progressions CE2</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -206,7 +206,7 @@
 <script src="dictees-ce2.js?v=34.94"></script>
 
 <script id="dictation-visible-in-edt-v3692">
-/* V36.95 — Afficher la dictée réelle directement dans la séance du matin.
+/* V36.96 — Afficher la dictée réelle directement dans la séance du matin.
    Source unique : DICTEES_CE2. Aucun texte de dictée n'est dupliqué ici. */
 (function(){
   'use strict';
@@ -371,228 +371,205 @@
 
 
 
-<style id="edt-inline-session-v3695-style">
-.edt-inline-full-session{
-  margin:12px 0 16px;
-  border:2px solid #8b78e8;
-  border-radius:16px;
-  overflow:hidden;
-  background:#fff;
-  box-shadow:0 6px 18px rgba(63,49,135,.12);
+
+<style id="edt-session-modal-v3696-style">
+.edt-session-modal{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:rgba(18,32,51,.58);
+  backdrop-filter:blur(2px);
 }
-.edt-inline-full-session__bar{
-  position:sticky;
-  top:60px;
-  z-index:6;
+.edt-session-modal.is-open{display:flex;}
+.edt-session-modal__dialog{
+  width:min(1500px,96vw);
+  height:min(92vh,1000px);
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 20px 60px rgba(0,0,0,.28);
+}
+.edt-session-modal__bar{
+  flex:0 0 auto;
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:12px;
-  padding:10px 14px;
+  padding:11px 16px;
   background:#f3f0ff;
-  border-bottom:1px solid #d7cffb;
+  border-bottom:1px solid #d8d0fb;
 }
-.edt-inline-full-session__title{
+.edt-session-modal__title{
   font-weight:900;
   color:#49399a;
+  font-size:16px;
 }
-.edt-inline-full-session__close{
-  border:1px solid #8b78e8;
+.edt-session-modal__close{
+  border:1px solid #806be0;
   border-radius:10px;
-  padding:7px 12px;
+  padding:8px 13px;
   background:#fff;
   color:#49399a;
   font-weight:900;
   cursor:pointer;
 }
-.edt-inline-full-session__body{
-  padding:8px 10px 18px;
+.edt-session-modal__body{
+  flex:1 1 auto;
+  overflow:auto;
+  padding:0;
   background:#fff;
 }
-.edt-inline-full-session__body > *{
+.edt-session-modal__body > *{
   max-width:none !important;
 }
-.edt-inline-full-session .edt-inline-hide-return{
-  display:none!important;
+.edt-session-modal__body a,
+.edt-session-modal__body button{
+  scroll-margin-top:20px;
+}
+body.edt-session-modal-open{
+  overflow:hidden!important;
+}
+@media(max-width:800px){
+  .edt-session-modal{padding:8px;}
+  .edt-session-modal__dialog{
+    width:98vw;
+    height:95vh;
+    border-radius:12px;
+  }
 }
 </style>
 
-<script id="edt-inline-session-v3695">
+<div id="edtSessionModal" class="edt-session-modal" aria-hidden="true">
+  <div class="edt-session-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="edtSessionModalTitle">
+    <div class="edt-session-modal__bar">
+      <div id="edtSessionModalTitle" class="edt-session-modal__title">📘 Séance complète</div>
+      <button id="edtSessionModalClose" class="edt-session-modal__close" type="button">✕ Fermer</button>
+    </div>
+    <div id="edtSessionModalBody" class="edt-session-modal__body"></div>
+  </div>
+</div>
+
+<script id="edt-session-modal-v3696">
 /*
- V36.95 — La séance complète ne remplace plus la journée.
- Principe :
- 1. conserver les vrais nœuds de la journée (donc leurs événements et leur état) ;
- 2. laisser le code historique générer la séance complète ;
- 3. récupérer ce rendu ;
- 4. remettre les nœuds de la journée ;
- 5. placer la séance complète juste sous le bouton qui l'a ouverte.
+ V36.96 — Ouverture de la séance complète dans une popup.
+ La journée reste intacte derrière la modale.
 */
 (function(){
   'use strict';
 
   var busy = false;
-  var openPanels = new WeakMap();
+  var modal = document.getElementById('edtSessionModal');
+  var modalBody = document.getElementById('edtSessionModalBody');
+  var closeBtn = document.getElementById('edtSessionModalClose');
+  var previousScrollY = 0;
 
-  function cleanText(el){
+  function txt(el){
     return String(el && el.textContent || '').replace(/\s+/g,' ').trim();
   }
 
   function isOpenButton(el){
-    return !!el && /ouvrir la séance complète/i.test(cleanText(el));
+    return !!el && /ouvrir la séance complète/i.test(txt(el));
   }
 
   function findButton(target){
     if(!target || !target.closest) return null;
     var el = target.closest('button,a,[role="button"]');
-    if(el && isOpenButton(el)) return el;
-    return null;
+    return isOpenButton(el) ? el : null;
   }
 
-  function contentRoot(){
+  function root(){
     return document.getElementById('timetableContent');
   }
 
-  function setLabel(btn, opened){
-    if(!btn) return;
-    btn.setAttribute('aria-expanded', opened ? 'true' : 'false');
+  function openModal(nodes){
+    modalBody.innerHTML = '';
+    nodes.forEach(function(node){
+      modalBody.appendChild(node);
+    });
 
-    var txt = opened ? ' Masquer la séance complète' : ' Ouvrir la séance complète';
-    var changed = false;
-
-    Array.from(btn.childNodes).forEach(function(n){
-      if(!changed && n.nodeType === 3 && /séance complète/i.test(n.textContent || '')){
-        n.textContent = txt;
-        changed = true;
+    // Masquer le bouton historique "Retour à la semaine/journée" dans la popup
+    modalBody.querySelectorAll('button,a').forEach(function(el){
+      if(/retour à la semaine|retour à la journée/i.test(txt(el))){
+        el.style.display = 'none';
       }
     });
 
-    if(!changed && btn.children.length === 0){
-      btn.textContent = opened ? '▴ Masquer la séance complète' : '🟪 Ouvrir la séance complète';
+    previousScrollY = window.scrollY;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('edt-session-modal-open');
+    modalBody.scrollTop = 0;
+  }
+
+  function closeModal(){
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('edt-session-modal-open');
+    modalBody.innerHTML = '';
+    window.scrollTo({top:previousScrollY, behavior:'auto'});
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', function(e){
+    if(e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && modal.classList.contains('is-open')){
+      closeModal();
     }
-  }
+  });
 
-  function closePanel(btn){
-    var panel = openPanels.get(btn);
-    if(panel && panel.parentNode) panel.remove();
-    openPanels.delete(btn);
-    setLabel(btn,false);
-  }
+  document.addEventListener('click', function(e){
+    var btn = findButton(e.target);
+    if(!btn || busy) return;
 
-  function placePanel(btn, generatedNodes){
-    var panel = document.createElement('section');
-    panel.className = 'edt-inline-full-session';
-
-    var bar = document.createElement('div');
-    bar.className = 'edt-inline-full-session__bar';
-
-    var title = document.createElement('div');
-    title.className = 'edt-inline-full-session__title';
-    title.textContent = '📘 Séance complète';
-
-    var close = document.createElement('button');
-    close.type = 'button';
-    close.className = 'edt-inline-full-session__close';
-    close.textContent = 'Masquer la séance';
-
-    bar.appendChild(title);
-    bar.appendChild(close);
-
-    var body = document.createElement('div');
-    body.className = 'edt-inline-full-session__body';
-
-    generatedNodes.forEach(function(node){
-      body.appendChild(node);
-    });
-
-    panel.appendChild(bar);
-    panel.appendChild(body);
-
-    // Retirer visuellement le bouton historique "Retour à la journée"
-    // s'il existe dans le rendu détaillé.
-    body.querySelectorAll('button,a').forEach(function(el){
-      if(/retour à la journée/i.test(cleanText(el))){
-        el.classList.add('edt-inline-hide-return');
-      }
-    });
-
-    var anchor = btn.closest('.session-resource-action,.resource-action,.lesson-action') || btn;
-    anchor.insertAdjacentElement('afterend', panel);
-
-    openPanels.set(btn,panel);
-    setLabel(btn,true);
-
-    close.addEventListener('click',function(e){
-      e.preventDefault();
-      e.stopPropagation();
-      closePanel(btn);
-      btn.scrollIntoView({block:'nearest'});
-    });
-
-    return panel;
-  }
-
-  function captureAndRestore(btn, e){
-    if(busy) return;
-
-    var root = contentRoot();
-    if(!root) return;
-
-    // Un second clic masque simplement la séance.
-    if(openPanels.has(btn)){
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      closePanel(btn);
-      return;
-    }
+    var content = root();
+    if(!content) return;
 
     busy = true;
 
-    // Empêche uniquement une éventuelle navigation native d'un <a>.
-    // Les gestionnaires JavaScript déjà existants continuent, eux, à s'exécuter.
+    // Empêche seulement une navigation native de <a>.
+    // Les gestionnaires JS du site continuent à tourner.
     if(btn.tagName === 'A') e.preventDefault();
 
+    // On retire temporairement les vrais nœuds de la journée.
+    // Ils restent intacts (événements, selects, états).
     var saved = document.createDocumentFragment();
-    while(root.firstChild){
-      saved.appendChild(root.firstChild);
+    while(content.firstChild){
+      saved.appendChild(content.firstChild);
     }
 
-    var scrollY = window.scrollY;
-
     function finish(attempt){
-      // Le code existant peut rendre la fiche immédiatement ou avec un léger délai.
-      if(root.childNodes.length === 0 && attempt < 8){
+      if(content.childNodes.length === 0 && attempt < 10){
         window.setTimeout(function(){ finish(attempt+1); }, 35);
         return;
       }
 
       var generated = [];
-      while(root.firstChild){
-        generated.push(root.removeChild(root.firstChild));
+      while(content.firstChild){
+        generated.push(content.removeChild(content.firstChild));
       }
 
-      // Remet exactement les nœuds de la journée : pas de clone,
-      // donc les événements, selects, statuts et états restent conservés.
-      root.appendChild(saved);
+      // Restaurer immédiatement la journée
+      content.appendChild(saved);
 
       if(generated.length){
-        placePanel(btn,generated);
-      }else{
-        // Sécurité : si aucun rendu n'a été produit, la journée reste intacte.
-        setLabel(btn,false);
+        openModal(generated);
       }
 
-      window.scrollTo({top:scrollY,behavior:'auto'});
       busy = false;
     }
 
-    window.setTimeout(function(){ finish(0); },0);
-  }
-
-  document.addEventListener('click',function(e){
-    var btn = findButton(e.target);
-    if(!btn) return;
-    captureAndRestore(btn,e);
-  },true);
+    window.setTimeout(function(){ finish(0); }, 0);
+  }, true);
 })();
 </script>
 
