@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>V36.51 — Emploi du temps simplifié CE2</title>
+<title>V37.02 — Emploi du temps simplifié — Progressions CE2</title>
 
 <link href="styles.css?v=35.40" rel="stylesheet">
 <link href="emploi-du-temps.css?v=36.31" rel="stylesheet">
@@ -54,8 +54,12 @@
   }
   .simple-time{padding:17px 16px;font-size:21px;font-weight:950;background:#eef4f8;display:flex;align-items:center}
   .simple-subject{padding:17px 18px;font-size:20px;font-weight:950;display:flex;align-items:center;border-left:1px solid #dde8ef}
-  .simple-activity{padding:17px 20px;font-size:19px;line-height:1.4;display:flex;align-items:center;border-left:1px solid #dde8ef}
+  .simple-activity{padding:17px 20px;font-size:19px;line-height:1.5;display:block;border-left:1px solid #dde8ef}
   .simple-activity strong{font-weight:900}
+  /* V37.02 — conserver les sauts de ligne et aérer les activités */
+  .simple-activity br{display:block;content:"";margin-top:.26em}
+  .simple-activity strong{font-weight:900}
+  .simple-activity em{font-style:italic}
   .simple-row.break .simple-time,.simple-row.break .simple-subject,.simple-row.break .simple-activity{background:#f5f0e6}
   .simple-row.break .simple-subject{color:#745f35}
   .empty{
@@ -147,7 +151,7 @@
   </main>
 </div>
 
-<script src="emploi-du-temps-data-p1.js?v=36.49"></script>
+<script src="emploi-du-temps-data-p1.js?v=37.02"></script>
 <script src="emploi-du-temps-data-p2.js?v=36.06"></script>
 <script src="emploi-du-temps-data-p3.js?v=36.06"></script>
 <script src="emploi-du-temps-data-p4.js?v=36.06"></script>
@@ -173,10 +177,21 @@
   function isoDate(d){
     return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
   }
-  function plainText(html){
+  function readableHtml(html){
     var tmp=document.createElement('div');
     tmp.innerHTML=String(html||'');
-    return (tmp.textContent||tmp.innerText||'').replace(/\s+/g,' ').trim();
+
+    Array.from(tmp.querySelectorAll('*')).forEach(function(el){
+      var tag=el.tagName.toLowerCase();
+      if(['br','strong','b','em','i'].indexOf(tag)===-1){
+        el.replaceWith(document.createTextNode(el.textContent||''));
+      }
+    });
+
+    return tmp.innerHTML
+      .replace(/\s*<br\s*\/?>\s*/gi,'<br>')
+      .replace(/(?:<br>){3,}/gi,'<br><br>')
+      .trim();
   }
 
   function collectDays(){
@@ -243,7 +258,7 @@
       if(!Array.isArray(row))return;
       var time=row[0]||'';
       var subject=row[1]||'';
-      var activity=plainText(row[2]||'');
+      var activity=readableHtml(row[2]||'');
       var kind=row[4]||'common';
 
       function pictoFor(subject,kind){
@@ -282,7 +297,22 @@
       el.children[0].textContent=time;
       el.querySelector('.subject-picto').textContent=pictoFor(subject,kind);
       el.querySelector('.subject-label').textContent=subject;
-      el.children[2].textContent=activity;
+      el.children[2].innerHTML=activity;
+
+      var activityEl=el.children[2];
+      if(activityEl && !/<br\s*\/?>/i.test(activity)){
+        var h=activityEl.innerHTML;
+        h=h
+          .replace(/\s*(💬\s*Rituel\s*:)/g,'<br><br>$1')
+          .replace(/\s*(✍️\s*Dictée du jour\s*:)/g,'<br><br>$1')
+          .replace(/\s*(✅\s*Correction\s*:)/g,'<br>$1')
+          .replace(/\s*(🔎\s*Travail ciblé\s*:)/g,'<br><br>$1')
+          .replace(/\s*(🎯\s*Objectif\s*:)/g,'<br>$1')
+          .replace(/\s*(🧰\s*Matériel\s*:)/g,'<br>$1')
+          .replace(/\s*([1-4]\.\s*(?:Question|Manipulation|Observation|Trace)\s*[—-]\s*\d+\s*min)/g,'<br><br><strong>$1</strong><br>');
+        activityEl.innerHTML=h.replace(/^(?:<br>)+/i,'');
+      }
+
       grid.appendChild(el);
     });
 
