@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Emploi du temps CE2 — Progressions CE2">
-<title>V36.96 — Emploi du temps CE2 — Progressions CE2</title>
+<title>V36.97 — Emploi du temps CE2 — Progressions CE2</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -206,7 +206,7 @@
 <script src="dictees-ce2.js?v=34.94"></script>
 
 <script id="dictation-visible-in-edt-v3692">
-/* V36.96 — Afficher la dictée réelle directement dans la séance du matin.
+/* V36.97 — Afficher la dictée réelle directement dans la séance du matin.
    Source unique : DICTEES_CE2. Aucun texte de dictée n'est dupliqué ici. */
 (function(){
   'use strict';
@@ -457,7 +457,7 @@ body.edt-session-modal-open{
 
 <script id="edt-session-modal-v3696">
 /*
- V36.96 — Ouverture de la séance complète dans une popup.
+ V36.97 — Ouverture de la séance complète dans une popup.
  La journée reste intacte derrière la modale.
 */
 (function(){
@@ -487,11 +487,65 @@ body.edt-session-modal-open{
     return document.getElementById('timetableContent');
   }
 
+  function removeIrrelevantDictationBlocks(){
+    var allText = String(modalBody.textContent || '').replace(/\s+/g,' ').trim();
+
+    // On lit le titre principal de la séance complète.
+    var heading = modalBody.querySelector('h1,h2,.lesson-title,.session-title');
+    var title = String(heading ? heading.textContent : '').replace(/\s+/g,' ').trim();
+
+    // Le corpus de dictée n'est pertinent que pour une séance explicitement
+    // consacrée à la dictée ou à l'orthographe.
+    var keepDictation = /dictée|orthographe/i.test(title);
+    if(keepDictation) return;
+
+    function removeClosestBlock(el){
+      if(!el) return;
+      var block = el.closest(
+        'section,article,.card,.lesson-card,.session-card,.detail-card,' +
+        '.fiche-card,.teacher-card,.resource-card,.panel,.box'
+      );
+      if(block && block !== modalBody){
+        block.remove();
+      }else{
+        // Repli sûr si le titre n'est pas enveloppé dans une carte identifiable.
+        var parent = el.parentElement;
+        if(parent && parent !== modalBody) parent.remove();
+      }
+    }
+
+    Array.from(modalBody.querySelectorAll('h1,h2,h3,h4,h5,strong,b,div,p')).forEach(function(el){
+      var t = String(el.textContent || '').replace(/\s+/g,' ').trim();
+
+      if(
+        /^Dictée\s*[—-]\s*semaine/i.test(t) ||
+        /^Corpus Charivari intégré/i.test(t) ||
+        /^Dictée finale originale/i.test(t)
+      ){
+        removeClosestBlock(el);
+      }
+    });
+
+    // Nettoyage de petits restes éventuels ("Voir le détail", bandeau dictée...)
+    Array.from(modalBody.querySelectorAll('*')).forEach(function(el){
+      var t = String(el.textContent || '').replace(/\s+/g,' ').trim();
+      if(
+        /^Voir le détail$/i.test(t) ||
+        (/^Dictée\s*[—-]\s*semaine/i.test(t) && t.length < 220)
+      ){
+        var c = el.closest('section,article,.card,.resource-card,.panel,.box');
+        if(c && c !== modalBody) c.remove();
+      }
+    });
+  }
+
   function openModal(nodes){
     modalBody.innerHTML = '';
     nodes.forEach(function(node){
       modalBody.appendChild(node);
     });
+
+    removeIrrelevantDictationBlocks();
 
     // Masquer le bouton historique "Retour à la semaine/journée" dans la popup
     modalBody.querySelectorAll('button,a').forEach(function(el){
