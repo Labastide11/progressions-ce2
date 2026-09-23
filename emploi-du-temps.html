@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Emploi du temps CE2 — Progressions CE2">
-<title>V36.98 — Emploi du temps CE2 — Progressions CE2</title>
+<title>V36.99 — Emploi du temps CE2 — Progressions CE2</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -206,7 +206,7 @@
 <script src="dictees-ce2.js?v=34.94"></script>
 
 <script id="dictation-visible-in-edt-v3692">
-/* V36.98 — Afficher la dictée réelle directement dans la séance du matin.
+/* V36.99 — Afficher la dictée réelle directement dans la séance du matin.
    Source unique : DICTEES_CE2. Aucun texte de dictée n'est dupliqué ici. */
 (function(){
   'use strict';
@@ -457,7 +457,7 @@ body.edt-session-modal-open{
 
 <script id="edt-session-modal-v3696">
 /*
- V36.98 — Ouverture de la séance complète dans une popup.
+ V36.99 — Ouverture de la séance complète dans une popup.
  La journée reste intacte derrière la modale.
 */
 (function(){
@@ -488,53 +488,75 @@ body.edt-session-modal-open{
   }
 
   function removeIrrelevantDictationBlocks(){
-    var allText = String(modalBody.textContent || '').replace(/\s+/g,' ').trim();
-
-    // On lit le titre principal de la séance complète.
     var heading = modalBody.querySelector('h1,h2,.lesson-title,.session-title');
     var title = String(heading ? heading.textContent : '').replace(/\s+/g,' ').trim();
 
-    // Le corpus de dictée n'est pertinent que pour une séance explicitement
-    // consacrée à la dictée ou à l'orthographe.
-    var keepDictation = /dictée|orthographe/i.test(title);
-    if(keepDictation) return;
+    // Le corpus reste uniquement pour une séance explicitement consacrée
+    // à la dictée ou à l'orthographe.
+    if(/dictée|orthographe/i.test(title)) return;
 
-    function removeClosestBlock(el){
-      if(!el) return;
-      var block = el.closest(
-        'section,article,.card,.lesson-card,.session-card,.detail-card,' +
-        '.fiche-card,.teacher-card,.resource-card,.panel,.box'
-      );
-      if(block && block !== modalBody){
-        block.remove();
-      }else{
-        // Repli sûr si le titre n'est pas enveloppé dans une carte identifiable.
-        var parent = el.parentElement;
-        if(parent && parent !== modalBody) parent.remove();
-      }
+    function ownText(el){
+      return String(el && el.textContent || '').replace(/\s+/g,' ').trim();
     }
 
-    Array.from(modalBody.querySelectorAll('h1,h2,h3,h4,h5,strong,b,div,p')).forEach(function(el){
-      var t = String(el.textContent || '').replace(/\s+/g,' ').trim();
+    function looksLikeDictationOnly(el){
+      var t = ownText(el);
+      if(!t) return false;
 
-      if(
+      var hasDictation =
+        /Dictée\s*[—-]\s*semaine/i.test(t) ||
+        /Corpus Charivari intégré/i.test(t) ||
+        /Dictée finale originale/i.test(t);
+
+      if(!hasDictation) return false;
+
+      // Sécurité : ne jamais supprimer un gros conteneur qui contient
+      // aussi les parties essentielles de la séance.
+      var hasLessonContent =
+        /Objectifs/i.test(t) ||
+        /Déroulement enseignant/i.test(t) ||
+        /Projection élèves/i.test(t) ||
+        /Matériel/i.test(t) ||
+        /Étape|Etape/i.test(t);
+
+      return !hasLessonContent;
+    }
+
+    Array.from(modalBody.querySelectorAll('h1,h2,h3,h4,h5,strong,b,p,div')).forEach(function(el){
+      var t = ownText(el);
+
+      var isTarget =
         /^Dictée\s*[—-]\s*semaine/i.test(t) ||
         /^Corpus Charivari intégré/i.test(t) ||
-        /^Dictée finale originale/i.test(t)
-      ){
-        removeClosestBlock(el);
+        /^Dictée finale originale/i.test(t);
+
+      if(!isTarget) return;
+
+      var node = el;
+      var candidate = null;
+
+      for(var i=0; i<4 && node && node !== modalBody; i++){
+        if(looksLikeDictationOnly(node)){
+          candidate = node;
+        }
+        node = node.parentElement;
+      }
+
+      if(candidate && candidate !== modalBody){
+        candidate.remove();
+      } else {
+        // Repli sûr : on masque seulement le texte ciblé.
+        el.style.display = 'none';
       }
     });
 
-    // Nettoyage de petits restes éventuels ("Voir le détail", bandeau dictée...)
-    Array.from(modalBody.querySelectorAll('*')).forEach(function(el){
-      var t = String(el.textContent || '').replace(/\s+/g,' ').trim();
-      if(
-        /^Voir le détail$/i.test(t) ||
-        (/^Dictée\s*[—-]\s*semaine/i.test(t) && t.length < 220)
-      ){
-        var c = el.closest('section,article,.card,.resource-card,.panel,.box');
-        if(c && c !== modalBody) c.remove();
+    Array.from(modalBody.querySelectorAll('a,button')).forEach(function(el){
+      var t = ownText(el);
+      if(/^Voir le détail$/i.test(t)){
+        var parentText = ownText(el.parentElement);
+        if(/Dictée|Charivari/i.test(parentText)){
+          el.style.display = 'none';
+        }
       }
     });
   }
