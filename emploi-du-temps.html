@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Emploi du temps CE2 — Progressions CE2">
-<title>V37.04 — Emploi du temps CE2 — Progressions CE2</title>
+<title>V37.05 — Emploi du temps CE2 — Progressions CE2</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -139,7 +139,7 @@
 </style>
 
 <style id="edt-hide-duplicate-day-date-v3703">
-/* V37.04 — la date est déjà affichée dans l'en-tête de la vue du jour. */
+/* V37.05 — la date est déjà affichée dans l'en-tête de la vue du jour. */
 #timetableContent .day-detail-date,
 #timetableContent .day-view-date,
 #timetableContent .timetable-day-date,
@@ -217,7 +217,7 @@
 <script src="dictees-ce2.js?v=34.94"></script>
 
 <script id="dictation-visible-in-edt-v3692">
-/* V37.04 — Afficher la dictée réelle directement dans la séance du matin.
+/* V37.05 — Afficher la dictée réelle directement dans la séance du matin.
    Source unique : DICTEES_CE2. Aucun texte de dictée n'est dupliqué ici. */
 (function(){
   'use strict';
@@ -468,7 +468,7 @@ body.edt-session-modal-open{
 
 <script id="edt-session-modal-v3696">
 /*
- V37.04 — Ouverture de la séance complète dans une popup.
+ V37.05 — Ouverture de la séance complète dans une popup.
  La journée reste intacte derrière la modale.
 */
 (function(){
@@ -571,7 +571,7 @@ body.edt-session-modal-open{
       }
     });
 
-    // V37.04 — alléger les popups de séances de maths :
+    // V37.05 — alléger les popups de séances de maths :
     // masquer les blocs de programmation annuelle et la progression spiralaire
     // des fractions, trop volumineux pour une consultation ponctuelle.
     function removePopupSectionByTitle(regex){
@@ -744,6 +744,236 @@ body.edt-session-modal-open{
   }
 
   new MutationObserver(cleanDuplicateDate).observe(
+    document.getElementById('timetableContent') || document.body,
+    {childList:true,subtree:true}
+  );
+})();
+</script>
+
+
+<style id="riddle-projection-v3705-style">
+.riddle-project-btn{
+  margin-top:10px;
+  border:0;
+  border-radius:10px;
+  padding:8px 12px;
+  background:#5a47c8;
+  color:#fff;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 3px 8px rgba(68,50,150,.18);
+}
+.riddle-project-btn:hover{filter:brightness(1.05)}
+.riddle-project-modal{
+  position:fixed;
+  inset:0;
+  z-index:12000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:rgba(13,28,45,.72);
+}
+.riddle-project-modal.is-open{display:flex}
+.riddle-project-dialog{
+  width:min(1100px,94vw);
+  max-height:92vh;
+  overflow:auto;
+  background:#fff;
+  border-radius:20px;
+  box-shadow:0 22px 70px rgba(0,0,0,.35);
+}
+.riddle-project-head{
+  position:sticky;
+  top:0;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:16px 20px;
+  background:#f3f0ff;
+  border-bottom:1px solid #d8d0fb;
+}
+.riddle-project-head strong{
+  font-size:24px;
+  color:#42348e;
+}
+.riddle-project-close{
+  border:1px solid #7c69dd;
+  background:#fff;
+  color:#42348e;
+  border-radius:10px;
+  padding:8px 12px;
+  font-weight:900;
+  cursor:pointer;
+}
+.riddle-project-body{
+  padding:26px;
+}
+.riddle-project-card{
+  margin:0 0 18px;
+  padding:22px 24px;
+  border:2px solid #d9d4fb;
+  border-radius:16px;
+  background:#faf9ff;
+  font-size:26px;
+  line-height:1.45;
+  font-weight:750;
+}
+.riddle-project-num{
+  display:inline-flex;
+  width:38px;
+  height:38px;
+  align-items:center;
+  justify-content:center;
+  margin-right:10px;
+  border-radius:50%;
+  background:#5a47c8;
+  color:#fff;
+  font-weight:950;
+}
+.riddle-project-footer{
+  margin-top:8px;
+  text-align:center;
+  color:#68768a;
+  font-size:16px;
+  font-weight:700;
+}
+@media(max-width:800px){
+  .riddle-project-card{font-size:21px}
+}
+</style>
+
+<div id="riddleProjectModal" class="riddle-project-modal" aria-hidden="true">
+  <div class="riddle-project-dialog" role="dialog" aria-modal="true" aria-labelledby="riddleProjectTitle">
+    <div class="riddle-project-head">
+      <strong id="riddleProjectTitle">🧩 Les devinettes du jour</strong>
+      <button id="riddleProjectClose" class="riddle-project-close" type="button">✕ Fermer</button>
+    </div>
+    <div id="riddleProjectBody" class="riddle-project-body"></div>
+  </div>
+</div>
+
+<script id="riddle-projection-v3705">
+(function(){
+  'use strict';
+
+  var modal=document.getElementById('riddleProjectModal');
+  var body=document.getElementById('riddleProjectBody');
+  var closeBtn=document.getElementById('riddleProjectClose');
+
+  function cleanText(s){
+    return String(s||'').replace(/\s+/g,' ').trim();
+  }
+
+  function extractRiddles(container){
+    if(!container) return [];
+    var txt=container.innerText || container.textContent || '';
+    var lines=txt.split(/\n+/).map(cleanText).filter(Boolean);
+    var out=[];
+
+    lines.forEach(function(line){
+      var m=line.match(/^([1-3])\)\s*(.+)$/);
+      if(!m) return;
+
+      // Pour la projection élèves, on masque volontairement le mot-réponse
+      // placé avant les deux-points, s'il est présent.
+      var content=m[2].replace(/^[^:]{1,40}\s*:\s*/, '');
+      out.push({n:m[1], text:content});
+    });
+
+    return out;
+  }
+
+  function openProjection(source){
+    var riddles=extractRiddles(source);
+    if(!riddles.length) return;
+
+    body.innerHTML='';
+    riddles.forEach(function(r){
+      var card=document.createElement('div');
+      card.className='riddle-project-card';
+
+      var num=document.createElement('span');
+      num.className='riddle-project-num';
+      num.textContent=r.n;
+
+      var text=document.createElement('span');
+      text.textContent=r.text;
+
+      card.appendChild(num);
+      card.appendChild(text);
+      body.appendChild(card);
+    });
+
+    var foot=document.createElement('div');
+    foot.className='riddle-project-footer';
+    foot.textContent='Cherche les indices avant de proposer une réponse.';
+    body.appendChild(foot);
+
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden','false');
+  }
+
+  function closeProjection(){
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden','true');
+    body.innerHTML='';
+  }
+
+  closeBtn.addEventListener('click',closeProjection);
+  modal.addEventListener('click',function(e){
+    if(e.target===modal) closeProjection();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape' && modal.classList.contains('is-open')) closeProjection();
+  });
+
+  function enhance(){
+    var root=document.getElementById('timetableContent') || document;
+
+    root.querySelectorAll('*').forEach(function(el){
+      if(el.dataset && el.dataset.riddleProjectionEnhanced==='1') return;
+
+      var t=cleanText(el.textContent);
+      if(!/Rituel\s*:\s*Rituel Devinette/i.test(t)) return;
+      if(!/1\)/.test(t) || !/2\)/.test(t) || !/3\)/.test(t)) return;
+
+      // Chercher le plus petit conteneur utile, sans remonter jusqu'à toute la ligne.
+      var source=el;
+      while(
+        source.parentElement &&
+        source.parentElement !== root &&
+        cleanText(source.parentElement.textContent).length < 1400
+      ){
+        source=source.parentElement;
+      }
+
+      if(source.querySelector && source.querySelector('.riddle-project-btn')) return;
+
+      var btn=document.createElement('button');
+      btn.type='button';
+      btn.className='riddle-project-btn';
+      btn.textContent='📺 Projeter les devinettes';
+      btn.addEventListener('click',function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        openProjection(source);
+      });
+
+      source.appendChild(btn);
+      if(source.dataset) source.dataset.riddleProjectionEnhanced='1';
+    });
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',enhance);
+  }else{
+    enhance();
+  }
+
+  new MutationObserver(enhance).observe(
     document.getElementById('timetableContent') || document.body,
     {childList:true,subtree:true}
   );
