@@ -1,6 +1,6 @@
-// V37.15 — P1 : aides concrètes pour les familles du 7 au 16/10 ; retrait des sciences des devoirs/évaluations de fin de P1.
+// V37.16 — P1 : traduction parent distincte du référentiel enseignant ; aides concrètes pour les évaluations.
 window.DEVOIRS_P1 = {
-  "version": "37.15",
+  "version": "37.16",
   "period": "p1",
   "schoolYear": "2026-2027",
   "principles": {
@@ -22,7 +22,8 @@ window.DEVOIRS_P1 = {
     "autonomyRule": "Le cahier est une aide, jamais une condition : chaque devoir propose une solution de repli sans cahier.",
     "syncRule": "Les devoirs P1 sont alignés sur emploi-du-temps-data-p1.js V37.14. Le rituel maths renforce uniquement des apprentissages déjà travaillés en classe.",
     "writtenWorkRule": "Le travail écrit reste exceptionnel : en P1, seul le rituel maths demande d’écrire un nombre en lettres et de calculer une addition. Environ 5 minutes.",
-    "mathRitualRule": "À partir du jeudi 17 septembre : rituel maths court, en principe deux fois par semaine hors journées d’évaluation. Toujours la même structure : 1 nombre jusqu’à 999 à écrire en lettres + 1 addition à calculer."
+    "mathRitualRule": "À partir du jeudi 17 septembre : rituel maths court, en principe deux fois par semaine hors journées d’évaluation. Toujours la même structure : 1 nombre jusqu’à 999 à écrire en lettres + 1 addition à calculer.",
+    "parentLanguageRule": "Le référentiel enseignant conserve le jargon pédagogique. L’Espace Parents affiche une traduction claire : ce qu’il faut connaître, ce qu’il faut savoir faire, un exemple et une préparation concrète."
   },
   "weeks": [
     {
@@ -458,7 +459,18 @@ window.DEVOIRS_P1 = {
                 "construire et lire une frise chronologique",
                 "reconnaître les grandes périodes historiques"
               ],
-              "preparation": "Revoir simplement la frise et le nom des grandes périodes. Quelques minutes suffisent."
+              "preparation": "Demandez à votre enfant de réciter le nom des grandes périodes puis de remettre 3 événements dans l’ordre.",
+              "parentTitle": "Frise chronologique — se repérer dans le temps",
+              "parentKnow": [
+                "connaître le nom des grandes périodes historiques",
+                "comprendre qu’une frise sert à placer des événements dans le temps"
+              ],
+              "parentCanDo": [
+                "remettre des événements dans l’ordre chronologique",
+                "lire une date sur une frise",
+                "retrouver la période historique correspondant à une date"
+              ],
+              "parentExample": "2018 — naissance d’un frère ; 2022 — voyage ; 2026 — aujourd’hui : remettre ces événements dans l’ordre sur une frise."
             },
             {
               "date": "2026-10-06",
@@ -469,7 +481,16 @@ window.DEVOIRS_P1 = {
                 "identifier les personnages",
                 "retrouver une information explicite"
               ],
-              "preparation": "Relire tranquillement un petit texte et s’entraîner à retrouver les informations écrites clairement."
+              "preparation": "Lisez un petit texte puis posez 2 ou 3 questions dont la réponse est écrite clairement.",
+              "parentTitle": "Compréhension — retrouver les informations dans un texte",
+              "parentKnow": [
+                "comprendre qu’une réponse peut être écrite clairement dans le texte"
+              ],
+              "parentCanDo": [
+                "repérer les personnages",
+                "retrouver une information écrite directement dans le texte"
+              ],
+              "parentExample": "« Sami met son manteau rouge. » Question : De quelle couleur est son manteau ? → rouge."
             },
             {
               "date": "2026-10-09",
@@ -482,7 +503,16 @@ window.DEVOIRS_P1 = {
               ],
               "parentGoal": "Classer des mots qui vont ensemble et ranger des mots dans l’ordre alphabétique.",
               "example": "chat – chien – table – cheval : chat, chien et cheval vont ensemble. Pour l’ordre alphabétique : vélo – arbre – maison → arbre – maison – vélo.",
-              "preparation": "Revoir les petits exercices de classement et d’ordre alphabétique faits en classe."
+              "preparation": "Proposez 3 ou 4 mots à classer puis 3 ou 4 mots à ranger dans l’ordre alphabétique.",
+              "parentTitle": "Lexique — classer des mots et utiliser l’ordre alphabétique",
+              "parentKnow": [
+                "savoir que l’ordre alphabétique compare les lettres une à une"
+              ],
+              "parentCanDo": [
+                "regrouper des mots qui vont ensemble",
+                "ranger des mots dans l’ordre alphabétique"
+              ],
+              "parentExample": "vélo – arbre – maison → arbre – maison – vélo ; chat, chien et cheval peuvent être regroupés car ce sont des animaux."
             },
             {
               "date": "2026-10-09",
@@ -495,7 +525,7 @@ window.DEVOIRS_P1 = {
               ],
               "parentGoal": "Comprendre ce que l’on cherche dans un problème, choisir l’addition quand elle convient et poser correctement une addition.",
               "example": "Lina a 24 cartes. Elle en reçoit 13. Combien en a-t-elle maintenant ? → 24 + 13 = 37.",
-              "preparation": "Un problème très court et une addition posée suffisent.",
+              "preparation": "Un petit problème d’addition et une addition posée suffisent.",
               "hibou": [
                 {
                   "label": "Résoudre un problème de parties et de tout",
@@ -505,7 +535,17 @@ window.DEVOIRS_P1 = {
                   "label": "Poser une addition",
                   "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/addition-posee.html"
                 }
-              ]
+              ],
+              "parentTitle": "Mathématiques — résoudre un problème et poser une addition",
+              "parentKnow": [
+                "comprendre qu’il faut d’abord chercher ce que demande le problème"
+              ],
+              "parentCanDo": [
+                "choisir l’addition quand elle convient",
+                "poser une addition en alignant unités, dizaines et centaines",
+                "donner une réponse au problème"
+              ],
+              "parentExample": "Lina a 24 cartes. Elle en reçoit 13. Combien en a-t-elle ? → 24 + 13 = 37."
             }
           ]
         }
@@ -566,7 +606,16 @@ window.DEVOIRS_P1 = {
               ],
               "parentGoal": "Écrire correctement les 10 mots travaillés en classe.",
               "example": "Pour s’entraîner : un adulte dit 5 mots au hasard ; l’enfant les écrit ou les épelle, puis vérifie.",
-              "preparation": "Revoir : une frontière, une invasion, le nord, une structure, l’homme, une longueur, une tour de guet, important, contre, jamais."
+              "preparation": "Revoir : une frontière, une invasion, le nord, une structure, l’homme, une longueur, une tour de guet, important, contre, jamais.",
+              "parentTitle": "Dictée — les mots de La Grande Muraille",
+              "parentKnow": [
+                "connaître l’orthographe des 10 mots travaillés en classe"
+              ],
+              "parentCanDo": [
+                "écrire les mots sans modèle",
+                "se relire et vérifier l’orthographe"
+              ],
+              "parentExample": "Un adulte dit 5 mots au hasard ; l’enfant les écrit, puis vérifie avec la liste."
             },
             {
               "date": "2026-10-16",
@@ -579,7 +628,17 @@ window.DEVOIRS_P1 = {
               ],
               "parentGoal": "Retrouver la France sur une carte, lire le titre et la légende, puis repérer les zones où vivent beaucoup ou peu d’habitants.",
               "example": "Question possible : « D’après la légende, quelles zones sont les plus peuplées ? »",
-              "preparation": "Revoir seulement les cartes utilisées en classe et les deux compétences annoncées."
+              "preparation": "Reprenez une carte utilisée en classe : demandez à votre enfant de lire le titre, d’expliquer la légende et de donner une information.",
+              "parentTitle": "Géographie — retrouver la France et lire une carte de population",
+              "parentKnow": [
+                "savoir à quoi servent le titre et la légende d’une carte"
+              ],
+              "parentCanDo": [
+                "retrouver la France sur une carte",
+                "lire le titre et la légende",
+                "repérer les zones où vivent beaucoup ou peu d’habitants"
+              ],
+              "parentExample": "Question possible : « D’après la légende, quelles zones sont les plus peuplées ? »"
             }
           ]
         }
