@@ -1,4 +1,4 @@
-/* V37.17 — P1 : liens fiche élève + correction Sciences « L’air prend-il de la place ? » ajoutés au jeudi 17/09 + sciences rééquilibrées */
+/* V37.18 — P1 : liens fiche élève + correction Sciences « L’air prend-il de la place ? » ajoutés au jeudi 17/09 + sciences rééquilibrées */
 (function(global){
   'use strict';
   const data=global.PROGRESSIONS_EDT_DATA=global.PROGRESSIONS_EDT_DATA||{};
@@ -2540,20 +2540,12 @@
             "Rituel quotidien"
           ],
           [
-            "14h–15h15",
+            "14h–15h45",
             "EPS — Rencontre avec KODOMO à la Cité des sports",
-            "<strong>Vendredi 9 octobre — Rencontre avec KODOMO à la Cité des sports.</strong><br><br>🚶 Déplacement à pied depuis l’école.<br>🥋 De 14h à 15h : les élèves de CP à CE2 participent à des animations ludiques autour des valeurs du judo, en présence de KODOMO, le panda roux mascotte de la Fédération.<br>🍎 Un petit goûter est prévu à l’issue de l’activité.<br>🤝 Action entièrement prise en charge par le Comité de l’Aude de Judo : aucun coût pour l’école.",
-            "EPS-P1-01 à 06 · Respecter les règles ; coopérer ; découvrir les valeurs du judo.",
+            "<strong>Vendredi 9 octobre — Rencontre avec KODOMO à la Cité des sports.</strong><br><br>🚶 Déplacement à pied depuis l’école.<br>🥋 De 14h à 15h : les élèves de CP à CE2 participent à des animations ludiques autour des valeurs du judo, en présence de KODOMO, le panda roux mascotte de la Fédération.<br>🍎 Un petit goûter est prévu à l’issue de l’activité.<br>🚶 Retour à pied à l’école avant la récréation de 15h45.<br>🤝 Action entièrement prise en charge par le Comité de l’Aude de Judo : aucun coût pour l’école.",
+            "EPS-P1-01 à 06 · Respecter les règles ; coopérer ; découvrir les valeurs du judo ; se déplacer collectivement en sécurité.",
             "eps",
             "Sortie — Cité des sports"
-          ],
-          [
-            "15h15–15h45",
-            "Retour à pied à l’école",
-            "Retour à pied depuis la Cité des sports, passage aux toilettes et réinstallation en classe.",
-            "Déplacement collectif en sécurité ; autonomie et respect des consignes.",
-            "eps",
-            "Retour de sortie"
           ],
           [
             "15h45–16h",
