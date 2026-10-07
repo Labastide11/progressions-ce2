@@ -2893,11 +2893,11 @@
           ],
           [
             "14h15–15h",
-            "Sciences / QLM",
-            "<strong>Sciences — Lumière et ombres : réinvestissement</strong><br><br><strong>🎯 Objectif :</strong> réutiliser les notions transparent / translucide / opaque et expliquer simplement la formation d’une ombre.<br><br><strong>1. Classement — 10 min</strong><br>Présenter 6 matériaux ou dessins d’objets et demander de les classer dans les trois catégories.<br><br><strong>2. Situation-problème — 15 min</strong><br>Présenter un dessin avec une lampe, un objet et plusieurs positions possibles pour l’ombre. Demander de choisir la position correcte et de justifier.<br><br><strong>3. Petite expérience — 10 min</strong><br>Par groupes, produire une ombre nette puis modifier sa taille en déplaçant la lampe ou l’objet.<br><br><strong>4. Bilan — 10 min</strong><br>Trace courte : « Les objets opaques bloquent la lumière et peuvent former une ombre. Les matériaux transparents laissent passer la lumière. »",
-            "SCI-P1-03 · Observer ; SCI-P1-04 · Classer ; SCI-P1-05 · Tirer une conclusion.",
-            "science",
-            "Lumière 3/3 — Réinvestissement et bilan"
+            "Géographie",
+            "<strong>Géographie — Révision guidée : se repérer en France et lire une carte de population</strong><br><br><strong>🎯 Objectif :</strong> préparer l’évaluation du vendredi 16 octobre en réactivant les méthodes de lecture d’une carte.<br><br><strong>1. Se repérer — 10 min</strong><br>Retrouver la France sur différentes cartes et rappeler quelques repères simples.<br><br><strong>2. Lire une carte — 15 min</strong><br>Observer le titre et la légende d’une carte de population. Identifier ce que représentent les couleurs ou les figurés.<br><br><strong>3. Chercher des informations — 15 min</strong><br>Repérer des zones densément peuplées et des zones faiblement peuplées, puis justifier les réponses à l’aide de la légende.<br><br><strong>4. Bilan — 5 min</strong><br>Rappeler la méthode : lire le titre, observer la légende, localiser puis répondre avec une phrase courte.",
+            "GEOG-P1-01 ; GEOG-P1-02.",
+            "history",
+            "Révision guidée — préparation à l’évaluation"
           ],
           [
             "15h–15h45",
@@ -3029,7 +3029,7 @@
     ]
   }
 ];
-  data.p1StructureVersion = '36.89';
+  data.p1StructureVersion = '36.90';
   data.validateP1Schedule = function(){
     const problems=[];
     const parse=t=>{const m=String(t).match(/(\d{1,2})h(?:(\d{2}))?[–-](\d{1,2})h(?:(\d{2}))?/);if(!m)return null;return [(+m[1])*60+(+(m[2]||0)),(+m[3])*60+(+(m[4]||0))];};
