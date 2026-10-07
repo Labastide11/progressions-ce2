@@ -1,6 +1,6 @@
-// V36.88 — P1 : devoir Australie du 21/09 — 5 à 10 min + accès Drive si cahier oublié.
+// V36.89 — P1 : aides concrètes pour les familles du 7 au 16/10 ; retrait des sciences des devoirs/évaluations de fin de P1.
 window.DEVOIRS_P1 = {
-  "version": "36.88",
+  "version": "36.89",
   "period": "p1",
   "schoolYear": "2026-2027",
   "principles": {
@@ -20,7 +20,7 @@ window.DEVOIRS_P1 = {
     "dictationRule": "Les mots viennent de dictees-ce2.js. Première rencontre puis rappel avant la dictée bilan ; aucune recopie manuelle de la banque dans les devoirs.",
     "evaluationRule": "Annonce anticipée puis rappel court ciblé. Jour J : information seulement, aucun devoir ajouté.",
     "autonomyRule": "Le cahier est une aide, jamais une condition : chaque devoir propose une solution de repli sans cahier.",
-    "syncRule": "Les devoirs P1 sont alignés sur emploi-du-temps-data-p1.js V36.68. Le rituel maths renforce uniquement des apprentissages déjà travaillés en classe.",
+    "syncRule": "Les devoirs P1 sont alignés sur emploi-du-temps-data-p1.js V37.14. Le rituel maths renforce uniquement des apprentissages déjà travaillés en classe.",
     "writtenWorkRule": "Le travail écrit reste exceptionnel : en P1, seul le rituel maths demande d’écrire un nombre en lettres et de calculer une addition. Environ 5 minutes.",
     "mathRitualRule": "À partir du jeudi 17 septembre : rituel maths court, en principe deux fois par semaine hors journées d’évaluation. Toujours la même structure : 1 nombre jusqu’à 999 à écrire en lettres + 1 addition à calculer."
   },
@@ -222,20 +222,13 @@ window.DEVOIRS_P1 = {
           "instruction": "Dans ton cahier de Découverte du monde, partie Géographie, relis à voix haute pendant 5 à 10 minutes le texte « Un pays immense à découvrir » de la fiche « Australie – Mon carnet d’explorateur ».",
           "help": "Cherche à lire sans hésiter, par groupes de mots, en respectant la ponctuation.",
           "duration": 5,
-          "durationLabel": "5 à 10 min",
           "classLink": "Fluence · compréhension",
           "routineIcon": "📖",
           "routineTitle": "Lecture — Je prépare ma lecture",
           "routine": "Dans ton cahier de Découverte du monde, partie Géographie, relis à voix haute pendant 5 à 10 minutes le texte « Un pays immense à découvrir » de la fiche « Australie – Mon carnet d’explorateur ».",
           "notion": "Fluence · compréhension",
           "challenge": "",
-          "family": "",
-          "hibou": {
-            "icon": "📄",
-            "intro": "Cahier oublié ?",
-            "label": "Ouvrir la fiche « Australie – Mon carnet d’explorateur »",
-            "url": "https://drive.google.com/file/d/19-cTGxXGq6xvKlEJSRb32MpbL2UX97GH/view?usp=drivesdk"
-          }
+          "family": ""
         }
       ]
     },
@@ -487,6 +480,8 @@ window.DEVOIRS_P1 = {
                 "classer des mots qui vont ensemble",
                 "ranger des mots dans l’ordre alphabétique"
               ],
+              "parentGoal": "Classer des mots qui vont ensemble et ranger des mots dans l’ordre alphabétique.",
+              "example": "chat – chien – table – cheval : chat, chien et cheval vont ensemble. Pour l’ordre alphabétique : vélo – arbre – maison → arbre – maison – vélo.",
               "preparation": "Revoir les petits exercices de classement et d’ordre alphabétique faits en classe."
             },
             {
@@ -498,6 +493,8 @@ window.DEVOIRS_P1 = {
                 "comprendre ce que l’on cherche dans un problème",
                 "poser correctement une addition"
               ],
+              "parentGoal": "Comprendre ce que l’on cherche dans un problème, choisir l’addition quand elle convient et poser correctement une addition.",
+              "example": "Lina a 24 cartes. Elle en reçoit 13. Combien en a-t-elle maintenant ? → 24 + 13 = 37.",
               "preparation": "Un problème très court et une addition posée suffisent.",
               "hibou": [
                 {
@@ -558,12 +555,7 @@ window.DEVOIRS_P1 = {
           "notion": "Bilan des mots appris · La Grande Muraille · lundi 12 octobre",
           "challenge": "",
           "dictationStage": "final",
-          "family": "Si vous avez envie : 5 calculs chacun. Un adulte pose 5 calculs, puis l’enfant en propose 5.",
-          "hibou": {
-            "label": "Trouver des compléments",
-            "url": "https://labastide11.github.io/Maitre-Hibou/bibliotheque_math/lecons/complements.html",
-            "intro": "Besoin d’aide ?"
-          }
+          "family": "Si vous avez envie : 5 calculs chacun. Un adulte pose 5 calculs, puis l’enfant en propose 5."
         },
         {
           "due": "2026-10-09",
@@ -573,13 +565,13 @@ window.DEVOIRS_P1 = {
           "icon": "📌",
           "action": "Je regarde ce qui arrive",
           "title": "À venir — évaluations de la semaine prochaine",
-          "instruction": "Information seulement : lundi, bilan des mots de La Grande Muraille ; jeudi, sciences ; vendredi, géographie. Aucun devoir supplémentaire n’est demandé aujourd’hui.",
+          "instruction": "Information seulement : lundi, bilan des mots de La Grande Muraille ; vendredi, géographie. Aucun devoir supplémentaire n’est demandé aujourd’hui.",
           "help": "Les rappels courts seront proposés au bon moment. Il n’y a rien de nouveau à apprendre.",
           "duration": 0,
           "classLink": "Annonce anticipée · informations aux familles",
           "routineIcon": "🧠",
           "routineTitle": "Préparation — Je regarde ce qui arrive",
-          "routine": "Information seulement : lundi, bilan des mots de La Grande Muraille ; jeudi, sciences ; vendredi, géographie. Aucun devoir supplémentaire n’est demandé aujourd’hui.",
+          "routine": "Information seulement : lundi, bilan des mots de La Grande Muraille ; vendredi, géographie. Aucun devoir supplémentaire n’est demandé aujourd’hui.",
           "notion": "Annonce anticipée · informations aux familles",
           "challenge": "",
           "family": "",
@@ -592,18 +584,9 @@ window.DEVOIRS_P1 = {
               "newSkills": [
                 "écrire correctement les 10 mots annoncés et travaillés"
               ],
+              "parentGoal": "Écrire correctement les 10 mots travaillés en classe.",
+              "example": "Pour s’entraîner : un adulte dit 5 mots au hasard ; l’enfant les écrit ou les épelle, puis vérifie.",
               "preparation": "Revoir : une frontière, une invasion, le nord, une structure, l’homme, une longueur, une tour de guet, important, contre, jamais."
-            },
-            {
-              "date": "2026-10-15",
-              "announceOn": "2026-10-09",
-              "subject": "Sciences",
-              "title": "Eau et huile — observation et conclusion",
-              "newSkills": [
-                "observer précisément les résultats d’une expérience",
-                "tirer une conclusion à partir des résultats"
-              ],
-              "preparation": "Aucune fiche à apprendre : réexpliquer simplement une expérience réellement menée en classe suffit."
             },
             {
               "date": "2026-10-16",
@@ -614,6 +597,8 @@ window.DEVOIRS_P1 = {
                 "localiser la France à différentes échelles",
                 "lire une carte simple de répartition de la population"
               ],
+              "parentGoal": "Retrouver la France sur une carte, lire le titre et la légende, puis repérer les zones où vivent beaucoup ou peu d’habitants.",
+              "example": "Question possible : « D’après la légende, quelles zones sont les plus peuplées ? »",
               "preparation": "Revoir seulement les cartes utilisées en classe et les deux compétences annoncées."
             }
           ]
@@ -647,25 +632,6 @@ window.DEVOIRS_P1 = {
           "family": ""
         },
         {
-          "due": "2026-10-13",
-          "category": "preparation",
-          "subject": "sciences",
-          "subjectLabel": "Sciences",
-          "icon": "🔬",
-          "action": "J’explique une expérience",
-          "title": "Sciences — J’explique une expérience",
-          "instruction": "Réexplique oralement une expérience faite en classe : qu’avons-nous fait ? qu’as-tu observé ? quelle conclusion peut-on tirer ?",
-          "help": "Sans cahier, utilise seulement tes souvenirs. Une réponse courte et claire suffit.",
-          "duration": 4,
-          "classLink": "Préparation évaluation jeudi · observer et conclure",
-          "routineIcon": "🔬",
-          "routineTitle": "Sciences — J’explique une expérience",
-          "routine": "Réexplique oralement une expérience faite en classe : qu’avons-nous fait ? qu’as-tu observé ? quelle conclusion peut-on tirer ?",
-          "notion": "Préparation évaluation jeudi · observer et conclure",
-          "challenge": "",
-          "family": ""
-        },
-        {
           "due": "2026-10-15",
           "category": "preparation",
           "subject": "geographie",
@@ -673,13 +639,15 @@ window.DEVOIRS_P1 = {
           "icon": "🌍",
           "action": "Je revois une carte",
           "title": "Géographie — Je revois une carte",
-          "instruction": "Si tu as une carte de classe, observe-la : localise la France puis prélève une information simple. Sans carte, explique oralement où se situe la France et ce qu’une carte peut nous apprendre.",
+          "instruction": "Observe la carte travaillée en classe : localise la France, lis le titre et la légende, puis prélève une information simple sur la population.",
           "help": "Le but n’est pas de réciter une fiche mais de savoir lire et expliquer une carte simple.",
+          "parentGoal": "Retrouver la France, utiliser le titre et la légende, et repérer les zones où vivent beaucoup ou peu d’habitants.",
+          "example": "Demande possible : « D’après la légende, quelles zones sont les plus peuplées ? »",
           "duration": 4,
           "classLink": "Préparation évaluation vendredi · localiser · lire une carte",
           "routineIcon": "🌍",
           "routineTitle": "Géographie — Je revois une carte",
-          "routine": "Si tu as une carte de classe, observe-la : localise la France puis prélève une information simple. Sans carte, explique oralement où se situe la France et ce qu’une carte peut nous apprendre.",
+          "routine": "Observe la carte travaillée en classe : localise la France, lis le titre et la légende, puis prélève une information simple sur la population.",
           "notion": "Préparation évaluation vendredi · localiser · lire une carte",
           "challenge": "",
           "family": ""
