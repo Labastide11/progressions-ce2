@@ -1,6 +1,6 @@
-// V36.89 — P1 : aides concrètes pour les familles du 7 au 16/10 ; retrait des sciences des devoirs/évaluations de fin de P1.
+// V37.15 — P1 : aides concrètes pour les familles du 7 au 16/10 ; retrait des sciences des devoirs/évaluations de fin de P1.
 window.DEVOIRS_P1 = {
-  "version": "36.89",
+  "version": "37.15",
   "period": "p1",
   "schoolYear": "2026-2027",
   "principles": {
@@ -536,26 +536,6 @@ window.DEVOIRS_P1 = {
           "notion": "Écrire un nombre en lettres · calculer une addition",
           "challenge": "",
           "family": ""
-        },
-        {
-          "due": "2026-10-08",
-          "category": "preparation",
-          "subject": "orthographe",
-          "subjectLabel": "Orthographe",
-          "icon": "📝",
-          "action": "Je prépare ma dictée",
-          "title": "Orthographe — Je prépare ma dictée",
-          "instruction": "Revois les 10 mots de La Grande Muraille affichés ci-dessous. Épelle les 5 prioritaires puis fais-toi interroger oralement sur 3 ou 4 mots.",
-          "help": "Lis → cache → épelle → vérifie. Quelques minutes suffisent.",
-          "duration": 4,
-          "classLink": "Bilan des mots appris · La Grande Muraille · lundi 12 octobre",
-          "routineIcon": "📝",
-          "routineTitle": "Orthographe — Je prépare ma dictée",
-          "routine": "Revois les 10 mots de La Grande Muraille affichés ci-dessous. Épelle les 5 prioritaires puis fais-toi interroger oralement sur 3 ou 4 mots.",
-          "notion": "Bilan des mots appris · La Grande Muraille · lundi 12 octobre",
-          "challenge": "",
-          "dictationStage": "final",
-          "family": "Si vous avez envie : 5 calculs chacun. Un adulte pose 5 calculs, puis l’enfant en propose 5."
         },
         {
           "due": "2026-10-09",
