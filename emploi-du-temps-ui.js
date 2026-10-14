@@ -463,7 +463,10 @@
         row._mentalContent=row[2];
         row._mentalTitle=String(row[2]).split('<br>')[0].replace(/^Calcul mental\s*:\s*/i,'').replace(/\.$/,'');
       }
-      row[2]=p1SessionLabels[id];row[6]=id;
+      // V37.23 : la base P1 reste la source du contenu enseignant.
+      // Les intitulés synthétiques ne doivent jamais remplacer une séance prête.
+      if(!row._mentalContent) row[2]=p1SessionLabels[id];
+      row[6]=id;
       if(id.startsWith('m')) row[1]=p1LessonPlans[id].domain+' — '+p1LessonPlans[id].title.split(' — ').slice(1).join(' — ');
     }
   })));
