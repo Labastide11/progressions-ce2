@@ -457,7 +457,15 @@
     const dayName=day.split(' ')[0];
     const map=p1TimetableUpdates[week.key]||{};
     const id=map[`${row[0]}|${dayName}`]||((dayName==='Lundi')?map[row[0]]:null);
-    if(id){row[2]=p1SessionLabels[id];row[6]=id;if(id.startsWith('m')) row[1]=p1LessonPlans[id].domain+' — '+p1LessonPlans[id].title.split(' — ').slice(1).join(' — ');}
+    if(id){
+      // Sauvegarder les vrais calculs AVANT la substitution par un titre résumé.
+      if(id.startsWith('m') && /<strong>À dicter :<\/strong>/i.test(String(row[2]||''))){
+        row._mentalContent=row[2];
+        row._mentalTitle=String(row[2]).split('<br>')[0].replace(/^Calcul mental\s*:\s*/i,'').replace(/\.$/,'');
+      }
+      row[2]=p1SessionLabels[id];row[6]=id;
+      if(id.startsWith('m')) row[1]=p1LessonPlans[id].domain+' — '+p1LessonPlans[id].title.split(' — ').slice(1).join(' — ');
+    }
   })));
 
 
@@ -904,8 +912,8 @@
         const shortRow=mathsRows[0];
         // V37.14 — conserver la séance réelle de calcul mental AVANT que
         // la banque de problèmes ne remplace le contenu du premier créneau.
-        const mentalTitle=String(shortRow[1]||'Calcul mental');
-        const mentalSource=String(shortRow[2]||'');
+        const mentalTitle=String(shortRow._mentalTitle||shortRow[1]||'Calcul mental');
+        const mentalSource=String(shortRow._mentalContent||shortRow[2]||'');
         const mentalMatch=mentalSource.match(/<strong>À dicter :<\/strong>\s*([\s\S]*?)<br>\s*<strong>✅ Correction :<\/strong>\s*([\s\S]*?)(?:<br>|$)/i);
         const mentalBlock=mentalMatch
           ? `<section class="p1-mental-ready" style="border:2px solid #b4d5ef;border-radius:12px;padding:12px;margin:10px 0;background:#f0f8ff">`+
@@ -916,6 +924,8 @@
           : (mentalSource && /calcul mental/i.test(mentalTitle+' '+mentalSource)
               ? `<section class="p1-mental-ready"><strong>⚡ Calcul mental — 5 minutes :</strong> ${mentalTitle}. ${mentalSource}</section>` : '');
         if(key==='vendredi'){
+          shortRow[1]='Résolution de problèmes — Rituel';
+          shortRow[6]=null;
           shortRow[2]=dailyProblemsBlock(set.slice(0,2),'Problèmes 7 et 8 — rituel oral / ardoise');
           shortRow[3]=`Résoudre des problèmes de type ${source.label} ; reformuler, représenter et choisir une opération.`;
           shortRow[5]='Rituel quotidien';
@@ -927,6 +937,8 @@
           longRow[3]=`Enseignement explicite de la résolution de problèmes : comprendre, modéliser, calculer, répondre et vérifier.`;
           longRow[5]='Séance structurée';
         } else {
+          shortRow[1]='Résolution de problèmes — Rituel';
+          shortRow[6]=null;
           shortRow[2]=dailyProblemsBlock(set,`Problèmes du jour — ${source.label}`);
           shortRow[3]=`Résoudre deux problèmes courts de même structure ; verbaliser la situation et justifier l’opération.`;
           shortRow[5]='Oral / ardoise, correction immédiate';
