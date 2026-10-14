@@ -371,7 +371,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Suite numérique jusqu’à 100 : compter en avant à partir de 1 puis d’un nombre donné, en franchissant les dizaines.",
+            "Suite numérique jusqu’à 100 : compter en avant à partir de 1 puis d’un nombre donné, en franchissant les dizaines.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Suite numérique jusqu’à 100 : compter en avant à partir de 1 puis d’un nombre donné, en franchissant les dizaines.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) Continue la suite : 17,18,19, … ; 2) Continue la suite : 38,39,40, … ; 3) Continue la suite : 57,58,59, … ; 4) Continue la suite : 69,70,71, … ; 5) Continue la suite : 24,25,26, … ; 6) Continue la suite : 47,48,49, … ; 7) Continue la suite : 78,79,80, … ; 8) Continue la suite : 96,97,98, …<br><strong>✅ Correction :</strong> 1) 20 ; 2) 41 ; 3) 60 ; 4) 72 ; 5) 27 ; 6) 50 ; 7) 81 ; 8) 99<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "Réactivation CE1 — Maîtriser la suite numérique jusqu’à 100.",
             "maths",
             "Repérage sans note"
@@ -466,7 +466,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Suite numérique jusqu’à 100 : trouver le nombre juste avant et juste après, puis compléter des suites à trous.",
+            "Suite numérique jusqu’à 100 : trouver le nombre juste avant et juste après, puis compléter des suites à trous.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Suite numérique jusqu’à 100 : trouver le nombre juste avant et juste après, puis compléter des suites à trous.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) 29 ; 2) 40 ; 3) 59 ; 4) 70 ; 5) … 37 38 … ; 6) … 49 50 … ; 7) … 68 69 … ; 8) … 89 90 …<br><strong>✅ Correction :</strong> 1) 28 et 30 ; 2) 39 et 41 ; 3) 58 et 60 ; 4) 69 et 71 ; 5) 36 et 39 ; 6) 48 et 51 ; 7) 67 et 70 ; 8) 88 et 91<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "Réactivation CE1 — Maîtriser la suite numérique jusqu’à 100.",
             "maths",
             "Ardoise"
@@ -579,7 +579,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Suite numérique jusqu’à 100 : compter à rebours sur de petites plages et franchir une dizaine en reculant.",
+            "Suite numérique jusqu’à 100 : compter à rebours sur de petites plages et franchir une dizaine en reculant.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Suite numérique jusqu’à 100 : compter à rebours sur de petites plages et franchir une dizaine en reculant.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) Continue la suite : 31,30,29, … ; 2) Continue la suite : 42,41,40, … ; 3) Continue la suite : 60,59,58, … ; 4) Continue la suite : 74,73,72, … ; 5) Continue la suite : 90,89,88, … ; 6) Continue la suite : 52,51,50, … ; 7) Continue la suite : 20,19,18, … ; 8) Continue la suite : 100,99,98, …<br><strong>✅ Correction :</strong> 1) 28 ; 2) 39 ; 3) 57 ; 4) 71 ; 5) 87 ; 6) 49 ; 7) 17 ; 8) 97<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "Réactivation CE1 — Maîtriser la suite numérique jusqu’à 100.",
             "maths",
             "Jeu / observation"
@@ -828,7 +828,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Suite numérique jusqu’à 100 : nombre précédent / suivant, passages de dizaines, puis petits calculs additifs.",
+            "Suite numérique jusqu’à 100 : nombre précédent / suivant, passages de dizaines, puis petits calculs additifs.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Suite numérique jusqu’à 100 : nombre précédent / suivant, passages de dizaines, puis petits calculs additifs.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) 39 ; 2) 50 ; 3) 69 ; 4) 80 ; 5) 8+5 ; 6) 9+6 ; 7) 7+7 ; 8) 12+5<br><strong>✅ Correction :</strong> 1) 38 et 40 ; 2) 49 et 51 ; 3) 68 et 70 ; 4) 79 et 81 ; 5) 13 ; 6) 15 ; 7) 14 ; 8) 17<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "Réactivation CE1 — Maîtriser la suite numérique jusqu’à 100 ; CAL-P1-01 · Restituer les tables d’addition.",
             "maths",
             "Ardoise"
@@ -921,7 +921,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Repérage flash : suite numérique jusqu’à 100, avant / après, passages de dizaines et petits calculs.",
+            "Repérage flash : suite numérique jusqu’à 100, avant / après, passages de dizaines et petits calculs.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Repérage flash : suite numérique jusqu’à 100, avant / après, passages de dizaines et petits calculs.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) … 28 29 … ; 2) … 39 40 … ; 3) 51 ; 4) 70 ; 5) 8+4 ; 6) 9+5 ; 7) 7+6 ; 8) 6+8<br><strong>✅ Correction :</strong> 1) 27 et 30 ; 2) 38 et 41 ; 3) 50 et 52 ; 4) 69 et 71 ; 5) 12 ; 6) 14 ; 7) 13 ; 8) 14<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "Réactivation CE1 — Maîtriser la suite numérique jusqu’à 100 ; CAL-P1-01 · Restituer les tables d’addition.",
             "maths",
             "Repérage individuel"
@@ -1014,7 +1014,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Suite numérique jusqu’à 100 en réactivation courte, puis tables d’addition et compléments à 10.",
+            "Suite numérique jusqu’à 100 en réactivation courte, puis tables d’addition et compléments à 10.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Suite numérique jusqu’à 100 en réactivation courte, puis tables d’addition et compléments à 10.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) Continue la suite : 39,40, … ; 2) Continue la suite : 58,59, … ; 3) 6+4 ; 4) 7+3 ; 5) 9+1 ; 6) 8+5 ; 7) 7+6 ; 8) 9+8<br><strong>✅ Correction :</strong> 1) 41 ; 2) 60 ; 3) 10 ; 4) 10 ; 5) 10 ; 6) 13 ; 7) 13 ; 8) 17<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "Réactivation CE1 — Maîtriser la suite numérique jusqu’à 100 ; CAL-P1-01 · Restituer les tables d’addition ; CAL-P1-02 · Trouver un complément à 10 ou 100.",
             "maths",
             "Repérage individuel"
@@ -1137,7 +1137,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Ajouter ou retrancher 1 et 10 dans les nombres jusqu’à 100 ; verbaliser le nombre obtenu.",
+            "Ajouter ou retrancher 1 et 10 dans les nombres jusqu’à 100 ; verbaliser le nombre obtenu.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Ajouter ou retrancher 1 et 10 dans les nombres jusqu’à 100 ; verbaliser le nombre obtenu.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) 34+1 ; 2) 50−1 ; 3) 47+10 ; 4) 62−10 ; 5) 79+1 ; 6) 80−1 ; 7) 56+10 ; 8) 91−10<br><strong>✅ Correction :</strong> 1) 35 ; 2) 49 ; 3) 57 ; 4) 52 ; 5) 80 ; 6) 79 ; 7) 66 ; 8) 81<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "Réactivation CE1 — Se repérer dans la suite numérique jusqu’à 100 et utiliser la valeur des dizaines et unités.",
             "maths",
             "Ardoise"
@@ -1231,7 +1231,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Compléments à 10 et à 100 ; faits additifs rapides.",
+            "Compléments à 10 et à 100 ; faits additifs rapides.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Compléments à 10 et à 100 ; faits additifs rapides.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) 6+4 ; 2) 8+2 ; 3) 7+3 ; 4) 40+60 ; 5) 70+30 ; 6) 25+75 ; 7) 9+6 ; 8) 8+7<br><strong>✅ Correction :</strong> 1) 10 ; 2) 10 ; 3) 10 ; 4) 100 ; 5) 100 ; 6) 100 ; 7) 15 ; 8) 15<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "CAL-P1-01 ; CAL-P1-02.",
             "maths",
             "Ardoise"
@@ -1339,7 +1339,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Réactivation : suite numérique jusqu’à 100, compléments à 10 et petits faits additifs.",
+            "Réactivation : suite numérique jusqu’à 100, compléments à 10 et petits faits additifs.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Réactivation : suite numérique jusqu’à 100, compléments à 10 et petits faits additifs.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) 49 ; 2) 70 ; 3) 8+2 ; 4) 6+4 ; 5) 7+5 ; 6) 9+4 ; 7) 8+8 ; 8) 5+9<br><strong>✅ Correction :</strong> 1) 48 et 50 ; 2) 69 et 71 ; 3) 10 ; 4) 10 ; 5) 12 ; 6) 13 ; 7) 16 ; 8) 14<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "Réactivation CE1 — Maîtriser la suite numérique jusqu’à 100 ; CAL-P1-01 ; CAL-P1-02.",
             "maths",
             "Entraînement"
@@ -1448,7 +1448,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Ajouter et retrancher 9 ou 19.",
+            "Ajouter et retrancher 9 ou 19.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Ajouter et retrancher 9 ou 19.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) 25+9 ; 2) 43−9 ; 3) 36+19 ; 4) 72−19 ; 5) 48+9 ; 6) 65−9 ; 7) 24+19 ; 8) 81−19<br><strong>✅ Correction :</strong> 1) 34 ; 2) 34 ; 3) 55 ; 4) 53 ; 5) 57 ; 6) 56 ; 7) 43 ; 8) 62<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "CAL-P1-03.",
             "maths",
             "Ardoise"
@@ -1541,7 +1541,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Compléments à 100.",
+            "Compléments à 100.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Compléments à 100.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) 30+70 ; 2) 45+55 ; 3) 80+20 ; 4) 66+34 ; 5) 25+75 ; 6) 91+9 ; 7) 58+42 ; 8) 37+63<br><strong>✅ Correction :</strong> 1) 100 ; 2) 100 ; 3) 100 ; 4) 100 ; 5) 100 ; 6) 100 ; 7) 100 ; 8) 100<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "CAL-P1-02.",
             "maths",
             "Petite trace formative"
@@ -1635,7 +1635,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Tables d’addition.",
+            "Tables d’addition.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Tables d’addition.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) 7+8 ; 2) 6+9 ; 3) 8+8 ; 4) 9+7 ; 5) 6+6 ; 6) 5+8 ; 7) 9+9 ; 8) 7+6<br><strong>✅ Correction :</strong> 1) 15 ; 2) 15 ; 3) 16 ; 4) 16 ; 5) 12 ; 6) 13 ; 7) 18 ; 8) 13<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "CAL-P1-01.",
             "maths",
             "Petite trace formative"
@@ -1728,7 +1728,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Calcul mental : compléments et ±9/19.",
+            "Calcul mental : compléments et ±9/19.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Calcul mental : compléments et ±9/19.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) 60+40 ; 2) 35+65 ; 3) 27+9 ; 4) 54−9 ; 5) 43+19 ; 6) 70−19 ; 7) 28+9 ; 8) 81−19<br><strong>✅ Correction :</strong> 1) 100 ; 2) 100 ; 3) 36 ; 4) 45 ; 5) 62 ; 6) 51 ; 7) 37 ; 8) 62<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "CAL-P1-02 ; CAL-P1-03.",
             "maths",
             "Suivi des automatismes"
@@ -1829,7 +1829,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Calcul mental : stratégie personnelle et explicitation.",
+            "Calcul mental : stratégie personnelle et explicitation.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Calcul mental : stratégie personnelle et explicitation.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) 37+9 ; 2) 48+19 ; 3) 63−9 ; 4) 82−19 ; 5) 45+55 ; 6) 7+8 ; 7) 29+9 ; 8) 74−9<br><strong>✅ Correction :</strong> 1) 46 ; 2) 67 ; 3) 54 ; 4) 63 ; 5) 100 ; 6) 15 ; 7) 38 ; 8) 65<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "CAL-P1-01 à 03.",
             "maths",
             "Entretien flash"
@@ -1930,7 +1930,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Tables d’addition et compléments.",
+            "Tables d’addition et compléments.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Tables d’addition et compléments.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) 8+7 ; 2) 9+6 ; 3) 35+65 ; 4) 70+30 ; 5) 46+19 ; 6) 73−19 ; 7) 28+29 ; 8) 81−29<br><strong>✅ Correction :</strong> 1) 15 ; 2) 15 ; 3) 100 ; 4) 100 ; 5) 65 ; 6) 54 ; 7) 57 ; 8) 52<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "CAL-P1-01 ; CAL-P1-02.",
             "maths",
             "Ardoise"
@@ -2024,7 +2024,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Ajouter ou retrancher 19 et 29.",
+            "Ajouter ou retrancher 19 et 29.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Ajouter ou retrancher 19 et 29.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) 24+19 ; 2) 56−19 ; 3) 35+29 ; 4) 72−29 ; 5) 47+19 ; 6) 83−19 ; 7) 28+29 ; 8) 91−29<br><strong>✅ Correction :</strong> 1) 43 ; 2) 37 ; 3) 64 ; 4) 43 ; 5) 66 ; 6) 64 ; 7) 57 ; 8) 62<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "CAL-P1-03.",
             "maths",
             "Petite trace formative"
@@ -2117,7 +2117,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Calcul mental.",
+            "Calcul mental.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Calcul mental.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) 7+8 ; 2) 40+60 ; 3) 38+9 ; 4) 52−9 ; 5) 24+19 ; 6) 67−19 ; 7) 8+9 ; 8) 31+29<br><strong>✅ Correction :</strong> 1) 15 ; 2) 100 ; 3) 47 ; 4) 43 ; 5) 43 ; 6) 48 ; 7) 17 ; 8) 60<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "CAL-P1-01 à 03.",
             "maths",
             "Suivi des automatismes"
@@ -2218,7 +2218,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Calcul mental : tables, compléments, ±9/19/29.",
+            "Calcul mental : tables, compléments, ±9/19/29.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Calcul mental : tables, compléments, ±9/19/29.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) 9+8 ; 2) 35+65 ; 3) 47+9 ; 4) 63−9 ; 5) 25+19 ; 6) 72−19 ; 7) 34+29 ; 8) 81−29<br><strong>✅ Correction :</strong> 1) 17 ; 2) 100 ; 3) 56 ; 4) 54 ; 5) 44 ; 6) 53 ; 7) 63 ; 8) 52<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "CAL-P1-01 à 03.",
             "maths",
             "Suivi des automatismes"
@@ -2321,7 +2321,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Calcul mental : reprise ciblée selon les résultats.",
+            "Calcul mental : reprise ciblée selon les résultats.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Calcul mental : reprise ciblée selon les résultats.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) 7+6 ; 2) 8+9 ; 3) 45+55 ; 4) 36+64 ; 5) 48+9 ; 6) 75−9 ; 7) 29+19 ; 8) 64−19<br><strong>✅ Correction :</strong> 1) 13 ; 2) 17 ; 3) 100 ; 4) 100 ; 5) 57 ; 6) 66 ; 7) 48 ; 8) 45<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "CAL-P1-01 à 03.",
             "maths",
             "Remédiation"
@@ -2415,7 +2415,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Calcul mental ciblé.",
+            "Calcul mental ciblé.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Calcul mental ciblé.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) 9+7 ; 2) 30+70 ; 3) 47+9 ; 4) 61−9 ; 5) 38+19 ; 6) 80−19 ; 7) 26+29 ; 8) 75−29<br><strong>✅ Correction :</strong> 1) 16 ; 2) 100 ; 3) 56 ; 4) 52 ; 5) 57 ; 6) 61 ; 7) 55 ; 8) 46<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "CAL-P1-01 à 03.",
             "maths",
             "Remédiation"
@@ -2518,7 +2518,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Calcul mental de consolidation.",
+            "Calcul mental de consolidation.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Calcul mental de consolidation.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) 8+6 ; 2) 75+25 ; 3) 56+9 ; 4) 74−9 ; 5) 34+19 ; 6) 91−19 ; 7) 41+29 ; 8) 83−29<br><strong>✅ Correction :</strong> 1) 14 ; 2) 100 ; 3) 65 ; 4) 65 ; 5) 53 ; 6) 72 ; 7) 70 ; 8) 54<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "CAL-P1-01 à 03.",
             "maths",
             "Suivi"
@@ -2643,7 +2643,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Ateliers de calcul mental selon les résultats.",
+            "Ateliers de calcul mental selon les résultats.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Ateliers de calcul mental selon les résultats.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) 9+9 ; 2) 47+53 ; 3) 58+9 ; 4) 76−9 ; 5) 44+19 ; 6) 85−19 ; 7) 36+29 ; 8) 92−29<br><strong>✅ Correction :</strong> 1) 18 ; 2) 100 ; 3) 67 ; 4) 67 ; 5) 63 ; 6) 66 ; 7) 65 ; 8) 63<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "CAL-P1-01 à 03.",
             "maths",
             "Remédiation / validation différée"
@@ -2768,7 +2768,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Calcul mental en jeu.",
+            "Calcul mental en jeu.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Calcul mental en jeu.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) 7+9 ; 2) 68+32 ; 3) 36+9 ; 4) 53−9 ; 5) 42+19 ; 6) 80−19 ; 7) 34+29 ; 8) 71−29<br><strong>✅ Correction :</strong> 1) 16 ; 2) 100 ; 3) 45 ; 4) 44 ; 5) 61 ; 6) 61 ; 7) 63 ; 8) 42<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "CAL-P1-01 à 03.",
             "maths",
             "Réinvestissement"
@@ -2862,7 +2862,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Calcul mental : bilan personnel.",
+            "Calcul mental : bilan personnel.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Calcul mental : bilan personnel.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) 8+7 ; 2) 58+42 ; 3) 46+9 ; 4) 62−9 ; 5) 38+19 ; 6) 73−19 ; 7) 25+29 ; 8) 81−29<br><strong>✅ Correction :</strong> 1) 15 ; 2) 100 ; 3) 55 ; 4) 53 ; 5) 57 ; 6) 54 ; 7) 54 ; 8) 52<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "CAL-P1-01 à 03.",
             "maths",
             "Petite trace formative"
@@ -2955,7 +2955,7 @@
           [
             "11h–11h15",
             "Mathématiques — Calcul mental",
-            "Défi de calcul mental coopératif.",
+            "Défi de calcul mental coopératif.<br><strong>⚡ Calcul mental — séance prête (15 min)</strong><br><strong>Objectif :</strong> Défi de calcul mental coopératif.<br><strong>Déroulement :</strong> 2 min de rappel oral, 8 min sur ardoise (8 calculs), 4 min de correction et verbalisation, 1 min de bilan.<br><strong>À dicter :</strong> 1) 9+8 ; 2) 45+55 ; 3) 38+9 ; 4) 64−9 ; 5) 27+19 ; 6) 82−19 ; 7) 34+29 ; 8) 71−29<br><strong>✅ Correction :</strong> 1) 17 ; 2) 100 ; 3) 47 ; 4) 55 ; 5) 46 ; 6) 63 ; 7) 63 ; 8) 42<br><em>Exercices proposés pour opérationnaliser la progression ; conservés dans la séance de calcul mental.</em>",
             "CAL-P1-01 à 03.",
             "maths",
             "Jeu bilan"

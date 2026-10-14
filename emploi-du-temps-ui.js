@@ -902,6 +902,19 @@
         const mathsRows=rows.filter(r=>r[4]==='maths');
         if(!mathsRows.length) return;
         const shortRow=mathsRows[0];
+        // V37.14 — conserver la séance réelle de calcul mental AVANT que
+        // la banque de problèmes ne remplace le contenu du premier créneau.
+        const mentalTitle=String(shortRow[1]||'Calcul mental');
+        const mentalSource=String(shortRow[2]||'');
+        const mentalMatch=mentalSource.match(/<strong>À dicter :<\/strong>\s*([\s\S]*?)<br>\s*<strong>✅ Correction :<\/strong>\s*([\s\S]*?)(?:<br>|$)/i);
+        const mentalBlock=mentalMatch
+          ? `<section class="p1-mental-ready" style="border:2px solid #b4d5ef;border-radius:12px;padding:12px;margin:10px 0;background:#f0f8ff">`+
+            `<h4 style="margin:0 0 8px;color:#17486d">⚡ Calcul mental — 5 minutes · ${mentalTitle.replace(/^.*?Calcul mental\s*[—–-]?\s*/i,'')}</h4>`+
+            `<p style="margin:5px 0"><strong>Consigne :</strong> ardoise ; dicter 4 ou 5 propositions parmi les 8 ci-dessous, puis corriger en faisant verbaliser une stratégie.</p>`+
+            `<p style="margin:5px 0"><strong>À dicter (banque de 8) :</strong> ${mentalMatch[1]}</p>`+
+            `<p style="margin:5px 0"><strong>✅ Correction :</strong> ${mentalMatch[2]}</p></section>`
+          : (mentalSource && /calcul mental/i.test(mentalTitle+' '+mentalSource)
+              ? `<section class="p1-mental-ready"><strong>⚡ Calcul mental — 5 minutes :</strong> ${mentalTitle}. ${mentalSource}</section>` : '');
         if(key==='vendredi'){
           shortRow[2]=dailyProblemsBlock(set.slice(0,2),'Problèmes 7 et 8 — rituel oral / ardoise');
           shortRow[3]=`Résoudre des problèmes de type ${source.label} ; reformuler, représenter et choisir une opération.`;
@@ -910,8 +923,7 @@
           longRow[2]=dailyProblemsBlock(set.slice(2),'Problèmes 9 et 10 — séance longue')+
             `<p><strong>Mise en commun :</strong> comparer les procédures, expliciter le calcul et rédiger la phrase-réponse.</p>`+
             `<p class="problem-source">Source : banque DSDEN38 « 10 problèmes par semaine au CE2 », p. ${source.page}.</p>`+
-            `<div class="lesson-note">Le calcul mental est maintenu 5 minutes au début des autres séances de mathématiques.</div>`+
-            longRow[2];
+            mentalBlock+longRow[2];
           longRow[3]=`Enseignement explicite de la résolution de problèmes : comprendre, modéliser, calculer, répondre et vérifier.`;
           longRow[5]='Séance structurée';
         } else {
@@ -919,7 +931,7 @@
           shortRow[3]=`Résoudre deux problèmes courts de même structure ; verbaliser la situation et justifier l’opération.`;
           shortRow[5]='Oral / ardoise, correction immédiate';
           const longRow=mathsRows[1];
-          if(longRow) longRow[2]=`<div class="math-five-min">⚡ Calcul mental — 5 minutes</div>`+longRow[2];
+          if(longRow) longRow[2]=(mentalBlock || `<div class="math-five-min">⚡ Calcul mental — 5 minutes</div>`)+longRow[2];
         }
       });
     });
