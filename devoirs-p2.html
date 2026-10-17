@@ -21,7 +21,28 @@ const spellAttemptsByWeek={};
 const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function lesson(arr){return (arr||[]).filter(x=>DATA.links[x]).map(x=>`<a class="link" href="${DATA.links[x]||'#'}" target="_blank" rel="noopener">Lien vers la leçon &gt; ${x}</a>`).join('')}
 function renderPhotos(items){if(!items||!items.length)return '';return `<div class="item"><div class="label">J’observe</div><div class="photo-grid">${items.map(img=>`<figure><img src="${img.src}" alt="${esc(img.caption)}" loading="lazy"><figcaption>${esc(img.caption)}</figcaption></figure>`).join('')}</div></div>`}
-function start(){const el=$('#week');el.add(new Option('Semaine 1 · 2 au 6 novembre','-1'));DATA.weeks.forEach((w,i)=>el.add(new Option(`Semaine ${i+2} · ${w[0]}`,i)));el.onchange=()=>{if(el.value==='-1'){showWeekOne();return;}hideWeekOne();week=+el.value;day=0;draw()};draw()}
+function start(){
+ const el=$('#week');
+ el.add(new Option('Semaine 1 · 2 au 6 novembre','-1'));
+ DATA.weeks.forEach((w,i)=>el.add(new Option(`Semaine ${i+2} · ${w[0]}`,i)));
+ const date=new URLSearchParams(location.search).get('date');
+ const validDate=/^2026-\d{2}-\d{2}$/.test(date||'');
+ let initial='-1';
+ if(!validDate){
+   try{const saved=sessionStorage.getItem('ce2-p2-selected-week');if([...el.options].some(o=>o.value===saved))initial=saved;}catch(_){}
+ }
+ el.value=initial;
+ el.onchange=()=>{
+   try{sessionStorage.setItem('ce2-p2-selected-week',el.value);}catch(_){}
+   if(el.value==='-1'){showWeekOne();return;}
+   hideWeekOne();week=Number(el.value);day=0;draw();
+ };
+ // La semaine 1 utilise le moteur intégré, initialisé après le chargement complet du script.
+ // Une date explicitement demandée dans l'URL est gérée par ouvrirDevoirDate ci-dessous.
+ if(!validDate&&initial==='-1')window.addEventListener('load',()=>showWeekOne(),{once:true});
+ else if(!validDate){week=Number(initial);day=0;draw();}
+ else draw();
+}
 function draw(){if(timer)clearInterval(timer);timer=null;sec=60;fluencySelected=0;fluencyFinished=false;const w=DATA.weeks[week],slots=w[1];$('#dates').innerHTML=slots.map((x,i)=>`<button class="${day===i?'active':''}" onclick="day=${i};spellIndex=0;draw()">${new Date(x[0]+'T12:00:00').toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'})}<br><small>${esc(x[1])}${SPELL_STAGES[week]?.includes(x[0])&&!/Dictée/.test(x[1])?' / Dictée':''}</small>${x[0].endsWith("-11-13")||x[0].endsWith("-11-20")||x[0].endsWith("-11-27")||x[0].endsWith("-12-04")||x[0].endsWith("-12-11")||x[0].endsWith("-12-18")?'<br><span class="swim-tag">Piscine · 14 h–17 h</span>':''}</button>`).join('');let date=slots[day][0],n=slots[day][1];if(spellStage(date)&&!/Dictée/.test(n))n+=' / Dictée';let parts=[`<div class="label">Semaine ${week+2} · ${w[0]}</div><h2>${new Date(date+'T12:00:00').toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'})}</h2><p>${esc(n)}</p>`];let first=slots[0][0], last=slots.at(-1)[0];if(day===0||/Fluence/.test(n))parts.push(readingPanel());if(spellStage(date))parts.push(spellPanel());let activities=DATA.activities[date]||[];activities.forEach((a,i)=>parts.push(activityPanel(a,i)));if(DATA.phrase[date])parts.splice(3,0,`<div class="phrase"><strong>${DATA.phrase[date][0]}</strong><p>${DATA.phrase[date][1]}</p><p class="muted">Avec un adulte : explique cette phrase avec tes mots et donne un exemple.</p></div>`);if(DATA.photos&&DATA.photos[date])parts.push(renderPhotos(DATA.photos[date]));if(!activities.length && day>0 && !/Dictée/.test(n)){parts.push('<div class="note">Tu peux relire le texte de la semaine et t’entraîner à écrire quelques mots de dictée. À ton rythme !</div>')}$('#content').innerHTML=parts.join('');}
 function readingPanel(){const weekIndex=week<5?week+1:0;let selector=week===5?`<label>Je choisis un texte étudié : <select id="textselect" onchange="readChoice=+this.value;refreshReading()">${DATA.titles.map((x,i)=>`<option value="${i}" ${readChoice===i?'selected':''}>${x}</option>`).join('')}</select></label>`:'';const ix=week===5?readChoice:weekIndex;return `<div class="item" id="readingSection"><h3>Fluence — ${week===5?'texte au choix':DATA.titles[ix]}</h3><p>Prends ton temps pour découvrir cette histoire, puis lis-la plusieurs fois à voix haute. Tu peux demander à un adulte de chronométrer une minute si tu en as envie.</p>${selector}<div id="readingBox">${readingContent(ix)}</div></div>`}
 let fluencySelected=0, fluencyFinished=false;
