@@ -377,7 +377,7 @@ start();
    window.addEventListener('load',()=>{
      showWeekOne();
      const frame=document.getElementById('week1Frame');
-     if(frame)frame.srcdoc=embeddedWeek1.replace(/<header>[\s\S]*?<\/header>/i,'').replace(/<nav class=\"menu\"[\s\S]*?<\/nav>/i,'').replace("render('tuesday');", "render('"+section+"');");
+     if(frame)frame.srcdoc=embeddedWeek1.replace(/<header>[\s\S]*?<\/header>/i,'').replace(/<nav class=\"menu\"[\s\S]*?<\/nav>/i,'').replace('class="layout"','class="week1-solo"').replace("render('tuesday');", "render('"+section+"');");
    },{once:true});
    return;
  }
@@ -412,8 +412,8 @@ function showWeekOne(){
     frame.onload=()=>{try{frame.contentDocument.querySelectorAll('nav.menu').forEach(n=>n.remove());}catch(_){}chooseWeekOneDay('tuesday');resizeWeekOneFrame();
       try{new ResizeObserver(resizeWeekOneFrame).observe(frame.contentDocument.body);}catch(_){}
     };
-    const trimStyle='<style>header,.menu,.footer{display:none!important}body{background:#fff!important}.container{max-width:none!important;padding:0!important;margin:0!important}.layout{display:block!important;grid-template-columns:minmax(0,1fr)!important}.panel{box-shadow:none!important;border:0!important;border-radius:0!important;max-width:none!important;min-width:0!important}main{max-width:none!important;padding:0!important}</style>';
-    frame.srcdoc=embeddedWeek1.replace(/<header>[\s\S]*?<\/header>/i,'').replace(/<nav class=\"menu\"[\s\S]*?<\/nav>/i,'').replace('</head>',trimStyle+'</head>');
+    const trimStyle='<style>header,.menu,.footer{display:none!important}body{background:#fff!important}.container{max-width:none!important;padding:0!important;margin:0!important}.layout{display:block!important;grid-template-columns:minmax(0,1fr)!important}.panel{box-shadow:none!important;border:0!important;border-radius:0!important;max-width:none!important;min-width:0!important}main{max-width:none!important;padding:0!important}.week1-solo{display:block!important;width:100%!important;max-width:none!important;min-width:0!important}.week1-solo>#main{display:block!important;width:100%!important;max-width:none!important;min-width:0!important;box-sizing:border-box!important}</style>';
+    frame.srcdoc=embeddedWeek1.replace(/<header>[\s\S]*?<\/header>/i,'').replace(/<nav class=\"menu\"[\s\S]*?<\/nav>/i,'').replace('class="layout"','class="week1-solo"').replace('</head>',trimStyle+'</head>');
   }
 }
 function hideWeekOne(){
