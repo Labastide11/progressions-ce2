@@ -5,6 +5,20 @@
     console.error('Données des emplois du temps absentes.');
     return;
   }
+  // Synchronisation CE2 : capturer les séances telles qu'elles sont écrites
+  // dans les mêmes fichiers de données que l'emploi du temps simplifié.
+  // Les enrichissements (fiches, ressources, dictées) ne doivent pas
+  // modifier les horaires, intitulés ou contenus pédagogiques de référence.
+  const canonicalEDT = {};
+  for (const period of ['p1','p2','p3','p4','p5']) {
+    const weeks = window.PROGRESSIONS_EDT_DATA[period + 'DetailedWeeks'];
+    if (Array.isArray(weeks)) {
+      canonicalEDT[period] = weeks.map(week => ({
+        days: (week.days || []).map(([label,rows]) => [label, rows.map(row => Array.isArray(row) ? row.slice() : row)])
+      }));
+    }
+  }
+
   const periods = {
     rentree:{title:'Rentrée — Semaines 1 et 2 (sans CHAM)',note:'Emploi du temps de secours pour les deux premières semaines, tant que la date de démarrage de la CHAM n’est pas confirmée. Toute la classe reste réunie le mardi et le jeudi.',hours:['9 h 10','4 h 35','1 h','2 h 30','2 h 30','1 h','1 h 15'],minutes:[550,275,60,150,150,60,75],days:{},mode:'rentree'},
     p1:{title:'Période 1 — Grille refondue',note:'Fondamentaux regroupés le matin ; autres disciplines l’après-midi. Le mardi, 30 min de chants / expression corporelle suivent le quart d’heure de lecture. EPS : 45 min le lundi et 60 min maximum le vendredi.',hours:['8 h','4 h','50 min','1 h 45','3 h','45 min','3 h 40'],minutes:[480,240,50,105,180,45,220],days:{}},
@@ -1640,6 +1654,8 @@
   }
 
   function p1ActivityLabel(row){
+    // L'intitulé affiché doit rester celui du simplifié.
+    return row[1];
     const subject=(row[1]||'').toLowerCase();
     const session=(row[2]||'').toLowerCase();
     if(!subject.includes('français')) return row[1];
@@ -1793,6 +1809,48 @@
   applyAnnualFrenchRitual('p3',p3DetailedWeeks);
   applyAnnualFrenchRitual('p4',p4DetailedWeeks);
   applyAnnualFrenchRitual('p5',p5DetailedWeeks);
+
+  // Règle définitive : le simplifié est la source du contenu de séance.
+  // Restaurer les champs métier après les anciennes fonctions de programmation
+  // qui écrasaient le calcul mental, la numération, le français ou l'anglais.
+  // Les métadonnées ajoutées à partir de l'indice 6 (liens/fiches) sont conservées.
+  function synchronizeDetailedWithSimplified() {
+    const periods = {p1:p1DetailedWeeks,p2:p2DetailedWeeks,p3:p3DetailedWeeks,p4:p4DetailedWeeks,p5:p5DetailedWeeks};
+    Object.entries(periods).forEach(([period,weeks]) => {
+      const referenceWeeks = canonicalEDT[period] || [];
+      (weeks || []).forEach((week,weekIndex) => {
+        const reference = referenceWeeks[weekIndex];
+        if (!reference) return;
+        (week.days || []).forEach(([label,rows]) => {
+          const referenceDay = reference.days.find(entry => entry[0] === label);
+          if (!referenceDay) return;
+          const referenceRows = referenceDay[1];
+          rows.forEach((row,index) => {
+            const original = referenceRows[index];
+            if (!Array.isArray(row) || !Array.isArray(original)) return;
+            // 0 = horaire, 1 = matière, 2 = activité, 3 = objectif,
+            // 4 = famille visuelle, 5 = modalités.
+            for (let field=0; field<=5; field++) {
+              if (field < original.length) row[field] = original[field];
+            }
+            // Une fiche de mathématiques automatique ne doit pas ouvrir une
+            // préparation portant sur une autre notion que celle de l'horaire.
+            if (period !== 'p1' && row[6] && annualMathLessons[row[6]]) {
+              const lesson = annualMathLessons[row[6]];
+              const topic = String(lesson.title || '').toLowerCase();
+              const session = String(row[1] || '') + ' ' + String(row[2] || '');
+              const normalized = session.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+              const normalizeTopic = topic.normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+              const words = normalizeTopic.split(/[^a-z0-9]+/).filter(w => w.length >= 5 && !['rituel','calcul','nombres','resoudre','maitre'].includes(w));
+              if (!words.length || !words.some(word => normalized.includes(word))) row[6] = null;
+            }
+          });
+        });
+      });
+    });
+  }
+  synchronizeDetailedWithSimplified();
+
 
   function renderAnnualFrenchPlan(plan){
     if(!plan)return '';
