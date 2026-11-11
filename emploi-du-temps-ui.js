@@ -1900,39 +1900,46 @@
   }
 
 
-  // P2 : chaque détail apparaît dans le temps où il est réellement enseigné.
-  // Les autres jours et les autres périodes conservent leur affichage précédent.
+  // P2 — jeudi : exactement deux temps, deux cahiers ; aucune duplication ni bilan autonome.
+  // Les textes proviennent de DICTEES_CE2_ANNUAL (source pédagogique existante).
   function p2SessionContentOrdered(week,day,row){
-    const ordinaryGuide=p2DictationTimetableGuide(week,day,row);
-    const name=String(day||'').split(' ')[0];
     const html=String(row[2]||'');
-    if(name!=='Jeudi'||row[0]!=='10h–10h45'||!html.includes('p2-francais-prep')){
-      return html+ordinaryGuide;
+    const dayName=String(day||'').split(' ')[0];
+    if(dayName!=='Jeudi'||row[0]!=='10h–10h45'||!html.includes('p2-francais-deux-temps')){
+      return html+p2DictationTimetableGuide(week,day,row);
     }
-    const p=p2DictationBankData(week);
-    if(!p)return html;
-    const flashDetails=`<div class="dictation-timetable-guide" style="margin:12px 0 0">
-      <div class="dictation-timetable-guide__title">📝 Phrase à dicter — Flash 3</div>
-      <div>${p.flash[2]}</div>
-      <div><strong>Réactivation :</strong> ${p.reactivationWords}</div>
-      <div><strong>Vigilance :</strong> ${p.motsCibles}</div>
-    </div>`;
-    const drasDetails=renderDictationDrasGuide(p,'thursday');
-    const beforeSecond='<div style="border:1px solid #d8cdf8';
-    const beforeBilan='<div style="margin:5px 0"><strong>✅ Bilan commun';
-    // Insérer les contenus au sein des panneaux et non après le bilan.
-    const secondStart=html.indexOf(beforeSecond);
-    const bilanStart=html.indexOf(beforeBilan);
-    if(secondStart<0||bilanStart<0||secondStart>=bilanStart)return html+ordinaryGuide;
-    const first=html.slice(0,secondStart);
-    const second=html.slice(secondStart,bilanStart);
-    const bilan=html.slice(bilanStart);
-    const insertInsidePanel=(fragment,details)=>{
-      const lastClose=fragment.lastIndexOf('</div>');
-      if(lastClose<0)return fragment;
-      return fragment.slice(0,lastClose)+details+fragment.slice(lastClose);
-    };
-    return insertInsidePanel(first,flashDetails)+insertInsidePanel(second,drasDetails)+bilan;
+    const plan=p2DictationBankData(week);
+    const quote=plan&&Array.isArray(plan.flash)?plan.flash[2]:null;
+    const dras=plan&&plan.ecritureDRAS;
+    const intro=`<div class="p2-two-lessons" style="line-height:1.55">`;
+    const announce=(txt)=>`<div style="margin:8px 0;padding:8px 10px;background:#f0f6ff;border-left:3px solid #2563eb;border-radius:4px"><strong>🗣️ Phrase à dire aux élèves :</strong> « ${txt} »</div>`;
+    const spelling=`<section style="border:1px solid #f3c36a;border-left:4px solid #d97706;background:#fffaf0;border-radius:6px;padding:10px 12px;margin:4px 0 14px">
+      <div style="font-weight:800;color:#92400e">📝 TEMPS 1 — DICTÉE FLASH 3 · 15 min</div>
+      <div style="font-weight:700;margin:3px 0 7px;color:#78350f">📒 Cahier du jour</div>
+      <div><strong>🎯 Compétence :</strong> Écrire une phrase sous la dictée et vérifier son orthographe.</div>
+      ${announce('Ouvrez votre cahier du jour. Écoutez la phrase, écrivez-la puis relisez-vous.')}
+      <div style="margin:7px 0"><strong>📖 Phrase exacte à dicter :</strong><div style="margin-top:4px;padding:6px 8px;background:#fff;border-radius:4px">${quote||'Phrase de dictée à renseigner dans la programmation annuelle.'}</div></div>
+      <div><strong>✅ Correction :</strong> vérifier les majuscules, la ponctuation et l’orthographe des mots réellement dictés.</div>
+    </section>`;
+    let drasActivity='Phrase de départ à renseigner dans la programmation annuelle.';
+    if(dras){
+      drasActivity=`<div style="margin:7px 0"><strong>Phrase du jour :</strong> « ${dras.phraseDepart} »</div>
+        ${dras.supprimer?`<div><strong>S — Supprimer :</strong> ${dras.supprimer}</div>`:''}
+        ${dras.ajouter?`<div><strong>A — Ajouter :</strong> ${dras.ajouter}</div>`:''}
+        ${dras.deplacer?`<div><strong>D — Déplacer :</strong> ${dras.deplacer}</div>`:''}
+        ${dras.remplacer?`<div><strong>R — Remplacer :</strong> ${dras.remplacer}</div>`:''}
+        ${dras.production?`<div style="margin-top:6px"><strong>Pour prolonger l’écriture :</strong> ${dras.production}</div>`:''}
+        ${dras.motsAEmployer?`<div><strong>Mots utiles :</strong> ${dras.motsAEmployer}</div>`:''}`;
+    }
+    const writing=`<section style="border:1px solid #d8cdf8;border-left:4px solid #7c3aed;background:#faf8ff;border-radius:6px;padding:10px 12px;margin:0 0 8px">
+      <div style="font-weight:800;color:#5b21b6">✍️ TEMPS 2 — PHRASE DU JOUR · DRAS · 30 min</div>
+      <div style="font-weight:700;margin:3px 0 7px;color:#5b21b6">📓 Cahier d’écrivain</div>
+      <div><strong>🎯 Compétence :</strong> Modifier et enrichir une phrase avec une manipulation DRAS.</div>
+      ${announce('Rangez le cahier du jour et ouvrez votre cahier d’écrivain. Nous allons transformer la phrase du jour avec DRAS.')}
+      ${drasActivity}
+      <div style="margin-top:6px"><strong>✅ Relecture :</strong> vérifier le sens, la majuscule et le point.</div>
+    </section>`;
+    return intro+spelling+writing+'</div>';
   }
 
   function renderP2Week(week){
