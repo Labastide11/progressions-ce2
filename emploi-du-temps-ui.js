@@ -1766,6 +1766,26 @@
   // V31.45 — programmation annuelle ritualisée : dictée, EDL par DRAS et vocabulaire spécifique.
   const annualFrenchPlans=window.DICTEES_CE2_ANNUAL||{p2:[],p3:[],p4:[],p5:[]};
 
+  // P2, semaine 2 — adaptation pédagogique validée de la dictée flash 3.
+  // L'espace Parents conserve la même liste de mots ; seule la phrase est adaptée.
+  // Le remplacement est effectué dans l'objet banque partagé, avant les affichages.
+  (function harmoniserDicteeFlash3P2(){
+    const serie3='Une rencontre à la sortie de l’usine';
+    const phrase='Le directeur rencontre un visiteur devant l’usine. Il lui demande : Bonjour, comment va votre famille ?';
+    const annual=(window.DICTEES_CE2_ANNUAL||{}).p2;
+    const collection=(window.DICTEES_CE2||{}).p2;
+    [annual,collection].forEach(bank=>{
+      if(!Array.isArray(bank))return;
+      const plan=bank[1];
+      if(!plan || !String(plan.support||'').includes(serie3) || !Array.isArray(plan.flash) || plan.flash.length!==3){
+        console.warn('[Dictées P2] Série 3 absente ou inattendue ; aucune autre dictée modifiée.');
+        return;
+      }
+      plan.flash[2]=phrase;
+    });
+  })();
+
+
   function applyAnnualFrenchRitual(period,weeks){
     const plans=annualFrenchPlans[period]||[];
     (weeks||[]).forEach((week,idx)=>{
