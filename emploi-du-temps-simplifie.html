@@ -3,336 +3,129 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>V37.13 — Emploi du temps simplifié — Progressions CE2</title>
-
+<title>Emploi du temps simplifié — Progressions CE2</title>
 <link href="styles.css?v=35.40" rel="stylesheet">
-<link href="emploi-du-temps.css?v=36.31" rel="stylesheet">
-
 <style>
-  html,body{margin:0;min-height:100%;background:#eef4f7;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#18324a}
+  :root{--ink:#183450;--blue:#173b5c;--paper:#fff;--bg:#edf4f8}
   *{box-sizing:border-box}
-  .site-shell{min-height:100vh;display:flex;flex-direction:column}
-  .site-nav{
-    position:sticky;top:0;z-index:1000;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
-    padding:10px 16px;background:#173b5c;box-shadow:0 2px 10px rgba(0,0,0,.14)
-  }
-  .site-nav__brand{color:#fff;font-weight:900;margin-right:8px;white-space:nowrap}
-  .site-nav a{
-    display:inline-flex;align-items:center;min-height:38px;padding:0 13px;border-radius:10px;color:#fff;
-    text-decoration:none;font-weight:800;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18)
-  }
-  .site-nav a:hover,.site-nav a.is-active{background:#fff;color:#173b5c}
-  .site-nav__spacer{flex:1 1 auto}
-
-  .simple-wrap{width:min(1500px,calc(100% - 28px));margin:18px auto 36px}
-  .simple-head{
-    display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
-    background:#fff;border-radius:18px;padding:18px 22px;box-shadow:0 8px 24px rgba(23,59,92,.10)
-  }
-  .simple-head h1{margin:0;font-size:clamp(26px,3vw,40px)}
-  .simple-head p{margin:5px 0 0;color:#5b7183;font-weight:700}
-  .simple-actions{display:flex;gap:8px;flex-wrap:wrap}
-  .simple-actions button,.simple-actions a{
-    border:1px solid #c7d6e2;background:#fff;color:#173b5c;border-radius:10px;padding:10px 14px;
-    font-weight:850;cursor:pointer;text-decoration:none
-  }
-  .simple-actions button:hover,.simple-actions a:hover{background:#edf5fb}
-  .simple-actions .primary{background:#173b5c;color:#fff;border-color:#173b5c}
-
-  .date-strip{
-    margin:14px 0;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
-    background:#dcecf7;border:1px solid #b7d0e3;border-radius:14px;padding:12px 16px
-  }
-  .date-strip strong{font-size:20px}
-  .date-strip span{font-weight:800;color:#526f86}
-
-  .simple-grid{display:grid;grid-template-columns:1fr;gap:10px}
-  .simple-row{
-    display:grid;grid-template-columns:145px 220px minmax(0,1fr);align-items:stretch;
-    background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 14px rgba(23,59,92,.08);
-    border:1px solid #d9e5ed
-  }
-  .simple-time{padding:17px 16px;font-size:21px;font-weight:950;background:#eef4f8;display:flex;align-items:center}
-  .simple-subject{padding:17px 18px;font-size:20px;font-weight:950;display:flex;align-items:center;border-left:1px solid #dde8ef}
-  .simple-activity{padding:17px 20px;font-size:19px;line-height:1.5;display:block;border-left:1px solid #dde8ef}
-  .simple-activity strong{font-weight:900}
-  /* V37.13 — conserver les sauts de ligne et aérer les activités */
-  .simple-activity br{display:block;content:"";margin-top:.26em}
-  .simple-activity strong{font-weight:900}
-  .simple-activity em{font-style:italic}
-  .simple-row.break .simple-time,.simple-row.break .simple-subject,.simple-row.break .simple-activity{background:#f5f0e6}
-  .simple-row.break .simple-subject{color:#745f35}
-  .empty{
-    background:#fff;border-radius:16px;padding:34px;text-align:center;font-size:19px;font-weight:800;
-    color:#607789;box-shadow:0 5px 18px rgba(23,59,92,.08)
-  }
-  .simple-foot{margin-top:16px;color:#607789;font-size:14px;text-align:right}
-
-  /* V36.51 — codes couleurs + pictogrammes de matières rétablis */
-  .simple-row{position:relative;border-left:8px solid var(--subject-color,#9fb3c3)}
-  .simple-subject{gap:12px}
-  .subject-picto{
-    flex:0 0 42px;width:42px;height:42px;border-radius:12px;
-    display:inline-flex;align-items:center;justify-content:center;
-    font-size:26px;background:var(--subject-soft,#eef4f8);
-    border:1px solid color-mix(in srgb,var(--subject-color,#9fb3c3) 35%, white);
-  }
-  .subject-label{min-width:0}
+  html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+  .site-nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:8px 16px;background:#173b5c}
+  .site-nav__brand{color:white;font-weight:900;margin-right:8px;white-space:nowrap}
+  .site-nav a{display:inline-flex;align-items:center;min-height:36px;padding:7px 12px;border-radius:9px;color:white;text-decoration:none;font-size:14px;font-weight:800;background:#ffffff1a;border:1px solid #ffffff30}
+  .site-nav a:hover,.site-nav a.is-active{color:#173b5c;background:#fff}
+  .simple-wrap{width:calc(100% - 28px);max-width:none;margin:12px auto 26px}
+  .simple-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 20px;background:white;border-radius:16px;box-shadow:0 5px 16px #173b5c12}
+  .simple-head h1{margin:0;font-size:clamp(25px,2vw,36px);line-height:1.2}
+  .simple-head p{margin:3px 0 0;color:#536e83;font-weight:600;font-size:clamp(13px,1vw,16px)}
+  .simple-actions{display:flex;flex-wrap:wrap;gap:7px}
+  .simple-actions button,.simple-actions a{border:1px solid #bbd0de;background:#fff;border-radius:9px;color:#173b5c;padding:9px 12px;font-size:14px;font-weight:800;text-decoration:none;cursor:pointer}
+  .simple-actions button:hover,.simple-actions a:hover{background:#e9f3fa}
+  .simple-actions button:disabled{opacity:.38;cursor:not-allowed}
+  .simple-actions .primary{background:var(--blue);border-color:var(--blue);color:white}
+  .date-strip{margin:10px 0 12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:10px 16px;background:#dbedf9;border:1px solid #bad4e6;border-radius:12px}
+  .date-strip strong{font-size:clamp(19px,1.6vw,26px)}
+  .date-strip span{font-weight:800;color:#45647d}
+  .simple-grid{display:grid;grid-template-columns:1fr;gap:9px}
+  .simple-row{--subject-color:#7992ac;--subject-soft:#f1f5f9;display:grid;grid-template-columns:minmax(215px,26%) minmax(0,1fr);align-items:stretch;overflow:hidden;background:#fff;border:1px solid #dce7ee;border-left:9px solid var(--subject-color);border-radius:13px;box-shadow:0 3px 10px #173b5c0c}
+  .simple-subject{display:flex;align-items:center;gap:14px;padding:15px 19px;background:var(--subject-soft);font-size:clamp(18px,1.4vw,24px);font-weight:900}
+  .subject-picto{display:inline-flex;align-items:center;justify-content:center;flex:0 0 46px;width:46px;height:46px;border-radius:12px;background:white;font-size:27px}
+  .simple-activity{padding:13px 22px 14px;min-width:0;align-self:center}
+  .activity-name{font-size:clamp(19px,1.55vw,27px);font-weight:850;line-height:1.28;margin:0 0 5px}
+  .learning-line{margin:0;font-size:clamp(18px,1.35vw,24px);line-height:1.42;color:#234660}
+  .learning-line .learning-lead{font-weight:850;color:#234b77}
+  .learning-extra{margin:4px 0 0;font-size:clamp(16px,1.15vw,20px);color:#536a7d}
+  .micro-activities{display:grid;gap:9px}
+  .micro-activity+.micro-activity{border-top:1px solid #e6edf3;padding-top:9px}
   .simple-row.french{--subject-color:#e45772;--subject-soft:#fff0f4}
-  .simple-row.maths{--subject-color:#4386d8;--subject-soft:#eef6ff}
-  .simple-row.english{--subject-color:#2aa7a1;--subject-soft:#e9fbf8}
-  .simple-row.eps{--subject-color:#55a85c;--subject-soft:#eef9ef}
+  .simple-row.maths{--subject-color:#4386d8;--subject-soft:#edf5ff}
+  .simple-row.english{--subject-color:#2aa7a1;--subject-soft:#e8faf7}
+  .simple-row.eps{--subject-color:#55a85c;--subject-soft:#edf9ee}
   .simple-row.arts{--subject-color:#9a6bd4;--subject-soft:#f6efff}
-  .simple-row.history{--subject-color:#d68a3a;--subject-soft:#fff5e9}
+  .simple-row.history{--subject-color:#d68a3a;--subject-soft:#fff4e8}
   .simple-row.science{--subject-color:#25a1a8;--subject-soft:#eaf9fa}
-  .simple-row.emc{--subject-color:#e4ae2e;--subject-soft:#fff8df}
+  .simple-row.emc{--subject-color:#e4ae2e;--subject-soft:#fff9e4}
   .simple-row.break{--subject-color:#8fbd4a;--subject-soft:#f3f9e8}
   .simple-row.common{--subject-color:#75879b;--subject-soft:#f1f4f7}
-
-  .simple-row .simple-time{background:var(--subject-soft,#eef4f8)}
-  .simple-row .simple-subject{background:#fff}
-  .simple-row .simple-activity{background:#fff}
-
-  .simple-row.break .simple-time,
-  .simple-row.break .simple-subject,
-  .simple-row.break .simple-activity{background:var(--subject-soft,#f3f9e8)}
-  .simple-row.break .simple-subject{color:#526f22}
-
-  @media(max-width:800px){
-    .site-nav{position:static}.site-nav__brand{width:100%}
-    .simple-wrap{width:min(100% - 16px,1500px);margin-top:10px}
-    .simple-row{grid-template-columns:110px 1fr}
-    .simple-time{grid-row:1 / span 2}
-    .simple-subject{border-left:1px solid #dde8ef}
-    .simple-activity{grid-column:2;border-left:1px solid #dde8ef;border-top:1px solid #dde8ef}
-    .simple-time,.simple-subject,.simple-activity{font-size:17px;padding:13px}
-  }
-
-  @media print{
-    .site-nav,.simple-actions{display:none!important}
-    .simple-wrap{width:100%;margin:0}.simple-head,.simple-row{box-shadow:none}
-  }
+  .empty{background:white;border-radius:14px;padding:30px;font-size:20px;text-align:center;font-weight:800}
+  .simple-foot{text-align:right;font-size:12px;color:#607789;margin-top:10px}
+  @media(min-width:1500px){.simple-wrap{width:calc(100% - 34px)}.simple-row{grid-template-columns:minmax(260px,23%) minmax(0,1fr)}.simple-subject,.simple-activity{padding-top:16px;padding-bottom:16px}}
+  @media(max-width:780px){.site-nav{position:static}.simple-wrap{width:calc(100% - 16px);margin-top:8px}.simple-head{padding:12px}.simple-row{grid-template-columns:1fr}.simple-subject{padding:10px 13px;font-size:19px}.simple-activity{padding:10px 15px 13px}.subject-picto{width:36px;height:36px;flex-basis:36px;font-size:22px}.activity-name{font-size:20px}.learning-line{font-size:18px}.learning-extra{font-size:16px}}
+  @media print{.site-nav,.simple-actions,.simple-foot{display:none!important}.simple-wrap{width:100%;margin:0}.simple-row,.simple-head{box-shadow:none;break-inside:avoid}}
 </style>
 </head>
 <body>
-<div class="site-shell">
-  <nav class="site-nav" aria-label="Navigation principale">
-    <span class="site-nav__brand">🦉 Progressions CE2</span>
-    <a href="index.html">🏠 Accueil</a>
-    <a href="emploi-du-temps.html?mode=summary">🗓️ Emploi du temps</a>
-    <a class="is-active" href="emploi-du-temps-simplifie.html">📺 Emploi du temps simplifié</a>
-    <a href="cahier-journal.html">📘 Cahier journal</a>
-    <a href="index.html?open=students">👥 Ma classe</a>
-    <a href="index.html?open=programme">📋 Programme du jour</a>
-    <span class="site-nav__spacer"></span>
-  </nav>
-
-  <main class="simple-wrap">
-    <section class="simple-head">
-      <div>
-        <h1>📺 Emploi du temps simplifié</h1>
-        <p>Vue claire de la journée, adaptée à l’affichage en classe et au TBI.</p>
-      </div>
-      <div class="simple-actions">
-        <button id="prevDayBtn" type="button">← Jour précédent</button>
-        <button class="primary" id="todayBtn" type="button">Aujourd’hui</button>
-        <button id="nextDayBtn" type="button">Jour suivant →</button>
-        <a href="emploi-du-temps.html?mode=day">Voir le détail</a>
-      </div>
-    </section>
-
-    <div class="date-strip">
-      <strong id="simpleDate">—</strong>
-      <span id="simpleWeek">—</span>
+<nav class="site-nav" aria-label="Navigation principale">
+  <span class="site-nav__brand">🦉 Progressions CE2</span>
+  <a href="index.html">🏠 Accueil</a>
+  <a href="emploi-du-temps.html?mode=summary">🗓️ Emploi du temps</a>
+  <a class="is-active" href="emploi-du-temps-simplifie.html">📺 Emploi du temps simplifié</a>
+  <a href="cahier-journal.html">📘 Cahier journal</a>
+  <a href="index.html?open=students">👥 Ma classe</a>
+  <a href="index.html?open=programme">📋 Programme du jour</a>
+</nav>
+<main class="simple-wrap">
+  <section class="simple-head">
+    <div><h1>📺 Notre journée de classe</h1><p>Ce que nous allons faire et apprendre aujourd'hui.</p></div>
+    <div class="simple-actions">
+      <button id="prevDayBtn" type="button">← Jour précédent</button>
+      <button class="primary" id="todayBtn" type="button">Aujourd’hui</button>
+      <button id="nextDayBtn" type="button">Jour suivant →</button>
+      <a href="emploi-du-temps.html?mode=day">Voir le détail</a>
     </div>
-
-    <section class="simple-grid" id="simpleGrid"></section>
-    <div class="simple-foot">CE2 · École La Gravette · Année scolaire 2026-2027</div>
-  </main>
-</div>
-
+  </section>
+  <div class="date-strip"><strong id="simpleDate">—</strong><span id="simpleWeek">—</span></div>
+  <section class="simple-grid" id="simpleGrid" aria-live="polite"></section>
+  <div class="simple-foot">CE2 · École La Gravette · Année scolaire 2026-2027</div>
+</main>
 <script src="emploi-du-temps-data-p1.js?v=37.24"></script>
 <script src="emploi-du-temps-data-p2.js?v=37.24"></script>
 <script src="cycle-endurance-p2.js?v=1.1"></script>
 <script src="emploi-du-temps-data-p3.js?v=37.24"></script>
 <script src="emploi-du-temps-data-p4.js?v=37.24"></script>
 <script src="emploi-du-temps-data-p5.js?v=37.24"></script>
-
 <script>
 (function(){
-  'use strict';
-
-  var MONTHS={
-    janvier:0,février:1,fevrier:1,mars:2,avril:3,mai:4,juin:5,juillet:6,août:7,aout:7,
-    septembre:8,octobre:9,novembre:10,décembre:11,decembre:11
-  };
-
-  function norm(s){return String(s||'').trim().toLowerCase();}
-  function parseDayLabel(label){
-    var m=String(label||'').match(/^(Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi|Dimanche)\s+(\d{1,2})(?:er)?\s+([A-Za-zÀ-ÿ]+)\s+(\d{4})$/i);
-    if(!m)return null;
-    var month=MONTHS[norm(m[3])];
-    if(typeof month!=='number')return null;
-    return new Date(Number(m[4]),month,Number(m[2]),12,0,0,0);
-  }
-  function isoDate(d){
-    return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
-  }
-  function readableHtml(html){
-    var tmp=document.createElement('div');
-    tmp.innerHTML=String(html||'');
-
-    Array.from(tmp.querySelectorAll('*')).forEach(function(el){
-      var tag=el.tagName.toLowerCase();
-      if(['br','strong','b','em','i'].indexOf(tag)===-1){
-        el.replaceWith(document.createTextNode(el.textContent||''));
-      }
-    });
-
-    return tmp.innerHTML
-      .replace(/\s*<br\s*\/?>\s*/gi,'<br>')
-      .replace(/(?:<br>){3,}/gi,'<br><br>')
-      .trim();
-  }
-
-  function collectDays(){
-    var data=window.PROGRESSIONS_EDT_DATA||{};
-    var result=[];
-    Object.keys(data).forEach(function(key){
-      var weeks=data[key];
-      if(!Array.isArray(weeks) || !/DetailedWeeks$/i.test(key)) return;
-      weeks.forEach(function(week){
-        if(!week || !Array.isArray(week.days)) return;
-        week.days.forEach(function(day){
-          if(!Array.isArray(day) || !Array.isArray(day[1])) return;
-          var date=parseDayLabel(day[0]);
-          if(!date)return;
-          result.push({
-            date:date,
-            label:day[0],
-            weekTitle:week.title||week.dates||'',
-            rows:day[1]
-          });
-        });
-      });
-    });
-
-    /* Évite d'éventuels doublons entre blocs de rentrée et P1. */
-    var map=new Map();
-    result.sort(function(a,b){return a.date-b.date});
-    result.forEach(function(item){
-      var key=isoDate(item.date);
-      if(!map.has(key) || (item.rows && item.rows.length>(map.get(key).rows||[]).length)) map.set(key,item);
-    });
-    return Array.from(map.values()).sort(function(a,b){return a.date-b.date});
-  }
-
-  var days=collectDays();
-  var currentIndex=0;
-
-  function nearestIndexToToday(){
-    if(!days.length)return 0;
-    var today=new Date(); today.setHours(12,0,0,0);
-    var exact=days.findIndex(function(d){return isoDate(d.date)===isoDate(today)});
-    if(exact>=0)return exact;
-    var future=days.findIndex(function(d){return d.date>today});
-    if(future>=0)return future;
-    return days.length-1;
-  }
-
-  function render(){
-    var grid=document.getElementById('simpleGrid');
-    var dateEl=document.getElementById('simpleDate');
-    var weekEl=document.getElementById('simpleWeek');
-
-    if(!days.length){
-      grid.innerHTML='<div class="empty">Aucune journée détaillée trouvée dans les fichiers d’emploi du temps.</div>';
-      return;
-    }
-
-    var day=days[currentIndex];
-    dateEl.textContent=day.label;
-    weekEl.textContent=day.weekTitle||'';
-
-    grid.innerHTML='';
-    day.rows.forEach(function(row){
-      if(!Array.isArray(row))return;
-      var time=row[0]||'';
-      var subject=row[1]||'';
-      var activity=readableHtml(row[2]||'');
-      var kind=row[4]||'common';
-
-      function pictoFor(subject,kind){
-        var s=String(subject||'').toLowerCase();
-        if(/récréation|pause/.test(s) || kind==='break') return '🛝';
-        if(/évaluation/.test(s)) return '📝';
-        if(/lecture|fluence|quart d.?heure de lecture/.test(s)) return '📖';
-        if(/dictée|orthographe/.test(s)) return '✍️';
-        if(/production d.?écrits|écrivain|copie/.test(s)) return '🖊️';
-        if(/calcul mental/.test(s)) return '🧠';
-        if(/géométr/.test(s)) return '📐';
-        if(/numération|nombres/.test(s)) return '🔢';
-        if(/problème/.test(s)) return '🧩';
-        if(/math/.test(s) || kind==='maths') return '➗';
-        if(/anglais/.test(s) || kind==='english') return '🇬🇧';
-        if(/eps|sport|dojo/.test(s) || kind==='eps') return '🏃';
-        if(/musique|chant/.test(s)) return '🎵';
-        if(/arts|dessin/.test(s) || kind==='arts') return '🎨';
-        if(/science/.test(s) || kind==='science') return '🔬';
-        if(/géographie/.test(s)) return '🌍';
-        if(/histoire/.test(s) || kind==='history') return '⏳';
-        if(/emc|vie de classe|conseil|méthodologie/.test(s) || kind==='emc') return '🤝';
-        if(/français/.test(s) || kind==='french') return '📘';
-        return '📌';
-      }
-
-      var cssKind=['french','maths','english','eps','arts','history','science','emc','break','common'].indexOf(kind)>=0?kind:'common';
-      if(/récréation|pause/i.test(subject)) cssKind='break';
-
-      var el=document.createElement('article');
-      el.className='simple-row '+cssKind;
-      el.innerHTML=
-        '<div class="simple-time"></div>'+
-        '<div class="simple-subject"><span class="subject-picto" aria-hidden="true"></span><span class="subject-label"></span></div>'+
-        '<div class="simple-activity"></div>';
-      el.children[0].textContent=time;
-      el.querySelector('.subject-picto').textContent=pictoFor(subject,kind);
-      el.querySelector('.subject-label').textContent=subject;
-      el.children[2].innerHTML=activity;
-
-      var activityEl=el.children[2];
-      if(activityEl && !/<br\s*\/?>/i.test(activity)){
-        var h=activityEl.innerHTML;
-        h=h
-          .replace(/\s*(💬\s*Rituel\s*:)/g,'<br><br>$1')
-          .replace(/\s*(✍️\s*Dictée du jour\s*:)/g,'<br><br>$1')
-          .replace(/\s*(✅\s*Correction\s*:)/g,'<br>$1')
-          .replace(/\s*(🔎\s*Travail ciblé\s*:)/g,'<br><br>$1')
-          .replace(/\s*(🎯\s*Objectif\s*:)/g,'<br>$1')
-          .replace(/\s*(🧰\s*Matériel\s*:)/g,'<br>$1')
-          .replace(/\s*([1-4]\.\s*(?:Question|Manipulation|Observation|Trace)\s*[—-]\s*\d+\s*min)/g,'<br><br><strong>$1</strong><br>');
-        activityEl.innerHTML=h.replace(/^(?:<br>)+/i,'');
-      }
-
-      grid.appendChild(el);
-    });
-
-    document.getElementById('prevDayBtn').disabled=currentIndex<=0;
-    document.getElementById('nextDayBtn').disabled=currentIndex>=days.length-1;
-  }
-
-  document.getElementById('prevDayBtn').addEventListener('click',function(){
-    if(currentIndex>0){currentIndex--;render();window.scrollTo({top:0,behavior:'smooth'});}
-  });
-  document.getElementById('nextDayBtn').addEventListener('click',function(){
-    if(currentIndex<days.length-1){currentIndex++;render();window.scrollTo({top:0,behavior:'smooth'});}
-  });
-  document.getElementById('todayBtn').addEventListener('click',function(){
-    currentIndex=nearestIndexToToday();render();
-  });
-
-  currentIndex=nearestIndexToToday();
-  render();
+'use strict';
+var MONTHS={janvier:0,février:1,fevrier:1,mars:2,avril:3,mai:4,juin:5,juillet:6,août:7,aout:7,septembre:8,octobre:9,novembre:10,décembre:11,decembre:11};
+function norm(s){return String(s||'').trim().toLowerCase();}
+function parseDayLabel(label){var m=String(label||'').match(/^(Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi|Dimanche)\s+(\d{1,2})(?:er)?\s+([A-Za-zÀ-ÿ]+)\s+(\d{4})$/i);if(!m)return null;var n=MONTHS[norm(m[3])];return typeof n==='number'?new Date(+m[4],n,+m[2],12):null;}
+function isoDate(d){return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');}
+function collectDays(){var result=[],data=window.PROGRESSIONS_EDT_DATA||{};Object.keys(data).forEach(function(key){if(!/DetailedWeeks$/i.test(key)||!Array.isArray(data[key]))return;data[key].forEach(function(w){if(!w||!Array.isArray(w.days))return;w.days.forEach(function(day){if(!Array.isArray(day)||!Array.isArray(day[1]))return;var date=parseDayLabel(day[0]);if(date)result.push({date:date,label:day[0],weekTitle:w.title||w.dates||'',rows:day[1]});});});});var map=new Map();result.sort(function(a,b){return a.date-b.date});result.forEach(function(d){var key=isoDate(d.date),old=map.get(key);if(!old||d.rows.length>old.rows.length)map.set(key,d);});return Array.from(map.values()).sort(function(a,b){return a.date-b.date});}
+function plain(html){var t=document.createElement('div');t.innerHTML=String(html||'');return (t.textContent||'').replace(/\s+/g,' ').trim();}
+function short(s,max){s=String(s||'').replace(/\s+/g,' ').replace(/\s+[.;:]$/,'').trim();if(s.length<=max)return s;var x=s.slice(0,max+1);return x.slice(0,x.lastIndexOf(' '))+'…';}
+function esc(s){return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]});}
+function kindFor(row){var k=String(row[4]||'').toLowerCase(),s=norm(row[1]);if(/récréation|pause/.test(s)||k==='break')return 'break';if(['french','maths','english','eps','arts','history','science','emc','common'].indexOf(k)>=0)return k;if(/français|lecture|dictée|production d’écrits/.test(s))return 'french';if(/math/.test(s))return 'maths';if(/anglais/.test(s))return 'english';if(/sciences/.test(s))return 'science';if(/histoire/.test(s))return 'history';if(/géographie/.test(s))return 'history';if(/eps/.test(s))return 'eps';return 'common';}
+function picto(s,k){s=norm(s);if(k==='break')return '🛝';if(/lecture|fluence/.test(s))return '📖';if(/dictée|orthographe/.test(s))return '✍️';if(/production d.?écrits|écrivain|copie/.test(s))return '🖊️';if(/calcul mental/.test(s))return '🧠';if(/géométr/.test(s))return '📐';if(/numération|nombre/.test(s))return '🔢';if(/problème/.test(s))return '🧩';if(/anglais/.test(s))return '🇬🇧';if(/eps|sport|endurance/.test(s))return '🏃';if(/musique|chant|chorale/.test(s))return '🎵';if(/arts/.test(s))return '🎨';if(/sciences/.test(s))return '🔬';if(/géographie/.test(s))return '🌍';if(/histoire/.test(s))return '⏳';if(/emc|vie de classe/.test(s))return '🤝';if(k==='maths')return '➗';if(k==='french')return '📘';return '📌';}
+function subjectName(s,k){s=String(s||'');if(k==='break')return /récréation/i.test(s)?'Récréation':'Pause';if(/anglais/i.test(s))return 'Anglais';if(/mathématiques|calcul mental/i.test(s))return 'Mathématiques';if(/sciences/i.test(s))return 'Sciences';if(/histoire/i.test(s))return 'Histoire';if(/géographie/i.test(s))return 'Géographie';if(/EPS|course longue|endurance|sport/i.test(s))return 'EPS';if(/CHAM|arts|musique|chant/i.test(s))return 'Arts et musique';if(/EMC/i.test(s)&&!/français/i.test(s))return 'EMC';if(/français|lecture|dictée|orthographe|production d’écrits|quart d’heure/i.test(s))return 'Français';return s.split(/[—–]/)[0].trim()||'Notre activité';}
+// On ne copie JAMAIS row[2] dans le HTML : il contient les instructions du maître.
+function subjectTopic(row){var s=String(row[1]||''),body=plain(row[2]),m=s.match(/[—–]\s*(.*)$/);if(/dictée flash\s*3/i.test(s))return 'Dictée flash 3 et phrase du jour';if(/dictée bilan/i.test(s))return 'Dictée bilan';if(/dictée flash\s*2/i.test(s))return 'Dictée flash 2';if(/dictée|orthographe/i.test(s))return 'Les mots et la dictée';if(/quart d.?heure de lecture/i.test(s))return 'Lecture plaisir';if(/CHAM/i.test(s))return 'Chorale et ateliers';if(/retour au calme/i.test(s))return 'Retour au calme';if(m&&m[1].trim())return short(m[1].trim(),65);if(/^(?:Français|Mathématiques|Sciences|Histoire|Anglais|EMC)$/i.test(s.trim())&&body&&!/<[a-z]/i.test(String(row[2]||''))){return short(body.split(/[.:;]/)[0],68);}if(/Français\s*\/\s*EMI/i.test(s))return 'Je cherche des informations';if(/Arts plastiques/i.test(s))return 'Création artistique';return short(s,60);}
+function skill(row){var t=String(row[3]||'');if(t.indexOf('·')>=0)t=t.split('·').slice(1).join('·');else t='';t=t.replace(/^[\s–—:;]+/,'').replace(/[.;]+$/,'').trim();if(/^[A-Z]{2,6}-P\d|compétences déjà enseignées|^réinvestissement$/i.test(t))return '';return t;}
+function fromTeacherObjective(row){var container=document.createElement('div');container.innerHTML=String(row[2]||'');var els=Array.from(container.querySelectorAll('div,p,li'));for(var i=0;i<els.length;i++){var el=els[i],val=(el.textContent||'').replace(/\s+/g,' ').trim();if(el.children.length>3||val.length>240)continue;var m=val.match(/Compétence (?:travaillée|du jour)\s*:\s*(.*)/i);if(m){var x=m[1].replace(/^Aujourd'hui,?\s*nous allons apprendre à\s*/i,'').replace(/^Aujourd’hui,?\s*nous allons apprendre à\s*/i,'').replace(/^Aujourd'hui,?\s*nous allons\s*/i,'').replace(/^Aujourd’hui,?\s*nous allons\s*/i,'');return x.replace(/[.;]+$/,'').trim();}}return '';}
+function naturalObjective(source){var x=String(source||'').trim().replace(/\s+/g,' ').replace(/[.!]+$/,'');if(!x)return '';if(/^(Aujourd|Tu |Nous |Je )/i.test(x))return short(x,145).replace(/^(Aujourd'hui,?\s*nous allons|Aujourd’hui,?\s*nous allons)/i,'Aujourd’hui, tu vas');if(/^(Reconnaître|Comprendre|Identifier|Calculer|Multiplier|Placer|Ranger|Comparer|Lire|Écrire|Repérer|Observer|Décrire|Réutiliser|Mémoriser|Associer|Formuler|Produire|Transformer|Accorder|Utiliser|Demander|Dire|Maintenir|Expliquer|Résoudre|Présenter|Reformuler|Découvrir|Courir|Gérer|Respecter|Coopérer|Travailler|Consolider|Réinvestir|Améliorer|Trouver|Écouter|Distinguer|Ordonner|Classer|Inventer|Savoir|Choisir|Raconter|Construire|Décomposer|Effectuer|Faire|S'exprimer)/i.test(x)){return 'Tu vas apprendre à '+short(x.charAt(0).toLowerCase()+x.slice(1),127)+'.';}return '';}
+function objective(row,topic){var s=norm(row[1]),c=String(row[3]||'');if(/récréation|pause/.test(s))return 'Tu prends une pause avant de poursuivre les apprentissages.';if(/quart d.?heure de lecture/.test(s))return 'Tu prends plaisir à lire et tu t’entraînes à lire régulièrement.';if(/calcul mental/.test(s)){var r=skill(row);if(/doubles? et moitiés/i.test(r))return 'Tu vas améliorer ta connaissance des doubles et des moitiés.';if(/multiplier.*10/i.test(r))return 'Tu vas apprendre à multiplier rapidement un nombre par 10.';}
+if(/dictée/i.test(s)){if(/bilan/i.test(s))return 'Tu vas réutiliser les mots appris cette semaine dans une dictée.';if(/flash/i.test(s))return 'Tu vas écrire une phrase dictée en utilisant les mots que tu as appris.';return 'Tu vas mémoriser et écrire correctement les mots de la semaine.';}
+if(/course longue|endurance/.test(s))return 'Tu vas apprendre à courir longtemps à ton rythme.';
+if(/CHAM/.test(s))return 'Tu vas pratiquer le chant, les arts ou la lecture avec ton groupe.';
+if(/retour au calme/.test(s))return 'Tu vas récupérer après l’effort et expliquer ce que tu as réussi.';
+var sk=skill(row);var from=naturalObjective(sk);if(from)return from;
+from=naturalObjective(fromTeacherObjective(row));if(from)return from;
+if(/lecture/.test(s)||/lire/i.test(topic))return 'Tu vas t’entraîner à lire et à mieux comprendre les textes.';
+if(/anglais/.test(s))return 'Tu vas apprendre à comprendre et à dire de nouveaux mots en anglais.';
+if(/math/.test(s))return 'Tu vas t’entraîner à utiliser les nombres pour réfléchir et calculer.';
+if(/arts|musique/.test(s))return 'Tu vas créer et expliquer tes choix.';
+if(/eps/.test(s))return 'Tu vas apprendre à bouger, à coopérer et à gérer ton effort.';
+return 'Tu vas découvrir une nouvelle idée et t’entraîner à l’utiliser.';}
+function learningBlock(title,goal){var a=document.createElement('div');a.className='micro-activity';var h=document.createElement('h2');h.className='activity-name';h.textContent=title;var p=document.createElement('p');p.className='learning-line';var lead=document.createElement('span');lead.className='learning-lead';lead.textContent='Ce que j’apprends : ';p.appendChild(lead);p.appendChild(document.createTextNode(goal));a.appendChild(h);a.appendChild(p);return a;}
+function learningContent(row){var a=document.createElement('div');a.className='micro-activities';var s=String(row[1]||'');if(/dictée flash\s*3/i.test(s)&&/production d.?écrits|DRAS/i.test(s)){a.appendChild(learningBlock('Dictée flash 3','Tu vas écrire une phrase dictée en utilisant les mots appris.'));a.appendChild(learningBlock('Phrase du jour — DRAS','Tu vas améliorer une phrase en ajoutant, supprimant, remplaçant ou déplaçant des mots.'));}
+else if(/dictée bilan/i.test(s)&&/production d.?écrits|DRAS/i.test(s)){a.appendChild(learningBlock('Dictée bilan','Tu vas réutiliser les mots de la semaine dans une dictée.'));a.appendChild(learningBlock('Production d’écrits','Tu vas écrire quelques phrases et les relire pour les améliorer.'));}
+else {var title=subjectTopic(row);a.appendChild(learningBlock(title,objective(row,title)));}return a;}
+var days=collectDays(),currentIndex=0;
+function nearestIndexToToday(){if(!days.length)return 0;var now=new Date();now.setHours(12,0,0,0);var exact=days.findIndex(function(x){return isoDate(x.date)===isoDate(now)});if(exact>=0)return exact;var next=days.findIndex(function(x){return x.date>now});return next>=0?next:days.length-1;}
+function render(){var grid=document.getElementById('simpleGrid');grid.replaceChildren();if(!days.length){grid.innerHTML='<div class="empty">Aucune journée trouvée dans les fichiers de l’emploi du temps.</div>';return;}var day=days[currentIndex];document.getElementById('simpleDate').textContent=day.label;document.getElementById('simpleWeek').textContent=day.weekTitle||'';day.rows.forEach(function(row){if(!Array.isArray(row))return;var s=String(row[1]||'');if(!s.trim())return;var k=kindFor(row),el=document.createElement('article');el.className='simple-row '+k;var left=document.createElement('div');left.className='simple-subject';var img=document.createElement('span');img.className='subject-picto';img.setAttribute('aria-hidden','true');img.textContent=picto(s,k);var name=document.createElement('span');name.className='subject-label';name.textContent=subjectName(s,k);left.appendChild(img);left.appendChild(name);var right=document.createElement('div');right.className='simple-activity';right.appendChild(learningContent(row));el.appendChild(left);el.appendChild(right);grid.appendChild(el);});document.getElementById('prevDayBtn').disabled=currentIndex<=0;document.getElementById('nextDayBtn').disabled=currentIndex>=days.length-1;}
+document.getElementById('prevDayBtn').addEventListener('click',function(){if(currentIndex>0){currentIndex--;render();window.scrollTo({top:0,behavior:'smooth'});}});
+document.getElementById('nextDayBtn').addEventListener('click',function(){if(currentIndex<days.length-1){currentIndex++;render();window.scrollTo({top:0,behavior:'smooth'});}});
+document.getElementById('todayBtn').addEventListener('click',function(){currentIndex=nearestIndexToToday();render();});
+currentIndex=nearestIndexToToday();render();
 })();
 </script>
 </body>
