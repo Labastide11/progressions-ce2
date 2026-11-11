@@ -1899,11 +1899,47 @@
     return '';
   }
 
+
+  // P2 : chaque détail apparaît dans le temps où il est réellement enseigné.
+  // Les autres jours et les autres périodes conservent leur affichage précédent.
+  function p2SessionContentOrdered(week,day,row){
+    const ordinaryGuide=p2DictationTimetableGuide(week,day,row);
+    const name=String(day||'').split(' ')[0];
+    const html=String(row[2]||'');
+    if(name!=='Jeudi'||row[0]!=='10h–10h45'||!html.includes('p2-francais-prep')){
+      return html+ordinaryGuide;
+    }
+    const p=p2DictationBankData(week);
+    if(!p)return html;
+    const flashDetails=`<div class="dictation-timetable-guide" style="margin:12px 0 0">
+      <div class="dictation-timetable-guide__title">📝 Phrase à dicter — Flash 3</div>
+      <div>${p.flash[2]}</div>
+      <div><strong>Réactivation :</strong> ${p.reactivationWords}</div>
+      <div><strong>Vigilance :</strong> ${p.motsCibles}</div>
+    </div>`;
+    const drasDetails=renderDictationDrasGuide(p,'thursday');
+    const beforeSecond='<div style="border:1px solid #d8cdf8';
+    const beforeBilan='<div style="margin:5px 0"><strong>✅ Bilan commun';
+    // Insérer les contenus au sein des panneaux et non après le bilan.
+    const secondStart=html.indexOf(beforeSecond);
+    const bilanStart=html.indexOf(beforeBilan);
+    if(secondStart<0||bilanStart<0||secondStart>=bilanStart)return html+ordinaryGuide;
+    const first=html.slice(0,secondStart);
+    const second=html.slice(secondStart,bilanStart);
+    const bilan=html.slice(bilanStart);
+    const insertInsidePanel=(fragment,details)=>{
+      const lastClose=fragment.lastIndexOf('</div>');
+      if(lastClose<0)return fragment;
+      return fragment.slice(0,lastClose)+details+fragment.slice(lastClose);
+    };
+    return insertInsidePanel(first,flashDetails)+insertInsidePanel(second,drasDetails)+bilan;
+  }
+
   function renderP2Week(week){
     const data=p2DetailedWeeks[week-1]||p2DetailedWeeks[0];
     const content=document.getElementById('timetableContent');
     const evalCount=data.days.reduce((n,[,rows])=>n+rows.filter(r=>/Évaluation|Mini-test|validation|Mesure (initiale|intermédiaire)|Dictée/i.test(r[5]||'')).length,0);
-    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à l’emploi du temps</button></div>${detailWeekSelector('p2',data.key)}${data.holiday?`<div class="holiday-note">📅 ${data.holiday}</div>`:''}${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td><td class="detail-competence-cell">${r[3]}</td>${dashboardSessionCell_(`${pedagogyMarkers('p2',data.key,day,r)}${r[2]}${p2DictationTimetableGuide(week,day,r)}${annualMathLessonButton(r[6])}`,r[5],/Évaluation|Mini-test|Dictée/i)}<td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à l’emploi du temps</button></div>${detailWeekSelector('p2',data.key)}${data.holiday?`<div class="holiday-note">📅 ${data.holiday}</div>`:''}${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td><td class="detail-competence-cell">${r[3]}</td>${dashboardSessionCell_(`${pedagogyMarkers('p2',data.key,day,r)}${p2SessionContentOrdered(week,day,r)}${annualMathLessonButton(r[6])}`,r[5],/Évaluation|Mini-test|Dictée/i)}<td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
     bindStatusControls(content);
   }
   function p3DictationBankData(week){
