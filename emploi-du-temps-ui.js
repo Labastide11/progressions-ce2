@@ -1905,7 +1905,7 @@
   function p2SessionContentOrdered(week,day,row){
     const html=String(row[2]||'');
     const dayName=String(day||'').split(' ')[0];
-    if(dayName!=='Jeudi'||row[0]!=='10h–10h45'||!html.includes('p2-francais-deux-temps')){
+    if(dayName!=='Jeudi'||row[0]!=='10h–10h45'||!String(row[1]||'').includes('Français')){
       return html+p2DictationTimetableGuide(week,day,row);
     }
     const plan=p2DictationBankData(week);
@@ -1942,11 +1942,20 @@
     return intro+spelling+writing+'</div>';
   }
 
+  function p2TwoTimeslot_(day,row){
+    return String(day||'').startsWith('Jeudi') && row[0]==='10h–10h45' && String(row[1]||'').includes('Français');
+  }
+  function p2SubjectLabel_(day,row){
+    return p2TwoTimeslot_(day,row)?'Français — Dictée puis phrase du jour (DRAS)':row[1];
+  }
+  function p2CompetenceLabel_(day,row){
+    return p2TwoTimeslot_(day,row)?'ORT-P2-01 ; ECR-P2-04 à 06 · Orthographier une phrase dictée ; modifier une phrase avec DRAS.':row[3];
+  }
   function renderP2Week(week){
     const data=p2DetailedWeeks[week-1]||p2DetailedWeeks[0];
     const content=document.getElementById('timetableContent');
     const evalCount=data.days.reduce((n,[,rows])=>n+rows.filter(r=>/Évaluation|Mini-test|validation|Mesure (initiale|intermédiaire)|Dictée/i.test(r[5]||'')).length,0);
-    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à l’emploi du temps</button></div>${detailWeekSelector('p2',data.key)}${data.holiday?`<div class="holiday-note">📅 ${data.holiday}</div>`:''}${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td><td class="detail-competence-cell">${r[3]}</td>${dashboardSessionCell_(`${pedagogyMarkers('p2',data.key,day,r)}${p2SessionContentOrdered(week,day,r)}${annualMathLessonButton(r[6])}`,r[5],/Évaluation|Mini-test|Dictée/i)}<td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à l’emploi du temps</button></div>${detailWeekSelector('p2',data.key)}${data.holiday?`<div class="holiday-note">📅 ${data.holiday}</div>`:''}${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${p2SubjectLabel_(day,r)}</span></td><td class="detail-competence-cell">${p2CompetenceLabel_(day,r)}</td>${dashboardSessionCell_(`${pedagogyMarkers('p2',data.key,day,r)}${p2SessionContentOrdered(week,day,r)}${annualMathLessonButton(r[6])}`,r[5],/Évaluation|Mini-test|Dictée/i)}<td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
     bindStatusControls(content);
   }
   function p3DictationBankData(week){
