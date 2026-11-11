@@ -1938,9 +1938,21 @@
   }
   // Gardé pour la compatibilité : ne plus ajouter un second encadré de dictée.
   function p2DictationTimetableGuide(){return '';}
+  // Ressource EMC dédiée : disponible à la fois en vue semaine et en vue jour.
+  // La condition porte sur l'activité, jamais sur le seul domaine « EMC » :
+  // un conseil de classe générique ne doit pas hériter de cette ressource.
+  function p2MessageClairResource_(row){
+    const session=String(row&&row[1]||'')+' '+String(row&&row[2]||'');
+    if(!/message clair/i.test(session))return '';
+    return `<div class="p2-message-clair-resource" style="margin:12px 0 4px;padding:12px 14px;background:#f0f7ff;border:1px solid #bcd7f5;border-left:4px solid #2563eb;border-radius:8px">
+      <strong>Support Maître Hibou — Le message clair</strong>
+      <div style="margin-top:6px">Romans-photos CE2 : observer la situation, exprimer son ressenti et comparer les solutions.</div>
+      <a href="https://labastide11.github.io/Maitre-Hibou/evar_messages_clairs.html" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:10px;padding:9px 14px;border-radius:8px;background:#173b5c;color:#fff;text-decoration:none;font-weight:800">Ouvrir les 7 histoires illustrées ↗</a>
+    </div>`;
+  }
   function p2SessionContentOrdered(week,day,row){
     const html=String(row[2]||'');
-    if(row[0]!=='10h–10h45')return html;
+    if(row[0]!=='10h–10h45')return html+p2MessageClairResource_(row);
     const name=String(day||'').split(' ')[0];
     if(!['Lundi','Mardi','Jeudi','Vendredi'].includes(name))return html;
     const p=p2DictationBankData(week,day);
