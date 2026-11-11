@@ -35,7 +35,17 @@
   .learning-line .learning-lead{font-weight:850;color:#234b77}
   .learning-extra{margin:4px 0 0;font-size:clamp(16px,1.15vw,20px);color:#536a7d}
   .micro-activities{display:grid;gap:9px}
+  /* Deux temps pédagogiques dans une même séance : deux cartes bien distinctes au TBI. */
+  .micro-activities.dual{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .micro-activities.dual .micro-activity{padding:15px 18px;border-radius:12px;border:2px solid #d8e3ec;min-width:0}
+  .micro-activities.dual .micro-activity:first-child{background:#fff8e9;border-color:#f3cc78}
+  .micro-activities.dual .micro-activity:last-child{background:#f5f0ff;border-color:#d4bbfb}
+  .micro-activities.dual .micro-activity+.micro-activity{border-top-width:2px}
+  .micro-activities.dual .activity-name{font-size:clamp(20px,1.55vw,27px)}
+  .micro-activities.dual .learning-line{font-size:clamp(18px,1.25vw,23px)}
   .micro-activity+.micro-activity{border-top:1px solid #e6edf3;padding-top:9px}
+  @media(max-width:1150px){.micro-activities.dual{grid-template-columns:1fr}}
+
   .simple-row.french{--subject-color:#e45772;--subject-soft:#fff0f4}
   .simple-row.maths{--subject-color:#4386d8;--subject-soft:#edf5ff}
   .simple-row.english{--subject-color:#2aa7a1;--subject-soft:#e8faf7}
@@ -116,8 +126,8 @@ if(/arts|musique/.test(s))return 'Tu vas créer et expliquer tes choix.';
 if(/eps/.test(s))return 'Tu vas apprendre à bouger, à coopérer et à gérer ton effort.';
 return 'Tu vas découvrir une nouvelle idée et t’entraîner à l’utiliser.';}
 function learningBlock(title,goal){var a=document.createElement('div');a.className='micro-activity';var h=document.createElement('h2');h.className='activity-name';h.textContent=title;var p=document.createElement('p');p.className='learning-line';var lead=document.createElement('span');lead.className='learning-lead';lead.textContent='Ce que j’apprends : ';p.appendChild(lead);p.appendChild(document.createTextNode(goal));a.appendChild(h);a.appendChild(p);return a;}
-function learningContent(row){var a=document.createElement('div');a.className='micro-activities';var s=String(row[1]||'');if(/dictée flash\s*3/i.test(s)&&/production d.?écrits|DRAS/i.test(s)){a.appendChild(learningBlock('Dictée flash 3','Tu vas écrire une phrase dictée en utilisant les mots appris.'));a.appendChild(learningBlock('Phrase du jour — DRAS','Tu vas améliorer une phrase en ajoutant, supprimant, remplaçant ou déplaçant des mots.'));}
-else if(/dictée bilan/i.test(s)&&/production d.?écrits|DRAS/i.test(s)){a.appendChild(learningBlock('Dictée bilan','Tu vas réutiliser les mots de la semaine dans une dictée.'));a.appendChild(learningBlock('Production d’écrits','Tu vas écrire quelques phrases et les relire pour les améliorer.'));}
+function learningContent(row){var a=document.createElement('div');a.className='micro-activities';var s=String(row[1]||'');if(/dictée flash\s*3/i.test(s)&&/production d.?écrits|DRAS/i.test(s)){a.classList.add('dual');a.appendChild(learningBlock('Dictée flash 3','Tu vas écrire correctement les mots appris dans une phrase.'));a.appendChild(learningBlock('Phrase du jour — DRAS','Tu vas transformer une phrase pour la rendre plus précise.'));}
+else if(/dictée bilan/i.test(s)&&/production d.?écrits|DRAS/i.test(s)){a.classList.add('dual');a.appendChild(learningBlock('Dictée bilan','Tu vas réutiliser les mots de la semaine dans une dictée.'));a.appendChild(learningBlock('Production d’écrits','Tu vas écrire quelques phrases et les relire pour les améliorer.'));}
 else {var title=subjectTopic(row);a.appendChild(learningBlock(title,objective(row,title)));}return a;}
 var days=collectDays(),currentIndex=0;
 function nearestIndexToToday(){if(!days.length)return 0;var now=new Date();now.setHours(12,0,0,0);var exact=days.findIndex(function(x){return isoDate(x.date)===isoDate(now)});if(exact>=0)return exact;var next=days.findIndex(function(x){return x.date>now});return next>=0?next:days.length-1;}
