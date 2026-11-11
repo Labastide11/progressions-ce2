@@ -22,7 +22,7 @@
   const periods = {
     rentree:{title:'Rentrée — Semaines 1 et 2 (sans CHAM)',note:'Emploi du temps de secours pour les deux premières semaines, tant que la date de démarrage de la CHAM n’est pas confirmée. Toute la classe reste réunie le mardi et le jeudi.',hours:['9 h 10','4 h 35','1 h','2 h 30','2 h 30','1 h','1 h 15'],minutes:[550,275,60,150,150,60,75],days:{},mode:'rentree'},
     p1:{title:'Période 1 — Grille refondue',note:'Fondamentaux regroupés le matin ; autres disciplines l’après-midi. Le mardi, 30 min de chants / expression corporelle suivent le quart d’heure de lecture. EPS : 45 min le lundi et 60 min maximum le vendredi.',hours:['8 h','4 h','50 min','1 h 45','3 h','45 min','3 h 40'],minutes:[480,240,50,105,180,45,220],days:{}},
-    p2:{title:'Période 2 — Piscine le vendredi',note:'Vendredi après-midi réservé à la piscine de Grazailles. Le complément de mathématiques est déplacé sur un créneau commun.',hours:['9 h 10','4 h 35','1 h 15','3 h','1 h 45','1 h','1 h 15'],minutes:[550,275,75,180,105,60,75],days:{vendredi:'pool'}},
+    p2:{title:'Période 2 — Endurance',note:'Cycle endurance le lundi pendant 45 minutes. Le vendredi suit la journée ordinaire, sans sortie piscine.',hours:['9 h 10','4 h 35','1 h 15','3 h','1 h 45','1 h','1 h 15'],minutes:[550,275,75,180,105,60,75],days:{}},
     p3:{title:'Période 3 — Cavayère le lundi matin',note:'Lundi matin : course d’orientation et sandball. Les apprentissages fondamentaux manqués sont redistribués uniquement sur des temps de classe entière.',hours:['9 h 10','4 h 35','1 h 15','3 h 30','1 h 30','45 min','1 h 15'],minutes:[550,275,75,210,90,45,75],days:{lundi:'cavayere'}},
     p4:{title:'Période 4 — Domec le lundi après-midi',note:'Lundi après-midi : gymnastique et lutte. Les matinées fondamentales sont inchangées.',hours:['9 h 10','4 h 35','1 h 15','3 h 15','1 h 30','45 min','1 h 30'],minutes:[550,275,75,195,90,45,90],days:{lundi:'domec'}},
     p5:{title:'Période 5 — Rééquilibrage annuel',note:'Période longue consacrée au rééquilibrage des arts, sciences, histoire-géographie et EMC, sans réduire français ni mathématiques.',hours:['9 h 10','4 h 35','1 h 30','2 h 08','2 h 07','1 h 19','1 h 11'],minutes:[550,275,90,128,127,79,71],days:{}}
@@ -839,7 +839,6 @@
       ['16h15–16h40','Anglais','Classe entière','english'],
       ['16h40–17h','Vocabulaire / production écrite','','french']
     ];
-    if(key==='pool'&&day==='vendredi') return rows.slice(0,6).concat([['14h–17h','Piscine de Grazailles','Trajet, vestiaires, séance et retour','eps']]);
     if(key==='cavayere'&&day==='lundi') return [['9h–12h','Cavayère','Course d’orientation et sandball','eps'],['14h–14h45','Lecture-compréhension','Rattrapage classe entière','french'],['14h45–15h30','Dictée / DRAS','Classe entière','french'],['15h30–15h45','Retour au calme','','eps'],['15h45–16h','Récréation','','break'],['16h–16h35','Mathématiques','Entraînement / complément','maths'],['16h35–17h','QLM / bilan','','history']];
     if(key==='domec'&&day==='lundi') return rows.slice(0,6).concat([['14h–17h','Domec','Gymnastique et lutte','eps']]);
     if(['p2','p3','p4','p5'].includes(period)&&day==='jeudi'){
@@ -1900,62 +1899,49 @@
   }
 
 
-  // P2 — jeudi : exactement deux temps, deux cahiers ; aucune duplication ni bilan autonome.
-  // Les textes proviennent de DICTEES_CE2_ANNUAL (source pédagogique existante).
+  // Une seule source de rendu pour les vues journalière et hebdomadaire P2.
+  // La dictée et la phrase du jour sont deux activités, dans deux cahiers.
   function p2SessionContentOrdered(week,day,row){
     const html=String(row[2]||'');
-    const dayName=String(day||'').split(' ')[0];
-    if(dayName!=='Jeudi'||row[0]!=='10h–10h45'||!String(row[1]||'').includes('Français')){
+    const name=String(day||'').split(' ')[0];
+    const p=p2DictationBankData(week);
+    if(!p || row[0]!=='10h–10h45' || name!=='Jeudi'){
       return html+p2DictationTimetableGuide(week,day,row);
     }
-    const plan=p2DictationBankData(week);
-    const quote=plan&&Array.isArray(plan.flash)?plan.flash[2]:null;
-    const dras=plan&&plan.ecritureDRAS;
-    const intro=`<div class="p2-two-lessons" style="line-height:1.55">`;
-    const announce=(txt)=>`<div style="margin:8px 0;padding:8px 10px;background:#f0f6ff;border-left:3px solid #2563eb;border-radius:4px"><strong>🗣️ Phrase à dire aux élèves :</strong> « ${txt} »</div>`;
-    const spelling=`<section style="border:1px solid #f3c36a;border-left:4px solid #d97706;background:#fffaf0;border-radius:6px;padding:10px 12px;margin:4px 0 14px">
-      <div style="font-weight:800;color:#92400e">📝 TEMPS 1 — DICTÉE FLASH 3 · 15 min</div>
-      <div style="font-weight:700;margin:3px 0 7px;color:#78350f">📒 Cahier du jour</div>
-      <div><strong>🎯 Compétence :</strong> Écrire une phrase sous la dictée et vérifier son orthographe.</div>
-      ${announce('Ouvrez votre cahier du jour. Écoutez la phrase, écrivez-la puis relisez-vous.')}
-      <div style="margin:7px 0"><strong>📖 Phrase exacte à dicter :</strong><div style="margin-top:4px;padding:6px 8px;background:#fff;border-radius:4px">${quote||'Phrase de dictée à renseigner dans la programmation annuelle.'}</div></div>
-      <div><strong>✅ Correction :</strong> vérifier les majuscules, la ponctuation et l’orthographe des mots réellement dictés.</div>
-    </section>`;
-    let drasActivity='Phrase de départ à renseigner dans la programmation annuelle.';
-    if(dras){
-      drasActivity=`<div style="margin:7px 0"><strong>Phrase du jour :</strong> « ${dras.phraseDepart} »</div>
-        ${dras.supprimer?`<div><strong>S — Supprimer :</strong> ${dras.supprimer}</div>`:''}
-        ${dras.ajouter?`<div><strong>A — Ajouter :</strong> ${dras.ajouter}</div>`:''}
-        ${dras.deplacer?`<div><strong>D — Déplacer :</strong> ${dras.deplacer}</div>`:''}
-        ${dras.remplacer?`<div><strong>R — Remplacer :</strong> ${dras.remplacer}</div>`:''}
-        ${dras.production?`<div style="margin-top:6px"><strong>Pour prolonger l’écriture :</strong> ${dras.production}</div>`:''}
-        ${dras.motsAEmployer?`<div><strong>Mots utiles :</strong> ${dras.motsAEmployer}</div>`:''}`;
-    }
-    const writing=`<section style="border:1px solid #d8cdf8;border-left:4px solid #7c3aed;background:#faf8ff;border-radius:6px;padding:10px 12px;margin:0 0 8px">
-      <div style="font-weight:800;color:#5b21b6">✍️ TEMPS 2 — PHRASE DU JOUR · DRAS · 30 min</div>
-      <div style="font-weight:700;margin:3px 0 7px;color:#5b21b6">📓 Cahier d’écrivain</div>
-      <div><strong>🎯 Compétence :</strong> Modifier et enrichir une phrase avec une manipulation DRAS.</div>
-      ${announce('Rangez le cahier du jour et ouvrez votre cahier d’écrivain. Nous allons transformer la phrase du jour avec DRAS.')}
-      ${drasActivity}
-      <div style="margin-top:6px"><strong>✅ Relecture :</strong> vérifier le sens, la majuscule et le point.</div>
-    </section>`;
-    return intro+spelling+writing+'</div>';
+    const d=p.ecritureDRAS||{};
+    const phrase=String(p.flash?.[2]||'Phrase de la semaine à préciser.');
+    const dras=d.phraseDepart ? `
+      <div style="margin:8px 0"><strong>Phrase du jour :</strong> « ${d.phraseDepart} »</div>
+      ${d.supprimer?`<div><strong>S — Supprimer :</strong> ${d.supprimer}</div>`:''}
+      ${d.ajouter?`<div><strong>A — Ajouter :</strong> ${d.ajouter}</div>`:''}
+      ${d.production?`<div><strong>Production :</strong> ${d.production}</div>`:''}
+      ${d.motsAEmployer?`<div><strong>Banque de mots :</strong> ${d.motsAEmployer}</div>`:''}`:
+      '<div>Phrase du jour et manipulation DRAS à définir.</div>';
+    return `<div class="p2-two-notebooks" style="line-height:1.55">
+      <section style="margin:6px 0 12px;padding:12px;border:1px solid #f0b84d;border-left:4px solid #d97706;border-radius:7px;background:#fffaf0">
+        <div style="font-weight:800;color:#92400e">📝 1. DICTÉE FLASH 3 — 15 min</div>
+        <div style="font-weight:700;margin:4px 0 8px">📒 Cahier du jour</div>
+        <div><strong>🎯 Compétence :</strong> Écrire une phrase sous la dictée et vérifier son orthographe.</div>
+        <div style="margin:8px 0;padding:8px 10px;background:#f0f6ff;border-left:3px solid #2563eb;border-radius:4px"><strong>🗣️ Phrase à dire aux élèves :</strong> « Ouvrez votre cahier du jour. Écoutez la phrase, écrivez-la, puis relisez-la pour la corriger. »</div>
+        <div><strong>Phrase exacte à dicter :</strong> ${phrase}</div>
+        <div style="margin-top:5px"><strong>Correction :</strong> Vérifier les mots et les signes de ponctuation réellement présents dans la phrase.</div>
+      </section>
+      <section style="margin:0 0 6px;padding:12px;border:1px solid #d8cdf8;border-left:4px solid #7c3aed;border-radius:7px;background:#faf8ff">
+        <div style="font-weight:800;color:#5b21b6">✍️ 2. PHRASE DU JOUR — DRAS — 30 min</div>
+        <div style="font-weight:700;margin:4px 0 8px;color:#5b21b6">📓 Cahier d’écrivain</div>
+        <div><strong>🎯 Compétence :</strong> Transformer une phrase avec DRAS et écrire un court texte.</div>
+        <div style="margin:8px 0;padding:8px 10px;background:#f0f6ff;border-left:3px solid #2563eb;border-radius:4px"><strong>🗣️ Phrase à dire aux élèves :</strong> « Rangez votre cahier du jour et ouvrez votre cahier d’écrivain. Nous allons transformer la phrase du jour avec DRAS. »</div>
+        ${dras}
+        <div style="margin-top:6px"><strong>Relecture :</strong> Vérifier le sens, la majuscule et le point.</div>
+      </section>
+    </div>`;
   }
 
-  function p2TwoTimeslot_(day,row){
-    return String(day||'').startsWith('Jeudi') && row[0]==='10h–10h45' && String(row[1]||'').includes('Français');
-  }
-  function p2SubjectLabel_(day,row){
-    return p2TwoTimeslot_(day,row)?'Français — Dictée puis phrase du jour (DRAS)':row[1];
-  }
-  function p2CompetenceLabel_(day,row){
-    return p2TwoTimeslot_(day,row)?'ORT-P2-01 ; ECR-P2-04 à 06 · Orthographier une phrase dictée ; modifier une phrase avec DRAS.':row[3];
-  }
   function renderP2Week(week){
     const data=p2DetailedWeeks[week-1]||p2DetailedWeeks[0];
     const content=document.getElementById('timetableContent');
     const evalCount=data.days.reduce((n,[,rows])=>n+rows.filter(r=>/Évaluation|Mini-test|validation|Mesure (initiale|intermédiaire)|Dictée/i.test(r[5]||'')).length,0);
-    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à l’emploi du temps</button></div>${detailWeekSelector('p2',data.key)}${data.holiday?`<div class="holiday-note">📅 ${data.holiday}</div>`:''}${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${p2SubjectLabel_(day,r)}</span></td><td class="detail-competence-cell">${p2CompetenceLabel_(day,r)}</td>${dashboardSessionCell_(`${pedagogyMarkers('p2',data.key,day,r)}${p2SessionContentOrdered(week,day,r)}${annualMathLessonButton(r[6])}`,r[5],/Évaluation|Mini-test|Dictée/i)}<td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
+    content.innerHTML=`<section class="detail-view"><div class="detail-top"><div><span class="detail-zone">Académie de Montpellier — zone C</span><h2>${data.title}</h2><p>${data.dates}</p></div><button class="detail-back" type="button" data-back-summary>← Retour à l’emploi du temps</button></div>${detailWeekSelector('p2',data.key)}${data.holiday?`<div class="holiday-note">📅 ${data.holiday}</div>`:''}${renderAnnualFrenchPlan(data.frenchPlan)}${renderAnnualEnglishPlan(data.englishPlan)}${data.days.map(([day,rows])=>`<section class="detail-day"><div class="detail-day-head"><h3>${day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${r[1]}</span></td><td class="detail-competence-cell">${r[3]}</td>${dashboardSessionCell_(`${pedagogyMarkers('p2',data.key,day,r)}${p2SessionContentOrdered(week,day,r)}${annualMathLessonButton(r[6])}`,r[5],/Évaluation|Mini-test|Dictée/i)}<td>${statusSelect(statusKey(data.key,day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}</section>`;
     bindStatusControls(content);
   }
   function p3DictationBankData(week){
@@ -2198,7 +2184,7 @@
     let html=`${pedagogyMarkers(period,week.key,day,row)}${row[2]||''}`;
     if(period==='rentree') html+=`${notebookCue_(row)}${rentreeMathButton(week.key,row)}${rentreeSessionGuide(row)}`;
     else if(period==='p1') html+=`${notebookCue_(row)}${sessionDocumentsButton(row[7])}${p1DictationTimetableGuide(Number(String(week.key).match(/\d+$/)?.[0]||1),day,row)}${p1LessonButton(row[6]||p1MathLessonIdForSlot(week.key,day,row))}${p1EarlyMathButton(week.key,day,row)}${dashboardFollowBadge_(row[5],/Évaluation|Mini-test|Dictée évaluée/i)}`;
-    else if(period==='p2') html+=`${p2DictationTimetableGuide(Number(String(week.key).match(/\d+$/)?.[0]||1),day,row)}${annualMathLessonButton(row[6])}${dashboardFollowBadge_(row[5],/Évaluation|Mini-test|Dictée/i)}`;
+    else if(period==='p2') html=`${pedagogyMarkers(period,week.key,day,row)}${p2SessionContentOrdered(Number(String(week.key).match(/\d+$/)?.[0]||1),day,row)}${annualMathLessonButton(row[6])}${dashboardFollowBadge_(row[5],/Évaluation|Mini-test|Dictée/i)}`;
     else if(period==='p3') html+=`${p3DictationTimetableGuide(Number(String(week.key).match(/\d+$/)?.[0]||1),day,row)}${annualMathLessonButton(row[6])}${dashboardFollowBadge_(row[5],/Évaluation|Mini-test|Dictée évaluée/i)}`;
     else if(period==='p4'||period==='p5') html+=`${laterPeriodDictationTimetableGuide(period,Number(String(week.key).match(/\d+$/)?.[0]||1),day,row)}${annualMathLessonButton(row[6])}${dashboardFollowBadge_(row[5],/Évaluation|Mini-test|Dictée évaluée/i)}`;
     return html;
