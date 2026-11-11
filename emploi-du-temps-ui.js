@@ -1,6 +1,12 @@
 /* V36.76 — robustesse page emploi du temps : données de période absentes tolérées */
 
 (() => {
+  // Vue détaillée : la barre de navigation principale reste visible.
+  // Le bandeau décoratif vert et son bouton de projection n'occupent plus l'écran.
+  const compactHeaderStyle=document.createElement('style');
+  compactHeaderStyle.id='edt-detail-compact-header';
+  compactHeaderStyle.textContent='#timetableModal .timetable-header{display:none!important;}';
+  document.head.appendChild(compactHeaderStyle);
   if(!window.PROGRESSIONS_EDT_DATA){
     console.error('Données des emplois du temps absentes.');
     return;
@@ -2213,6 +2219,13 @@
     const key=localDateKey_(target);
     return days.find(x=>x.key===key) || days.find(x=>x.date>=target) || days[days.length-1];
   }
+  function previousSchoolDay_(entry){
+    if(!entry) return null;
+    const days=allDetailedSchoolDays_();
+    const currentIndex=days.findIndex(x=>x.key===entry.key && x.day===entry.day && x.week?.key===entry.week?.key);
+    if(currentIndex>0) return days[currentIndex-1];
+    return [...days].reverse().find(x=>x.date<entry.date) || null;
+  }
   function nextSchoolDay_(entry){
     if(!entry) return null;
     const days=allDetailedSchoolDays_();
@@ -2255,9 +2268,11 @@
     }
     const rows=dailyRowsForSession_(activeDailyEntry_.rows,activeDailySession_);
     const labels={day:'Journée complète',morning:'Matin',afternoon:'Après-midi'};
+    const previousDay=previousSchoolDay_(activeDailyEntry_);
+    const previousButton=previousDay?`<button class="detail-back daily-previous-day" type="button" data-daily-previous title="Revenir à ${previousDay.day}">← Journée précédente</button>`:'';
     const nextDay=nextSchoolDay_(activeDailyEntry_);
     const nextButton=nextDay?`<button class="detail-back daily-next-day" type="button" data-daily-next title="Passer à ${nextDay.day}">Journée suivante →</button>`:'';
-    content.innerHTML=`<section class="detail-view daily-timetable-view"><div class="detail-top daily-detail-top"><div><span class="detail-zone">Emploi du temps de la journée</span><h2>${activeDailyEntry_.day}</h2><p>${labels[activeDailySession_]}</p></div><div class="daily-detail-actions">${nextButton}<button class="detail-back" type="button" data-back-summary>← Retour à l’emploi du temps</button></div></div><div class="daily-session-tabs" role="group" aria-label="Choisir la partie de la journée"><button type="button" data-daily-session="day" class="${activeDailySession_==='day'?'is-active':''}">Journée complète</button><button type="button" data-daily-session="morning" class="${activeDailySession_==='morning'?'is-active':''}">Matin</button><button type="button" data-daily-session="afternoon" class="${activeDailySession_==='afternoon'?'is-active':''}">Après-midi</button></div><section class="detail-day daily-only-day"><div class="detail-day-head"><h3>${activeDailyEntry_.day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${dailyActivityLabel_(activeDailyEntry_,r)}</span></td><td class="detail-competence-cell">${r[3]||''}</td><td class="detail-session-cell detail-session-wide">${dailySessionHtml_(activeDailyEntry_,r)}</td><td>${statusSelect(statusKey(activeDailyEntry_.week.key,activeDailyEntry_.day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section></section>`;
+    content.innerHTML=`<section class="detail-view daily-timetable-view"><div class="detail-top daily-detail-top"><div><span class="detail-zone">Emploi du temps de la journée</span><h2>${activeDailyEntry_.day}</h2><p>${labels[activeDailySession_]}</p></div><div class="daily-detail-actions">${previousButton}${nextButton}<button class="detail-back" type="button" data-back-summary>← Retour à l’emploi du temps</button></div></div><div class="daily-session-tabs" role="group" aria-label="Choisir la partie de la journée"><button type="button" data-daily-session="day" class="${activeDailySession_==='day'?'is-active':''}">Journée complète</button><button type="button" data-daily-session="morning" class="${activeDailySession_==='morning'?'is-active':''}">Matin</button><button type="button" data-daily-session="afternoon" class="${activeDailySession_==='afternoon'?'is-active':''}">Après-midi</button></div><section class="detail-day daily-only-day"><div class="detail-day-head"><h3>${activeDailyEntry_.day}</h3>${dayStatusToolbar()}</div><div class="detail-table-wrap"><table class="detail-table detail-table--p1"><thead><tr><th>Horaire</th><th>Domaine / activité</th><th>Compétence reliée à Progressions CE2</th><th>Séance détaillée</th><th>Statut</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="detail-time">${r[0]}</td><td><span class="detail-subject ${r[4]}">${dailyActivityLabel_(activeDailyEntry_,r)}</span></td><td class="detail-competence-cell">${r[3]||''}</td><td class="detail-session-cell detail-session-wide">${dailySessionHtml_(activeDailyEntry_,r)}</td><td>${statusSelect(statusKey(activeDailyEntry_.week.key,activeDailyEntry_.day,r[0]))}</td></tr>`).join('')}</tbody></table></div></section></section>`;
     bindStatusControls(content);
   }
 
@@ -2338,6 +2353,8 @@
       if(e.target.closest('[data-pe-back]')){render('p1');content.scrollTop=0;return;}
       const dailySession=e.target.closest('[data-daily-session]');
       if(dailySession){renderDailyTimetable_(activeDailyEntry_,dailySession.dataset.dailySession);content.scrollTop=0;return;}
+      const dailyPrevious=e.target.closest('[data-daily-previous]');
+      if(dailyPrevious){const previous=previousSchoolDay_(activeDailyEntry_);if(previous){renderDailyTimetable_(previous,activeDailySession_);content.scrollTop=0;}return;}
       const dailyNext=e.target.closest('[data-daily-next]');
       if(dailyNext){const next=nextSchoolDay_(activeDailyEntry_);if(next){renderDailyTimetable_(next,activeDailySession_);content.scrollTop=0;}return;}
       const detail=e.target.closest('[data-open-detail]');
