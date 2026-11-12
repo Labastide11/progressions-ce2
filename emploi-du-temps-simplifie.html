@@ -70,6 +70,18 @@
   .subject-plain-label{font-weight:900;font-size:clamp(18px,1.3vw,24px);text-align:center}
   @media(max-width:780px){.simple-subject{align-items:flex-start;padding:8px 12px}.subject-banner{max-width:220px;max-height:75px}.subject-banner-set{flex-direction:row;align-items:center;justify-content:flex-start;gap:8px}.subject-banner-set .subject-banner{max-width:min(43%,185px);max-height:70px}}
   @media print{.subject-banner{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+
+  /* Petites bandes visuelles des pauses, distinctes des activités scolaires. */
+  .simple-pause-strip{
+    display:flex;align-items:center;justify-content:center;min-height:74px;
+    padding:3px 12px;background:#f2f7fa;border:1px solid #dce7ee;
+    border-radius:12px;overflow:hidden;
+  }
+  .simple-pause-strip img{
+    display:block;width:auto;max-width:100%;height:76px;object-fit:contain;
+  }
+  @media(max-width:780px){.simple-pause-strip{min-height:48px;padding:3px 7px}.simple-pause-strip img{height:auto;max-height:58px}}
+  @media print{.simple-pause-strip{break-inside:avoid;print-color-adjust:exact;-webkit-print-color-adjust:exact}}
 </style>
 </head>
 <body>
@@ -171,7 +183,57 @@ else if(/dictée bilan/i.test(s)&&/production d.?écrits|DRAS/i.test(s)){a.class
 else {var title=subjectTopic(row);a.appendChild(learningBlock(title,objective(row,title)));}return a;}
 var days=collectDays(),currentIndex=0;
 function nearestIndexToToday(){if(!days.length)return 0;var now=new Date();now.setHours(12,0,0,0);var exact=days.findIndex(function(x){return isoDate(x.date)===isoDate(now)});if(exact>=0)return exact;var next=days.findIndex(function(x){return x.date>now});return next>=0?next:days.length-1;}
-function render(){var grid=document.getElementById('simpleGrid');grid.replaceChildren();if(!days.length){grid.innerHTML='<div class="empty">Aucune journée trouvée dans les fichiers de l’emploi du temps.</div>';return;}var day=days[currentIndex];document.getElementById('simpleDate').textContent=day.label;document.getElementById('simpleWeek').textContent=day.weekTitle||'';day.rows.forEach(function(row){if(!Array.isArray(row))return;var s=String(row[1]||'');if(!s.trim())return;var k=kindFor(row),el=document.createElement('article');el.className='simple-row '+k;var left=document.createElement('div');left.className='simple-subject';var labels=imagesFor(row,k);if(labels.length){var group=document.createElement('div');group.className=labels.length>1?'subject-banner-set':'subject-banner-single';labels.forEach(function(label){var photo=document.createElement('img');photo.className='subject-banner';photo.src='images/edt-etiquettes/'+label+'.webp';photo.alt=labelText[label]||subjectName(s,k);photo.loading='lazy';photo.decoding='async';photo.addEventListener('error',function(){photo.replaceWith(document.createTextNode(photo.alt));},{once:true});group.appendChild(photo);});left.appendChild(group);}else{var name=document.createElement('span');name.className='subject-plain-label';name.textContent=subjectName(s,k);left.appendChild(name);}var right=document.createElement('div');right.className='simple-activity';right.appendChild(learningContent(row));el.appendChild(left);el.appendChild(right);grid.appendChild(el);});document.getElementById('prevDayBtn').disabled=currentIndex<=0;document.getElementById('nextDayBtn').disabled=currentIndex>=days.length-1;}
+function timeRange(row){
+  var raw=String(row[0]||'').replace(/\s+/g,'').replace(/[–—−]/g,'-');
+  var parts=raw.split('-');
+  function minutes(p){var m=String(p||'').match(/^(\d{1,2})h(\d{0,2})$/i);return m?(+m[1]*60+ +(m[2]||0)):null;}
+  return {start:minutes(parts[0]),end:minutes(parts[1])};
+}
+function pauseTypeFromRow(row){
+  var s=norm(row[1]);
+  if(/récréation|recreation/.test(s)){
+    var slot=timeRange(row);return slot.start!==null&&slot.start>=13*60?'recreation-apres-midi':'recreation-matin';
+  }
+  if(/cantine|repas|pause méridienne|pause du midi|déjeuner|dejeuner/.test(s))return 'pause-midi-cantine-maison';
+  return '';
+}
+function pauseStrip(type){
+  var alt={'recreation-matin':'Récréation du matin','recreation-apres-midi':'Récréation de l’après-midi','pause-midi-cantine-maison':'Cantine ou repas à la maison'};
+  var bar=document.createElement('div');bar.className='simple-pause-strip';bar.setAttribute('role','group');bar.setAttribute('aria-label',alt[type]);
+  var image=document.createElement('img');image.src='images/edt-etiquettes/'+type+'.webp';image.alt=alt[type];image.loading='lazy';image.decoding='async';
+  image.addEventListener('error',function(){bar.textContent=alt[type];},{once:true});
+  bar.appendChild(image);return bar;
+}
+function render(){
+  var grid=document.getElementById('simpleGrid');grid.replaceChildren();
+  if(!days.length){grid.innerHTML='<div class="empty">Aucune journée trouvée dans les fichiers de l’emploi du temps.</div>';return;}
+  var day=days[currentIndex];
+  document.getElementById('simpleDate').textContent=day.label;
+  document.getElementById('simpleWeek').textContent=day.weekTitle||'';
+  var rows=day.rows.filter(function(r){return Array.isArray(r)&&String(r[1]||'').trim();});
+  var inserted={};var prior=null;
+  function addPause(type){if(!inserted[type]){grid.appendChild(pauseStrip(type));inserted[type]=true;}}
+  rows.forEach(function(row){
+    var s=String(row[1]||'');var slot=timeRange(row);
+    var explicit=pauseTypeFromRow(row);
+    if(explicit){addPause(explicit);prior=slot;return;}
+    if(prior&&prior.end!==null&&slot.start!==null){
+      var gap=slot.start-prior.end;
+      if(gap>=5&&gap<=30&&prior.end>=10*60+15&&prior.end<=10*60+55&&slot.start>=11*60&&slot.start<=11*60+25)addPause('recreation-matin');
+      if(gap>=45&&prior.end>=11*60+30&&prior.end<=12*60+30&&slot.start>=13*60+45&&slot.start<=14*60+30)addPause('pause-midi-cantine-maison');
+      if(gap>=5&&gap<=30&&prior.end>=15*60+40&&prior.end<=16*60+5&&slot.start>=16*60+10&&slot.start<=16*60+35)addPause('recreation-apres-midi');
+    }
+    var k=kindFor(row),el=document.createElement('article');el.className='simple-row '+k;
+    var left=document.createElement('div');left.className='simple-subject';var labels=imagesFor(row,k);
+    if(labels.length){var group=document.createElement('div');group.className=labels.length>1?'subject-banner-set':'subject-banner-single';
+      labels.forEach(function(label){var photo=document.createElement('img');photo.className='subject-banner';photo.src='images/edt-etiquettes/'+label+'.webp';photo.alt=labelText[label]||subjectName(s,k);photo.loading='lazy';photo.decoding='async';photo.addEventListener('error',function(){photo.replaceWith(document.createTextNode(photo.alt));},{once:true});group.appendChild(photo);});left.appendChild(group);
+    }else{var name=document.createElement('span');name.className='subject-plain-label';name.textContent=subjectName(s,k);left.appendChild(name);}
+    var right=document.createElement('div');right.className='simple-activity';right.appendChild(learningContent(row));el.appendChild(left);el.appendChild(right);grid.appendChild(el);
+    prior=slot;
+  });
+  document.getElementById('prevDayBtn').disabled=currentIndex<=0;
+  document.getElementById('nextDayBtn').disabled=currentIndex>=days.length-1;
+}
 document.getElementById('prevDayBtn').addEventListener('click',function(){if(currentIndex>0){currentIndex--;render();window.scrollTo({top:0,behavior:'smooth'});}});
 document.getElementById('nextDayBtn').addEventListener('click',function(){if(currentIndex<days.length-1){currentIndex++;render();window.scrollTo({top:0,behavior:'smooth'});}});
 document.getElementById('todayBtn').addEventListener('click',function(){currentIndex=nearestIndexToToday();render();});
