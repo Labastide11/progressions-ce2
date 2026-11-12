@@ -2205,6 +2205,23 @@
       return true;
     },
     getDayRows(day, period='p1'){
+      // Programme du jour : se baser sur la date affichée, jamais sur une semaine-type.
+      // La sélection manuelle de période reste utilisée hors de ce programme.
+      const dateInput=document.getElementById('dailyProgramDate');
+      if(dateInput && /^\d{4}-\d{2}-\d{2}$/.test(String(dateInput.value||''))){
+        const datedRows=datedProgramRows_(dateInput.value);
+        if(datedRows){
+          const entry=datedSchoolEntry_(dateInput.value);
+          const selector=document.getElementById('dailyProgramPeriod');
+          if(selector && entry && Array.from(selector.options).some(option=>option.value===entry.period)){
+            selector.value=entry.period;
+          }
+          return datedRows;
+        }
+        // Les jours fériés, absents de la programmation, ne reprennent pas une
+        // journée-type d'une autre période.
+        return [];
+      }
       const selected=periods[period]||periods.p1;
       const periodBase=(period==='p1' && window.PROGRESSIONS_EDT_DATA && window.PROGRESSIONS_EDT_DATA.p1Base)
         ? window.PROGRESSIONS_EDT_DATA.p1Base
@@ -2237,6 +2254,49 @@
     out.sort((a,b)=>a.date-b.date);
     return out;
   }
+  // Source datée commune à l'emploi du temps simplifié et au Programme du jour.
+  // Les tableaux détaillés conservent leur contenu enseignant sans modification.
+  function datedSchoolEntry_(iso){
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(String(iso||'')))return null;
+    const matching=allDetailedSchoolDays_().filter(x=>x.key===iso);
+    // En cas de doublon, conserver la journée détaillée la plus complète.
+    matching.sort((a,b)=>(b.rows?.length||0)-(a.rows?.length||0));
+    return matching[0]||null;
+  }
+  function datedProgramRows_(iso){
+    const entry=datedSchoolEntry_(iso);
+    if(!entry)return null;
+    return (entry.rows||[]).filter(Array.isArray).map(row=>{
+      const subject=String(row[1]||'').trim();
+      const kind=String(row[4]||'common');
+      const code=String(row[3]||'');
+      const competence=code.includes('·')?code.split('·').slice(1).join('·').trim().replace(/[.;]+$/,''):'';
+      const topic=subject.toLowerCase();
+      let title=subject;
+      if(/dictée flash 3/i.test(topic))title='Français — Dictée flash 3 et phrase du jour (DRAS)';
+      else if(/dictée bilan/i.test(topic))title='Français — Dictée bilan';
+      else if(/dictée flash 2/i.test(topic))title='Français — Dictée flash 2';
+      else if(/calcul mental/i.test(topic)){
+        const skill=/doubles? et moitiés/i.test(competence)?'Doubles et moitiés'
+          :/multiplier.*10/i.test(competence)?'Multiplier par 10'
+          :(/réinvestissement|réutiliser/i.test(competence)?'Révisions':'Calcul mental');
+        title='Mathématiques — Calcul mental : '+skill;
+      }
+      else if(/géométrie|mesures|données/i.test(topic) && competence){
+        title='Mathématiques — '+competence.charAt(0).toUpperCase()+competence.slice(1);
+      }
+      else if(/français\s*[—–]\s*dictée|orthographe/i.test(topic))title='Français — Mots et dictée';
+      let detail=competence||'';
+      if(!detail){
+        const raw=String(row[2]||'');
+        // Extraire uniquement les courtes descriptions sans balisage enseignant.
+        if(!/<[a-z][^>]*>/i.test(raw))detail=raw.trim().split(/[.;]/)[0].slice(0,135);
+      }
+      if(/dictée flash 3/i.test(topic))detail='Écrire la dictée, puis améliorer une phrase avec DRAS.';
+      return [String(row[0]||''),title,detail,kind];
+    });
+  }
+
   function relevantSchoolDay_(fromDate=new Date()){
     const days=allDetailedSchoolDays_();
     if(!days.length) return null;
