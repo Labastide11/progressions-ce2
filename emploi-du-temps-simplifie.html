@@ -61,6 +61,15 @@
   @media(min-width:1500px){.simple-wrap{width:calc(100% - 34px)}.simple-row{grid-template-columns:minmax(260px,23%) minmax(0,1fr)}.simple-subject,.simple-activity{padding-top:16px;padding-bottom:16px}}
   @media(max-width:780px){.site-nav{position:static}.simple-wrap{width:calc(100% - 16px);margin-top:8px}.simple-head{padding:12px}.simple-row{grid-template-columns:1fr}.simple-subject{padding:10px 13px;font-size:19px}.simple-activity{padding:10px 15px 13px}.subject-picto{width:36px;height:36px;flex-basis:36px;font-size:22px}.activity-name{font-size:20px}.learning-line{font-size:18px}.learning-extra{font-size:16px}}
   @media print{.site-nav,.simple-actions,.simple-foot{display:none!important}.simple-wrap{width:100%;margin:0}.simple-row,.simple-head{box-shadow:none;break-inside:avoid}}
+
+  /* Étiquettes visuelles Maître Hibou — repérage immédiat pour lecteurs fragiles. */
+  .simple-subject{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:10px 14px;min-width:0}
+  .subject-banner{display:block;width:100%;max-width:345px;height:auto;max-height:102px;object-fit:contain;border-radius:8px}
+  .subject-banner-set{width:100%;display:flex;flex-direction:column;align-items:center;gap:4px}
+  .subject-banner-set .subject-banner{max-height:83px;max-width:278px}
+  .subject-plain-label{font-weight:900;font-size:clamp(18px,1.3vw,24px);text-align:center}
+  @media(max-width:780px){.simple-subject{align-items:flex-start;padding:8px 12px}.subject-banner{max-width:220px;max-height:75px}.subject-banner-set{flex-direction:row;align-items:center;justify-content:flex-start;gap:8px}.subject-banner-set .subject-banner{max-width:min(43%,185px);max-height:70px}}
+  @media print{.subject-banner{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
 </style>
 </head>
 <body>
@@ -125,13 +134,44 @@ if(/math/.test(s))return 'Tu vas t’entraîner à utiliser les nombres pour ré
 if(/arts|musique/.test(s))return 'Tu vas créer et expliquer tes choix.';
 if(/eps/.test(s))return 'Tu vas apprendre à bouger, à coopérer et à gérer ton effort.';
 return 'Tu vas découvrir une nouvelle idée et t’entraîner à l’utiliser.';}
+// La sélection se fonde sur l'activité de la séance, sans afficher les consignes du maître.
+var labelText={'francais':'Français','dictee':'Dictée','production-ecrits':'Production d’écrits','calcul-mental':'Calcul mental','lecture-plaisir':'Lecture plaisir','piscine':'Piscine','chant':'Chant','anglais':'Anglais','decouverte-monde':'Découverte du monde','mathematiques':'Mathématiques','lecture-comprehension':'Lecture / Compréhension','sciences':'Sciences','histoire':'Histoire','geographie':'Géographie','emc':'EMC','arts-visuels':'Arts visuels','recreation':'Récréation','calcul-pose':'Calcul posé','problemes':'Problèmes','geometrie':'Géométrie','copie':'Copie'};
+function imagesFor(row,kind){
+  var subject=String(row[1]||'').toLowerCase(),topic=subjectTopic(row).toLowerCase();
+  var value=subject+' '+topic,details=plain(row[2]);
+  if(/récréation/.test(value))return ['recreation'];
+  if(/pause|cantine|repas/.test(value))return [];
+  if(/piscine|natation|aquatique|bassin/.test(value))return ['piscine'];
+  if(/dictée/.test(value)&&/production d.?écrits|dras|phrase du jour/.test(value))return ['dictee','production-ecrits'];
+  if(/dictée|orthographe|mots de la semaine/.test(value))return ['dictee'];
+  if(/production d.?écrits|dras|écrivain/.test(value))return ['production-ecrits'];
+  if(/copie|recopier/.test(value))return ['copie'];
+  if(/quart d.?heure de lecture|lecture plaisir|lecture offerte|lecture autonome/.test(value))return ['lecture-plaisir'];
+  if(/lecture|compréhension|fluence|texte et illustration|récit|lire/.test(value))return ['lecture-comprehension'];
+  if(/calcul mental|doubles|moitiés/.test(value))return ['calcul-mental'];
+  if(/calcul posé|calculs posés|addition posée|soustraction posée/.test(value))return ['calcul-pose'];
+  if(/problème/.test(value))return ['problemes'];
+  if(/géométr|polygone|figure géométrique|droite graduée/.test(value))return ['geometrie'];
+  if(/anglais/.test(value)||kind==='english')return ['anglais'];
+  if(/chant|chorale|musique|cham/.test(value)||kind==='cham')return ['chant'];
+  if(/géographie|repères france|carte de france/.test(value))return ['geographie'];
+  if(/histoire/.test(value))return ['histoire'];
+  if(/sciences|expérience|états de l.eau/.test(value)||kind==='science')return ['sciences'];
+  if(/découverte du monde|questionner le monde|\bqlm\b/.test(value))return ['decouverte-monde'];
+  if(/arts visuels|arts plastiques|dessin|création artistique/.test(value)||kind==='arts')return ['arts-visuels'];
+  if(/emc|message clair|vivre ensemble|vie de classe/.test(value)||kind==='emc')return ['emc'];
+  if(/course longue|endurance|eps|sport/.test(value)||kind==='eps')return [];
+  if(/mathématiques|numération|nombres|calcul/.test(value)||kind==='maths')return ['mathematiques'];
+  if(/français|grammaire|conjugaison|vocabulaire|orthographe/.test(value)||kind==='french')return ['francais'];
+  return [];
+}
 function learningBlock(title,goal){var a=document.createElement('div');a.className='micro-activity';var h=document.createElement('h2');h.className='activity-name';h.textContent=title;var p=document.createElement('p');p.className='learning-line';var lead=document.createElement('span');lead.className='learning-lead';lead.textContent='Ce que j’apprends : ';p.appendChild(lead);p.appendChild(document.createTextNode(goal));a.appendChild(h);a.appendChild(p);return a;}
 function learningContent(row){var a=document.createElement('div');a.className='micro-activities';var s=String(row[1]||'');if(/dictée flash\s*3/i.test(s)&&/production d.?écrits|DRAS/i.test(s)){a.classList.add('dual');a.appendChild(learningBlock('Dictée flash 3','Tu vas écrire correctement les mots appris dans une phrase.'));a.appendChild(learningBlock('Phrase du jour — DRAS','Tu vas transformer une phrase pour la rendre plus précise.'));}
 else if(/dictée bilan/i.test(s)&&/production d.?écrits|DRAS/i.test(s)){a.classList.add('dual');a.appendChild(learningBlock('Dictée bilan','Tu vas réutiliser les mots de la semaine dans une dictée.'));a.appendChild(learningBlock('Production d’écrits','Tu vas écrire quelques phrases et les relire pour les améliorer.'));}
 else {var title=subjectTopic(row);a.appendChild(learningBlock(title,objective(row,title)));}return a;}
 var days=collectDays(),currentIndex=0;
 function nearestIndexToToday(){if(!days.length)return 0;var now=new Date();now.setHours(12,0,0,0);var exact=days.findIndex(function(x){return isoDate(x.date)===isoDate(now)});if(exact>=0)return exact;var next=days.findIndex(function(x){return x.date>now});return next>=0?next:days.length-1;}
-function render(){var grid=document.getElementById('simpleGrid');grid.replaceChildren();if(!days.length){grid.innerHTML='<div class="empty">Aucune journée trouvée dans les fichiers de l’emploi du temps.</div>';return;}var day=days[currentIndex];document.getElementById('simpleDate').textContent=day.label;document.getElementById('simpleWeek').textContent=day.weekTitle||'';day.rows.forEach(function(row){if(!Array.isArray(row))return;var s=String(row[1]||'');if(!s.trim())return;var k=kindFor(row),el=document.createElement('article');el.className='simple-row '+k;var left=document.createElement('div');left.className='simple-subject';var img=document.createElement('span');img.className='subject-picto';img.setAttribute('aria-hidden','true');img.textContent=picto(s,k);var name=document.createElement('span');name.className='subject-label';name.textContent=subjectName(s,k);left.appendChild(img);left.appendChild(name);var right=document.createElement('div');right.className='simple-activity';right.appendChild(learningContent(row));el.appendChild(left);el.appendChild(right);grid.appendChild(el);});document.getElementById('prevDayBtn').disabled=currentIndex<=0;document.getElementById('nextDayBtn').disabled=currentIndex>=days.length-1;}
+function render(){var grid=document.getElementById('simpleGrid');grid.replaceChildren();if(!days.length){grid.innerHTML='<div class="empty">Aucune journée trouvée dans les fichiers de l’emploi du temps.</div>';return;}var day=days[currentIndex];document.getElementById('simpleDate').textContent=day.label;document.getElementById('simpleWeek').textContent=day.weekTitle||'';day.rows.forEach(function(row){if(!Array.isArray(row))return;var s=String(row[1]||'');if(!s.trim())return;var k=kindFor(row),el=document.createElement('article');el.className='simple-row '+k;var left=document.createElement('div');left.className='simple-subject';var labels=imagesFor(row,k);if(labels.length){var group=document.createElement('div');group.className=labels.length>1?'subject-banner-set':'subject-banner-single';labels.forEach(function(label){var photo=document.createElement('img');photo.className='subject-banner';photo.src='images/edt-etiquettes/'+label+'.webp';photo.alt=labelText[label]||subjectName(s,k);photo.loading='lazy';photo.decoding='async';photo.addEventListener('error',function(){photo.replaceWith(document.createTextNode(photo.alt));},{once:true});group.appendChild(photo);});left.appendChild(group);}else{var name=document.createElement('span');name.className='subject-plain-label';name.textContent=subjectName(s,k);left.appendChild(name);}var right=document.createElement('div');right.className='simple-activity';right.appendChild(learningContent(row));el.appendChild(left);el.appendChild(right);grid.appendChild(el);});document.getElementById('prevDayBtn').disabled=currentIndex<=0;document.getElementById('nextDayBtn').disabled=currentIndex>=days.length-1;}
 document.getElementById('prevDayBtn').addEventListener('click',function(){if(currentIndex>0){currentIndex--;render();window.scrollTo({top:0,behavior:'smooth'});}});
 document.getElementById('nextDayBtn').addEventListener('click',function(){if(currentIndex<days.length-1){currentIndex++;render();window.scrollTo({top:0,behavior:'smooth'});}});
 document.getElementById('todayBtn').addEventListener('click',function(){currentIndex=nearestIndexToToday();render();});
