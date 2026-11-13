@@ -198,8 +198,15 @@ function pauseTypeFromRow(row){
   return '';
 }
 function pauseStrip(type){
-  var alt={'recreation-matin':'Récréation du matin','recreation-apres-midi':'Récréation de l’après-midi','pause-midi-cantine-maison':'Cantine ou repas à la maison'};
-  var bar=document.createElement('div');bar.className='simple-pause-strip';bar.setAttribute('role','group');bar.setAttribute('aria-label',alt[type]);
+  var alt={
+    'recreation-matin':'Récréation du matin',
+    'recreation-apres-midi':'Récréation de l’après-midi',
+    'pause-midi-cantine-maison':'Cantine ou repas à la maison',
+    'fin-ecole':'Fin de l’école'
+  };
+  var bar=document.createElement('div');bar.className='simple-pause-strip';
+  if(type==='fin-ecole')bar.classList.add('end-of-day-strip');
+  bar.setAttribute('role','group');bar.setAttribute('aria-label',alt[type]);
   var image=document.createElement('img');image.src='images/edt-etiquettes/'+type+'.webp';image.alt=alt[type];image.loading='lazy';image.decoding='async';
   image.addEventListener('error',function(){bar.textContent=alt[type];},{once:true});
   bar.appendChild(image);return bar;
@@ -231,6 +238,7 @@ function render(){
     var right=document.createElement('div');right.className='simple-activity';right.appendChild(learningContent(row));el.appendChild(left);el.appendChild(right);grid.appendChild(el);
     prior=slot;
   });
+  grid.appendChild(pauseStrip('fin-ecole'));
   document.getElementById('prevDayBtn').disabled=currentIndex<=0;
   document.getElementById('nextDayBtn').disabled=currentIndex>=days.length-1;
 }
