@@ -25,6 +25,17 @@
   .date-strip{margin:10px 0 12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:10px 16px;background:#dbedf9;border:1px solid #bad4e6;border-radius:12px}
   .date-strip strong{font-size:clamp(19px,1.6vw,26px)}
   .date-strip span{font-weight:800;color:#45647d}
+  /* Les filtres du TBI adaptent la page à l'heure locale, sans afficher les heures. */
+  .period-controls{display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap}
+  .period-controls .period-btn,.period-controls .period-auto{font:inherit;font-size:clamp(13px,1vw,16px);font-weight:850;line-height:1.25;padding:9px 14px;border:1.5px solid #91b5d2;border-radius:10px;background:#fff;color:#173b5c;cursor:pointer;white-space:nowrap}
+  .period-controls .period-btn[aria-pressed="true"]{background:#173b5c;color:#fff;border-color:#173b5c;box-shadow:0 3px 8px #173b5c24}
+  .period-controls .period-btn:hover,.period-controls .period-auto:hover{filter:brightness(.95)}
+  .period-controls .period-btn:focus-visible,.period-controls .period-auto:focus-visible{outline:3px solid #ffb72c;outline-offset:2px}
+  .period-controls .period-auto{background:#fff9e8;border-color:#e6c46b}
+  .period-controls [hidden]{display:none!important}
+  @media(max-width:920px){.date-strip{justify-content:center}.date-strip strong{flex-basis:100%;text-align:center}.date-strip #simpleWeek{flex-basis:100%;text-align:center}.period-controls .period-btn{padding:9px 10px}}
+  @media print{.period-controls{display:none!important}}
+
   .simple-grid{display:grid;grid-template-columns:1fr;gap:9px}
   .simple-row{--subject-color:#7992ac;--subject-soft:#f1f5f9;display:grid;grid-template-columns:minmax(215px,26%) minmax(0,1fr);align-items:stretch;overflow:hidden;background:#fff;border:1px solid #dce7ee;border-left:9px solid var(--subject-color);border-radius:13px;box-shadow:0 3px 10px #173b5c0c}
   .simple-subject{display:flex;align-items:center;gap:14px;padding:15px 19px;background:var(--subject-soft);font-size:clamp(18px,1.4vw,24px);font-weight:900}
@@ -104,7 +115,16 @@
       <a href="emploi-du-temps.html?mode=day">Voir le détail</a>
     </div>
   </section>
-  <div class="date-strip"><strong id="simpleDate">—</strong><span id="simpleWeek">—</span></div>
+  <div class="date-strip">
+    <strong id="simpleDate">—</strong>
+    <div class="period-controls" role="group" aria-label="Choisir les activités à afficher">
+      <button class="period-btn" data-period-view="matin" type="button" aria-pressed="false">Le matin</button>
+      <button class="period-btn" data-period-view="apres-midi" type="button" aria-pressed="false">L’après-midi</button>
+      <button class="period-btn" data-period-view="journee" type="button" aria-pressed="false">Ma journée</button>
+      <button class="period-auto" id="periodAutoBtn" type="button" hidden title="Réactiver le choix automatique selon l’heure">↻ Automatique</button>
+    </div>
+    <span id="simpleWeek">—</span>
+  </div>
   <section class="simple-grid" id="simpleGrid" aria-live="polite"></section>
   <div class="simple-foot">CE2 · École La Gravette · Année scolaire 2026-2027</div>
 </main>
@@ -182,6 +202,28 @@ function learningContent(row){var a=document.createElement('div');a.className='m
 else if(/dictée bilan/i.test(s)&&/production d.?écrits|DRAS/i.test(s)){a.classList.add('dual');a.appendChild(learningBlock('Dictée bilan','Tu vas réutiliser les mots de la semaine dans une dictée.'));a.appendChild(learningBlock('Production d’écrits','Tu vas écrire quelques phrases et les relire pour les améliorer.'));}
 else {var title=subjectTopic(row);a.appendChild(learningBlock(title,objective(row,title)));}return a;}
 var days=collectDays(),currentIndex=0;
+// Si aucune vue n'est choisie manuellement, on suit l'heure locale de l'ordinateur.
+var manualPeriod=null;
+function automaticPeriod(){
+  var now=new Date(),minutes=now.getHours()*60+now.getMinutes();
+  if(minutes>=8*60&&minutes<12*60+15)return 'matin';
+  if(minutes>=12*60+15&&minutes<17*60+15)return 'apres-midi';
+  return 'journee';
+}
+function selectedPeriod(){return manualPeriod||automaticPeriod();}
+function refreshPeriodButtons(){
+  var selected=selectedPeriod();
+  document.querySelectorAll('[data-period-view]').forEach(function(button){
+    button.setAttribute('aria-pressed',String(button.getAttribute('data-period-view')===selected));
+  });
+  document.getElementById('periodAutoBtn').hidden=(manualPeriod===null);
+}
+function switchPeriod(period){
+  manualPeriod=period;
+  render();
+  document.querySelector('.date-strip').scrollIntoView({block:'start',behavior:'smooth'});
+}
+
 function nearestIndexToToday(){if(!days.length)return 0;var now=new Date();now.setHours(12,0,0,0);var exact=days.findIndex(function(x){return isoDate(x.date)===isoDate(now)});if(exact>=0)return exact;var next=days.findIndex(function(x){return x.date>now});return next>=0?next:days.length-1;}
 function timeRange(row){
   var raw=String(row[0]||'').replace(/\s+/g,'').replace(/[–—−]/g,'-');
@@ -217,7 +259,18 @@ function render(){
   var day=days[currentIndex];
   document.getElementById('simpleDate').textContent=day.label;
   document.getElementById('simpleWeek').textContent=day.weekTitle||'';
-  var rows=day.rows.filter(function(r){return Array.isArray(r)&&String(r[1]||'').trim();});
+  var period=selectedPeriod();
+  refreshPeriodButtons();
+  var rows=day.rows.filter(function(r){
+    if(!Array.isArray(r)||!String(r[1]||'').trim())return false;
+    if(period==='journee')return true;
+    // La pause méridienne figure dans « Ma journée », pas dans les séances de l'après-midi.
+    var pa=pauseTypeFromRow(r);
+    if(pa==='pause-midi-cantine-maison')return false;
+    var slot=timeRange(r);
+    if(slot.start===null)return true; // Ne pas masquer une séance non horodatée.
+    return period==='matin'?slot.start<12*60+15:slot.start>=12*60+15;
+  });
   var inserted={};var prior=null;
   function addPause(type){if(!inserted[type]){grid.appendChild(pauseStrip(type));inserted[type]=true;}}
   rows.forEach(function(row){
@@ -238,10 +291,18 @@ function render(){
     var right=document.createElement('div');right.className='simple-activity';right.appendChild(learningContent(row));el.appendChild(left);el.appendChild(right);grid.appendChild(el);
     prior=slot;
   });
-  grid.appendChild(pauseStrip('fin-ecole'));
+  if(period!=='matin')grid.appendChild(pauseStrip('fin-ecole'));
+  if(!rows.length)grid.innerHTML='<div class="empty">Aucune activité prévue pour cette partie de la journée.</div>';
   document.getElementById('prevDayBtn').disabled=currentIndex<=0;
   document.getElementById('nextDayBtn').disabled=currentIndex>=days.length-1;
 }
+document.querySelectorAll('[data-period-view]').forEach(function(button){
+  button.addEventListener('click',function(){switchPeriod(button.getAttribute('data-period-view'));});
+});
+document.getElementById('periodAutoBtn').addEventListener('click',function(){switchPeriod(null);});
+// Repasse au bon créneau au changement d'heure, seulement si le mode reste automatique.
+setInterval(function(){if(manualPeriod===null&&selectedPeriod()!==lastAutoPeriod){lastAutoPeriod=selectedPeriod();render();}},30000);
+var lastAutoPeriod=automaticPeriod();
 document.getElementById('prevDayBtn').addEventListener('click',function(){if(currentIndex>0){currentIndex--;render();window.scrollTo({top:0,behavior:'smooth'});}});
 document.getElementById('nextDayBtn').addEventListener('click',function(){if(currentIndex<days.length-1){currentIndex++;render();window.scrollTo({top:0,behavior:'smooth'});}});
 document.getElementById('todayBtn').addEventListener('click',function(){currentIndex=nearestIndexToToday();render();});
