@@ -36,6 +36,26 @@
   @media(max-width:920px){.date-strip{justify-content:center}.date-strip strong{flex-basis:100%;text-align:center}.date-strip #simpleWeek{flex-basis:100%;text-align:center}.period-controls .period-btn{padding:9px 10px}}
   @media print{.period-controls{display:none!important}}
 
+  /* Bandeau compact des accompagnements : couleur constante par dispositif. */
+  .support-strip{margin:-2px 0 12px;padding:7px 11px;background:#f4f9fc;border:1px solid #cfe0ea;border-radius:11px;color:#234660}
+  .support-strip[hidden]{display:none!important}
+  .support-strip__title{font-weight:900;color:#2b5677;font-size:13px;white-space:nowrap}
+  .support-strip__list{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .support-chip{--chip-accent:#506d89;--chip-bg:#f1f6fa;display:inline-flex;flex-wrap:wrap;align-items:center;gap:5px;padding:5px 8px;border-radius:8px;background:var(--chip-bg);border:1px solid color-mix(in srgb,var(--chip-accent) 28%,white);border-left:4px solid var(--chip-accent);font-size:clamp(12px,.82vw,14px);line-height:1.22;color:#243d54}
+  .support-chip[data-type="upe2a"]{--chip-accent:#247bb6;--chip-bg:#eaf5fc}
+  .support-chip[data-type="aide-e"]{--chip-accent:#167e63;--chip-bg:#eaf8f1}
+  .support-chip[data-type="cham"]{--chip-accent:#7755b5;--chip-bg:#f1ecfb}
+  .support-chip[data-type="ulis"]{--chip-accent:#ab6a0e;--chip-bg:#fff5e3}
+  .support-chip[data-type="aide-g"]{--chip-accent:#b33e65;--chip-bg:#fff0f4}
+  .support-chip__name{font-weight:900;color:var(--chip-accent)}
+  .support-chip__hours{font-weight:850;color:#20364a}
+  .support-chip__names{font-weight:650;color:#425b6e}
+  .support-chip__direction{font-size:11px;font-weight:800;color:#506579}
+  .support-chip__separator{color:#95a5b2}
+  @media(max-width:780px){.support-strip{padding:7px 9px}.support-strip__title{width:100%}.support-strip__list{gap:5px}.support-chip{font-size:12px;padding:5px 7px}}
+  @media print{.support-strip{break-inside:avoid;print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+
+
   .simple-grid{display:grid;grid-template-columns:1fr;gap:9px}
   .simple-row{--subject-color:#7992ac;--subject-soft:#f1f5f9;display:grid;grid-template-columns:minmax(215px,26%) minmax(0,1fr);align-items:stretch;overflow:hidden;background:#fff;border:1px solid #dce7ee;border-left:9px solid var(--subject-color);border-radius:13px;box-shadow:0 3px 10px #173b5c0c}
   .simple-subject{display:flex;align-items:center;gap:14px;padding:15px 19px;background:var(--subject-soft);font-size:clamp(18px,1.4vw,24px);font-weight:900}
@@ -125,6 +145,10 @@
     </div>
     <span id="simpleWeek">—</span>
   </div>
+  
+  <section class="support-strip" id="supportStrip" aria-live="polite" hidden>
+    <div class="support-strip__list" id="supportStripList"></div>
+  </section>
   <section class="simple-grid" id="simpleGrid" aria-live="polite"></section>
   <div class="simple-foot">CE2 · École La Gravette · Année scolaire 2026-2027</div>
 </main>
@@ -201,6 +225,64 @@ function learningBlock(title,goal){var a=document.createElement('div');a.classNa
 function learningContent(row){var a=document.createElement('div');a.className='micro-activities';var s=String(row[1]||'');if(/dictée flash\s*3/i.test(s)&&/production d.?écrits|DRAS/i.test(s)){a.classList.add('dual');a.appendChild(learningBlock('Dictée flash 3','Tu vas écrire correctement les mots appris dans une phrase.'));a.appendChild(learningBlock('Phrase du jour — DRAS','Tu vas transformer une phrase pour la rendre plus précise.'));}
 else if(/dictée bilan/i.test(s)&&/production d.?écrits|DRAS/i.test(s)){a.classList.add('dual');a.appendChild(learningBlock('Dictée bilan','Tu vas réutiliser les mots de la semaine dans une dictée.'));a.appendChild(learningBlock('Production d’écrits','Tu vas écrire quelques phrases et les relire pour les améliorer.'));}
 else {var title=subjectTopic(row);a.appendChild(learningBlock(title,objective(row,title)));}return a;}
+
+var supportData={
+  1:[
+    {label:'UPE2A',time:'9h–10h45',phase:'matin',names:['Bilal']},
+    {label:'CHAM',time:'11h–12h',phase:'matin',names:['Espoir','Selma','Yaman']},
+    {label:'Inclusion ULIS',time:'14h–15h45',phase:'apres-midi',names:['Ritej','Rayan','Anis']}
+  ],
+  2:[
+    {label:'UPE2A',time:'9h–10h45',phase:'matin',names:['Bilal']},
+    {label:'Aide E',time:'11h–12h',phase:'matin',names:['Assya','Gabriel','Mohamed','Jinène']},
+    {label:'Inclusion ULIS',time:'14h–15h45',phase:'apres-midi',names:['Ritej','Rayan','Anis']},
+    {label:'CHAM',time:'14h–17h',phase:'apres-midi',names:['Espoir','Selma','Yaman']},
+    {label:'Aide G',time:'15h (provisoire)',phase:'apres-midi',names:['Fahd']}
+  ],
+  4:[
+    {label:'UPE2A',time:'9h–10h45',phase:'matin',names:['Bilal']},
+    {label:'Aide E',time:'11h–12h',phase:'matin',names:['Assya','Gabriel','Mohamed','Jinène']},
+    {label:'Inclusion ULIS',time:'14h–15h45',phase:'apres-midi',names:['Ritej','Rayan','Anis']},
+    {label:'CHAM',time:'15h–16h',phase:'apres-midi',names:['Espoir','Selma','Yaman']}
+  ],
+  5:[
+    {label:'UPE2A',time:'9h–10h45',phase:'matin',names:['Bilal']},
+    {label:'Inclusion ULIS',time:'14h–15h45',phase:'apres-midi',names:['Ritej','Rayan','Anis']}
+  ]
+};
+function entriesForDay(dayDate,period){
+  var weekday=dayDate.getDay();
+  var entries=(supportData[weekday]||[]).slice();
+  if(period==='matin')return entries.filter(function(x){return x.phase==='matin';});
+  if(period==='apres-midi')return entries.filter(function(x){return x.phase==='apres-midi';});
+  return entries;
+}
+function renderSupportStrip(dayDate,period){
+  var wrap=document.getElementById('supportStrip');
+  var list=document.getElementById('supportStripList');
+  if(!wrap||!list)return;
+  list.replaceChildren();
+  var entries=entriesForDay(dayDate,period);
+  if(!entries.length){wrap.hidden=true;return;}
+  var title=document.createElement('span');
+  title.className='support-strip__title';
+  title.textContent='Activités avec d’autres enseignants :';
+  list.appendChild(title);
+  entries.forEach(function(entry){
+    var chip=document.createElement('span');
+    chip.className='support-chip';
+    var type=entry.label==='Inclusion ULIS'?'ulis':entry.label.toLowerCase().replace(/\s+/g,'-');
+    chip.dataset.type=type;
+    var label=document.createElement('span');label.className='support-chip__name';label.textContent=entry.label;
+    var hours=document.createElement('span');hours.className='support-chip__hours';hours.textContent=entry.time;
+    var sep=document.createElement('span');sep.className='support-chip__separator';sep.textContent='·';
+    var names=document.createElement('span');names.className='support-chip__names';names.textContent=entry.names.join(', ');
+    chip.append(label,hours,sep,names);
+    list.appendChild(chip);
+  });
+  wrap.hidden=false;
+}
+
 var days=collectDays(),currentIndex=0;
 // Si aucune vue n'est choisie manuellement, on suit l'heure locale de l'ordinateur.
 var manualPeriod=null;
@@ -261,6 +343,7 @@ function render(){
   document.getElementById('simpleWeek').textContent=day.weekTitle||'';
   var period=selectedPeriod();
   refreshPeriodButtons();
+  renderSupportStrip(day.date,period);
   var rows=day.rows.filter(function(r){
     if(!Array.isArray(r)||!String(r[1]||'').trim())return false;
     if(period==='journee')return true;
@@ -309,6 +392,5 @@ document.getElementById('todayBtn').addEventListener('click',function(){currentI
 currentIndex=nearestIndexToToday();render();
 })();
 </script>
-<script src="prises-en-charge-ce2.js?v=1"></script>
 </body>
 </html>
