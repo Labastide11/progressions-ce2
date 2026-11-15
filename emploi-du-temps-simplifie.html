@@ -130,6 +130,12 @@
   .tuesday-workshops__group strong{font-size:16px;color:#34506a}
   .tuesday-workshops__group h3{font-size:clamp(19px,1.4vw,24px);margin:5px 0 4px;line-height:1.2}
   .tuesday-workshops__group p{margin:0;color:#4c6377;font-size:16px}
+
+  /* Illustrations des ateliers : activité dynamique, indépendamment du groupe A/B. */
+  .tuesday-workshops__group{display:grid;grid-template-columns:minmax(0,1fr) minmax(150px,35%);align-items:center;gap:12px;min-height:170px}
+  .tuesday-workshops__copy{min-width:0}
+  .tuesday-workshops__image{display:block;width:100%;height:auto;max-height:165px;object-fit:contain;object-position:center}
+  @media(max-width:780px){.tuesday-workshops__group{grid-template-columns:minmax(0,1fr) minmax(100px,38%);min-height:130px}.tuesday-workshops__image{max-height:125px}}
   .tuesday-workshops__foot{font-size:13px;margin:10px 0 0;color:#596d80}
   .tuesday-workshops__flip{border:1px solid #a4bfd9;border-radius:8px;background:white;color:#214d81;font-weight:800;cursor:pointer;padding:6px 10px}
   .tuesday-workshops__flip:hover{background:#eaf2fc}
@@ -387,7 +393,13 @@ function tuesdayWorkshopCard(date){
     var name=document.createElement('strong');name.textContent=g.name;
     var act=document.createElement('h3');act.textContent=g.activity;
     var person=document.createElement('p');person.textContent=g.person;
-    col.append(name,act,person);groups.appendChild(col);
+    var copy=document.createElement('div');copy.className='tuesday-workshops__copy';
+    copy.append(name,act,person);
+    var illustration=document.createElement('img');illustration.className='tuesday-workshops__image';
+    illustration.src=g.activity==='Informatique'?'images/edt-etiquettes/atelier-informatique.png':'images/edt-etiquettes/atelier-lexique.png';
+    illustration.alt=g.activity==='Informatique'?'Deux enfants utilisant un ordinateur':'Deux enfants découvrant des mots dans un livre';
+    illustration.loading='lazy';
+    col.append(copy,illustration);groups.appendChild(col);
   });
   article.appendChild(groups);
   var foot=document.createElement('p');foot.className='tuesday-workshops__foot';
