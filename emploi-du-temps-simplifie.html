@@ -498,12 +498,26 @@ function oralP2Card(row,date){
   panel.append(question,start,rules);wrap.appendChild(panel);return wrap;
 }
 
+/* Compte à rebours de Noël : seuls les vrais jours de classe sont comptés.
+   Semaine scolaire de cette classe : lundi, mardi, jeudi, vendredi.
+   Vacances de Noël 2026 : après la classe du vendredi 18 décembre. */
+function christmasClassCountdown(date){
+  if(date.getFullYear()!==2026)return null;
+  var start=new Date(2026,10,2,12),last=new Date(2026,11,18,12);
+  if(date<start||date>last)return null;
+  var remaining=0;
+  for(var d=new Date(date.getFullYear(),date.getMonth(),date.getDate()+1,12);d<=last;d.setDate(d.getDate()+1)){
+    if([1,2,4,5].indexOf(d.getDay())!==-1)remaining++;
+  }
+  if(remaining===0)return 'Dernier jour de classe avant les vacances de Noël !';
+  return 'Encore '+remaining+' jour'+(remaining>1?'s':'')+' de classe avant les vacances de Noël !';
+}
 function render(){
   var grid=document.getElementById('simpleGrid');grid.replaceChildren();
   if(!days.length){grid.innerHTML='<div class="empty">Aucune journée trouvée dans les fichiers de l’emploi du temps.</div>';return;}
   var day=days[currentIndex];
   document.getElementById('simpleDate').textContent=day.label;
-  document.getElementById('simpleWeek').textContent=day.weekTitle||'';
+  document.getElementById('simpleWeek').textContent=christmasClassCountdown(day.date)||day.weekTitle||'';
   var period=selectedPeriod();
   refreshPeriodButtons();
   renderSupportStrip(day.date,period);
