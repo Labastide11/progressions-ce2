@@ -113,6 +113,23 @@
   }
   @media(max-width:780px){.simple-pause-strip{min-height:48px;padding:3px 7px}.simple-pause-strip img{height:auto;max-height:58px}}
   @media print{.simple-pause-strip{break-inside:avoid;print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+
+  /* Mardi 16h–17h : deux groupes fixes, ateliers alternés chaque semaine. */
+  .tuesday-workshops{border:1px solid #cfdaeb;border-left:8px solid #5579bd;background:#fff;border-radius:14px;padding:14px 18px;box-shadow:0 3px 10px #173b5c0c}
+  .tuesday-workshops__top{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:11px}
+  .tuesday-workshops__top h2{font-size:clamp(19px,1.4vw,24px);margin:0;color:#193e6a}
+  .tuesday-workshops__badge{font-size:14px;font-weight:900;background:#e5efff;color:#214d81;padding:5px 10px;border-radius:9px}
+  .tuesday-workshops__groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .tuesday-workshops__group{border:1px solid #dbe6ef;border-radius:11px;padding:12px 14px;background:#f7fbff}
+  .tuesday-workshops__group:nth-child(2){background:#f8f6ff;border-color:#e1d9f5}
+  .tuesday-workshops__group strong{font-size:16px;color:#34506a}
+  .tuesday-workshops__group h3{font-size:clamp(19px,1.4vw,24px);margin:5px 0 4px;line-height:1.2}
+  .tuesday-workshops__group p{margin:0;color:#4c6377;font-size:16px}
+  .tuesday-workshops__foot{font-size:13px;margin:10px 0 0;color:#596d80}
+  .tuesday-workshops__flip{border:1px solid #a4bfd9;border-radius:8px;background:white;color:#214d81;font-weight:800;cursor:pointer;padding:6px 10px}
+  .tuesday-workshops__flip:hover{background:#eaf2fc}
+  @media(max-width:780px){.tuesday-workshops__groups{grid-template-columns:1fr}.tuesday-workshops{padding:10px 12px}}
+  @media print{.tuesday-workshops__flip{display:none!important}.tuesday-workshops{break-inside:avoid}}
 </style>
 </head>
 <body>
@@ -335,6 +352,52 @@ function pauseStrip(type){
   image.addEventListener('error',function(){bar.textContent=alt[type];},{once:true});
   bar.appendChild(image);return bar;
 }
+/* Date de référence MODIFIABLE : semaine du mardi 17 novembre 2026 = A,
+   uniquement en attendant confirmation de l'enseignant. */
+var TUESDAY_REF_UTC=Date.UTC(2026,10,17);
+var WORKSHOP_OFFSET_KEY='progressions.ce2.ateliers.mardi.semaineA.inverse.v1';
+function workshopInversion(){
+  try{return localStorage.getItem(WORKSHOP_OFFSET_KEY)==='1';}catch(e){return false;}
+}
+function toggleWorkshopInversion(){
+  try{localStorage.setItem(WORKSHOP_OFFSET_KEY,workshopInversion()?'0':'1');}catch(e){}
+  render();
+}
+function workshopWeek(date){
+  var utc=Date.UTC(date.getFullYear(),date.getMonth(),date.getDate());
+  var n=Math.round((utc-TUESDAY_REF_UTC)/(7*86400000));
+  return (Math.abs(n)%2===0)!==workshopInversion()?'A':'B';
+}
+function tuesdayWorkshopCard(date){
+  var current=workshopWeek(date);
+  var article=document.createElement('article');
+  article.className='tuesday-workshops';
+  var top=document.createElement('div');top.className='tuesday-workshops__top';
+  var title=document.createElement('h2');title.textContent='16h–17h · Ateliers en deux groupes';
+  var badge=document.createElement('span');badge.className='tuesday-workshops__badge';badge.textContent='Semaine '+current;
+  top.append(title,badge);article.appendChild(top);
+  var groups=document.createElement('div');groups.className='tuesday-workshops__groups';
+  [{name:'Groupe 1',activity:current==='A'?'Informatique':'Lexique',person:current==='A'?'Avec le maître · en classe':'Avec Sylvie'},
+   {name:'Groupe 2',activity:current==='A'?'Lexique':'Informatique',person:current==='A'?'Avec Sylvie':'Avec le maître · en classe'}].forEach(function(g){
+    var col=document.createElement('div');col.className='tuesday-workshops__group';
+    var name=document.createElement('strong');name.textContent=g.name;
+    var act=document.createElement('h3');act.textContent=g.activity;
+    var person=document.createElement('p');person.textContent=g.person;
+    col.append(name,act,person);groups.appendChild(col);
+  });
+  article.appendChild(groups);
+  var foot=document.createElement('p');foot.className='tuesday-workshops__foot';
+  foot.textContent='Groupes fixes · changement d’atelier chaque semaine · 11 élèves CE2 prévus, avant absences et Aide G éventuelle. CHAM et ULIS hors de la classe.';
+  article.appendChild(foot);
+  var flip=document.createElement('button');flip.type='button';flip.className='tuesday-workshops__flip';
+  flip.textContent='Inverser semaine A / B';flip.title='Corriger la semaine de départ si nécessaire';
+  flip.addEventListener('click',toggleWorkshopInversion);
+  article.appendChild(flip);
+  var note=document.createElement('p');note.className='tuesday-workshops__foot';
+  note.textContent='Repère provisoire : mardi 17 novembre 2026 = semaine A. Le bouton permet de corriger la parité sur cet ordinateur.';
+  article.appendChild(note);
+  return article;
+}
 function render(){
   var grid=document.getElementById('simpleGrid');grid.replaceChildren();
   if(!days.length){grid.innerHTML='<div class="empty">Aucune journée trouvée dans les fichiers de l’emploi du temps.</div>';return;}
@@ -358,6 +421,8 @@ function render(){
   function addPause(type){if(!inserted[type]){grid.appendChild(pauseStrip(type));inserted[type]=true;}}
   rows.forEach(function(row){
     var s=String(row[1]||'');var slot=timeRange(row);
+    /* Le créneau du mardi à partir de 16h est remplacé par les ateliers. */
+    if(day.date.getDay()===2&&slot.start!==null&&slot.start>=16*60&&slot.start<17*60){prior=slot;return;}
     var explicit=pauseTypeFromRow(row);
     if(explicit){addPause(explicit);prior=slot;return;}
     if(prior&&prior.end!==null&&slot.start!==null){
@@ -374,6 +439,7 @@ function render(){
     var right=document.createElement('div');right.className='simple-activity';right.appendChild(learningContent(row));el.appendChild(left);el.appendChild(right);grid.appendChild(el);
     prior=slot;
   });
+  if(day.date.getDay()===2&&period!=='matin')grid.appendChild(tuesdayWorkshopCard(day.date));
   if(period!=='matin')grid.appendChild(pauseStrip('fin-ecole'));
   if(!rows.length)grid.innerHTML='<div class="empty">Aucune activité prévue pour cette partie de la journée.</div>';
   document.getElementById('prevDayBtn').disabled=currentIndex<=0;
