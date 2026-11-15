@@ -58,6 +58,11 @@
 
   .simple-grid{display:grid;grid-template-columns:1fr;gap:9px}
   .simple-row{--subject-color:#7992ac;--subject-soft:#f1f5f9;display:grid;grid-template-columns:minmax(215px,26%) minmax(0,1fr);align-items:stretch;overflow:hidden;background:#fff;border:1px solid #dce7ee;border-left:9px solid var(--subject-color);border-radius:13px;box-shadow:0 3px 10px #173b5c0c}
+  /* Mode focus TBI : un clic isole une activité, un second réaffiche la journée. */
+  #simpleGrid > .focus-selectable{cursor:pointer}
+  #simpleGrid > .focus-selectable:focus-visible{outline:4px solid #2477bf;outline-offset:2px}
+  #simpleGrid.focus-active > :not(.focus-selected){display:none!important}
+  #simpleGrid > .focus-selected{box-shadow:0 0 0 3px #2477bf,0 4px 16px #173b5c20}
   .simple-subject{display:flex;align-items:center;gap:14px;padding:15px 19px;background:var(--subject-soft);font-size:clamp(18px,1.4vw,24px);font-weight:900}
   .subject-picto{display:inline-flex;align-items:center;justify-content:center;flex:0 0 46px;width:46px;height:46px;border-radius:12px;background:white;font-size:27px}
   .simple-activity{padding:13px 22px 14px;min-width:0;align-self:center}
@@ -512,8 +517,28 @@ function christmasClassCountdown(date){
   if(remaining===0)return 'Dernier jour de classe avant les vacances de Noël !';
   return 'Encore '+remaining+' jour'+(remaining>1?'s':'')+' de classe avant les vacances de Noël !';
 }
+function enableFocus(card){
+  card.classList.add('focus-selectable');
+  card.tabIndex=0;
+  card.setAttribute('role','button');
+  card.setAttribute('aria-pressed','false');
+  card.setAttribute('title','Cliquer pour afficher cette activité seule ; recliquer pour revoir toute la journée');
+  function toggle(event){
+    if(event.type==='keydown'&&event.key!=='Enter'&&event.key!==' ')return;
+    if(event.target.closest('button, a, input, select, textarea'))return;
+    if(event.type==='keydown')event.preventDefault();
+    var grid=document.getElementById('simpleGrid');
+    var wasSelected=card.classList.contains('focus-selected');
+    grid.querySelectorAll('.focus-selected').forEach(function(item){item.classList.remove('focus-selected');item.setAttribute('aria-pressed','false');});
+    grid.classList.toggle('focus-active',!wasSelected);
+    if(!wasSelected){card.classList.add('focus-selected');card.setAttribute('aria-pressed','true');}
+  }
+  card.addEventListener('click',toggle);
+  card.addEventListener('keydown',toggle);
+  return card;
+}
 function render(){
-  var grid=document.getElementById('simpleGrid');grid.replaceChildren();
+  var grid=document.getElementById('simpleGrid');grid.replaceChildren();grid.classList.remove('focus-active');
   if(!days.length){grid.innerHTML='<div class="empty">Aucune journée trouvée dans les fichiers de l’emploi du temps.</div>';return;}
   var day=days[currentIndex];
   document.getElementById('simpleDate').textContent=day.label;
@@ -532,7 +557,7 @@ function render(){
     return period==='matin'?slot.start<12*60+15:slot.start>=12*60+15;
   });
   var inserted={};var prior=null;
-  function addPause(type){if(!inserted[type]){grid.appendChild(pauseStrip(type));inserted[type]=true;}}
+  function addPause(type){if(!inserted[type]){grid.appendChild(enableFocus(pauseStrip(type)));inserted[type]=true;}}
   rows.forEach(function(row){
     var s=String(row[1]||'');var slot=timeRange(row);
     /* Le créneau du mardi à partir de 16h est remplacé par les ateliers. */
@@ -550,11 +575,11 @@ function render(){
     if(labels.length){var group=document.createElement('div');group.className=labels.length>1?'subject-banner-set':'subject-banner-single';
       labels.forEach(function(label){var photo=document.createElement('img');photo.className='subject-banner';photo.src='images/edt-etiquettes/'+label+'.webp';photo.alt=labelText[label]||subjectName(s,k);photo.loading='lazy';photo.decoding='async';photo.addEventListener('error',function(){photo.replaceWith(document.createTextNode(photo.alt));},{once:true});group.appendChild(photo);});left.appendChild(group);
     }else{var name=document.createElement('span');name.className='subject-plain-label';name.textContent=subjectName(s,k);left.appendChild(name);}
-    var right=document.createElement('div');right.className='simple-activity';right.appendChild(oralP2Card(row,day.date)||learningContent(row));el.appendChild(left);el.appendChild(right);grid.appendChild(el);
+    var right=document.createElement('div');right.className='simple-activity';right.appendChild(oralP2Card(row,day.date)||learningContent(row));el.appendChild(left);el.appendChild(right);grid.appendChild(enableFocus(el));
     prior=slot;
   });
-  if(day.date.getDay()===2&&period!=='matin')grid.appendChild(tuesdayWorkshopCard(day.date));
-  if(period!=='matin')grid.appendChild(pauseStrip('fin-ecole'));
+  if(day.date.getDay()===2&&period!=='matin')grid.appendChild(enableFocus(tuesdayWorkshopCard(day.date)));
+  if(period!=='matin')grid.appendChild(enableFocus(pauseStrip('fin-ecole')));
   if(!rows.length)grid.innerHTML='<div class="empty">Aucune activité prévue pour cette partie de la journée.</div>';
   document.getElementById('prevDayBtn').disabled=currentIndex<=0;
   document.getElementById('nextDayBtn').disabled=currentIndex>=days.length-1;
