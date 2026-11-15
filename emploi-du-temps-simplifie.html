@@ -231,7 +231,7 @@ if(/arts|musique/.test(s))return 'Tu vas créer et expliquer tes choix.';
 if(/eps/.test(s))return 'Tu vas apprendre à bouger, à coopérer et à gérer ton effort.';
 return 'Tu vas découvrir une nouvelle idée et t’entraîner à l’utiliser.';}
 // La sélection se fonde sur l'activité de la séance, sans afficher les consignes du maître.
-var labelText={'francais':'Français','dictee':'Dictée','production-ecrits':'Production d’écrits','calcul-mental':'Calcul mental','lecture-plaisir':'Lecture plaisir','piscine':'Piscine','chant':'Chant','anglais':'Anglais','decouverte-monde':'Découverte du monde','mathematiques':'Mathématiques','lecture-comprehension':'Lecture / Compréhension','sciences':'Sciences','histoire':'Histoire','geographie':'Géographie','emc':'EMC','arts-visuels':'Arts visuels','recreation':'Récréation','calcul-pose':'Calcul posé','problemes':'Problèmes','geometrie':'Géométrie','copie':'Copie'};
+var labelText={'francais':'Français','dictee':'Dictée','production-ecrits':'Production d’écrits','calcul-mental':'Calcul mental','lecture-plaisir':'Lecture plaisir','piscine':'Piscine','chant':'Chant','anglais':'Anglais','decouverte-monde':'Découverte du monde','mathematiques':'Mathématiques','lecture-comprehension':'Lecture / Compréhension','sciences':'Sciences','histoire':'Histoire','geographie':'Géographie','emc':'EMC','arts-visuels':'Arts visuels','recreation':'Récréation','calcul-pose':'Calcul posé','problemes':'Problèmes','geometrie':'Géométrie','copie':'Copie','course-longue':'Course longue'};
 function imagesFor(row,kind){
   var subject=String(row[1]||'').toLowerCase(),topic=subjectTopic(row).toLowerCase();
   var value=subject+' '+topic,details=plain(row[2]);
@@ -256,7 +256,8 @@ function imagesFor(row,kind){
   if(/découverte du monde|questionner le monde|\bqlm\b/.test(value))return ['decouverte-monde'];
   if(/arts visuels|arts plastiques|dessin|création artistique/.test(value)||kind==='arts')return ['arts-visuels'];
   if(/emc|message clair|vivre ensemble|vie de classe/.test(value)||kind==='emc')return ['emc'];
-  if(/course longue|endurance|eps|sport/.test(value)||kind==='eps')return [];
+  if(/course longue|endurance/.test(value))return ['course-longue'];
+  if(/eps|sport/.test(value)||kind==='eps')return [];
   if(/mathématiques|numération|nombres|calcul/.test(value)||kind==='maths')return ['mathematiques'];
   if(/français|grammaire|conjugaison|vocabulaire|orthographe/.test(value)||kind==='french')return ['francais'];
   return [];
@@ -556,13 +557,14 @@ function render(){
     if(slot.start===null)return true; // Ne pas masquer une séance non horodatée.
     return period==='matin'?slot.start<12*60+15:slot.start>=12*60+15;
   });
-  var inserted={};var prior=null;
+  var inserted={};var prior=null;var previousArtsSignature=null;
   function addPause(type){if(!inserted[type]){grid.appendChild(enableFocus(pauseStrip(type)));inserted[type]=true;}}
   rows.forEach(function(row){
     var s=String(row[1]||'');var slot=timeRange(row);
     /* Le créneau du mardi à partir de 16h est remplacé par les ateliers. */
     if(day.date.getDay()===2&&slot.start!==null&&slot.start>=16*60&&slot.start<17*60){prior=slot;return;}
     var explicit=pauseTypeFromRow(row);
+    if(explicit)previousArtsSignature=null;
     if(explicit){addPause(explicit);prior=slot;return;}
     if(prior&&prior.end!==null&&slot.start!==null){
       var gap=slot.start-prior.end;
@@ -570,7 +572,15 @@ function render(){
       if(gap>=45&&prior.end>=11*60+30&&prior.end<=12*60+30&&slot.start>=13*60+45&&slot.start<=14*60+30)addPause('pause-midi-cantine-maison');
       if(gap>=5&&gap<=30&&prior.end>=15*60+40&&prior.end<=16*60+5&&slot.start>=16*60+10&&slot.start<=16*60+35)addPause('recreation-apres-midi');
     }
-    var k=kindFor(row),el=document.createElement('article');el.className='simple-row '+k;
+    var k=kindFor(row);
+    var artsSignature=null;
+    if(k==='arts'){
+      var wording=activityAndSuccess(row);
+      artsSignature=wording.join('|');
+      if(artsSignature===previousArtsSignature){prior=slot;return;}
+    }
+    previousArtsSignature=artsSignature;
+    var el=document.createElement('article');el.className='simple-row '+k;
     var left=document.createElement('div');left.className='simple-subject';var labels=imagesFor(row,k);
     if(labels.length){var group=document.createElement('div');group.className=labels.length>1?'subject-banner-set':'subject-banner-single';
       labels.forEach(function(label){var photo=document.createElement('img');photo.className='subject-banner';photo.src='images/edt-etiquettes/'+label+'.webp';photo.alt=labelText[label]||subjectName(s,k);photo.loading='lazy';photo.decoding='async';photo.addEventListener('error',function(){photo.replaceWith(document.createTextNode(photo.alt));},{once:true});group.appendChild(photo);});left.appendChild(group);
