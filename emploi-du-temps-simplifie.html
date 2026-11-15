@@ -131,11 +131,10 @@
   .tuesday-workshops__group h3{font-size:clamp(19px,1.4vw,24px);margin:5px 0 4px;line-height:1.2}
   .tuesday-workshops__group p{margin:0;color:#4c6377;font-size:16px}
 
-  /* Illustrations des ateliers : activité dynamique, indépendamment du groupe A/B. */
-  .tuesday-workshops__group{display:grid;grid-template-columns:minmax(0,1fr) minmax(150px,35%);align-items:center;gap:12px;min-height:170px}
-  .tuesday-workshops__copy{min-width:0}
-  .tuesday-workshops__image{display:block;width:100%;height:auto;max-height:165px;object-fit:contain;object-position:center}
-  @media(max-width:780px){.tuesday-workshops__group{grid-template-columns:minmax(0,1fr) minmax(100px,38%);min-height:130px}.tuesday-workshops__image{max-height:125px}}
+  /* Ateliers du mardi : les bandeaux contiennent déjà tous les textes. */
+  .tuesday-workshops__group{display:flex;align-items:center;justify-content:center;min-width:0;min-height:0;padding:8px;overflow:hidden}
+  .tuesday-workshops__image{display:block;width:100%;height:auto;max-height:none;object-fit:contain;object-position:center;border-radius:8px}
+  @media(max-width:780px){.tuesday-workshops__group{padding:6px;min-height:0}.tuesday-workshops__image{width:100%;height:auto;max-height:none}}
   .tuesday-workshops__foot{font-size:13px;margin:10px 0 0;color:#596d80}
   .tuesday-workshops__flip{border:1px solid #a4bfd9;border-radius:8px;background:white;color:#214d81;font-weight:800;cursor:pointer;padding:6px 10px}
   .tuesday-workshops__flip:hover{background:#eaf2fc}
@@ -257,10 +256,68 @@ function imagesFor(row,kind){
   if(/français|grammaire|conjugaison|vocabulaire|orthographe/.test(value)||kind==='french')return ['francais'];
   return [];
 }
-function learningBlock(title,goal){var a=document.createElement('div');a.className='micro-activity';var h=document.createElement('h2');h.className='activity-name';h.textContent=title;var p=document.createElement('p');p.className='learning-line';var lead=document.createElement('span');lead.className='learning-lead';lead.textContent='Ce que j’apprends : ';p.appendChild(lead);p.appendChild(document.createTextNode(goal));a.appendChild(h);a.appendChild(p);return a;}
-function learningContent(row){var a=document.createElement('div');a.className='micro-activities';var s=String(row[1]||'');if(/dictée flash\s*3/i.test(s)&&/production d.?écrits|DRAS/i.test(s)){a.classList.add('dual');a.appendChild(learningBlock('Dictée flash 3','Tu vas écrire correctement les mots appris dans une phrase.'));a.appendChild(learningBlock('Phrase du jour — DRAS','Tu vas transformer une phrase pour la rendre plus précise.'));}
-else if(/dictée bilan/i.test(s)&&/production d.?écrits|DRAS/i.test(s)){a.classList.add('dual');a.appendChild(learningBlock('Dictée bilan','Tu vas réutiliser les mots de la semaine dans une dictée.'));a.appendChild(learningBlock('Production d’écrits','Tu vas écrire quelques phrases et les relire pour les améliorer.'));}
-else {var title=subjectTopic(row);a.appendChild(learningBlock(title,objective(row,title)));}return a;}
+// Deux phrases pour les élèves : activité réelle, puis réussite observable.
+function cleanActivityTitle(title){
+  return String(title||'').replace(/^(Français|Mathématiques|Sciences|Anglais|Histoire|Géographie|EMC|Lecture|Dictée|Calcul mental)\s*[—–:]\s*/i,'').trim();
+}
+function activityAndSuccess(row,forced){
+  var name=String(row[1]||''), title=cleanActivityTitle(forced||subjectTopic(row));
+  var all=(name+' '+title+' '+skill(row)).toLowerCase();
+  var activity='',success='';
+  if(/dictée bilan/.test(all)){activity='Je fais la dictée bilan avec les mots de la semaine.';success='Je dois relire mes mots, mes accords et la ponctuation.';}
+  else if(/dictée flash/.test(all)){activity='J’écris la phrase de la dictée flash.';success='Je dois écouter, écrire et vérifier chaque mot.';}
+  else if(/dictée/.test(all)){activity='J’écris les mots ou les phrases dictés.';success='Je dois écouter puis me relire attentivement.';}
+  else if(/dras|phrase du jour/.test(all)){activity='J’améliore une phrase avec DRAS.';success='Je dois pouvoir expliquer ce que j’ai changé.';}
+  else if(/production d.?écrits|écrivain/.test(all)){activity='J’écris des phrases sur le sujet proposé.';success='Je dois écrire des phrases claires et les relire.';}
+  else if(/copie|recopi/.test(all)){activity='Je copie le texte avec soin.';success='Je dois comparer ma copie au modèle et corriger mes erreurs.';}
+  else if(/calcul mental/.test(all)){activity=/double|moitié/.test(all)?'Je calcule des doubles et des moitiés.':/multipl.*10|×10/.test(all)?'Je m’entraîne à multiplier par 10.':'Je m’entraîne à calculer de tête.';success='Je dois trouver une stratégie et expliquer mon calcul.';}
+  else if(/droite graduée/.test(all)){activity='Je place des nombres sur une droite graduée.';success='Je dois repérer le pas entre deux graduations.';}
+  else if(/valeur des chiffres|numération/.test(all)){activity='Je cherche la valeur des chiffres dans les nombres.';success='Je dois distinguer les unités, les dizaines et les centaines.';}
+  else if(/problème/.test(all)){activity='Je résous les problèmes proposés.';success='Je dois choisir un calcul et expliquer ma réponse.';}
+  else if(/géométr|polygone|figure/.test(all)){activity='J’observe et je travaille sur les figures.';success='Je dois utiliser les propriétés pour justifier ma réponse.';}
+  else if(/math|calcul posé|addition|soustraction/.test(all)){activity='Je réalise les exercices de mathématiques prévus.';success='Je dois expliquer ma méthode et vérifier mon résultat.';}
+  else if(/lecture plaisir|quart d.?heure/.test(all)){activity='Je lis tranquillement le livre de mon choix.';success='Je dois lire en silence et rester concentré.';}
+  else if(/fluence|lecture exacte/.test(all)){activity='Je m’entraîne à lire le texte avec précision.';success='Je dois lire sans oublier ni transformer les mots.';}
+  else if(/lecture|compréhension|récit|texte/.test(all)){activity='Je lis le texte et je cherche les informations importantes.';success='Je dois pouvoir répondre et expliquer avec mes mots.';}
+  else if(/anglais/.test(all)){activity='J’écoute et je m’entraîne à parler en anglais.';success='Je dois pouvoir répéter puis répondre sans modèle.';}
+  else if(/science|états de l.eau|expérience/.test(all)){activity='J’observe et je cherche à comprendre le phénomène étudié.';success='Je dois expliquer ce que j’ai observé avec mes mots.';}
+  else if(/histoire|antiquité|moyen âge/.test(all)){activity='J’étudie les documents sur le passé.';success='Je dois repérer des indices et expliquer ce que j’ai compris.';}
+  else if(/géographie|carte de france/.test(all)){activity='J’observe les cartes et les paysages.';success='Je dois utiliser les repères pour expliquer ce que je vois.';}
+  else if(/endurance|course longue/.test(all)){activity='Je m’entraîne à courir longtemps à mon rythme.';success='Je dois gérer mon souffle et garder une allure régulière.';}
+  else if(/eps|sport|piscine/.test(all)){activity='Je participe aux activités physiques prévues.';success='Je dois respecter les consignes et agir en sécurité.';}
+  else if(/arts plastiques|arts visuels|dessin/.test(all)){activity='Je réalise une création artistique.';success='Je dois faire des choix et pouvoir les expliquer.';}
+  else if(/cham|chorale|chant|musique/.test(all)){activity='Je participe aux activités de musique ou de chant.';success='Je dois écouter les autres et suivre les consignes.';}
+  else if(/emc|vivre ensemble|vie de classe/.test(all)){activity='J’échange avec la classe sur la situation proposée.';success='Je dois écouter et expliquer mon point de vue.';}
+  else if(/grammaire|pronom|verbe|sujet|nom|adjectif/.test(all)){activity='J’observe et je classe les mots dans les phrases.';success='Je dois expliquer les indices qui m’aident à répondre.';}
+  else if(/vocabulaire|lexique|synonyme|contraire/.test(all)){activity='Je cherche le sens et les liens entre les mots.';success='Je dois pouvoir utiliser les mots dans une phrase.';}
+  else if(/orthographe/.test(all)){activity='Je m’entraîne à écrire les mots correctement.';success='Je dois vérifier les lettres et les accords.';}
+  else if(/récréation|pause|retour au calme/.test(all)){activity='Je prends un moment de pause.';success='Je dois respecter les autres et revenir prêt à travailler.';}
+  else {
+    var sk=skill(row);
+    if(sk && sk.length<95 && !/compétences déjà|réinvestissement|programmation/i.test(sk)){
+      activity='Je travaille sur : '+sk.replace(/[.;]+$/,'').replace(/^./,function(c){return c.toLowerCase();})+'.';
+    }else{activity='Je participe à l’activité « '+title+' ».';}
+    success='Je dois pouvoir expliquer ce que j’ai fait et compris.';
+  }
+  return [activity,success];
+}
+function learningBlock(activity,success){
+  var a=document.createElement('div');a.className='micro-activity';
+  var p=document.createElement('p');p.className='activity-name';p.textContent=activity;
+  var goal=document.createElement('p');goal.className='learning-line';goal.textContent=success;
+  a.append(p,goal);return a;
+}
+function learningContent(row){
+  var a=document.createElement('div');a.className='micro-activities';var s=String(row[1]||'');
+  if(/dictée flash\s*3/i.test(s)&&/production d.?écrits|DRAS/i.test(s)){
+    a.classList.add('dual');a.appendChild(learningBlock('J’écris la phrase de la dictée flash.','Je dois écouter, écrire et vérifier chaque mot.'));
+    a.appendChild(learningBlock('J’améliore une phrase avec DRAS.','Je dois expliquer ce que j’ai changé.'));
+  }else if(/dictée bilan/i.test(s)&&/production d.?écrits|DRAS/i.test(s)){
+    a.classList.add('dual');a.appendChild(learningBlock('Je fais la dictée bilan avec les mots appris.','Je dois relire mes mots, mes accords et la ponctuation.'));
+    a.appendChild(learningBlock('J’écris quelques phrases sur le sujet proposé.','Je dois relire et améliorer mes phrases.'));
+  }else{var phrases=activityAndSuccess(row);a.appendChild(learningBlock(phrases[0],phrases[1]));}
+  return a;
+}
 
 var supportData={
   1:[
@@ -398,16 +455,11 @@ function tuesdayWorkshopCard(date){
   [{name:'Groupe 1',activity:current==='A'?'Informatique':'Lexique',person:current==='A'?'Avec le maître · en classe':'Avec Sylvie'},
    {name:'Groupe 2',activity:current==='A'?'Lexique':'Informatique',person:current==='A'?'Avec Sylvie':'Avec le maître · en classe'}].forEach(function(g){
     var col=document.createElement('div');col.className='tuesday-workshops__group';
-    var name=document.createElement('strong');name.textContent=g.name;
-    var act=document.createElement('h3');act.textContent=g.activity;
-    var person=document.createElement('p');person.textContent=g.person;
-    var copy=document.createElement('div');copy.className='tuesday-workshops__copy';
-    copy.append(name,act,person);
     var illustration=document.createElement('img');illustration.className='tuesday-workshops__image';
     illustration.src=g.activity==='Informatique'?'images/edt-etiquettes/atelier-informatique.png':'images/edt-etiquettes/atelier-lexique.png';
-    illustration.alt=g.activity==='Informatique'?'Deux enfants utilisant un ordinateur':'Deux enfants découvrant des mots dans un livre';
+    illustration.alt=g.name+' — '+g.activity+' — '+g.person;
     illustration.loading='lazy';
-    col.append(copy,illustration);groups.appendChild(col);
+    col.appendChild(illustration);groups.appendChild(col);
   });
   article.appendChild(groups);
   var foot=document.createElement('p');foot.className='tuesday-workshops__foot';
@@ -437,7 +489,7 @@ function oralP2Card(row,date){
   if(date.getDay()!==1||!/quoi de neuf/i.test(String(row[1]||'')+' '+plain(row[2])))return null;
   var q=oralP2Questions[isoDate(date)];if(!q)return null;
   var wrap=document.createElement('div');wrap.className='micro-activities';
-  wrap.appendChild(learningBlock('Quoi de neuf ?','Tu vas raconter un seul moment en deux ou trois phrases et écouter les autres.'));
+  wrap.appendChild(learningBlock('Je raconte un seul moment en deux ou trois phrases.','Je dois parler clairement et écouter les autres.'));
   var panel=document.createElement('section');panel.className='oral-p2';
   var question=document.createElement('p');question.className='oral-p2__question';question.textContent='Question du jour : '+q[0];
   var start=document.createElement('p');start.className='oral-p2__starter';start.textContent='Pour commencer : « '+q[1]+' »';
