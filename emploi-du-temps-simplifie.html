@@ -111,7 +111,12 @@
   .simple-pause-strip img{
     display:block;width:auto;max-width:100%;height:76px;object-fit:contain;
   }
+  /* Fin de l’école : dimensions naturelles, sans étirement ni écrasement. */
+  .simple-pause-strip.end-of-day-strip{min-height:90px;height:auto;padding:7px 12px}
+  .simple-pause-strip.end-of-day-strip img{width:auto;height:auto;max-width:100%;max-height:110px;object-fit:contain;aspect-ratio:auto}
   @media(max-width:780px){.simple-pause-strip{min-height:48px;padding:3px 7px}.simple-pause-strip img{height:auto;max-height:58px}}
+  @media(max-width:780px){.simple-pause-strip.end-of-day-strip{min-height:64px}.simple-pause-strip.end-of-day-strip img{width:auto;height:auto;max-height:90px}}
+
   @media print{.simple-pause-strip{break-inside:avoid;print-color-adjust:exact;-webkit-print-color-adjust:exact}}
 
   /* Mardi 16h–17h : deux groupes fixes, ateliers alternés chaque semaine. */
@@ -170,7 +175,7 @@
   <div class="simple-foot">CE2 · École La Gravette · Année scolaire 2026-2027</div>
 </main>
 <script src="emploi-du-temps-data-p1.js?v=37.24"></script>
-<script src="emploi-du-temps-data-p2.js?v=37.24"></script>
+<script src="emploi-du-temps-data-p2.js?v=37.25"></script>
 <script src="cycle-endurance-p2.js?v=1.1"></script>
 <script src="emploi-du-temps-data-p3.js?v=37.24"></script>
 <script src="emploi-du-temps-data-p4.js?v=37.24"></script>
@@ -246,15 +251,14 @@ else {var title=subjectTopic(row);a.appendChild(learningBlock(title,objective(ro
 var supportData={
   1:[
     {label:'UPE2A',time:'9h–10h45',phase:'matin',names:['Bilal']},
-    {label:'CHAM',time:'11h–12h',phase:'matin',names:['Espoir','Selma','Yaman']},
     {label:'Inclusion ULIS',time:'14h–15h45',phase:'apres-midi',names:['Ritej','Rayan','Anis']}
   ],
   2:[
     {label:'UPE2A',time:'9h–10h45',phase:'matin',names:['Bilal']},
     {label:'Aide E',time:'11h–12h',phase:'matin',names:['Assya','Gabriel','Mohamed','Jinène']},
     {label:'Inclusion ULIS',time:'14h–15h45',phase:'apres-midi',names:['Ritej','Rayan','Anis']},
-    {label:'CHAM',time:'14h–17h',phase:'apres-midi',names:['Espoir','Selma','Yaman']},
-    {label:'Aide G',time:'15h (provisoire)',phase:'apres-midi',names:['Fahd']}
+    {label:'CHAM',time:'14h–17h · La Fabrique des arts',phase:'apres-midi',names:['Espoir','Selma','Yaman']},
+     {label:'Aide G',time:'15h (provisoire)',phase:'apres-midi',names:['Fahd']}
   ],
   4:[
     {label:'UPE2A',time:'9h–10h45',phase:'matin',names:['Bilal']},
