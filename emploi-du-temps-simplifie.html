@@ -141,6 +141,14 @@
   .tuesday-workshops__flip:hover{background:#eaf2fc}
   @media(max-width:780px){.tuesday-workshops__groups{grid-template-columns:1fr}.tuesday-workshops{padding:10px 12px}}
   @media print{.tuesday-workshops__flip{display:none!important}.tuesday-workshops{break-inside:avoid}}
+
+  /* P2 — rituel oral guidé, projetable au TBI. */
+  .oral-p2{margin-top:12px;padding:13px 16px;border:2px solid #b7d8f4;border-radius:13px;background:#f2f8ff}
+  .oral-p2__question{font-size:clamp(19px,1.5vw,25px);font-weight:900;color:#164c83;margin:0 0 8px}
+  .oral-p2__starter{font-size:clamp(17px,1.2vw,21px);margin:0 0 10px;color:#24465e}
+  .oral-p2__rules{display:flex;gap:8px;flex-wrap:wrap;margin:0;padding:0;list-style:none}
+  .oral-p2__rules li{flex:1 1 185px;padding:8px 10px;background:white;border:1px solid #d2e3f1;border-radius:9px;font-size:clamp(15px,1.02vw,18px);font-weight:700;line-height:1.3}
+  @media(max-width:780px){.oral-p2{padding:10px}.oral-p2__rules li{flex-basis:100%}}
 </style>
 </head>
 <body>
@@ -414,6 +422,30 @@ function tuesdayWorkshopCard(date){
   article.appendChild(note);
   return article;
 }
+
+// Questions hebdomadaires de P2 : un seul souvenir, une réponse brève, écoute active.
+var oralP2Questions={
+  '2026-11-02':['Quel moment des vacances aimerais-tu raconter ?','Pendant les vacances, j’ai aimé… parce que…'],
+  '2026-11-09':['Quel est ton meilleur souvenir du week-end ?','Mon meilleur souvenir, c’est… parce que…'],
+  '2026-11-16':['À quoi as-tu aimé jouer ce week-end ?','J’ai aimé jouer à… avec… parce que…'],
+  '2026-11-23':['Raconte un moment qui t’a fait rire.','J’ai ri quand… parce que…'],
+  '2026-11-30':['As-tu découvert ou appris quelque chose ?','J’ai découvert… et j’ai appris que…'],
+  '2026-12-07':['Quel petit moment calme as-tu apprécié ?','J’ai aimé le moment où… parce que…'],
+  '2026-12-14':['Quel moment du week-end aimerais-tu revivre ?','J’aimerais revivre… parce que…']
+};
+function oralP2Card(row,date){
+  if(date.getDay()!==1||!/quoi de neuf/i.test(String(row[1]||'')+' '+plain(row[2])))return null;
+  var q=oralP2Questions[isoDate(date)];if(!q)return null;
+  var wrap=document.createElement('div');wrap.className='micro-activities';
+  wrap.appendChild(learningBlock('Quoi de neuf ?','Tu vas raconter un seul moment en deux ou trois phrases et écouter les autres.'));
+  var panel=document.createElement('section');panel.className='oral-p2';
+  var question=document.createElement('p');question.className='oral-p2__question';question.textContent='Question du jour : '+q[0];
+  var start=document.createElement('p');start.className='oral-p2__starter';start.textContent='Pour commencer : « '+q[1]+' »';
+  var rules=document.createElement('ul');rules.className='oral-p2__rules';
+  ['1. Je choisis un seul moment.','2. Je parle en deux ou trois phrases.','3. J’écoute sans interrompre.'].forEach(function(t){var li=document.createElement('li');li.textContent=t;rules.appendChild(li);});
+  panel.append(question,start,rules);wrap.appendChild(panel);return wrap;
+}
+
 function render(){
   var grid=document.getElementById('simpleGrid');grid.replaceChildren();
   if(!days.length){grid.innerHTML='<div class="empty">Aucune journée trouvée dans les fichiers de l’emploi du temps.</div>';return;}
@@ -452,7 +484,7 @@ function render(){
     if(labels.length){var group=document.createElement('div');group.className=labels.length>1?'subject-banner-set':'subject-banner-single';
       labels.forEach(function(label){var photo=document.createElement('img');photo.className='subject-banner';photo.src='images/edt-etiquettes/'+label+'.webp';photo.alt=labelText[label]||subjectName(s,k);photo.loading='lazy';photo.decoding='async';photo.addEventListener('error',function(){photo.replaceWith(document.createTextNode(photo.alt));},{once:true});group.appendChild(photo);});left.appendChild(group);
     }else{var name=document.createElement('span');name.className='subject-plain-label';name.textContent=subjectName(s,k);left.appendChild(name);}
-    var right=document.createElement('div');right.className='simple-activity';right.appendChild(learningContent(row));el.appendChild(left);el.appendChild(right);grid.appendChild(el);
+    var right=document.createElement('div');right.className='simple-activity';right.appendChild(oralP2Card(row,day.date)||learningContent(row));el.appendChild(left);el.appendChild(right);grid.appendChild(el);
     prior=slot;
   });
   if(day.date.getDay()===2&&period!=='matin')grid.appendChild(tuesdayWorkshopCard(day.date));
