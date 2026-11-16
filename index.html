@@ -1081,11 +1081,18 @@
 <button class="home-chip home-chip--p5" data-open-summary-period="p5" type="button">P5</button>
 </div>
 </div>
+<div class="home-row-split" role="group" aria-label="Emplois du temps">
 <button class="home-row home-row--green" data-home-action="detail-timetable" type="button">
 <span class="home-row__icon"><img alt="" src="assets/home-v32-42/horloge.png"/></span>
-<span class="home-row__text"><span class="home-row__title">Emploi du temps de la journée</span><span class="home-row__desc">Affichez précisément ce qui est prévu ce matin ou cet après-midi.</span></span>
+<span class="home-row__text"><span class="home-row__title">Emploi du temps de la journée</span><span class="home-row__desc">Consulter la journée.</span></span>
 <span class="home-row__arrow">›</span>
 </button>
+<button class="home-row home-row--mint" data-home-action="weekly-timetable" type="button">
+<span class="home-row__icon"><img alt="" src="assets/home-v32-42/calendrier.png"/></span>
+<span class="home-row__text"><span class="home-row__title">Emploi du temps de la semaine</span><span class="home-row__desc">Consulter la semaine illustrée.</span></span>
+<span class="home-row__arrow">›</span>
+</button>
+</div>
 <button class="home-row home-row--blue home-row--tbi" data-home-action="tbi-view" id="openTbiViewBtn" type="button">
 <span class="home-row__icon"><img alt="" src="assets/home-v32-42/ecran-tbi.png"/></span>
 <span class="home-row__text"><span class="home-row__title">Notre journée en classe</span></span>
@@ -1935,6 +1942,14 @@
 
     var summary = e.target.closest('#openTimetableSummaryBtn');
     if (summary) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      window.location.href = 'emploi-du-temps.html?mode=summary';
+      return;
+    }
+
+    var weekly = e.target.closest('[data-home-action="weekly-timetable"]');
+    if (weekly) {
       e.preventDefault();
       e.stopImmediatePropagation();
       window.location.href = 'emploi-du-temps.html?mode=summary';
