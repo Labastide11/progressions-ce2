@@ -148,6 +148,38 @@
 }
 </style>
 
+
+<style id="edt-illustrated-v1">
+.illustrated-edt{width:min(1800px,100%);margin:12px auto 30px;padding:12px;box-sizing:border-box;color:#183754}
+.illustrated-edt[hidden]{display:none!important}
+.illustrated-edt__head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:#fff;border-radius:15px;padding:17px 20px}
+.illustrated-edt__head h1{margin:0 0 4px;font-size:clamp(23px,2.1vw,32px)}
+.illustrated-edt__head p{margin:0;color:#44627b}
+.illustrated-edt__links{display:flex;gap:8px;flex-wrap:wrap}
+.illustrated-edt__links a{color:#173b5c;background:#eaf3ff;border:1px solid #c8dcef;border-radius:9px;padding:10px 12px;text-decoration:none;font-weight:800}
+.illustrated-edt__links a:hover,.illustrated-edt__links a:focus-visible{background:#d3e9ff}
+.illustrated-edt__filters{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 4px;font-weight:800}
+.illustrated-edt__periods{display:flex;gap:8px;flex-wrap:wrap}.illustrated-edt__periods button,.illustrated-edt__periods a{border:1px solid #c8d7e7;background:white;border-radius:24px;padding:10px 17px;color:#153957;font:800 13px inherit;text-decoration:none;cursor:pointer}.illustrated-edt__periods button.is-active{background:#119e95;color:#fff;border-color:#098b83}.illustrated-edt__periods button:disabled{opacity:.4;cursor:not-allowed}.illustrated-edt__filters select{font:inherit;padding:8px 10px;border-radius:9px;border:1px solid #b4c9d8;background:#fff;max-width:100%}
+.illustrated-edt__days{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:start}
+.illustrated-edt__day{background:#fff;border-radius:14px;overflow:hidden;border:1px solid #d5e3ed;box-shadow:0 2px 5px #15324b12}
+.illustrated-edt__day h2{background:#dff6f2;color:#07564f;text-align:center;font-size:20px;margin:0;padding:12px}
+.illustrated-edt__banner{height:155px;display:flex;align-items:center;justify-content:center;padding:9px;background:#f4f8ff;border-bottom:1px solid #e1e8ef}
+.illustrated-edt__banner img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.illustrated-edt__slot{display:flex;align-items:start;gap:8px;padding:10px 9px;border-bottom:1px solid #fff;font-size:14px;min-height:50px}
+.illustrated-edt__slot time{flex:0 0 74px;background:#fff;border:1px solid #d8e2ea;border-radius:8px;padding:5px 4px;font-size:12px;font-weight:800;color:#203a57;text-align:center}
+.illustrated-edt__slot strong{display:block;font-size:14px;line-height:1.3}
+.illustrated-edt__slot--french{background:#ffe8ed;border-left:5px solid #e95a79}
+.illustrated-edt__slot--maths{background:#e6f0ff;border-left:5px solid #4389ec}
+.illustrated-edt__slot--english{background:#f4eaff;border-left:5px solid #ae75d5}
+.illustrated-edt__slot--eps{background:#e8f8ee;border-left:5px solid #48a36d}
+.illustrated-edt__slot--arts{background:#f4eaff;border-left:5px solid #a16bd4}
+.illustrated-edt__slot--science{background:#e4f8fa;border-left:5px solid #48a9b7}
+.illustrated-edt__slot--pause{background:#fff6dd;border-left:5px solid #e3bb58}
+.illustrated-edt__slot--other{background:#f2f5f8;border-left:5px solid #8ca4b7}
+@media(max-width:1100px){.illustrated-edt__days{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.illustrated-edt__days{grid-template-columns:1fr}.illustrated-edt__banner{height:130px}}
+@media print{.site-nav,.illustrated-edt__links,.illustrated-edt__filters{display:none!important}.illustrated-edt__days{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}.illustrated-edt__banner{height:95px}.illustrated-edt__slot{padding:4px;font-size:10px}.illustrated-edt__slot strong{font-size:10px}.illustrated-edt__slot time{flex-basis:45px;font-size:9px}}
+</style>
 </head>
 <body>
 <div class="site-shell">
@@ -155,7 +187,7 @@
   <nav class="site-nav" aria-label="Navigation principale">
     <span class="site-nav__brand">🦉 Progressions CE2</span>
     <a href="index.html">🏠 Accueil</a>
-    <a class="is-active" href="emploi-du-temps.html?mode=summary">🗓️ Emploi du temps</a>
+    <a class="is-active" href="emploi-du-temps.html">🗓️ Emploi du temps</a>
     <a href="cahier-journal.html">📘 Cahier journal</a>
     <a href="index.html?open=students">👥 Ma classe</a>
     <a href="index.html?open=programme">📋 Programme du jour</a>
@@ -171,6 +203,28 @@
   </nav>
 
   <main class="edt-main">
+    <section id="illustratedTimetable" class="illustrated-edt" hidden aria-label="Emploi du temps illustré">
+      <div class="illustrated-edt__head">
+        <div><h1>🦉 Mon emploi du temps illustré</h1><p>Une illustration au début de chaque journée, puis les activités et leurs horaires.</p></div>
+        <nav class="illustrated-edt__links" aria-label="Autres emplois du temps">
+          <a href="emploi-du-temps.html?mode=summary">Emploi du temps simplifié</a>
+          <a href="emploi-du-temps.html?mode=period&amp;period=p2">Emploi du temps détaillé</a>
+          <a href="emploi-du-temps-simplifie.html">Notre journée en classe</a>
+        </nav>
+      </div>
+      <div class="illustrated-edt__filters">
+        <div class="illustrated-edt__periods" role="group" aria-label="Choisir la période">
+          <a href="emploi-du-temps.html?mode=summary&amp;period=rentree">RENTRÉE</a>
+          <button type="button" data-illustrated-period="p1">P1</button>
+          <button type="button" data-illustrated-period="p2">P2</button>
+          <button type="button" data-illustrated-period="p3">P3</button>
+          <button type="button" data-illustrated-period="p4">P4</button>
+          <button type="button" data-illustrated-period="p5">P5</button>
+        </div><select id="illustratedPeriod" hidden aria-label="Période"></select>
+        <label for="illustratedWeek">Semaine</label><select id="illustratedWeek"></select>
+      </div>
+      <div id="illustratedDays" class="illustrated-edt__days"></div>
+    </section>
     <section aria-hidden="true" aria-labelledby="timetableTitle" class="timetable-modal hidden" id="timetableModal">
       <div class="timetable-panel" role="main">
         <header class="timetable-header">
@@ -208,7 +262,7 @@
 <script src="parcours-outil.js?v=35.39"></script>
 
 <script src="emploi-du-temps-data-p1.js?v=37.24"></script>
-<script src="emploi-du-temps-data-p2.js?v=37.25"></script>
+<script src="emploi-du-temps-data-p2.js?v=37.24"></script>
 <script src="cycle-endurance-p2.js?v=1.1"></script>
 <script src="emploi-du-temps-data-p3.js?v=37.24"></script>
 <script src="emploi-du-temps-data-p4.js?v=37.24"></script>
@@ -333,7 +387,134 @@
 })();
 </script>
 
-<script src="emploi-du-temps-ui.js?v=37.25"></script>
+<script src="emploi-du-temps-ui.js?v=37.24"></script>
+
+
+<script id="edt-illustrated-view-v1">
+(function(){
+  'use strict';
+  var names=['Lundi','Mardi','Jeudi','Vendredi'];
+  var banners=['francais','copie','lecture-comprehension','francais'];
+  var periodSelect=document.getElementById('illustratedPeriod');
+  var weekSelect=document.getElementById('illustratedWeek');
+  var daysRoot=document.getElementById('illustratedDays');
+  function clean(s){return String(s||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();}
+  function dateFromTitle(s){
+    var months={janvier:0,fevrier:1,'février':1,mars:2,avril:3,mai:4,juin:5,juillet:6,aout:7,'août':7,septembre:8,octobre:9,novembre:10,decembre:11,'décembre':11};
+    var m=String(s||'').toLowerCase().match(/(\d{1,2})\s+(janvier|f[eé]vrier|mars|avril|mai|juin|juillet|ao[uû]t|septembre|octobre|novembre|d[eé]cembre)\s+(\d{4})/);
+    return m?new Date(+m[3],months[m[2]],+m[1]):null;
+  }
+  function available(){
+    var data=window.PROGRESSIONS_EDT_DATA||{},out={};
+    ['p1','p2','p3','p4','p5'].forEach(function(k){if(Array.isArray(data[k+'DetailedWeeks'])&&data[k+'DetailedWeeks'].length)out[k]=data[k+'DetailedWeeks'];});
+    return out;
+  }
+  function currentPeriod(data){
+    var now=new Date(),today=new Date(now.getFullYear(),now.getMonth(),now.getDate()),nearest=null;
+    Object.keys(data).forEach(function(p){
+      (data[p]||[]).forEach(function(w){
+        var dates=(w.days||[]).map(function(d){return dateFromTitle(d[0]);}).filter(Boolean);
+        if(!dates.length)return;
+        var first=dates[0],last=new Date(dates[dates.length-1].getTime()+3*86400000);
+        if(today>=first&&today<=last)nearest={period:p,distance:0};
+        else if(!nearest||nearest.distance!==0){
+          var distance=today<first?first-today:today-last;
+          if(!nearest||distance<nearest.distance)nearest={period:p,distance:distance};
+        }
+      });
+    });
+    return nearest?nearest.period:Object.keys(data)[0];
+  }
+  function updatePeriodButtons(){
+    document.querySelectorAll('[data-illustrated-period]').forEach(function(button){
+      var selected=button.getAttribute('data-illustrated-period')===periodSelect.value;
+      button.classList.toggle('is-active',selected);
+      button.setAttribute('aria-pressed',String(selected));
+      button.disabled=!available()[button.getAttribute('data-illustrated-period')];
+    });
+    var detail=document.querySelector('.illustrated-edt__links a[href*="mode=period"]');
+    if(detail)detail.href='emploi-du-temps.html?mode=period&period='+encodeURIComponent(periodSelect.value);
+  }
+  function chooseWeek(weeks){
+    var today=new Date(),now=new Date(today.getFullYear(),today.getMonth(),today.getDate());
+    for(var i=0;i<weeks.length;i++){
+      var dates=(weeks[i].days||[]).map(function(d){return dateFromTitle(d[0]);}).filter(Boolean);
+      if(dates.length&&now>=dates[0]&&now<=new Date(dates[dates.length-1].getTime()+3*86400000))return i;
+    }
+    return 0;
+  }
+  function kind(row){
+    var name=clean(row[1]).toLowerCase(),category=String(row[4]||'').toLowerCase();
+    if(/r[eé]cr[eé]ation|cantine|repas|pause/.test(name))return 'pause';
+    if(/math|calcul|probl[eè]me/.test(name)||category==='maths')return 'maths';
+    if(/eps|piscine|endurance|course longue/.test(name)||category==='eps')return 'eps';
+    if(/anglais/.test(name)||category==='english')return 'english';
+    if(/art|musique|chant|cham/.test(name)||category==='arts'||category==='cham')return 'arts';
+    if(/science|d[eé]couverte du monde/.test(name)||category==='science')return 'science';
+    if(/fran[cç]ais|lecture|dict[eé]e|copie|devinette|orthographe/.test(name)||category==='french')return 'french';
+    return 'other';
+  }
+  function title(row){
+    var subject=clean(row[1]),description=clean(row[2]);
+    if(/r[eé]cr[eé]ation|cantine|repas|pause/.test(subject.toLowerCase()))return subject;
+    if(/fran[cç]ais|math[eé]matiques|sciences|anglais/i.test(subject)&&description&&!/^<div/i.test(String(row[2]||''))){
+      var first=description.split(/[.;]/)[0].trim();
+      if(first&&first.length<=68)return first;
+    }
+    return subject;
+  }
+  function make(tag,cls,text){var el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=text;return el;}
+  function render(){
+    var data=available(),p=periodSelect.value,weeks=data[p]||[],week=weeks[Number(weekSelect.value)]||weeks[0];
+    daysRoot.replaceChildren();
+    if(!week){daysRoot.appendChild(make('p','','Aucune semaine disponible pour cette période.'));return;}
+    names.forEach(function(name,i){
+      var day=(week.days||[]).find(function(d){return String(d[0]||'').toLowerCase().indexOf(name.toLowerCase())===0;});
+      var article=make('article','illustrated-edt__day');
+      article.appendChild(make('h2','',name));
+      var banner=make('div','illustrated-edt__banner'),img=document.createElement('img');
+      img.src='images/edt-etiquettes/'+banners[i]+'.webp';img.alt='Illustration Maître Hibou — '+name;
+      img.onerror=function(){banner.textContent=name;};
+      banner.appendChild(img);article.appendChild(banner);
+      if(day&&Array.isArray(day[1]))day[1].forEach(function(row){
+        if(!Array.isArray(row))return;
+        var slot=make('div','illustrated-edt__slot illustrated-edt__slot--'+kind(row));
+        var time=make('time','',clean(row[0]).replace(/–/g,' – '));
+        var info=make('div',''),label=make('strong','',title(row));
+        info.appendChild(label);slot.append(time,info);article.appendChild(slot);
+      });
+      else article.appendChild(make('p','','Journée non renseignée.'));
+      daysRoot.appendChild(article);
+    });
+  }
+  function fillWeeks(index){
+    var data=available(),weeks=data[periodSelect.value]||[];
+    weekSelect.replaceChildren();
+    weeks.forEach(function(w,i){var option=document.createElement('option');option.value=String(i);option.textContent=w.title||('Semaine '+(i+1));weekSelect.appendChild(option);});
+    weekSelect.value=String(index===undefined?chooseWeek(weeks):index);updatePeriodButtons();render();
+  }
+  window.renderIllustratedTimetable=function(){
+    document.getElementById('timetableModal').classList.add('hidden');
+    var panel=document.getElementById('illustratedTimetable');panel.hidden=false;
+    var data=available();periodSelect.replaceChildren();
+    Object.keys(data).forEach(function(k){var opt=document.createElement('option');opt.value=k;opt.textContent='Période '+k.slice(1);periodSelect.appendChild(opt);});
+    var defaultPeriod=currentPeriod(data);
+    var requested=new URLSearchParams(location.search).get('period');
+    periodSelect.value=data[requested]?requested:(data[defaultPeriod]?defaultPeriod:Object.keys(data)[0]);
+    fillWeeks();
+  };
+  document.querySelectorAll('[data-illustrated-period]').forEach(function(button){
+    button.addEventListener('click',function(){
+      periodSelect.value=button.getAttribute('data-illustrated-period');
+      fillWeeks();
+      var url=new URL(window.location.href);url.searchParams.set('mode','illustrated');url.searchParams.set('period',periodSelect.value);
+      history.replaceState(null,'',url.pathname+url.search);
+    });
+  });
+  periodSelect.addEventListener('change',function(){fillWeeks();});
+  weekSelect.addEventListener('change',render);
+})();
+</script>
 
 <script>
 /* V36.47 — démarrage de la vraie page emploi du temps selon l'URL. */
@@ -342,10 +523,11 @@
 
   function start(){
     var params = new URLSearchParams(window.location.search);
-    var mode = params.get('mode') || 'period';
+    var mode = params.get('mode') || 'illustrated';
     var period = (params.get('period') || 'p1').toLowerCase();
 
     window.setTimeout(function(){
+      if (mode === 'illustrated') { window.renderIllustratedTimetable(); return; }
       if (mode === 'day') {
         var dayBtn = document.getElementById('openTimetableDetailBtn');
         if (dayBtn) dayBtn.click();
