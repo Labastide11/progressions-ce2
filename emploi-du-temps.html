@@ -165,9 +165,12 @@
 .illustrated-edt__day h2{background:#dff6f2;color:#07564f;text-align:center;font-size:20px;margin:0;padding:12px}
 .illustrated-edt__banner{height:155px;display:flex;align-items:center;justify-content:center;padding:9px;background:#f4f8ff;border-bottom:1px solid #e1e8ef}
 .illustrated-edt__banner img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
-.illustrated-edt__slot{display:flex;align-items:start;gap:8px;padding:10px 9px;border-bottom:1px solid #fff;font-size:14px;min-height:50px}
+.illustrated-edt__slot{display:flex;align-items:center;gap:8px;padding:5px 7px;border-bottom:1px solid #fff;min-height:64px}
 .illustrated-edt__slot time{flex:0 0 74px;background:#fff;border:1px solid #d8e2ea;border-radius:8px;padding:5px 4px;font-size:12px;font-weight:800;color:#203a57;text-align:center}
-.illustrated-edt__slot strong{display:block;font-size:14px;line-height:1.3}
+.illustrated-edt__activity{flex:1;min-width:0;display:flex;justify-content:center;align-items:center}
+.illustrated-edt__activity img{display:block;width:100%;max-width:245px;height:67px;object-fit:contain}
+.illustrated-edt__fallback{font-size:12px;font-weight:800;text-align:center;color:#244b65}
+.illustrated-edt__slot time{align-self:center}
 .illustrated-edt__slot--french{background:#ffe8ed;border-left:5px solid #e95a79}
 .illustrated-edt__slot--maths{background:#e6f0ff;border-left:5px solid #4389ec}
 .illustrated-edt__slot--english{background:#f4eaff;border-left:5px solid #ae75d5}
@@ -178,7 +181,7 @@
 .illustrated-edt__slot--other{background:#f2f5f8;border-left:5px solid #8ca4b7}
 @media(max-width:1100px){.illustrated-edt__days{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.illustrated-edt__days{grid-template-columns:1fr}.illustrated-edt__banner{height:130px}}
-@media print{.site-nav,.illustrated-edt__links,.illustrated-edt__filters{display:none!important}.illustrated-edt__days{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}.illustrated-edt__banner{height:95px}.illustrated-edt__slot{padding:4px;font-size:10px}.illustrated-edt__slot strong{font-size:10px}.illustrated-edt__slot time{flex-basis:45px;font-size:9px}}
+@media print{.site-nav,.illustrated-edt__links,.illustrated-edt__filters{display:none!important}.illustrated-edt__days{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}.illustrated-edt__banner{height:95px}.illustrated-edt__slot{padding:4px;font-size:10px}.illustrated-edt__activity img{height:44px}.illustrated-edt__fallback{font-size:9px}.illustrated-edt__slot time{flex-basis:45px;font-size:9px}}
 </style>
 </head>
 <body>
@@ -205,7 +208,7 @@
   <main class="edt-main">
     <section id="illustratedTimetable" class="illustrated-edt" hidden aria-label="Emploi du temps illustré">
       <div class="illustrated-edt__head">
-        <div><h1>🦉 Mon emploi du temps illustré</h1><p>Une illustration au début de chaque journée, puis les activités et leurs horaires.</p></div>
+        <div><h1>🦉 Mon emploi du temps illustré</h1><p>Une illustration pour chaque activité, avec ses horaires.</p></div>
         <nav class="illustrated-edt__links" aria-label="Autres emplois du temps">
           <a href="emploi-du-temps.html?mode=summary">Emploi du temps simplifié</a>
           <a href="emploi-du-temps.html?mode=period&amp;period=p2">Emploi du temps détaillé</a>
@@ -394,7 +397,6 @@
 (function(){
   'use strict';
   var names=['Lundi','Mardi','Jeudi','Vendredi'];
-  var banners=['francais','copie','lecture-comprehension','francais'];
   var periodSelect=document.getElementById('illustratedPeriod');
   var weekSelect=document.getElementById('illustratedWeek');
   var daysRoot=document.getElementById('illustratedDays');
@@ -463,6 +465,35 @@
     }
     return subject;
   }
+  function imageForRow(row){
+    var subject=clean(row[1]).toLowerCase(),description=clean(row[2]).toLowerCase();
+    var text=subject+' '+description.slice(0,170);
+    var category=String(row[4]||'').toLowerCase();
+    if(/récréation/.test(text))return 'recreation';
+    if(/cantine|repas|pause méridienne/.test(text))return null;
+    if(/piscine|natation|aquatique/.test(text))return 'piscine';
+    if(/course longue|endurance/.test(text))return 'course-longue';
+    if(/dictée/.test(text))return 'dictee';
+    if(/copie|recopi/.test(text))return 'copie';
+    if(/quart d.?heure de lecture|lecture plaisir|lecture autonome/.test(text))return 'lecture-plaisir';
+    if(/lecture|compréhension|fluence|récit/.test(text))return 'lecture-comprehension';
+    if(/calcul mental|doubles|moitiés/.test(text))return 'calcul-mental';
+    if(/calcul posé|addition posée|soustraction posée/.test(text))return 'calcul-pose';
+    if(/problème/.test(text))return 'problemes';
+    if(/géométr|polygone|figure géométrique/.test(text))return 'geometrie';
+    if(/anglais/.test(text)||category==='english')return 'anglais';
+    if(/chant|chorale|musique|cham/.test(text)||category==='cham')return 'chant';
+    if(/géographie/.test(text))return 'geographie';
+    if(/histoire/.test(text))return 'histoire';
+    if(/sciences|expérience|états de l.eau/.test(text)||category==='science')return 'sciences';
+    if(/découverte du monde|questionner le monde/.test(text))return 'decouverte-monde';
+    if(/arts visuels|arts plastiques|dessin|création artistique/.test(text)||category==='arts')return 'arts-visuels';
+    if(/emc|message clair|vivre ensemble/.test(text)||category==='emc')return 'emc';
+    if(/eps|sport/.test(text)||category==='eps')return null;
+    if(/mathématiques|numération|nombres|calcul/.test(text)||category==='maths')return 'mathematiques';
+    if(/français|grammaire|conjugaison|vocabulaire|orthographe/.test(text)||category==='french')return 'francais';
+    return null;
+  }
   function make(tag,cls,text){var el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=text;return el;}
   function render(){
     var data=available(),p=periodSelect.value,weeks=data[p]||[],week=weeks[Number(weekSelect.value)]||weeks[0];
@@ -472,16 +503,24 @@
       var day=(week.days||[]).find(function(d){return String(d[0]||'').toLowerCase().indexOf(name.toLowerCase())===0;});
       var article=make('article','illustrated-edt__day');
       article.appendChild(make('h2','',name));
-      var banner=make('div','illustrated-edt__banner'),img=document.createElement('img');
-      img.src='images/edt-etiquettes/'+banners[i]+'.webp';img.alt='Illustration Maître Hibou — '+name;
-      img.onerror=function(){banner.textContent=name;};
-      banner.appendChild(img);article.appendChild(banner);
       if(day&&Array.isArray(day[1]))day[1].forEach(function(row){
         if(!Array.isArray(row))return;
         var slot=make('div','illustrated-edt__slot illustrated-edt__slot--'+kind(row));
         var time=make('time','',clean(row[0]).replace(/–/g,' – '));
-        var info=make('div',''),label=make('strong','',title(row));
-        info.appendChild(label);slot.append(time,info);article.appendChild(slot);
+        var imageName=imageForRow(row);
+        var visual=make('div','illustrated-edt__activity');
+        if(imageName){
+          var image=document.createElement('img');
+          image.src='images/edt-etiquettes/'+imageName+'.webp';
+          image.alt=title(row);
+          image.loading='lazy';
+          image.onerror=function(){image.replaceWith(make('span','illustrated-edt__fallback',title(row)));};
+          visual.appendChild(image);
+        }else{
+          // Les pauses sans illustration conservent un repère court.
+          visual.appendChild(make('span','illustrated-edt__fallback',title(row)));
+        }
+        slot.append(time,visual);article.appendChild(slot);
       });
       else article.appendChild(make('p','','Journée non renseignée.'));
       daysRoot.appendChild(article);
