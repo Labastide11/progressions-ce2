@@ -68,6 +68,13 @@
   .simple-activity{padding:13px 22px 14px;min-width:0;align-self:center}
   .activity-name{font-size:clamp(19px,1.55vw,27px);font-weight:850;line-height:1.28;margin:0 0 5px}
   .learning-line{margin:0;font-size:clamp(18px,1.35vw,24px);line-height:1.42;color:#234660}
+
+  /* Maître Hibou : un repère visuel adapté à l'action attendue, sans agrandir les cartes. */
+  .success-line{display:flex;align-items:center;gap:10px;color:#234660}
+  .success-picto{display:inline-flex;align-items:center;justify-content:center;flex:0 0 29px;width:29px;height:29px;border-radius:9px;background:var(--success-soft,#eaf3ff);color:var(--success-color,#2268a8)}
+  .success-picto svg{width:22px;height:22px;display:block;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+  .success-line .success-text{flex:1;min-width:0}
+  @media(max-width:780px){.success-picto{flex-basis:27px;width:27px;height:27px}.success-picto svg{width:20px;height:20px}}
   .learning-line .learning-lead{font-weight:850;color:#234b77}
   .learning-extra{margin:4px 0 0;font-size:clamp(16px,1.15vw,20px);color:#536a7d}
   .micro-activities{display:grid;gap:9px}
@@ -308,10 +315,51 @@ function activityAndSuccess(row,forced){
   }
   return [activity,success];
 }
+
+// Choix pédagogique : priorité à l'action à démontrer, et non au premier mot de la phrase.
+// Les objectifs mixtes (écouter ET expliquer, par exemple) privilégient la réussite observable.
+function successAction(activity,success){
+  var a=String(activity||'').toLowerCase(),s=String(success||'').toLowerCase();
+  if(/course|courir|souffle|allure|effort/.test(a+' '+s))return 'move';
+  if(/piscine|sécurité|règles de sécurité/.test(a+' '+s))return 'listen';
+  if(/mémoris|retenir|rappeler de mémoire/.test(s))return 'remember';
+  if(/copie|modèle|vérifier les lettres|accords|relire|corriger|ponctuation|sans oublier ni transformer/.test(s))return 'check';
+  if(/expliquer|raconter|reformuler|justifier|avec mes mots|point de vue|répondre sans modèle|utiliser les mots dans une phrase/.test(s))return 'explain';
+  if(/écouter|consignes|silence|concentré|attention/.test(s))return 'listen';
+  if(/écrire|phrase|mots correctement/.test(s))return 'write';
+  if(/observer|repérer|indices|graduation|distinguer|propriétés/.test(s))return 'observe';
+  if(/calcul|résultat|stratégie|méthode/.test(s))return 'check';
+  return 'understand';
+}
+var successIcons={
+  listen:{color:'#156a9d',soft:'#e6f4fc',paths:['M6 9a6 6 0 0 1 12 0c0 4-4 4-4 8a3 3 0 0 1-6 0','M6 9c0-2 1-4 3-5']},
+  remember:{color:'#7a43a7',soft:'#f2eafa',paths:['M12 18V5','M12 8C10 4 5 4 4 8c-3 2-2 6 1 7-1 4 4 6 7 3','M12 8c2-4 7-4 8 0 3 2 2 6-1 7 1 4-4 6-7 3','M8 11l4 2 4-2']},
+  check:{color:'#167c87',soft:'#e5f7f6',paths:['M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z'],circles:[[12,12,3]]},
+  observe:{color:'#167c87',soft:'#e5f7f6',paths:['M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z'],circles:[[12,12,3]]},
+  explain:{color:'#24734c',soft:'#e8f6ec',paths:['M21 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-4-.9L3 21l1.9-5.5A9 9 0 1 1 21 11.5Z','M8 10h8','M8 14h5']},
+  write:{color:'#a66b17',soft:'#fff3df',paths:['M12 20h9','M16 4l4 4L9 19l-5 1 1-5L16 4Z','M14 6l4 4']},
+  move:{color:'#577a32',soft:'#edf7e7',paths:['M8 3l2 4-2 4-4 1-2 4 5 2 3-4 4-1 2 3-2 5','M12 3l4 2 3 4 3 1','M9 2h.01']},
+  understand:{color:'#8065a9',soft:'#f1ecf8',paths:['M9 18h6','M10 21h4','M9 15c-2-1-4-4-4-7a7 7 0 0 1 14 0c0 3-2 6-4 7v2H9v-2Z']}
+};
+function successLine(activity,success){
+  var action=successAction(activity,success),config=successIcons[action];
+  var goal=document.createElement('p');goal.className='learning-line success-line';
+  var icon=document.createElement('span');icon.className='success-picto';
+  icon.style.setProperty('--success-color',config.color);
+  icon.style.setProperty('--success-soft',config.soft);
+  icon.setAttribute('aria-hidden','true');
+  var svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('focusable','false');
+  (config.paths||[]).forEach(function(d){var p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d',d);svg.appendChild(p);});
+  (config.circles||[]).forEach(function(c){var p=document.createElementNS('http://www.w3.org/2000/svg','circle');p.setAttribute('cx',c[0]);p.setAttribute('cy',c[1]);p.setAttribute('r',c[2]);svg.appendChild(p);});
+  icon.appendChild(svg);
+  var label=document.createElement('span');label.className='success-text';label.textContent=success;
+  goal.append(icon,label);return goal;
+}
 function learningBlock(activity,success){
   var a=document.createElement('div');a.className='micro-activity';
   var p=document.createElement('p');p.className='activity-name';p.textContent=activity;
-  var goal=document.createElement('p');goal.className='learning-line';goal.textContent=success;
+  var goal=successLine(activity,success);
   a.append(p,goal);return a;
 }
 function learningContent(row){
@@ -551,7 +599,7 @@ function theatreExceptionCard(){
   var title=document.createElement('p');title.className='activity-name';title.textContent='Lili, la plus petite étoile de tout l’univers';
   var details=document.createElement('p');details.className='learning-line';details.textContent='Départ de l’école à 9h45 · Spectacle à 10h15 · Retour à 11h30';
   var activity=document.createElement('p');activity.className='learning-line';activity.textContent='Je découvre un spectacle avec les CP, CE1 et CE2.';
-  var success=document.createElement('p');success.className='learning-line';success.textContent='Je dois écouter et pouvoir raconter ce que j’ai compris.';
+  var success=successLine('Je découvre un spectacle avec les CP, CE1 et CE2.','Je dois écouter et pouvoir raconter ce que j’ai compris.');
   right.append(title,details,activity,success);card.append(left,right);
   return enableFocus(card);
 }
