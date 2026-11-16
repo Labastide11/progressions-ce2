@@ -231,13 +231,14 @@ if(/arts|musique/.test(s))return 'Tu vas créer et expliquer tes choix.';
 if(/eps/.test(s))return 'Tu vas apprendre à bouger, à coopérer et à gérer ton effort.';
 return 'Tu vas découvrir une nouvelle idée et t’entraîner à l’utiliser.';}
 // La sélection se fonde sur l'activité de la séance, sans afficher les consignes du maître.
-var labelText={'francais':'Français','dictee':'Dictée','production-ecrits':'Production d’écrits','calcul-mental':'Calcul mental','lecture-plaisir':'Lecture plaisir','piscine':'Piscine','chant':'Chant','anglais':'Anglais','decouverte-monde':'Découverte du monde','mathematiques':'Mathématiques','lecture-comprehension':'Lecture / Compréhension','sciences':'Sciences','histoire':'Histoire','geographie':'Géographie','emc':'EMC','arts-visuels':'Arts visuels','recreation':'Récréation','calcul-pose':'Calcul posé','problemes':'Problèmes','geometrie':'Géométrie','copie':'Copie'};
+var labelText={'francais':'Français','dictee':'Dictée','production-ecrits':'Production d’écrits','calcul-mental':'Calcul mental','lecture-plaisir':'Lecture plaisir','piscine':'Piscine','chant':'Chant','anglais':'Anglais','decouverte-monde':'Découverte du monde','mathematiques':'Mathématiques','lecture-comprehension':'Lecture / Compréhension','sciences':'Sciences','histoire':'Histoire','geographie':'Géographie','emc':'EMC','arts-visuels':'Arts visuels','recreation':'Récréation','calcul-pose':'Calcul posé','problemes':'Problèmes','geometrie':'Géométrie','copie':'Copie','course-longue':'Course longue'};
 function imagesFor(row,kind){
   var subject=String(row[1]||'').toLowerCase(),topic=subjectTopic(row).toLowerCase();
   var value=subject+' '+topic,details=plain(row[2]);
   if(/récréation/.test(value))return ['recreation'];
   if(/pause|cantine|repas/.test(value))return [];
   if(/piscine|natation|aquatique|bassin/.test(value))return ['piscine'];
+  if(/course longue|endurance/.test(value))return ['course-longue'];
   if(/dictée/.test(value)&&/production d.?écrits|dras|phrase du jour/.test(value))return ['dictee','production-ecrits'];
   if(/dictée|orthographe|mots de la semaine/.test(value))return ['dictee'];
   if(/production d.?écrits|dras|écrivain/.test(value))return ['production-ecrits'];
@@ -256,7 +257,7 @@ function imagesFor(row,kind){
   if(/découverte du monde|questionner le monde|\bqlm\b/.test(value))return ['decouverte-monde'];
   if(/arts visuels|arts plastiques|dessin|création artistique/.test(value)||kind==='arts')return ['arts-visuels'];
   if(/emc|message clair|vivre ensemble|vie de classe/.test(value)||kind==='emc')return ['emc'];
-  if(/course longue|endurance|eps|sport/.test(value)||kind==='eps')return [];
+  if(/eps|sport/.test(value)||kind==='eps')return [];
   if(/mathématiques|numération|nombres|calcul/.test(value)||kind==='maths')return ['mathematiques'];
   if(/français|grammaire|conjugaison|vocabulaire|orthographe/.test(value)||kind==='french')return ['francais'];
   return [];
@@ -289,7 +290,8 @@ function activityAndSuccess(row,forced){
   else if(/histoire|antiquité|moyen âge/.test(all)){activity='J’étudie les documents sur le passé.';success='Je dois repérer des indices et expliquer ce que j’ai compris.';}
   else if(/géographie|carte de france/.test(all)){activity='J’observe les cartes et les paysages.';success='Je dois utiliser les repères pour expliquer ce que je vois.';}
   else if(/endurance|course longue/.test(all)){activity='Je m’entraîne à courir longtemps à mon rythme.';success='Je dois gérer mon souffle et garder une allure régulière.';}
-  else if(/eps|sport|piscine/.test(all)){activity='Je participe aux activités physiques prévues.';success='Je dois respecter les consignes et agir en sécurité.';}
+  else if(/piscine|natation|aquatique/.test(all)){activity='Je vais à la piscine pour apprendre à mieux me déplacer dans l’eau.';success='Je dois écouter les consignes et respecter les règles de sécurité.';}
+   else if(/eps|sport/.test(all)){activity='Je participe aux activités physiques prévues.';success='Je dois respecter les consignes et agir en sécurité.';}
   else if(/arts plastiques|arts visuels|dessin/.test(all)){activity='Je réalise une création artistique.';success='Je dois faire des choix et pouvoir les expliquer.';}
   else if(/cham|chorale|chant|musique/.test(all)){activity='Je participe aux activités de musique ou de chant.';success='Je dois écouter les autres et suivre les consignes.';}
   else if(/emc|vivre ensemble|vie de classe/.test(all)){activity='J’échange avec la classe sur la situation proposée.';success='Je dois écouter et expliquer mon point de vue.';}
@@ -573,13 +575,14 @@ function render(){
     return period==='matin'?slot.start<12*60+15:slot.start>=12*60+15;
   });
   var inserted={};var prior=null;
+  var lastDisplayed=null;
   var isTheatreDay=isoDate(day.date)==='2026-11-17';var theatreInserted=false;
-  function addPause(type){if(!inserted[type]){grid.appendChild(enableFocus(pauseStrip(type)));inserted[type]=true;}}
+  function addPause(type){lastDisplayed=null;if(!inserted[type]){grid.appendChild(enableFocus(pauseStrip(type)));inserted[type]=true;}}
   rows.forEach(function(row){
     var s=String(row[1]||'');var slot=timeRange(row);
     // La sortie occupe 9h45–11h30 : remplacer les séances habituelles de ce créneau.
     if(isTheatreDay&&period!=='apres-midi'&&slot.start!==null&&slot.end!==null&&slot.start<11*60+30&&slot.end>9*60+45){
-      if(!theatreInserted){grid.appendChild(theatreExceptionCard());theatreInserted=true;}
+      if(!theatreInserted){grid.appendChild(theatreExceptionCard());theatreInserted=true;}lastDisplayed=null;
       prior={start:9*60+45,end:11*60+30};return;
     }
     /* Le créneau du mardi à partir de 16h est remplacé par les ateliers. */
@@ -592,12 +595,27 @@ function render(){
       if(gap>=45&&prior.end>=11*60+30&&prior.end<=12*60+30&&slot.start>=13*60+45&&slot.start<=14*60+30)addPause('pause-midi-cantine-maison');
       if(gap>=5&&gap<=30&&prior.end>=15*60+40&&prior.end<=16*60+5&&slot.start>=16*60+10&&slot.start<=16*60+35)addPause('recreation-apres-midi');
     }
-    var k=kindFor(row),el=document.createElement('article');el.className='simple-row '+k;
+    var k=kindFor(row);
+    // Regrouper les phases consécutives d'une même activité pour l'affichage élève.
+    // Les lignes détaillées (trajet, bassin, retour) restent intactes dans les données.
+    var pool=/piscine|natation|aquatique|bassin/i.test(s);
+    var phrases=activityAndSuccess(row);
+    var signature=pool?'piscine':k+'|'+imagesFor(row,k).join(',')+'|'+phrases.join('|');
+    var contiguous=lastDisplayed && lastDisplayed.signature===signature &&
+      lastDisplayed.end!==null && slot.start!==null &&
+      slot.start>=lastDisplayed.start && slot.start<=lastDisplayed.end+5;
+    if(contiguous){
+      lastDisplayed.end=Math.max(lastDisplayed.end,slot.end===null?lastDisplayed.end:slot.end);
+      prior=slot;
+      return;
+    }
+    var el=document.createElement('article');el.className='simple-row '+k;
     var left=document.createElement('div');left.className='simple-subject';var labels=imagesFor(row,k);
     if(labels.length){var group=document.createElement('div');group.className=labels.length>1?'subject-banner-set':'subject-banner-single';
       labels.forEach(function(label){var photo=document.createElement('img');photo.className='subject-banner';photo.src='images/edt-etiquettes/'+label+'.webp';photo.alt=labelText[label]||subjectName(s,k);photo.loading='lazy';photo.decoding='async';photo.addEventListener('error',function(){photo.replaceWith(document.createTextNode(photo.alt));},{once:true});group.appendChild(photo);});left.appendChild(group);
     }else{var name=document.createElement('span');name.className='subject-plain-label';name.textContent=subjectName(s,k);left.appendChild(name);}
     var right=document.createElement('div');right.className='simple-activity';right.appendChild(oralP2Card(row,day.date)||learningContent(row));el.appendChild(left);el.appendChild(right);grid.appendChild(enableFocus(el));
+    lastDisplayed={signature:signature,start:slot.start,end:slot.end};
     prior=slot;
   });
   if(isTheatreDay&&period!=='apres-midi'&&!theatreInserted)grid.prepend(theatreExceptionCard());
