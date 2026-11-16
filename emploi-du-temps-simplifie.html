@@ -231,7 +231,7 @@ if(/arts|musique/.test(s))return 'Tu vas créer et expliquer tes choix.';
 if(/eps/.test(s))return 'Tu vas apprendre à bouger, à coopérer et à gérer ton effort.';
 return 'Tu vas découvrir une nouvelle idée et t’entraîner à l’utiliser.';}
 // La sélection se fonde sur l'activité de la séance, sans afficher les consignes du maître.
-var labelText={'francais':'Français','dictee':'Dictée','production-ecrits':'Production d’écrits','calcul-mental':'Calcul mental','lecture-plaisir':'Lecture plaisir','piscine':'Piscine','chant':'Chant','anglais':'Anglais','decouverte-monde':'Découverte du monde','mathematiques':'Mathématiques','lecture-comprehension':'Lecture / Compréhension','sciences':'Sciences','histoire':'Histoire','geographie':'Géographie','emc':'EMC','arts-visuels':'Arts visuels','recreation':'Récréation','calcul-pose':'Calcul posé','problemes':'Problèmes','geometrie':'Géométrie','copie':'Copie','course-longue':'Course longue'};
+var labelText={'francais':'Français','dictee':'Dictée','production-ecrits':'Production d’écrits','calcul-mental':'Calcul mental','lecture-plaisir':'Lecture plaisir','piscine':'Piscine','chant':'Chant','anglais':'Anglais','decouverte-monde':'Découverte du monde','mathematiques':'Mathématiques','lecture-comprehension':'Lecture / Compréhension','sciences':'Sciences','histoire':'Histoire','geographie':'Géographie','emc':'EMC','arts-visuels':'Arts visuels','recreation':'Récréation','calcul-pose':'Calcul posé','problemes':'Problèmes','geometrie':'Géométrie','copie':'Copie'};
 function imagesFor(row,kind){
   var subject=String(row[1]||'').toLowerCase(),topic=subjectTopic(row).toLowerCase();
   var value=subject+' '+topic,details=plain(row[2]);
@@ -256,8 +256,7 @@ function imagesFor(row,kind){
   if(/découverte du monde|questionner le monde|\bqlm\b/.test(value))return ['decouverte-monde'];
   if(/arts visuels|arts plastiques|dessin|création artistique/.test(value)||kind==='arts')return ['arts-visuels'];
   if(/emc|message clair|vivre ensemble|vie de classe/.test(value)||kind==='emc')return ['emc'];
-  if(/course longue|endurance/.test(value))return ['course-longue'];
-  if(/eps|sport/.test(value)||kind==='eps')return [];
+  if(/course longue|endurance|eps|sport/.test(value)||kind==='eps')return [];
   if(/mathématiques|numération|nombres|calcul/.test(value)||kind==='maths')return ['mathematiques'];
   if(/français|grammaire|conjugaison|vocabulaire|orthographe/.test(value)||kind==='french')return ['francais'];
   return [];
@@ -538,6 +537,22 @@ function enableFocus(card){
   card.addEventListener('keydown',toggle);
   return card;
 }
+// Sortie exceptionnelle du mardi 17 novembre 2026 : spectacle commun CP, CE1 et CE2.
+function theatreExceptionCard(){
+  var card=document.createElement('article');card.className='simple-row arts theatre-exception';
+  var left=document.createElement('div');left.className='simple-subject';
+  var img=document.createElement('img');img.className='subject-banner';
+  img.src='images/edt-etiquettes/sortie-theatre.webp';img.alt='Nous partons au théâtre';
+  img.addEventListener('error',function(){img.replaceWith(document.createTextNode('Sortie au théâtre'));},{once:true});
+  left.appendChild(img);
+  var right=document.createElement('div');right.className='simple-activity';
+  var title=document.createElement('p');title.className='activity-name';title.textContent='Lili, la plus petite étoile de tout l’univers';
+  var details=document.createElement('p');details.className='learning-line';details.textContent='Départ de l’école à 9h45 · Spectacle à 10h15 · Retour à 11h30';
+  var activity=document.createElement('p');activity.className='learning-line';activity.textContent='Je découvre un spectacle avec les CP, CE1 et CE2.';
+  var success=document.createElement('p');success.className='learning-line';success.textContent='Je dois écouter et pouvoir raconter ce que j’ai compris.';
+  right.append(title,details,activity,success);card.append(left,right);
+  return enableFocus(card);
+}
 function render(){
   var grid=document.getElementById('simpleGrid');grid.replaceChildren();grid.classList.remove('focus-active');
   if(!days.length){grid.innerHTML='<div class="empty">Aucune journée trouvée dans les fichiers de l’emploi du temps.</div>';return;}
@@ -557,14 +572,19 @@ function render(){
     if(slot.start===null)return true; // Ne pas masquer une séance non horodatée.
     return period==='matin'?slot.start<12*60+15:slot.start>=12*60+15;
   });
-  var inserted={};var prior=null;var previousArtsSignature=null;
+  var inserted={};var prior=null;
+  var isTheatreDay=isoDate(day.date)==='2026-11-17';var theatreInserted=false;
   function addPause(type){if(!inserted[type]){grid.appendChild(enableFocus(pauseStrip(type)));inserted[type]=true;}}
   rows.forEach(function(row){
     var s=String(row[1]||'');var slot=timeRange(row);
+    // La sortie occupe 9h45–11h30 : remplacer les séances habituelles de ce créneau.
+    if(isTheatreDay&&period!=='apres-midi'&&slot.start!==null&&slot.end!==null&&slot.start<11*60+30&&slot.end>9*60+45){
+      if(!theatreInserted){grid.appendChild(theatreExceptionCard());theatreInserted=true;}
+      prior={start:9*60+45,end:11*60+30};return;
+    }
     /* Le créneau du mardi à partir de 16h est remplacé par les ateliers. */
     if(day.date.getDay()===2&&slot.start!==null&&slot.start>=16*60&&slot.start<17*60){prior=slot;return;}
     var explicit=pauseTypeFromRow(row);
-    if(explicit)previousArtsSignature=null;
     if(explicit){addPause(explicit);prior=slot;return;}
     if(prior&&prior.end!==null&&slot.start!==null){
       var gap=slot.start-prior.end;
@@ -572,15 +592,7 @@ function render(){
       if(gap>=45&&prior.end>=11*60+30&&prior.end<=12*60+30&&slot.start>=13*60+45&&slot.start<=14*60+30)addPause('pause-midi-cantine-maison');
       if(gap>=5&&gap<=30&&prior.end>=15*60+40&&prior.end<=16*60+5&&slot.start>=16*60+10&&slot.start<=16*60+35)addPause('recreation-apres-midi');
     }
-    var k=kindFor(row);
-    var artsSignature=null;
-    if(k==='arts'){
-      var wording=activityAndSuccess(row);
-      artsSignature=wording.join('|');
-      if(artsSignature===previousArtsSignature){prior=slot;return;}
-    }
-    previousArtsSignature=artsSignature;
-    var el=document.createElement('article');el.className='simple-row '+k;
+    var k=kindFor(row),el=document.createElement('article');el.className='simple-row '+k;
     var left=document.createElement('div');left.className='simple-subject';var labels=imagesFor(row,k);
     if(labels.length){var group=document.createElement('div');group.className=labels.length>1?'subject-banner-set':'subject-banner-single';
       labels.forEach(function(label){var photo=document.createElement('img');photo.className='subject-banner';photo.src='images/edt-etiquettes/'+label+'.webp';photo.alt=labelText[label]||subjectName(s,k);photo.loading='lazy';photo.decoding='async';photo.addEventListener('error',function(){photo.replaceWith(document.createTextNode(photo.alt));},{once:true});group.appendChild(photo);});left.appendChild(group);
@@ -588,6 +600,7 @@ function render(){
     var right=document.createElement('div');right.className='simple-activity';right.appendChild(oralP2Card(row,day.date)||learningContent(row));el.appendChild(left);el.appendChild(right);grid.appendChild(enableFocus(el));
     prior=slot;
   });
+  if(isTheatreDay&&period!=='apres-midi'&&!theatreInserted)grid.prepend(theatreExceptionCard());
   if(day.date.getDay()===2&&period!=='matin')grid.appendChild(enableFocus(tuesdayWorkshopCard(day.date)));
   if(period!=='matin')grid.appendChild(enableFocus(pauseStrip('fin-ecole')));
   if(!rows.length)grid.innerHTML='<div class="empty">Aucune activité prévue pour cette partie de la journée.</div>';
