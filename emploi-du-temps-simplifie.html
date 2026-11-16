@@ -99,12 +99,12 @@
   @media print{.site-nav,.simple-actions,.simple-foot{display:none!important}.simple-wrap{width:100%;margin:0}.simple-row,.simple-head{box-shadow:none;break-inside:avoid}}
 
   /* Étiquettes visuelles Maître Hibou — repérage immédiat pour lecteurs fragiles. */
-  .simple-subject{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:10px 14px;min-width:0}
-  .subject-banner{display:block;width:100%;max-width:345px;height:auto;max-height:102px;object-fit:contain;border-radius:8px}
-  .subject-banner-set{width:100%;display:flex;flex-direction:column;align-items:center;gap:4px}
-  .subject-banner-set .subject-banner{max-height:83px;max-width:278px}
+  .simple-subject{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px 8px;min-width:0}
+  .subject-banner{display:block;width:100%;height:auto;max-width:100%;max-height:130px;object-fit:contain;border-radius:8px}
+  .subject-banner-single{width:100%;display:flex;align-items:center;justify-content:center}.subject-banner-set{width:100%;display:flex;flex-direction:column;align-items:center;gap:4px}
+  .subject-banner-set .subject-banner{max-height:92px;max-width:100%}
   .subject-plain-label{font-weight:900;font-size:clamp(18px,1.3vw,24px);text-align:center}
-  @media(max-width:780px){.simple-subject{align-items:flex-start;padding:8px 12px}.subject-banner{max-width:220px;max-height:75px}.subject-banner-set{flex-direction:row;align-items:center;justify-content:flex-start;gap:8px}.subject-banner-set .subject-banner{max-width:min(43%,185px);max-height:70px}}
+  @media(max-width:780px){.simple-subject{align-items:flex-start;padding:8px 12px}.subject-banner{max-width:100%;max-height:90px}.subject-banner-set{flex-direction:row;align-items:center;justify-content:flex-start;gap:8px}.subject-banner-set .subject-banner{max-width:min(48%,240px);max-height:75px}}
   @media print{.subject-banner{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
 
   /* Petites bandes visuelles des pauses, distinctes des activités scolaires. */
