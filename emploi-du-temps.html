@@ -165,10 +165,10 @@
 .illustrated-edt__day h2{background:#dff6f2;color:#07564f;text-align:center;font-size:20px;margin:0;padding:12px}
 .illustrated-edt__banner{height:155px;display:flex;align-items:center;justify-content:center;padding:9px;background:#f4f8ff;border-bottom:1px solid #e1e8ef}
 .illustrated-edt__banner img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
-.illustrated-edt__slot{display:flex;align-items:center;gap:8px;padding:5px 7px;border-bottom:1px solid #fff;min-height:64px}
-.illustrated-edt__slot time{flex:0 0 74px;background:#fff;border:1px solid #d8e2ea;border-radius:8px;padding:5px 4px;font-size:12px;font-weight:800;color:#203a57;text-align:center}
+.illustrated-edt__slot{display:flex;align-items:center;gap:8px;padding:5px 7px;border-bottom:1px solid #fff;min-height:78px}
+.illustrated-edt__slot time{flex:0 0 96px;background:#fff;border:1px solid #d8e2ea;border-radius:8px;padding:9px 5px;font-size:16px;font-weight:900;color:#102e4d;text-align:center}
 .illustrated-edt__activity{flex:1;min-width:0;display:flex;justify-content:center;align-items:center}
-.illustrated-edt__activity img{display:block;width:100%;max-width:245px;height:67px;object-fit:contain}
+.illustrated-edt__activity img{display:block;width:100%;max-width:310px;height:76px;object-fit:contain}
 .illustrated-edt__fallback{font-size:12px;font-weight:800;text-align:center;color:#244b65}
 .illustrated-edt__slot time{align-self:center}
 .illustrated-edt__slot--french{background:#ffe8ed;border-left:5px solid #e95a79}
@@ -473,6 +473,7 @@
     if(/cantine|repas|pause méridienne/.test(text))return null;
     if(/piscine|natation|aquatique/.test(text))return 'piscine';
     if(/course longue|endurance/.test(text))return 'course-longue';
+    if(/d\.?r\.?a\.?s\.?|j.améliore mon écrit|amélioration de l.écrit|améliorer mon écrit/.test(text))return 'francais';
     if(/dictée/.test(text))return 'dictee';
     if(/copie|recopi/.test(text))return 'copie';
     if(/quart d.?heure de lecture|lecture plaisir|lecture autonome/.test(text))return 'lecture-plaisir';
@@ -511,7 +512,7 @@
         var visual=make('div','illustrated-edt__activity');
         if(imageName){
           var image=document.createElement('img');
-          image.src='images/edt-etiquettes/'+imageName+'.webp';
+          image.src=(['dictee','copie','lecture-plaisir','calcul-mental','calcul-pose','mathematiques'].includes(imageName) ? 'images/edt-nouveau/'+imageName+'.webp' : 'images/edt-etiquettes/'+imageName+'.webp');
           image.alt=title(row);
           image.loading='lazy';
           image.onerror=function(){image.replaceWith(make('span','illustrated-edt__fallback',title(row)));};
