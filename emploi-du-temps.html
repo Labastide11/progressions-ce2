@@ -169,6 +169,10 @@
 .illustrated-edt__slot time{flex:0 0 96px;background:#fff;border:1px solid #d8e2ea;border-radius:8px;padding:9px 5px;font-size:16px;font-weight:900;color:#102e4d;text-align:center}
 .illustrated-edt__activity{flex:1;min-width:0;display:flex;justify-content:center;align-items:center}
 .illustrated-edt__activity img{display:block;width:100%;max-width:310px;height:76px;object-fit:contain}
+/* Images de la nouvelle série : plus grandes, sans déformation. */
+.illustrated-edt__slot--nouvelle{min-height:112px}
+.illustrated-edt__slot--nouvelle .illustrated-edt__activity img{height:106px;max-width:100%;object-fit:contain}
+
 .illustrated-edt__fallback{font-size:12px;font-weight:800;text-align:center;color:#244b65}
 .illustrated-edt__slot time{align-self:center}
 .illustrated-edt__slot--french{background:#ffe8ed;border-left:5px solid #e95a79}
@@ -181,7 +185,7 @@
 .illustrated-edt__slot--other{background:#f2f5f8;border-left:5px solid #8ca4b7}
 @media(max-width:1100px){.illustrated-edt__days{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.illustrated-edt__days{grid-template-columns:1fr}.illustrated-edt__banner{height:130px}}
-@media print{.site-nav,.illustrated-edt__links,.illustrated-edt__filters{display:none!important}.illustrated-edt__days{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}.illustrated-edt__banner{height:95px}.illustrated-edt__slot{padding:4px;font-size:10px}.illustrated-edt__activity img{height:44px}.illustrated-edt__fallback{font-size:9px}.illustrated-edt__slot time{flex-basis:45px;font-size:9px}}
+@media print{.site-nav,.illustrated-edt__links,.illustrated-edt__filters{display:none!important}.illustrated-edt__days{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}.illustrated-edt__banner{height:95px}.illustrated-edt__slot{padding:4px;font-size:10px}.illustrated-edt__activity img{height:44px}.illustrated-edt__slot--nouvelle{min-height:0}.illustrated-edt__slot--nouvelle .illustrated-edt__activity img{height:44px}.illustrated-edt__fallback{font-size:9px}.illustrated-edt__slot time{flex-basis:45px;font-size:9px}}
 </style>
 </head>
 <body>
@@ -512,7 +516,9 @@
         var visual=make('div','illustrated-edt__activity');
         if(imageName){
           var image=document.createElement('img');
-          image.src=(['dictee','copie','lecture-plaisir','calcul-mental','calcul-pose','mathematiques'].includes(imageName) ? 'images/edt-nouveau/'+imageName+'.webp' : 'images/edt-etiquettes/'+imageName+'.webp');
+          var nouvelleImage=['dictee','copie','lecture-plaisir','calcul-mental','calcul-pose','mathematiques'].includes(imageName);
+          if(nouvelleImage)slot.classList.add('illustrated-edt__slot--nouvelle');
+          image.src=(nouvelleImage ? 'images/edt-nouveau/'+imageName+'.webp' : 'images/edt-etiquettes/'+imageName+'.webp');
           image.alt=title(row);
           image.loading='lazy';
           image.onerror=function(){image.replaceWith(make('span','illustrated-edt__fallback',title(row)));};
