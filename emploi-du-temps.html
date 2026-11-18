@@ -413,6 +413,12 @@
 <script src="emploi-du-temps-ui.js?v=37.24"></script>
 
 
+<style id="illustrated-workshops-sync">
+.illustrated-edt__workshops{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;width:100%;align-items:center}
+.illustrated-edt__workshop{min-width:0;display:flex;flex-direction:column;align-items:center;gap:3px}
+.illustrated-edt__week-table .illustrated-edt__workshop img{width:100%;height:auto;max-height:78px;object-fit:contain}
+.illustrated-edt__workshop strong{font-size:12px;color:#173754;text-align:center}
+</style>
 <script id="edt-illustrated-view-v1">
 (function(){
   'use strict';
@@ -528,7 +534,16 @@
   function makeActivity(row){
     var slot=make('div','illustrated-edt__slot illustrated-edt__slot--'+kind(row));
     var imageName=imageForRow(row),visual=make('div','illustrated-edt__activity');
-    if(imageName){
+    if(imageName==='ateliers-mardi'){
+      var atelierBox=make('div','illustrated-edt__workshops');
+      [['Informatique','images/edt-etiquettes/atelier-informatique.png'],['Lexique','images/edt-etiquettes/atelier-lexique.png']].forEach(function(pair){
+        var item=make('div','illustrated-edt__workshop');
+        var img=document.createElement('img');img.src=pair[1];img.alt=pair[0];img.loading='lazy';
+        img.onerror=function(){img.replaceWith(make('span','illustrated-edt__fallback',pair[0]));};
+        item.appendChild(img);item.appendChild(make('strong','',pair[0]));atelierBox.appendChild(item);
+      });
+      visual.appendChild(atelierBox);
+    }else if(imageName){
       var image=document.createElement('img');
       var nouvelleImage=['dictee','copie','lecture-plaisir','calcul-mental','calcul-pose','mathematiques','arts-visuels','emc','piscine','recreation','j-ecris','devinettes','je-raconte','dras','lecture-comprehension','chant','francais','course-longue','decouverte-monde'].includes(imageName);
       if(nouvelleImage)slot.classList.add('illustrated-edt__slot--nouvelle');
@@ -554,6 +569,16 @@
       if(dayIndex===0&&entries.length){
         var first=entries.find(function(e){return e.start===9*60;});
         if(first){first.row=first.row.slice();first.row[1]='Je raconte';first.row[2]='Expression orale : je raconte';first.image='je-raconte';}
+      }
+      // Mardi : comme dans l'emploi du temps simplifié, les ateliers remplacent
+      // toute séance de 16h à 17h (y compris les plages génériques englobantes).
+      if(dayIndex===1){
+        entries=entries.filter(function(e){return e.end<=960||e.start>=1020;}).concat(
+          entries.filter(function(e){return e.start<960&&e.end>960;}).map(function(e){return Object.assign({},e,{end:960});}),
+          entries.filter(function(e){return e.start<1020&&e.end>1020;}).map(function(e){return Object.assign({},e,{start:1020});})
+        );
+        var workshopRow=['16h – 17h','Ateliers Informatique et Lexique','Groupes alternés A/B','', 'french'];
+        entries.push({row:workshopRow,start:960,end:1020,image:'ateliers-mardi'});
       }
       var cuts=Array.from(new Set([].concat.apply([],entries.map(function(e){return [e.start,e.end];})))).sort(function(a,b){return a-b;});
       var parts=[];
