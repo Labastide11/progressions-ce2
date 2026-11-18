@@ -441,7 +441,7 @@
 <style id="illustrated-workshops-sync">
 .illustrated-edt__workshops{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;width:100%;align-items:center}
 .illustrated-edt__workshop{min-width:0;display:flex;flex-direction:column;align-items:center;gap:3px}
-.illustrated-edt__week-table .illustrated-edt__workshop img{width:100%;height:auto;max-height:78px;object-fit:contain}
+.illustrated-edt__week-table .illustrated-edt__workshop img{width:100%;height:auto;max-height:120px;object-fit:contain}
 .illustrated-edt__workshop strong{font-size:12px;color:#173754;text-align:center}
 </style>
 <script id="edt-illustrated-view-v1">
@@ -556,9 +556,9 @@
     return matches.map(function(part){var m=part.match(/(\d{1,2})\s*h\s*(\d{1,2})?/i);return Number(m[1])*60+Number(m[2]||0);});
   }
   function clockLabel(minutes){return Math.floor(minutes/60)+'h'+(minutes%60?String(minutes%60).padStart(2,'0'):'');}
-  function makeActivity(row){
+  function makeActivity(row,forcedImage){
     var slot=make('div','illustrated-edt__slot illustrated-edt__slot--'+kind(row));
-    var imageName=imageForRow(row),visual=make('div','illustrated-edt__activity');
+    var imageName=forcedImage||imageForRow(row),visual=make('div','illustrated-edt__activity');
     if(imageName==='ateliers-mardi'){
       var atelierBox=make('div','illustrated-edt__workshops');
       [['Informatique','images/edt-etiquettes/atelier-informatique.png'],['Lexique','images/edt-etiquettes/atelier-lexique.png']].forEach(function(pair){
@@ -663,7 +663,7 @@
             var pauseLabel=make('div','illustrated-edt__pause-label',
               item.pauseType==='recreation'?'Récréation':'Maison ou cantine');
             td.appendChild(pauseLabel);
-          }else td.appendChild(makeActivity(item.row));
+          }else td.appendChild(makeActivity(item.row,item.image));
         }else{
           td.className='illustrated-edt__cell illustrated-edt__cell--empty';
         }
