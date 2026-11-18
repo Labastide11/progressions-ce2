@@ -519,7 +519,7 @@
         var visual=make('div','illustrated-edt__activity');
         if(imageName){
           var image=document.createElement('img');
-          var nouvelleImage=['dictee','copie','lecture-plaisir','calcul-mental','calcul-pose','mathematiques','arts-visuels','emc','piscine','recreation','j-ecris','devinettes','je-raconte','dras'].includes(imageName);
+          var nouvelleImage=['dictee','copie','lecture-plaisir','calcul-mental','calcul-pose','mathematiques','arts-visuels','emc','piscine','recreation','j-ecris','devinettes','je-raconte','dras','lecture-comprehension','chant','francais'].includes(imageName);
           if(nouvelleImage)slot.classList.add('illustrated-edt__slot--nouvelle');
           image.src=(nouvelleImage ? 'images/edt-nouveau/'+imageName+'.webp' : 'images/edt-etiquettes/'+imageName+'.webp');
           image.alt=title(row);
