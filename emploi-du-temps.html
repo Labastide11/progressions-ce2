@@ -478,6 +478,9 @@
     if(/piscine|natation|aquatique/.test(text))return 'piscine';
     if(/course longue|endurance/.test(text))return 'course-longue';
     if(/d\.?r\.?a\.?s\.?|j.améliore mon écrit|amélioration de l.écrit|améliorer mon écrit/.test(text))return 'francais';
+    if(/devinette|énigme|rituel devinette/.test(text))return 'devinettes';
+    if(/je raconte|raconter à l.oral|expression orale|récit oral/.test(text))return 'je-raconte';
+    if(/j.écris|production d.écrits|production écrite|rédaction|écriture d.un récit/.test(text))return 'j-ecris';
     if(/dictée/.test(text))return 'dictee';
     if(/copie|recopi/.test(text))return 'copie';
     if(/quart d.?heure de lecture|lecture plaisir|lecture autonome/.test(text))return 'lecture-plaisir';
@@ -493,7 +496,7 @@
     if(/sciences|expérience|états de l.eau/.test(text)||category==='science')return 'sciences';
     if(/découverte du monde|questionner le monde/.test(text))return 'decouverte-monde';
     if(/arts visuels|arts plastiques|dessin|création artistique/.test(text)||category==='arts')return 'arts-visuels';
-    if(/emc|message clair|vivre ensemble/.test(text)||category==='emc')return 'emc';
+    if(/emc|enseignement moral|message clair|vivre ensemble/.test(text)||category==='emc')return 'emc';
     if(/eps|sport/.test(text)||category==='eps')return null;
     if(/mathématiques|numération|nombres|calcul/.test(text)||category==='maths')return 'mathematiques';
     if(/français|grammaire|conjugaison|vocabulaire|orthographe/.test(text)||category==='french')return 'francais';
@@ -516,7 +519,7 @@
         var visual=make('div','illustrated-edt__activity');
         if(imageName){
           var image=document.createElement('img');
-          var nouvelleImage=['dictee','copie','lecture-plaisir','calcul-mental','calcul-pose','mathematiques'].includes(imageName);
+          var nouvelleImage=['dictee','copie','lecture-plaisir','calcul-mental','calcul-pose','mathematiques','arts-visuels','emc','piscine','recreation','j-ecris','devinettes','je-raconte'].includes(imageName);
           if(nouvelleImage)slot.classList.add('illustrated-edt__slot--nouvelle');
           image.src=(nouvelleImage ? 'images/edt-nouveau/'+imageName+'.webp' : 'images/edt-etiquettes/'+imageName+'.webp');
           image.alt=title(row);
