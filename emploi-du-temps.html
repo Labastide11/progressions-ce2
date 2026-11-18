@@ -233,6 +233,21 @@
 #illustratedTimetable .illustrated-edt__week-table .illustrated-edt__workshop{width:100%;}
 #illustratedTimetable .illustrated-edt__week-table .illustrated-edt__workshop img{height:auto!important;max-height:none!important;max-width:290px!important;}
 </style>
+<style id="illustrated-no-white-gaps">
+/* Fonds continus, y compris dans les intervalles sans activité. */
+#illustratedTimetable .illustrated-edt__week-table tbody td.illustrated-edt__cell--gap{border-color:#fff!important;}
+#illustratedTimetable .illustrated-edt__week-table tbody td.illustrated-edt__cell--french{background:#fff0f4!important;}
+#illustratedTimetable .illustrated-edt__week-table tbody td.illustrated-edt__cell--maths{background:#edf5ff!important;}
+#illustratedTimetable .illustrated-edt__week-table tbody td.illustrated-edt__cell--english{background:#e8faf7!important;}
+#illustratedTimetable .illustrated-edt__week-table tbody td.illustrated-edt__cell--eps{background:#edf9ee!important;}
+#illustratedTimetable .illustrated-edt__week-table tbody td.illustrated-edt__cell--arts{background:#f6efff!important;}
+#illustratedTimetable .illustrated-edt__week-table tbody td.illustrated-edt__cell--history{background:#fff4e8!important;}
+#illustratedTimetable .illustrated-edt__week-table tbody td.illustrated-edt__cell--science{background:#eaf9fa!important;}
+#illustratedTimetable .illustrated-edt__week-table tbody td.illustrated-edt__cell--emc{background:#fff9e4!important;}
+#illustratedTimetable .illustrated-edt__week-table tbody td.illustrated-edt__cell--other{background:#f1f4f7!important;}
+#illustratedTimetable .illustrated-edt__week-table tbody td.illustrated-edt__pause-recreation{background:#d6f1d8!important;}
+#illustratedTimetable .illustrated-edt__week-table tbody td.illustrated-edt__pause-midi{background:#dcebfa!important;}
+</style>
 </head>
 <body>
 <div class="site-shell">
@@ -671,7 +686,14 @@
             td.appendChild(pauseLabel);
           }else td.appendChild(makeActivity(item.row,item.image));
         }else{
-          td.className='illustrated-edt__cell illustrated-edt__cell--empty';
+          // Un intervalle libre entre deux activités ne doit pas former
+          // une bande blanche : reprendre le fond de la matière voisine,
+          // sans inventer d'activité ni modifier les horaires.
+          var previous=entries.filter(function(e){return e.end<=start;}).sort(function(a,b){return b.end-a.end;})[0];
+          var following=entries.filter(function(e){return e.start>=end;}).sort(function(a,b){return a.start-b.start;})[0];
+          var neighbour=previous||following;
+          var subject=neighbour?kind(neighbour.row):'other';
+          td.className='illustrated-edt__cell illustrated-edt__cell--gap illustrated-edt__cell--'+subject;
         }
         tr.appendChild(td);
       });
