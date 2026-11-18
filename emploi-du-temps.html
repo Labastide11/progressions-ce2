@@ -203,6 +203,23 @@
 @media(max-width:620px){.illustrated-edt__days{grid-template-columns:1fr}.illustrated-edt__banner{height:130px}}
 @media print{.site-nav,.illustrated-edt__links,.illustrated-edt__filters{display:none!important}.illustrated-edt__days{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}.illustrated-edt__banner{height:95px}.illustrated-edt__slot{padding:4px;font-size:10px}.illustrated-edt__activity img{height:44px}.illustrated-edt__slot--nouvelle{min-height:0}.illustrated-edt__slot--nouvelle .illustrated-edt__activity img{height:44px}.illustrated-edt__fallback{font-size:9px}.illustrated-edt__slot time{flex-basis:45px;font-size:9px}}
 </style>
+<style id="illustrated-grid-final-fix">
+/* Grille stable : 1 colonne horaires + 4 colonnes jours */
+#illustratedTimetable .illustrated-edt__days{display:block;width:100%;max-width:100%;overflow-x:auto;}
+#illustratedTimetable .illustrated-edt__week-table{display:table;width:100%;min-width:950px;table-layout:fixed;border-collapse:collapse;border-spacing:0;}
+#illustratedTimetable .illustrated-edt__week-table th,
+#illustratedTimetable .illustrated-edt__week-table td{box-sizing:border-box;border:2px solid #fff;}
+#illustratedTimetable .illustrated-edt__week-table thead th:first-child,
+#illustratedTimetable .illustrated-edt__week-table tbody th.illustrated-edt__time{width:145px;min-width:145px;font-size:17px;}
+#illustratedTimetable .illustrated-edt__week-table thead th:not(:first-child){width:calc((100% - 145px)/4);}
+#illustratedTimetable .illustrated-edt__week-table td{width:auto;min-width:0;overflow:hidden;}
+#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__slot{min-width:0;width:100%;padding:7px 4px;min-height:100px;box-sizing:border-box;}
+#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__activity{width:100%;min-width:0;max-width:100%;}
+#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__activity img,
+#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__slot--nouvelle .illustrated-edt__activity img{display:block;width:100%;max-width:260px;height:auto;max-height:125px;object-fit:contain;margin:auto;}
+#illustratedTimetable .illustrated-edt__filters{margin:16px 0 25px;padding:12px 8px;border-top:1px solid #d2e1ed;}
+@media print{#illustratedTimetable .illustrated-edt__week-table{min-width:0}#illustratedTimetable .illustrated-edt__week-table thead th:first-child,#illustratedTimetable .illustrated-edt__week-table tbody th.illustrated-edt__time{width:72px;min-width:72px;font-size:10px}#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__activity img{max-height:70px}}
+</style>
 </head>
 <body>
 <div class="site-shell">
@@ -235,6 +252,7 @@
           <a href="emploi-du-temps-simplifie.html">Notre journée en classe</a>
         </nav>
       </div>
+      <div id="illustratedDays" class="illustrated-edt__days"></div>
       <div class="illustrated-edt__filters">
         <div class="illustrated-edt__periods" role="group" aria-label="Choisir la période">
           <a href="emploi-du-temps.html?mode=summary&amp;period=rentree">RENTRÉE</a>
@@ -246,7 +264,7 @@
         </div><select id="illustratedPeriod" hidden aria-label="Période"></select>
         <label for="illustratedWeek">Semaine</label><select id="illustratedWeek"></select>
       </div>
-      <div id="illustratedDays" class="illustrated-edt__days"></div>
+
     </section>
     <section aria-hidden="true" aria-labelledby="timetableTitle" class="timetable-modal hidden" id="timetableModal">
       <div class="timetable-panel" role="main">
@@ -599,21 +617,27 @@
     var head=document.createElement('thead'),header=document.createElement('tr');
     ['Horaires'].concat(names).forEach(function(label){var th=make('th','',label);th.scope='col';header.appendChild(th);});head.appendChild(header);table.appendChild(head);
     var body=document.createElement('tbody'),covered=[-1,-1,-1,-1];
+    // Chaque tranche horaire conserve exactement quatre cellules de jours.
+    // Les fusions sont exclusivement verticales, jamais horizontales.
     for(var k=0;k<boundaries.length-1;k++){
       var start=boundaries[k],end=boundaries[k+1];
-      if(!schedules.some(function(entries){return entries.some(function(e){return e.start<=start&&e.end>=end;});}))continue;
-      var tr=document.createElement('tr'),timeCell=make('th','illustrated-edt__time',clockLabel(start)+' – '+clockLabel(end));timeCell.scope='row';tr.appendChild(timeCell);
+      var tr=document.createElement('tr');
+      var timeCell=make('th','illustrated-edt__time',clockLabel(start)+' – '+clockLabel(end));
+      timeCell.scope='row';tr.appendChild(timeCell);
       schedules.forEach(function(entries,j){
-        if(covered[j]>k)return;
+        if(covered[j]>=k)return;
         var item=entries.find(function(e){return e.start<=start&&e.end>=end;});
         var td=document.createElement('td');
         if(item){
           var last=k+1;
           while(last<boundaries.length-1&&boundaries[last]<item.end)last++;
-          td.rowSpan=last-k;covered[j]=last-1;
+          td.rowSpan=last-k;
+          covered[j]=last-1;
           td.className='illustrated-edt__cell illustrated-edt__cell--'+kind(item.row);
           td.appendChild(makeActivity(item.row));
-        }else td.className='illustrated-edt__cell illustrated-edt__cell--empty';
+        }else{
+          td.className='illustrated-edt__cell illustrated-edt__cell--empty';
+        }
         tr.appendChild(td);
       });
       body.appendChild(tr);
