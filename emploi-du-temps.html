@@ -544,7 +544,30 @@
     daysRoot.replaceChildren();
     if(!week){daysRoot.appendChild(make('p','','Aucune semaine disponible pour cette période.'));return;}
     var days=names.map(function(name){return (week.days||[]).find(function(d){return String(d[0]||'').toLowerCase().indexOf(name.toLowerCase())===0;});});
-    var schedules=days.map(function(day){return day&&Array.isArray(day[1])?day[1].filter(Array.isArray).map(function(row){var t=clockMinutes(row[0]);return {row:row,start:t[0],end:t[1]};}).filter(function(x){return Number.isFinite(x.start)&&Number.isFinite(x.end)&&x.end>x.start;}):[];});
+    // Conserver les séances réelles, sans afficher deux fois la même image.
+    // Une plage générique englobante (ex. 14h-17h) ne masque pas les séances précises.
+    var schedules=days.map(function(day,dayIndex){
+      var entries=day&&Array.isArray(day[1])?day[1].filter(Array.isArray).map(function(row){
+        var t=clockMinutes(row[0]);return {row:row,start:t[0],end:t[1],image:imageForRow(row)};
+      }).filter(function(x){return Number.isFinite(x.start)&&Number.isFinite(x.end)&&x.end>x.start;}):[];
+      // Le premier créneau du lundi est consacré à « Je raconte ».
+      if(dayIndex===0&&entries.length){
+        var first=entries.find(function(e){return e.start===9*60;});
+        if(first){first.row=first.row.slice();first.row[1]='Je raconte';first.row[2]='Expression orale : je raconte';first.image='je-raconte';}
+      }
+      var cuts=Array.from(new Set([].concat.apply([],entries.map(function(e){return [e.start,e.end];})))).sort(function(a,b){return a-b;});
+      var parts=[];
+      for(var i=0;i<cuts.length-1;i++){
+        var a=cuts[i],b=cuts[i+1],candidates=entries.filter(function(e){return e.start<=a&&e.end>=b;});
+        if(!candidates.length)continue;
+        // Priorité au créneau précis plutôt qu'au créneau générique englobant.
+        candidates.sort(function(x,y){return (x.end-x.start)-(y.end-y.start);});
+        var chosen=candidates[0],previous=parts[parts.length-1];
+        if(previous&&previous.end===a&&previous.image===chosen.image){previous.end=b;}
+        else parts.push({row:chosen.row,start:a,end:b,image:chosen.image});
+      }
+      return parts;
+    });
     var boundaries=[].concat.apply([],schedules.map(function(entries){return [].concat.apply([],entries.map(function(e){return [e.start,e.end];}));}));
     boundaries=Array.from(new Set(boundaries)).sort(function(a,b){return a-b;});
     var table=make('table','illustrated-edt__week-table');
