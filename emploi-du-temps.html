@@ -618,9 +618,8 @@
       }
       // Pauses explicites : jeudi décalé à 16h–16h15.
       // Le découpage s'effectue par journée, sans fusion horizontale.
-      var pauses=dayIndex===2
-        ? [{start:960,end:975,type:'recreation'}]
-        : [{start:645,end:660,type:'recreation'}];
+      var pauses=[{start:645,end:660,type:'recreation'}];
+      if(dayIndex===2)pauses.push({start:960,end:975,type:'recreation'});
       pauses.push({start:720,end:840,type:'midi'});
       pauses.forEach(function(pause){
         var next=[];
