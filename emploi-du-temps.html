@@ -136,6 +136,22 @@
     #timetableModal .timetable-header { position:static; }
     .site-nav__brand { width:100%; }
   }
+
+/* Vue illustree : grille unique horaires + quatre jours */
+.illustrated-edt__days{display:block;overflow-x:auto;max-width:100%;}
+.illustrated-edt__week-table{width:100%;min-width:850px;table-layout:fixed;border-collapse:separate;border-spacing:3px;background:#edf3f8;}
+.illustrated-edt__week-table thead th{position:sticky;top:0;z-index:2;background:#dff6f2;color:#07564f;font-size:20px;text-align:center;padding:12px 5px;}
+.illustrated-edt__week-table thead th:first-child{width:126px;background:#dceaf6;color:#163c59;}
+.illustrated-edt__week-table tbody th.illustrated-edt__time{width:126px;background:#eaf2ff;color:#0d2f50;text-align:center;font-size:17px;font-weight:900;padding:9px 5px;white-space:normal;vertical-align:middle;}
+.illustrated-edt__cell{padding:0;vertical-align:middle;text-align:center;background:#fff;}
+.illustrated-edt__cell--empty{background:#f7f9fc;}
+.illustrated-edt__week-table .illustrated-edt__slot{border:0;min-height:82px;padding:5px;display:flex;justify-content:center;}
+.illustrated-edt__week-table .illustrated-edt__slot--nouvelle{min-height:102px;}
+.illustrated-edt__week-table .illustrated-edt__activity img{max-width:100%;width:100%;height:88px;object-fit:contain;}
+.illustrated-edt__week-table .illustrated-edt__slot--nouvelle .illustrated-edt__activity img{height:102px;}
+@media(max-width:1100px){.illustrated-edt__days{display:block}.illustrated-edt__week-table{min-width:850px}}
+@media(max-width:620px){.illustrated-edt__days{display:block}.illustrated-edt__week-table{min-width:850px}}
+@media print{.illustrated-edt__days{overflow:visible}.illustrated-edt__week-table{min-width:0;border-spacing:1px}.illustrated-edt__week-table thead th{font-size:12px}.illustrated-edt__week-table thead th:first-child,.illustrated-edt__week-table tbody th.illustrated-edt__time{width:74px;font-size:10px}.illustrated-edt__week-table .illustrated-edt__slot--nouvelle .illustrated-edt__activity img{height:60px}}
 </style>
 
 <style id="edt-hide-duplicate-day-date-v3703">
@@ -503,38 +519,58 @@
     return null;
   }
   function make(tag,cls,text){var el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=text;return el;}
+  // Grille hebdomadaire commune : une colonne d'horaires et quatre jours.
+  function clockMinutes(label){
+    var matches=String(label||'').match(/(\d{1,2})\s*h\s*(\d{1,2})?/gi)||[];
+    return matches.map(function(part){var m=part.match(/(\d{1,2})\s*h\s*(\d{1,2})?/i);return Number(m[1])*60+Number(m[2]||0);});
+  }
+  function clockLabel(minutes){return Math.floor(minutes/60)+'h'+(minutes%60?String(minutes%60).padStart(2,'0'):'');}
+  function makeActivity(row){
+    var slot=make('div','illustrated-edt__slot illustrated-edt__slot--'+kind(row));
+    var imageName=imageForRow(row),visual=make('div','illustrated-edt__activity');
+    if(imageName){
+      var image=document.createElement('img');
+      var nouvelleImage=['dictee','copie','lecture-plaisir','calcul-mental','calcul-pose','mathematiques','arts-visuels','emc','piscine','recreation','j-ecris','devinettes','je-raconte','dras','lecture-comprehension','chant','francais','course-longue','decouverte-monde'].includes(imageName);
+      if(nouvelleImage)slot.classList.add('illustrated-edt__slot--nouvelle');
+      image.src=(nouvelleImage?'images/edt-nouveau/':'images/edt-etiquettes/')+imageName+'.webp';
+      image.alt=title(row);image.loading='lazy';
+      image.onerror=function(){image.replaceWith(make('span','illustrated-edt__fallback',title(row)));};
+      visual.appendChild(image);
+    }else visual.appendChild(make('span','illustrated-edt__fallback',title(row)));
+    slot.appendChild(visual);return slot;
+  }
   function render(){
-    var data=available(),p=periodSelect.value,weeks=data[p]||[],week=weeks[Number(weekSelect.value)]||weeks[0];
+    var data=available(),weeks=data[periodSelect.value]||[],week=weeks[Number(weekSelect.value)]||weeks[0];
     daysRoot.replaceChildren();
     if(!week){daysRoot.appendChild(make('p','','Aucune semaine disponible pour cette période.'));return;}
-    names.forEach(function(name,i){
-      var day=(week.days||[]).find(function(d){return String(d[0]||'').toLowerCase().indexOf(name.toLowerCase())===0;});
-      var article=make('article','illustrated-edt__day');
-      article.appendChild(make('h2','',name));
-      if(day&&Array.isArray(day[1]))day[1].forEach(function(row){
-        if(!Array.isArray(row))return;
-        var slot=make('div','illustrated-edt__slot illustrated-edt__slot--'+kind(row));
-        var time=make('time','',clean(row[0]).replace(/–/g,' – '));
-        var imageName=imageForRow(row);
-        var visual=make('div','illustrated-edt__activity');
-        if(imageName){
-          var image=document.createElement('img');
-          var nouvelleImage=['dictee','copie','lecture-plaisir','calcul-mental','calcul-pose','mathematiques','arts-visuels','emc','piscine','recreation','j-ecris','devinettes','je-raconte','dras','lecture-comprehension','chant','francais','course-longue','decouverte-monde'].includes(imageName);
-          if(nouvelleImage)slot.classList.add('illustrated-edt__slot--nouvelle');
-          image.src=(nouvelleImage ? 'images/edt-nouveau/'+imageName+'.webp' : 'images/edt-etiquettes/'+imageName+'.webp');
-          image.alt=title(row);
-          image.loading='lazy';
-          image.onerror=function(){image.replaceWith(make('span','illustrated-edt__fallback',title(row)));};
-          visual.appendChild(image);
-        }else{
-          // Les pauses sans illustration conservent un repère court.
-          visual.appendChild(make('span','illustrated-edt__fallback',title(row)));
-        }
-        slot.append(time,visual);article.appendChild(slot);
+    var days=names.map(function(name){return (week.days||[]).find(function(d){return String(d[0]||'').toLowerCase().indexOf(name.toLowerCase())===0;});});
+    var schedules=days.map(function(day){return day&&Array.isArray(day[1])?day[1].filter(Array.isArray).map(function(row){var t=clockMinutes(row[0]);return {row:row,start:t[0],end:t[1]};}).filter(function(x){return Number.isFinite(x.start)&&Number.isFinite(x.end)&&x.end>x.start;}):[];});
+    var boundaries=[].concat.apply([],schedules.map(function(entries){return [].concat.apply([],entries.map(function(e){return [e.start,e.end];}));}));
+    boundaries=Array.from(new Set(boundaries)).sort(function(a,b){return a-b;});
+    var table=make('table','illustrated-edt__week-table');
+    var head=document.createElement('thead'),header=document.createElement('tr');
+    ['Horaires'].concat(names).forEach(function(label){var th=make('th','',label);th.scope='col';header.appendChild(th);});head.appendChild(header);table.appendChild(head);
+    var body=document.createElement('tbody'),covered=[-1,-1,-1,-1];
+    for(var k=0;k<boundaries.length-1;k++){
+      var start=boundaries[k],end=boundaries[k+1];
+      if(!schedules.some(function(entries){return entries.some(function(e){return e.start<=start&&e.end>=end;});}))continue;
+      var tr=document.createElement('tr'),timeCell=make('th','illustrated-edt__time',clockLabel(start)+' – '+clockLabel(end));timeCell.scope='row';tr.appendChild(timeCell);
+      schedules.forEach(function(entries,j){
+        if(covered[j]>k)return;
+        var item=entries.find(function(e){return e.start<=start&&e.end>=end;});
+        var td=document.createElement('td');
+        if(item){
+          var last=k+1;
+          while(last<boundaries.length-1&&boundaries[last]<item.end)last++;
+          td.rowSpan=last-k;covered[j]=last-1;
+          td.className='illustrated-edt__cell illustrated-edt__cell--'+kind(item.row);
+          td.appendChild(makeActivity(item.row));
+        }else td.className='illustrated-edt__cell illustrated-edt__cell--empty';
+        tr.appendChild(td);
       });
-      else article.appendChild(make('p','','Journée non renseignée.'));
-      daysRoot.appendChild(article);
-    });
+      body.appendChild(tr);
+    }
+    table.appendChild(body);daysRoot.appendChild(table);
   }
   function fillWeeks(index){
     var data=available(),weeks=data[periodSelect.value]||[];
