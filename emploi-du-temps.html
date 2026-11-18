@@ -298,6 +298,17 @@
  width:250px!important;height:125px!important;object-fit:contain!important;
 }
 </style>
+<style id="illustrated-missing-image-labels">
+#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__fallback--visible{
+  box-sizing:border-box!important;display:flex!important;align-items:center!important;
+  justify-content:center!important;width:250px!important;max-width:96%!important;
+  min-height:125px!important;padding:12px!important;margin:0 auto!important;
+  background:rgba(255,255,255,.68)!important;border:2px solid currentColor!important;
+  border-radius:12px!important;color:#173954!important;font-size:22px!important;
+  font-weight:850!important;line-height:1.2!important;text-align:center!important;
+  overflow-wrap:anywhere!important;
+}
+</style>
 </head>
 <body>
 <div class="site-shell">
@@ -645,9 +656,14 @@
       if(nouvelleImage)slot.classList.add('illustrated-edt__slot--nouvelle');
       image.src=(nouvelleImage?'images/edt-nouveau/':'images/edt-etiquettes/')+imageName+'.webp';
       image.alt=title(row);image.loading='lazy';
-      image.onerror=function(){image.replaceWith(make('span','illustrated-edt__fallback',title(row)));};
+      image.onerror=function(){
+        var label=clean(row[1])||title(row)||'Activité';
+        var fallback=make('div','illustrated-edt__fallback illustrated-edt__fallback--visible',label);
+        fallback.setAttribute('role','text');
+        image.replaceWith(fallback);
+      };
       visual.appendChild(image);
-    }else visual.appendChild(make('span','illustrated-edt__fallback',title(row)));
+    }else visual.appendChild(make('div','illustrated-edt__fallback illustrated-edt__fallback--visible',clean(row[1])||title(row)||'Activité'));
     slot.appendChild(visual);return slot;
   }
   function render(){
