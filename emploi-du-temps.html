@@ -220,6 +220,13 @@
 #illustratedTimetable .illustrated-edt__filters{margin:16px 0 25px;padding:12px 8px;border-top:1px solid #d2e1ed;}
 @media print{#illustratedTimetable .illustrated-edt__week-table{min-width:0}#illustratedTimetable .illustrated-edt__week-table thead th:first-child,#illustratedTimetable .illustrated-edt__week-table tbody th.illustrated-edt__time{width:72px;min-width:72px;font-size:10px}#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__activity img{max-height:70px}}
 </style>
+<style id="illustrated-break-colors">
+#illustratedTimetable .illustrated-edt__week-table td.illustrated-edt__pause-recreation{background:#d6f1d8!important;color:#21643a!important;}
+#illustratedTimetable .illustrated-edt__week-table td.illustrated-edt__pause-midi{background:#dcebfA!important;color:#20558a!important;}
+#illustratedTimetable .illustrated-edt__pause-label{display:flex;align-items:center;justify-content:center;min-height:48px;font-weight:850;font-size:17px;text-align:center;padding:6px;}
+#illustratedTimetable .illustrated-edt__pause-recreation .illustrated-edt__pause-label:before{content:'☀';margin-right:8px;}
+#illustratedTimetable .illustrated-edt__pause-midi .illustrated-edt__pause-label:before{content:'⌂';margin-right:8px;}
+</style>
 </head>
 <body>
 <div class="site-shell">
@@ -609,6 +616,24 @@
         if(previous&&previous.end===a&&previous.image===chosen.image){previous.end=b;}
         else parts.push({row:chosen.row,start:a,end:b,image:chosen.image});
       }
+      // Pauses explicites : jeudi décalé à 16h–16h15.
+      // Le découpage s'effectue par journée, sans fusion horizontale.
+      var pauses=dayIndex===2
+        ? [{start:960,end:975,type:'recreation'}]
+        : [{start:645,end:660,type:'recreation'}];
+      pauses.push({start:720,end:840,type:'midi'});
+      pauses.forEach(function(pause){
+        var next=[];
+        parts.forEach(function(part){
+          if(part.end<=pause.start||part.start>=pause.end){next.push(part);return;}
+          if(part.start<pause.start)next.push(Object.assign({},part,{end:pause.start}));
+          if(part.end>pause.end)next.push(Object.assign({},part,{start:pause.end}));
+        });
+        next.push({start:pause.start,end:pause.end,image:null,pauseType:pause.type,
+          row:[clockLabel(pause.start)+' – '+clockLabel(pause.end),
+            pause.type==='recreation'?'Récréation':'Maison ou cantine','','','break']});
+        parts=next.sort(function(a,b){return a.start-b.start;});
+      });
       return parts;
     });
     var boundaries=[].concat.apply([],schedules.map(function(entries){return [].concat.apply([],entries.map(function(e){return [e.start,e.end];}));}));
@@ -634,7 +659,12 @@
           td.rowSpan=last-k;
           covered[j]=last-1;
           td.className='illustrated-edt__cell illustrated-edt__cell--'+kind(item.row);
-          td.appendChild(makeActivity(item.row));
+          if(item.pauseType){
+            td.classList.add('illustrated-edt__pause-'+item.pauseType);
+            var pauseLabel=make('div','illustrated-edt__pause-label',
+              item.pauseType==='recreation'?'Récréation':'Maison ou cantine');
+            td.appendChild(pauseLabel);
+          }else td.appendChild(makeActivity(item.row));
         }else{
           td.className='illustrated-edt__cell illustrated-edt__cell--empty';
         }
