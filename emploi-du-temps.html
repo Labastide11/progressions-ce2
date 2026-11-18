@@ -277,6 +277,27 @@
   min-height:0!important;
 }
 </style>
+<style id="illustrated-fixed-grid-heights">
+/* Une grille horaire commune : pas de hauteur calculée séparément par colonne. */
+#illustratedTimetable .illustrated-edt__week-table{table-layout:fixed!important;border-collapse:collapse!important;border-spacing:0!important;}
+#illustratedTimetable .illustrated-edt__week-table tbody tr{height:140px;}
+#illustratedTimetable .illustrated-edt__week-table tbody tr.illustrated-edt__time-row--pause{height:52px;}
+#illustratedTimetable .illustrated-edt__week-table tbody th.illustrated-edt__time{
+ box-sizing:border-box!important;padding:0 4px!important;vertical-align:middle!important;
+}
+#illustratedTimetable .illustrated-edt__week-table tbody td.illustrated-edt__cell{
+ box-sizing:border-box!important;vertical-align:top!important;overflow:hidden!important;
+}
+#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__slot{
+ box-sizing:border-box!important;padding:4px 3px!important;min-height:0!important;
+}
+#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__activity img{
+ width:250px!important;height:125px!important;max-height:125px!important;object-fit:contain!important;
+}
+#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__workshop img{
+ width:250px!important;height:125px!important;object-fit:contain!important;
+}
+</style>
 </head>
 <body>
 <div class="site-shell">
@@ -706,7 +727,15 @@
     for(var k=0;k<boundaries.length-1;k++){
       var start=boundaries[k],end=boundaries[k+1];
       var tr=document.createElement('tr');
+      // Une hauteur FIXE par tranche horaire commune aux quatre jours.
+      // Les rowspan s'étendent sur la somme de ces hauteurs sans décaler la grille.
+      var isBreak=(start===645&&end===660)||(start===960&&end===975);
+      var isLunch=start===720&&end===840;
+      var rowHeight=isBreak||isLunch?52:140;
+      tr.style.height=rowHeight+'px';
+      tr.className='illustrated-edt__time-row'+(isBreak||isLunch?' illustrated-edt__time-row--pause':'');
       var timeCell=make('th','illustrated-edt__time',clockLabel(start)+' – '+clockLabel(end));
+      timeCell.style.height=rowHeight+'px';
       timeCell.scope='row';tr.appendChild(timeCell);
       schedules.forEach(function(entries,j){
         if(covered[j]>=k)return;
