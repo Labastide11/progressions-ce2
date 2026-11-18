@@ -654,6 +654,16 @@
             pause.type==='recreation'?'Récréation':'Maison ou cantine','','','break']});
         parts=next.sort(function(a,b){return a.start-b.start;});
       });
+      // Combler uniquement les petits interstices VISUELS entre deux cartes.
+      // Les horaires sources restent inchangés ; les pauses sont des limites strictes.
+      parts.sort(function(a,b){return a.start-b.start;});
+      parts.forEach(function(part,index){
+        part.visualEnd=part.end;
+        var next=parts[index+1];
+        if(!next||part.pauseType||next.pauseType)return;
+        var gap=next.start-part.end;
+        if(gap>0&&gap<=45){part.visualEnd=next.start;}
+      });
       return parts;
     });
     var boundaries=[].concat.apply([],schedules.map(function(entries){return [].concat.apply([],entries.map(function(e){return [e.start,e.end];}));}));
@@ -671,11 +681,11 @@
       timeCell.scope='row';tr.appendChild(timeCell);
       schedules.forEach(function(entries,j){
         if(covered[j]>=k)return;
-        var item=entries.find(function(e){return e.start<=start&&e.end>=end;});
+        var item=entries.find(function(e){return e.start<=start&&(e.visualEnd||e.end)>=end;});
         var td=document.createElement('td');
         if(item){
           var last=k+1;
-          while(last<boundaries.length-1&&boundaries[last]<item.end)last++;
+          while(last<boundaries.length-1&&boundaries[last]<(item.visualEnd||item.end))last++;
           td.rowSpan=last-k;
           covered[j]=last-1;
           td.className='illustrated-edt__cell illustrated-edt__cell--'+kind(item.row);
