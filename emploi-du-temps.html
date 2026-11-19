@@ -769,11 +769,18 @@
       var pool=dayIndex===3&&entries.some(function(e){
         return e.start>=930&&e.start<1020&&/piscine|vestiaires|départ pour la piscine/i.test(clean(e.row[1]));
       });
-      var slots=dayIndex===2?[[840,855],[855,900],[900,960],[975,1020]]:
+      var slots=dayIndex===2?(periodSelect.value==='p2'?[[840,855],[855,900],[900,960],[975,990],[990,1020]]:[[840,855],[855,900],[900,960],[975,1020]]):
         pool?[[840,855],[855,900],[900,930],[930,1020]]:
         [[840,855],[855,900],[900,945],[960,1020]];
       function slotFor(a,b){
         if(pool&&a===930)return {start:a,end:b,image:'piscine',row:[clockLabel(a)+' – '+clockLabel(b),'EPS — Piscine','','','eps']};
+        // Mardi P2 : le parcours CHAM est parallèle, et non une seconde
+        // illustration accolée au chant ou aux arts visuels de la classe.
+        if(dayIndex===1&&periodSelect.value==='p2'&&((a===855&&b===900)||(a===900&&b===945))){
+          var target=a===855?'Chants / Musique':'Arts visuels';
+          var exact=entries.find(function(e){return e.start===a&&e.end===b&&clean(e.row[1])===target;});
+          if(exact)return {start:a,end:b,row:exact.row,image:a===855?'chant':'arts-visuels'};
+        }
         var candidates=entries.filter(function(e){
           return e.end>a&&e.start<b&&!/récréation|pause méridienne/i.test(clean(e.row[1]));
         });
