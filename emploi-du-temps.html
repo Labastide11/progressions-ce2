@@ -727,11 +727,15 @@
         if(previous&&previous.end===a&&previous.row===chosen.row){previous.end=b;}
         else parts.push({row:chosen.row,start:a,end:b,image:chosen.image});
       }
-      // Vendredi : un même créneau associe problèmes et numération.
+      // Vendredi : deux activités successives, chacune avec une seule image.
+      // 11 h–11 h 15 : Problèmes ; 11 h 15–12 h : Numération.
+      // Ne jamais répéter le duo d'illustrations dans les deux cases.
       if(dayIndex===3){
         parts.forEach(function(part){
-          if(part.start>=660&&part.start<720&&/probl[eè]mes?/i.test(String(part.row[1]||''))){
-            part.image='problemes-numeration';
+          if(part.start>=660&&part.start<675){
+            part.image='problemes';
+          }else if(part.start>=675&&part.start<720){
+            part.image='numeration';
           }
         });
       }
