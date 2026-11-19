@@ -607,6 +607,8 @@
     if(/cantine|repas|pause méridienne/.test(text))return null;
     if(/piscine|natation|aquatique/.test(text))return 'piscine';
     if(/course longue|endurance/.test(text))return 'course-longue';
+    if(/écrits? courts?|ecrits? courts?|écriture courte|ecriture courte|production d.écrits courts/.test(subject))return 'ecrits-courts';
+    if(/grandeurs? et mesures?|mesures? de (longueur|masse|contenance|durée)|unités? de mesure/.test(subject))return 'grandeurs-mesures';
     if(/d\.?r\.?a\.?s\.?|j.améliore mon écrit|amélioration de l.écrit|améliorer mon écrit/.test(text))return 'dras';
     if(/devinette|énigme|rituel devinette/.test(text))return 'devinettes';
     if(/je raconte|raconter à l.oral|expression orale|récit oral|quoi de neuf|un jour une actu/.test(text))return 'je-raconte';
@@ -654,7 +656,7 @@
       visual.appendChild(atelierBox);
     }else if(imageName){
       var image=document.createElement('img');
-      var nouvelleImage=['dictee','copie','lecture-plaisir','calcul-mental','calcul-pose','mathematiques','arts-visuels','emc','piscine','recreation','j-ecris','devinettes','je-raconte','dras','lecture-comprehension','chant','francais','course-longue','decouverte-monde'].includes(imageName);
+      var nouvelleImage=['dictee','copie','lecture-plaisir','calcul-mental','calcul-pose','mathematiques','arts-visuels','emc','piscine','recreation','j-ecris','devinettes','je-raconte','dras','lecture-comprehension','chant','francais','course-longue','decouverte-monde','ecrits-courts','grandeurs-mesures'].includes(imageName);
       if(nouvelleImage)slot.classList.add('illustrated-edt__slot--nouvelle');
       image.src=(nouvelleImage?'images/edt-nouveau/':'images/edt-etiquettes/')+imageName+'.webp';
       image.alt=title(row);image.loading='lazy';
