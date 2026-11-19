@@ -152,6 +152,8 @@
 @media(max-width:1100px){.illustrated-edt__days{display:block}.illustrated-edt__week-table{min-width:850px}}
 @media(max-width:620px){.illustrated-edt__days{display:block}.illustrated-edt__week-table{min-width:850px}}
 @media print{.illustrated-edt__days{overflow:visible}.illustrated-edt__week-table{min-width:0;border-spacing:1px}.illustrated-edt__week-table thead th{font-size:12px}.illustrated-edt__week-table thead th:first-child,.illustrated-edt__week-table tbody th.illustrated-edt__time{width:74px;font-size:10px}.illustrated-edt__week-table .illustrated-edt__slot--nouvelle .illustrated-edt__activity img{height:60px}}
+  .illustrated-edt__dual-images{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:100%}
+  .illustrated-edt__dual-images img{width:calc(50% - 4px);max-width:250px;height:auto;max-height:132px;object-fit:contain}
 </style>
 
 <style id="edt-hide-duplicate-day-date-v3703">
@@ -603,7 +605,8 @@
     var subject=clean(row[1]).toLowerCase(),description=clean(row[2]).toLowerCase();
     var text=subject+' '+description.slice(0,170);
     var category=String(row[4]||'').toLowerCase();
-    if(/récréation/.test(text))return 'recreation';
+    // Une mention de récréation dans la description ne transforme pas un problème en pause.
+    if(/récréation/.test(subject))return 'recreation';
     if(/cantine|repas|pause méridienne/.test(text))return null;
     if(/piscine|natation|aquatique/.test(text))return 'piscine';
     if(/course longue|endurance/.test(text))return 'course-longue';
@@ -620,6 +623,8 @@
     if(/lecture|compréhension|fluence|récit/.test(text))return 'lecture-comprehension';
     if(/calcul mental|doubles|moitiés/.test(text))return 'calcul-mental';
     if(/calcul posé|addition posée|soustraction posée/.test(text))return 'calcul-pose';
+    if(/numération|numeration|valeur des chiffres|décomposition des nombres/.test(subject))return 'numeration';
+    if(/problème/.test(subject))return 'problemes';
     if(/problème/.test(text))return 'problemes';
     if(/géométr|polygone|figure géométrique/.test(text))return 'geometrie';
     if(/anglais/.test(text)||category==='english')return 'anglais';
@@ -661,7 +666,16 @@
   function makeActivity(row,forcedImage){
     var slot=make('div','illustrated-edt__slot illustrated-edt__slot--'+kind(row));
     var imageName=forcedImage||imageForRow(row),visual=make('div','illustrated-edt__activity');
-    if(imageName==='ateliers-mardi'){
+    if(imageName==='problemes-numeration'){
+      // Vendredi : les deux disciplines sont représentées, sans texte ajouté.
+      var pair=make('div','illustrated-edt__dual-images');
+      [['problemes','images/edt-etiquettes/problemes.webp'],['numeration','images/edt-nouveau/numeration.webp']].forEach(function(entry){
+        var img=document.createElement('img');img.src=entry[1];img.alt=entry[0]==='problemes'?'Problèmes':'Numération';img.loading='lazy';
+        img.onerror=function(){img.replaceWith(make('span','illustrated-edt__fallback',img.alt));};
+        pair.appendChild(img);
+      });
+      visual.appendChild(pair);
+    }else if(imageName==='ateliers-mardi'){
       var atelierBox=make('div','illustrated-edt__workshops');
       [['Informatique','images/edt-etiquettes/atelier-informatique.png'],['Lexique','images/edt-etiquettes/atelier-lexique.png']].forEach(function(pair){
         var item=make('div','illustrated-edt__workshop');
@@ -672,7 +686,7 @@
       visual.appendChild(atelierBox);
     }else if(imageName){
       var image=document.createElement('img');
-      var nouvelleImage=['dictee','copie','lecture-plaisir','calcul-mental','calcul-pose','mathematiques','arts-visuels','emc','piscine','recreation','j-ecris','devinettes','je-raconte','dras','lecture-comprehension','chant','francais','course-longue','decouverte-monde','ecrits-courts','grandeurs-mesures'].includes(imageName);
+      var nouvelleImage=['dictee','copie','lecture-plaisir','calcul-mental','calcul-pose','mathematiques','arts-visuels','emc','piscine','recreation','j-ecris','devinettes','je-raconte','dras','lecture-comprehension','chant','francais','course-longue','decouverte-monde','ecrits-courts','grandeurs-mesures','numeration'].includes(imageName);
       if(nouvelleImage)slot.classList.add('illustrated-edt__slot--nouvelle');
       image.src=(nouvelleImage?'images/edt-nouveau/':'images/edt-etiquettes/')+imageName+'.webp';
       image.alt=title(row);image.loading='lazy';
@@ -712,6 +726,14 @@
         var chosen=candidates[0],previous=parts[parts.length-1];
         if(previous&&previous.end===a&&previous.row===chosen.row){previous.end=b;}
         else parts.push({row:chosen.row,start:a,end:b,image:chosen.image});
+      }
+      // Vendredi : un même créneau associe problèmes et numération.
+      if(dayIndex===3){
+        parts.forEach(function(part){
+          if(part.start>=660&&part.start<720&&/probl[eè]mes?/i.test(String(part.row[1]||''))){
+            part.image='problemes-numeration';
+          }
+        });
       }
       // Quatre cases visibles le matin, dans l'ordre validé.
       // Les activités à partir de 10 h 45 restent issues de la programmation détaillée.
