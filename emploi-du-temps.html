@@ -743,10 +743,12 @@
       // Les activités à partir de 10 h 45 restent issues de la programmation détaillée.
       parts=parts.filter(function(p){return p.end<=540||p.start>=645;});
       parts=parts.concat(morningIllustrated(dayIndex));
-      // Pauses explicites : jeudi décalé à 16h–16h15.
+      // Pauses explicites : 15h45–16h lundi, mardi et vendredi ; 16h–16h15 jeudi.
       // Le découpage s'effectue par journée, sans fusion horizontale.
       var pauses=[{start:645,end:660,type:'recreation'}];
-      if(dayIndex===2)pauses.push({start:960,end:975,type:'recreation'});
+      pauses.push(dayIndex===2
+        ? {start:960,end:975,type:'recreation'}
+        : {start:945,end:960,type:'recreation'});
       pauses.push({start:720,end:840,type:'midi'});
       pauses.forEach(function(pause){
         var next=[];
@@ -785,7 +787,7 @@
       var tr=document.createElement('tr');
       // Une hauteur FIXE par tranche horaire commune aux quatre jours.
       // Les rowspan s'étendent sur la somme de ces hauteurs sans décaler la grille.
-      var isBreak=(start===645&&end===660)||(start===960&&end===975);
+      var isBreak=(start===645&&end===660)||(start===945&&end===960)||(start===960&&end===975);
       var isLunch=start===720&&end===840;
       var rowHeight=isBreak||isLunch?52:140;
       tr.style.height=rowHeight+'px';
