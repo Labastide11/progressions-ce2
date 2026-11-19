@@ -189,6 +189,7 @@
 .illustrated-edt__slot--nouvelle{min-height:112px}
 .illustrated-edt__slot--nouvelle .illustrated-edt__activity img{height:106px;max-width:100%;object-fit:contain}
 
+.illustrated-edt__activity-caption{font-size:15px;font-weight:850;color:#183754;line-height:1.2;text-align:center;padding:2px 6px 6px;overflow-wrap:anywhere;}
 .illustrated-edt__fallback{font-size:12px;font-weight:800;text-align:center;color:#244b65}
 .illustrated-edt__slot time{align-self:center}
 .illustrated-edt__slot--french{background:#ffe8ed;border-left:5px solid #e95a79}
@@ -392,7 +393,7 @@
 <script src="parcours-outil.js?v=35.39"></script>
 
 <script src="emploi-du-temps-data-p1.js?v=37.24"></script>
-<script src="emploi-du-temps-data-p2.js?v=37.24"></script>
+<script src="emploi-du-temps-data-p2.js?v=37.26"></script>
 <script src="cycle-endurance-p2.js?v=1.1"></script>
 <script src="emploi-du-temps-data-p3.js?v=37.24"></script>
 <script src="emploi-du-temps-data-p4.js?v=37.24"></script>
@@ -665,7 +666,12 @@
       };
       visual.appendChild(image);
     }else visual.appendChild(make('div','illustrated-edt__fallback illustrated-edt__fallback--visible',title(row)||clean(row[1])||'Activité'));
-    slot.appendChild(visual);return slot;
+    slot.appendChild(visual);
+    if(!/^récréation$/i.test(clean(row[1]))){
+      var caption=make('div','illustrated-edt__activity-caption',title(row)||clean(row[1])||'Activité');
+      slot.appendChild(caption);
+    }
+    return slot;
   }
   function render(){
     var data=available(),weeks=data[periodSelect.value]||[],week=weeks[Number(weekSelect.value)]||weeks[0];
