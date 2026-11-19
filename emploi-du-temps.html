@@ -769,7 +769,7 @@
       var pool=dayIndex===3&&entries.some(function(e){
         return e.start>=930&&e.start<1020&&/piscine|vestiaires|départ pour la piscine/i.test(clean(e.row[1]));
       });
-      var slots=dayIndex===2?(periodSelect.value==='p2'?[[840,855],[855,900],[900,960],[975,990],[990,1020]]:[[840,855],[855,900],[900,960],[975,1020]]):
+      var slots=dayIndex===2?[[840,855],[855,900],[900,960],[975,1020]]:
         pool?[[840,855],[855,900],[900,930],[930,1020]]:
         [[840,855],[855,900],[900,945],[960,1020]];
       function slotFor(a,b){
