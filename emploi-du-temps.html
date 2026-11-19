@@ -608,7 +608,8 @@
     if(/course longue|endurance/.test(text))return 'course-longue';
     if(/d\.?r\.?a\.?s\.?|j.améliore mon écrit|amélioration de l.écrit|améliorer mon écrit/.test(text))return 'dras';
     if(/devinette|énigme|rituel devinette/.test(text))return 'devinettes';
-    if(/je raconte|raconter à l.oral|expression orale|récit oral/.test(text))return 'je-raconte';
+    if(/je raconte|raconter à l.oral|expression orale|récit oral|quoi de neuf|un jour une actu/.test(text))return 'je-raconte';
+    if(/ateliers informatique et lexique/.test(text))return 'ateliers-mardi';
     if(/j.écris|production d.écrits|production écrite|rédaction|écriture d.un récit/.test(text))return 'j-ecris';
     if(/dictée/.test(text))return 'dictee';
     if(/copie|recopi/.test(text))return 'copie';
@@ -657,13 +658,13 @@
       image.src=(nouvelleImage?'images/edt-nouveau/':'images/edt-etiquettes/')+imageName+'.webp';
       image.alt=title(row);image.loading='lazy';
       image.onerror=function(){
-        var label=clean(row[1])||title(row)||'Activité';
+        var label=title(row)||clean(row[1])||'Activité';
         var fallback=make('div','illustrated-edt__fallback illustrated-edt__fallback--visible',label);
         fallback.setAttribute('role','text');
         image.replaceWith(fallback);
       };
       visual.appendChild(image);
-    }else visual.appendChild(make('div','illustrated-edt__fallback illustrated-edt__fallback--visible',clean(row[1])||title(row)||'Activité'));
+    }else visual.appendChild(make('div','illustrated-edt__fallback illustrated-edt__fallback--visible',title(row)||clean(row[1])||'Activité'));
     slot.appendChild(visual);return slot;
   }
   function render(){
@@ -677,21 +678,9 @@
       var entries=day&&Array.isArray(day[1])?day[1].filter(Array.isArray).map(function(row){
         var t=clockMinutes(row[0]);return {row:row,start:t[0],end:t[1],image:imageForRow(row)};
       }).filter(function(x){return Number.isFinite(x.start)&&Number.isFinite(x.end)&&x.end>x.start;}):[];
-      // Le premier créneau du lundi est consacré à « Je raconte ».
-      if(dayIndex===0&&entries.length){
-        var first=entries.find(function(e){return e.start===9*60;});
-        if(first){first.row=first.row.slice();first.row[1]='Je raconte';first.row[2]='Expression orale : je raconte';first.image='je-raconte';}
-      }
-      // Mardi : comme dans l'emploi du temps simplifié, les ateliers remplacent
-      // toute séance de 16h à 17h (y compris les plages génériques englobantes).
-      if(dayIndex===1){
-        entries=entries.filter(function(e){return e.end<=960||e.start>=1020;}).concat(
-          entries.filter(function(e){return e.start<960&&e.end>960;}).map(function(e){return Object.assign({},e,{end:960});}),
-          entries.filter(function(e){return e.start<1020&&e.end>1020;}).map(function(e){return Object.assign({},e,{start:1020});})
-        );
-        var workshopRow=['16h – 17h','Ateliers Informatique et Lexique','Groupes alternés A/B','', 'french'];
-        entries.push({row:workshopRow,start:960,end:1020,image:'ateliers-mardi'});
-      }
+      // Aucune séance n'est inventée ou renommée : la programmation détaillée fait foi.
+      // Les ateliers du mardi sont des données de P2 uniquement ; la CHAM parallèle
+      // est conservée dans les données et ne doit pas être effacée.
       var cuts=Array.from(new Set([].concat.apply([],entries.map(function(e){return [e.start,e.end];})))).sort(function(a,b){return a-b;});
       var parts=[];
       for(var i=0;i<cuts.length-1;i++){
@@ -700,7 +689,7 @@
         // Priorité au créneau précis plutôt qu'au créneau générique englobant.
         candidates.sort(function(x,y){return (x.end-x.start)-(y.end-y.start);});
         var chosen=candidates[0],previous=parts[parts.length-1];
-        if(previous&&previous.end===a&&previous.image===chosen.image){previous.end=b;}
+        if(previous&&previous.end===a&&previous.row===chosen.row){previous.end=b;}
         else parts.push({row:chosen.row,start:a,end:b,image:chosen.image});
       }
       // Pauses explicites : jeudi décalé à 16h–16h15.
@@ -728,7 +717,7 @@
         var next=parts[index+1];
         if(!next||part.pauseType||next.pauseType)return;
         var gap=next.start-part.end;
-        if(gap>0&&gap<=45){part.visualEnd=next.start;}
+        if(gap>0&&gap<=45){part.visualEnd=part.end;}
       });
       return parts;
     });

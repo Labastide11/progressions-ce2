@@ -53,7 +53,7 @@
   const periods = {
     rentree:{title:'Rentrée — Semaines 1 et 2 (sans CHAM)',note:'Emploi du temps de secours pour les deux premières semaines, tant que la date de démarrage de la CHAM n’est pas confirmée. Toute la classe reste réunie le mardi et le jeudi.',hours:['9 h 10','4 h 35','1 h','2 h 30','2 h 30','1 h','1 h 15'],minutes:[550,275,60,150,150,60,75],days:{},mode:'rentree'},
     p1:{title:'Période 1 — Grille refondue',note:'Fondamentaux regroupés le matin ; autres disciplines l’après-midi. Le mardi, 30 min de chants / expression corporelle suivent le quart d’heure de lecture. EPS : 45 min le lundi et 60 min maximum le vendredi.',hours:['8 h','4 h','50 min','1 h 45','3 h','45 min','3 h 40'],minutes:[480,240,50,105,180,45,220],days:{}},
-    p2:{title:'Période 2 — Endurance',note:'Cycle endurance le lundi pendant 45 minutes. Le vendredi suit la journée ordinaire, sans sortie piscine.',hours:['9 h 10','4 h 35','1 h 15','3 h','1 h 45','1 h','1 h 15'],minutes:[550,275,75,180,105,60,75],days:{}},
+    p2:{title:'Période 2 — Endurance',note:'Cycle endurance le lundi pendant 45 minutes. Piscine chaque vendredi de 15 h 30 à 17 h (trajets et vestiaires compris). Ateliers Informatique et Lexique le mardi de 16 h à 17 h, uniquement en P2.',hours:['9 h 10','4 h 35','1 h 15','3 h','1 h 45','1 h','1 h 15'],minutes:[550,275,75,180,105,60,75],days:{}},
     p3:{title:'Période 3 — Cavayère le lundi matin',note:'Lundi matin : course d’orientation et sandball. Les apprentissages fondamentaux manqués sont redistribués uniquement sur des temps de classe entière.',hours:['9 h 10','4 h 35','1 h 15','3 h 30','1 h 30','45 min','1 h 15'],minutes:[550,275,75,210,90,45,75],days:{lundi:'cavayere'}},
     p4:{title:'Période 4 — Domec le lundi après-midi',note:'Lundi après-midi : gymnastique et lutte. Les matinées fondamentales sont inchangées.',hours:['9 h 10','4 h 35','1 h 15','3 h 15','1 h 30','45 min','1 h 30'],minutes:[550,275,75,195,90,45,90],days:{lundi:'domec'}},
     p5:{title:'Période 5 — Rééquilibrage annuel',note:'Période longue consacrée au rééquilibrage des arts, sciences, histoire-géographie et EMC, sans réduire français ni mathématiques.',hours:['9 h 10','4 h 35','1 h 30','2 h 08','2 h 07','1 h 19','1 h 11'],minutes:[550,275,90,128,127,79,71],days:{}}
@@ -1860,7 +1860,7 @@
   applyAnnualFrenchRitual('p4',p4DetailedWeeks);
   applyAnnualFrenchRitual('p5',p5DetailedWeeks);
 
-  // Règle définitive : le simplifié est la source du contenu de séance.
+  // Règle définitive : les semaines détaillées sont la source des trois présentations.
   // Restaurer les champs métier après les anciennes fonctions de programmation
   // qui écrasaient le calcul mental, la numération, le français ou l'anglais.
   // Les métadonnées ajoutées à partir de l'indice 6 (liens/fiches) sont conservées.
@@ -1876,7 +1876,7 @@
           if (!referenceDay) return;
           const referenceRows = referenceDay[1];
           rows.forEach((row,index) => {
-            const original = referenceRows[index];
+            const original = referenceRows.find(candidate => Array.isArray(candidate) && candidate[0] === row[0] && candidate[1] === row[1]);
             if (!Array.isArray(row) || !Array.isArray(original)) return;
             // 0 = horaire, 1 = matière, 2 = activité, 3 = objectif,
             // 4 = famille visuelle, 5 = modalités.

@@ -220,7 +220,7 @@ function kindFor(row){var k=String(row[4]||'').toLowerCase(),s=norm(row[1]);if(/
 function picto(s,k){s=norm(s);if(k==='break')return '🛝';if(/lecture|fluence/.test(s))return '📖';if(/dictée|orthographe/.test(s))return '✍️';if(/production d.?écrits|écrivain|copie/.test(s))return '🖊️';if(/calcul mental/.test(s))return '🧠';if(/géométr/.test(s))return '📐';if(/numération|nombre/.test(s))return '🔢';if(/problème/.test(s))return '🧩';if(/anglais/.test(s))return '🇬🇧';if(/eps|sport|endurance/.test(s))return '🏃';if(/musique|chant|chorale/.test(s))return '🎵';if(/arts/.test(s))return '🎨';if(/sciences/.test(s))return '🔬';if(/géographie/.test(s))return '🌍';if(/histoire/.test(s))return '⏳';if(/emc|vie de classe/.test(s))return '🤝';if(k==='maths')return '➗';if(k==='french')return '📘';return '📌';}
 function subjectName(s,k){s=String(s||'');if(k==='break')return /récréation/i.test(s)?'Récréation':'Pause';if(/anglais/i.test(s))return 'Anglais';if(/mathématiques|calcul mental/i.test(s))return 'Mathématiques';if(/sciences/i.test(s))return 'Sciences';if(/histoire/i.test(s))return 'Histoire';if(/géographie/i.test(s))return 'Géographie';if(/EPS|course longue|endurance|sport/i.test(s))return 'EPS';if(/CHAM|arts|musique|chant/i.test(s))return 'Arts et musique';if(/EMC/i.test(s)&&!/français/i.test(s))return 'EMC';if(/français|lecture|dictée|orthographe|production d’écrits|quart d’heure/i.test(s))return 'Français';return s.split(/[—–]/)[0].trim()||'Notre activité';}
 // On ne copie JAMAIS row[2] dans le HTML : il contient les instructions du maître.
-function subjectTopic(row){var s=String(row[1]||''),body=plain(row[2]),m=s.match(/[—–]\s*(.*)$/);if(/dictée flash\s*3/i.test(s))return 'Dictée flash 3 et phrase du jour';if(/dictée bilan/i.test(s))return 'Dictée bilan';if(/dictée flash\s*2/i.test(s))return 'Dictée flash 2';if(/dictée|orthographe/i.test(s))return 'Les mots et la dictée';if(/quart d.?heure de lecture/i.test(s))return 'Lecture plaisir';if(/CHAM/i.test(s))return 'Chorale et ateliers';if(/retour au calme/i.test(s))return 'Retour au calme';if(m&&m[1].trim())return short(m[1].trim(),65);if(/^(?:Français|Mathématiques|Sciences|Histoire|Anglais|EMC)$/i.test(s.trim())&&body&&!/<[a-z]/i.test(String(row[2]||''))){return short(body.split(/[.:;]/)[0],68);}if(/Français\s*\/\s*EMI/i.test(s))return 'Je cherche des informations';if(/Arts plastiques/i.test(s))return 'Création artistique';return short(s,60);}
+function subjectTopic(row){var s=String(row[1]||''),body=plain(row[2]),m=s.match(/[—–]\s*(.*)$/);if(/dictée flash\s*3/i.test(s))return 'Dictée flash 3 et phrase du jour';if(/dictée bilan/i.test(s))return 'Dictée bilan';if(/dictée flash\s*2/i.test(s))return 'Dictée flash 2';if(/dictée|orthographe/i.test(s))return 'Les mots et la dictée';if(/quart d.?heure de lecture/i.test(s))return 'Lecture plaisir';if(/un jour une actu|je raconte/i.test(s+' '+body))return 'Je raconte';if(/CHAM/i.test(s))return 'CHAM';if(/retour au calme/i.test(s))return 'Retour au calme';if(m&&m[1].trim())return short(m[1].trim(),65);if(/^(?:Français|Mathématiques|Sciences|Histoire|Anglais|EMC)$/i.test(s.trim())&&body&&!/<[a-z]/i.test(String(row[2]||''))){return short(body.split(/[.:;]/)[0],68);}if(/Français\s*\/\s*EMI/i.test(s))return 'Je cherche des informations';if(/Arts plastiques/i.test(s))return 'Création artistique';return short(s,60);}
 function skill(row){var t=String(row[3]||'');if(t.indexOf('·')>=0)t=t.split('·').slice(1).join('·');else t='';t=t.replace(/^[\s–—:;]+/,'').replace(/[.;]+$/,'').trim();if(/^[A-Z]{2,6}-P\d|compétences déjà enseignées|^réinvestissement$/i.test(t))return '';return t;}
 function fromTeacherObjective(row){var container=document.createElement('div');container.innerHTML=String(row[2]||'');var els=Array.from(container.querySelectorAll('div,p,li'));for(var i=0;i<els.length;i++){var el=els[i],val=(el.textContent||'').replace(/\s+/g,' ').trim();if(el.children.length>3||val.length>240)continue;var m=val.match(/Compétence (?:travaillée|du jour)\s*:\s*(.*)/i);if(m){var x=m[1].replace(/^Aujourd'hui,?\s*nous allons apprendre à\s*/i,'').replace(/^Aujourd’hui,?\s*nous allons apprendre à\s*/i,'').replace(/^Aujourd'hui,?\s*nous allons\s*/i,'').replace(/^Aujourd’hui,?\s*nous allons\s*/i,'');return x.replace(/[.;]+$/,'').trim();}}return '';}
 function naturalObjective(source){var x=String(source||'').trim().replace(/\s+/g,' ').replace(/[.!]+$/,'');if(!x)return '';if(/^(Aujourd|Tu |Nous |Je )/i.test(x))return short(x,145).replace(/^(Aujourd'hui,?\s*nous allons|Aujourd’hui,?\s*nous allons)/i,'Aujourd’hui, tu vas');if(/^(Reconnaître|Comprendre|Identifier|Calculer|Multiplier|Placer|Ranger|Comparer|Lire|Écrire|Repérer|Observer|Décrire|Réutiliser|Mémoriser|Associer|Formuler|Produire|Transformer|Accorder|Utiliser|Demander|Dire|Maintenir|Expliquer|Résoudre|Présenter|Reformuler|Découvrir|Courir|Gérer|Respecter|Coopérer|Travailler|Consolider|Réinvestir|Améliorer|Trouver|Écouter|Distinguer|Ordonner|Classer|Inventer|Savoir|Choisir|Raconter|Construire|Décomposer|Effectuer|Faire|S'exprimer)/i.test(x)){return 'Tu vas apprendre à '+short(x.charAt(0).toLowerCase()+x.slice(1),127)+'.';}return '';}
@@ -498,12 +498,18 @@ function workshopWeek(date){
   var n=Math.round((utc-TUESDAY_REF_UTC)/(7*86400000));
   return (Math.abs(n)%2===0)!==workshopInversion()?'A':'B';
 }
+function isP2WorkshopDay(date){
+  var day=days.find(function(d){return isoDate(d.date)===isoDate(date);});
+  return !!(day && day.rows.some(function(row){
+    return /ateliers informatique et lexique/i.test(String(row[1]||''));
+  }));
+}
 function tuesdayWorkshopCard(date){
   var current=workshopWeek(date);
   var article=document.createElement('article');
   article.className='tuesday-workshops';
   var top=document.createElement('div');top.className='tuesday-workshops__top';
-  var title=document.createElement('h2');title.textContent='16h–17h · Ateliers en deux groupes';
+  var title=document.createElement('h2');title.textContent='Ateliers en deux groupes';
   var badge=document.createElement('span');badge.className='tuesday-workshops__badge';badge.textContent='Semaine '+current;
   top.append(title,badge);article.appendChild(top);
   var groups=document.createElement('div');groups.className='tuesday-workshops__groups';
@@ -634,7 +640,7 @@ function render(){
       prior={start:9*60+45,end:11*60+30};return;
     }
     /* Le créneau du mardi à partir de 16h est remplacé par les ateliers. */
-    if(day.date.getDay()===2&&slot.start!==null&&slot.start>=16*60&&slot.start<17*60){prior=slot;return;}
+    if(day.date.getDay()===2&&isP2WorkshopDay(day.date)&&/ateliers informatique et lexique/i.test(s)){prior=slot;return;}
     var explicit=pauseTypeFromRow(row);
     if(explicit){addPause(explicit);prior=slot;return;}
     if(prior&&prior.end!==null&&slot.start!==null){
@@ -667,7 +673,7 @@ function render(){
     prior=slot;
   });
   if(isTheatreDay&&period!=='apres-midi'&&!theatreInserted)grid.prepend(theatreExceptionCard());
-  if(day.date.getDay()===2&&period!=='matin')grid.appendChild(enableFocus(tuesdayWorkshopCard(day.date)));
+  if(day.date.getDay()===2&&isP2WorkshopDay(day.date)&&period!=='matin')grid.appendChild(enableFocus(tuesdayWorkshopCard(day.date)));
   if(period!=='matin')grid.appendChild(enableFocus(pauseStrip('fin-ecole')));
   if(!rows.length)grid.innerHTML='<div class="empty">Aucune activité prévue pour cette partie de la journée.</div>';
   document.getElementById('prevDayBtn').disabled=currentIndex<=0;
