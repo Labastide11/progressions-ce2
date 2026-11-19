@@ -667,10 +667,7 @@
       visual.appendChild(image);
     }else visual.appendChild(make('div','illustrated-edt__fallback illustrated-edt__fallback--visible',title(row)||clean(row[1])||'Activité'));
     slot.appendChild(visual);
-    if(!/^récréation$/i.test(clean(row[1]))){
-      var caption=make('div','illustrated-edt__activity-caption',title(row)||clean(row[1])||'Activité');
-      slot.appendChild(caption);
-    }
+    // Texte uniquement si aucune image n'est disponible : géré par le fallback ci-dessus.
     return slot;
   }
   function render(){
