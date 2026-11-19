@@ -666,7 +666,18 @@
   function makeActivity(row,forcedImage){
     var slot=make('div','illustrated-edt__slot illustrated-edt__slot--'+kind(row));
     var imageName=forcedImage||imageForRow(row),visual=make('div','illustrated-edt__activity');
-    if(imageName==='problemes-numeration'){
+    if(Array.isArray(imageName)){
+      var pair=make('div','illustrated-edt__dual-images');
+      imageName.forEach(function(name){
+        var img=document.createElement('img');
+        var newer=['dictee','copie','lecture-plaisir','calcul-mental','calcul-pose','mathematiques','arts-visuels','emc','piscine','recreation','j-ecris','devinettes','je-raconte','dras','lecture-comprehension','chant','francais','course-longue','decouverte-monde','ecrits-courts','grandeurs-mesures','numeration'].includes(name);
+        img.src=(newer?'images/edt-nouveau/':'images/edt-etiquettes/')+name+'.webp';
+        img.alt=name.replace(/-/g,' ');img.loading='lazy';
+        img.onerror=function(){img.replaceWith(make('span','illustrated-edt__fallback',img.alt));};
+        pair.appendChild(img);
+      });
+      visual.appendChild(pair);
+    }else if(imageName==='problemes-numeration'){
       // Vendredi : les deux disciplines sont représentées, sans texte ajouté.
       var pair=make('div','illustrated-edt__dual-images');
       [['problemes','images/edt-etiquettes/problemes.webp'],['numeration','images/edt-nouveau/numeration.webp']].forEach(function(entry){
@@ -743,10 +754,35 @@
       // Les activités à partir de 10 h 45 restent issues de la programmation détaillée.
       parts=parts.filter(function(p){return p.end<=540||p.start>=645;});
       parts=parts.concat(morningIllustrated(dayIndex));
+      // Quatre créneaux d'après-midi, alignés sur les séances du détaillé.
+      // La piscine de P2 est une seule activité, sans pause artificielle.
+      var pool=dayIndex===3&&entries.some(function(e){
+        return e.start>=930&&e.start<1020&&/piscine|vestiaires|départ pour la piscine/i.test(clean(e.row[1]));
+      });
+      var slots=dayIndex===2?[[840,855],[855,900],[900,960],[975,1020]]:
+        pool?[[840,855],[855,900],[900,930],[930,1020]]:
+        [[840,855],[855,900],[900,945],[960,1020]];
+      function slotFor(a,b){
+        if(pool&&a===930)return {start:a,end:b,image:'piscine',row:[clockLabel(a)+' – '+clockLabel(b),'EPS — Piscine','','','eps']};
+        var candidates=entries.filter(function(e){return e.end>a&&e.start<b&&!/récréation|pause méridienne/i.test(clean(e.row[1]));});
+        candidates.sort(function(x,y){
+          var ox=Math.min(b,x.end)-Math.max(a,x.start),oy=Math.min(b,y.end)-Math.max(a,y.start);
+          return oy-ox||(x.end-x.start)-(y.end-y.start);
+        });
+        if(!candidates.length)return null;
+        var images=[];
+        candidates.forEach(function(e){
+          var overlap=Math.min(b,e.end)-Math.max(a,e.start);
+          if(overlap>=10&&e.image&&!images.includes(e.image)&&images.length<2)images.push(e.image);
+        });
+        return {start:a,end:b,row:candidates[0].row,image:images.length>1?images:candidates[0].image};
+      }
+      parts=parts.filter(function(p){return p.end<=840;});
+      slots.forEach(function(range){var slot=slotFor(range[0],range[1]);if(slot)parts.push(slot);});
       // Pauses explicites : 15h45–16h lundi, mardi et vendredi ; 16h–16h15 jeudi.
       // Le découpage s'effectue par journée, sans fusion horizontale.
       var pauses=[{start:645,end:660,type:'recreation'}];
-      pauses.push(dayIndex===2
+      if(!pool)pauses.push(dayIndex===2
         ? {start:960,end:975,type:'recreation'}
         : {start:945,end:960,type:'recreation'});
       pauses.push({start:720,end:840,type:'midi'});
