@@ -323,6 +323,46 @@
 #illustratedTimetable .illustrated-edt__week-table .illustrated-edt__activity{align-items:center!important;justify-content:center!important;}
 #illustratedTimetable .illustrated-edt__week-table .illustrated-edt__activity>img{max-height:118px!important;object-fit:contain!important;}
 </style>
+<style id="illustrated-uniform-all-activities-20261120">
+/* Même cadre pour toutes les illustrations, du matin à l'après-midi. */
+#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__slot,
+#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__activity {
+  box-sizing:border-box!important;width:100%!important;min-width:0!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+}
+#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__activity > img,
+#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__dual-images img {
+  box-sizing:border-box!important;display:block!important;width:100%!important;
+  max-width:250px!important;height:125px!important;max-height:125px!important;
+  object-fit:contain!important;object-position:center center!important;margin:0 auto!important;
+}
+#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__dual-images {
+  width:100%!important;display:flex!important;justify-content:center!important;
+  align-items:center!important;gap:6px!important;
+}
+#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__dual-images img {
+  width:calc(50% - 3px)!important;max-width:125px!important;
+}
+/* Les deux ateliers du mardi tiennent dans une seule case horaire. */
+#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__workshops {
+  box-sizing:border-box!important;display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  align-items:center!important;justify-items:center!important;
+  width:100%!important;gap:6px!important;padding:2px!important;
+}
+#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__workshop {
+  box-sizing:border-box!important;min-width:0!important;width:100%!important;
+  display:flex!important;flex-direction:column!important;align-items:center!important;
+}
+#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__workshop img {
+  box-sizing:border-box!important;display:block!important;width:100%!important;
+  max-width:125px!important;height:110px!important;max-height:110px!important;
+  object-fit:contain!important;object-position:center center!important;
+}
+#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__workshop strong {
+  font-size:12px!important;line-height:1.1!important;
+}
+</style>
 </head>
 <body>
 <div class="site-shell">
@@ -664,8 +704,8 @@
   // Matin illustré : quatre activités distinctes avant la récréation.
   // Découpage d'affichage demandé par l'enseignant ; ne modifie pas les données détaillées.
   function morningIllustrated(dayIndex){
-    var first=dayIndex===0||dayIndex===3?'je-raconte':dayIndex===1?'copie':'devinettes';
-    var labels=['Je raconte','Copie','Devinette','Je raconte'];
+    var first=dayIndex===3&&periodSelect.value==='p2'?'un-jour-une-actu':dayIndex===0||dayIndex===3?'je-raconte':dayIndex===1?'copie':'devinettes';
+    var labels=['Je raconte','Copie','Devinette',periodSelect.value==='p2'?'1 jour = 1 actu':'Je raconte'];
     var slots=[
       {start:540,end:555,image:first,label:labels[dayIndex]},
       {start:555,end:570,image:'dictee',label:'Dictée'},
@@ -720,7 +760,7 @@
       var image=document.createElement('img');
       var nouvelleImage=['dictee','copie','lecture-plaisir','calcul-mental','calcul-pose','mathematiques','arts-visuels','emc','piscine','recreation','j-ecris','devinettes','je-raconte','dras','lecture-comprehension','chant','francais','course-longue','decouverte-monde','ecrits-courts','grandeurs-mesures','numeration'].includes(imageName);
       if(nouvelleImage)slot.classList.add('illustrated-edt__slot--nouvelle');
-      image.src=(nouvelleImage?'images/edt-nouveau/':'images/edt-etiquettes/')+imageName+'.webp';
+      image.src=imageName==='un-jour-une-actu'?'images/edt-nouveau/un-jour-une-actu.webp':(nouvelleImage?'images/edt-nouveau/':'images/edt-etiquettes/')+imageName+'.webp';
       image.alt=title(row);image.loading='lazy';
       image.onerror=function(){
         var label=title(row)||clean(row[1])||'Activité';
