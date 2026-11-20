@@ -314,7 +314,6 @@
 </style>
 <style id="edt-final-afternoon-fix">
 .illustrated-edt__thursday-final{display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:center}
-.illustrated-edt__thursday-final .illustrated-edt__pause-label{width:100%;background:#d8f1dd;padding:8px;text-align:center;font-weight:700}
 .illustrated-edt__thursday-final-time{font-size:13px;font-weight:700;color:#174368}
 </style>
 <style id="illustrated-compact-afternoon-20261120">
@@ -874,8 +873,8 @@
     // Les fusions sont exclusivement verticales, jamais horizontales.
     for(var k=0;k<boundaries.length-1;k++){
       var start=boundaries[k],end=boundaries[k+1];
-      // Après la récréation : une seule ligne 16 h–17 h.
-      // Le jeudi contient sa pause 16 h–16 h 15 puis son activité 16 h 15–17 h.
+      // Après la ligne commune de récréation : une seule ligne 16 h–17 h.
+      // Jeudi : la pause 16 h–16 h 15 est étiquetée dans la ligne précédente.
       if(start>960&&start<1020)continue;
       var finalAfternoon=start===960;
       if(finalAfternoon)end=1020;
@@ -904,15 +903,20 @@
         if(covered[j]>=k)return;
         var item=entries.find(function(e){return e.start<=start&&(e.visualEnd||e.end)>=end;});
         var td=document.createElement('td');
+        // La ligne commune de récréation reste à 15 h 45–16 h dans la grille.
+        // Seule la cellule du jeudi porte son horaire réel : 16 h–16 h 15.
+        if(start===945&&j===2){
+          td.className='illustrated-edt__cell illustrated-edt__pause-recreation';
+          td.appendChild(make('div','illustrated-edt__pause-label','Récréation · 16 h–16 h 15'));
+          tr.appendChild(td);return;
+        }
+        // Le jeudi, l'EMC occupe seul la dernière ligne, sans pause imbriquée.
         if(finalAfternoon&&j===2){
           td.className='illustrated-edt__cell illustrated-edt__cell--emc';
           var thursday=make('div','illustrated-edt__thursday-final');
-          var pause=make('div','illustrated-edt__pause-label','Récréation · 16 h–16 h 15');
-          thursday.appendChild(pause);
           var lesson=entries.find(function(e){return e.start<=975&&e.end>=1020&&!e.pauseType;});
           if(lesson){
-            var title=make('div','illustrated-edt__thursday-final-time','16 h 15–17 h');
-            thursday.appendChild(title);
+            thursday.appendChild(make('div','illustrated-edt__thursday-final-time','16 h 15–17 h'));
             thursday.appendChild(makeActivity(lesson.row,lesson.image));
           }
           td.appendChild(thursday);tr.appendChild(td);return;
@@ -922,9 +926,18 @@
           if(lastLesson)item=lastLesson;
         }
         if(item){
+          var visualEnd=item.visualEnd||item.end;
+          // Le chant du jeudi se termine visuellement avant la ligne commune
+          // de récréation : son horaire réel (jusqu'à 16 h) reste dans les données.
+          if(j===2&&start===900&&visualEnd===960)visualEnd=945;
           var last=k+1;
-          while(last<boundaries.length-1&&boundaries[last]<(item.visualEnd||item.end))last++;
-          td.rowSpan=last-k;
+          while(last<boundaries.length-1&&boundaries[last]<visualEnd)last++;
+          // Le créneau 16 h 15–17 h n'a pas sa propre ligne visible :
+          // calculer le rowspan sur les lignes réellement affichées.
+          var visibleSpan=boundaries.slice(k,last).filter(function(t){
+            return !(t>960&&t<1020);
+          }).length;
+          td.rowSpan=Math.max(1,visibleSpan);
           covered[j]=last-1;
           td.className='illustrated-edt__cell illustrated-edt__cell--'+kind(item.row);
           if(item.pauseType){
