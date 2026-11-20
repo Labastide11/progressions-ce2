@@ -980,6 +980,12 @@
 }
 </style>
 
+<style id="home-timetable-audience-sections">
+.home-timetable-section-label{margin:12px 2px 7px;color:#476076;font-size:.78rem;font-weight:850;letter-spacing:.045em;line-height:1.35}
+.home-timetable-section-label+.home-row-split{margin-top:0}
+.home-row-split .home-row{box-sizing:border-box}
+@media(max-width:760px){.home-timetable-section-label{font-size:.72rem}.home-row-split .home-row__title{white-space:normal;line-height:1.2;font-size:.82rem}}
+</style>
 </head>
 <body>
 <header class="app-header">
@@ -1081,10 +1087,11 @@
 <button class="home-chip home-chip--p5" data-open-summary-period="p5" type="button">P5</button>
 </div>
 </div>
-<div class="home-row-split" role="group" aria-label="Emplois du temps">
+<div class="home-timetable-section-label">ORGANISATION — ENSEIGNANT</div>
+<div class="home-row-split" role="group" aria-label="Organisation pour l’enseignant">
 <button class="home-row home-row--green" data-home-action="detail-timetable" type="button">
 <span class="home-row__icon"><img alt="" src="assets/home-v32-42/horloge.png"/></span>
-<span class="home-row__text"><span class="home-row__title">La journée</span><span class="home-row__desc">Consulter la journée.</span></span>
+<span class="home-row__text"><span class="home-row__title">Organisation de la journée</span><span class="home-row__desc">Consulter la journée.</span></span>
 <span class="home-row__arrow">›</span>
 </button>
 <button class="home-row home-row--mint" data-home-action="weekly-timetable" type="button">
@@ -1093,11 +1100,19 @@
 <span class="home-row__arrow">›</span>
 </button>
 </div>
+<div class="home-timetable-section-label">POUR LES ÉLÈVES — À PROJETER EN CLASSE</div>
+<div class="home-row-split" role="group" aria-label="Emplois du temps pour les élèves">
 <button class="home-row home-row--blue home-row--tbi" data-home-action="tbi-view" id="openTbiViewBtn" type="button">
 <span class="home-row__icon"><img alt="" src="assets/home-v32-42/ecran-tbi.png"/></span>
 <span class="home-row__text"><span class="home-row__title">Notre journée en classe</span></span>
 <span class="home-row__arrow">›</span>
 </button>
+<a class="home-row home-row--mint" href="emploi-du-temps.html?mode=illustrated&amp;period=p2" aria-label="Notre semaine illustrée" style="text-decoration:none;color:inherit;">
+<span class="home-row__icon"><img alt="" src="assets/home-v32-42/calendrier.png"/></span>
+<span class="home-row__text"><span class="home-row__title">Notre semaine illustrée</span></span>
+<span class="home-row__arrow">›</span>
+</a>
+</div>
 <div class="home-row-split" aria-label="Accès aux espaces Parents et Enfants">
 <a class="home-row home-row--amber" href="https://labastide11.github.io/espace-parents-ce2/" rel="noopener noreferrer" style="text-decoration:none;color:inherit;" target="_blank">
 <span class="home-row__icon"><img alt="" src="assets/parents/icon_info_parents.png" style="width:100%;height:100%;object-fit:contain;border-radius:15px;"/></span>
@@ -1952,7 +1967,7 @@
     if (weekly) {
       e.preventDefault();
       e.stopImmediatePropagation();
-      window.location.href = 'emploi-du-temps.html?mode=illustrated';
+      window.location.href = 'emploi-du-temps.html?mode=summary';
       return;
     }
 
