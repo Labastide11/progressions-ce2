@@ -983,6 +983,22 @@
 <style id="home-timetable-audience-sections">
 .home-timetable-section-label{margin:12px 2px 7px;color:#476076;font-size:.78rem;font-weight:850;letter-spacing:.045em;line-height:1.35}
 .home-timetable-section-label+.home-row-split{margin-top:0}
+/* Les sous-titres doivent être immédiatement suivis de leurs boutons :
+   neutraliser les marges verticales héritées des cartes. */
+.home-panel--pedago .home-list > .home-timetable-section-label{
+  margin:8px 2px 0!important;
+  padding:0!important;
+}
+.home-panel--pedago .home-list > .home-timetable-section-label + .home-row,
+.home-panel--pedago .home-list > .home-timetable-section-label + .home-row-split{
+  margin-top:0!important;
+}
+.home-panel--pedago .home-list > .home-timetable-section-label + .home-row{
+  margin-bottom:0!important;
+}
+.home-panel--pedago .home-list > .home-row-split{
+  margin-top:0!important;
+}
 .home-row-split .home-row{box-sizing:border-box}
 @media(max-width:760px){.home-timetable-section-label{font-size:.72rem}.home-row-split .home-row__title{white-space:normal;line-height:1.2;font-size:.82rem}}
 </style>
