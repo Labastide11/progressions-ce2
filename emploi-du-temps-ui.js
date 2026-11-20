@@ -1831,12 +1831,12 @@
             row[2]=`${plan.support} — découverte des 8 mots, encodage, observation orthographique et première phrase préparatoire.`;
             row[5]='Mémorisation et observation formative';
           }
-          if(time==='9h15–9h30' && dayName==='Mardi'){
+          if(time==='10h–10h45' && dayName==='Mardi'){
             row[1]='Dictée flash 2 + étude de la langue — DRAS';
             row[2]=`${plan.flash[1]} Puis manipulations DRAS : déplacer, remplacer, ajouter et supprimer pour comprendre la notion prévue.`;
             row[5]='10 min de dictée puis entraînement EDL';
           }
-          if(time==='9h15–9h30' && dayName==='Jeudi'){
+          if(time==='10h–10h45' && dayName==='Jeudi'){
             row[1]='Dictée flash 3 + EDL — DRAS + production d’écrit court';
             row[2]=`${plan.flash[2]} Puis transformation DRAS et rédaction d’une ou deux phrases réemployant le vocabulaire de la semaine dans <strong>Mon cahier d’écrivain</strong>.`;
             row[5]='10 min de dictée + écrit court';
@@ -1846,7 +1846,7 @@
             row[2]=`Étudier en profondeur : ${plan.vocab.join(' ; ')}. Réemploi oral puis préparation d’une phrase personnelle.`;
             row[5]='Trace lexicale et réemploi';
           }
-          if(time==='9h15–9h30' && dayName==='Vendredi'){
+          if(time==='10h–10h45' && dayName==='Vendredi'){
             row[1]='Dictée bilan de phrases + correction raisonnée';
             row[2]=`${plan.final} Relecture avec une grille ciblée, puis correction et justification des choix.`;
             row[5]='Dictée bilan hebdomadaire';
@@ -1913,7 +1913,7 @@
         return;
       }
       (rows||[]).forEach(row=>{
-        if(row[0]!=='9h15–9h30')return;
+        if(row[0]!=='10h–10h45')return;
         const label={Lundi:'Dictée flash 1',Mardi:'Dictée flash 2 + phrase du jour (DRAS)',Jeudi:'Dictée flash 3 + phrase du jour (DRAS)',Vendredi:'Dictée bilan'}[n];
         row[1]='Français — '+label;
         row[3]=n==='Vendredi'?'Orthographe — dictée bilan de la semaine.':'Orthographe — dictée de la semaine'+(n==='Mardi'||n==='Jeudi'?' ; écriture — DRAS.':'.');
