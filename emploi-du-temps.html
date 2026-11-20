@@ -317,6 +317,13 @@
 .illustrated-edt__thursday-final .illustrated-edt__pause-label{width:100%;background:#d8f1dd;padding:8px;text-align:center;font-weight:700}
 .illustrated-edt__thursday-final-time{font-size:13px;font-weight:700;color:#174368}
 </style>
+<style id="illustrated-compact-afternoon-20261120">
+/* Éviter les grandes plages vides sous les images, sans inventer de séances. */
+#illustratedTimetable .illustrated-edt__week-table tbody td.illustrated-edt__cell{vertical-align:middle!important;}
+#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__slot{align-items:center!important;justify-content:center!important;}
+#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__activity{align-items:center!important;justify-content:center!important;}
+#illustratedTimetable .illustrated-edt__week-table .illustrated-edt__activity>img{max-height:118px!important;object-fit:contain!important;}
+</style>
 </head>
 <body>
 <div class="site-shell">
@@ -877,7 +884,7 @@
       // Les rowspan s'étendent sur la somme de ces hauteurs sans décaler la grille.
       var isBreak=(start===645&&end===660)||(start===945&&end===960)||(start===960&&end===975);
       var isLunch=start===720&&end===840;
-      var rowHeight=isBreak||isLunch?52:140;
+      var rowHeight=isBreak||isLunch?52:Math.max(46,Math.round((end-start)*2.85));
       tr.style.height=rowHeight+'px';
       tr.className='illustrated-edt__time-row'+(isBreak||isLunch?' illustrated-edt__time-row--pause':'');
       // Une seule étiquette 15 h–15 h 45, même lorsque la piscine
