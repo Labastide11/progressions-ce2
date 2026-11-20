@@ -312,6 +312,11 @@
   overflow-wrap:anywhere!important;
 }
 </style>
+<style id="edt-final-afternoon-fix">
+.illustrated-edt__thursday-final{display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:center}
+.illustrated-edt__thursday-final .illustrated-edt__pause-label{width:100%;background:#d8f1dd;padding:8px;text-align:center;font-weight:700}
+.illustrated-edt__thursday-final-time{font-size:13px;font-weight:700;color:#174368}
+</style>
 </head>
 <body>
 <div class="site-shell">
@@ -862,6 +867,11 @@
     // Les fusions sont exclusivement verticales, jamais horizontales.
     for(var k=0;k<boundaries.length-1;k++){
       var start=boundaries[k],end=boundaries[k+1];
+      // Après la récréation : une seule ligne 16 h–17 h.
+      // Le jeudi contient sa pause 16 h–16 h 15 puis son activité 16 h 15–17 h.
+      if(start>960&&start<1020)continue;
+      var finalAfternoon=start===960;
+      if(finalAfternoon)end=1020;
       var tr=document.createElement('tr');
       // Une hauteur FIXE par tranche horaire commune aux quatre jours.
       // Les rowspan s'étendent sur la somme de ces hauteurs sans décaler la grille.
@@ -870,13 +880,40 @@
       var rowHeight=isBreak||isLunch?52:140;
       tr.style.height=rowHeight+'px';
       tr.className='illustrated-edt__time-row'+(isBreak||isLunch?' illustrated-edt__time-row--pause':'');
-      var timeCell=make('th','illustrated-edt__time',clockLabel(start)+' – '+clockLabel(end));
-      timeCell.style.height=rowHeight+'px';
-      timeCell.scope='row';tr.appendChild(timeCell);
+      // Une seule étiquette 15 h–15 h 45, même lorsque la piscine
+      // commence à 15 h 30 le vendredi (P2).
+      var combinedAfternoon=start===900&&boundaries.includes(945);
+      var hiddenSubRow=start>900&&start<945&&boundaries.includes(900)&&boundaries.includes(945);
+      if(!hiddenSubRow){
+        var displayEnd=combinedAfternoon?945:end;
+        var timeCell=make('th','illustrated-edt__time',clockLabel(start)+' – '+clockLabel(displayEnd));
+        if(combinedAfternoon){
+          timeCell.rowSpan=boundaries.filter(function(t){return t>900&&t<=945;}).length;
+        }
+        timeCell.style.height=rowHeight+'px';
+        timeCell.scope='row';tr.appendChild(timeCell);
+      }
       schedules.forEach(function(entries,j){
         if(covered[j]>=k)return;
         var item=entries.find(function(e){return e.start<=start&&(e.visualEnd||e.end)>=end;});
         var td=document.createElement('td');
+        if(finalAfternoon&&j===2){
+          td.className='illustrated-edt__cell illustrated-edt__cell--emc';
+          var thursday=make('div','illustrated-edt__thursday-final');
+          var pause=make('div','illustrated-edt__pause-label','Récréation · 16 h–16 h 15');
+          thursday.appendChild(pause);
+          var lesson=entries.find(function(e){return e.start<=975&&e.end>=1020&&!e.pauseType;});
+          if(lesson){
+            var title=make('div','illustrated-edt__thursday-final-time','16 h 15–17 h');
+            thursday.appendChild(title);
+            thursday.appendChild(makeActivity(lesson.row,lesson.image));
+          }
+          td.appendChild(thursday);tr.appendChild(td);return;
+        }
+        if(finalAfternoon&&j!==2){
+          var lastLesson=entries.find(function(e){return e.start<=960&&e.end>=1020&&!e.pauseType;});
+          if(lastLesson)item=lastLesson;
+        }
         if(item){
           var last=k+1;
           while(last<boundaries.length-1&&boundaries[last]<(item.visualEnd||item.end))last++;
