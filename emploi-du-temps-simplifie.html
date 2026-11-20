@@ -89,6 +89,7 @@
   .micro-activity+.micro-activity{border-top:1px solid #e6edf3;padding-top:9px}
   @media(max-width:1150px){.micro-activities.dual{grid-template-columns:1fr}}
 
+  .simple-time{display:inline-block;margin:0 0 8px;padding:5px 11px;border-radius:9px;background:#e9f2fc;color:#173b5c;border:1px solid #bcd3e8;font-size:clamp(15px,1.05vw,19px);font-weight:900;font-variant-numeric:tabular-nums}
   .simple-row.french{--subject-color:#e45772;--subject-soft:#fff0f4}
   .simple-row.maths{--subject-color:#4386d8;--subject-soft:#edf5ff}
   .simple-row.english{--subject-color:#2aa7a1;--subject-soft:#e8faf7}
@@ -464,6 +465,12 @@ function timeRange(row){
   function minutes(p){var m=String(p||'').match(/^(\d{1,2})h(\d{0,2})$/i);return m?(+m[1]*60+ +(m[2]||0)):null;}
   return {start:minutes(parts[0]),end:minutes(parts[1])};
 }
+function readableTime(row){
+ var t=timeRange(row);if(t.start===null||t.end===null)return '';
+ function clock(m){return Math.floor(m/60)+' h'+(m%60?' '+String(m%60).padStart(2,'0'):'');}
+ return clock(t.start)+' – '+clock(t.end);
+}
+function timeBadge(label){var e=document.createElement('div');e.className='simple-time';e.textContent=label;return e;}
 function pauseTypeFromRow(row){
   var s=norm(row[1]);
   if(/récréation|recreation/.test(s)){
@@ -513,7 +520,7 @@ function tuesdayWorkshopCard(date){
   var article=document.createElement('article');
   article.className='tuesday-workshops';
   var top=document.createElement('div');top.className='tuesday-workshops__top';
-  var title=document.createElement('h2');title.textContent='Ateliers en deux groupes';
+  var title=document.createElement('h2');title.textContent='Ateliers en deux groupes · 16 h – 17 h';
   var badge=document.createElement('span');badge.className='tuesday-workshops__badge';badge.textContent='Semaine '+current;
   top.append(title,badge);article.appendChild(top);
   var groups=document.createElement('div');groups.className='tuesday-workshops__groups';
@@ -639,7 +646,7 @@ function render(){
   function addPause(type){lastDisplayed=null;if(!inserted[type]){grid.appendChild(enableFocus(pauseStrip(type)));inserted[type]=true;}}
   rows.forEach(function(row){
     if(/CHAM \/ ateliers|CHAM \/ arts/i.test(String(row[1]||'')))return;
-    if(day.date.getDay()===5&&isP2Day&&/EPS — (?:Piscine \\(dans l’eau\\)|Vestiaires et retour)/i.test(String(row[1]||'')))return;
+    if(day.date.getDay()===5&&isP2Day&&/EPS — (?:Piscine \(dans l’eau\)|Vestiaires et retour)/i.test(String(row[1]||'')))return;
 
     var s=String(row[1]||'');var slot=timeRange(row);
     // La sortie occupe 9h45–11h30 : remplacer les séances habituelles de ce créneau.
@@ -676,7 +683,7 @@ function render(){
     if(labels.length){var group=document.createElement('div');group.className=labels.length>1?'subject-banner-set':'subject-banner-single';
       labels.forEach(function(label){var photo=document.createElement('img');photo.className='subject-banner';photo.src='images/edt-etiquettes/'+label+'.webp';photo.alt=labelText[label]||subjectName(s,k);photo.loading='lazy';photo.decoding='async';photo.addEventListener('error',function(){photo.replaceWith(document.createTextNode(photo.alt));},{once:true});group.appendChild(photo);});left.appendChild(group);
     }else{var name=document.createElement('span');name.className='subject-plain-label';name.textContent=subjectName(s,k);left.appendChild(name);}
-    var right=document.createElement('div');right.className='simple-activity';right.appendChild(oralP2Card(row,day.date)||learningContent(row));el.appendChild(left);el.appendChild(right);grid.appendChild(enableFocus(el));
+    var right=document.createElement('div');right.className='simple-activity';if(readableTime(row))right.appendChild(timeBadge(readableTime(row)));right.appendChild(oralP2Card(row,day.date)||learningContent(row));el.appendChild(left);el.appendChild(right);grid.appendChild(enableFocus(el));
     lastDisplayed={signature:signature,start:slot.start,end:slot.end};
     prior=slot;
   });
