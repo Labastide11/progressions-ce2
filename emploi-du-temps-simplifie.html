@@ -243,11 +243,21 @@ if(/arts|musique/.test(s))return 'Tu vas créer et expliquer tes choix.';
 if(/eps/.test(s))return 'Tu vas apprendre à bouger, à coopérer et à gérer ton effort.';
 return 'Tu vas découvrir une nouvelle idée et t’entraîner à l’utiliser.';}
 // La sélection se fonde sur l'activité de la séance, sans afficher les consignes du maître.
-var labelText={'francais':'Français','dictee':'Dictée','production-ecrits':'Production d’écrits','calcul-mental':'Calcul mental','lecture-plaisir':'Lecture plaisir','piscine':'Piscine','chant':'Chant','anglais':'Anglais','decouverte-monde':'Découverte du monde','mathematiques':'Mathématiques','lecture-comprehension':'Lecture / Compréhension','sciences':'Sciences','histoire':'Histoire','geographie':'Géographie','emc':'EMC','arts-visuels':'Arts visuels','recreation':'Récréation','calcul-pose':'Calcul posé','problemes':'Problèmes','geometrie':'Géométrie','copie':'Copie','course-longue':'Course longue'};
+var labelText={'francais':'Français','dictee':'Dictée','production-ecrits':'Production d’écrits','calcul-mental':'Calcul mental','lecture-plaisir':'Lecture plaisir','piscine':'Piscine','chant':'Chant','anglais':'Anglais','decouverte-monde':'Découverte du monde','mathematiques':'Mathématiques','lecture-comprehension':'Lecture / Compréhension','sciences':'Sciences','histoire':'Histoire','geographie':'Géographie','emc':'EMC','arts-visuels':'Arts visuels','recreation':'Récréation','calcul-pose':'Calcul posé','grandeurs-mesures':'Grandeurs et mesures','numeration':'Numération','ecrits-courts':'Écrits courts','devinettes':'Devinette','je-raconte':'Je raconte','problemes':'Problèmes','geometrie':'Géométrie','copie':'Copie','course-longue':'Course longue'};
 function imagesFor(row,kind){
   var subject=String(row[1]||'').toLowerCase(),topic=subjectTopic(row).toLowerCase();
   var value=subject+' '+topic,details=plain(row[2]);
   if(/récréation/.test(value))return ['recreation'];
+  if(/écrits? courts?/.test(subject))return ['ecrits-courts'];
+  if(/je raconte/.test(subject))return ['je-raconte'];
+  if(/devinette/.test(subject))return ['devinettes'];
+  if(/grandeurs? et mesures?/.test(subject))return ['grandeurs-mesures'];
+  if(/numération/.test(subject))return ['numeration'];
+  if(/écrits courts/.test(subject))return ['ecrits-courts'];
+  if(/devinette/.test(subject))return ['devinettes'];
+  if(/je raconte/.test(subject))return ['je-raconte'];
+  if(/grandeurs et mesures/.test(subject))return ['grandeurs-mesures'];
+  if(/numération/.test(subject))return ['numeration'];
   if(/pause|cantine|repas/.test(value))return [];
   if(/piscine|natation|aquatique|bassin/.test(value))return ['piscine'];
   if(/course longue|endurance/.test(value))return ['course-longue'];
@@ -257,10 +267,10 @@ function imagesFor(row,kind){
   if(/copie|recopier/.test(value))return ['copie'];
   if(/quart d.?heure de lecture|lecture plaisir|lecture offerte|lecture autonome/.test(value))return ['lecture-plaisir'];
   if(/lecture|compréhension|fluence|texte et illustration|récit|lire/.test(value))return ['lecture-comprehension'];
-  if(/calcul mental|doubles|moitiés/.test(value))return ['calcul-mental'];
+  if(/calcul mental|doubles|moitiés/.test(subject))return ['calcul-mental'];
   if(/calcul posé|calculs posés|addition posée|soustraction posée/.test(value))return ['calcul-pose'];
-  if(/problème/.test(value))return ['problemes'];
-  if(/géométr|polygone|figure géométrique|droite graduée/.test(value))return ['geometrie'];
+  if(/problème/.test(subject))return ['problemes'];
+  if(/géométr|polygone|figure géométrique|droite graduée/.test(subject))return ['geometrie'];
   if(/anglais/.test(value)||kind==='english')return ['anglais'];
   if(/chant|chorale|musique|cham/.test(value)||kind==='cham')return ['chant'];
   if(/géographie|repères france|carte de france/.test(value))return ['geographie'];
@@ -293,7 +303,9 @@ function activityAndSuccess(row,forced){
   else if(/valeur des chiffres|numération/.test(all)){activity='Je cherche la valeur des chiffres dans les nombres.';success='Je dois distinguer les unités, les dizaines et les centaines.';}
   else if(/problème/.test(all)){activity='Je résous les problèmes proposés.';success='Je dois choisir un calcul et expliquer ma réponse.';}
   else if(/géométr|polygone|figure/.test(all)){activity='J’observe et je travaille sur les figures.';success='Je dois utiliser les propriétés pour justifier ma réponse.';}
-  else if(/math|calcul posé|addition|soustraction/.test(all)){activity='Je réalise les exercices de mathématiques prévus.';success='Je dois expliquer ma méthode et vérifier mon résultat.';}
+  else if(/grandeurs et mesures/.test(all)){activity='Je mesure et je compare des grandeurs.';success='Je dois choisir la bonne unité de mesure.';}
+  else if(/calcul posé/.test(all)){activity='Je pose des calculs en colonnes.';success='Je dois aligner les chiffres et vérifier mon résultat.';}
+  else if(/math|addition|soustraction/.test(all)){activity='Je réalise les exercices de mathématiques prévus.';success='Je dois expliquer ma méthode et vérifier mon résultat.';}
   else if(/lecture plaisir|quart d.?heure/.test(all)){activity='Je lis tranquillement le livre de mon choix.';success='Je dois lire en silence et rester concentré.';}
   else if(/fluence|lecture exacte/.test(all)){activity='Je m’entraîne à lire le texte avec précision.';success='Je dois lire sans oublier ni transformer les mots.';}
   else if(/lecture|compréhension|récit|texte/.test(all)){activity='Je lis le texte et je cherche les informations importantes.';success='Je dois pouvoir répondre et expliquer avec mes mots.';}
@@ -629,8 +641,11 @@ function render(){
   var period=selectedPeriod();
   refreshPeriodButtons();
   renderSupportStrip(day.date,period);
+  // P2 : aucune programmation parallèle. Les données détaillées P2,
+  // harmonisées sur l'illustré, alimentent directement cette vue.
   var isP2Day=day.date>=new Date(2026,10,2,12)&&day.date<=new Date(2026,11,18,12);
-  var rows=day.rows.filter(function(r){
+  var sourceRows=day.rows;
+  var rows=sourceRows.filter(function(r){
     if(!Array.isArray(r)||!String(r[1]||'').trim())return false;
     if(period==='journee')return true;
     // La pause méridienne figure dans « Ma journée », pas dans les séances de l'après-midi.
@@ -646,7 +661,6 @@ function render(){
   function addPause(type){lastDisplayed=null;if(!inserted[type]){grid.appendChild(enableFocus(pauseStrip(type)));inserted[type]=true;}}
   rows.forEach(function(row){
     if(/CHAM \/ ateliers|CHAM \/ arts/i.test(String(row[1]||'')))return;
-    if(day.date.getDay()===5&&isP2Day&&/EPS — (?:Piscine \(dans l’eau\)|Vestiaires et retour)/i.test(String(row[1]||'')))return;
 
     var s=String(row[1]||'');var slot=timeRange(row);
     // La sortie occupe 9h45–11h30 : remplacer les séances habituelles de ce créneau.
@@ -681,7 +695,7 @@ function render(){
     var el=document.createElement('article');el.className='simple-row '+k;
     var left=document.createElement('div');left.className='simple-subject';var labels=imagesFor(row,k);
     if(labels.length){var group=document.createElement('div');group.className=labels.length>1?'subject-banner-set':'subject-banner-single';
-      labels.forEach(function(label){var photo=document.createElement('img');photo.className='subject-banner';photo.src='images/edt-etiquettes/'+label+'.webp';photo.alt=labelText[label]||subjectName(s,k);photo.loading='lazy';photo.decoding='async';photo.addEventListener('error',function(){photo.replaceWith(document.createTextNode(photo.alt));},{once:true});group.appendChild(photo);});left.appendChild(group);
+      labels.forEach(function(label){var photo=document.createElement('img');photo.className='subject-banner';photo.src=(['dictee','copie','lecture-plaisir','calcul-mental','calcul-pose','arts-visuels','emc','piscine','recreation','devinettes','je-raconte','lecture-comprehension','chant','course-longue','decouverte-monde','ecrits-courts','grandeurs-mesures','numeration'].includes(label)?'images/edt-nouveau/':'images/edt-etiquettes/')+label+'.webp';photo.alt=labelText[label]||subjectName(s,k);photo.loading='lazy';photo.decoding='async';photo.addEventListener('error',function(){photo.replaceWith(document.createTextNode(photo.alt));},{once:true});group.appendChild(photo);});left.appendChild(group);
     }else{var name=document.createElement('span');name.className='subject-plain-label';name.textContent=subjectName(s,k);left.appendChild(name);}
     var right=document.createElement('div');right.className='simple-activity';if(readableTime(row))right.appendChild(timeBadge(readableTime(row)));right.appendChild(oralP2Card(row,day.date)||learningContent(row));el.appendChild(left);el.appendChild(right);grid.appendChild(enableFocus(el));
     lastDisplayed={signature:signature,start:slot.start,end:slot.end};
