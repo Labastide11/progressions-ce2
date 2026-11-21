@@ -2427,6 +2427,30 @@
 .ce2-planning .ce2-week-count small{display:block;font-size:.73rem;font-weight:500;margin-top:2px}
 
 @media(max-width:800px){.ce2-planning .ce2-week-table{min-width:800px}}
+
+/* Tableau CE2 : couleurs vives et lisibles, code bleu/rouge conservé. */
+.ce2-planning{background:linear-gradient(145deg,#fffaf0 0%,#f2f9ff 48%,#f6f1ff 100%)!important;border:2px solid #bdd8fa!important;box-shadow:0 5px 18px #315c8b12}
+.ce2-planning h3{color:#173d85!important;font-size:1.3rem!important}
+.ce2-planning .ce2-week-table{border-spacing:6px}
+.ce2-planning .ce2-week-table th{font-size:1rem;font-weight:900;border:2px solid transparent;box-shadow:0 2px 4px #244f8314}
+.ce2-planning .ce2-week-table th:first-child{background:#dce9f9;color:#22456f;border-color:#a8c4e9}
+.ce2-planning .ce2-week-table th:nth-child(2){background:#ffdfac;color:#774400;border-color:#f5bf64}
+.ce2-planning .ce2-week-table th:nth-child(3){background:#d9f3d2;color:#245d2e;border-color:#a7dda1}
+.ce2-planning .ce2-week-table th:nth-child(4){background:#eadbff;color:#5b3294;border-color:#c9b0f7}
+.ce2-planning .ce2-week-table th:nth-child(5){background:#ffe0eb;color:#91385d;border-color:#f4b3cb}
+.ce2-planning .ce2-week-table td{border:1px solid #cbd9e8;box-shadow:0 2px 6px #224f7910}
+.ce2-planning .ce2-week-table td:nth-child(2){background:#fff9ed}
+.ce2-planning .ce2-week-table td:nth-child(3){background:#f4fcf1}
+.ce2-planning .ce2-week-table td:nth-child(4){background:#f9f4ff}
+.ce2-planning .ce2-week-table td:nth-child(5){background:#fff4f8}
+.ce2-planning .ce2-week-table td:first-child{background:#dce9f9;color:#173c73;border:2px solid #b4cbe9;font-size:.96rem}
+.ce2-planning .ce2-week-chip.in{background:#d5eaff;border:2px solid #6aaaf2;color:#0c4b91}
+.ce2-planning .ce2-week-chip.out{background:#ffe1e4;border:2px solid #f18c98;color:#9c1c35}
+.ce2-planning .ce2-week-chip:hover{filter:saturate(1.12) brightness(.985);transform:translateY(-1px)}
+.ce2-planning .ce2-week-count{background:#dcf6dd;color:#22612b;border:2px solid #8dd397;font-size:.88rem}
+.ce2-planning .ce2-week-count.is-uncertain{background:#fff0cb;color:#8b5700;border:2px solid #efc56d}
+.ce2-planning .ce2-week-legend b{font-weight:900;border:1px solid currentColor}
+@media(prefers-reduced-motion:no-preference){.ce2-planning .ce2-week-chip{transition:transform .15s,filter .15s}}
 </style>
 <script id="ce2-weekly-supports-table-script">
 (function(){
