@@ -2352,6 +2352,51 @@
 })();
 </script>
 
+<script id="ce2-real-students-2026">
+/* Synchronisation des noms réels avec les prises en charge, sans écraser
+   les autres paramètres déjà enregistrés par l'enseignant. */
+(function(){
+ const key='progressionsCE2.prisesEnChargePlanning.v1';
+ const names={
+  'upe2a':['Bilal'],
+  'aide-e':['Assya','Gabriel','Mohamed','Jinène'],
+  'cham-lundi':['Espoir','Selma','Yaman'],
+  'cham-mardi':['Espoir','Selma','Yaman'],
+  'ulis':['Ritej','Rayan','Anis'],
+  'aide-g':['Fahd']
+ };
+ try{
+  const data=JSON.parse(localStorage.getItem(key)||'null');
+  if(!Array.isArray(data)||!data.length){
+    localStorage.setItem(key,JSON.stringify([
+      {id:'upe2a',name:'UPE2A',kind:'out',students:['Bilal'],days:[1,2,4,5],start:'09:00',end:'10:45',certainty:'confirmed'},
+      {id:'aide-e',name:'Aide E — Lecture',kind:'out',students:['Assya','Gabriel','Mohamed','Jinène'],days:[2,4],start:'11:00',end:'12:00',certainty:'confirmed'},
+      {id:'cham-lundi',name:'CHAM',kind:'out',students:['Espoir','Selma','Yaman'],days:[1],start:'11:00',end:'12:00',note:'Créneau historique du lundi à confirmer',certainty:'provisional'},
+      {id:'cham-mardi',name:'CHAM',kind:'out',students:['Espoir','Selma','Yaman'],days:[2],start:'14:00',end:'17:00',certainty:'confirmed'},
+      {id:'cham-jeudi',name:'CHAM',kind:'out',students:['Espoir','Selma','Yaman'],days:[4],start:'15:00',end:'16:00',certainty:'confirmed'},
+      {id:'ulis',name:'Inclusion ULIS',kind:'in',students:['Ritej','Rayan','Anis'],days:[1,2,4,5],start:'14:00',end:'15:45',certainty:'confirmed'},
+      {id:'aide-g',name:'Aide G — Maîtresse Delphine',kind:'out',students:['Fahd'],days:[2],start:'15:00',end:'',certainty:'provisional'}
+    ]));return;
+  }
+  let changed=false;
+  for(const item of data){
+   if(names[item.id] && Array.isArray(item.students)
+      && item.students.some(v=>/^Élève\s/i.test(String(v)))){
+     item.students=names[item.id];changed=true;
+   }
+   if(item.id==='cham-mardi' && (!item.start||!item.end)){
+     item.start='14:00';item.end='17:00';item.certainty='confirmed';changed=true;
+   }
+  }
+  if(!data.some(x=>x.id==='cham-jeudi')){
+   data.push({id:'cham-jeudi',name:'CHAM',kind:'out',students:names['cham-mardi'],
+     days:[4],start:'15:00',end:'16:00',note:'La Fabrique des arts',certainty:'confirmed'});
+   changed=true;
+  }
+  if(changed)localStorage.setItem(key,JSON.stringify(data));
+ }catch(e){}
+})();
+</script>
 <script src="prises-en-charge-ce2.js?v=1"></script>
 
 <style id="ce2-weekly-supports-table-style">
