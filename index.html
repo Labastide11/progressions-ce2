@@ -2390,7 +2390,11 @@ const mins=s=>{if(!s)return null;const m=String(s).match(/^(\d\d?):(\d\d)$/);ret
 const label=s=>s?String(s).replace(':',' h '):'à confirmer';
 function getRecords(){return window.CE2PrisesEnCharge?.get?.()||[]}
 function draw(host){
- if(!host||host.dataset.weeklyTable==='ready'&&host.querySelector('.ce2-week-table'))return;
+ if(!host)return;
+ // Tableau immédiatement après le titre de la fenêtre, avant les autres rubriques.
+ const header=host.closest('#supportsModal')?.querySelector('.supports-header');
+ if(header&&header.nextElementSibling!==host)header.insertAdjacentElement('afterend',host);
+ if(host.dataset.weeklyTable==='ready'&&host.querySelector('.ce2-week-table'))return;
  const records=getRecords();if(!records.length)return;
  let body='<h3>Présences et prises en charge — semaine</h3><div class="ce2-week-legend"><span><b style="background:#dceeff;color:#15518e">BLEU</b> Élève accueilli dans la classe</span><span><b style="background:#ffe5e5;color:#a02b34">ROUGE</b> Élève sorti de la classe</span></div><div class="ce2-week-wrap"><table class="ce2-week-table"><thead><tr><th>Horaire</th>'+DAYS.map(x=>'<th>'+x[0]+'</th>').join('')+'</tr></thead><tbody>';
  for(const [a,b,time] of ROWS){
