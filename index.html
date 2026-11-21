@@ -2422,6 +2422,10 @@
 .ce2-planning .ce2-week-editor input[type=time]{margin-left:8px;padding:6px}
 .ce2-planning .ce2-week-editor button{margin:6px 8px 0 0;padding:8px 12px;border-radius:8px;border:1px solid #397f7c;background:#e6f7f4;cursor:pointer}
 .ce2-planning .ce2-week-empty{text-align:center;color:#a1b1be;padding:12px 0}
+.ce2-planning .ce2-week-count{margin-top:8px;padding:7px 8px;border-radius:8px;background:#edf5ff;color:#164b7b;font-weight:800;font-size:.84rem;text-align:center;border:1px solid #b9d6f1}
+.ce2-planning .ce2-week-count.is-uncertain{background:#fff3de;color:#815113;border-color:#efd2a0}
+.ce2-planning .ce2-week-count small{display:block;font-size:.73rem;font-weight:500;margin-top:2px}
+
 @media(max-width:800px){.ce2-planning .ce2-week-table{min-width:800px}}
 </style>
 <script id="ce2-weekly-supports-table-script">
@@ -2446,7 +2450,44 @@ function draw(host){
   body+='<tr><td>'+time+'</td>';
   for(const [,day] of DAYS){
    const active=records.filter(x=>x.days.includes(day)&&mins(x.start)!==null&&mins(x.end)!==null&&mins(x.start)<b&&mins(x.end)>a);
-   body+='<td>'+(active.length?active.map(x=>'<button class="ce2-week-chip '+(x.kind==='in'?'in':'out')+'" data-edit-support="'+esc(x.id)+'"><strong>'+esc(x.name)+'</strong><span>'+esc(x.students.join(', '))+'</span><small>'+esc(label(x.start))+' – '+esc(label(x.end))+'</small></button>').join(''):'<div class="ce2-week-empty">—</div>')+'</td>';
+   // Calcul par sous-créneaux : les changements à 15 h, 15 h 45 et 16 h
+   // ne doivent pas produire un effectif trompeur pour toute la case.
+   const relevant=records.filter(x=>x.days.includes(day));
+   const cuts=[a,b];
+   for(const x of relevant)for(const k of ['start','end']){
+     const t=mins(x[k]);if(t!==null&&t>a&&t<b)cuts.push(t);
+   }
+   cuts.sort((x,y)=>x-y);
+   const uniqueCuts=[...new Set(cuts)];
+   const countSegments=[];
+   for(let i=0;i<uniqueCuts.length-1;i++){
+     const start=uniqueCuts[i],end=uniqueCuts[i+1];
+     const inNames=new Set(),outNames=new Set();
+     let uncertain=false;
+     for(const x of relevant){
+       const from=mins(x.start),to=mins(x.end);
+       if(from===null)continue;
+       if(to===null){
+         if(from<end)uncertain=true;
+         continue;
+       }
+       if(from<end&&to>start){
+         const dest=x.kind==='in'?inNames:outNames;
+         for(const name of x.students||[])if(name)dest.add(String(name).trim().toLocaleLowerCase('fr'));
+       }
+     }
+     for(const name of outNames)inNames.delete(name);
+     const count=14+inNames.size-outNames.size;
+     const previous=countSegments[countSegments.length-1];
+     if(previous&&previous.count===count&&previous.uncertain===uncertain)previous.end=end;
+     else countSegments.push({start,end,count,uncertain});
+   }
+   const formatClock=t=>Math.floor(t/60)+' h '+String(t%60).padStart(2,'0');
+   const counts=countSegments.map(x=>'<div class="ce2-week-count'+(x.uncertain?' is-uncertain':'')+'">'+
+     (x.uncertain?'Effectif à confirmer':x.count+' élèves en classe')+
+     (countSegments.length>1?'<small>'+formatClock(x.start)+' – '+formatClock(x.end)+'</small>':'')+
+     (x.uncertain?'<small>Prise en charge à horaire incomplet</small>':'')+'</div>').join('');
+   body+='<td>'+(active.length?active.map(x=>'<button class="ce2-week-chip '+(x.kind==='in'?'in':'out')+'" data-edit-support="'+esc(x.id)+'"><strong>'+esc(x.name)+'</strong><span>'+esc(x.students.join(', '))+'</span><small>'+esc(label(x.start))+' – '+esc(label(x.end))+'</small></button>').join(''):'')+counts+'</td>';
   }
   body+='</tr>';
  }
