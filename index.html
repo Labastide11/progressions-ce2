@@ -1002,80 +1002,6 @@
 .home-row-split .home-row{box-sizing:border-box}
 @media(max-width:760px){.home-timetable-section-label{font-size:.72rem}.home-row-split .home-row__title{white-space:normal;line-height:1.2;font-size:.82rem}}
 </style>
-
-<style id="home-timetable-compact-fix-v3724">
-/* Les cartes ne doivent jamais absorber la hauteur libre de la colonne. */
-.home-panel--pedago .home-list {
-  display:flex !important;
-  flex-direction:column !important;
-  justify-content:flex-start !important;
-  align-content:flex-start !important;
-  align-items:stretch !important;
-  gap:10px !important;
-  height:auto !important;
-  min-height:0 !important;
-  grid-template-rows:none !important;
-}
-.home-panel--pedago .home-list > .home-timetable-section-label {
-  display:block !important;
-  flex:0 0 auto !important;
-  height:auto !important;
-  min-height:0 !important;
-  margin:4px 2px 0 !important;
-  padding:0 !important;
-  line-height:1.35 !important;
-}
-.home-panel--pedago .home-list > .home-row--static {
-  display:flex !important;
-  flex:0 0 84px !important;
-  height:84px !important;
-  min-height:84px !important;
-  max-height:84px !important;
-  align-items:center !important;
-  align-self:stretch !important;
-  margin:0 !important;
-  box-sizing:border-box !important;
-}
-.home-panel--pedago .home-list > .home-row-split {
-  flex:0 0 auto !important;
-  height:auto !important;
-  min-height:0 !important;
-  margin:0 !important;
-}
-.home-panel--pedago .home-list > .home-row-split > .home-row {
-  flex:0 1 auto !important;
-  height:84px !important;
-  min-height:84px !important;
-  max-height:84px !important;
-  align-items:center !important;
-  box-sizing:border-box !important;
-}
-@media(max-width:760px) {
-  .home-panel--pedago .home-list > .home-row--static {
-    height:auto !important;
-    min-height:78px !important;
-    max-height:none !important;
-    flex:0 0 auto !important;
-  }
-  .home-panel--pedago .home-list > .home-row-split > .home-row {
-    height:auto !important;
-    min-height:76px !important;
-    max-height:none !important;
-  }
-}
-</style>
-<style id="home-matching-pair-borders-v3725">
-/* Trois paires de boutons : même liseré que le bouton de gauche. */
-.home-panel--pedago [data-home-action="weekly-timetable"] {
-  border:2px solid #9edc91 !important;
-}
-.home-panel--pedago a[aria-label="Notre semaine illustrée"] {
-  border:2px solid #9bc9ff !important;
-}
-.home-panel--suivi [data-page-link="suivi-comportement.html"] {
-  border:2px solid #9edc91 !important;
-}
-</style>
 </head>
 <body>
 <header class="app-header">
@@ -2442,5 +2368,89 @@
 </script>
 
 <script src="prises-en-charge-ce2.js?v=1"></script>
+
+<style id="ce2-weekly-supports-table-style">
+.ce2-planning .ce2-week-wrap{overflow-x:auto;margin:12px 0}
+.ce2-planning .ce2-week-table{width:100%;border-collapse:separate;border-spacing:5px;table-layout:fixed}
+.ce2-planning .ce2-week-table th{background:#e5f1fd;color:#163f6a;padding:12px 6px;border-radius:9px;text-align:center}
+.ce2-planning .ce2-week-table th:first-child{width:115px}
+.ce2-planning .ce2-week-table td{background:white;border:1px solid #d2e1ed;border-radius:9px;padding:8px;vertical-align:top}
+.ce2-planning .ce2-week-table td:first-child{background:#eaf2fa;text-align:center;vertical-align:middle;font-weight:800;color:#254b70}
+.ce2-planning .ce2-week-chip{display:block;width:100%;margin:3px 0;padding:8px;border:1px solid;border-radius:9px;text-align:left;cursor:pointer;font:inherit;line-height:1.35}
+.ce2-planning .ce2-week-chip.in{background:#dceeff;border-color:#8cbdf2;color:#15518e}
+.ce2-planning .ce2-week-chip.out{background:#ffe5e5;border-color:#eaa1a1;color:#a02b34}
+.ce2-planning .ce2-week-chip strong,.ce2-planning .ce2-week-chip span,.ce2-planning .ce2-week-chip small{display:block;overflow-wrap:anywhere}
+.ce2-planning .ce2-week-chip strong{font-size:.86rem}
+.ce2-planning .ce2-week-chip span{font-size:.82rem}
+.ce2-planning .ce2-week-chip small{font-size:.74rem;opacity:.8}
+.ce2-planning .ce2-week-legend{display:flex;gap:16px;flex-wrap:wrap;margin:10px 0;font-size:.92rem}
+.ce2-planning .ce2-week-legend b{border-radius:6px;padding:3px 7px}
+.ce2-planning .ce2-week-editor{background:white;border:1px solid #b7d2e5;border-radius:12px;padding:14px;margin-top:12px}
+.ce2-planning .ce2-week-editor[hidden]{display:none}
+.ce2-planning .ce2-week-editor label{display:block;margin:8px 0;font-weight:700}
+.ce2-planning .ce2-week-editor input[type=text]{width:100%;padding:8px;border:1px solid #b2c9da;border-radius:7px}
+.ce2-planning .ce2-week-editor input[type=time]{margin-left:8px;padding:6px}
+.ce2-planning .ce2-week-editor button{margin:6px 8px 0 0;padding:8px 12px;border-radius:8px;border:1px solid #397f7c;background:#e6f7f4;cursor:pointer}
+.ce2-planning .ce2-week-empty{text-align:center;color:#a1b1be;padding:12px 0}
+@media(max-width:800px){.ce2-planning .ce2-week-table{min-width:800px}}
+</style>
+<script id="ce2-weekly-supports-table-script">
+(function(){
+'use strict';
+const KEY='progressionsCE2.prisesEnChargePlanning.v1';
+const DAYS=[['Lundi',1],['Mardi',2],['Jeudi',4],['Vendredi',5]];
+const ROWS=[[540,645,'9 h – 10 h 45'],[660,720,'11 h – 12 h'],[840,900,'14 h – 15 h'],[900,945,'15 h – 15 h 45'],[945,1020,'15 h 45 – 17 h']];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const mins=s=>{if(!s)return null;const m=String(s).match(/^(\d\d?):(\d\d)$/);return m?+m[1]*60+ +m[2]:null};
+const label=s=>s?String(s).replace(':',' h '):'à confirmer';
+function getRecords(){return window.CE2PrisesEnCharge?.get?.()||[]}
+function draw(host){
+ if(!host||host.dataset.weeklyTable==='ready'&&host.querySelector('.ce2-week-table'))return;
+ const records=getRecords();if(!records.length)return;
+ let body='<h3>Présences et prises en charge — semaine</h3><div class="ce2-week-legend"><span><b style="background:#dceeff;color:#15518e">BLEU</b> Élève accueilli dans la classe</span><span><b style="background:#ffe5e5;color:#a02b34">ROUGE</b> Élève sorti de la classe</span></div><div class="ce2-week-wrap"><table class="ce2-week-table"><thead><tr><th>Horaire</th>'+DAYS.map(x=>'<th>'+x[0]+'</th>').join('')+'</tr></thead><tbody>';
+ for(const [a,b,time] of ROWS){
+  body+='<tr><td>'+time+'</td>';
+  for(const [,day] of DAYS){
+   const active=records.filter(x=>x.days.includes(day)&&mins(x.start)!==null&&mins(x.end)!==null&&mins(x.start)<b&&mins(x.end)>a);
+   body+='<td>'+(active.length?active.map(x=>'<button class="ce2-week-chip '+(x.kind==='in'?'in':'out')+'" data-edit-support="'+esc(x.id)+'"><strong>'+esc(x.name)+'</strong><span>'+esc(x.students.join(', '))+'</span><small>'+esc(label(x.start))+' – '+esc(label(x.end))+'</small></button>').join(''):'<div class="ce2-week-empty">—</div>')+'</td>';
+  }
+  body+='</tr>';
+ }
+ body+='</tbody></table></div>';
+ const pending=records.filter(x=>!x.start||!x.end);
+ if(pending.length)body+='<p><strong>Horaires à confirmer :</strong> '+pending.map(x=>'<button type="button" data-edit-support="'+esc(x.id)+'">'+esc(x.name)+' ('+x.days.map(d=>DAYS.find(v=>v[1]===d)?.[0]||'').join(', ')+')</button>').join(' · ')+'. Aucun horaire n’est inventé.</p>';
+ body+='<p><strong>Effectif de référence : 14 élèves.</strong> Les inclusions s’ajoutent, les sorties se soustraient. Clique sur une case pour modifier les prénoms. Les modifications restent dans ce navigateur. Vérifier l’inclusion ULIS du vendredi lors de la piscine.</p><div class="ce2-week-editor" hidden></div>';
+ host.dataset.weeklyTable='ready';host.innerHTML=body;
+ const editor=host.querySelector('.ce2-week-editor');
+ host.querySelectorAll('[data-edit-support]').forEach(btn=>btn.addEventListener('click',()=>{
+  const x=records.find(r=>r.id===btn.dataset.editSupport);if(!x)return;
+  editor.hidden=false;
+  editor.innerHTML='<strong>Modifier — '+esc(x.name)+'</strong><label>Prénoms séparés par des virgules<input type="text" class="ce2-edit-names" value="'+esc(x.students.join(', '))+'"></label><label>Début<input type="time" class="ce2-edit-start" value="'+esc(x.start||'')+'"></label><label>Fin<input type="time" class="ce2-edit-end" value="'+esc(x.end||'')+'"></label><div><button class="ce2-edit-save">Enregistrer</button><button class="ce2-edit-cancel">Annuler</button></div>';
+  editor.querySelector('.ce2-edit-cancel').onclick=()=>editor.hidden=true;
+  editor.querySelector('.ce2-edit-save').onclick=()=>{
+   const names=editor.querySelector('.ce2-edit-names').value.split(',').map(s=>s.trim()).filter(Boolean);
+   const start=editor.querySelector('.ce2-edit-start').value,end=editor.querySelector('.ce2-edit-end').value;
+   if(names.length!==x.students.length){alert('Indique exactement '+x.students.length+' prénom(s).');return}
+   if(start&&end&&mins(end)<=mins(start)){alert('La fin doit être après le début.');return}
+   x.students=names;x.start=start;x.end=end;
+   if(x.id==='aide-g')x.certainty=end?'confirmed':'provisional';
+   if(x.id==='cham-mardi'&&start&&end)x.certainty='confirmed';
+   try{localStorage.setItem(KEY,JSON.stringify(records))}catch(e){alert('Enregistrement impossible dans ce navigateur.');return}
+   location.reload();
+  };
+  editor.scrollIntoView({block:'nearest',behavior:'smooth'});
+ }));
+}
+function install(){
+ const modal=document.getElementById('supportsModal');if(!modal)return;
+ const refresh=()=>{const host=modal.querySelector('.ce2-planning');if(host)draw(host)};
+ refresh();
+ const obs=new MutationObserver(refresh);
+ obs.observe(modal,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(install,0));else setTimeout(install,0);
+})();
+</script>
+
 </body>
 </html>
