@@ -1030,6 +1030,107 @@
 .home-panel--pedago .home-list > .home-row--static{height:auto!important;min-height:82px!important;max-height:none!important;}
 @media(max-width:560px){.home-panel .home-list > .home-row-split{grid-template-columns:1fr!important;}}
 </style>
+
+<style id="ce2-home-fix-stretched-cards-20261122">
+/* Empêcher les cartes de remplir toute la hauteur disponible des panneaux.
+   Les boutons doivent conserver une hauteur constante, même en affichage VPI. */
+.home-panel--pedago .home-list,
+.home-panel--suivi .home-list{
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-start!important;
+  align-items:stretch!important;
+  align-content:flex-start!important;
+  flex:0 0 auto!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  gap:10px!important;
+  grid-template-rows:none!important;
+}
+.home-panel--pedago .home-list > *,
+.home-panel--suivi .home-list > *{
+  flex:0 0 auto!important;
+  align-self:stretch!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  margin-top:0!important;
+  margin-bottom:0!important;
+}
+.home-panel--pedago .home-list > .home-row,
+.home-panel--suivi .home-list > .home-row,
+.home-panel--pedago .home-list > .home-row--static{
+  display:flex!important;
+  flex:0 0 82px!important;
+  height:82px!important;
+  min-height:82px!important;
+  max-height:82px!important;
+  align-items:center!important;
+  align-self:stretch!important;
+  box-sizing:border-box!important;
+}
+.home-panel--pedago .home-list > .home-row-split,
+.home-panel--suivi .home-list > .home-row-split{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  grid-template-rows:82px!important;
+  grid-auto-rows:82px!important;
+  align-content:start!important;
+  align-items:stretch!important;
+  height:82px!important;
+  min-height:82px!important;
+  max-height:82px!important;
+  gap:10px!important;
+}
+.home-panel--pedago .home-list > .home-row-split > .home-row,
+.home-panel--suivi .home-list > .home-row-split > .home-row{
+  display:flex!important;
+  width:100%!important;
+  height:82px!important;
+  min-height:82px!important;
+  max-height:82px!important;
+  flex:0 0 auto!important;
+  align-items:center!important;
+  align-self:stretch!important;
+  margin:0!important;
+  padding-top:8px!important;
+  padding-bottom:8px!important;
+  box-sizing:border-box!important;
+  overflow:hidden!important;
+}
+.home-panel--pedago .home-list > .home-row-split > .home-row .home-row__text,
+.home-panel--suivi .home-list > .home-row-split > .home-row .home-row__text{
+  min-width:0!important;
+  flex:1 1 auto!important;
+}
+.home-panel--pedago .home-list > .home-row-split > .home-row .home-row__title,
+.home-panel--suivi .home-list > .home-row-split > .home-row .home-row__title{
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+.home-panel--pedago .home-list > .home-timetable-section-label,
+.home-panel--suivi .home-list > .home-timetable-section-label{
+  flex:0 0 auto!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  margin:4px 0 0!important;
+}
+/* La hauteur des colonnes n'est jamais distribuée aux cartes. */
+.home-panel--pedago,
+.home-panel--suivi{align-content:start!important;}
+@media(max-width:560px){
+  .home-panel--pedago .home-list > .home-row-split,
+  .home-panel--suivi .home-list > .home-row-split{
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-template-rows:repeat(2,82px)!important;
+    height:174px!important;
+    min-height:174px!important;
+    max-height:174px!important;
+  }
+}
+</style>
 </head>
 <body>
 <header class="app-header">
