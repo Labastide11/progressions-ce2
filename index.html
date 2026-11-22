@@ -1002,6 +1002,34 @@
 .home-row-split .home-row{box-sizing:border-box}
 @media(max-width:760px){.home-timetable-section-label{font-size:.72rem}.home-row-split .home-row__title{white-space:normal;line-height:1.2;font-size:.82rem}}
 </style>
+<style id="ce2-home-five-groups-20261122">
+/* Sous-titres colorés, compacts et sans espace vertical artificiel. */
+.home-panel--pedago .home-list,.home-panel--suivi .home-list{
+ display:flex!important;flex-direction:column!important;justify-content:flex-start!important;
+ align-items:stretch!important;align-content:flex-start!important;gap:10px!important;
+ height:auto!important;min-height:0!important;grid-template-rows:none!important;
+}
+.home-panel--pedago .home-list > *, .home-panel--suivi .home-list > *{
+ flex-shrink:0!important;min-height:0!important;margin-top:0!important;margin-bottom:0!important;
+}
+.home-panel .home-list > .home-timetable-section-label{
+ display:block!important;align-self:stretch!important;height:auto!important;min-height:0!important;
+ padding:8px 12px!important;margin:6px 0 0!important;border-radius:9px!important;
+ border-left:5px solid var(--section-accent,#2b75bf)!important;
+ background:var(--section-tint,#eaf4ff)!important;color:var(--section-accent,#2b75bf)!important;
+ font-weight:850!important;font-size:.79rem!important;letter-spacing:.045em!important;
+ line-height:1.3!important;
+}
+.home-section--teacher{--section-accent:#2377c7;--section-tint:#e8f3ff}
+.home-section--pupils{--section-accent:#258b61;--section-tint:#e5f6ec}
+.home-section--resources{--section-accent:#8a54c5;--section-tint:#f2e9ff}
+.home-section--collective{--section-accent:#b87918;--section-tint:#fff1d9}
+.home-section--evaluation{--section-accent:#bf507b;--section-tint:#fce8f0}
+.home-panel .home-list > .home-row-split{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px!important;}
+.home-panel .home-list > .home-row-split > .home-row{min-width:0!important;box-sizing:border-box!important;}
+.home-panel--pedago .home-list > .home-row--static{height:auto!important;min-height:82px!important;max-height:none!important;}
+@media(max-width:560px){.home-panel .home-list > .home-row-split{grid-template-columns:1fr!important;}}
+</style>
 </head>
 <body>
 <header class="app-header">
@@ -1089,7 +1117,7 @@
 </div>
 </div>
 <div class="home-list">
-<div class="home-timetable-section-label">ORGANISATION — ENSEIGNANT</div>
+<div class="home-timetable-section-label home-section--teacher">ORGANISATION — ENSEIGNANT</div>
 <div class="home-row home-row--static home-row--blue">
 <div class="home-row__icon"><img alt="" src="assets/home-v32-42/seances-de-classe.png"/></div>
 <div class="home-row__text">
@@ -1116,7 +1144,7 @@
 <span class="home-row__arrow">›</span>
 </button>
 </div>
-<div class="home-timetable-section-label">POUR LES ÉLÈVES — À PROJETER EN CLASSE</div>
+<div class="home-timetable-section-label home-section--pupils">POUR LES ÉLÈVES — À PROJETER EN CLASSE</div>
 <div class="home-row-split" role="group" aria-label="Emplois du temps pour les élèves">
 <button class="home-row home-row--blue home-row--tbi" data-home-action="tbi-view" id="openTbiViewBtn" type="button">
 <span class="home-row__icon"><img alt="" src="assets/home-v32-42/ecran-tbi.png"/></span>
@@ -1129,6 +1157,7 @@
 <span class="home-row__arrow">›</span>
 </a>
 </div>
+<div class="home-timetable-section-label home-section--resources">ESPACES ET RESSOURCES</div>
 <div class="home-row-split" role="group" aria-label="Espace Parents et Maître Hibou">
 <a class="home-row home-row--amber" href="https://labastide11.github.io/espace-parents-ce2/" rel="noopener noreferrer" style="text-decoration:none;color:inherit;" target="_blank">
 <span class="home-row__icon"><img alt="" src="assets/parents/icon_info_parents.png" style="width:100%;height:100%;object-fit:contain;border-radius:15px;"/></span>
@@ -1178,6 +1207,7 @@
 </div>
 </div>
 <div class="home-list">
+<div class="home-timetable-section-label home-section--collective">SUIVI COLLECTIF DE LA CLASSE</div>
 <button class="home-row home-row--blue" data-page-link="vue-eleves.html" type="button">
 <span class="home-row__icon"><img alt="" src="assets/home-v36-42/voir-tous-les-eleves.png"/></span>
 <span class="home-row__text"><span class="home-row__title">Voir tous les élèves</span><span class="home-row__desc">Liste de classe avec portraits et accès direct.</span></span>
@@ -1196,11 +1226,13 @@
 </button>
 </div>
 
+<div class="home-timetable-section-label home-section--evaluation">ACCOMPAGNEMENT ET ÉVALUATION</div>
 <button class="home-row home-row--gold" data-home-action="evaluations" type="button">
 <span class="home-row__icon"><img alt="" src="assets/home-v32-43/evaluations-bilans.png"/></span>
 <span class="home-row__text"><span class="home-row__title">Évaluations et bilans des élèves</span><span class="home-row__desc">Accès direct aux évaluations par compétences.</span></span>
 <span class="home-row__arrow">›</span>
 </button>
+<div class="home-row-split" role="group" aria-label="Accompagnements et parcours individuel">
 <button class="home-row home-row--sand" data-home-action="supports" type="button">
 <span class="home-row__icon"><img alt="" src="assets/home-v32-43/accompagnements-inclusions.jpg"/></span>
 <span class="home-row__text"><span class="home-row__title">Accompagnements et inclusions</span><span class="home-row__desc">Priorités pédagogiques, inclusions et suivis coordonnés.</span></span>
@@ -1211,6 +1243,7 @@
 <span class="home-row__text"><span class="home-row__title">Parcours individuel de l’élève</span><span class="home-row__desc">Objectifs, réussites, besoins et bilans.</span></span>
 <span class="home-row__arrow">›</span>
 </button>
+</div>
 </div>
 </article>
 </div>
