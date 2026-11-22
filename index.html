@@ -1159,6 +1159,37 @@
 .home-panel--pedago .home-list .home-row,
 .home-panel--suivi .home-list .home-row {border-width:2px!important;border-style:solid!important;}
 </style>
+
+<style id="ce2-home-resource-trio-20261122">
+/* Trois accès sur une seule ligne ; préserver les dimensions compactes validées. */
+.home-panel--pedago .home-list > .home-row-trio {
+ display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ grid-template-rows:82px!important;grid-auto-rows:82px!important;
+ height:82px!important;min-height:82px!important;max-height:82px!important;
+ gap:10px!important;align-content:start!important;
+}
+.home-panel--pedago .home-list > .home-row-trio > .home-row {
+ display:flex!important;width:100%!important;height:82px!important;min-height:82px!important;max-height:82px!important;
+ align-items:center!important;min-width:0!important;overflow:hidden!important;box-sizing:border-box!important;
+ padding:8px 10px!important;margin:0!important;
+ background:#f2eaff!important;border:2px solid #c5a2f5!important;
+}
+.home-panel--pedago .home-list > .home-row-trio > .home-row .home-row__icon {flex-shrink:0!important;}
+.home-panel--pedago .home-list > .home-row-trio > .home-row .home-row__text {min-width:0!important;flex:1 1 auto!important;}
+.home-panel--pedago .home-list > .home-row-trio > .home-row .home-row__title {
+ white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;
+}
+@media(max-width:560px){
+ .home-panel--pedago .home-list > .home-row-trio {
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;grid-template-rows:82px!important;
+  height:82px!important;min-height:82px!important;max-height:82px!important;gap:5px!important;
+ }
+ .home-panel--pedago .home-list > .home-row-trio > .home-row {padding:6px 4px!important;gap:4px!important;}
+ .home-panel--pedago .home-list > .home-row-trio > .home-row .home-row__icon {width:34px!important;height:34px!important;}
+ .home-panel--pedago .home-list > .home-row-trio > .home-row .home-row__title {font-size:11px!important;}
+ .home-panel--pedago .home-list > .home-row-trio > .home-row .home-row__arrow {display:none!important;}
+}
+</style>
 </head>
 <body>
 <header class="app-header">
@@ -1287,15 +1318,20 @@
 </a>
 </div>
 <div class="home-timetable-section-label home-section--resources">ESPACES ET RESSOURCES</div>
-<div class="home-row-split" role="group" aria-label="Espace Parents et Maître Hibou">
+<div class="home-row-split home-row-trio" role="group" aria-label="Espaces Parents, Élèves et Maître Hibou">
 <a class="home-row home-row--amber" href="https://labastide11.github.io/espace-parents-ce2/" rel="noopener noreferrer" style="text-decoration:none;color:inherit;" target="_blank">
 <span class="home-row__icon"><img alt="" src="assets/parents/icon_info_parents.png" style="width:100%;height:100%;object-fit:contain;border-radius:15px;"/></span>
-<span class="home-row__text"><span class="home-row__title">Espace Parents</span><span class="home-row__desc">Ouvrir l’espace public destiné aux familles.</span></span>
+<span class="home-row__text"><span class="home-row__title">Parents</span><span class="home-row__desc">Ouvrir l’espace public destiné aux familles.</span></span>
+<span class="home-row__arrow">↗</span>
+</a>
+<a class="home-row home-row--blue" href="https://labastide11.github.io/espace-enfants-ce2/index.html" rel="noopener noreferrer" style="text-decoration:none;color:inherit;" target="_blank">
+<span class="home-row__icon"><img alt="" src="assets/home-v32-37/enfants-entete-propre.png" style="width:100%;height:100%;object-fit:contain;border-radius:15px;"/></span>
+<span class="home-row__text"><span class="home-row__title">Élèves</span><span class="home-row__desc">Ouvrir l’espace public destiné aux élèves.</span></span>
 <span class="home-row__arrow">↗</span>
 </a>
 <button class="home-row home-row--violet" data-home-action="hibou-link" type="button">
 <span class="home-row__icon"><img alt="" src="assets/home-v32-42/hibou-diplome.png"/></span>
-<span class="home-row__text"><span class="home-row__title">Ouvrir Maître Hibou</span><span class="home-row__desc">Leçons et outils déjà construits.</span></span>
+<span class="home-row__text"><span class="home-row__title">Maître Hibou</span><span class="home-row__desc">Leçons et outils déjà construits.</span></span>
 <span class="home-row__arrow">›</span>
 </button>
 </div>
